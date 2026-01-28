@@ -1,18 +1,18 @@
 # Moral-Scarcity-Tactical-Arena-Roguelike
 
-# 🏟️ Rust Arena (Project Name)
+# 🏟️ Moral Scarcity
 A high-performance, low-poly combat arena game built in **Godot 4**.
 
 ## 🚀 The Vision
-Survival of the fittest in a rusted-out wasteland. This project focuses on extreme optimization, targeting a maximum of **60 draw calls** to ensure smooth 60 FPS gameplay on low-end mobile and web devices.
+Survival of the fittest in a rusted-out wasteland. This project focuses on extreme optimization, targeting smooth 60+ FPS gameplay on low-end mobile devices and PC.
 
 ---
 
 ## 🛠️ Technical Specifications
-- **Engine:** Godot 4.x (Compatibility Renderer)
+- **Engine:** Godot 4.x (Mobile Renderer)
 - **Art Style:** Low-Poly / Flat Shaded
-- **Performance Target:** < 60 Draw Calls
-- **Optimization Tech:** MultiMeshInstance3D for crowds, Texture Atlasing, and Vertex Animation.
+- **Performance Target:** < 60 Draw Calls, Very Low VRAM Usage
+- **Optimization Tech:** MultiMeshInstance3D for identical objects, Solid Color Materials, Low Poly Meshes.
 
 ---
 
@@ -20,8 +20,8 @@ Survival of the fittest in a rusted-out wasteland. This project focuses on extre
 | Member | Role | GitHub |
 | :--- | :--- | :--- |
 | **Your Name** | Project Lead / Lead Dev | [@YourUsername](https://github.com/YourUsername) |
-| **Member 2** | Character Artist | [@Username2](https://github.com/Username2) |
-| **Member 3** | Environment / Rust Assets | [@Username3](https://github.com/Username3) |
+| **Member 2** | Coder | [@Username2](https://github.com/Username2) |
+| **Member 3** | Coder/PR | [@Username3](https://github.com/Username3) |
 
 ---
 
