@@ -2,7 +2,7 @@
 
 # 🏟️ Moral Scarcity
 A high-performance, low-poly combat arena game built in **Godot 4**.
-![Moral Scarcity Demo](media/your_filename.gif)
+![Moral Scarcity Demo](media/aiopl7.gif)
 
 ## 💡 The Vision
 Build a gladiator career in a setting that combines post-apocalyptic, desert, and ancient civilization themes.
