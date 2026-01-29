@@ -83,3 +83,11 @@ Also, you are free to use every part of this project as you wish.
 - [ ] AI Enemy logic & Combat System
 - [ ] First Arena Location Design & Implementation
 - [ ] Basic Interface & Settings Section
+
+---
+
+## 🧱 Used In This Project
+- **MultiMesh Scatter**
+  - GitHub Link: https://github.com/arcaneenergy/godot-multimesh-scatter
+- **MetaMultimeshInstance3D**
+  - Godot Asset Library Link: https://godotengine.org/asset-library/asset/2043
