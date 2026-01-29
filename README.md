@@ -50,6 +50,24 @@ Also, you are free to use every part of this project as you wish.
 
 ---
 
+## 💡 Performance
+- **Benchmark Enviroment**
+  - **Resolution:** 3440x1440
+  - **CPU:** Intel Core i5 14400F
+  - **GPU:** Nvidia RTX 5060TI 16GB
+  - **RAM:** 32 GB DDR4
+  - **OS:** Windows 11
+- **Performance Metrics**
+  - 
+
+**What we are planning to add:**
+- Infinite gameplay
+- Access to more arenas based on player's progression
+- Turn based combat system including ranged and melee weapons of different types
+- Random generation
+
+---
+
 ## 👥 The Team
 | Member | Role | GitHub |
 | :--- | :--- | :--- |
