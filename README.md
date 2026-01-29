@@ -51,14 +51,14 @@ Also, you are free to use every part of this project as you wish.
 ---
 
 ## 📊 Performance
-- **Benchmark Enviroment**
+- **Benchmark Environment**
   - **Resolution:** 3440x1440
   - **CPU:** Intel Core i5 14400F
-  - **GPU:** Nvidia RTX 5060TI 16GB
+  - **GPU:** NVIDIA RTX 5060 Ti 16GB
   - **RAM:** 32 GB DDR4
   - **OS:** Windows 11
 - **Performance Metrics**
-  | FPS | VRAM Usage | Draw Calls(Whole Scene) | CPU Usage | GPU Usage |
+  | FPS | VRAM Usage | Draw Calls (Whole Scene) | CPU Usage | GPU Usage |
   | :--- | :--- | :--- | :--- | :--- |
   | 3800 | 78.48MiB | 13 | 10% | 86% |
 
