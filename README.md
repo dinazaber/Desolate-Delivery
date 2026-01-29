@@ -19,7 +19,12 @@ What we are planing to add:
 - **Engine:** Godot 4.x (Mobile Renderer)
 - **Art Style:** Low-Poly, Flat Shaded, Solid Colors
 - **Performance Target:** Less than 50 draw calls per frame, very low VRAM usage, 60+ FPS on low-end hardware
-- **Optimization Tech:** MultiMeshInstance3D for identical objects, Solid Color Materials, Low Poly Meshes, No Shadows, No DirectionalLight
+- **Optimization Tech:**
+  - MultiMeshInstance3D for identical objects
+  - Solid color materials instead of textures
+  - Low poly meshes
+  - No shadow
+  - No directionalLight
 
 ---
 
@@ -34,9 +39,9 @@ What we are planing to add:
 ## 👥 The Team
 | Member | Role | GitHub |
 | :--- | :--- | :--- |
-| **Vladislav** | Project Lead / Lead Dev | [@YourUsername](https://github.com/YourUsername) |
-| **Yuli** | Dev 2 | [@Username2](https://github.com/Username2) |
-| **Konstantin** | Dev 3 | [@Username3](https://github.com/Username3) |
+| **Vlad** | Project Lead / Lead Dev | [@dinazaber](https://github.com/dinazaber) |
+| **Yuli** | Dev 2 / Marketing Lead | no github |
+| **Konstantin** | Dev 3 / Algorithms Developer  | no github |
 
 ---
 
