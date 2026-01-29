@@ -1,0 +1,65 @@
+[gd_scene load_steps=4 format=3 uid="uid://cpi1xrpot2ipt"]
+
+[ext_resource type="Script" uid="uid://dh81y2wk5ijn" path="res://Scripts/player.gd" id="1_g8lft"]
+[ext_resource type="PackedScene" uid="uid://fpn1i64uq4k3" path="res://Scenes/Human.tscn" id="2_kyqiw"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kyqiw"]
+height = 6.3581543
+
+[node name="Player" type="CharacterBody3D"]
+floor_constant_speed = true
+floor_snap_length = 0.25
+script = ExtResource("1_g8lft")
+
+[node name="PlayerCollision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.150105, -1.2883918, 0)
+shape = SubResource("CapsuleShape3D_kyqiw")
+
+[node name="Human" parent="." instance=ExtResource("2_kyqiw")]
+
+[node name="Skeleton3D" parent="Human/HumanRig" index="0"]
+bones/0/position = Vector3(3.084196e-09, 1.0767221, -0.09804484)
+bones/0/rotation = Quaternion(0.11906453, 2.3672271e-07, 2.8387191e-08, 0.99288654)
+bones/1/rotation = Quaternion(-0.16346277, -1.2000056e-07, -6.034062e-08, 0.9865495)
+bones/2/rotation = Quaternion(0.039522808, -3.778712e-05, 0.0010914524, 0.9992181)
+bones/3/rotation = Quaternion(0.05525741, 0.088196084, -0.8551721, 0.5077882)
+bones/4/rotation = Quaternion(0.056950673, -0.10346191, 0.008269865, 0.99296725)
+bones/5/rotation = Quaternion(0.055257205, -0.08819619, 0.8551722, 0.50778806)
+bones/6/rotation = Quaternion(0.05695069, 0.103461936, -0.008269853, 0.9929672)
+bones/7/position = Vector3(0.060534954, 1.0344661, -0.046009474)
+bones/7/rotation = Quaternion(0.9987913, 0.00072229636, -0.00018256248, 0.049147356)
+bones/8/rotation = Quaternion(0.06612628, -0.0002554208, 0.004492962, 0.9978011)
+bones/9/position = Vector3(-0.060534954, 1.0344661, -0.046009474)
+bones/9/rotation = Quaternion(0.9987913, -0.00072229636, 0.00018256248, 0.049147356)
+bones/10/rotation = Quaternion(0.06612628, 0.00025542075, -0.004492962, 0.9978011)
+
+[node name="Spine" parent="Human/HumanRig/Skeleton3D" index="1"]
+transform = Transform3D(1, 4.495746e-09, 2.3430908e-07, -2.5467983e-08, 0.9959792, 0.089583635, -2.3296417e-07, -0.089583695, 0.9959793, 3.424991e-09, 1.2459121, -0.06883432)
+
+[node name="Head" parent="Human/HumanRig/Skeleton3D" index="2"]
+transform = Transform3D(0.9999976, -0.0021841624, 1.0992603e-05, 0.0021839212, 0.99994105, 0.010637455, -3.4225974e-05, -0.010637447, 0.99994344, 0.00047345672, 1.6435857, -0.0650168)
+
+[node name="BoneAttachment3D" parent="Human/HumanRig/Skeleton3D" index="3"]
+transform = Transform3D(-0.46483845, -0.88536114, 0.007829547, 0.87966263, -0.46080562, 0.117694885, -0.10059451, 0.06159647, 0.9930188, -0.4370227, 1.4121128, -0.07917367)
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.161613, 1.3797681, 0)
+target_position = Vector3(1, 0, 0)
+
+[node name="PlayerCamera" type="Camera3D" parent="."]
+transform = Transform3D(-4.371139e-08, 0.8660251, -0.49999976, 0, 0.49999976, 0.8660251, 1, 3.785516e-08, -2.1855683e-08, -12.0234, 17.6862, 0)
+cull_mask = 1048573
+size = 56.061
+
+[node name="DashTimer" type="Timer" parent="."]
+wait_time = 0.3
+one_shot = true
+
+[node name="SuperTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="animation_finished" from="Human/AnimationTree" to="." method="animFinished"]
+[connection signal="timeout" from="DashTimer" to="." method="DashTimerTimeOut"]
+[connection signal="timeout" from="SuperTimer" to="." method="SuperTimerTimeOut"]
+
+[editable path="Human"]
