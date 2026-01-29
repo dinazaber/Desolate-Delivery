@@ -62,7 +62,7 @@ Also, you are free to use every part of this project as you wish.
 - **Performance Metrics**
   | FPS | VRAM Usage | Draw Calls (Whole Scene) | CPU Usage | GPU Usage |
   | :--- | :--- | :--- | :--- | :--- |
-  | 3800 | 78.48MiB | 13 | 10% | 86% |
+  | 3900 | 78.48MiB | 15 | 10% | 86% |
 
 ---
 
