@@ -60,11 +60,6 @@ Also, you are free to use every part of this project as you wish.
 - **Performance Metrics**
   - 
 
-**What we are planning to add:**
-- Infinite gameplay
-- Access to more arenas based on player's progression
-- Turn based combat system including ranged and melee weapons of different types
-- Random generation
 
 ---
 
