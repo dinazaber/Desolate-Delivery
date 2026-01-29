@@ -66,3 +66,4 @@ Also, you are free to use every part of this project as you wish.
 - [x] Basic Arena Environment
 - [ ] AI Enemy logic & Combat System
 - [ ] First Arena Location Design & Implementation
+- [ ] Basic Interface & Settings Section
