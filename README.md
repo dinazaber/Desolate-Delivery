@@ -50,7 +50,7 @@ Also, you are free to use every part of this project as you wish.
 
 ---
 
-## 💡 Performance
+## 📊 Performance
 - **Benchmark Enviroment**
   - **Resolution:** 3440x1440
   - **CPU:** Intel Core i5 14400F
