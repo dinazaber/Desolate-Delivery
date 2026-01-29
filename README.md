@@ -8,6 +8,7 @@ Make a career of gladiator in setting which combines post apocalypse, desert and
 This project focuses on extreme optimization, targeting stable 60+ FPS runtime result on low-end mobile and PC devices.
 Absolutely free for everyone and made for educational purposes. 
 Also, you are free to use every part of this project as you wish.
+
 What we are planing to add:
 1) Infinite gameplay
 2) Access to more arenas based on player's progression
