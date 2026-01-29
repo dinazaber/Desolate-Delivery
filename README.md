@@ -9,11 +9,11 @@ This project focuses on extreme optimization, targeting stable 60+ FPS runtime r
 Absolutely free for everyone and made for educational purposes. 
 Also, you are free to use every part of this project as you wish.
 
-What we are planing to add:
-1) Infinite gameplay
-2) Access to more arenas based on player's progression
-3) Turn based combat system including ranged and meele weapons of different types
-4) Random generation
+**What we are planing to add:**
+- Infinite gameplay
+- Access to more arenas based on player's progression
+- Turn based combat system including ranged and meele weapons of different types
+- Random generation
 
 ---
 
