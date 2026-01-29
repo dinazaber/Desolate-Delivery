@@ -40,7 +40,7 @@ Also, you are free to use every part of this project as you wish.
 - **Shaders**
   - Efficient low poly 3D water with illumination imitation and animation controls (height of waves, how many frames in the animation) used on simple plane mesh.
   - 3D animated flag used on simple plane mesh (frequency, speed and color can be adjusted).
-  - Very efficient fake lighting shader which gives almost the same effect as real-time lighting but runs about 30% faster.
+  - Very efficient fake lighting shader which gives almost the same effect as real-time lighting but runs about **30% faster**.
   - Efficient bricks shader for drawing bricks pattern on surfaces(brick/mortar size/color can be adjusted).
   - Very efficient black-transparent gradient shader. We use it to imitate void without the need to physically create empty dark space which leads to better performance.
 - **Assets**
