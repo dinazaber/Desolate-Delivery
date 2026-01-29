@@ -2,6 +2,7 @@
 
 # 🏟️ Moral Scarcity
 A high-performance, low-poly combat arena game built in **Godot 4**.
+
 ![Moral Scarcity Demo](media/aiopl7.gif)
 
 ## 💡 The Vision
