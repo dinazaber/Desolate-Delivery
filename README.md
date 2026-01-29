@@ -34,9 +34,9 @@ What we are planing to add:
 ## 👥 The Team
 | Member | Role | GitHub |
 | :--- | :--- | :--- |
-| **Member 1** | Project Lead / Lead Dev | [@YourUsername](https://github.com/YourUsername) |
-| **Member 2** | Dev 2 | [@Username2](https://github.com/Username2) |
-| **Member 3** | Dev 3 | [@Username3](https://github.com/Username3) |
+| **Vladislav** | Project Lead / Lead Dev | [@YourUsername](https://github.com/YourUsername) |
+| **Yuli** | Dev 2 | [@Username2](https://github.com/Username2) |
+| **Konstantin** | Dev 3 | [@Username3](https://github.com/Username3) |
 
 ---
 
