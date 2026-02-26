@@ -59,7 +59,7 @@ Also, you are free to use every part of this project as you wish as it is under 
 
 ---
 
-## 🧱 Used In This Project
+## 🧱 Godot Plugins Used In This Project
 - **MultiMesh Scatter**
   - GitHub Link: https://github.com/arcaneenergy/godot-multimesh-scatter
 - **MetaMultimeshInstance3D**
