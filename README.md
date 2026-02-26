@@ -6,83 +6,56 @@ A high-performance, low-poly combat arena game built in **Godot 4**.
 ![Moral Scarcity Demo](media/aiopl7.gif)
 
 ## 💡 The Vision
-Build a gladiator career in a setting that combines post-apocalyptic, desert, and ancient civilization themes.
-This project focuses on extreme optimization, targeting stable 60+ FPS on low-end mobile and PC devices.
+Our project is inspired by classic shooters(especially Doom and Duke Nukem 3D).
+The game is devided into unique levels that represent unique locations.
+Like in classic shooters, you will encounter enemies(melee and ranged) on each level.
+Each level will contain secret locations inside that the player can try to discover(it may be supply stashes or easter eggs).
+We want to combine the retro style of classic shooters with the abilities of modern hardware by adding features that those games were lack of.
+This project focuses on extreme optimization, targeting very high frame rate on low-end mobile and PC devices.
 Absolutely free for everyone and made for educational purposes. 
-Also, you are free to use every part of this project as you wish.
+Also, you are free to use every part of this project as you wish as it is under **MIT LICENSE**.
 
 **What we are planning to add:**
-- Infinite gameplay
-- Access to more arenas based on player's progression
-- Turn based combat system including ranged and melee weapons of different types
-- Random generation
+- Interesting Locations that the player would like to discover
+- Advanced AI relatively to the one in classic shooters
+- Differnt playable weapons, from cold to launchers
+- Modern technologies(physical simulation and more)
 
 ---
 
 ## 🛠️ Technical Specifications
 - **Engine:** Godot 4.x (Mobile Renderer)
-- **Art Style:** Low-Poly, Flat-Shaded, Solid-Colors
+- **Art Style:** Low-Poly, Flat-Shaded, Pixelated Textures
 - **Performance Target:** Less than 50 draw calls per frame, very low VRAM usage, 60+ FPS on low-end hardware
 - **Optimization Tech:**
   - Mobile renderer instead of Forward+
   - MultiMeshInstance3D for identical objects
-  - Solid-color materials instead of textures
+  - Low Resolution Textures
   - Low-poly meshes
   - No real-time shadows
   - No real-time lighting
-
----
-
-## 📦 What We Have?
-- **Player Controller**
-  - Player's movement in space (including jumping and dashing) based on keyboard inputs.
-  - Player's and camera rotation based on keyboard & mouse inputs.
-- **Features**
-  - A system which makes roofs above the player invisible. 
-- **Shaders**
-  - Efficient low poly 3D water with illumination imitation and animation controls (height of waves, how many frames in the animation) used on simple plane mesh.
-  - 3D animated flag used on simple plane mesh (frequency, speed and color can be adjusted).
-  - Very efficient fake lighting shader which gives almost the same effect as real-time lighting but runs about **30% faster**.
-  - Efficient bricks shader for drawing bricks pattern on surfaces(brick/mortar size/color can be adjusted).
-  - Very efficient black-transparent gradient shader. We use it to imitate void without the need to physically create empty dark space which leads to better performance.
-- **Assets**
-  -  Low poly 3D assets(humans, clothing, vehicles, structures, nature, items)
-  -  Stylized animations
-  -  Textures
-
----
-
-## 📊 Performance
-- **Benchmark Environment**
-  - **Resolution:** 3440x1440
-  - **CPU:** Intel Core i5 14400F
-  - **GPU:** NVIDIA RTX 5060 Ti 16GB
-  - **RAM:** 32 GB DDR4
-  - **OS:** Windows 11
-- **Performance Metrics**
-  | FPS | VRAM Usage | Draw Calls (Whole Scene) | CPU Usage | GPU Usage |
-  | :--- | :--- | :--- | :--- | :--- |
-  | 3900 | 78.48MiB | 15 | 10% | 86% |
+  - Optimized Algorithms
 
 ---
 
 ## 👥 The Team
 | Member | Role | GitHub |
 | :--- | :--- | :--- |
-| **Vlad** | Project Lead / Lead Dev | [@dinazaber](https://github.com/dinazaber) |
+| **Vlad** | Project Lead / Lead Dev / Assets Creator | [@dinazaber](https://github.com/dinazaber) |
 | **Yuli** | Dev 2 / Marketing Lead | N/A |
-| **Konstantin** | Dev 3 / Algorithms Developer  | N/A |
+| **Konstantin** | Dev 3 / Algorithms Developer / Assets Creator  | N/A |
+| **Shimon** | Dev 4 / Algorithms Developer  | N/A |
 
 ---
 
 ## 📅 Roadmap For The Next Few Months
 - [x] Basic Player Controller
 - [x] Art Style
-- [x] Light Imitation Shader & A Few More Shaders
-- [x] Basic Arena Environment
-- [ ] AI Enemy logic & Combat System
-- [ ] First Arena Location Design & Implementation
-- [ ] Basic Interface & Settings Section
+- [x] Main Shaders
+- [x] AI Enemy Path Finding
+- [ ] Full AI Enemy logic
+- [ ] First Level Design & Implementation
+- [ ] Basic Interface & Main Menu
 
 ---
 
