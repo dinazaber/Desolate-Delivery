@@ -3,7 +3,7 @@
 # Moral Scarcity
 A high-performance, low-poly combat retro shooter built in **Godot 4**.
 
-![Moral Scarcity Demo](media/aiopl7.gif)
+![Moral Scarcity Demo](media/ProjectGif.gif)
 
 ## 💡 The Vision
 Our project is inspired by classic shooters(especially Doom and Duke Nukem 3D).
