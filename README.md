@@ -10,14 +10,14 @@ Our project is inspired by classic shooters(especially Doom and Duke Nukem 3D).
 The game is devided into unique levels that represent unique locations.
 Like in classic shooters, you will encounter enemies(melee and ranged) on each level.
 Each level will contain secret locations inside that the player can try to discover(it may be supply stashes or easter eggs).
-We want to combine the retro style of classic shooters with the abilities of modern hardware by adding features that those games were lack of.
+We want to combine the retro style of classic shooters with the abilities of modern hardware by adding features those games lacked.
 This project focuses on extreme optimization, targeting very high frame rate on low-end mobile and PC devices.
 Absolutely free for everyone and made for educational purposes. 
 Also, you are free to use every part of this project as you wish as it is under **MIT LICENSE**.
 
 **What we are planning to add:**
 - Interesting Locations that the player would like to discover
-- Advanced AI relatively to the one in classic shooters
+- Advanced AI compared to classic shooters
 - Differnt playable weapons, from cold to launchers
 - Modern technologies(physical simulation and more)
 
@@ -30,11 +30,11 @@ Also, you are free to use every part of this project as you wish as it is under 
 - **Optimization Tech:**
   - Mobile renderer instead of Forward+
   - MultiMeshInstance3D for identical objects
-  - Low Resolution Textures
+  - Low resolution textures
   - Low-poly meshes
   - No real-time shadows
   - No real-time lighting
-  - Optimized Algorithms
+  - Optimized algorithms
 
 ---
 
@@ -53,7 +53,7 @@ Also, you are free to use every part of this project as you wish as it is under 
 - [x] Art Style
 - [x] Main Shaders
 - [x] AI Enemy Path Finding
-- [ ] Full AI Enemy logic
+- [ ] Complete AI Enemy logic
 - [ ] First Level Design & Implementation
 - [ ] Basic Interface & Main Menu
 
