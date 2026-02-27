@@ -18,7 +18,7 @@ Also, you are free to use every part of this project as you wish as it is under 
 **What we are planning to add:**
 - Interesting Locations that the player would like to discover
 - Advanced AI compared to classic shooters
-- Differnt playable weapons, from cold to launchers
+- Different playable weapons, from cold to launchers
 - Modern technologies(physical simulation and more)
 
 ---
