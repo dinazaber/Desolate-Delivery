@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://cpi1xrpot2ipt"]
+
+[ext_resource type="Script" uid="uid://dh81y2wk5ijn" path="res://Scripts/Player.gd" id="1_g8lft"]
+[ext_resource type="PackedScene" uid="uid://4ercdvy5pe3t" path="res://Scenes/Weapons.tscn" id="2_kyqiw"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kyqiw"]
+shading_mode = 0
+
+[sub_resource type="BoxMesh" id="BoxMesh_rpqav"]
+material = SubResource("StandardMaterial3D_kyqiw")
+size = Vector3(1, 2, 1)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kyqiw"]
+
+[node name="Player" type="CharacterBody3D" unique_id=1941692924 groups=["Player"]]
+floor_constant_speed = true
+floor_snap_length = 0.25
+script = ExtResource("1_g8lft")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=620583355]
+cast_shadow = 0
+mesh = SubResource("BoxMesh_rpqav")
+
+[node name="PlayerCollision" type="CollisionShape3D" parent="." unique_id=1015271467]
+shape = SubResource("CapsuleShape3D_kyqiw")
+
+[node name="DashTimer" type="Timer" parent="." unique_id=415436493]
+wait_time = 0.15
+one_shot = true
+
+[node name="SuperTimer" type="Timer" parent="." unique_id=267019974]
+one_shot = true
+
+[node name="PlayerCamera" type="Camera3D" parent="." unique_id=1738772125]
+transform = Transform3D(-4.371213e-08, 9.313226e-10, -1, -5.1691977e-11, 1, 9.313226e-10, 1, 5.169202e-11, -4.371213e-08, 0.5, 0.639, 0)
+cull_mask = 1048573
+size = 56.061
+
+[node name="Weapon" parent="PlayerCamera" unique_id=447946986 instance=ExtResource("2_kyqiw")]
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0.30511874, -0.344589, -0.33099842)
+
+[node name="RayCast3D" type="RayCast3D" parent="PlayerCamera" unique_id=1906683229]
+transform = Transform3D(-4.371213e-08, -5.1691977e-11, 1, 9.313226e-10, 1, 5.169202e-11, -1, 9.313226e-10, -4.371213e-08, 0, 0, 0)
+target_position = Vector3(75, 0, 0)
+
+[connection signal="timeout" from="DashTimer" to="." method="DashTimerTimeOut"]
+[connection signal="timeout" from="SuperTimer" to="." method="SuperTimerTimeOut"]

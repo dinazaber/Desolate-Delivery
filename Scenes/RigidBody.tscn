@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://d23s0inguh17p"]
+
+[ext_resource type="ArrayMesh" uid="uid://c38lj2xgan0m6" path="res://assets/Meshes/Objects/Barrel.mesh" id="1_vkgwf"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_m5ibw"]
+height = 2.980957
+radius = 1.0263672
+
+[node name="RigidBody" type="RigidBody3D" unique_id=707473027]
+mass = 4.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1485554187]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.0019845963, 0, 0.19723225)
+mesh = ExtResource("1_vkgwf")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1527479017]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -0.0021972656, 0)
+shape = SubResource("CylinderShape3D_m5ibw")

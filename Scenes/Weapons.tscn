@@ -1,0 +1,95 @@
+[gd_scene format=3 uid="uid://4ercdvy5pe3t"]
+
+[ext_resource type="ArrayMesh" uid="uid://d4hn03go6odvn" path="res://assets/Meshes/Weapons/SMG.mesh" id="1_yltro"]
+[ext_resource type="Texture2D" uid="uid://24usakcrqsvh" path="res://assets/Textures/Architecture/Explosion1.png" id="2_02q03"]
+
+[sub_resource type="Animation" id="Animation_02q03"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SMG:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_yltro"]
+resource_name = "Shoot"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SMG:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.025, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0.5), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.06666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8qb6n"]
+_data = {
+&"RESET": SubResource("Animation_02q03"),
+&"Shoot": SubResource("Animation_yltro")
+}
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8qb6n"]
+transparency = 2
+alpha_scissor_threshold = 0.972
+alpha_antialiasing_mode = 0
+shading_mode = 0
+albedo_color = Color(1.6797683, 1.6797683, 1.6797683, 1)
+albedo_texture = ExtResource("2_02q03")
+texture_filter = 0
+billboard_mode = 1
+billboard_keep_scale = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ovc61"]
+material = SubResource("StandardMaterial3D_8qb6n")
+size = Vector2(3, 3)
+orientation = 2
+
+[node name="Weapon" type="Node3D" unique_id=267885530]
+
+[node name="SMG" type="MeshInstance3D" parent="." unique_id=559022510]
+transform = Transform3D(5.7320567e-16, -1.3113417e-08, 0.3, -0.3, -1.3113417e-08, 0, 1.3113417e-08, -0.3, -1.3113417e-08, 0, 0, 0)
+mesh = ExtResource("1_yltro")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=207191350]
+libraries/ = SubResource("AnimationLibrary_8qb6n")
+
+[node name="Sprite" type="MeshInstance3D" parent="." unique_id=1088014816]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, -6.9138155)
+visible = false
+mesh = SubResource("PlaneMesh_ovc61")
