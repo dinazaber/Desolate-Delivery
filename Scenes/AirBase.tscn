@@ -115,7 +115,7 @@ shader_parameter/color = ExtResource("6_4x86n")
 [sub_resource type="PlaneMesh" id="PlaneMesh_h7bwd"]
 material = SubResource("ShaderMaterial_rw01f")
 size = Vector2(0.13, 0.05)
-subdivide_width = 2
+subdivide_width = 4
 orientation = 2
 
 [sub_resource type="MultiMesh" id="MultiMesh_dxaf4"]
