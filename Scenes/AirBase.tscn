@@ -9,17 +9,17 @@
 [ext_resource type="ArrayMesh" uid="uid://bmkmwinug1o1i" path="res://assets/Meshes/Objects/Boat1.mesh" id="7_y76lv"]
 [ext_resource type="ArrayMesh" uid="uid://dxoddmwgtq2gq" path="res://assets/Meshes/Objects/Car1.mesh" id="8_cux0m"]
 [ext_resource type="ArrayMesh" uid="uid://7ho7ltov0iyb" path="res://assets/Meshes/Objects/Car3.mesh" id="9_flf77"]
+[ext_resource type="ArrayMesh" uid="uid://bdly7xwroyu0j" path="res://assets/Meshes/Architecture/Barrack.mesh" id="10_x8sm6"]
 [ext_resource type="Script" uid="uid://cfwmt6vc7y70h" path="res://addons/MetaMultimeshInstance3D/src/MetaMultimeshInstance3D.gd" id="12_nqfut"]
 [ext_resource type="ArrayMesh" uid="uid://q8g0hhj850vv" path="res://assets/Meshes/Architecture/Hangar1.mesh" id="13_swfp1"]
 [ext_resource type="ArrayMesh" uid="uid://b64as4ybsxkmr" path="res://assets/Meshes/Objects/HangarDoor.mesh" id="14_txnd4"]
-[ext_resource type="Material" uid="uid://0ilr0pipyf8f" path="res://assets/Materials/FakeOcclusion.material" id="15_cj0mo"]
 [ext_resource type="ArrayMesh" uid="uid://qdmyf5e4rqff" path="res://assets/Meshes/Objects/Plane.mesh" id="16_75e2l"]
 [ext_resource type="PackedScene" uid="uid://d23s0inguh17p" path="res://Scenes/RigidBody.tscn" id="16_pxegc"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_3pegn"]
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0lpba"]
 
 [sub_resource type="Sky" id="Sky_3sm8e"]
-sky_material = SubResource("ProceduralSkyMaterial_3pegn")
+sky_material = SubResource("ProceduralSkyMaterial_0lpba")
 
 [sub_resource type="Environment" id="Environment_3pegn"]
 background_mode = 2
@@ -118,12 +118,17 @@ size = Vector2(0.13, 0.05)
 subdivide_width = 4
 orientation = 2
 
+[sub_resource type="MultiMesh" id="MultiMesh_uinfi"]
+transform_format = 1
+visible_instance_count = 1
+mesh = ExtResource("10_x8sm6")
+
 [sub_resource type="MultiMesh" id="MultiMesh_dxaf4"]
 transform_format = 1
 instance_count = 2
 visible_instance_count = 2
 mesh = ExtResource("16_75e2l")
-buffer = PackedFloat32Array(3.428728e-09, -3.919055e-08, -0.9, 5.2121267, -0.8965752, -0.07844019, 2.2204454e-15, 0.21673557, -0.07844022, 0.89657545, -3.9340264e-08, 26.630575, 0.07842042, -0.8963495, 0.02021451, -11.312658, -0.8965752, -0.07844017, -6.8561414e-09, 0.2167357, 0.001761819, -0.0201376, -0.89977324, -3.411147)
+buffer = PackedFloat32Array(-3.8938044e-08, -5.6110596e-09, -0.9, 5.2121263, -0.12836604, 0.89079887, 0, 0.07038457, 0.8907986, 0.12836607, -3.934025e-08, 26.630575, -0.8907987, -0.12836611, -7.8680536e-08, -11.307185, -0.12836605, 0.8907991, 0, 0.08494657, 7.787609e-08, 1.1222122e-08, -0.9000004, -3.4092674)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_dj3pt"]
 size = Vector3(3.50708, 8.2575, 6.636017)
@@ -174,7 +179,7 @@ metadata/_custom_type_script = "uid://cfwmt6vc7y70h"
 [node name="Architecture" type="Node3D" parent="NavigationRegion3D" unique_id=680826753]
 transform = Transform3D(0.999945, 0, 0, 0, 0.999945, 0, 0, 0, 0.999945, 0, 0, 0)
 
-[node name="Hangars" type="StaticBody3D" parent="NavigationRegion3D/Architecture" unique_id=493112334]
+[node name="Hangars" type="Node3D" parent="NavigationRegion3D/Architecture" unique_id=287679531]
 
 [node name="HangarDoors" type="MultiMeshInstance3D" parent="NavigationRegion3D/Architecture/Hangars" unique_id=508170122]
 multimesh = SubResource("MultiMesh_x8sm6")
@@ -228,6 +233,20 @@ skeleton = NodePath("")
 transform = Transform3D(-0.9997761, 0, 0.021151885, 4.656613e-10, 0.9999999, 2.9802322e-08, -0.021151884, -2.9802322e-08, -0.9997762, -0.06848472, 0.11838353, -0.0017012507)
 mesh = SubResource("PlaneMesh_h7bwd")
 
+[node name="Barracks" type="Node3D" parent="NavigationRegion3D/Architecture" unique_id=505378610]
+
+[node name="MetaMultimeshInstance3D" type="MultiMeshInstance3D" parent="NavigationRegion3D/Architecture/Barracks" unique_id=962624627]
+multimesh = SubResource("MultiMesh_uinfi")
+script = ExtResource("12_nqfut")
+go_implode = null
+metadata/_custom_type_script = "uid://cfwmt6vc7y70h"
+
+[node name="instances" type="Node3D" parent="NavigationRegion3D/Architecture/Barracks/MetaMultimeshInstance3D" unique_id=1659569400]
+
+[node name="@MeshInstance3D@42446" type="MeshInstance3D" parent="NavigationRegion3D/Architecture/Barracks/MetaMultimeshInstance3D/instances" unique_id=160960625]
+transform = Transform3D(0.12228557, 0, -1.6955961, 0, 1.7, 0, 1.6955961, 0, 0.12228557, -0.30832186, 0.47832936, -12.723635)
+mesh = ExtResource("10_x8sm6")
+
 [node name="Objects" type="Node3D" parent="NavigationRegion3D" unique_id=295505562]
 
 [node name="Boat1" type="MeshInstance3D" parent="NavigationRegion3D/Objects" unique_id=387024349]
@@ -238,7 +257,6 @@ skeleton = NodePath("../../..")
 
 [node name="Planes" type="MultiMeshInstance3D" parent="NavigationRegion3D/Objects" unique_id=581501581]
 transform = Transform3D(0.8000001, 0, 0, 0, 0.8000001, 0, 0, 0, 0.8000001, 0, 0, 0)
-material_overlay = ExtResource("15_cj0mo")
 multimesh = SubResource("MultiMesh_dxaf4")
 script = ExtResource("12_nqfut")
 go_explode = null
