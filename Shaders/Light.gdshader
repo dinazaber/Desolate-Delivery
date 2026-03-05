@@ -1,26 +1,29 @@
 shader_type spatial;
-// blend_mul makes this pass multiply against the pixels already on screen
-render_mode unshaded, cull_disabled, blend_mul;
+render_mode cull_disabled;
 
+uniform vec3 albedo : source_color = vec3(0.2, 0.5, 0.2); // Your Jeep Color
 uniform float facet_intensity : hint_range(0.0, 1.0) = 0.5;
-uniform float x : hint_range(0.0, 1.0) = 0.5;
-uniform float y : hint_range(0.0, 1.0) = 0.5;
-uniform float z : hint_range(0.0, 1.0) = 0.5;
+
+// Light direction controls
+uniform float x : hint_range(-1.0, 1.0) = 0.5;
+uniform float y : hint_range(-1.0, 1.0) = 0.5;
+uniform float z : hint_range(-1.0, 1.0) = 0.5;
 
 void fragment() {
-    // 1. Calculate the flat normal
-    vec3 flat_normal = normalize(cross(dFdy(VERTEX), dFdx(VERTEX)));
+    // 1. Use the built-in NORMAL instead of dFdx/dFdy
+    // This uses the face direction data from Blender, which treats quads as flat
+    vec3 n = normalize(NORMAL);
+    
+    // 2. Calculate light influence
+    vec3 light_dir = normalize(vec3(x, y, z));
+    float lum = dot(n, light_dir);
 
-    // 2. Simple top-down light influence (1.0 is neutral, lower is darker)
-    // We bias this so it mostly darkens the "shadow" sides
-	vec3 light_dir = normalize(vec3(x, y, z));
-    float lum = dot(flat_normal, light_dir);
-
-    // 3. Control how much darkening happens
-    // Result of 1.0 means "no change", lower means "darker"
-    float shadow_factor = mix(1.0, clamp(lum, 0.0, 1.0), facet_intensity);
-
-    // 4. Apply to ALBEDO
-    // Because of blend_mul, white (1,1,1) is invisible, and black (0,0,0) is total darkness
-    ALBEDO = vec3(shadow_factor);
+    // 3. Map the light from (-1.0 to 1.0) to (0.0 to 1.0) for the shadow factor
+    float shadow_factor = clamp(lum, 0.0, 1.0);
+    
+    // 4. Apply intensity and mix with the base color
+    // This darkens the 'back' faces without showing triangulation
+    float final_diffuse = mix(1.0, shadow_factor, facet_intensity);
+    
+    ALBEDO = albedo * final_diffuse;
 }

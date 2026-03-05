@@ -6,15 +6,17 @@
 [ext_resource type="PackedScene" uid="uid://syntm5qccbh2" path="res://Scenes/Enemy.tscn" id="4_socb2"]
 [ext_resource type="Shader" uid="uid://bog2d5u5vhtmo" path="res://Shaders/Flag.gdshader" id="5_dj3pt"]
 [ext_resource type="Texture2D" uid="uid://c66pm4mbkxy6n" path="res://assets/Textures/Architecture/Flag.png" id="6_4x86n"]
+[ext_resource type="Shader" uid="uid://5sxuhqjwtd51" path="res://Shaders/MainShader.gdshader" id="6_dxaf4"]
+[ext_resource type="Texture2D" uid="uid://dye1bkkxqrpse" path="res://assets/Textures/Architecture/HangarDoor.png" id="7_pxegc"]
 [ext_resource type="ArrayMesh" uid="uid://bmkmwinug1o1i" path="res://assets/Meshes/Objects/Boat1.mesh" id="7_y76lv"]
 [ext_resource type="ArrayMesh" uid="uid://dxoddmwgtq2gq" path="res://assets/Meshes/Objects/Car1.mesh" id="8_cux0m"]
 [ext_resource type="ArrayMesh" uid="uid://7ho7ltov0iyb" path="res://assets/Meshes/Objects/Car3.mesh" id="9_flf77"]
 [ext_resource type="ArrayMesh" uid="uid://bdly7xwroyu0j" path="res://assets/Meshes/Architecture/Barrack.mesh" id="10_x8sm6"]
 [ext_resource type="Script" uid="uid://cfwmt6vc7y70h" path="res://addons/MetaMultimeshInstance3D/src/MetaMultimeshInstance3D.gd" id="12_nqfut"]
 [ext_resource type="ArrayMesh" uid="uid://q8g0hhj850vv" path="res://assets/Meshes/Architecture/Hangar1.mesh" id="13_swfp1"]
-[ext_resource type="ArrayMesh" uid="uid://b64as4ybsxkmr" path="res://assets/Meshes/Objects/HangarDoor.mesh" id="14_txnd4"]
 [ext_resource type="ArrayMesh" uid="uid://qdmyf5e4rqff" path="res://assets/Meshes/Objects/Plane.mesh" id="16_75e2l"]
 [ext_resource type="PackedScene" uid="uid://d23s0inguh17p" path="res://Scenes/RigidBody.tscn" id="16_pxegc"]
+[ext_resource type="ArrayMesh" uid="uid://bhdj6x3k5qagf" path="res://assets/Meshes/Architecture/CommandCenter.mesh" id="16_uinfi"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0lpba"]
 
@@ -64,11 +66,31 @@ visible_instance_count = 81
 mesh = ExtResource("1_pxegc")
 buffer = PackedFloat32Array(-4, -6.039832e-07, 0, 0, 6.039832e-07, -4, 0, -1, 0, 0, 4, 0, -4, -6.039832e-07, 0, 0, 6.039832e-07, -4, 0, -1, 0, 0, 4, 16, -4, -6.039832e-07, 0, 0, 6.039832e-07, -4, 0, -1, 0, 0, 4, 32, -4, -6.039832e-07, 0, 0, 6.039832e-07, -4, 0, -1, 0, 0, 4, 48, -4, -6.039832e-07, 0, 0, 6.039832e-07, -4, 0, -1, 0, 0, 4, 64, -4, 3.496911e-07, 0, 0, -3.496911e-07, -4, 0, -1, 0, 0, 4, -16, 1.7484555e-07, -1.5285484e-14, 4, 0, -3.496911e-07, -4, 0, -1, 4, -3.496911e-07, -1.7484555e-07, -32, 1.7484555e-07, -1.5285484e-14, 4, 0, -3.496911e-07, -4, 0, -1, 4, -3.496911e-07, -1.7484555e-07, -48, 1.7484555e-07, -1.5285484e-14, 4, 0, -3.496911e-07, -4, 0, -1, 4, -3.496911e-07, -1.7484555e-07, -64, -4, -6.039832e-07, 0, 16, 6.039832e-07, -4, 0, -1, 0, 0, 4, 0, -4, -6.039832e-07, 0, 16, 6.039832e-07, -4, 0, -1, 0, 0, 4, 16, -4, -6.039832e-07, 0, 16, 6.039832e-07, -4, 0, -1, 0, 0, 4, 32, -4, -6.039832e-07, 0, 16, 6.039832e-07, -4, 0, -1, 0, 0, 4, 48, -4, -6.039832e-07, 0, 16, 6.039832e-07, -4, 0, -1, 0, 0, 4, 64, -4, 3.496911e-07, 0, 16, -3.496911e-07, -4, 0, -1, 0, 0, 4, -16, 1.7484555e-07, -1.5285484e-14, 4, 16, -3.496911e-07, -4, 0, -1, 4, -3.496911e-07, -1.7484555e-07, -32, 1.7484555e-07, -1.5285484e-14, 4, 16, -3.496911e-07, -4, 0, -1, 4, -3.496911e-07, -1.7484555e-07, -48, 1.7484555e-07, -1.5285484e-14, 4, 16, -3.496911e-07, -4, 0, -1, 4, -3.496911e-07, -1.7484555e-07, -64, -4, -6.039832e-07, 0, 32, 6.039832e-07, -4, 0, -1, 0, 0, 4, 0, -4, -6.039832e-07, 0, 32, 6.039832e-07, -4, 0, -1, 0, 0, 4, 16, -4, -6.039832e-07, 0, 32, 6.039832e-07, -4, 0, -1, 0, 0, 4, 32, -4, -6.039832e-07, 0, 32, 6.039832e-07, -4, 0, -1, 0, 0, 4, 48, -4, -6.039832e-07, 0, 32, 6.039832e-07, -4, 0, -1, 0, 0, 4, 64, -4, 3.496911e-07, 0, 32, -3.496911e-07, -4, 0, -1, 0, 0, 4, -16, 1.7484555e-07, -1.5285484e-14, 4, 32, -3.496911e-07, -4, 0, -1, 4, -3.496911e-07, -1.7484555e-07, -32, 1.7484555e-07, -1.5285484e-14, 4, 32, -3.496911e-07, -4, 0, -1, 4, -3.496911e-07, -1.7484555e-07, -48, 1.7484555e-07, -1.5285484e-14, 4, 32, -3.496911e-07, -4, 0, -1, 4, -3.496911e-07, -1.7484555e-07, -64, -4, -6.039832e-07, 0, 48, 6.039832e-07, -4, 0, -1, 0, 0, 4, 0, -4, -6.039832e-07, 0, 48, 6.039832e-07, -4, 0, -1, 0, 0, 4, 16, -4, -6.039832e-07, 0, 48, 6.039832e-07, -4, 0, -1, 0, 0, 4, 32, -4, -6.039832e-07, 0, 48, 6.039832e-07, -4, 0, -1, 0, 0, 4, 48, -4, -6.039832e-07, 0, 48, 6.039832e-07, -4, 0, -1, 0, 0, 4, 64, -4, 3.496911e-07, 0, 48, -3.496911e-07, -4, 0, -1, 0, 0, 4, -16, 1.7484555e-07, -1.5285484e-14, 4, 48, -3.496911e-07, -4, 0, -1, 4, -3.496911e-07, -1.7484555e-07, -32, 1.7484555e-07, -1.5285484e-14, 4, 48, -3.496911e-07, -4, 0, -1, 4, -3.496911e-07, -1.7484555e-07, -48, 1.7484555e-07, -1.5285484e-14, 4, 48, -3.496911e-07, -4, 0, -1, 4, -3.496911e-07, -1.7484555e-07, -64, -4, -6.039832e-07, 0, 64, 6.039832e-07, -4, 0, -1, 0, 0, 4, 0, -4, -6.039832e-07, 0, 64, 6.039832e-07, -4, 0, -1, 0, 0, 4, 16, -4, -6.039832e-07, 0, 64, 6.039832e-07, -4, 0, -1, 0, 0, 4, 32, -4, -6.039832e-07, 0, 64, 6.039832e-07, -4, 0, -1, 0, 0, 4, 48, -4, -6.039832e-07, 0, 64, 6.039832e-07, -4, 0, -1, 0, 0, 4, 64, -4, 3.496911e-07, 0, 64, -3.496911e-07, -4, 0, -1, 0, 0, 4, -16, 1.7484555e-07, -1.5285484e-14, 4, 64, -3.496911e-07, -4, 0, -1, 4, -3.496911e-07, -1.7484555e-07, -32, 1.7484555e-07, -1.5285484e-14, 4, 64, -3.496911e-07, -4, 0, -1, 4, -3.496911e-07, -1.7484555e-07, -48, 1.7484555e-07, -1.5285484e-14, 4, 64, -3.496911e-07, -4, 0, -1, 4, -3.496911e-07, -1.7484555e-07, -64, -4, -6.039832e-07, 0, -16, 6.039832e-07, -4, 0, -1, 0, 0, 4, 0, -4, -6.039832e-07, 0, -16, 6.039832e-07, -4, 0, -1, 0, 0, 4, 16, -4, -6.039832e-07, 0, -16, 6.039832e-07, -4, 0, -1, 0, 0, 4, 32, -4, -6.039832e-07, 0, -16, 6.039832e-07, -4, 0, -1, 0, 0, 4, 48, -4, -6.039832e-07, 0, -16, 6.039832e-07, -4, 0, -1, 0, 0, 4, 64, -4, 3.496911e-07, 0, -16, -3.496911e-07, -4, 0, -1, 0, 0, 4, -16, 1.7484555e-07, -1.5285484e-14, 4, -16, -3.496911e-07, -4, 0, -1, 4, -3.496911e-07, -1.7484555e-07, -32, 1.7484555e-07, -1.5285484e-14, 4, -16, -3.496911e-07, -4, 0, -1, 4, -3.496911e-07, -1.7484555e-07, -48, 1.7484555e-07, -1.5285484e-14, 4, -16, -3.496911e-07, -4, 0, -1, 4, -3.496911e-07, -1.7484555e-07, -64, -4, -6.039832e-07, 0, -32, 6.039832e-07, -4, 0, -1, 0, 0, 4, 0, -4, -6.039832e-07, 0, -32, 6.039832e-07, -4, 0, -1, 0, 0, 4, 16, -4, -6.039832e-07, 0, -32, 6.039832e-07, -4, 0, -1, 0, 0, 4, 32, -4, -6.039832e-07, 0, -32, 6.039832e-07, -4, 0, -1, 0, 0, 4, 48, -4, -6.039832e-07, 0, -32, 6.039832e-07, -4, 0, -1, 0, 0, 4, 64, -4, 3.496911e-07, 0, -32, -3.496911e-07, -4, 0, -1, 0, 0, 4, -16, 1.7484555e-07, -1.5285484e-14, 4, -32, -3.496911e-07, -4, 0, -1, 4, -3.496911e-07, -1.7484555e-07, -32, 1.7484555e-07, -1.5285484e-14, 4, -32, -3.496911e-07, -4, 0, -1, 4, -3.496911e-07, -1.7484555e-07, -48, 1.7484555e-07, -1.5285484e-14, 4, -32, -3.496911e-07, -4, 0, -1, 4, -3.496911e-07, -1.7484555e-07, -64, -4, -6.039832e-07, 0, -48, 6.039832e-07, -4, 0, -1, 0, 0, 4, 0, -4, -6.039832e-07, 0, -48, 6.039832e-07, -4, 0, -1, 0, 0, 4, 16, -4, -6.039832e-07, 0, -48, 6.039832e-07, -4, 0, -1, 0, 0, 4, 32, -4, -6.039832e-07, 0, -48, 6.039832e-07, -4, 0, -1, 0, 0, 4, 48, -4, -6.039832e-07, 0, -48, 6.039832e-07, -4, 0, -1, 0, 0, 4, 64, -4, 3.496911e-07, 0, -48, -3.496911e-07, -4, 0, -1, 0, 0, 4, -16, 1.7484555e-07, -1.5285484e-14, 4, -48, -3.496911e-07, -4, 0, -1, 4, -3.496911e-07, -1.7484555e-07, -32, 1.7484555e-07, -1.5285484e-14, 4, -48, -3.496911e-07, -4, 0, -1, 4, -3.496911e-07, -1.7484555e-07, -48, 1.7484555e-07, -1.5285484e-14, 4, -48, -3.496911e-07, -4, 0, -1, 4, -3.496911e-07, -1.7484555e-07, -64, -4, -6.039832e-07, 0, -64, 6.039832e-07, -4, 0, -1, 0, 0, 4, 0, -4, -6.039832e-07, 0, -64, 6.039832e-07, -4, 0, -1, 0, 0, 4, 16, -4, -6.039832e-07, 0, -64, 6.039832e-07, -4, 0, -1, 0, 0, 4, 32, -4, -6.039832e-07, 0, -64, 6.039832e-07, -4, 0, -1, 0, 0, 4, 48, -4, -6.039832e-07, 0, -64, 6.039832e-07, -4, 0, -1, 0, 0, 4, 64, -4, 3.496911e-07, 0, -64, -3.496911e-07, -4, 0, -1, 0, 0, 4, -16, 1.7484555e-07, -1.5285484e-14, 4, -64, -3.496911e-07, -4, 0, -1, 4, -3.496911e-07, -1.7484555e-07, -32, 1.7484555e-07, -1.5285484e-14, 4, -64, -3.496911e-07, -4, 0, -1, 4, -3.496911e-07, -1.7484555e-07, -48, 1.7484555e-07, -1.5285484e-14, 4, -64, -3.496911e-07, -4, 0, -1, 4, -3.496911e-07, -1.7484555e-07, -64)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uinfi"]
+render_priority = 0
+shader = ExtResource("6_dxaf4")
+shader_parameter/albedo_texture = ExtResource("7_pxegc")
+shader_parameter/texture_scale = Vector3(3.36, 1, 1)
+shader_parameter/texture_offset = Vector3(0, 0, 0)
+shader_parameter/texture_rotation = Vector3(0, 0, 0)
+shader_parameter/triplanar_sharpness = 2.0
+shader_parameter/enable_occlusion = true
+shader_parameter/shadow_base_y = 0.0
+shader_parameter/fade_length = 1.5
+shader_parameter/facet_intensity = 0.5
+shader_parameter/light_x = 0.5
+shader_parameter/light_y = 0.5
+shader_parameter/light_z = 0.5
+
+[sub_resource type="BoxMesh" id="BoxMesh_socb2"]
+material = SubResource("ShaderMaterial_uinfi")
+size = Vector3(0.01, 0.56, 0.6)
+
 [sub_resource type="MultiMesh" id="MultiMesh_x8sm6"]
 transform_format = 1
 instance_count = 2
 visible_instance_count = 2
-mesh = ExtResource("14_txnd4")
+mesh = SubResource("BoxMesh_socb2")
 buffer = PackedFloat32Array(-4.3713803e-07, 1.510041e-06, 10.000548, 10.821864, -8.7427594e-07, -10.000546, 1.5100405e-06, 0.92359644, 10.000548, -8.742759e-07, 4.3713817e-07, 11.821515, -4.3713789e-07, 1.510041e-06, 10.000548, 0.29170975, -8.7427566e-07, -10.0005455, 1.5100404e-06, 0.92359596, 10.000548, -8.742756e-07, 4.3713803e-07, 12.234849)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_dxaf4"]
@@ -120,8 +142,10 @@ orientation = 2
 
 [sub_resource type="MultiMesh" id="MultiMesh_uinfi"]
 transform_format = 1
+instance_count = 1
 visible_instance_count = 1
 mesh = ExtResource("10_x8sm6")
+buffer = PackedFloat32Array(0.12228557, 0, -1.6955961, -0.30832186, 0, 1.7, 0, 0.47832936, 1.6955961, 0, 0.12228557, -12.723635)
 
 [sub_resource type="MultiMesh" id="MultiMesh_dxaf4"]
 transform_format = 1
@@ -238,14 +262,10 @@ mesh = SubResource("PlaneMesh_h7bwd")
 [node name="MetaMultimeshInstance3D" type="MultiMeshInstance3D" parent="NavigationRegion3D/Architecture/Barracks" unique_id=962624627]
 multimesh = SubResource("MultiMesh_uinfi")
 script = ExtResource("12_nqfut")
-go_implode = null
+go_explode = null
+shape_type = 0
+go_make_colliders = null
 metadata/_custom_type_script = "uid://cfwmt6vc7y70h"
-
-[node name="instances" type="Node3D" parent="NavigationRegion3D/Architecture/Barracks/MetaMultimeshInstance3D" unique_id=1659569400]
-
-[node name="@MeshInstance3D@42446" type="MeshInstance3D" parent="NavigationRegion3D/Architecture/Barracks/MetaMultimeshInstance3D/instances" unique_id=160960625]
-transform = Transform3D(0.12228557, 0, -1.6955961, 0, 1.7, 0, 1.6955961, 0, 0.12228557, -0.30832186, 0.47832936, -12.723635)
-mesh = ExtResource("10_x8sm6")
 
 [node name="Objects" type="Node3D" parent="NavigationRegion3D" unique_id=295505562]
 
@@ -265,7 +285,7 @@ go_make_colliders = null
 metadata/_custom_type_script = "uid://cfwmt6vc7y70h"
 
 [node name="Jeep" type="StaticBody3D" parent="NavigationRegion3D/Objects" unique_id=2129104669]
-transform = Transform3D(0.9963983, -0.084782064, -0.0016312731, 0.08479456, 0.9963434, 0.01048273, 0.00073656044, -0.0105832815, 0.9999436, 10.788934, -0.5574985, 5.291295)
+transform = Transform3D(0.9999997, -0.0005543828, -0.0007424693, 0.00056221336, 0.99994385, 0.010582882, 0.00073656044, -0.01058328, 0.99994355, 10.788934, 0.27023476, 5.291295)
 
 [node name="JeepMesh" type="MeshInstance3D" parent="NavigationRegion3D/Objects/Jeep" unique_id=1705703837]
 transform = Transform3D(-5.6824803e-08, 0, -1.3, 0, 1.3, 0, 1.3, 0, -5.6824803e-08, 0, 0, 0)
@@ -288,6 +308,10 @@ skeleton = NodePath("../..")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.124435425, 0.29255676, -0.015930176)
 shape = SubResource("BoxShape3D_4x86n")
 
+[node name="CommandCenter" type="MeshInstance3D" parent="NavigationRegion3D/Objects/Car1" unique_id=412404010]
+transform = Transform3D(-0.1475983, 0.045786437, -1.4920185, -0.1263855, 1.4935279, 0.05833543, 1.4873617, 0.1314531, -0.14310351, -17.180391, -1.6390283, 32.70295)
+mesh = ExtResource("16_uinfi")
+
 [node name="RigidBody" parent="." unique_id=707473027 instance=ExtResource("16_pxegc")]
 transform = Transform3D(0.50513023, -0.86302406, 0.0057388986, 0, -0.0066496083, -0.9999779, 0.8630431, 0.5051191, -0.0033589182, 7.182574, -0.70405173, 1.6131124)
 mass = 10.0
@@ -303,3 +327,5 @@ mass = 10.0
 [node name="RigidBody4" parent="." unique_id=1014620389 instance=ExtResource("16_pxegc")]
 transform = Transform3D(-0.029595733, 0.8169174, -0.5759948, 0.99936056, 0.035748255, -0.0006483287, 0.020061178, -0.5756457, -0.8174531, -3.1610727, -0.818753, 10.402019)
 mass = 10.0
+
+[editable path="RigidBody"]

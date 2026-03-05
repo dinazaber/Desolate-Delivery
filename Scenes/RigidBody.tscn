@@ -1,6 +1,45 @@
 [gd_scene format=3 uid="uid://d23s0inguh17p"]
 
 [ext_resource type="ArrayMesh" uid="uid://c38lj2xgan0m6" path="res://assets/Meshes/Objects/Barrel.mesh" id="1_vkgwf"]
+[ext_resource type="Texture2D" uid="uid://cwhfnmqmj2nse" path="res://assets/Textures/Architecture/ExplosionHazard.png" id="2_m5ibw"]
+[ext_resource type="Texture2D" uid="uid://b7kptgyge4m5j" path="res://assets/Textures/Architecture/MagicEffect2.png" id="3_3t8db"]
+
+[sub_resource type="Curve" id="Curve_ettcv"]
+_data = [Vector2(0, 1), 0.0, -1.0, 0, 1, Vector2(1, 0), -1.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_3t8db"]
+curve = SubResource("Curve_ettcv")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_m5ibw"]
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+angle_min = 1.0728835e-05
+angle_max = 1.0728835e-05
+initial_velocity_max = 1.0
+angular_velocity_min = -1.6093254e-05
+angular_velocity_max = -1.6093254e-05
+gravity = Vector3(0, 0.5, 0)
+scale_min = 0.5
+scale_max = 0.7
+color = Color(1, 0.6166667, 0, 1)
+alpha_curve = SubResource("CurveTexture_3t8db")
+hue_variation_min = -2.2351742e-08
+hue_variation_max = -2.2351742e-08
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m5ibw"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_color = Color(1.353256, 1.353256, 1.353256, 0.39215687)
+albedo_texture = ExtResource("3_3t8db")
+texture_filter = 0
+billboard_mode = 1
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ettcv"]
+material = SubResource("StandardMaterial3D_m5ibw")
+size = Vector2(0.1, 0.1)
+orientation = 2
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_m5ibw"]
 height = 2.980957
@@ -10,8 +49,24 @@ radius = 1.0263672
 mass = 4.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1485554187]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.0019845963, 0, 0.19723225)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0.197)
+layers = 3
 mesh = ExtResource("1_vkgwf")
+
+[node name="Decal" type="Decal" parent="MeshInstance3D" unique_id=486826062]
+transform = Transform3D(1.9106857e-15, 4.3711392e-08, -1.0000001, 1.0000001, -4.3711392e-08, 0, -4.3711392e-08, -1.0000001, -4.3711392e-08, 0, 0, 0.481)
+size = Vector3(1.1, 0.3, 1.1)
+texture_albedo = ExtResource("2_m5ibw")
+modulate = Color(0.9974857, 0.82397175, 7.70092e-07, 1)
+albedo_mix = 0.4
+cull_mask = 1048574
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="MeshInstance3D" unique_id=1464241847]
+transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0, 0, -0.394)
+lifetime = 4.0
+fixed_fps = 8
+process_material = SubResource("ParticleProcessMaterial_m5ibw")
+draw_pass_1 = SubResource("PlaneMesh_ettcv")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1527479017]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -0.0021972656, 0)

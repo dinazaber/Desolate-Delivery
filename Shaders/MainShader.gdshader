@@ -1,7 +1,7 @@
 shader_type spatial;
 // Note: We use default blend mode. Shader 3's 'blend_mul' is now
 // handled mathematically inside the code so it only affects this object.
-render_mode unshaded, cull_disabled;
+render_mode cull_disabled;
 
 // --- SHADER 1: TRIPLANAR UNIFORMS ---
 group_uniforms Albedo;
@@ -14,6 +14,7 @@ uniform float triplanar_sharpness : hint_range(0.1, 16.0) = 2.0;
 // --- SHADER 2: VERTICAL GRADIENT UNIFORMS ---
 group_uniforms Occlusion;
 const vec4 shadow_color = vec4(0.0, 0.0, 0.0, 0.6);
+uniform bool enable_occlusion = true;
 uniform float shadow_base_y = 0.0;
 uniform float fade_length = 1.5;
 
@@ -84,6 +85,8 @@ void fragment() {
     float fade_end = shadow_base_y + fade_length;
     float gradient = smoothstep(shadow_base_y, fade_end, world_y);
     float vertical_mask = 1.0 - gradient;
+	
+	if (!enable_occlusion){vertical_mask = 0.0;}
 
     // Blend the current color with the shadow_color based on the gradient mask
     // This mimics the "natural grounding" effect
