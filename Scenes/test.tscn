@@ -4,6 +4,7 @@
 [ext_resource type="ArrayMesh" uid="uid://qdmyf5e4rqff" path="res://assets/Meshes/Objects/Plane.mesh" id="3_i3aeo"]
 [ext_resource type="ArrayMesh" uid="uid://bdly7xwroyu0j" path="res://assets/Meshes/Architecture/Barrack.mesh" id="3_qc4db"]
 [ext_resource type="ArrayMesh" uid="uid://daka58ay8ex6l" path="res://assets/Meshes/Nature/Sands.mesh" id="7_0c07c"]
+[ext_resource type="ArrayMesh" uid="uid://cj7rth7nyybeg" path="res://assets/Meshes/Weapons/pisstol.mesh" id="7_5wyu1"]
 [ext_resource type="ArrayMesh" uid="uid://7ho7ltov0iyb" path="res://assets/Meshes/Objects/Car3.mesh" id="8_0c07c"]
 [ext_resource type="Script" uid="uid://cfwmt6vc7y70h" path="res://addons/MetaMultimeshInstance3D/src/MetaMultimeshInstance3D.gd" id="8_2cgwh"]
 
@@ -93,3 +94,7 @@ skeleton = NodePath("../..")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D" unique_id=2061071565]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.028701782, 0.7211914, 0.005493164)
 shape = SubResource("BoxShape3D_8od7v")
+
+[node name="Pisstol" type="MeshInstance3D" parent="RigidBody3D" unique_id=1046469432]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5920053, 4.7144947, 4.072788)
+mesh = ExtResource("7_5wyu1")
