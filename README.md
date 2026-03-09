@@ -44,7 +44,7 @@ Also, you are free to use every part of this project as you wish as it is under 
 | **Vlad** | Project Lead / Lead Dev / Assets Creator | [@dinazaber](https://github.com/dinazaber) |
 | **Yuli** | Dev 2 / Marketing Lead | N/A |
 | **Konstantin** | Dev 3 / Algorithms Developer / Assets Creator  | [@noicemann](https://github.com/noicemann) |
-| **Shimon** | Dev 4 / Algorithms Developer  | N/A |
+| **Shimon** | Dev 4 / Algorithms Developer  | [@ShimonBeglyarov](https://github.com/ShimonBeglyarov) |
 
 ---
 
