@@ -7,6 +7,7 @@ var current_state = State.IDLE
 @export var speed = 4.0
 @export var attack_distance = 2 # Short distance for sword
 @export var detection_range = 15
+@export var enemy_damage = 40
 
 # --- Nodes ---
 @onready var sprite = $AnimatedSprite3D
@@ -16,6 +17,10 @@ var current_state = State.IDLE
 
 # --- Variables ---
 var inTransition = false
+
+#signals
+signal taken_damage(enemy_damage)
+
 
 func _physics_process(delta):
 	if not is_on_floor(): velocity.y -= 27 * delta
@@ -88,13 +93,21 @@ func process_attack_state():
 	velocity = Vector3.ZERO
 	
 	sprite.play("Attack1")
+	
 	# Wait for animation to finish before deciding what to do next
 	await sprite.animation_finished
+	
+	# Decide: Player forever-napping or keep attaking?
+	if player.player_health > 0:
+		player.player_health -= enemy_damage
+		print(player.player_health)
+	else:
+		current_state = State.IDLE
 		
 	# Decide: Chase again or keep attacking?
 	if global_position.distance_to(player.global_position) > attack_distance:
 		current_state = State.CHASE
-		
+	
 
 # --- Helpers ---
 

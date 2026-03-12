@@ -21,6 +21,10 @@ var attack = false
 
 var currentInput = Vector2()
 
+#player stats
+var player_health = 100
+
+
 
 
 func InteriorEnter(metaData: Variant) -> void:
@@ -142,4 +146,9 @@ func _physics_process(delta):
 		speed=0
 		$PlayerCamera.position.y = lerp($PlayerCamera.position.y, camDefHeight, 20*delta)
 	
+	checkLifeLine()
 	move_and_slide()
+
+func checkLifeLine():
+	if player_health <= 0:
+		print("u ded lol")
