@@ -15,7 +15,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 [application]
 
 config/name="ProjectX"
-run/main_scene="uid://fc4kl2kt0web"
+run/main_scene="uid://c4tcnkstn4rig"
 config/features=PackedStringArray("4.6", "Mobile")
 run/max_fps=180
 config/icon="res://icon.svg"

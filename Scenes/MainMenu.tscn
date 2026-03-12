@@ -1,9 +1,6 @@
 [gd_scene format=3 uid="uid://c4tcnkstn4rig"]
 
-[ext_resource type="Texture2D" uid="uid://b3y2vp4wil08d" path="res://assets/Textures/Architecture/Rust.png" id="1_tt5f1"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_853f1"]
-font_size = 222
+[ext_resource type="Script" uid="uid://b3a2aylon8065" path="res://Scripts/MainMenu.gd" id="1_tt5f1"]
 
 [node name="Control" type="Control" unique_id=1079908484]
 layout_mode = 3
@@ -12,30 +9,54 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_tt5f1")
 
-[node name="Panel" type="Panel" parent="." unique_id=1796790052]
-layout_mode = 0
-offset_left = 568.0
-offset_top = 412.0
-offset_right = 1999.0
-offset_bottom = 881.0
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1534916644]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -603.0
+offset_top = -400.25
+offset_right = 603.0
+offset_bottom = 400.25
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="Button" type="Button" parent="." unique_id=1703354879]
-layout_mode = 0
-offset_left = 914.0
-offset_top = 150.0
-offset_right = 1503.0
-offset_bottom = 307.0
-icon = ExtResource("1_tt5f1")
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=866476210]
+layout_mode = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 100
 
-[node name="Label" type="Label" parent="." unique_id=2065216294]
-layout_mode = 0
-offset_right = 650.0
-offset_bottom = 312.0
-text = "ddd"
-label_settings = SubResource("LabelSettings_853f1")
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer" unique_id=1262688299]
+layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=793861407]
-layout_mode = 0
-offset_right = 1471.0
-offset_bottom = 944.0
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=346452529]
+layout_mode = 2
+theme_override_font_sizes/font_size = 90
+text = "Game_name
+"
+horizontal_alignment = 1
+
+[node name="Start" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1138824311]
+layout_mode = 2
+theme_override_font_sizes/font_size = 45
+text = "Start"
+
+[node name="Settings" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1782192449]
+layout_mode = 2
+theme_override_font_sizes/font_size = 45
+text = "Settings"
+
+[node name="Quit" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1964139943]
+layout_mode = 2
+theme_override_font_sizes/font_size = 45
+text = "Quit"
+
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
