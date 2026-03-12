@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://b2hljcs3010c5"]
+
+[ext_resource type="Script" uid="uid://cbwrq78vu403k" path="res://Scripts/Settings.gd" id="1_w1nw0"]
+[ext_resource type="Texture2D" uid="uid://sr7anlr2w57l" path="res://assets/Textures/Architecture/RedRustedMetal.png" id="2_mjqtt"]
+[ext_resource type="Texture2D" uid="uid://37cci3ytb3ci" path="res://assets/Textures/Architecture/WoodWall.png" id="3_ppjuv"]
+[ext_resource type="Texture2D" uid="uid://dpadf52cehb6t" path="res://assets/Textures/Architecture/GreenMetal.png" id="4_ipgag"]
+
+[node name="Control" type="Control" unique_id=307003582]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_w1nw0")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1262977672]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -675.5
+offset_top = -633.0
+offset_right = 675.5
+offset_bottom = 633.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=732182932]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1096892178]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Resolution"
+
+[node name="Resolution" type="OptionButton" parent="MarginContainer/VBoxContainer" unique_id=18711073]
+layout_mode = 2
+item_count = 3
+popup/item_0/text = "3440x1440"
+popup/item_0/icon = ExtResource("2_mjqtt")
+popup/item_0/id = 0
+popup/item_1/text = "1920x1080"
+popup/item_1/icon = ExtResource("3_ppjuv")
+popup/item_1/id = 1
+popup/item_2/text = "1280x720"
+popup/item_2/icon = ExtResource("4_ipgag")
+popup/item_2/id = 2
+
+[connection signal="item_selected" from="MarginContainer/VBoxContainer/Resolution" to="." method="_on_resolution_item_selected"]
