@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://dh81y2wk5ijn" path="res://Scripts/Player.gd" id="1_g8lft"]
 [ext_resource type="PackedScene" uid="uid://4ercdvy5pe3t" path="res://Scenes/Weapons.tscn" id="2_kyqiw"]
+[ext_resource type="Script" uid="uid://mnanpq21gwd4" path="res://Scripts/PauseMenu.gd" id="3_dewec"]
+[ext_resource type="PackedScene" uid="uid://b2hljcs3010c5" path="res://Scenes/Settings.tscn" id="3_gntrk"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kyqiw"]
 shading_mode = 0
@@ -43,5 +45,70 @@ transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0.30511874, -0.34458
 transform = Transform3D(-4.371213e-08, -5.1691977e-11, 1, 9.313226e-10, 1, 5.169202e-11, -1, 9.313226e-10, -4.371213e-08, 0, 0, 0)
 target_position = Vector3(75, 0, 0)
 
+[node name="PauseMenu" type="Control" parent="." unique_id=877245422]
+process_mode = 3
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_dewec")
+
+[node name="PauseMenu" type="PanelContainer" parent="PauseMenu" unique_id=718297167]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -403.5
+offset_top = -273.5
+offset_right = 403.5
+offset_bottom = 273.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PauseMenu/PauseMenu" unique_id=1108477058]
+layout_mode = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 100
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu/PauseMenu/MarginContainer" unique_id=1709221619]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="PauseMenu/PauseMenu/MarginContainer/VBoxContainer" unique_id=1913096271]
+layout_mode = 2
+theme_override_font_sizes/font_size = 100
+text = "Paused"
+
+[node name="Resume" type="Button" parent="PauseMenu/PauseMenu/MarginContainer/VBoxContainer" unique_id=1324442104]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Resume"
+
+[node name="Settings" type="Button" parent="PauseMenu/PauseMenu/MarginContainer/VBoxContainer" unique_id=386092316]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Settings"
+
+[node name="Quit" type="Button" parent="PauseMenu/PauseMenu/MarginContainer/VBoxContainer" unique_id=880679601]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Quit"
+
+[node name="Settings" parent="PauseMenu" unique_id=307003582 instance=ExtResource("3_gntrk")]
+process_mode = 3
+visible = false
+layout_mode = 1
+
 [connection signal="timeout" from="DashTimer" to="." method="DashTimerTimeOut"]
 [connection signal="timeout" from="SuperTimer" to="." method="SuperTimerTimeOut"]
+[connection signal="pressed" from="PauseMenu/PauseMenu/MarginContainer/VBoxContainer/Resume" to="PauseMenu" method="_on_resume_pressed"]
+[connection signal="pressed" from="PauseMenu/PauseMenu/MarginContainer/VBoxContainer/Settings" to="PauseMenu" method="_on_settings_pressed"]
+[connection signal="pressed" from="PauseMenu/PauseMenu/MarginContainer/VBoxContainer/Quit" to="PauseMenu" method="_on_quit_pressed"]
+[connection signal="closed" from="PauseMenu/Settings" to="PauseMenu" method="_on_settings_closed"]

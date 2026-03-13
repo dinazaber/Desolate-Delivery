@@ -1,5 +1,5 @@
 extends Control
-
+signal closed
 
 func _on_resolution_item_selected(index: int) -> void:
 	match index:
@@ -10,6 +10,7 @@ func _on_resolution_item_selected(index: int) -> void:
 		2:
 			DisplayServer.window_set_size(Vector2i(1280,720))
 			
-func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("Escape"):
-		get_tree().change_scene_to_file("res://Scenes/MainMenu.tscn")
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("Escape"):
+		hide()
+		closed.emit()

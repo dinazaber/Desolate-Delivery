@@ -25,8 +25,6 @@ var currentInput = Vector2()
 var player_health = 100
 
 
-
-
 func InteriorEnter(metaData: Variant) -> void:
 	currentRoof = metaData.mesh
 	currentRoof = currentRoof.surface_get_material(0)
@@ -79,6 +77,7 @@ func _input(event):
 func _physics_process(delta):
 	
 
+		
 	cameraDistance = clamp(cameraDistance,15, 45)
 	
 	rotation.y = lerp_angle(rotation.y, yaw, delta*20)#left/right
