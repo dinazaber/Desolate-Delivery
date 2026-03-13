@@ -84,7 +84,8 @@ theme_override_constants/separation = 20
 [node name="Label" type="Label" parent="PauseMenu/PauseMenu/MarginContainer/VBoxContainer" unique_id=1913096271]
 layout_mode = 2
 theme_override_font_sizes/font_size = 100
-text = "Paused"
+text = "Pause"
+horizontal_alignment = 1
 
 [node name="Resume" type="Button" parent="PauseMenu/PauseMenu/MarginContainer/VBoxContainer" unique_id=1324442104]
 layout_mode = 2
