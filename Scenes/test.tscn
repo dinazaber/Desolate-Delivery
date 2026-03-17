@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://fc4kl2kt0web"]
 
+[ext_resource type="Texture2D" uid="uid://ddeov3d82o5ox" path="res://assets/Textures/Nature/FogCloud.png" id="2_2cgwh"]
 [ext_resource type="PackedScene" uid="uid://cpi1xrpot2ipt" path="res://Scenes/Player.tscn" id="2_8od7v"]
 [ext_resource type="ArrayMesh" uid="uid://qdmyf5e4rqff" path="res://assets/Meshes/Objects/Plane.mesh" id="3_i3aeo"]
 [ext_resource type="ArrayMesh" uid="uid://bdly7xwroyu0j" path="res://assets/Meshes/Architecture/Barrack.mesh" id="3_qc4db"]
@@ -27,9 +28,54 @@ ssr_fade_out = 3.8637512
 ssao_power = 1.9792577
 sdfgi_cascades = 1
 sdfgi_y_scale = 0
+fog_enabled = true
+fog_light_color = Color(0.65614915, 0.53532594, 0.18168005, 1)
+fog_density = 0.02
+fog_sky_affect = 0.5
+fog_height = 1.0
+fog_height_density = 1.0
 volumetric_fog_albedo = Color(0.9083146, 0.86870986, 0.5665593, 1)
 volumetric_fog_emission = Color(0.529485, 0.4258827, 0.27379614, 1)
 volumetric_fog_sky_affect = 0.566
+
+[sub_resource type="Curve" id="Curve_iaow0"]
+_data = [Vector2(0.0027322397, 0.0055521727), 0.0, 0.0, 0, 0, Vector2(0.49999997, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_koqhg"]
+width = 32
+curve = SubResource("Curve_iaow0")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qpfo2"]
+emission_shape_scale = Vector3(1, 0, 1)
+emission_shape = 3
+emission_box_extents = Vector3(4, 4, 4)
+angle_min = 1.0728835e-05
+angle_max = 1.0728835e-05
+gravity = Vector3(0, 0, -1)
+scale_min = 0.39999998
+scale_max = 3.0
+scale_over_velocity_max = 1.0
+color = Color(0.8, 0.64000005, 0, 1)
+alpha_curve = SubResource("CurveTexture_koqhg")
+collision_mode = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cmrfp"]
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_color = Color(1, 1, 1, 0.11764706)
+albedo_texture = ExtResource("2_2cgwh")
+heightmap_flip_tangent = true
+heightmap_flip_binormal = true
+texture_filter = 1
+billboard_mode = 2
+proximity_fade_enabled = true
+proximity_fade_distance = 2.0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_yb21e"]
+material = SubResource("StandardMaterial3D_cmrfp")
+size = Vector2(4, 4)
+orientation = 2
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ys1qc"]
 size = Vector3(100, 0, 100)
@@ -55,6 +101,15 @@ environment = SubResource("Environment_ys1qc")
 
 [node name="Player" parent="." unique_id=1941692924 instance=ExtResource("2_8od7v")]
 transform = Transform3D(0.8183203, 0, -0.57476246, 0, 1, 0, 0.57476246, 0, 0.8183203, -3.9721003, 1.7755189, -3.147481)
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Player" unique_id=879812985]
+transform = Transform3D(2.0000005, 0, -5.9604645e-08, 0, 1, 0, 5.9604645e-08, 0, 2.0000005, 8.5, -0.28791666, 1.1920929e-07)
+amount = 10
+lifetime = 5.0
+preprocess = 2.0
+fixed_fps = 5
+process_material = SubResource("ParticleProcessMaterial_qpfo2")
+draw_pass_1 = SubResource("PlaneMesh_yb21e")
 
 [node name="Barrack" type="MeshInstance3D" parent="." unique_id=1999639744]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.35177, 1.0000209, 1.8640761)

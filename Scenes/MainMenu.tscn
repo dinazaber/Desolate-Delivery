@@ -2,6 +2,125 @@
 
 [ext_resource type="Script" uid="uid://b3a2aylon8065" path="res://Scripts/MainMenu.gd" id="1_tt5f1"]
 [ext_resource type="PackedScene" uid="uid://b2hljcs3010c5" path="res://Scenes/Settings.tscn" id="2_853f1"]
+[ext_resource type="ArrayMesh" uid="uid://daka58ay8ex6l" path="res://assets/Meshes/Nature/Sands.mesh" id="3_ghw46"]
+[ext_resource type="Script" uid="uid://cfwmt6vc7y70h" path="res://addons/MetaMultimeshInstance3D/src/MetaMultimeshInstance3D.gd" id="4_df05h"]
+[ext_resource type="Texture2D" uid="uid://djpq4fgvobp3i" path="res://assets/Textures/Architecture/MagicEffect1.png" id="5_df05h"]
+[ext_resource type="Texture2D" uid="uid://ddeov3d82o5ox" path="res://assets/Textures/Nature/FogCloud.png" id="5_xim88"]
+[ext_resource type="Shader" uid="uid://no1jy7cyw0an" path="res://Shaders/MainMenu.gdshader" id="6_8um5k"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ghw46"]
+
+[sub_resource type="MultiMesh" id="MultiMesh_8um5k"]
+transform_format = 1
+instance_count = 121
+visible_instance_count = 121
+mesh = ExtResource("3_ghw46")
+buffer = PackedFloat32Array(-4, -6.039832e-07, 0, 0, 6.039832e-07, -4, 0, -1, 0, 0, 4, 0, -4, -6.039832e-07, 0, 0, 6.039832e-07, -4, 0, -1, 0, 0, 4, 16, -4, -6.039832e-07, 0, 0, 6.039832e-07, -4, 0, -1, 0, 0, 4, 32, -4, 3.496911e-07, 0, 0, -3.496911e-07, -4, 0, -1, 0, 0, 4, -16, 1.7484555e-07, -1.5285484e-14, 4, 0, -3.496911e-07, -4, 0, -1, 4, -3.496911e-07, -1.7484555e-07, -32, -4, -6.039832e-07, 0, 16, 6.039832e-07, -4, 0, -1, 0, 0, 4, 0, -4, -6.039832e-07, 0, 16, 6.039832e-07, -4, 0, -1, 0, 0, 4, 16, -4, -6.039832e-07, 0, 16, 6.039832e-07, -4, 0, -1, 0, 0, 4, 32, -4, 3.496911e-07, 0, 16, -3.496911e-07, -4, 0, -1, 0, 0, 4, -16, 1.7484555e-07, -1.5285484e-14, 4, 16, -3.496911e-07, -4, 0, -1, 4, -3.496911e-07, -1.7484555e-07, -32, -4, -6.039832e-07, 0, 32, 6.039832e-07, -4, 0, -1, 0, 0, 4, 0, -4, -6.039832e-07, 0, 32, 6.039832e-07, -4, 0, -1, 0, 0, 4, 16, -4, -6.039832e-07, 0, 32, 6.039832e-07, -4, 0, -1, 0, 0, 4, 32, -4, 3.496911e-07, 0, 32, -3.496911e-07, -4, 0, -1, 0, 0, 4, -16, 1.7484555e-07, -1.5285484e-14, 4, 32, -3.496911e-07, -4, 0, -1, 4, -3.496911e-07, -1.7484555e-07, -32, -4, -6.039832e-07, 0, 48, 6.039832e-07, -4, 0, -1, 0, 0, 4, 0, -4, -6.039832e-07, 0, 48, 6.039832e-07, -4, 0, -1, 0, 0, 4, 16, -4, -6.039832e-07, 0, 48, 6.039832e-07, -4, 0, -1, 0, 0, 4, 32, -4, 3.496911e-07, 0, 48, -3.496911e-07, -4, 0, -1, 0, 0, 4, -16, 1.7484555e-07, -1.5285484e-14, 4, 48, -3.496911e-07, -4, 0, -1, 4, -3.496911e-07, -1.7484555e-07, -32, -4, -6.039832e-07, 0, 64, 6.039832e-07, -4, 0, -1, 0, 0, 4, 0, -4, -6.039832e-07, 0, 64, 6.039832e-07, -4, 0, -1, 0, 0, 4, 16, -4, -6.039832e-07, 0, 64, 6.039832e-07, -4, 0, -1, 0, 0, 4, 32, -4, 3.496911e-07, 0, 64, -3.496911e-07, -4, 0, -1, 0, 0, 4, -16, 1.7484555e-07, -1.5285484e-14, 4, 64, -3.496911e-07, -4, 0, -1, 4, -3.496911e-07, -1.7484555e-07, -32, 1.7484555e-07, -1.5285484e-14, 4, 0, -3.496911e-07, -4, 0, -1, 4, -3.496911e-07, -1.7484555e-07, -48, 1.7484555e-07, -1.5285484e-14, 4, 16, -3.496911e-07, -4, 0, -1, 4, -3.496911e-07, -1.7484555e-07, -48, 1.7484555e-07, -1.5285484e-14, 4, 32, -3.496911e-07, -4, 0, -1, 4, -3.496911e-07, -1.7484555e-07, -48, 1.7484555e-07, -1.5285484e-14, 4, 48, -3.496911e-07, -4, 0, -1, 4, -3.496911e-07, -1.7484555e-07, -48, 1.7484555e-07, -1.5285484e-14, 4, 64, -3.496911e-07, -4, 0, -1, 4, -3.496911e-07, -1.7484555e-07, -48, 1.7484555e-07, -1.5285484e-14, 4, 0, -3.496911e-07, -4, 0, -1, 4, -3.496911e-07, -1.7484555e-07, 48, 1.7484555e-07, -1.5285484e-14, 4, 16, -3.496911e-07, -4, 0, -1, 4, -3.496911e-07, -1.7484555e-07, 48, 1.7484555e-07, -1.5285484e-14, 4, 32, -3.496911e-07, -4, 0, -1, 4, -3.496911e-07, -1.7484555e-07, 48, 1.7484555e-07, -1.5285484e-14, 4, 48, -3.496911e-07, -4, 0, -1, 4, -3.496911e-07, -1.7484555e-07, 48, 1.7484555e-07, -1.5285484e-14, 4, 64, -3.496911e-07, -4, 0, -1, 4, -3.496911e-07, -1.7484555e-07, 48, -4, -6.039832e-07, 0, 80, 6.039832e-07, -4, 0, -1, 0, 0, 4, 0, -4, -6.039832e-07, 0, 80, 6.039832e-07, -4, 0, -1, 0, 0, 4, 16, -4, -6.039832e-07, 0, 80, 6.039832e-07, -4, 0, -1, 0, 0, 4, 32, -4, 3.496911e-07, 0, 80, -3.496911e-07, -4, 0, -1, 0, 0, 4, -16, 1.7484555e-07, -1.5285484e-14, 4, 80, -3.496911e-07, -4, 0, -1, 4, -3.496911e-07, -1.7484555e-07, -32, 1.7484555e-07, -1.5285484e-14, 4, 80, -3.496911e-07, -4, 0, -1, 4, -3.496911e-07, -1.7484555e-07, -48, 1.7484555e-07, -1.5285484e-14, 4, 80, -3.496911e-07, -4, 0, -1, 4, -3.496911e-07, -1.7484555e-07, 48, -4, -6.039832e-07, 0, 96, 6.039832e-07, -4, 0, -1, 0, 0, 4, 0, -4, -6.039832e-07, 0, 96, 6.039832e-07, -4, 0, -1, 0, 0, 4, 16, -4, -6.039832e-07, 0, 96, 6.039832e-07, -4, 0, -1, 0, 0, 4, 32, -4, 3.496911e-07, 0, 96, -3.496911e-07, -4, 0, -1, 0, 0, 4, -16, 1.7484555e-07, -1.5285484e-14, 4, 96, -3.496911e-07, -4, 0, -1, 4, -3.496911e-07, -1.7484555e-07, -32, 1.7484555e-07, -1.5285484e-14, 4, 96, -3.496911e-07, -4, 0, -1, 4, -3.496911e-07, -1.7484555e-07, -48, 1.7484555e-07, -1.5285484e-14, 4, 96, -3.496911e-07, -4, 0, -1, 4, -3.496911e-07, -1.7484555e-07, 48, -4, -6.039832e-07, 0, 112, 6.039832e-07, -4, 0, -1, 0, 0, 4, 0, -4, -6.039832e-07, 0, 112, 6.039832e-07, -4, 0, -1, 0, 0, 4, 16, -4, -6.039832e-07, 0, 112, 6.039832e-07, -4, 0, -1, 0, 0, 4, 32, -4, 3.496911e-07, 0, 112, -3.496911e-07, -4, 0, -1, 0, 0, 4, -16, 1.7484555e-07, -1.5285484e-14, 4, 112, -3.496911e-07, -4, 0, -1, 4, -3.496911e-07, -1.7484555e-07, -32, 1.7484555e-07, -1.5285484e-14, 4, 112, -3.496911e-07, -4, 0, -1, 4, -3.496911e-07, -1.7484555e-07, -48, 1.7484555e-07, -1.5285484e-14, 4, 0, -3.496911e-07, -4, 0, -1, 4, -3.496911e-07, -1.7484555e-07, -64, 1.7484555e-07, -1.5285484e-14, 4, 16, -3.496911e-07, -4, 0, -1, 4, -3.496911e-07, -1.7484555e-07, -64, 1.7484555e-07, -1.5285484e-14, 4, 32, -3.496911e-07, -4, 0, -1, 4, -3.496911e-07, -1.7484555e-07, -64, 1.7484555e-07, -1.5285484e-14, 4, 48, -3.496911e-07, -4, 0, -1, 4, -3.496911e-07, -1.7484555e-07, -64, 1.7484555e-07, -1.5285484e-14, 4, 64, -3.496911e-07, -4, 0, -1, 4, -3.496911e-07, -1.7484555e-07, -64, 1.7484555e-07, -1.5285484e-14, 4, 80, -3.496911e-07, -4, 0, -1, 4, -3.496911e-07, -1.7484555e-07, -64, 1.7484555e-07, -1.5285484e-14, 4, 96, -3.496911e-07, -4, 0, -1, 4, -3.496911e-07, -1.7484555e-07, -64, 1.7484555e-07, -1.5285484e-14, 4, 112, -3.496911e-07, -4, 0, -1, 4, -3.496911e-07, -1.7484555e-07, -64, 1.7484555e-07, -1.5285484e-14, 4, 0, -3.496911e-07, -4, 0, -1, 4, -3.496911e-07, -1.7484555e-07, 64, 1.7484555e-07, -1.5285484e-14, 4, 16, -3.496911e-07, -4, 0, -1, 4, -3.496911e-07, -1.7484555e-07, 64, 1.7484555e-07, -1.5285484e-14, 4, 32, -3.496911e-07, -4, 0, -1, 4, -3.496911e-07, -1.7484555e-07, 64, 1.7484555e-07, -1.5285484e-14, 4, 48, -3.496911e-07, -4, 0, -1, 4, -3.496911e-07, -1.7484555e-07, 64, 1.7484555e-07, -1.5285484e-14, 4, 64, -3.496911e-07, -4, 0, -1, 4, -3.496911e-07, -1.7484555e-07, 64, 1.7484555e-07, -1.5285484e-14, 4, 80, -3.496911e-07, -4, 0, -1, 4, -3.496911e-07, -1.7484555e-07, 64, 1.7484555e-07, -1.5285484e-14, 4, 96, -3.496911e-07, -4, 0, -1, 4, -3.496911e-07, -1.7484555e-07, 64, 1.7484555e-07, -1.5285484e-14, 4, 112, -3.496911e-07, -4, 0, -1, 4, -3.496911e-07, -1.7484555e-07, 64, 1.7484555e-07, -1.5285484e-14, 4, 0, -3.496911e-07, -4, 0, -1, 4, -3.496911e-07, -1.7484555e-07, 80, 1.7484555e-07, -1.5285484e-14, 4, 16, -3.496911e-07, -4, 0, -1, 4, -3.496911e-07, -1.7484555e-07, 80, 1.7484555e-07, -1.5285484e-14, 4, 32, -3.496911e-07, -4, 0, -1, 4, -3.496911e-07, -1.7484555e-07, 80, 1.7484555e-07, -1.5285484e-14, 4, 48, -3.496911e-07, -4, 0, -1, 4, -3.496911e-07, -1.7484555e-07, 80, 1.7484555e-07, -1.5285484e-14, 4, 64, -3.496911e-07, -4, 0, -1, 4, -3.496911e-07, -1.7484555e-07, 80, 1.7484555e-07, -1.5285484e-14, 4, 80, -3.496911e-07, -4, 0, -1, 4, -3.496911e-07, -1.7484555e-07, 80, 1.7484555e-07, -1.5285484e-14, 4, 96, -3.496911e-07, -4, 0, -1, 4, -3.496911e-07, -1.7484555e-07, 80, 1.7484555e-07, -1.5285484e-14, 4, 112, -3.496911e-07, -4, 0, -1, 4, -3.496911e-07, -1.7484555e-07, 80, 1.7484555e-07, -1.5285484e-14, 4, 0, -3.496911e-07, -4, 0, -1, 4, -3.496911e-07, -1.7484555e-07, -80, 1.7484555e-07, -1.5285484e-14, 4, 16, -3.496911e-07, -4, 0, -1, 4, -3.496911e-07, -1.7484555e-07, -80, 1.7484555e-07, -1.5285484e-14, 4, 32, -3.496911e-07, -4, 0, -1, 4, -3.496911e-07, -1.7484555e-07, -80, 1.7484555e-07, -1.5285484e-14, 4, 48, -3.496911e-07, -4, 0, -1, 4, -3.496911e-07, -1.7484555e-07, -80, 1.7484555e-07, -1.5285484e-14, 4, 64, -3.496911e-07, -4, 0, -1, 4, -3.496911e-07, -1.7484555e-07, -80, 1.7484555e-07, -1.5285484e-14, 4, 80, -3.496911e-07, -4, 0, -1, 4, -3.496911e-07, -1.7484555e-07, -80, 1.7484555e-07, -1.5285484e-14, 4, 96, -3.496911e-07, -4, 0, -1, 4, -3.496911e-07, -1.7484555e-07, -80, 1.7484555e-07, -1.5285484e-14, 4, 112, -3.496911e-07, -4, 0, -1, 4, -3.496911e-07, -1.7484555e-07, -80, 1.7484555e-07, -1.5285484e-14, 4, 112, -3.496911e-07, -4, 0, -1, 4, -3.496911e-07, -1.7484555e-07, 48, -4, -6.039832e-07, 0, 128, 6.039832e-07, -4, 0, -1, 0, 0, 4, 0, -4, -6.039832e-07, 0, 128, 6.039832e-07, -4, 0, -1, 0, 0, 4, 16, -4, -6.039832e-07, 0, 128, 6.039832e-07, -4, 0, -1, 0, 0, 4, 32, -4, 3.496911e-07, 0, 128, -3.496911e-07, -4, 0, -1, 0, 0, 4, -16, 1.7484555e-07, -1.5285484e-14, 4, 128, -3.496911e-07, -4, 0, -1, 4, -3.496911e-07, -1.7484555e-07, -32, 1.7484555e-07, -1.5285484e-14, 4, 128, -3.496911e-07, -4, 0, -1, 4, -3.496911e-07, -1.7484555e-07, -48, 1.7484555e-07, -1.5285484e-14, 4, 128, -3.496911e-07, -4, 0, -1, 4, -3.496911e-07, -1.7484555e-07, -64, 1.7484555e-07, -1.5285484e-14, 4, 128, -3.496911e-07, -4, 0, -1, 4, -3.496911e-07, -1.7484555e-07, 64, 1.7484555e-07, -1.5285484e-14, 4, 128, -3.496911e-07, -4, 0, -1, 4, -3.496911e-07, -1.7484555e-07, 80, 1.7484555e-07, -1.5285484e-14, 4, 128, -3.496911e-07, -4, 0, -1, 4, -3.496911e-07, -1.7484555e-07, -80, 1.7484555e-07, -1.5285484e-14, 4, 128, -3.496911e-07, -4, 0, -1, 4, -3.496911e-07, -1.7484555e-07, 48, -4, -6.039832e-07, 0, 144, 6.039832e-07, -4, 0, -1, 0, 0, 4, 0, -4, -6.039832e-07, 0, 144, 6.039832e-07, -4, 0, -1, 0, 0, 4, 16, -4, -6.039832e-07, 0, 144, 6.039832e-07, -4, 0, -1, 0, 0, 4, 32, -4, 3.496911e-07, 0, 144, -3.496911e-07, -4, 0, -1, 0, 0, 4, -16, 1.7484555e-07, -1.5285484e-14, 4, 144, -3.496911e-07, -4, 0, -1, 4, -3.496911e-07, -1.7484555e-07, -32, 1.7484555e-07, -1.5285484e-14, 4, 144, -3.496911e-07, -4, 0, -1, 4, -3.496911e-07, -1.7484555e-07, -48, 1.7484555e-07, -1.5285484e-14, 4, 144, -3.496911e-07, -4, 0, -1, 4, -3.496911e-07, -1.7484555e-07, -64, 1.7484555e-07, -1.5285484e-14, 4, 144, -3.496911e-07, -4, 0, -1, 4, -3.496911e-07, -1.7484555e-07, 64, 1.7484555e-07, -1.5285484e-14, 4, 144, -3.496911e-07, -4, 0, -1, 4, -3.496911e-07, -1.7484555e-07, 80, 1.7484555e-07, -1.5285484e-14, 4, 144, -3.496911e-07, -4, 0, -1, 4, -3.496911e-07, -1.7484555e-07, -80, 1.7484555e-07, -1.5285484e-14, 4, 144, -3.496911e-07, -4, 0, -1, 4, -3.496911e-07, -1.7484555e-07, 48, -4, -6.039832e-07, 0, 160, 6.039832e-07, -4, 0, -1, 0, 0, 4, 0, -4, -6.039832e-07, 0, 160, 6.039832e-07, -4, 0, -1, 0, 0, 4, 16, -4, -6.039832e-07, 0, 160, 6.039832e-07, -4, 0, -1, 0, 0, 4, 32, -4, 3.496911e-07, 0, 160, -3.496911e-07, -4, 0, -1, 0, 0, 4, -16, 1.7484555e-07, -1.5285484e-14, 4, 160, -3.496911e-07, -4, 0, -1, 4, -3.496911e-07, -1.7484555e-07, -32, 1.7484555e-07, -1.5285484e-14, 4, 160, -3.496911e-07, -4, 0, -1, 4, -3.496911e-07, -1.7484555e-07, -48, 1.7484555e-07, -1.5285484e-14, 4, 160, -3.496911e-07, -4, 0, -1, 4, -3.496911e-07, -1.7484555e-07, -64, 1.7484555e-07, -1.5285484e-14, 4, 160, -3.496911e-07, -4, 0, -1, 4, -3.496911e-07, -1.7484555e-07, 64, 1.7484555e-07, -1.5285484e-14, 4, 160, -3.496911e-07, -4, 0, -1, 4, -3.496911e-07, -1.7484555e-07, 80, 1.7484555e-07, -1.5285484e-14, 4, 160, -3.496911e-07, -4, 0, -1, 4, -3.496911e-07, -1.7484555e-07, -80, 1.7484555e-07, -1.5285484e-14, 4, 160, -3.496911e-07, -4, 0, -1, 4, -3.496911e-07, -1.7484555e-07, 48)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ghw46"]
+sky_horizon_color = Color(0.8889778, 0.6864221, 3.85046e-07, 1)
+sky_curve = 0.22735739
+ground_bottom_color = Color(0.84286875, 0.5353328, 0, 1)
+ground_horizon_color = Color(0.8337627, 0.795048, 0.26629022, 1)
+ground_energy_multiplier = 1.08
+sun_angle_max = 7.0
+sun_curve = 3.278501
+
+[sub_resource type="Sky" id="Sky_df05h"]
+sky_material = SubResource("ProceduralSkyMaterial_ghw46")
+
+[sub_resource type="Environment" id="Environment_8um5k"]
+background_mode = 2
+sky = SubResource("Sky_df05h")
+fog_light_color = Color(0.8499037, 0.6756193, 0, 1)
+fog_density = 0.0692
+fog_sky_affect = 0.0
+
+[sub_resource type="Curve" id="Curve_xim88"]
+_data = [Vector2(0.0027322397, 0.0055521727), 0.0, 0.0, 0, 0, Vector2(0.49999997, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_koqhg"]
+width = 32
+curve = SubResource("Curve_xim88")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_koqhg"]
+lifetime_randomness = 1.0
+emission_shape_scale = Vector3(1, 0, 1)
+emission_shape = 3
+emission_box_extents = Vector3(4, 4, 4)
+angle_min = 1.0728835e-05
+angle_max = 270.0
+gravity = Vector3(-1, 0, -1)
+scale_min = 0.39999998
+scale_max = 3.0
+color = Color(1, 1, 0.69, 1)
+alpha_curve = SubResource("CurveTexture_koqhg")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cmrfp"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_color = Color(1, 1, 1, 0.11764706)
+albedo_texture = ExtResource("5_xim88")
+heightmap_flip_tangent = true
+heightmap_flip_binormal = true
+texture_filter = 1
+billboard_mode = 2
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_loo7a"]
+material = SubResource("StandardMaterial3D_cmrfp")
+size = Vector2(4, 4)
+orientation = 2
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_8um5k"]
+diffuse_texture = ExtResource("5_df05h")
+
+[sub_resource type="Curve" id="Curve_df05h"]
+_data = [Vector2(0.0027322397, 0), 0.0, 0.0, 0, 0, Vector2(0.5027323, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_8um5k"]
+curve = SubResource("Curve_df05h")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8um5k"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(10, 10, 10)
+emission_shape = 3
+emission_box_extents = Vector3(200, 100, 1)
+direction = Vector3(-1, 1, 1)
+initial_velocity_min = 10.0
+initial_velocity_max = 60.0
+gravity = Vector3(-10, 2, 0)
+scale_min = 0.19999999
+scale_max = 0.5
+color = Color(0.96, 0.816, 0, 0.39215687)
+alpha_curve = SubResource("CurveTexture_8um5k")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_xim88"]
+domain_warp_enabled = true
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_8um5k"]
+generate_mipmaps = false
+noise = SubResource("FastNoiseLite_xim88")
+seamless = true
+seamless_blend_skirt = 0.25
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cmrfp"]
+shader = ExtResource("6_8um5k")
+shader_parameter/noise_tex = SubResource("NoiseTexture2D_8um5k")
+shader_parameter/scroll_speed = 0.050000002375
+shader_parameter/direction = Vector2(-0.05, -0.05)
+shader_parameter/sand_color = Color(0.8, 0.5, 0.2, 1)
+shader_parameter/opacity = 0.25
+shader_parameter/ground_start = 0.5
+shader_parameter/fade_range = 0.3
+shader_parameter/cloud_threshold = 0.050000002375
+shader_parameter/camera_position = Vector2(0, 0)
+shader_parameter/camera_rotation = 0.0
+shader_parameter/texture_scale = Vector2(200, 200)
+shader_parameter/ground_world_y = 96.07809956370512
+shader_parameter/fade_height = 216.6670102916825
 
 [node name="MainMenu" type="Control" unique_id=1079908484]
 layout_mode = 3
@@ -20,11 +139,12 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -603.0
-offset_top = -400.25
-offset_right = 603.0
-offset_bottom = 400.25
+offset_top = -199.0
+offset_right = 613.0
+offset_bottom = 547.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_ghw46")
 
 [node name="MarginContainer" type="MarginContainer" parent="MainMenu" unique_id=866476210]
 layout_mode = 2
@@ -39,7 +159,8 @@ theme_override_constants/separation = 40
 
 [node name="Label" type="Label" parent="MainMenu/MarginContainer/VBoxContainer" unique_id=346452529]
 layout_mode = 2
-theme_override_font_sizes/font_size = 90
+theme_override_colors/font_color = Color(0, 0, 0, 0.09019608)
+theme_override_font_sizes/font_size = 85
 text = "Game_name"
 horizontal_alignment = 1
 
@@ -61,6 +182,61 @@ text = "Quit"
 [node name="Settings" parent="." unique_id=307003582 instance=ExtResource("2_853f1")]
 visible = false
 layout_mode = 1
+
+[node name="Node3D" type="Node3D" parent="." unique_id=711007571]
+
+[node name="Sands" type="MultiMeshInstance3D" parent="Node3D" unique_id=152852735]
+multimesh = SubResource("MultiMesh_8um5k")
+script = ExtResource("4_df05h")
+go_explode = null
+shape_type = 0
+go_make_colliders = null
+metadata/_custom_type_script = "uid://cfwmt6vc7y70h"
+
+[node name="Camera3D" type="Camera3D" parent="Node3D" unique_id=486204664]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -3.57, -0.3752942, 0)
+fov = 37.3
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Node3D" unique_id=1068475460]
+environment = SubResource("Environment_8um5k")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Node3D/WorldEnvironment" unique_id=384353336]
+transform = Transform3D(-4.371139e-08, -0.02617695, 0.99965733, 0, 0.99965733, 0.02617695, -1, 1.1442308e-09, -4.369641e-08, 0, 0, 0)
+light_color = Color(0.9546227, 0.6539711, 0, 1)
+light_energy = 1.7
+sky_mode = 2
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Node3D" unique_id=1193763561]
+transform = Transform3D(4, 0, 0, 0, 1, 0, 0, 0, 4, 7.435951, 0, 0)
+amount = 3
+lifetime = 5.0
+fixed_fps = 5
+process_material = SubResource("ParticleProcessMaterial_koqhg")
+draw_pass_1 = SubResource("PlaneMesh_loo7a")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=1297984357]
+show_behind_parent = true
+position = Vector2(1732, 297)
+amount = 50
+texture = SubResource("CanvasTexture_8um5k")
+lifetime = 10.0
+preprocess = 5.0
+speed_scale = 3.0
+randomness = 1.0
+fixed_fps = 5
+process_material = SubResource("ParticleProcessMaterial_8um5k")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1060664605]
+visible = false
+show_behind_parent = true
+material = SubResource("ShaderMaterial_cmrfp")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 
 [connection signal="pressed" from="MainMenu/MarginContainer/VBoxContainer/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="MainMenu/MarginContainer/VBoxContainer/Settings" to="." method="_on_settings_pressed"]

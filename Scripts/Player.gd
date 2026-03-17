@@ -6,6 +6,8 @@ const headFreq = 2.4
 const headAmp = 0.08
 var headTime = 0.0
 @onready var camDefHeight = $PlayerCamera.position.y
+@export var sandCamP = "shader_parameter/camera_position"
+@export var sandCamR = "shader_parameter/camera_rotation"
 
 var speed = 0
 var dash = false
@@ -76,7 +78,8 @@ func _input(event):
 
 func _physics_process(delta):
 	
-
+	#$SandHaze.material.set(sandCamP, $PlayerCamera.global_position)
+	#$SandHaze.material.set(sandCamR, $PlayerCamera.global_rotation)
 		
 	cameraDistance = clamp(cameraDistance,15, 45)
 	
