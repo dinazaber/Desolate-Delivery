@@ -6,8 +6,7 @@ const headFreq = 2.4
 const headAmp = 0.08
 var headTime = 0.0
 @onready var camDefHeight = $PlayerCamera.position.y
-@export var sandCamP = "shader_parameter/camera_position"
-@export var sandCamR = "shader_parameter/camera_rotation"
+@export var screenEffect: ColorRect
 
 var speed = 0
 var dash = false
@@ -55,6 +54,13 @@ func animFinished(anim_name: StringName) -> void:
 		attack = false
 
 
+func updateScreenEffect():
+		var forward = -$PlayerCamera.global_transform.basis.z
+		var horizontal_forward = Vector3(forward.x, 0, forward.z).normalized()
+		var dot = forward.dot(horizontal_forward)
+		var factor = clamp(dot, 0.0, 1.0)
+		screenEffect.material.set("shader_parameter/look_angle_factor", factor)
+
 func _input(event):
 		#if event is InputEventMouseButton:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -78,9 +84,8 @@ func _input(event):
 
 func _physics_process(delta):
 	
-	#$SandHaze.material.set(sandCamP, $PlayerCamera.global_position)
-	#$SandHaze.material.set(sandCamR, $PlayerCamera.global_rotation)
-		
+	if screenEffect!=null: updateScreenEffect()
+
 	cameraDistance = clamp(cameraDistance,15, 45)
 	
 	rotation.y = lerp_angle(rotation.y, yaw, delta*20)#left/right
