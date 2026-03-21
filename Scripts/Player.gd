@@ -11,6 +11,7 @@ var headTime = 0.0
 var speed = 0
 var dash = false
 var canDash = true
+var dead = false
 
 var isInInterior = false
 var currentRoof = null
@@ -157,5 +158,6 @@ func _physics_process(delta):
 	move_and_slide()
 
 func checkLifeLine():
-	if player_health <= 0:
+	if player_health <= 0 and dead == false:
 		print("u ded lol")
+		dead = true

@@ -20,7 +20,7 @@ alpha_cut = 1
 alpha_scissor_threshold = 0.4
 texture_filter = 0
 sprite_frames = ExtResource("1_m1htj")
-animation = &"Idle0"
+animation = &"Attack1"
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1847226929]
 target_desired_distance = 2.0
