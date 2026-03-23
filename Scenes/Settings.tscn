@@ -1,9 +1,6 @@
 [gd_scene format=3 uid="uid://b2hljcs3010c5"]
 
 [ext_resource type="Script" uid="uid://cbwrq78vu403k" path="res://Scripts/Settings.gd" id="1_w1nw0"]
-[ext_resource type="Texture2D" uid="uid://sr7anlr2w57l" path="res://assets/Textures/Architecture/RedRustedMetal.png" id="2_mjqtt"]
-[ext_resource type="Texture2D" uid="uid://37cci3ytb3ci" path="res://assets/Textures/Architecture/WoodWall.png" id="3_ppjuv"]
-[ext_resource type="Texture2D" uid="uid://dpadf52cehb6t" path="res://assets/Textures/Architecture/GreenMetal.png" id="4_ipgag"]
 
 [node name="Settings" type="Control" unique_id=307003582]
 layout_mode = 3
@@ -34,19 +31,25 @@ layout_mode = 2
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1096892178]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
-text = "Resolution"
+text = "Render Scale"
 
 [node name="Resolution" type="OptionButton" parent="MarginContainer/VBoxContainer" unique_id=18711073]
 layout_mode = 2
-item_count = 3
-popup/item_0/text = "3440x1440"
-popup/item_0/icon = ExtResource("2_mjqtt")
+theme_override_font_sizes/font_size = 40
+item_count = 7
+popup/item_0/text = "2"
 popup/item_0/id = 0
-popup/item_1/text = "1920x1080"
-popup/item_1/icon = ExtResource("3_ppjuv")
+popup/item_1/text = "1.75"
 popup/item_1/id = 1
-popup/item_2/text = "1280x720"
-popup/item_2/icon = ExtResource("4_ipgag")
+popup/item_2/text = "1.5"
 popup/item_2/id = 2
+popup/item_3/text = "1.25"
+popup/item_3/id = 3
+popup/item_4/text = "1.0"
+popup/item_4/id = 4
+popup/item_5/text = "0.75"
+popup/item_5/id = 5
+popup/item_6/text = "0.5"
+popup/item_6/id = 6
 
 [connection signal="item_selected" from="MarginContainer/VBoxContainer/Resolution" to="." method="_on_resolution_item_selected"]
