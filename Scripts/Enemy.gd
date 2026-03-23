@@ -133,7 +133,7 @@ func checkLifeLine():
 	if enemy_health <= 0 and dead == false:
 		print("enemy felled")
 		dead = true
-		#get_tree().quit()
+		queue_free()
 
 
 # --- Helpers ---

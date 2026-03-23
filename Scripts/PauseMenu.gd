@@ -1,5 +1,5 @@
 extends Control
-
+@export var hud: Control
 func _unhandled_input(event: InputEvent) -> void:
 
 	if event.is_action_pressed("Escape"):
@@ -8,11 +8,13 @@ func _unhandled_input(event: InputEvent) -> void:
 		else:
 			get_tree().paused = true
 			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+			hud.hide()
 			show()
 
 func _on_resume_pressed() -> void:
 	hide()
 	get_tree().paused = false
+	hud.show()
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 

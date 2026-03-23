@@ -37,12 +37,6 @@ var currentInput = Vector2()
 @onready var crosshair = $HUD/crosshair
 
 
-
-func _ready() -> void:
-	crosshair.position.x = get_viewport().size.x / 2 - 32
-	crosshair.position.y = get_viewport().size.y / 2 - 32
-
-
 func InteriorEnter(metaData: Variant) -> void:
 	currentRoof = metaData.mesh
 	currentRoof = currentRoof.surface_get_material(0)
