@@ -97,36 +97,25 @@ scale_max = 0.5
 color = Color(0.96, 0.816, 0, 0.39215687)
 alpha_curve = SubResource("CurveTexture_8um5k")
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_xim88"]
-domain_warp_enabled = true
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_8um5k"]
-generate_mipmaps = false
-noise = SubResource("FastNoiseLite_xim88")
-seamless = true
-seamless_blend_skirt = 0.25
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cmrfp"]
 shader = ExtResource("6_8um5k")
-shader_parameter/noise_tex = SubResource("NoiseTexture2D_8um5k")
-shader_parameter/scroll_speed = 0.050000002375
-shader_parameter/direction = Vector2(-0.05, -0.05)
-shader_parameter/sand_color = Color(0.8, 0.5, 0.2, 1)
-shader_parameter/opacity = 0.25
-shader_parameter/ground_start = 0.5
-shader_parameter/fade_range = 0.3
-shader_parameter/cloud_threshold = 0.050000002375
-shader_parameter/camera_position = Vector2(0, 0)
-shader_parameter/camera_rotation = 0.0
-shader_parameter/texture_scale = Vector2(200, 200)
-shader_parameter/ground_world_y = 96.07809956370512
-shader_parameter/fade_height = 216.6670102916825
+shader_parameter/dust_color = Color(0.8, 0.7, 0.5, 0.5)
+shader_parameter/total_opacity = 0.5
+shader_parameter/speed_fast = Vector2(0.1, 0.02)
+shader_parameter/speed_slow = Vector2(0.04, -0.01)
+shader_parameter/look_angle_factor = 1.0
+shader_parameter/density_fast = 1.0
+shader_parameter/density_slow = 2.5
 
 [node name="MainMenu" type="Control" unique_id=1079908484]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -2351.0
+offset_top = 439.0
+offset_right = -2351.0
+offset_bottom = 439.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_tt5f1")
