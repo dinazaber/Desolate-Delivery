@@ -134,6 +134,7 @@ mesh = ExtResource("3_qc4db")
 
 [node name="Car3" type="MeshInstance3D" parent="." unique_id=673387538]
 transform = Transform3D(0.78493184, 0, -0.15453818, 0, 0.8, 0, 0.15453818, 0, 0.78493184, 0, 0.94204694, 0)
+visible = false
 mesh = ExtResource("8_0c07c")
 
 [node name="Decal2" type="Decal" parent="Car3" unique_id=31879390]
@@ -156,11 +157,13 @@ mouse_filter = 2
 
 [node name="Hangar1" type="MeshInstance3D" parent="Hangars" unique_id=242541542]
 transform = Transform3D(-3.059797e-07, 0, -7, 0, 7, 0, 7, 0, -3.059797e-07, -2.5953841, 0.049293876, 10.839995)
+visible = false
 mesh = ExtResource("11_qpfo2")
 skeleton = NodePath("../..")
 
 [node name="Plane" type="MeshInstance3D" parent="Hangars" unique_id=2135900176]
 transform = Transform3D(-3.4969112e-08, 0, -0.79999995, 0, 0.8, 0, 0.8, 0, -3.496911e-08, -2.6077056, 1.3059026, 10.445118)
+visible = false
 mesh = ExtResource("3_i3aeo")
 skeleton = NodePath("../../NavigationRegion3D/StaticBody3D")
 

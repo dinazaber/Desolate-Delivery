@@ -19,6 +19,8 @@ func _on_resolution_item_selected(index: int) -> void:
 			viewport.scaling_3d_scale = 0.75
 		6:
 			viewport.scaling_3d_scale = 0.5
+		7:
+			viewport.scaling_3d_scale = 0.25
 			
 			
 func _unhandled_input(event: InputEvent) -> void:
