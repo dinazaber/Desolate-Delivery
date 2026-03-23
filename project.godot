@@ -37,6 +37,11 @@ project/assembly_name="ProjectX"
 
 enabled=PackedStringArray("res://addons/MetaMultimeshInstance3D/plugin.cfg", "res://addons/multimesh_scatter/plugin.cfg")
 
+[global_group]
+
+Enemy=""
+Player=""
+
 [importer_defaults]
 
 texture={

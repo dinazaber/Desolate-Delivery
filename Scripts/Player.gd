@@ -24,14 +24,29 @@ var attack = false
 var currentInput = Vector2()
 
 #player stats
-var player_health = 100
+@export var player_health = 100
+
+#gun stats
+@export var smg_damage = 15
+
+#guns
+@onready var smg_anim = $PlayerCamera/Weapon/AnimationPlayer
+@onready var smg_ray = $PlayerCamera/Weapon/RayCast3D
+
+#UI
+@onready var crosshair = $HUD/crosshair
+
+
+
+func _ready() -> void:
+	crosshair.position.x = get_viewport().size.x / 2 - 32
+	crosshair.position.y = get_viewport().size.y / 2 - 32
 
 
 func InteriorEnter(metaData: Variant) -> void:
 	currentRoof = metaData.mesh
 	currentRoof = currentRoof.surface_get_material(0)
 	currentRoof.albedo_color.a = 0
-
 
 
 func InteriorExit(body: Node3D) -> void:
@@ -98,12 +113,7 @@ func _physics_process(delta):
 		
 			
 	if Input.is_action_pressed("LeftMouse"):
-		if !$PlayerCamera/Weapon/AnimationPlayer.is_playing():
-			$PlayerCamera/Weapon/AnimationPlayer.play("Shoot")
-			if $PlayerCamera/RayCast3D.is_colliding():
-				var ray = $PlayerCamera/RayCast3D
-				var pos = ray.get_collision_point()
-				var normal = ray.get_collision_normal()
+		shoot_smg()
 	
 	
 	for i in get_slide_collision_count():
@@ -154,8 +164,20 @@ func _physics_process(delta):
 		speed=0
 		$PlayerCamera.position.y = lerp($PlayerCamera.position.y, camDefHeight, 20*delta)
 	
-	checkLifeLine()
 	move_and_slide()
+
+func hit(recieved_damage):
+	player_health -= recieved_damage
+	checkLifeLine()
+
+func shoot_smg():
+	if !smg_anim.is_playing():
+			smg_anim.play("Shoot")
+			if smg_ray.is_colliding():
+				#var pos = smg_ray.get_collision_point()
+				#var normal = smg_ray.get_collision_normal()
+				if smg_ray.get_collider().is_in_group("Enemy"):
+					smg_ray.get_collider().hit(smg_damage, "player")
 
 func checkLifeLine():
 	if player_health <= 0 and dead == false:

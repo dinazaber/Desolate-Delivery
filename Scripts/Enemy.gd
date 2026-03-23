@@ -8,16 +8,20 @@ var current_state = State.IDLE
 @export var attack_distance = 2 # Short distance for sword
 @export var detection_range = 15
 @export var enemy_damage = 30
+@export var enemy_health = 100
 
 # --- Nodes ---
 @onready var sprite = $AnimatedSprite3D
 @onready var eyes = $RayCast3D
+@onready var sword_ray = $SwordRay
 @onready var navAgent = $NavigationAgent3D
 @onready var player = get_tree().get_first_node_in_group("Player")
 
 # --- Variables ---
 var inTransition: bool = false
 var isInAttack: bool = false
+var damagedByPlayer: bool = false
+var dead: bool = false
 
 
 
@@ -26,13 +30,16 @@ func _physics_process(delta):
 	# Fallback if player is missing
 	if not player: return
 	
-	match current_state:
-		State.IDLE:
-			process_idle_state()
-		State.CHASE:
-			process_chase_state()
-		State.ATTACK:
-			process_attack_state()
+	if !dead:
+		match current_state:
+			State.IDLE:
+				process_idle_state()
+			State.CHASE:
+				process_chase_state()
+			State.ATTACK:
+				process_attack_state()
+	else:
+		process_dead_state()
 
 # --- State Logic ---
 
@@ -42,7 +49,7 @@ func process_idle_state():
 	sprite.play("Idle0")
 	velocity = Vector3.ZERO # Stop movement
 	
-	if can_see_player() and player.dead == false:
+	if (can_see_player() or damagedByPlayer == true) and player.dead == false:
 		inTransition = true
 		sprite.play("Equip")
 		await sprite.animation_finished
@@ -91,7 +98,7 @@ func process_attack_state():
 	# Decide: Player forever-napping or keep attaking?
 	if !player.dead and !isInAttack:
 		sprite.play("Attack1")
-		player.player_health -= enemy_damage
+		attack()
 		isInAttack = true
 		print(player.player_health)
 		
@@ -105,7 +112,29 @@ func process_attack_state():
 		current_state = State.CHASE
 	
 	isInAttack = false
+
+func process_dead_state(): # gotta make death anim   Zzzzz
+	pass 
+
+func attack():
+	if sword_ray.is_colliding():
+		#var pos = smg_ray.get_collision_point()
+		#var normal = smg_ray.get_collision_normal()
+		if sword_ray.get_collider().is_in_group("Player"):
+			sword_ray.get_collider().hit(enemy_damage)
 	
+func hit(recieved_damage, type):
+	if type == "player":
+		damagedByPlayer = true
+	enemy_health -= recieved_damage
+	checkLifeLine()
+
+func checkLifeLine():
+	if enemy_health <= 0 and dead == false:
+		print("enemy felled")
+		dead = true
+		#get_tree().quit()
+
 
 # --- Helpers ---
 

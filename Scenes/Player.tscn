@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://4ercdvy5pe3t" path="res://Scenes/Weapons.tscn" id="2_kyqiw"]
 [ext_resource type="Script" uid="uid://mnanpq21gwd4" path="res://Scripts/PauseMenu.gd" id="3_dewec"]
 [ext_resource type="PackedScene" uid="uid://b2hljcs3010c5" path="res://Scenes/Settings.tscn" id="3_gntrk"]
+[ext_resource type="Texture2D" uid="uid://b6vcboeh4uetd" path="res://assets/HUD/crosshair.png" id="5_5ixxa"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kyqiw"]
 shading_mode = 0
@@ -44,6 +45,7 @@ transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0.30511874, -0.34458
 [node name="RayCast3D" type="RayCast3D" parent="PlayerCamera" unique_id=1906683229]
 transform = Transform3D(-4.371213e-08, -5.1691977e-11, 1, 9.313226e-10, 1, 5.169202e-11, -1, 9.313226e-10, -4.371213e-08, 0, 0, 0)
 target_position = Vector3(75, 0, 0)
+collision_mask = 2
 
 [node name="PauseMenu" type="Control" parent="." unique_id=877245422]
 process_mode = 3
@@ -106,6 +108,18 @@ text = "Quit"
 process_mode = 3
 visible = false
 layout_mode = 1
+
+[node name="HUD" type="Control" parent="." unique_id=1465815130]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="crosshair" type="TextureRect" parent="HUD" unique_id=1178379776]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("5_5ixxa")
 
 [connection signal="timeout" from="DashTimer" to="." method="DashTimerTimeOut"]
 [connection signal="timeout" from="SuperTimer" to="." method="SuperTimerTimeOut"]
