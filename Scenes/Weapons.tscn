@@ -88,9 +88,10 @@ mesh = ExtResource("1_yltro")
 
 [node name="RayCast3D" type="RayCast3D" parent="." unique_id=1342253886]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.0094595)
-target_position = Vector3(0, 0, -100)
+target_position = Vector3(0, 0, -1000)
 collision_mask = 2
 collide_with_areas = true
+debug_shape_thickness = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=207191350]
 libraries/ = SubResource("AnimationLibrary_8qb6n")

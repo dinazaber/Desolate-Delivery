@@ -26,7 +26,8 @@ var dead: bool = false
 
 
 func _physics_process(delta):
-	if not is_on_floor(): velocity.y -= 27 * delta
+	if !is_on_floor():
+		velocity.y -= 20 * delta
 	# Fallback if player is missing
 	if not player: return
 	
@@ -113,6 +114,7 @@ func process_attack_state():
 	
 	isInAttack = false
 
+
 func process_dead_state(): # gotta make death anim   Zzzzz
 	pass 
 
@@ -127,6 +129,16 @@ func hit(recieved_damage, type):
 	if type == "player":
 		damagedByPlayer = true
 	enemy_health -= recieved_damage
+	checkLifeLine()
+
+func get_pounded(recieved_damage):
+	enemy_health -= recieved_damage
+	# Push away
+	velocity.y += 5
+	speed = -30
+	await get_tree().create_timer(0.1).timeout # this is so shitty D:
+	speed = 4
+	
 	checkLifeLine()
 
 func checkLifeLine():

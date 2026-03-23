@@ -11,6 +11,7 @@ var headTime = 0.0
 var speed = 0
 var dash = false
 var canDash = true
+var slam = false
 var dead = false
 
 var isInInterior = false
@@ -25,13 +26,21 @@ var currentInput = Vector2()
 
 #player stats
 @export var player_health = 100
+@export var walk_speed = 4
+@export var run_speed = 8
+@export var jump_speed = 10
+@export var slam_speed = -30
 
 #gun stats
 @export var smg_damage = 15
 
+@export var slam_damage = 40
+
 #guns
 @onready var smg_anim = $PlayerCamera/Weapon/AnimationPlayer
 @onready var smg_ray = $PlayerCamera/Weapon/RayCast3D
+
+@onready var slam_area = $GroundSlam
 
 #UI
 @onready var crosshair = $HUD/crosshair
@@ -101,11 +110,7 @@ func _physics_process(delta):
 	rotation.y = lerp_angle(rotation.y, yaw, delta*20)#left/right
 	$PlayerCamera.rotation.x = lerp_angle($PlayerCamera.rotation.x, -pitch, delta*20)
 	
-	if not is_on_floor():
-		velocity.y -= 27 * delta #gravity
-		
-		
-			
+	
 	if Input.is_action_pressed("LeftMouse"):
 		shoot_smg()
 	
@@ -120,18 +125,27 @@ func _physics_process(delta):
 
 	
 	if is_on_floor():
+		if slam == true:
+			slam = false
+			slam_ground()
 		
 		if Input.is_action_just_pressed("Space"):
-			velocity.y = 10 #jumping
+			velocity.y += jump_speed
 			
-			
-	if Input.is_action_pressed("Shift"):
-		speed = 8
-	
 	else:
-		speed = 4
+		velocity.y -= 20 * delta # Gravity
 		
-		# Get direction
+		if Input.is_action_just_pressed("Ctrl"): # Groundslam
+			slam = true
+			velocity.y += slam_speed
+	
+	if Input.is_action_pressed("Shift"):
+		speed = run_speed
+	else:
+		speed = walk_speed
+	
+	
+	# Get direction
 	currentInput = Input.get_vector("A", "D", "S", "W")
 
 				
@@ -172,6 +186,12 @@ func shoot_smg():
 				#var normal = smg_ray.get_collision_normal()
 				if smg_ray.get_collider().is_in_group("Enemy"):
 					smg_ray.get_collider().hit(smg_damage, "player")
+
+func slam_ground():
+	if slam_area.has_overlapping_bodies():
+		var bodies = slam_area.get_overlapping_bodies()
+		for i in range (len(bodies)):
+			bodies[i].get_pounded(slam_damage)
 
 func checkLifeLine():
 	if player_health <= 0 and dead == false:

@@ -7,19 +7,21 @@
 
 [node name="Enemy" type="CharacterBody3D" unique_id=546459934 groups=["Enemy"]]
 collision_layer = 3
+collision_mask = 3
 script = ExtResource("1_wovta")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1842828003 groups=["Enemy"]]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1250389707 groups=["Enemy"]]
 shape = SubResource("CapsuleShape3D_wovta")
 debug_color = Color(0.95874554, 0, 0.5281095, 0.41960785)
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=1108019311]
 transform = Transform3D(1.65, 0, 0, 0, 1.65, 0, 0, 0, 1.65, 0, 0.06814647, 0)
+billboard = 2
 alpha_cut = 1
 alpha_scissor_threshold = 0.4
 texture_filter = 0
 sprite_frames = ExtResource("1_m1htj")
-animation = &"Attack1"
+animation = &"Walk"
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1847226929]
 target_desired_distance = 2.0

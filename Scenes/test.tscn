@@ -177,4 +177,4 @@ lower_fade = 0.0
 cull_mask = 1048574
 
 [node name="Enemy" parent="." unique_id=546459934 instance=ExtResource("12_yb21e")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.627635, 0.9878535, -4.616506)
+transform = Transform3D(-0.32304215, 0, 0.9463846, 0, 1, 0, -0.9463846, 0, -0.32304215, 8.692926, 0.9878535, -7.377297)

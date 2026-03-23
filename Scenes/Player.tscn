@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dh81y2wk5ijn" path="res://Scripts/Player.gd" id="1_g8lft"]
 [ext_resource type="PackedScene" uid="uid://4ercdvy5pe3t" path="res://Scenes/Weapons.tscn" id="2_kyqiw"]
+[ext_resource type="PackedScene" uid="uid://bwx5n4porwgxg" path="res://Scenes/GroundSlam.tscn" id="2_nn08x"]
 [ext_resource type="Script" uid="uid://mnanpq21gwd4" path="res://Scripts/PauseMenu.gd" id="3_dewec"]
 [ext_resource type="PackedScene" uid="uid://b2hljcs3010c5" path="res://Scenes/Settings.tscn" id="3_gntrk"]
 [ext_resource type="Texture2D" uid="uid://b6vcboeh4uetd" path="res://assets/HUD/crosshair.png" id="5_5ixxa"]
@@ -21,6 +22,7 @@ floor_snap_length = 0.25
 script = ExtResource("1_g8lft")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=620583355]
+visible = false
 cast_shadow = 0
 mesh = SubResource("BoxMesh_rpqav")
 
@@ -33,6 +35,9 @@ one_shot = true
 
 [node name="SuperTimer" type="Timer" parent="." unique_id=267019974]
 one_shot = true
+
+[node name="GroundSlam" parent="." unique_id=174733414 instance=ExtResource("2_nn08x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.6829516, 0)
 
 [node name="PlayerCamera" type="Camera3D" parent="." unique_id=1738772125]
 transform = Transform3D(-4.371213e-08, 9.313226e-10, -1, -5.1691977e-11, 1, 9.313226e-10, 1, 5.169202e-11, -4.371213e-08, 0.5, 0.639, 0)
