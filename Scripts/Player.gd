@@ -161,3 +161,4 @@ func checkLifeLine():
 	if player_health <= 0 and dead == false:
 		print("u ded lol")
 		dead = true
+		#get_tree().quit()

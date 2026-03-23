@@ -16,8 +16,8 @@ var current_state = State.IDLE
 @onready var player = get_tree().get_first_node_in_group("Player")
 
 # --- Variables ---
-var inTransition = false
-var dmg_flag = 1
+var inTransition: bool = false
+var isInAttack: bool = false
 
 
 
@@ -25,15 +25,12 @@ func _physics_process(delta):
 	if not is_on_floor(): velocity.y -= 27 * delta
 	# Fallback if player is missing
 	if not player: return
-
-	if !is_on_floor(): velocity.y-=20
-	
 	
 	match current_state:
 		State.IDLE:
 			process_idle_state()
 		State.CHASE:
-			process_chase_state(delta)
+			process_chase_state()
 		State.ATTACK:
 			process_attack_state()
 
@@ -52,7 +49,7 @@ func process_idle_state():
 		inTransition = false
 		current_state = State.CHASE
 
-func process_chase_state(delta):
+func process_chase_state():
 	if inTransition: return
 	
 	
@@ -91,26 +88,23 @@ func process_attack_state():
 	# Stop movement during the swing
 	velocity = Vector3.ZERO
 	
-	sprite.play("Attack1")
-	
-	# Wait for animation to finish before deciding what to do next
-	await sprite.animation_finished
-	
 	# Decide: Player forever-napping or keep attaking?
-	if player.dead == false and dmg_flag == 1:
+	if !player.dead and !isInAttack:
+		sprite.play("Attack1")
 		player.player_health -= enemy_damage
-		dmg_flag = 0
+		isInAttack = true
 		print(player.player_health)
 		
 	# Decide: Chase again or keep attacking?
 	if player.dead == true:
 		current_state = State.IDLE
 		
-	elif global_position.distance_to(player.global_position) > attack_distance:
+	await sprite.animation_finished
+		
+	if global_position.distance_to(player.global_position) > attack_distance:
 		current_state = State.CHASE
 	
-	await sprite.animation_finished # I have no idea why it's needed again, but it works
-	dmg_flag = 1
+	isInAttack = false
 	
 
 # --- Helpers ---
