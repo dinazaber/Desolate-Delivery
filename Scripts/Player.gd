@@ -190,8 +190,8 @@ func shoot_smg():
 func slam_ground():
 	if slam_area.has_overlapping_bodies():
 		var bodies = slam_area.get_overlapping_bodies()
-		for i in range (len(bodies)):
-			bodies[i].get_pounded(slam_damage)
+		for body in bodies:
+			body.get_pounded(slam_damage)
 
 func checkLifeLine():
 	if player_health <= 0 and dead == false:
