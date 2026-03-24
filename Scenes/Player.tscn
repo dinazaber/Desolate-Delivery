@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bwx5n4porwgxg" path="res://Scenes/GroundSlam.tscn" id="2_nn08x"]
 [ext_resource type="Script" uid="uid://mnanpq21gwd4" path="res://Scripts/PauseMenu.gd" id="3_dewec"]
 [ext_resource type="PackedScene" uid="uid://b2hljcs3010c5" path="res://Scenes/Settings.tscn" id="3_gntrk"]
+[ext_resource type="PackedScene" uid="uid://d3y1m515qojp2" path="res://Scenes/off_hand_shotgun.tscn" id="4_52ee3"]
 [ext_resource type="Texture2D" uid="uid://b6vcboeh4uetd" path="res://assets/HUD/crosshair.png" id="5_5ixxa"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kyqiw"]
@@ -45,7 +46,10 @@ cull_mask = 1048573
 size = 56.061
 
 [node name="Weapon" parent="PlayerCamera" unique_id=447946986 instance=ExtResource("2_kyqiw")]
-transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0.30511874, -0.344589, -0.33099842)
+transform = Transform3D(0.15, 0, 0, 0, 0.15, -3.3893527e-19, 0, -3.3893524e-19, 0.15, 0.3383646, -0.2478975, -0.43325317)
+
+[node name="OffHandShotgun" parent="PlayerCamera" unique_id=1896444700 instance=ExtResource("4_52ee3")]
+transform = Transform3D(-6.5567085e-09, 0, 0.15, 5.761923e-24, 0.15, 0, -0.15, -3.3893524e-19, -6.5567085e-09, -0.43972307, -0.34288096, -0.55758524)
 
 [node name="RayCast3D" type="RayCast3D" parent="PlayerCamera" unique_id=1906683229]
 transform = Transform3D(-4.371213e-08, -5.1691977e-11, 1, 9.313226e-10, 1, 5.169202e-11, -1, 9.313226e-10, -4.371213e-08, 0, 0, 0)

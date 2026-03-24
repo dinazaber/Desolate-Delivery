@@ -1,0 +1,112 @@
+[gd_scene format=3 uid="uid://d3y1m515qojp2"]
+
+[ext_resource type="ArrayMesh" uid="uid://c1ua4nhpxyyli" path="res://assets/Meshes/Weapons/shotty.mesh" id="1_u6d72"]
+
+[sub_resource type="Animation" id="Animation_u6d72"]
+resource_name = "Draw"
+length = 0.25
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Shotty:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.16, 0.25),
+"transitions": PackedFloat32Array(1, 2, 0.3),
+"update": 0,
+"values": [Vector3(0, -3.73, 1.5), Vector3(0, 0, 0), Vector3(0, -0.73, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Shotty:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.19, 0.22, 0.25),
+"transitions": PackedFloat32Array(1, 2.5, 2.5, 0.2),
+"update": 0,
+"values": [Vector3(-1.5707964, 1.0471976, -1.0471976), Vector3(-1.5707964, -0.34906584, 0), Vector3(-1.5707964, -0.17453292, 0), Vector3(-1.5707964, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ii46u"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Shotty:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -3.73, 1.5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Shotty:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-1.5707964, 1.0471976, -1.0471976)]
+}
+
+[sub_resource type="Animation" id="Animation_jrs8s"]
+resource_name = "Shoot"
+length = 0.4
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Shotty:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.13, 0.4),
+"transitions": PackedFloat32Array(1, 1, 5, 1),
+"update": 0,
+"values": [Vector3(0, -0.73, 0), Vector3(-1, -1.33, 0), Vector3(0, -0.53, 0), Vector3(0, -0.73, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Shotty:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.08, 0.4),
+"transitions": PackedFloat32Array(1, 1, 0.3),
+"update": 0,
+"values": [Vector3(-1.5707964, 0, 0), Vector3(-1.5707964, -0.34906584, 0), Vector3(-1.5707964, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lekgj"]
+_data = {
+&"Draw": SubResource("Animation_u6d72"),
+&"RESET": SubResource("Animation_ii46u"),
+&"Shoot": SubResource("Animation_jrs8s")
+}
+
+[node name="OffHandShotgun" type="Node3D" unique_id=1896444700]
+
+[node name="Shotty" type="MeshInstance3D" parent="." unique_id=48255100]
+transform = Transform3D(44.999996, 77.94228, 155.88458, -77.942276, -135.00002, 89.99999, 155.88458, -89.99999, -3.934025e-06, 0, -3.73, 1.5)
+rotation_order = 0
+mesh = ExtResource("1_u6d72")
+
+[node name="RayCast3D" type="RayCast3D" parent="." unique_id=1593038351]
+transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, 1.7, 0, 0)
+target_position = Vector3(15, 0, 0)
+collision_mask = 2
+collide_with_areas = true
+debug_shape_thickness = 5
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1787380741]
+libraries/ = SubResource("AnimationLibrary_lekgj")

@@ -8,11 +8,12 @@ var headTime = 0.0
 @onready var camDefHeight = $PlayerCamera.position.y
 @export var screenEffect: ColorRect
 
+var deceleration = 0.3
 var speed = 0
-var dash = false
-var canDash = true
-var slam = false
-var dead = false
+var dash: bool = false
+var canDash: bool = true
+var slam: bool = false
+var dead: bool = false
 
 var isInInterior = false
 var currentRoof = null
@@ -28,17 +29,21 @@ var currentInput = Vector2()
 @export var player_health = 100
 @export var walk_speed = 4
 @export var run_speed = 8
+@export var dash_speed = 25
 @export var jump_speed = 10
 @export var slam_speed = -30
 
 #gun stats
 @export var smg_damage = 15
+@export var quickDraw_damage = 70
 
 @export var slam_damage = 40
 
 #guns
 @onready var smg_anim = $PlayerCamera/Weapon/AnimationPlayer
 @onready var smg_ray = $PlayerCamera/Weapon/RayCast3D
+@onready var quickDraw_anim = $PlayerCamera/OffHandShotgun/AnimationPlayer
+@onready var quickDraw_ray = $PlayerCamera/OffHandShotgun/RayCast3D
 
 @onready var slam_area = $GroundSlam
 
@@ -114,6 +119,8 @@ func _physics_process(delta):
 	if Input.is_action_pressed("LeftMouse"):
 		shoot_smg()
 	
+	if Input.is_action_just_pressed("RightMouse"):
+		shoot_offHandShotgun()
 	
 	for i in get_slide_collision_count():
 		var collision = get_slide_collision(i)
@@ -140,6 +147,7 @@ func _physics_process(delta):
 			velocity.y += slam_speed
 	
 	if Input.is_action_pressed("Shift"):
+		
 		speed = run_speed
 	else:
 		speed = walk_speed
@@ -155,24 +163,31 @@ func _physics_process(delta):
 	if direction:
 		velocity.x = direction.x * speed
 		velocity.z = direction.z * speed
-		if Input.is_action_just_pressed("Alt") and canDash and is_on_floor():
+		if Input.is_action_just_pressed("Ctrl") and canDash and is_on_floor():
 			$DashTimer.start()
 			dash = true
 			canDash = false
 		if dash:
-			velocity = direction*15
+			velocity = direction * dash_speed
 			
 		headTime += delta * velocity.length() * float(is_on_floor())
 		var pos = Vector3.ZERO
 		pos.y = camDefHeight + sin(headTime*headFreq) * headAmp
 		$PlayerCamera.position.y = lerp($PlayerCamera.position.y, pos.y, 20*delta)
-	else:		
-		velocity.x = move_toward(velocity.x, 0, speed)
-		velocity.z = move_toward(velocity.z, 0, speed)
+	elif is_on_floor():
+		velocity.x = move_toward(velocity.x, 0, deceleration)
+		velocity.z = move_toward(velocity.z, 0, deceleration)
 		speed=0
 		$PlayerCamera.position.y = lerp($PlayerCamera.position.y, camDefHeight, 20*delta)
 	
 	move_and_slide()
+
+func get_cam_forward_direction() -> Vector3:
+	var look_dir = -$PlayerCamera.global_transform.basis.z.normalized()
+	return look_dir
+
+func knock_back(direction: Vector3, speed):
+	velocity = speed * direction
 
 func hit(recieved_damage):
 	player_health -= recieved_damage
@@ -186,6 +201,23 @@ func shoot_smg():
 				#var normal = smg_ray.get_collision_normal()
 				if smg_ray.get_collider().is_in_group("Enemy"):
 					smg_ray.get_collider().hit(smg_damage, "player")
+
+func shoot_offHandShotgun():
+	if !quickDraw_anim.is_playing():
+		quickDraw_anim.play("Draw")
+		await get_tree().create_timer(0.25).timeout
+		quickDraw_anim.play("Shoot")
+		
+		if !is_on_floor():
+			var direction = get_cam_forward_direction()
+			print(direction)
+			knock_back(direction, -20)
+		
+		if quickDraw_ray.is_colliding():
+			if quickDraw_ray.get_collider().is_in_group("Enemy"):
+				quickDraw_ray.get_collider().hit(quickDraw_damage, "player")
+		await get_tree().create_timer(0.4).timeout
+		quickDraw_anim.play_backwards("Draw")
 
 func slam_ground():
 	if slam_area.has_overlapping_bodies():
