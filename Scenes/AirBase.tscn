@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://syntm5qccbh2" path="res://Scenes/Enemy.tscn" id="4_socb2"]
 [ext_resource type="Shader" uid="uid://bog2d5u5vhtmo" path="res://Shaders/Flag.gdshader" id="5_dj3pt"]
 [ext_resource type="Texture2D" uid="uid://c66pm4mbkxy6n" path="res://assets/Textures/Architecture/Flag.png" id="6_4x86n"]
-[ext_resource type="Shader" path="res://Shaders/SandHaze.gdshader" id="6_dxaf4"]
+[ext_resource type="Shader" uid="uid://5sxuhqjwtd51" path="res://Shaders/SandHaze.gdshader" id="6_dxaf4"]
 [ext_resource type="Texture2D" uid="uid://dye1bkkxqrpse" path="res://assets/Textures/Architecture/HangarDoor.png" id="7_pxegc"]
 [ext_resource type="ArrayMesh" uid="uid://dxoddmwgtq2gq" path="res://assets/Meshes/Objects/Car1.mesh" id="8_cux0m"]
 [ext_resource type="ArrayMesh" uid="uid://7ho7ltov0iyb" path="res://assets/Meshes/Objects/Car3.mesh" id="9_flf77"]

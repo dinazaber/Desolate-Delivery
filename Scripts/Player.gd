@@ -8,7 +8,6 @@ var headTime = 0.0
 @onready var camDefHeight = $PlayerCamera.position.y
 @export var screenEffect: ColorRect
 
-var deceleration = 0.3
 var speed = 0
 var dash: bool = false
 var canDash: bool = true
@@ -79,29 +78,29 @@ func animFinished(anim_name: StringName) -> void:
 
 
 func updateScreenEffect():
-		var forward = -$PlayerCamera.global_transform.basis.z
-		var horizontal_forward = Vector3(forward.x, 0, forward.z).normalized()
-		var dot = forward.dot(horizontal_forward)
-		var factor = clamp(dot, 0.0, 1.0)
-		screenEffect.material.set("shader_parameter/look_angle_factor", factor)
+	var forward = -$PlayerCamera.global_transform.basis.z
+	var horizontal_forward = Vector3(forward.x, 0, forward.z).normalized()
+	var dot = forward.dot(horizontal_forward)
+	var factor = clamp(dot, 0.0, 1.0)
+	screenEffect.material.set("shader_parameter/look_angle_factor", factor)
 
 func _input(event):
-		#if event is InputEventMouseButton:
-		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-		#elif event.is_action_pressed("cancel"):
-			#Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	#if event is InputEventMouseButton:
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	#elif event.is_action_pressed("cancel"):
+		#Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 			
-		if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
-			if event is InputEventMouseMotion:
-				yaw-=event.relative.x * 0.005
-				pitch+=event.relative.y * 0.005
-				pitch = clamp(pitch, deg_to_rad(-90), deg_to_rad(90))
-			if event is InputEventMouseButton:
-				if event.button_index == MOUSE_BUTTON_WHEEL_UP:
-					cameraDistance+=1.5
-				elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
-					cameraDistance-=1.5
-					
+	if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
+		if event is InputEventMouseMotion:
+			yaw-=event.relative.x * 0.005
+			pitch+=event.relative.y * 0.005
+			pitch = clamp(pitch, deg_to_rad(-90), deg_to_rad(90))
+		if event is InputEventMouseButton:
+			if event.button_index == MOUSE_BUTTON_WHEEL_UP:
+				cameraDistance+=1.5
+			elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
+				cameraDistance-=1.5
+				
 
 
 	
@@ -112,7 +111,7 @@ func _physics_process(delta):
 
 	cameraDistance = clamp(cameraDistance,15, 45)
 	
-	rotation.y = lerp_angle(rotation.y, yaw, delta*20)#left/right
+	rotation.y = lerp_angle(rotation.y, yaw, delta*20) # left/right
 	$PlayerCamera.rotation.x = lerp_angle($PlayerCamera.rotation.x, -pitch, delta*20)
 	
 	
@@ -148,9 +147,9 @@ func _physics_process(delta):
 	
 	if Input.is_action_pressed("Shift"):
 		
-		speed = run_speed
+		speed = move_toward(speed, run_speed, delta * 15.0)
 	else:
-		speed = walk_speed
+		speed = move_toward(speed, walk_speed, delta * 15.0)
 	
 	
 	# Get direction
@@ -160,25 +159,30 @@ func _physics_process(delta):
 	var direction = (transform.basis * Vector3(currentInput.y, 0, currentInput.x)).normalized()
 			
 	#Basic movement & dash
-	if direction:
-		velocity.x = direction.x * speed
-		velocity.z = direction.z * speed
-		if Input.is_action_just_pressed("Ctrl") and canDash and is_on_floor():
-			$DashTimer.start()
-			dash = true
-			canDash = false
-		if dash:
-			velocity = direction * dash_speed
+	if is_on_floor(): # grounded speed
+		if direction:
+			velocity.x = lerp(velocity.x, direction.x * speed, delta * 20.0)
+			velocity.z = lerp(velocity.z, direction.z * speed, delta * 20.0)
+			if Input.is_action_just_pressed("Ctrl") and canDash:
+				$DashTimer.start()
+				dash = true
+				canDash = false
+			if dash:
+				velocity = direction * dash_speed
 			
-		headTime += delta * velocity.length() * float(is_on_floor())
-		var pos = Vector3.ZERO
-		pos.y = camDefHeight + sin(headTime*headFreq) * headAmp
-		$PlayerCamera.position.y = lerp($PlayerCamera.position.y, pos.y, 20*delta)
-	elif is_on_floor():
-		velocity.x = move_toward(velocity.x, 0, deceleration)
-		velocity.z = move_toward(velocity.z, 0, deceleration)
-		speed=0
-		$PlayerCamera.position.y = lerp($PlayerCamera.position.y, camDefHeight, 20*delta)
+			# head bob
+			headTime += delta * velocity.length() * float(is_on_floor())
+			var pos = Vector3.ZERO
+			pos.y = camDefHeight + sin(headTime*headFreq) * headAmp
+			$PlayerCamera.position.y = lerp($PlayerCamera.position.y, pos.y, 20 * delta)
+		
+		else: # no input speed
+			velocity.x = lerp(velocity.x, direction.x * speed, delta * 5.0)
+			velocity.z = lerp(velocity.z, direction.z * speed, delta * 5.0)
+			
+	else: # airborne speed
+		velocity.x = lerp(velocity.x, direction.x * speed, delta * 0.7)
+		velocity.z = lerp(velocity.z, direction.z * speed, delta * 0.7)
 	
 	move_and_slide()
 
@@ -195,12 +199,10 @@ func hit(recieved_damage):
 
 func shoot_smg():
 	if !smg_anim.is_playing():
-			smg_anim.play("Shoot")
-			if smg_ray.is_colliding():
-				#var pos = smg_ray.get_collision_point()
-				#var normal = smg_ray.get_collision_normal()
-				if smg_ray.get_collider().is_in_group("Enemy"):
-					smg_ray.get_collider().hit(smg_damage, "player")
+		smg_anim.play("Shoot")
+		if smg_ray.is_colliding():
+			if smg_ray.get_collider().is_in_group("Enemy"):
+				smg_ray.get_collider().hit(smg_damage, "player")
 
 func shoot_offHandShotgun():
 	if !quickDraw_anim.is_playing():
