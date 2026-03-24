@@ -65,9 +65,12 @@ fractal_type = 2
 domain_warp_type = 1
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_yb21e"]
+width = 64
+height = 64
 generate_mipmaps = false
 noise = SubResource("FastNoiseLite_qpfo2")
 seamless = true
+seamless_blend_skirt = 1.0
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_aees8"]
 frequency = 0.05
@@ -178,3 +181,4 @@ cull_mask = 1048574
 
 [node name="Enemy" parent="." unique_id=546459934 instance=ExtResource("12_yb21e")]
 transform = Transform3D(-0.32304215, 0, 0.9463846, 0, 1, 0, -0.9463846, 0, -0.32304215, 8.692926, 0.9878535, -7.377297)
+collision_mask = 1
