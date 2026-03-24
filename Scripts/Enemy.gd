@@ -85,7 +85,7 @@ func process_chase_state():
 	var dist = global_position.distance_to(player.global_position)
 	if dist <= attack_distance:
 		current_state = State.ATTACK
-	elif not can_see_player() and dist > detection_range:
+	elif !can_see_player() and dist > detection_range and !damagedByPlayer:
 		inTransition = true
 		sprite.play_backwards("Equip")
 		await sprite.animation_finished
