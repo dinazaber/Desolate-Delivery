@@ -6,17 +6,14 @@
 [ext_resource type="PackedScene" uid="uid://syntm5qccbh2" path="res://Scenes/Enemy.tscn" id="4_socb2"]
 [ext_resource type="Shader" uid="uid://bog2d5u5vhtmo" path="res://Shaders/Flag.gdshader" id="5_dj3pt"]
 [ext_resource type="Texture2D" uid="uid://c66pm4mbkxy6n" path="res://assets/Textures/Architecture/Flag.png" id="6_4x86n"]
-[ext_resource type="Shader" uid="uid://5sxuhqjwtd51" path="res://Shaders/SandHaze.gdshader" id="6_dxaf4"]
+[ext_resource type="Shader" path="res://Shaders/SandHaze.gdshader" id="6_dxaf4"]
 [ext_resource type="Texture2D" uid="uid://dye1bkkxqrpse" path="res://assets/Textures/Architecture/HangarDoor.png" id="7_pxegc"]
-[ext_resource type="ArrayMesh" uid="uid://bmkmwinug1o1i" path="res://assets/Meshes/Objects/Boat1.mesh" id="7_y76lv"]
 [ext_resource type="ArrayMesh" uid="uid://dxoddmwgtq2gq" path="res://assets/Meshes/Objects/Car1.mesh" id="8_cux0m"]
 [ext_resource type="ArrayMesh" uid="uid://7ho7ltov0iyb" path="res://assets/Meshes/Objects/Car3.mesh" id="9_flf77"]
-[ext_resource type="ArrayMesh" uid="uid://bdly7xwroyu0j" path="res://assets/Meshes/Architecture/Barrack.mesh" id="10_x8sm6"]
 [ext_resource type="Script" uid="uid://cfwmt6vc7y70h" path="res://addons/MetaMultimeshInstance3D/src/MetaMultimeshInstance3D.gd" id="12_nqfut"]
 [ext_resource type="ArrayMesh" uid="uid://q8g0hhj850vv" path="res://assets/Meshes/Architecture/Hangar1.mesh" id="13_swfp1"]
 [ext_resource type="ArrayMesh" uid="uid://qdmyf5e4rqff" path="res://assets/Meshes/Objects/Plane.mesh" id="16_75e2l"]
 [ext_resource type="PackedScene" uid="uid://d23s0inguh17p" path="res://Scenes/RigidBody.tscn" id="16_pxegc"]
-[ext_resource type="ArrayMesh" uid="uid://bhdj6x3k5qagf" path="res://assets/Meshes/Architecture/CommandCenter.mesh" id="16_uinfi"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0lpba"]
 
@@ -140,13 +137,6 @@ size = Vector2(0.13, 0.05)
 subdivide_width = 4
 orientation = 2
 
-[sub_resource type="MultiMesh" id="MultiMesh_uinfi"]
-transform_format = 1
-instance_count = 1
-visible_instance_count = 1
-mesh = ExtResource("10_x8sm6")
-buffer = PackedFloat32Array(0.12228557, 0, -1.6955961, -0.30832186, 0, 1.7, 0, 0.47832936, 1.6955961, 0, 0.12228557, -12.723635)
-
 [sub_resource type="MultiMesh" id="MultiMesh_dxaf4"]
 transform_format = 1
 instance_count = 2
@@ -257,23 +247,7 @@ skeleton = NodePath("")
 transform = Transform3D(-0.9997761, 0, 0.021151885, 4.656613e-10, 0.9999999, 2.9802322e-08, -0.021151884, -2.9802322e-08, -0.9997762, -0.06848472, 0.11838353, -0.0017012507)
 mesh = SubResource("PlaneMesh_h7bwd")
 
-[node name="Barracks" type="Node3D" parent="NavigationRegion3D/Architecture" unique_id=505378610]
-
-[node name="MetaMultimeshInstance3D" type="MultiMeshInstance3D" parent="NavigationRegion3D/Architecture/Barracks" unique_id=962624627]
-multimesh = SubResource("MultiMesh_uinfi")
-script = ExtResource("12_nqfut")
-go_explode = null
-shape_type = 0
-go_make_colliders = null
-metadata/_custom_type_script = "uid://cfwmt6vc7y70h"
-
 [node name="Objects" type="Node3D" parent="NavigationRegion3D" unique_id=295505562]
-
-[node name="Boat1" type="MeshInstance3D" parent="NavigationRegion3D/Objects" unique_id=387024349]
-transform = Transform3D(1.9713694, 0.2454392, -0.2312185, 0.13154389, 0.70297873, 1.8677572, 0.3104813, -1.8562275, 0.6767724, -3.1252108, 0.081125975, 15.8048115)
-visible = false
-mesh = ExtResource("7_y76lv")
-skeleton = NodePath("../../..")
 
 [node name="Planes" type="MultiMeshInstance3D" parent="NavigationRegion3D/Objects" unique_id=581501581]
 transform = Transform3D(0.8000001, 0, 0, 0, 0.8000001, 0, 0, 0, 0.8000001, 0, 0, 0)
@@ -307,10 +281,6 @@ skeleton = NodePath("../..")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Objects/Car1" unique_id=2003243171]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.124435425, 0.29255676, -0.015930176)
 shape = SubResource("BoxShape3D_4x86n")
-
-[node name="CommandCenter" type="MeshInstance3D" parent="NavigationRegion3D/Objects/Car1" unique_id=412404010]
-transform = Transform3D(-0.1475983, 0.045786437, -1.4920185, -0.1263855, 1.4935279, 0.05833543, 1.4873617, 0.1314531, -0.14310351, -17.180391, -1.6390283, 32.70295)
-mesh = ExtResource("16_uinfi")
 
 [node name="RigidBody" parent="." unique_id=707473027 instance=ExtResource("16_pxegc")]
 transform = Transform3D(0.50513023, -0.86302406, 0.0057388986, 0, -0.0066496083, -0.9999779, 0.8630431, 0.5051191, -0.0033589182, 7.182574, -0.70405173, 1.6131124)
