@@ -56,6 +56,9 @@ transform = Transform3D(-4.371213e-08, -5.1691977e-11, 1, 9.313226e-10, 1, 5.169
 target_position = Vector3(75, 0, 0)
 collision_mask = 2
 
+[node name="RayEnd" type="Node3D" parent="PlayerCamera" unique_id=1446836339]
+transform = Transform3D(-4.371213e-08, -5.1691977e-11, 1, 9.313226e-10, 1, 5.169202e-11, -1, 9.313226e-10, -4.371213e-08, 0, 0.005, -75)
+
 [node name="PauseMenu" type="Control" parent="." unique_id=877245422 node_paths=PackedStringArray("hud")]
 process_mode = 3
 visible = false

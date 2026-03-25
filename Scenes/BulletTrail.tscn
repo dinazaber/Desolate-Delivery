@@ -1,0 +1,88 @@
+[gd_scene format=3 uid="uid://dda1n2xpc62v2"]
+
+[ext_resource type="Script" uid="uid://cf0wjab85rvep" path="res://Scripts/BulletTrail.gd" id="1_u7ny6"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bvv61"]
+transparency = 1
+albedo_color = Color(0, 0.66018915, 0.66351515, 1)
+emission_enabled = true
+emission = Color(0.9215656, 0.61569667, 7.70092e-07, 1)
+emission_energy_multiplier = 5.0
+grow_amount = 0.2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u7ny6"]
+albedo_color = Color(0.5333242, 1.0949746e-06, 2.8878452e-07, 1)
+roughness = 0.1
+emission_enabled = true
+emission = Color(0.30110523, 3.5195612e-07, 9.62615e-08, 1)
+emission_energy_multiplier = 0.5
+
+[sub_resource type="Curve" id="Curve_bvv61"]
+_data = [Vector2(0, 0.49438208), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_qeip8"]
+curve = SubResource("Curve_bvv61")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_nam17"]
+direction = Vector3(0, 0, -1)
+spread = 60.0
+initial_velocity_min = 2.0
+initial_velocity_max = 4.0
+scale_curve = SubResource("CurveTexture_qeip8")
+
+[sub_resource type="SphereMesh" id="SphereMesh_o4h6r"]
+radius = 0.05
+height = 0.1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wu0c8"]
+albedo_color = Color(0.9607843, 0.8980392, 0, 1)
+emission_enabled = true
+emission = Color(0.9607843, 0.8980392, 0, 1)
+emission_energy_multiplier = 5.0
+
+[sub_resource type="Curve" id="Curve_551qq"]
+_data = [Vector2(0, 0.20224726), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_7fvru"]
+curve = SubResource("Curve_551qq")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_rmfpj"]
+direction = Vector3(0, 0, -1)
+initial_velocity_min = 3.0
+initial_velocity_max = 6.0
+scale_curve = SubResource("CurveTexture_7fvru")
+
+[sub_resource type="SphereMesh" id="SphereMesh_v1ux6"]
+radius = 0.03
+height = 0.06
+
+[node name="BulletTrail" type="MeshInstance3D" unique_id=369587334]
+material_override = SubResource("StandardMaterial3D_bvv61")
+script = ExtResource("1_u7ny6")
+
+[node name="Timer" type="Timer" parent="." unique_id=1296947571]
+one_shot = true
+autostart = true
+
+[node name="blood" type="GPUParticles3D" parent="." unique_id=1108053934]
+material_override = SubResource("StandardMaterial3D_u7ny6")
+emitting = false
+amount = 16
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_nam17")
+draw_pass_1 = SubResource("SphereMesh_o4h6r")
+
+[node name="terrain" type="GPUParticles3D" parent="." unique_id=1197159040]
+material_override = SubResource("StandardMaterial3D_wu0c8")
+emitting = false
+amount = 18
+lifetime = 0.6
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_rmfpj")
+draw_pass_1 = SubResource("SphereMesh_v1ux6")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

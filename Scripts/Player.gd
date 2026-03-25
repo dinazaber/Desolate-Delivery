@@ -32,22 +32,34 @@ var currentInput = Vector2()
 @export var jump_speed = 10
 @export var slam_speed = -30
 
+
 #gun stats
 @export var smg_damage = 15
 @export var quickDraw_damage = 70
 
 @export var slam_damage = 40
 
+
+#bullets
+var bullet_trail = load("res://Scenes/BulletTrail.tscn")
+var instance
+
+
 #guns
 @onready var smg_anim = $PlayerCamera/Weapon/AnimationPlayer
 @onready var smg_ray = $PlayerCamera/Weapon/RayCast3D
+@onready var smg_barrel = $PlayerCamera/Weapon/barrel_pos
+@onready var smg_rayEnd = $PlayerCamera/Weapon/barrel_end
+
 @onready var quickDraw_anim = $PlayerCamera/OffHandShotgun/AnimationPlayer
 @onready var quickDraw_ray = $PlayerCamera/OffHandShotgun/RayCast3D
 
 @onready var slam_area = $GroundSlam
 
+
 #UI
 @onready var crosshair = $HUD/crosshair
+
 
 
 func InteriorEnter(metaData: Variant) -> void:
@@ -181,8 +193,8 @@ func _physics_process(delta):
 			velocity.z = lerp(velocity.z, direction.z * speed, delta * 5.0)
 			
 	else: # airborne speed
-		velocity.x = lerp(velocity.x, direction.x * speed, delta * 0.7)
-		velocity.z = lerp(velocity.z, direction.z * speed, delta * 0.7)
+		velocity.x = lerp(velocity.x, direction.x * speed, delta * 1.5)
+		velocity.z = lerp(velocity.z, direction.z * speed, delta * 1.5)
 	
 	move_and_slide()
 
@@ -197,12 +209,21 @@ func hit(recieved_damage):
 	player_health -= recieved_damage
 	checkLifeLine()
 
-func shoot_smg():
+func shoot_smg(): # Double ashtagged lines are particles, they look like shit - don't enable
 	if !smg_anim.is_playing():
 		smg_anim.play("Shoot")
+		instance = bullet_trail.instantiate()
 		if smg_ray.is_colliding():
+			instance.init(smg_barrel.global_position, smg_ray.get_collision_point())
+			# # get_parent().add_child(instance)
 			if smg_ray.get_collider().is_in_group("Enemy"):
 				smg_ray.get_collider().hit(smg_damage, "player")
+				# # instance.trigger_particles(smg_ray.get_collision_point(), smg_barrel.global_position, true)
+			# # else:
+				# # instance.trigger_particles(smg_ray.get_collision_point(), smg_barrel.global_position, false)
+		else:
+			instance.init(smg_barrel.global_position, smg_rayEnd.global_position)
+		get_parent().add_child(instance)
 
 func shoot_offHandShotgun():
 	if !quickDraw_anim.is_playing():
