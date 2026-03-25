@@ -4,7 +4,7 @@ extends CharacterBody3D
 enum State { IDLE, CHASE, ATTACK }
 var current_state = State.IDLE
 
-@export var speed = 4.0
+@export var speed = 3.5
 @export var attack_distance = 2 # Short distance for sword
 @export var detection_range = 15
 @export var enemy_damage = 30
@@ -98,33 +98,33 @@ func process_attack_state():
 	
 	# Decide: Player forever-napping or keep attaking?
 	if !player.dead and !isInAttack:
+		isInAttack = true
 		sprite.play("Attack1")
 		attack()
-		isInAttack = true
-		print(player.player_health)
-		
+	
+	await sprite.animation_finished
+	
+	isInAttack = false
+	
 	# Decide: Chase again or keep attacking?
 	if player.dead == true:
 		current_state = State.IDLE
-		
-	await sprite.animation_finished
-		
+	
 	if global_position.distance_to(player.global_position) > attack_distance:
 		current_state = State.CHASE
-	
-	isInAttack = false
 
 
 func process_dead_state(): # gotta make death anim   Zzzzz
 	pass 
 
 func attack():
+	await sprite.animation_finished
 	if sword_ray.is_colliding():
 		#var pos = smg_ray.get_collision_point()
 		#var normal = smg_ray.get_collision_normal()
 		if sword_ray.get_collider().is_in_group("Player"):
 			sword_ray.get_collider().hit(enemy_damage)
-	
+
 func hit(recieved_damage, type):
 	if type == "player":
 		damagedByPlayer = true

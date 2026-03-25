@@ -6,6 +6,7 @@ const headFreq = 2.4
 const headAmp = 0.08
 var headTime = 0.0
 @onready var camDefHeight = $PlayerCamera.position.y
+@onready var healthBar = $HUD/HealthBar
 @export var screenEffect: ColorRect
 
 var speed = 0
@@ -25,7 +26,8 @@ var attack = false
 var currentInput = Vector2()
 
 #player stats
-@export var player_health = 100
+const PLAYER_MAX_HEALTH = 100
+@export var player_health = PLAYER_MAX_HEALTH
 @export var walk_speed = 4
 @export var run_speed = 8
 @export var dash_speed = 25
@@ -96,6 +98,9 @@ func updateScreenEffect():
 	var factor = clamp(dot, 0.0, 1.0)
 	screenEffect.material.set("shader_parameter/look_angle_factor", factor)
 
+func _ready() -> void:
+	healthBar.max_value = PLAYER_MAX_HEALTH
+
 func _input(event):
 	#if event is InputEventMouseButton:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -114,8 +119,6 @@ func _input(event):
 				cameraDistance-=1.5
 				
 
-
-	
 
 func _physics_process(delta):
 	
@@ -141,7 +144,7 @@ func _physics_process(delta):
 			var pushDir = -collision.get_normal()
 			collider.apply_impulse(pushDir * 4, collision.get_position() - collider.global_position)
 
-	
+
 	if is_on_floor():
 		if slam == true:
 			slam = false
@@ -166,15 +169,15 @@ func _physics_process(delta):
 	
 	# Get direction
 	currentInput = Input.get_vector("A", "D", "S", "W")
-
-				
+	
+	
 	var direction = (transform.basis * Vector3(currentInput.y, 0, currentInput.x)).normalized()
 			
 	#Basic movement & dash
 	if is_on_floor(): # grounded speed
 		if direction:
-			velocity.x = lerp(velocity.x, direction.x * speed, delta * 20.0)
-			velocity.z = lerp(velocity.z, direction.z * speed, delta * 20.0)
+			velocity.x = move_toward(velocity.x, direction.x * speed, delta * 20.0)
+			velocity.z = move_toward(velocity.z, direction.z * speed, delta * 20.0)
 			if Input.is_action_just_pressed("Ctrl") and canDash:
 				$DashTimer.start()
 				dash = true
@@ -196,6 +199,7 @@ func _physics_process(delta):
 		velocity.x = lerp(velocity.x, direction.x * speed, delta * 1.5)
 		velocity.z = lerp(velocity.z, direction.z * speed, delta * 1.5)
 	
+	handle_healthBar(delta)
 	move_and_slide()
 
 func get_cam_forward_direction() -> Vector3:
@@ -249,7 +253,12 @@ func slam_ground():
 			body.get_pounded(slam_damage)
 
 func checkLifeLine():
+	print(player_health)
 	if player_health <= 0 and dead == false:
 		print("u ded lol")
 		dead = true
 		#get_tree().quit()
+
+func handle_healthBar(delta):
+	var health_dif = healthBar.value - player_health
+	healthBar.value = move_toward(healthBar.value, player_health, health_dif/5)
