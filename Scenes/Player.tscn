@@ -21,6 +21,7 @@ size = Vector3(1, 2, 1)
 floor_constant_speed = true
 floor_snap_length = 0.25
 script = ExtResource("1_g8lft")
+dash_speed = 11
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=620583355]
 visible = false

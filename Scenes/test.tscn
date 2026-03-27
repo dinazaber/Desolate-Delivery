@@ -126,9 +126,11 @@ shadow_blur = 3.0
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=493655703]
 environment = SubResource("Environment_ys1qc")
 
-[node name="Player" parent="." unique_id=1941692924 node_paths=PackedStringArray("screenEffect") instance=ExtResource("2_8od7v")]
+[node name="Player" parent="." unique_id=1941692924 node_paths=PackedStringArray("screenEffect", "sun", "weapon1") instance=ExtResource("2_8od7v")]
 transform = Transform3D(0.8183203, 0, -0.57476246, 0, 1, 0, 0.57476246, 0, 0.8183203, -3.9721003, 1.7755189, -3.147481)
 screenEffect = NodePath("SandHaze")
+sun = NodePath("../DirectionalLight3D")
+weapon1 = NodePath("PlayerCamera/Weapon/SMG")
 
 [node name="SandHaze" type="ColorRect" parent="Player" unique_id=1103963715]
 process_mode = 1
@@ -145,6 +147,7 @@ mesh = ExtResource("3_qc4db")
 
 [node name="Car3" type="MeshInstance3D" parent="." unique_id=673387538]
 transform = Transform3D(0.78493184, 0, -0.15453818, 0, 0.8, 0, 0.15453818, 0, 0.78493184, 0, 0.94204694, 0)
+visible = false
 mesh = ExtResource("8_0c07c")
 
 [node name="Decal2" type="Decal" parent="Car3" unique_id=31879390]

@@ -8,6 +8,8 @@ var headTime = 0.0
 @onready var camDefHeight = $PlayerCamera.position.y
 @onready var healthBar = $HUD/HealthBar
 @export var screenEffect: ColorRect
+@export var sun: DirectionalLight3D
+@export var weapon1: MeshInstance3D
 
 var speed = 0
 var dash: bool = false
@@ -100,6 +102,11 @@ func updateScreenEffect():
 
 func _ready() -> void:
 	healthBar.max_value = PLAYER_MAX_HEALTH
+	
+	if sun!=null: 
+		var sunDir = sun.global_transform.basis.z.normalized()
+		weapon1.set_instance_shader_parameter("sun_direction", sunDir)
+		print(sunDir)
 
 func _input(event):
 	#if event is InputEventMouseButton:
@@ -178,7 +185,7 @@ func _physics_process(delta):
 		if direction:
 			velocity.x = move_toward(velocity.x, direction.x * speed, delta * 20.0)
 			velocity.z = move_toward(velocity.z, direction.z * speed, delta * 20.0)
-			if Input.is_action_just_pressed("Ctrl") and canDash:
+			if Input.is_action_just_pressed("Alt") and canDash:
 				$DashTimer.start()
 				dash = true
 				canDash = false

@@ -1,6 +1,6 @@
-[gd_scene load_steps=34 format=4 uid="uid://fpn1i64uq4k3"]
+[gd_scene format=4 uid="uid://fpn1i64uq4k3"]
 
-[ext_resource type="Shader" uid="uid://cwlvdwctawls8" path="res://Shaders/Light.gdshader" id="1_uf8j7"]
+[ext_resource type="Shader" uid="uid://cwlvdwctawls8" path="res://Shaders/MainShader.gdshader" id="1_uf8j7"]
 [ext_resource type="Animation" uid="uid://brt7li7kxjfc8" path="res://assets/Animations/Human/SwordAttack.res" id="2_lr0no"]
 [ext_resource type="ArrayMesh" uid="uid://bo8rn353c23l4" path="res://assets/Meshes/Weapons/Sword.mesh" id="2_t8tqr"]
 [ext_resource type="Animation" uid="uid://c61g3vll7x41w" path="res://assets/Animations/Human/Dash.res" id="4_y7df0"]
