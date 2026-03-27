@@ -44,19 +44,26 @@ const PLAYER_MAX_HEALTH = 100
 @export var slam_damage = 40
 
 
-#bullets
+#loading objects
 var bullet_trail = load("res://Scenes/BulletTrail.tscn")
-var instance
+var instance_bullet
+var grenade = load("res://Scenes/Grenade.tscn")
+var instance_grenade
 
+
+@onready var eyes = $PlayerCamera/RayCast3D
+@onready var eyes_end = $PlayerCamera/RayEnd
 
 #guns
 @onready var smg_anim = $PlayerCamera/Weapon/AnimationPlayer
-@onready var smg_ray = $PlayerCamera/Weapon/RayCast3D
+#@onready var smg_ray = $PlayerCamera/Weapon/RayCast3D
+@onready var smg_ray = eyes
 @onready var smg_barrel = $PlayerCamera/Weapon/barrel_pos
 @onready var smg_rayEnd = $PlayerCamera/Weapon/barrel_end
 
 @onready var quickDraw_anim = $PlayerCamera/OffHandShotgun/AnimationPlayer
-@onready var quickDraw_ray = $PlayerCamera/OffHandShotgun/RayCast3D
+#@onready var quickDraw_ray = $PlayerCamera/OffHandShotgun/RayCast3D
+@onready var quickDraw_ray = eyes
 
 @onready var slam_area = $GroundSlam
 
@@ -143,6 +150,9 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("RightMouse"):
 		shoot_offHandShotgun()
 	
+	if Input.is_action_just_pressed("R"):
+		throw_grenade()
+	
 	for i in get_slide_collision_count():
 		var collision = get_slide_collision(i)
 		var collider = collision.get_collider()
@@ -216,25 +226,37 @@ func get_cam_forward_direction() -> Vector3:
 func knock_back(direction: Vector3, speed):
 	velocity = speed * direction
 
-func hit(recieved_damage):
+func hit(recieved_damage, _type):
 	player_health -= recieved_damage
 	checkLifeLine()
+
+func throw_grenade():
+	instance_grenade = grenade.instantiate()
+	instance_grenade.position = $PlayerCamera/throwableSpawn.global_position
+	var throw_dir = get_cam_forward_direction()
+	var forward_force = 10
+	var upward_force = 3.5
+	instance_grenade.apply_central_impulse((throw_dir * forward_force) + Vector3(0, upward_force, 0) + velocity)
+	get_parent().add_child(instance_grenade)
 
 func shoot_smg(): # Double ashtagged lines are particles, they look like shit - don't enable
 	if !smg_anim.is_playing():
 		smg_anim.play("Shoot")
-		instance = bullet_trail.instantiate()
+		instance_bullet = bullet_trail.instantiate()
 		if smg_ray.is_colliding():
-			instance.init(smg_barrel.global_position, smg_ray.get_collision_point())
-			# # get_parent().add_child(instance)
+			instance_bullet.init(smg_barrel.global_position, smg_ray.get_collision_point())
+			# # get_parent().add_child(instance_bullet)
 			if smg_ray.get_collider().is_in_group("Enemy"):
 				smg_ray.get_collider().hit(smg_damage, "player")
-				# # instance.trigger_particles(smg_ray.get_collision_point(), smg_barrel.global_position, true)
+				# # instance_bullet.trigger_particles(smg_ray.get_collision_point(), smg_barrel.global_position, true)
+			if smg_ray.get_collider().is_in_group("ShotReactable"):
+				print("genade shot")
+				smg_ray.get_collider().shot()
 			# # else:
-				# # instance.trigger_particles(smg_ray.get_collision_point(), smg_barrel.global_position, false)
+				# # instance_bullet.trigger_particles(smg_ray.get_collision_point(), smg_barrel.global_position, false)
 		else:
-			instance.init(smg_barrel.global_position, smg_rayEnd.global_position)
-		get_parent().add_child(instance)
+			instance_bullet.init(smg_barrel.global_position, smg_rayEnd.global_position)
+		get_parent().add_child(instance_bullet)
 
 func shoot_offHandShotgun():
 	if !quickDraw_anim.is_playing():
@@ -250,6 +272,10 @@ func shoot_offHandShotgun():
 		if quickDraw_ray.is_colliding():
 			if quickDraw_ray.get_collider().is_in_group("Enemy"):
 				quickDraw_ray.get_collider().hit(quickDraw_damage, "player")
+			if quickDraw_ray.get_collider().is_in_group("ShotReactable"):
+					print("genade shot")
+					quickDraw_ray.get_collider().shot()
+		
 		await get_tree().create_timer(0.4).timeout
 		quickDraw_anim.play_backwards("Draw")
 

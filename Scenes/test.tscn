@@ -99,14 +99,17 @@ shader_parameter/density_slow = 1.25
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=628531476]
 navigation_mesh = SubResource("NavigationMesh_yb21e")
+navigation_layers = 5
 
 [node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D" unique_id=896803781]
+collision_layer = 5
+collision_mask = 5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D" unique_id=141115913]
 shape = SubResource("BoxShape3D_ys1qc")
 
 [node name="Sands" type="MultiMeshInstance3D" parent="NavigationRegion3D/StaticBody3D" unique_id=2144524272]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1586064, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.89512527, 0)
 layers = 16
 cast_shadow = 0
 multimesh = SubResource("MultiMesh_iaow0")

@@ -123,7 +123,7 @@ func attack():
 		#var pos = smg_ray.get_collision_point()
 		#var normal = smg_ray.get_collision_normal()
 		if sword_ray.get_collider().is_in_group("Player"):
-			sword_ray.get_collider().hit(enemy_damage)
+			sword_ray.get_collider().hit(enemy_damage, "enemy")
 
 func hit(recieved_damage, type):
 	if type == "player":

@@ -42,9 +42,12 @@ one_shot = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.6829516, 0)
 
 [node name="PlayerCamera" type="Camera3D" parent="." unique_id=1738772125]
-transform = Transform3D(-4.371213e-08, 9.313226e-10, -1, -5.1691977e-11, 1, 9.313226e-10, 1, 5.169202e-11, -4.371213e-08, 0.5, 0.639, 0)
+transform = Transform3D(-4.371213e-08, 9.313226e-10, -1, -5.1691977e-11, 1, 9.313226e-10, 1, 5.169202e-11, -4.371213e-08, 0, 0.639, 0)
 cull_mask = 1048573
 size = 56.061
+
+[node name="throwableSpawn" type="Marker3D" parent="PlayerCamera" unique_id=67584433]
+transform = Transform3D(-4.371213e-08, -5.1691977e-11, 1, 9.313226e-10, 1, 5.169202e-11, -1, 9.313226e-10, -4.371213e-08, 4.426729e-09, 0, -1.4877298)
 
 [node name="Weapon" parent="PlayerCamera" unique_id=447946986 instance=ExtResource("2_kyqiw")]
 transform = Transform3D(0.15, 0, 0, 0, 0.15, -3.3893527e-19, 0, -3.3893524e-19, 0.15, 0.3383646, -0.2478975, -0.43325317)
