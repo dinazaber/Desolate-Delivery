@@ -38,8 +38,6 @@ func explode():
 		for body in bodies:
 			body.hit(current_damage, "player")
 	
-	#var instance = explosion.instantiate()
-	#instance.boom(global_position)
 	
 	$GenadeMesh.visible = false
 	if got_shot:

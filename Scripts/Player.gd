@@ -58,10 +58,12 @@ var instance_grenade
 @onready var smg_anim = $PlayerCamera/Weapon/AnimationPlayer
 #@onready var smg_ray = $PlayerCamera/Weapon/RayCast3D
 @onready var smg_ray = eyes
-@onready var smg_barrel = $PlayerCamera/Weapon/barrel_pos
-@onready var smg_rayEnd = $PlayerCamera/Weapon/barrel_end
+@onready var smg_barrel = $PlayerCamera/RightHand/barrel_pos
+@onready var smg_rayEnd = $PlayerCamera/RightHand/barrel_end
 
-@onready var quickDraw_anim = $PlayerCamera/OffHandShotgun/AnimationPlayer
+@onready var rightWeaponAnim = $PlayerCamera/RightHand/AnimationPlayer
+@onready var leftWeaponAnim = $PlayerCamera/LeftHand/AnimationPlayer
+
 #@onready var quickDraw_ray = $PlayerCamera/OffHandShotgun/RayCast3D
 @onready var quickDraw_ray = eyes
 
@@ -73,34 +75,13 @@ var instance_grenade
 
 
 
-func InteriorEnter(metaData: Variant) -> void:
-	currentRoof = metaData.mesh
-	currentRoof = currentRoof.surface_get_material(0)
-	currentRoof.albedo_color.a = 0
-
-
-func InteriorExit(body: Node3D) -> void:
-	if body.name == "Player":
-		if currentRoof!=null:
-			currentRoof.albedo_color.a = 1
-
-
-func DashTimerTimeOut() -> void:
-	dash = false
-	$SuperTimer.set("wait_time",0.5)
-	$SuperTimer.start()
-
-
 func SuperTimerTimeOut() -> void:
 	if !canDash:
 		canDash = true
 		
-func animFinished(anim_name: StringName) -> void:
-	if "Attack" in anim_name:
-		attack = false
 
 
-func updateScreenEffect():
+func updateScreenEffect(): #Function for current and future screen effects
 	var forward = -$PlayerCamera.global_transform.basis.z
 	var horizontal_forward = Vector3(forward.x, 0, forward.z).normalized()
 	var dot = forward.dot(horizontal_forward)
@@ -196,11 +177,12 @@ func _physics_process(delta):
 			velocity.x = move_toward(velocity.x, direction.x * speed, delta * 20.0)
 			velocity.z = move_toward(velocity.z, direction.z * speed, delta * 20.0)
 			if Input.is_action_just_pressed("Alt") and canDash:
-				$DashTimer.start()
-				dash = true
-				canDash = false
-			if dash:
-				velocity = direction * dash_speed
+				if canDash:
+					velocity = direction * dash_speed
+					canDash = false
+					$SuperTimer.set("wait_time",0.5)
+					$SuperTimer.start()
+
 			
 			# head bob
 			headTime += delta * velocity.length() * float(is_on_floor())
@@ -216,32 +198,28 @@ func _physics_process(delta):
 		velocity.x = lerp(velocity.x, direction.x * speed, delta * 1.5)
 		velocity.z = lerp(velocity.z, direction.z * speed, delta * 1.5)
 	
-	handle_healthBar(delta)
+	#handle_healthBar()
 	move_and_slide()
 
-func get_cam_forward_direction() -> Vector3:
-	var look_dir = -$PlayerCamera.global_transform.basis.z.normalized()
-	return look_dir
 
-func knock_back(direction: Vector3, speed):
-	velocity = speed * direction
 
 func hit(recieved_damage, _type):
+	handle_healthBar()
 	player_health -= recieved_damage
 	checkLifeLine()
 
 func throw_grenade():
 	instance_grenade = grenade.instantiate()
 	instance_grenade.position = $PlayerCamera/throwableSpawn.global_position
-	var throw_dir = get_cam_forward_direction()
+	var throw_dir = -$PlayerCamera.global_transform.basis.z.normalized()
 	var forward_force = 10
 	var upward_force = 3.5
 	instance_grenade.apply_central_impulse((throw_dir * forward_force) + Vector3(0, upward_force, 0) + velocity)
 	get_parent().add_child(instance_grenade)
 
 func shoot_smg(): # Double ashtagged lines are particles, they look like shit - don't enable
-	if !smg_anim.is_playing():
-		smg_anim.play("Shoot")
+	if !rightWeaponAnim.is_playing():
+		rightWeaponAnim.play("ShootSMG")
 		instance_bullet = bullet_trail.instantiate()
 		if smg_ray.is_colliding():
 			instance_bullet.init(smg_barrel.global_position, smg_ray.get_collision_point())
@@ -259,15 +237,14 @@ func shoot_smg(): # Double ashtagged lines are particles, they look like shit - 
 		get_parent().add_child(instance_bullet)
 
 func shoot_offHandShotgun():
-	if !quickDraw_anim.is_playing():
-		quickDraw_anim.play("Draw")
+	if !leftWeaponAnim.is_playing():
+		leftWeaponAnim.play("DrawShotgun")
 		await get_tree().create_timer(0.25).timeout
-		quickDraw_anim.play("Shoot")
+		leftWeaponAnim.play("ShootShotgun")
 		
 		if !is_on_floor():
-			var direction = get_cam_forward_direction()
-			print(direction)
-			knock_back(direction, -20)
+			var direction = $PlayerCamera.global_transform.basis.z.normalized()
+			velocity = 20 * direction
 		
 		if quickDraw_ray.is_colliding():
 			if quickDraw_ray.get_collider().is_in_group("Enemy"):
@@ -277,7 +254,7 @@ func shoot_offHandShotgun():
 					quickDraw_ray.get_collider().shot()
 		
 		await get_tree().create_timer(0.4).timeout
-		quickDraw_anim.play_backwards("Draw")
+		leftWeaponAnim.play_backwards("DrawShotgun")
 
 func slam_ground():
 	if slam_area.has_overlapping_bodies():
@@ -292,6 +269,6 @@ func checkLifeLine():
 		dead = true
 		#get_tree().quit()
 
-func handle_healthBar(delta):
+func handle_healthBar():
 	var health_dif = healthBar.value - player_health
 	healthBar.value = move_toward(healthBar.value, player_health, health_dif/5)

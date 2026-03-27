@@ -1,5 +1,5 @@
 shader_type spatial;
-render_mode unshaded, cull_disabled;
+render_mode unshaded, cull_disabled, fog_disabled;
 
 uniform sampler2D albedo : source_color, filter_nearest; 
 uniform sampler2D roughness_map : filter_nearest; 

@@ -109,7 +109,7 @@ collision_mask = 5
 shape = SubResource("BoxShape3D_ys1qc")
 
 [node name="Sands" type="MultiMeshInstance3D" parent="NavigationRegion3D/StaticBody3D" unique_id=2144524272]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.89512527, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 0)
 layers = 16
 cast_shadow = 0
 multimesh = SubResource("MultiMesh_iaow0")
@@ -133,7 +133,15 @@ environment = SubResource("Environment_ys1qc")
 transform = Transform3D(0.8183203, 0, -0.57476246, 0, 1, 0, 0.57476246, 0, 0.8183203, -3.9721003, 1.7755189, -3.147481)
 screenEffect = NodePath("SandHaze")
 sun = NodePath("../DirectionalLight3D")
-weapon1 = NodePath("PlayerCamera/Weapon/SMG")
+weapon1 = NodePath("PlayerCamera/RightHand/SMG")
+player_health = 100
+walk_speed = 4
+run_speed = 8
+jump_speed = 10
+slam_speed = -30
+smg_damage = 15
+quickDraw_damage = 70
+slam_damage = 40
 
 [node name="SandHaze" type="ColorRect" parent="Player" unique_id=1103963715]
 process_mode = 1
@@ -150,7 +158,6 @@ mesh = ExtResource("3_qc4db")
 
 [node name="Car3" type="MeshInstance3D" parent="." unique_id=673387538]
 transform = Transform3D(0.78493184, 0, -0.15453818, 0, 0.8, 0, 0.15453818, 0, 0.78493184, 0, 0.94204694, 0)
-visible = false
 mesh = ExtResource("8_0c07c")
 
 [node name="Decal2" type="Decal" parent="Car3" unique_id=31879390]
@@ -188,3 +195,7 @@ cull_mask = 1048574
 [node name="Enemy" parent="." unique_id=546459934 instance=ExtResource("12_yb21e")]
 transform = Transform3D(-0.32304215, 0, 0.9463846, 0, 1, 0, -0.9463846, 0, -0.32304215, 8.692926, 0.9878535, -7.377297)
 collision_mask = 1
+
+[editable path="Player"]
+[editable path="Player/PlayerCamera/LeftHand"]
+[editable path="Player/PlayerCamera/RightHand"]
