@@ -2,20 +2,17 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ch0y4ionot4vu"
-path.bptc="res://.godot/imported/Objects_ColorPallete.png-be3d25a8dca1daed5ba43cbff7a5c2af.bptc.ctex"
+uid="uid://u8gu45qvegrs"
+path.bptc="res://.godot/imported/SpecularPallete.png-71e5e7abeb6a0a2c0beaef288ddae910.bptc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
-generator_parameters={
-"md5": "be617eb4272c5bb37f63598f8e20fdce"
-}
 
 [deps]
 
-source_file="res://Objects_ColorPallete.png"
-dest_files=["res://.godot/imported/Objects_ColorPallete.png-be3d25a8dca1daed5ba43cbff7a5c2af.bptc.ctex"]
+source_file="res://assets/Textures/SpecularPallete.png"
+dest_files=["res://.godot/imported/SpecularPallete.png-71e5e7abeb6a0a2c0beaef288ddae910.bptc.ctex"]
 
 [params]
 
