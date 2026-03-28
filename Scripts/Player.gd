@@ -9,7 +9,8 @@ var headTime = 0.0
 @onready var healthBar = $HUD/HealthBar
 @export var screenEffect: ColorRect
 @export var sun: DirectionalLight3D
-@export var weapon1: MeshInstance3D
+@onready var rightWeapon: MeshInstance3D = $PlayerCamera/RightHand/SMG
+@onready var leftWeapon: MeshInstance3D = $PlayerCamera/LeftHand/Shotty
 
 var speed = 0
 var dash: bool = false
@@ -51,21 +52,13 @@ var grenade = load("res://Scenes/Grenade.tscn")
 var instance_grenade
 
 
-@onready var eyes = $PlayerCamera/RayCast3D
-@onready var eyes_end = $PlayerCamera/RayEnd
+@onready var playerRay = $PlayerCamera/PlayerRay
+#@onready var eyes_end = $PlayerCamera/RayEnd
 
-#guns
-@onready var smg_anim = $PlayerCamera/Weapon/AnimationPlayer
-#@onready var smg_ray = $PlayerCamera/Weapon/RayCast3D
-@onready var smg_ray = eyes
-@onready var smg_barrel = $PlayerCamera/RightHand/barrel_pos
-@onready var smg_rayEnd = $PlayerCamera/RightHand/barrel_end
 
 @onready var rightWeaponAnim = $PlayerCamera/RightHand/AnimationPlayer
 @onready var leftWeaponAnim = $PlayerCamera/LeftHand/AnimationPlayer
 
-#@onready var quickDraw_ray = $PlayerCamera/OffHandShotgun/RayCast3D
-@onready var quickDraw_ray = eyes
 
 @onready var slam_area = $GroundSlam
 
@@ -93,7 +86,7 @@ func _ready() -> void:
 	
 	if sun!=null: 
 		var sunDir = sun.global_transform.basis.z.normalized()
-		weapon1.set_instance_shader_parameter("sun_direction", sunDir)
+		rightWeapon.set_instance_shader_parameter("sun_direction", sunDir)
 		print(sunDir)
 
 func _input(event):
@@ -116,10 +109,11 @@ func _input(event):
 
 
 func _physics_process(delta):
+		
 	
 	if screenEffect!=null: updateScreenEffect()
 
-	cameraDistance = clamp(cameraDistance,15, 45)
+	#cameraDistance = clamp(cameraDistance,15, 45)
 	
 	rotation.y = lerp_angle(rotation.y, yaw, delta*20) # left/right
 	$PlayerCamera.rotation.x = lerp_angle($PlayerCamera.rotation.x, -pitch, delta*20)
@@ -142,21 +136,6 @@ func _physics_process(delta):
 			var pushDir = -collision.get_normal()
 			collider.apply_impulse(pushDir * 4, collision.get_position() - collider.global_position)
 
-
-	if is_on_floor():
-		if slam == true:
-			slam = false
-			slam_ground()
-		
-		if Input.is_action_just_pressed("Space"):
-			velocity.y += jump_speed
-			
-	else:
-		velocity.y -= 20 * delta # Gravity
-		
-		if Input.is_action_just_pressed("Ctrl"): # Groundslam
-			slam = true
-			velocity.y += slam_speed
 	
 	if Input.is_action_pressed("Shift"):
 		
@@ -173,6 +152,14 @@ func _physics_process(delta):
 			
 	#Basic movement & dash
 	if is_on_floor(): # grounded speed
+		if slam == true:
+			slam = false
+			slam_ground()
+		
+		if Input.is_action_just_pressed("Space"):
+			velocity.y += jump_speed
+		
+		
 		if direction:
 			velocity.x = move_toward(velocity.x, direction.x * speed, delta * 20.0)
 			velocity.z = move_toward(velocity.z, direction.z * speed, delta * 20.0)
@@ -195,6 +182,13 @@ func _physics_process(delta):
 			velocity.z = lerp(velocity.z, direction.z * speed, delta * 5.0)
 			
 	else: # airborne speed
+		velocity.y -= 20 * delta # Gravity
+		
+		if Input.is_action_just_pressed("Ctrl"): # Groundslam
+			slam = true
+			velocity.y += slam_speed
+		
+		
 		velocity.x = lerp(velocity.x, direction.x * speed, delta * 1.5)
 		velocity.z = lerp(velocity.z, direction.z * speed, delta * 1.5)
 	
@@ -217,24 +211,15 @@ func throw_grenade():
 	instance_grenade.apply_central_impulse((throw_dir * forward_force) + Vector3(0, upward_force, 0) + velocity)
 	get_parent().add_child(instance_grenade)
 
-func shoot_smg(): # Double ashtagged lines are particles, they look like shit - don't enable
+func shoot_smg():
 	if !rightWeaponAnim.is_playing():
 		rightWeaponAnim.play("ShootSMG")
-		instance_bullet = bullet_trail.instantiate()
-		if smg_ray.is_colliding():
-			instance_bullet.init(smg_barrel.global_position, smg_ray.get_collision_point())
-			# # get_parent().add_child(instance_bullet)
-			if smg_ray.get_collider().is_in_group("Enemy"):
-				smg_ray.get_collider().hit(smg_damage, "player")
-				# # instance_bullet.trigger_particles(smg_ray.get_collision_point(), smg_barrel.global_position, true)
-			if smg_ray.get_collider().is_in_group("ShotReactable"):
-				print("genade shot")
-				smg_ray.get_collider().shot()
-			# # else:
-				# # instance_bullet.trigger_particles(smg_ray.get_collision_point(), smg_barrel.global_position, false)
-		else:
-			instance_bullet.init(smg_barrel.global_position, smg_rayEnd.global_position)
-		get_parent().add_child(instance_bullet)
+		if playerRay.is_colliding():
+			if playerRay.get_collider().is_in_group("Enemy"):
+				playerRay.get_collider().hit(smg_damage, "player")
+			if playerRay.get_collider().is_in_group("ShotReactable"):
+				playerRay.get_collider().shot()
+			
 
 func shoot_offHandShotgun():
 	if !leftWeaponAnim.is_playing():
@@ -246,12 +231,12 @@ func shoot_offHandShotgun():
 			var direction = $PlayerCamera.global_transform.basis.z.normalized()
 			velocity = 20 * direction
 		
-		if quickDraw_ray.is_colliding():
-			if quickDraw_ray.get_collider().is_in_group("Enemy"):
-				quickDraw_ray.get_collider().hit(quickDraw_damage, "player")
-			if quickDraw_ray.get_collider().is_in_group("ShotReactable"):
+		if playerRay.is_colliding():
+			if playerRay.get_collider().is_in_group("Enemy"):
+				playerRay.get_collider().hit(quickDraw_damage, "player")
+			if playerRay.get_collider().is_in_group("ShotReactable"):
 					print("genade shot")
-					quickDraw_ray.get_collider().shot()
+					playerRay.get_collider().shot()
 		
 		await get_tree().create_timer(0.4).timeout
 		leftWeaponAnim.play_backwards("DrawShotgun")

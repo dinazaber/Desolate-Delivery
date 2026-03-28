@@ -129,19 +129,10 @@ shadow_blur = 3.0
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=493655703]
 environment = SubResource("Environment_ys1qc")
 
-[node name="Player" parent="." unique_id=1941692924 node_paths=PackedStringArray("screenEffect", "sun", "weapon1") instance=ExtResource("2_8od7v")]
+[node name="Player" parent="." unique_id=1941692924 node_paths=PackedStringArray("screenEffect", "sun") instance=ExtResource("2_8od7v")]
 transform = Transform3D(0.8183203, 0, -0.57476246, 0, 1, 0, 0.57476246, 0, 0.8183203, -3.9721003, 1.7755189, -3.147481)
 screenEffect = NodePath("SandHaze")
 sun = NodePath("../DirectionalLight3D")
-weapon1 = NodePath("PlayerCamera/RightHand/SMG")
-player_health = 100
-walk_speed = 4
-run_speed = 8
-jump_speed = 10
-slam_speed = -30
-smg_damage = 15
-quickDraw_damage = 70
-slam_damage = 40
 
 [node name="SandHaze" type="ColorRect" parent="Player" unique_id=1103963715]
 process_mode = 1

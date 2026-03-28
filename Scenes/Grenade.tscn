@@ -43,6 +43,8 @@ emission_energy_multiplier = 2.0
 material = SubResource("StandardMaterial3D_ou7vq")
 top_radius = 0.1
 bottom_radius = 0.0
+radial_segments = 4
+rings = 1
 
 [sub_resource type="Curve" id="Curve_ou7vq"]
 _data = [Vector2(0, 0.011235952), 0.0, 0.0, 0, 0, Vector2(0.6034483, 0.79775286), 0.0, 0.0, 0, 0, Vector2(1, 0.011235952), 0.0, 0.0, 0, 0]
@@ -82,6 +84,7 @@ emission_curve = SubResource("CurveTexture_oxblh")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e1jli"]
 transparency = 1
+shading_mode = 0
 vertex_color_use_as_albedo = true
 
 [sub_resource type="SphereMesh" id="SphereMesh_lcisc"]
