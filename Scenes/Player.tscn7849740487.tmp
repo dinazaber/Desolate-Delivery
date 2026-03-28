@@ -24,7 +24,15 @@ radius = 4.5
 floor_constant_speed = true
 floor_snap_length = 0.25
 script = ExtResource("1_g8lft")
+player_health = null
+walk_speed = null
+run_speed = null
 dash_speed = 11
+jump_speed = null
+slam_speed = null
+smg_damage = null
+quickDraw_damage = null
+slam_damage = null
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=620583355]
 visible = false
@@ -61,8 +69,11 @@ collision_mask = 2
 [node name="LeftHand" parent="PlayerCamera" unique_id=1896444700 instance=ExtResource("3_nn08x")]
 transform = Transform3D(-8.742278e-09, 0, 0.2, 7.66726e-24, 0.2, 0, -0.2, -4.5191364e-19, -8.742278e-09, -0.5461225, -0.38191456, -0.47322318)
 
+[node name="Shotty" parent="PlayerCamera/LeftHand" index="0" unique_id=48255100]
+transform = Transform3D(44.999996, 77.94228, 155.88458, -77.942276, -135.00002, 89.99999, 155.88458, -89.99999, -3.934025e-06, 0, -3.73, 1.5)
+
 [node name="RightHand" parent="PlayerCamera" unique_id=267885530 instance=ExtResource("2_kyqiw")]
-transform = Transform3D(0.15, 0, 0, 0, 0.15, -3.3893527e-19, 0, -3.3893524e-19, 0.15, 0.40479383, -0.3045184, -0.44800004)
+transform = Transform3D(0.15, 0, 0, 0, 0.15, -3.3893527e-19, 0, -3.3893524e-19, 0.15, 0.35397905, -0.265, -0.44775328)
 
 [node name="PauseMenu" type="Control" parent="." unique_id=877245422 node_paths=PackedStringArray("hud")]
 process_mode = 3
@@ -177,3 +188,6 @@ allow_lesser = true
 [connection signal="pressed" from="PauseMenu/PauseMenu/MarginContainer/VBoxContainer/Settings" to="PauseMenu" method="_on_settings_pressed"]
 [connection signal="pressed" from="PauseMenu/PauseMenu/MarginContainer/VBoxContainer/Quit" to="PauseMenu" method="_on_quit_pressed"]
 [connection signal="closed" from="PauseMenu/Settings" to="PauseMenu" method="_on_settings_closed"]
+
+[editable path="PlayerCamera/LeftHand"]
+[editable path="PlayerCamera/RightHand"]

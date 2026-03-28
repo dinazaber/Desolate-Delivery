@@ -73,12 +73,5 @@ transform = Transform3D(180, 0, 0, 0, -7.86805e-06, 180, 0, -180, -7.86805e-06, 
 rotation_order = 0
 mesh = ExtResource("1_32bl7")
 
-[node name="RayCast3D" type="RayCast3D" parent="." unique_id=1593038351]
-transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, 1.7, 0, 0)
-target_position = Vector3(15, 0, 0)
-collision_mask = 2
-collide_with_areas = true
-debug_shape_thickness = 5
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1787380741]
 libraries/ = SubResource("AnimationLibrary_lekgj")
