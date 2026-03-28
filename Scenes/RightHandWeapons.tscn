@@ -5,16 +5,17 @@
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_7bpbl"]
 angle_min = 1.0728835e-05
-angle_max = 1.0728835e-05
-direction = Vector3(0, 0, 0)
+angle_max = 30.000011
+direction = Vector3(0, 0, -1)
 spread = 0.0
-initial_velocity_min = 300.0
-initial_velocity_max = 300.0
+initial_velocity_min = 1000.0
+initial_velocity_max = 1000.0
 gravity = Vector3(0, 0, 0)
+collision_mode = 2
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7bpbl"]
 shading_mode = 0
-albedo_color = Color(1, 0.75, 0, 1)
+albedo_color = Color(1.353256, 0.30763152, 0, 1)
 
 [sub_resource type="PrismMesh" id="PrismMesh_7mlgx"]
 material = SubResource("StandardMaterial3D_7bpbl")
@@ -22,6 +23,18 @@ size = Vector3(0.01, 0.01, 10)
 
 [sub_resource type="Animation" id="Animation_sjkk0"]
 length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SMG:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_yltro"]
 resource_name = "ShootSMG"
@@ -53,7 +66,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("SMG/SMGBarrel/GPUParticles3D:amount_ratio")
+tracks/2/path = NodePath("SMG/Barrel/GPUParticles3D:amount_ratio")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -91,13 +104,15 @@ orientation = 2
 transform = Transform3D(-1.3113416e-08, 0, 0.29999998, 0, 0.29999998, 0, -0.29999998, 0, -1.3113416e-08, 0, 0, 0)
 mesh = ExtResource("1_yltro")
 
-[node name="SMGBarrel" type="Node3D" parent="SMG" unique_id=576063553]
+[node name="Barrel" type="Node3D" parent="SMG" unique_id=576063553]
 transform = Transform3D(-1.4570462e-07, 0, -3.3333328, 0, 3.3333328, 0, 3.3333328, 0, -1.4570462e-07, 22.520256, 0, 9.843917e-07)
 
-[node name="GPUParticles3D" type="GPUParticles3D" parent="SMG/SMGBarrel" unique_id=1999863505]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -24.563324)
-amount = 2
-lifetime = 0.5
+[node name="GPUParticles3D" type="GPUParticles3D" parent="SMG/Barrel" unique_id=1999863505]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
+amount = 1
+amount_ratio = 0.0
+lifetime = 0.09999999999999999
+fixed_fps = 60
 process_material = SubResource("ParticleProcessMaterial_7bpbl")
 draw_pass_1 = SubResource("PrismMesh_7mlgx")
 
@@ -108,6 +123,3 @@ libraries/ = SubResource("AnimationLibrary_8qb6n")
 transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, -6.9138155)
 visible = false
 mesh = SubResource("PlaneMesh_ovc61")
-
-[node name="barrel_end" type="Node3D" parent="." unique_id=332961035]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1000)

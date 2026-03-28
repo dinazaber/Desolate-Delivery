@@ -192,13 +192,12 @@ func _physics_process(delta):
 		velocity.x = lerp(velocity.x, direction.x * speed, delta * 1.5)
 		velocity.z = lerp(velocity.z, direction.z * speed, delta * 1.5)
 	
-	#handle_healthBar()
+	handle_healthBar()
 	move_and_slide()
 
 
 
 func hit(recieved_damage, _type):
-	handle_healthBar()
 	player_health -= recieved_damage
 	checkLifeLine()
 
