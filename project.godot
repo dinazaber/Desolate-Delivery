@@ -20,6 +20,10 @@ config/features=PackedStringArray("4.6", "Mobile")
 run/max_fps=180
 config/icon="res://icon.svg"
 
+[autoload]
+
+SaveManager="*uid://dbihyb2ex78ls"
+
 [display]
 
 window/size/viewport_width=3440
@@ -41,6 +45,7 @@ enabled=PackedStringArray("res://addons/MetaMultimeshInstance3D/plugin.cfg", "re
 Enemy=""
 Player=""
 ShotReactable="objects that aren't enemeis that react to being shot"
+Persist="Nodes that should be loaded from save file"
 
 [importer_defaults]
 

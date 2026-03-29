@@ -23,7 +23,7 @@ height = 1.0
 height = 0.3
 radius = 4.5
 
-[node name="Player" type="CharacterBody3D" unique_id=1941692924 groups=["Player"]]
+[node name="Player" type="CharacterBody3D" unique_id=1941692924 groups=["Persist", "Player"]]
 floor_constant_speed = true
 floor_snap_length = 0.25
 script = ExtResource("1_g8lft")
@@ -134,6 +134,11 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "Quit"
 
+[node name="Save" type="Button" parent="PauseMenu/PauseMenu/MarginContainer/VBoxContainer" unique_id=1396896519]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Save Game"
+
 [node name="Settings" parent="PauseMenu" unique_id=307003582 instance=ExtResource("3_gntrk")]
 process_mode = 3
 visible = false
@@ -188,4 +193,5 @@ allow_lesser = true
 [connection signal="pressed" from="PauseMenu/PauseMenu/MarginContainer/VBoxContainer/Resume" to="PauseMenu" method="_on_resume_pressed"]
 [connection signal="pressed" from="PauseMenu/PauseMenu/MarginContainer/VBoxContainer/Settings" to="PauseMenu" method="_on_settings_pressed"]
 [connection signal="pressed" from="PauseMenu/PauseMenu/MarginContainer/VBoxContainer/Quit" to="PauseMenu" method="_on_quit_pressed"]
+[connection signal="pressed" from="PauseMenu/PauseMenu/MarginContainer/VBoxContainer/Save" to="PauseMenu" method="_on_save_pressed"]
 [connection signal="closed" from="PauseMenu/Settings" to="PauseMenu" method="_on_settings_closed"]

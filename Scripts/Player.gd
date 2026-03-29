@@ -72,6 +72,18 @@ var instance_grenade
 @onready var crosshair = $HUD/crosshair
 
 
+func save():
+	print("saved")
+	var data = {
+		"filename": get_scene_file_path(),
+		"parent": get_parent().get_path(),
+		"transform": global_transform,
+		"player_health": player_health
+	}
+	print(data)
+	return data
+
+
 
 func SuperTimerTimeOut() -> void:
 	if !canDash:
@@ -87,6 +99,7 @@ func updateScreenEffect(): #Function for current and future screen effects
 	screenEffect.material.set("shader_parameter/look_angle_factor", factor)
 
 func _ready() -> void:
+	$PlayerCamera.make_current()
 	healthBar.max_value = PLAYER_MAX_HEALTH
 	
 	if sun!=null: 
@@ -114,7 +127,6 @@ func _input(event):
 
 
 func _physics_process(delta):
-		
 	
 	if screenEffect!=null: updateScreenEffect()
 

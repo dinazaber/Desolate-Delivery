@@ -23,13 +23,27 @@ var isInAttack: bool = false
 var damagedByPlayer: bool = false
 var dead: bool = false
 
-
+func save():
+	var data = {
+		"filename": get_scene_file_path(),
+		"parent": get_parent().get_path(),
+		"transform": global_transform,
+		"enemy_health": enemy_health,
+		"dead": dead,
+		"current_state": current_state
+	}
+	print(data)
+	return data
 
 func _physics_process(delta):
 	if !is_on_floor():
 		velocity.y -= 20 * delta
 	# Fallback if player is missing
-	if not player: return
+	if not player:
+		player = get_tree().get_first_node_in_group("Player")
+		print("no player")
+		print(player)
+		return
 	
 	if !dead:
 		match current_state:

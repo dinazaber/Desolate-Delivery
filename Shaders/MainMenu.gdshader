@@ -11,7 +11,7 @@ uniform float total_opacity : hint_range(0.0, 1.0) = 0.5;
 uniform vec2 speed_fast = vec2(0.1, 0.02);
 uniform vec2 speed_slow = vec2(0.04, -0.01);
 
-uniform float look_angle_factor : hint_range(0.0, 1.0) = 1.0;
+uniform float look_angle_factor : hint_range(0.0, 1.0);
 
 // Density settings
 uniform float density_fast = 1.0;

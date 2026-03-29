@@ -5,7 +5,7 @@
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wovta"]
 
-[node name="Enemy" type="CharacterBody3D" unique_id=546459934 groups=["Enemy"]]
+[node name="Enemy" type="CharacterBody3D" unique_id=546459934 groups=["Enemy", "Persist"]]
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("1_wovta")

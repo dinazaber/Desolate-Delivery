@@ -29,3 +29,7 @@ func _on_quit_pressed() -> void:
 
 func _on_settings_closed() -> void:
 	$PauseMenu.show()
+
+
+func _on_save_pressed() -> void:
+	SaveManager.save_game()
