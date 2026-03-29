@@ -75,6 +75,7 @@ var instance_grenade
 func save():
 	print("saved")
 	var data = {
+		"level_scene": get_tree().current_scene.scene_file_path,
 		"filename": get_scene_file_path(),
 		"parent": get_parent().get_path(),
 		"transform": global_transform,

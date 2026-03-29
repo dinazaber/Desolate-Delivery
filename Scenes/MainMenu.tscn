@@ -2,11 +2,9 @@
 
 [ext_resource type="Script" uid="uid://b3a2aylon8065" path="res://Scripts/MainMenu.gd" id="1_tt5f1"]
 [ext_resource type="PackedScene" uid="uid://b2hljcs3010c5" path="res://Scenes/Settings.tscn" id="2_853f1"]
+[ext_resource type="PackedScene" uid="uid://yhfwhi177tdg" path="res://Scenes/SaveMenu.tscn" id="3_df05h"]
 [ext_resource type="ArrayMesh" uid="uid://daka58ay8ex6l" path="res://assets/Meshes/Nature/Sands.mesh" id="3_ghw46"]
 [ext_resource type="Script" uid="uid://cfwmt6vc7y70h" path="res://addons/MetaMultimeshInstance3D/src/MetaMultimeshInstance3D.gd" id="4_df05h"]
-[ext_resource type="Texture2D" uid="uid://djpq4fgvobp3i" path="res://assets/Textures/Architecture/MagicEffect1.png" id="5_df05h"]
-[ext_resource type="Texture2D" uid="uid://ddeov3d82o5ox" path="res://assets/Textures/Nature/FogCloud.png" id="5_xim88"]
-[ext_resource type="Shader" uid="uid://no1jy7cyw0an" path="res://Shaders/MainMenu.gdshader" id="6_8um5k"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ghw46"]
 
@@ -35,77 +33,6 @@ sky = SubResource("Sky_df05h")
 fog_light_color = Color(0.8499037, 0.6756193, 0, 1)
 fog_density = 0.0692
 fog_sky_affect = 0.0
-
-[sub_resource type="Curve" id="Curve_xim88"]
-_data = [Vector2(0.0027322397, 0.0055521727), 0.0, 0.0, 0, 0, Vector2(0.49999997, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 3
-
-[sub_resource type="CurveTexture" id="CurveTexture_koqhg"]
-width = 32
-curve = SubResource("Curve_xim88")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_koqhg"]
-lifetime_randomness = 1.0
-emission_shape_scale = Vector3(1, 0, 1)
-emission_shape = 3
-emission_box_extents = Vector3(4, 4, 4)
-angle_min = 1.0728835e-05
-angle_max = 270.0
-gravity = Vector3(-1, 0, -1)
-scale_min = 0.39999998
-scale_max = 3.0
-color = Color(1, 1, 0.69, 1)
-alpha_curve = SubResource("CurveTexture_koqhg")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cmrfp"]
-transparency = 1
-shading_mode = 0
-vertex_color_use_as_albedo = true
-albedo_color = Color(1, 1, 1, 0.11764706)
-albedo_texture = ExtResource("5_xim88")
-heightmap_flip_tangent = true
-heightmap_flip_binormal = true
-texture_filter = 1
-billboard_mode = 2
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_loo7a"]
-material = SubResource("StandardMaterial3D_cmrfp")
-size = Vector2(4, 4)
-orientation = 2
-
-[sub_resource type="CanvasTexture" id="CanvasTexture_8um5k"]
-diffuse_texture = ExtResource("5_df05h")
-
-[sub_resource type="Curve" id="Curve_df05h"]
-_data = [Vector2(0.0027322397, 0), 0.0, 0.0, 0, 0, Vector2(0.5027323, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 3
-
-[sub_resource type="CurveTexture" id="CurveTexture_8um5k"]
-curve = SubResource("Curve_df05h")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8um5k"]
-particle_flag_disable_z = true
-emission_shape_scale = Vector3(10, 10, 10)
-emission_shape = 3
-emission_box_extents = Vector3(200, 100, 1)
-direction = Vector3(-1, 1, 1)
-initial_velocity_min = 10.0
-initial_velocity_max = 60.0
-gravity = Vector3(-10, 2, 0)
-scale_min = 0.19999999
-scale_max = 0.5
-color = Color(0.96, 0.816, 0, 0.39215687)
-alpha_curve = SubResource("CurveTexture_8um5k")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_cmrfp"]
-shader = ExtResource("6_8um5k")
-shader_parameter/dust_color = Color(0.8, 0.7, 0.5, 0.5)
-shader_parameter/total_opacity = 0.5
-shader_parameter/speed_fast = Vector2(0.1, 0.02)
-shader_parameter/speed_slow = Vector2(0.04, -0.01)
-shader_parameter/look_angle_factor = 1.0
-shader_parameter/density_fast = 1.0
-shader_parameter/density_slow = 2.5
 
 [node name="MainMenu" type="Control" unique_id=1079908484]
 layout_mode = 3
@@ -164,7 +91,16 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 45
 text = "Quit"
 
+[node name="Load" type="Button" parent="MainMenu/MarginContainer/VBoxContainer" unique_id=986868753]
+layout_mode = 2
+theme_override_font_sizes/font_size = 45
+text = "Load Game"
+
 [node name="Settings" parent="." unique_id=307003582 instance=ExtResource("2_853f1")]
+visible = false
+layout_mode = 1
+
+[node name="SaveMenu" parent="." unique_id=1653560853 instance=ExtResource("3_df05h")]
 visible = false
 layout_mode = 1
 
@@ -191,39 +127,9 @@ light_color = Color(0.9546227, 0.6539711, 0, 1)
 light_energy = 1.7
 sky_mode = 2
 
-[node name="GPUParticles3D" type="GPUParticles3D" parent="Node3D" unique_id=1193763561]
-transform = Transform3D(4, 0, 0, 0, 1, 0, 0, 0, 4, 7.435951, 0, 0)
-amount = 3
-lifetime = 5.0
-fixed_fps = 5
-process_material = SubResource("ParticleProcessMaterial_koqhg")
-draw_pass_1 = SubResource("PlaneMesh_loo7a")
-
-[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=1297984357]
-show_behind_parent = true
-position = Vector2(1732, 297)
-amount = 50
-texture = SubResource("CanvasTexture_8um5k")
-lifetime = 10.0
-preprocess = 5.0
-speed_scale = 3.0
-randomness = 1.0
-fixed_fps = 5
-process_material = SubResource("ParticleProcessMaterial_8um5k")
-
-[node name="ColorRect" type="ColorRect" parent="." unique_id=1060664605]
-visible = false
-show_behind_parent = true
-material = SubResource("ShaderMaterial_cmrfp")
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-
 [connection signal="pressed" from="MainMenu/MarginContainer/VBoxContainer/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="MainMenu/MarginContainer/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="MainMenu/MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="MainMenu/MarginContainer/VBoxContainer/Load" to="." method="_on_load_pressed"]
 [connection signal="closed" from="Settings" to="." method="_on_settings_closed"]
+[connection signal="closed" from="SaveMenu" to="." method="_on_save_menu_closed"]

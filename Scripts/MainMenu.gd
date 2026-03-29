@@ -17,3 +17,12 @@ func _on_quit_pressed() -> void:
 
 func _on_settings_closed() -> void:
 	$MainMenu.show()
+
+
+func _on_load_pressed() -> void:
+	$MainMenu.hide()
+	$SaveMenu.show()
+
+
+func _on_save_menu_closed() -> void:
+	$MainMenu.show()

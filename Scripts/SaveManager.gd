@@ -1,12 +1,18 @@
 extends Control
-	
-# Note: This can be called from anywhere inside the tree. This function is
-# path independent.
-# Go through everything in the persist category and ask them to return a
-# dict of relevant variables.
-func save_game():
-	print("save game")
-	var save_file = FileAccess.open("user://savegame.bin", FileAccess.WRITE)
+
+const SAVEDIR = "user://saves/" #Folder with all save files
+var curSave: String
+
+#The methods can be called from every script using global variable SaveManager
+
+func _ready() -> void:
+	# Create the folder if it doesn't exist
+	if not DirAccess.dir_exists_absolute(SAVEDIR):
+		DirAccess.make_dir_absolute(SAVEDIR)
+
+func save_game(slotName: String):
+	var path = SAVEDIR + slotName + ".bin"
+	var save_file = FileAccess.open(path, FileAccess.WRITE)
 	var save_nodes = get_tree().get_nodes_in_group("Persist")
 	for node in save_nodes:
 		# Check the node is an instanced scene so it can be instanced again during load.
@@ -22,29 +28,36 @@ func save_game():
 		
 		
 	save_file.close()
-	print("save file closed")
+	print("Saved to: "+path)
 
 # Note: This can be called from anywhere inside the tree. This function
 # is path independent.
-func load_game():
-	if not FileAccess.file_exists("user://savegame.bin"):
+func load_game(slotName: String):
+	var path = SAVEDIR + slotName + ".bin"
+	if not FileAccess.file_exists(path):
 		print("Error! Missing save file")
 		return # Error! We don't have a save to load.
+		
+	curSave = slotName
 
-	# We need to revert the game state so we're not cloning objects
-	# during loading. This will vary wildly depending on the needs of a
-	# project, so take care with this step.
-	# For our example, we will accomplish this by deleting saveable objects.
+	# Remove original objects from Persist group to avoid duplicates
 	var save_nodes = get_tree().get_nodes_in_group("Persist")
 	for i in save_nodes:
 		i.queue_free()
 
 	# Load the file line by line and process that dictionary to restore
 	# the object it represents.
-	var save_file = FileAccess.open("user://savegame.bin", FileAccess.READ)
+	var save_file = FileAccess.open(path, FileAccess.READ)
+	var targetLevel = save_file.get_var()["level_scene"]
+	save_file.seek(0)
+	
+	if get_tree().current_scene.scene_file_path != targetLevel:
+		get_tree().change_scene_to_file(targetLevel)
+		return
+	
 	while save_file.get_position() < save_file.get_length():
 
-		# Get the data from the JSON object.
+		# Get the data
 		var node_data = save_file.get_var()
 
 		# Firstly, we need to create the object and add it to the tree and set its position.
@@ -57,3 +70,14 @@ func load_game():
 			if key in ["filename", "parent", "transform"]:
 				continue
 			new_object.set(key, node_data[key])
+			
+	save_file.close()
+	
+			
+			
+func delete_game(slotName: String):
+	var path = SAVEDIR + slotName + ".bin"
+	if FileAccess.file_exists(path):
+		DirAccess.remove_absolute(path)
+		print("Deleted: " + path)
+	

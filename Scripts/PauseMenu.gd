@@ -31,5 +31,10 @@ func _on_settings_closed() -> void:
 	$PauseMenu.show()
 
 
-func _on_save_pressed() -> void:
-	SaveManager.save_game()
+func _on_save_menu_pressed() -> void:
+	$PauseMenu.hide()
+	$SaveMenu.show()
+
+
+func _on_save_menu_closed() -> void:
+	$PauseMenu.show()

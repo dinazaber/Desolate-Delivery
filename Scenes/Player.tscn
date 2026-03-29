@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://b2hljcs3010c5" path="res://Scenes/Settings.tscn" id="3_gntrk"]
 [ext_resource type="PackedScene" uid="uid://d3y1m515qojp2" path="res://Scenes/LeftHandWeapons.tscn" id="3_nn08x"]
 [ext_resource type="Texture2D" uid="uid://b6vcboeh4uetd" path="res://assets/HUD/crosshair.png" id="5_5ixxa"]
+[ext_resource type="PackedScene" uid="uid://yhfwhi177tdg" path="res://Scenes/SaveMenu.tscn" id="6_52ee3"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kyqiw"]
 shading_mode = 0
@@ -134,13 +135,17 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "Quit"
 
-[node name="Save" type="Button" parent="PauseMenu/PauseMenu/MarginContainer/VBoxContainer" unique_id=1396896519]
+[node name="Save Menu" type="Button" parent="PauseMenu/PauseMenu/MarginContainer/VBoxContainer" unique_id=1396896519]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "Save Game"
 
 [node name="Settings" parent="PauseMenu" unique_id=307003582 instance=ExtResource("3_gntrk")]
 process_mode = 3
+visible = false
+layout_mode = 1
+
+[node name="SaveMenu" parent="PauseMenu" unique_id=1653560853 instance=ExtResource("6_52ee3")]
 visible = false
 layout_mode = 1
 
@@ -193,5 +198,6 @@ allow_lesser = true
 [connection signal="pressed" from="PauseMenu/PauseMenu/MarginContainer/VBoxContainer/Resume" to="PauseMenu" method="_on_resume_pressed"]
 [connection signal="pressed" from="PauseMenu/PauseMenu/MarginContainer/VBoxContainer/Settings" to="PauseMenu" method="_on_settings_pressed"]
 [connection signal="pressed" from="PauseMenu/PauseMenu/MarginContainer/VBoxContainer/Quit" to="PauseMenu" method="_on_quit_pressed"]
-[connection signal="pressed" from="PauseMenu/PauseMenu/MarginContainer/VBoxContainer/Save" to="PauseMenu" method="_on_save_pressed"]
+[connection signal="pressed" from="PauseMenu/PauseMenu/MarginContainer/VBoxContainer/Save Menu" to="PauseMenu" method="_on_save_menu_pressed"]
 [connection signal="closed" from="PauseMenu/Settings" to="PauseMenu" method="_on_settings_closed"]
+[connection signal="closed" from="PauseMenu/SaveMenu" to="PauseMenu" method="_on_save_menu_closed"]
