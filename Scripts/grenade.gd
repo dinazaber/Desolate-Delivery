@@ -2,9 +2,6 @@ extends RigidBody3D
 
 var got_shot: bool = false
 
-var explosion = load("res://Scenes/Explosion.tscn")
-var instance
-
 @onready var smoke: GPUParticles3D = $Smoke
 @onready var fire: GPUParticles3D = $Fire
 @onready var debris: GPUParticles3D = $Debris

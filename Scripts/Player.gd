@@ -5,6 +5,7 @@ var cameraDistance = 15
 const headFreq = 2.4
 const headAmp = 0.08
 var headTime = 0.0
+
 @onready var camDefHeight = $PlayerCamera.position.y
 @onready var healthBar = $HUD/HealthBar
 @export var screenEffect: ColorRect
@@ -13,8 +14,10 @@ var headTime = 0.0
 @onready var leftWeapon: MeshInstance3D = $PlayerCamera/LeftHand/Shotty
 
 var speed = 0
+var accel_mod = 1.0 #acceleration modifier
 var dash: bool = false
 var canDash: bool = true
+var crouch: bool = false
 var slam: bool = false
 var dead: bool = false
 
@@ -31,12 +34,14 @@ var currentInput = Vector2()
 #player stats
 const PLAYER_MAX_HEALTH = 100
 @export var player_health = PLAYER_MAX_HEALTH
-@export var walk_speed = 4
-@export var run_speed = 8
-@export var dash_speed = 25
+@export var walk_speed = 5
+@export var dash_speed = 50
 @export var jump_speed = 10
 @export var slam_speed = -30
 
+#player boxes
+@onready var player_stand = $PlayerCollisionStand
+@onready var player_crouch = $PlayerCollisionCrouch
 
 #gun stats
 @export var smg_damage = 15
@@ -135,13 +140,22 @@ func _physics_process(delta):
 		if collider is RigidBody3D:
 			var pushDir = -collision.get_normal()
 			collider.apply_impulse(pushDir * 4, collision.get_position() - collider.global_position)
-
 	
-	if Input.is_action_pressed("Shift"):
-		
-		speed = move_toward(speed, run_speed, delta * 15.0)
+	
+	if Input.is_action_pressed("Ctrl"): # crouch/slide
+		crouch = true
+		player_crouch.visible = true
+		player_stand.visible = false
+		$PlayerCamera.position.y = lerp($PlayerCamera.position.y, camDefHeight - 0.5, 20 * delta)
+		accel_mod = 0.08
 	else:
-		speed = move_toward(speed, walk_speed, delta * 15.0)
+		crouch = false
+		player_crouch.visible = false
+		player_stand.visible = true
+		$PlayerCamera.position.y = lerp($PlayerCamera.position.y, camDefHeight, 20 * delta)
+		accel_mod = 1.0
+	
+	speed = move_toward(speed, walk_speed, delta * 15.0)
 	
 	
 	# Get direction
@@ -161,9 +175,9 @@ func _physics_process(delta):
 		
 		
 		if direction:
-			velocity.x = move_toward(velocity.x, direction.x * speed, delta * 20.0)
-			velocity.z = move_toward(velocity.z, direction.z * speed, delta * 20.0)
-			if Input.is_action_just_pressed("Alt") and canDash:
+			velocity.x = move_toward(velocity.x, direction.x * speed, delta * 20.0 * accel_mod)
+			velocity.z = move_toward(velocity.z, direction.z * speed, delta * 20.0 * accel_mod)
+			if Input.is_action_just_pressed("Shift") and canDash and !crouch:
 				if canDash:
 					velocity = direction * dash_speed
 					canDash = false
@@ -174,17 +188,17 @@ func _physics_process(delta):
 			# head bob
 			headTime += delta * velocity.length() * float(is_on_floor())
 			var pos = Vector3.ZERO
-			pos.y = camDefHeight + sin(headTime*headFreq) * headAmp
+			pos.y = $PlayerCamera.position.y + sin(headTime*headFreq) * headAmp
 			$PlayerCamera.position.y = lerp($PlayerCamera.position.y, pos.y, 20 * delta)
 		
 		else: # no input speed
-			velocity.x = lerp(velocity.x, direction.x * speed, delta * 5.0)
-			velocity.z = lerp(velocity.z, direction.z * speed, delta * 5.0)
+			velocity.x = lerp(velocity.x, direction.x * speed, delta * 5.0 * accel_mod)
+			velocity.z = lerp(velocity.z, direction.z * speed, delta * 5.0 * accel_mod)
 			
 	else: # airborne speed
 		velocity.y -= 20 * delta # Gravity
 		
-		if Input.is_action_just_pressed("Ctrl"): # Groundslam
+		if Input.is_action_just_pressed("Ctrl") and !$GroundSlamCheck.is_colliding(): # Groundslam
 			slam = true
 			velocity.y += slam_speed
 		
