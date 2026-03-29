@@ -83,7 +83,7 @@ func process_chase_state():
 	
 	# Check transitions
 	var dist = global_position.distance_to(player.global_position)
-	if dist <= attack_distance:
+	if sword_ray.is_colliding():
 		current_state = State.ATTACK
 	elif !can_see_player() and dist > detection_range and !damagedByPlayer:
 		inTransition = true
