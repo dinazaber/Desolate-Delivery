@@ -106,7 +106,6 @@ func _ready() -> void:
 	if sun!=null: 
 		var sunDir = sun.global_transform.basis.z.normalized()
 		rightWeapon.set_instance_shader_parameter("sun_direction", sunDir)
-		print(sunDir)
 
 func _input(event):
 	#if event is InputEventMouseButton:
