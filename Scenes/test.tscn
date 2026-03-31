@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://syntm5qccbh2" path="res://Scenes/Enemy.tscn" id="12_yb21e"]
 [ext_resource type="ArrayMesh" uid="uid://dufaqga62sfgh" path="res://assets/Meshes/Objects/Car2.mesh" id="13_mie3u"]
 [ext_resource type="ArrayMesh" uid="uid://dxoddmwgtq2gq" path="res://assets/Meshes/Objects/Car1.mesh" id="14_0qy5o"]
+[ext_resource type="PackedScene" uid="uid://da8xo7bpr7w37" path="res://Scenes/SniperTurret.tscn" id="15_0qy5o"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_yb21e"]
 vertices = PackedVector3Array(-49.1, 0.5, -49.1, -49.1, 0.5, 49.000008, 49.000008, 0.5, 49.000008, 49.000008, 0.5, -49.1)
@@ -205,3 +206,6 @@ mesh = ExtResource("13_mie3u")
 [node name="Car1" type="MeshInstance3D" parent="." unique_id=581080434]
 transform = Transform3D(-0.1834263, 0, 0.6755404, 0, 0.7, 0, -0.6755404, 0, -0.1834263, -10.663099, 0.94583607, -2.8994725)
 mesh = ExtResource("14_0qy5o")
+
+[node name="turret" parent="." unique_id=1830225406 instance=ExtResource("15_0qy5o")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -9.043, 0.48821032, -7.072)

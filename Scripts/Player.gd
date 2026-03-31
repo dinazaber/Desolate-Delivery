@@ -195,7 +195,7 @@ func _physics_process(delta):
 					canDash = false
 					$SuperTimer.set("wait_time",0.5)
 					$SuperTimer.start()
-
+			
 			
 			# head bob
 			headTime += delta * velocity.length() * float(is_on_floor())
