@@ -73,7 +73,8 @@ theme_override_constants/separation = 40
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 0.09019608)
 theme_override_font_sizes/font_size = 85
-text = "Game_name"
+text = "Moral Scarcity???
+(or something else)"
 horizontal_alignment = 1
 
 [node name="Start" type="Button" parent="MainMenu/MarginContainer/VBoxContainer" unique_id=1138824311]
