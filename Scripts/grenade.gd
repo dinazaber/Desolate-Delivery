@@ -34,6 +34,7 @@ func explode():
 		var bodies = current_exposion_box.get_overlapping_bodies()
 		for body in bodies:
 			body.hit(current_damage, "player")
+			body.knockBack(body.global_position - global_position, current_damage/15, 0.1)
 	
 	
 	$GenadeMesh.visible = false
@@ -46,9 +47,14 @@ func explode():
 	print("boom")
 	queue_free()
 
-func hit(_a,_b):
-	pass
-
 func _on_timer_timeout() -> void:
 	if !got_shot:
 		explode()
+
+# --- Anti-Error Function Dump ---
+
+func hit(_a,_b):
+	pass
+
+func knockBack(_a, _b, _c):
+	pass

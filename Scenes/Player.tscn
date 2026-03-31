@@ -22,9 +22,11 @@ height = 1.0
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_nn08x"]
 height = 0.3
-radius = 4.5
+radius = 6.0
 
 [node name="Player" type="CharacterBody3D" unique_id=1941692924 groups=["Persist", "Player"]]
+collision_layer = 9
+collision_mask = 9
 floor_constant_speed = true
 floor_snap_length = 0.25
 script = ExtResource("1_g8lft")
@@ -48,7 +50,7 @@ one_shot = true
 
 [node name="GroundSlamCheck" type="RayCast3D" parent="." unique_id=1505618429]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
-target_position = Vector3(0, -2.5, 0)
+target_position = Vector3(0, -1.5, 0)
 
 [node name="GroundSlam" type="Area3D" parent="." unique_id=1921784648]
 collision_layer = 2

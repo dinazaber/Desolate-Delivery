@@ -114,3 +114,8 @@ func can_see_player() -> bool:
 	if eyes.is_colliding():
 		return eyes.get_collider().is_in_group("Player")
 	return false
+
+# --- Anti-Error Function Dump ---
+
+func knockBack(_a, _b, _c):
+	pass

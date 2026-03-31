@@ -22,6 +22,7 @@ var inTransition: bool = false
 var isInAttack: bool = false
 var damagedByPlayer: bool = false
 var dead: bool = false
+var knocked: bool = false
 
 func save():
 	var data = {
@@ -92,8 +93,8 @@ func process_chase_state():
 	
 	# Move toward player
 	var dir = (nextPathPos - global_position).normalized()
-	velocity.x = dir.x * speed
-	velocity.z = dir.z * speed
+	velocity.x = move_toward(velocity.x, dir.x * speed, 3.0)
+	velocity.z = move_toward(velocity.z, dir.z * speed, 3.0)
 	move_and_slide()
 	
 	# Check transitions
@@ -109,7 +110,8 @@ func process_chase_state():
 
 func process_attack_state():
 	# Stop movement during the swing
-	velocity = Vector3.ZERO
+	if !knocked:
+		velocity = Vector3.ZERO
 	
 	# Decide: Player forever-napping or keep attaking?
 	if !player.dead and !isInAttack:
@@ -149,12 +151,16 @@ func hit(recieved_damage, type):
 func get_pounded(recieved_damage):
 	enemy_health -= recieved_damage
 	# Push away
-	velocity.y += 5
-	speed = -30
-	await get_tree().create_timer(0.1).timeout # this is so shitty D:
-	speed = 4
+	var push_dir = global_position - player.global_position
+	knockBack(push_dir, 15, 0.05)
 	
 	checkLifeLine()
+
+func knockBack(direction, force, time):
+	knocked = true
+	velocity += direction * force
+	await get_tree().create_timer(time).timeout
+	knocked = false
 
 func checkLifeLine():
 	if enemy_health <= 0 and dead == false:

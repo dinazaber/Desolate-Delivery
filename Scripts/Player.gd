@@ -17,6 +17,7 @@ var speed = 0
 var accel_mod = 1.0 #acceleration modifier
 var dash: bool = false
 var canDash: bool = true
+var knocked: bool = false
 var crouch: bool = false
 var slam: bool = false
 var dead: bool = false
@@ -175,7 +176,11 @@ func _physics_process(delta):
 	
 	
 	var direction = (transform.basis * Vector3(currentInput.y, 0, currentInput.x)).normalized()
-			
+	
+	if direction and !knocked:
+		velocity.x = move_toward(velocity.x, direction.x * speed, delta * 20.0 * accel_mod)
+		velocity.z = move_toward(velocity.z, direction.z * speed, delta * 20.0 * accel_mod)
+	
 	#Basic movement & dash
 	if is_on_floor(): # grounded speed
 		if slam == true:
@@ -187,8 +192,6 @@ func _physics_process(delta):
 		
 		
 		if direction:
-			velocity.x = move_toward(velocity.x, direction.x * speed, delta * 20.0 * accel_mod)
-			velocity.z = move_toward(velocity.z, direction.z * speed, delta * 20.0 * accel_mod)
 			if Input.is_action_just_pressed("Shift") and canDash and !crouch:
 				if canDash:
 					velocity = direction * dash_speed
@@ -215,15 +218,17 @@ func _physics_process(delta):
 			velocity.y += slam_speed
 		
 		
-		velocity.x = lerp(velocity.x, direction.x * speed, delta * 1.5)
-		velocity.z = lerp(velocity.z, direction.z * speed, delta * 1.5)
+		velocity.x = lerp(velocity.x, direction.x * speed, delta * 0.5)
+		velocity.z = lerp(velocity.z, direction.z * speed, delta * 0.5)
 	
 	handle_healthBar()
 	move_and_slide()
 
 
 
-func hit(recieved_damage, _type):
+func hit(recieved_damage, type):
+	if type == "player":
+		recieved_damage /= 5
 	player_health -= recieved_damage
 	checkLifeLine()
 
@@ -254,7 +259,7 @@ func shoot_offHandShotgun():
 		
 		if !is_on_floor():
 			var direction = $PlayerCamera.global_transform.basis.z.normalized()
-			velocity = 20 * direction
+			knockBack(direction, 10, 0.2)
 		
 		if playerRay.is_colliding():
 			if playerRay.get_collider().is_in_group("Enemy"):
@@ -271,6 +276,12 @@ func slam_ground():
 		var bodies = slam_area.get_overlapping_bodies()
 		for body in bodies:
 			body.get_pounded(slam_damage)
+
+func knockBack(direction, force, time): # dont delete it again, VLAD
+	knocked = true
+	velocity += direction * force
+	await get_tree().create_timer(time).timeout
+	knocked = false
 
 func checkLifeLine():
 	print(player_health)
