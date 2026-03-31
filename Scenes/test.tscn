@@ -204,7 +204,7 @@ transform = Transform3D(0.65984905, 0, -0.23366481, 0, 0.7, 0, 0.23366481, 0, 0.
 mesh = ExtResource("13_mie3u")
 
 [node name="Car1" type="MeshInstance3D" parent="." unique_id=581080434]
-transform = Transform3D(-0.1834263, 0, 0.6755404, 0, 0.7, 0, -0.6755404, 0, -0.1834263, -10.663099, 0.94583607, -2.8994725)
+transform = Transform3D(-0.1834263, 0, 0.6755404, 0, 0.7, 0, -0.6755404, 0, -0.1834263, -10.739203, 1.081026, -2.9659238)
 mesh = ExtResource("14_0qy5o")
 
 [node name="turret" parent="." unique_id=1830225406 instance=ExtResource("15_0qy5o")]
