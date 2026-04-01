@@ -51,7 +51,6 @@ ssr_fade_out = 3.8637512
 ssao_power = 1.9792577
 sdfgi_cascades = 1
 sdfgi_y_scale = 0
-fog_enabled = true
 fog_light_color = Color(0.77, 0.687995, 0.22330001, 1)
 fog_sun_scatter = 0.25
 fog_density = 0.02
@@ -156,7 +155,7 @@ visible = false
 mesh = ExtResource("3_qc4db")
 
 [node name="Car3" type="MeshInstance3D" parent="." unique_id=673387538]
-transform = Transform3D(0.78493184, 0, -0.15453818, 0, 0.8, 0, 0.15453818, 0, 0.78493184, 0, 0.94204694, 0)
+transform = Transform3D(0.76178885, 0, -0.24429034, 0, 0.8, 0, 0.24429034, 0, 0.76178885, 0.6187975, 0.94204694, 0)
 mesh = ExtResource("8_0c07c")
 
 [node name="Decal2" type="Decal" parent="Car3" unique_id=31879390]
