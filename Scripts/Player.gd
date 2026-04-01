@@ -10,7 +10,8 @@ var headTime = 0.0
 @onready var healthBar = $HUD/HealthBar
 @export var screenEffect: ColorRect
 @export var sun: DirectionalLight3D
-@onready var rightWeapon: MeshInstance3D = $PlayerCamera/RightHand/SMG
+@onready var rightWeapon_smg: MeshInstance3D = $PlayerCamera/RightHand/SMG
+@onready var rightWeapon_speargun: MeshInstance3D = $PlayerCamera/RightHand/SpeargunPlaceholder
 @onready var leftWeapon: MeshInstance3D = $PlayerCamera/LeftHand/Shotty
 
 var speed = 0
@@ -21,6 +22,7 @@ var knocked: bool = false
 var crouch: bool = false
 var slam: bool = false
 var dead: bool = false
+var switching: bool = false
 
 var isInInterior = false
 var currentRoof = null
@@ -61,7 +63,7 @@ var instance_grenade
 @onready var playerRay = $PlayerCamera/PlayerRay
 #@onready var eyes_end = $PlayerCamera/RayEnd
 
-
+var current_gun = "smg"
 @onready var rightWeaponAnim = $PlayerCamera/RightHand/AnimationPlayer
 @onready var leftWeaponAnim = $PlayerCamera/LeftHand/AnimationPlayer
 
@@ -106,7 +108,7 @@ func _ready() -> void:
 	
 	if sun!=null: 
 		var sunDir = sun.global_transform.basis.z.normalized()
-		rightWeapon.set_instance_shader_parameter("sun_direction", sunDir)
+		rightWeapon_smg.set_instance_shader_parameter("sun_direction", sunDir)
 
 func _input(event):
 	#if event is InputEventMouseButton:
@@ -136,9 +138,24 @@ func _physics_process(delta):
 	rotation.y = lerp_angle(rotation.y, yaw, delta*20) # left/right
 	$PlayerCamera.rotation.x = lerp_angle($PlayerCamera.rotation.x, -pitch, delta*20)
 	
+	if Input.is_action_just_pressed("1"):
+		switching = true
+		rightWeapon_smg.visible = true
+		rightWeapon_speargun.visible = false
+		current_gun = "smg"
+		switching = false
+	elif Input.is_action_just_pressed("2"):
+		switching = true
+		rightWeapon_smg.visible = false
+		rightWeapon_speargun.visible = true
+		current_gun = "speargun"
+		switching = false
 	
 	if Input.is_action_pressed("LeftMouse"):
-		shoot_smg()
+		if current_gun == "smg":
+			shoot_smg()
+		elif current_gun == "speargun":
+			shoot_speargun()
 	
 	if Input.is_action_just_pressed("RightMouse"):
 		shoot_offHandShotgun()
@@ -242,7 +259,7 @@ func throw_grenade():
 	get_parent().add_child(instance_grenade)
 
 func shoot_smg():
-	if !rightWeaponAnim.is_playing():
+	if !rightWeaponAnim.is_playing() and !switching:
 		rightWeaponAnim.play("ShootSMG")
 		if playerRay.is_colliding():
 			if playerRay.get_collider().is_in_group("Enemy"):
@@ -250,6 +267,10 @@ func shoot_smg():
 			if playerRay.get_collider().is_in_group("ShotReactable"):
 				playerRay.get_collider().shot()
 			
+
+func shoot_speargun():
+	if !rightWeaponAnim.is_playing() and !switching:
+		rightWeaponAnim.play("ShootSpeargun")
 
 func shoot_offHandShotgun():
 	if !leftWeaponAnim.is_playing():
