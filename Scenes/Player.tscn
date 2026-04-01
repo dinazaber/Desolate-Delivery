@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://d3y1m515qojp2" path="res://Scenes/LeftHandWeapons.tscn" id="3_nn08x"]
 [ext_resource type="Texture2D" uid="uid://b6vcboeh4uetd" path="res://assets/HUD/crosshair.png" id="5_5ixxa"]
 [ext_resource type="PackedScene" uid="uid://yhfwhi177tdg" path="res://Scenes/SaveMenu.tscn" id="6_52ee3"]
+[ext_resource type="Script" uid="uid://b1yx1tjjakl1w" path="res://Scripts/HUD.gd" id="7_bhhdu"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kyqiw"]
 shading_mode = 0
@@ -160,6 +161,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+script = ExtResource("7_bhhdu")
 
 [node name="crosshair" type="TextureRect" parent="HUD" unique_id=1178379776]
 modulate = Color(18.892157, 18.892157, 18.892157, 1)
@@ -195,6 +197,25 @@ grow_vertical = 0
 value = 100.0
 allow_greater = true
 allow_lesser = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HUD" unique_id=1570974789]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -444.0
+offset_bottom = 198.0
+grow_horizontal = 0
+
+[node name="FPS" type="Label" parent="HUD/VBoxContainer" unique_id=1514150893]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "FPS HERE"
+
+[node name="DrawCalls" type="Label" parent="HUD/VBoxContainer" unique_id=45565768]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "DRAW CALLS HERE"
 
 [connection signal="timeout" from="SuperTimer" to="." method="SuperTimerTimeOut"]
 [connection signal="pressed" from="PauseMenu/PauseMenu/MarginContainer/VBoxContainer/Resume" to="PauseMenu" method="_on_resume_pressed"]
