@@ -18,9 +18,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -185.0
+offset_left = -220.5
 offset_top = -292.0
-offset_right = 256.0
+offset_right = 220.5
 offset_bottom = 292.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -28,12 +28,19 @@ grow_vertical = 2
 [node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer" unique_id=732182932]
 layout_mode = 2
 
-[node name="RenderScale" type="Label" parent="ScrollContainer/VBoxContainer" unique_id=1096892178]
+[node name="DisplayLabel" type="Label" parent="ScrollContainer/VBoxContainer" unique_id=1915149343]
 layout_mode = 2
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 30
+text = "Display"
+
+[node name="Scale" type="HBoxContainer" parent="ScrollContainer/VBoxContainer" unique_id=1302624869]
+layout_mode = 2
+
+[node name="RenderScale" type="Label" parent="ScrollContainer/VBoxContainer/Scale" unique_id=1096892178]
+layout_mode = 2
 text = "Render Scale"
 
-[node name="ScaleOption" type="OptionButton" parent="ScrollContainer/VBoxContainer" unique_id=18711073]
+[node name="ScaleOption" type="OptionButton" parent="ScrollContainer/VBoxContainer/Scale" unique_id=18711073]
 layout_mode = 2
 theme_override_font_sizes/font_size = 15
 item_count = 8
@@ -54,59 +61,74 @@ popup/item_6/id = 6
 popup/item_7/text = "0.25"
 popup/item_7/id = 7
 
-[node name="MaxFps" type="Label" parent="ScrollContainer/VBoxContainer" unique_id=723904688]
+[node name="Fps" type="HBoxContainer" parent="ScrollContainer/VBoxContainer" unique_id=522663902]
 layout_mode = 2
-theme_override_font_sizes/font_size = 20
+
+[node name="MaxFps" type="Label" parent="ScrollContainer/VBoxContainer/Fps" unique_id=723904688]
+layout_mode = 2
 text = "Max FPS"
 
-[node name="MaxFpsEdit" type="LineEdit" parent="ScrollContainer/VBoxContainer" unique_id=185004757]
+[node name="MaxFpsEdit" type="LineEdit" parent="ScrollContainer/VBoxContainer/Fps" unique_id=185004757]
 layout_mode = 2
 theme_override_font_sizes/font_size = 15
 
-[node name="WindowedOption" type="HBoxContainer" parent="ScrollContainer/VBoxContainer" unique_id=1608606791]
+[node name="Window" type="HBoxContainer" parent="ScrollContainer/VBoxContainer" unique_id=1608606791]
 layout_mode = 2
 
-[node name="Windowed" type="Label" parent="ScrollContainer/VBoxContainer/WindowedOption" unique_id=2058494868]
-layout_mode = 2
-theme_override_font_sizes/font_size = 20
-text = "Windowed"
-
-[node name="WindowedButton" type="CheckButton" parent="ScrollContainer/VBoxContainer/WindowedOption" unique_id=1747720199]
+[node name="CheckButton" type="CheckButton" parent="ScrollContainer/VBoxContainer/Window" unique_id=1747720199]
 layout_mode = 2
 action_mode = 0
+text = "Windowed"
 
-[node name="ResolutionOption" type="HBoxContainer" parent="ScrollContainer/VBoxContainer" unique_id=1897556156]
+[node name="Resolution" type="HBoxContainer" parent="ScrollContainer/VBoxContainer" unique_id=1897556156]
 layout_mode = 2
 
-[node name="Width" type="Label" parent="ScrollContainer/VBoxContainer/ResolutionOption" unique_id=1205772610]
+[node name="Width" type="Label" parent="ScrollContainer/VBoxContainer/Resolution" unique_id=1205772610]
 layout_mode = 2
 text = "Width:"
 
-[node name="WidthEdit" type="LineEdit" parent="ScrollContainer/VBoxContainer/ResolutionOption" unique_id=965594438]
+[node name="WidthEdit" type="LineEdit" parent="ScrollContainer/VBoxContainer/Resolution" unique_id=965594438]
 layout_mode = 2
 placeholder_text = "Screen Width"
 expand_to_text_length = true
 
-[node name="Height" type="Label" parent="ScrollContainer/VBoxContainer/ResolutionOption" unique_id=1718335663]
+[node name="Height" type="Label" parent="ScrollContainer/VBoxContainer/Resolution" unique_id=1718335663]
 layout_mode = 2
 text = "Height:"
 
-[node name="HeightEdit" type="LineEdit" parent="ScrollContainer/VBoxContainer/ResolutionOption" unique_id=1081672037]
+[node name="HeightEdit" type="LineEdit" parent="ScrollContainer/VBoxContainer/Resolution" unique_id=1081672037]
 layout_mode = 2
 placeholder_text = "Screen Height"
 expand_to_text_length = true
 
-[node name="VsyncOption" type="HBoxContainer" parent="ScrollContainer/VBoxContainer" unique_id=1146306939]
+[node name="Vsync" type="HBoxContainer" parent="ScrollContainer/VBoxContainer" unique_id=1146306939]
 layout_mode = 2
 
-[node name="Vsync" type="Label" parent="ScrollContainer/VBoxContainer/VsyncOption" unique_id=390138117]
-layout_mode = 2
-theme_override_font_sizes/font_size = 20
-text = "Vsync"
-
-[node name="VsyncButton" type="CheckButton" parent="ScrollContainer/VBoxContainer/VsyncOption" unique_id=1590685609]
+[node name="CheckNutton" type="CheckButton" parent="ScrollContainer/VBoxContainer/Vsync" unique_id=1590685609]
 layout_mode = 2
 action_mode = 0
+text = "Vsync"
+
+[node name="AntiAliasing" type="HBoxContainer" parent="ScrollContainer/VBoxContainer" unique_id=329488335]
+layout_mode = 2
+
+[node name="CheckButton" type="CheckButton" parent="ScrollContainer/VBoxContainer/AntiAliasing" unique_id=1364370409]
+layout_mode = 2
+text = "Anti Aliasing"
+
+[node name="AntAliOp" type="OptionButton" parent="ScrollContainer/VBoxContainer/AntiAliasing" unique_id=409817811]
+layout_mode = 2
+item_count = 5
+popup/item_0/text = "MSAA 8x"
+popup/item_0/id = 0
+popup/item_1/text = "MSAA 4x"
+popup/item_1/id = 1
+popup/item_2/text = "MSAA 2x"
+popup/item_2/id = 2
+popup/item_3/text = "FXAA"
+popup/item_3/id = 3
+popup/item_4/text = "SMAA"
+popup/item_4/id = 4
 
 [node name="ApplySettings" type="Button" parent="." unique_id=1566765507]
 layout_mode = 1
@@ -123,6 +145,6 @@ grow_horizontal = 0
 grow_vertical = 0
 text = "Apply Settings"
 
-[connection signal="item_selected" from="ScrollContainer/VBoxContainer/ScaleOption" to="." method="_on_resolution_item_selected"]
-[connection signal="text_submitted" from="ScrollContainer/VBoxContainer/MaxFpsEdit" to="." method="_on_max_fps_edit_text_submitted"]
+[connection signal="item_selected" from="ScrollContainer/VBoxContainer/Scale/ScaleOption" to="." method="_on_scale_option_item_selected"]
+[connection signal="item_selected" from="ScrollContainer/VBoxContainer/AntiAliasing/AntAliOp" to="." method="_on_anti_aliasing_item_selected"]
 [connection signal="pressed" from="ApplySettings" to="." method="_on_apply_settings_pressed"]
