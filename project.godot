@@ -23,13 +23,10 @@ config/icon="res://icon.svg"
 [autoload]
 
 SaveManager="*uid://dbihyb2ex78ls"
+SettingsManager="*uid://dgst3buv1sy3g"
 
 [display]
 
-window/size/viewport_width=3440
-window/size/viewport_height=1440
-window/size/mode=3
-window/stretch/mode="viewport"
 window/vsync/vsync_mode=0
 
 [dotnet]

@@ -1,26 +1,42 @@
 extends Control
 signal closed
 
+@export var selectedTexture: Texture2D
+
+func _ready() -> void:
+	$MarginContainer/VBoxContainer/MaxFpsEdit.text = str(SettingsManager.settings.video.max_fps)
+	var renderScale = SettingsManager.settings.video.render_scale
+	for i in range($MarginContainer/VBoxContainer/ResolutionOption.item_count):
+		if $MarginContainer/VBoxContainer/ResolutionOption.get_item_text(i) == str(renderScale):
+			$MarginContainer/VBoxContainer/ResolutionOption.select(i)
+			break
+	
+
 func _on_resolution_item_selected(index: int) -> void:
-	var viewport = get_tree().root
-	viewport.scaling_3d_mode = Viewport.SCALING_3D_MODE_BILINEAR
+	var renderScale
 	match index:
 		0:
-			viewport.scaling_3d_scale = 2
+			renderScale = 2.0
 		1:
-			viewport.scaling_3d_scale = 1.75
+			renderScale = 1.75
 		2:
-			viewport.scaling_3d_scale = 1.5
+			renderScale = 1.5
 		3:
-			viewport.scaling_3d_scale = 1.25
+			renderScale = 1.25
 		4:
-			viewport.scaling_3d_scale = 1
+			renderScale = 1.0
 		5:
-			viewport.scaling_3d_scale = 0.75
+			renderScale = 0.75
 		6:
-			viewport.scaling_3d_scale = 0.5
+			renderScale = 0.5
 		7:
-			viewport.scaling_3d_scale = 0.25
+			renderScale = 0.25
+	
+	if renderScale != null:
+		SettingsManager.settings.video.render_scale = renderScale
+	
+	SettingsManager.save_settings()
+	SettingsManager.apply_settings()
 			
 			
 func _unhandled_input(event: InputEvent) -> void:
@@ -28,3 +44,13 @@ func _unhandled_input(event: InputEvent) -> void:
 		accept_event()
 		hide()
 		closed.emit()
+
+
+
+func _on_max_fps_edit_text_submitted(new_text: String) -> void:
+	if new_text.is_valid_int():
+		var value = new_text.to_int()
+		SettingsManager.settings.video.max_fps = value
+		SettingsManager.save_settings()
+		SettingsManager.apply_settings()
+	else: $MarginContainer/VBoxContainer/MaxFpsEdit.text = str(Engine.max_fps)

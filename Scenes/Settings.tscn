@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://b2hljcs3010c5"]
 
 [ext_resource type="Script" uid="uid://cbwrq78vu403k" path="res://Scripts/Settings.gd" id="1_w1nw0"]
+[ext_resource type="Texture2D" uid="uid://bibmyot0esjfk" path="res://assets/Textures/Nature/Flower3.png" id="2_flfri"]
 
 [node name="Settings" type="Control" unique_id=307003582]
 layout_mode = 3
@@ -10,6 +11,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_w1nw0")
+selectedTexture = ExtResource("2_flfri")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=1262977672]
 layout_mode = 1
@@ -28,12 +30,12 @@ grow_vertical = 2
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=732182932]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1096892178]
+[node name="Resolution" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1096892178]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "Render Scale"
 
-[node name="Resolution" type="OptionButton" parent="MarginContainer/VBoxContainer" unique_id=18711073]
+[node name="ResolutionOption" type="OptionButton" parent="MarginContainer/VBoxContainer" unique_id=18711073]
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
 item_count = 8
@@ -54,4 +56,14 @@ popup/item_6/id = 6
 popup/item_7/text = "0.25"
 popup/item_7/id = 7
 
-[connection signal="item_selected" from="MarginContainer/VBoxContainer/Resolution" to="." method="_on_resolution_item_selected"]
+[node name="MaxFps" type="Label" parent="MarginContainer/VBoxContainer" unique_id=723904688]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Max FPS"
+
+[node name="MaxFpsEdit" type="LineEdit" parent="MarginContainer/VBoxContainer" unique_id=185004757]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+
+[connection signal="item_selected" from="MarginContainer/VBoxContainer/ResolutionOption" to="." method="_on_resolution_item_selected"]
+[connection signal="text_submitted" from="MarginContainer/VBoxContainer/MaxFpsEdit" to="." method="_on_max_fps_edit_text_submitted"]
