@@ -39,6 +39,7 @@ func load_game(slotName: String):
 		return # Error! We don't have a save to load.
 		
 	curSave = slotName
+	get_tree().paused = false
 
 	# Remove original objects from Persist group to avoid duplicates
 	var save_nodes = get_tree().get_nodes_in_group("Persist")

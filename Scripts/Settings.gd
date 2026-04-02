@@ -1,8 +1,6 @@
 extends Control
 signal closed
 
-@export var selectedTexture: Texture2D
-
 func _ready() -> void:
 	$MarginContainer/VBoxContainer/MaxFpsEdit.text = str(SettingsManager.settings.video.max_fps)
 	var renderScale = SettingsManager.settings.video.render_scale
