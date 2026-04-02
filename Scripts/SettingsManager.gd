@@ -17,10 +17,8 @@ var settings = {
 func _ready():
 	# Set screen resolution as window resolution(should fix black bars)
 	var screenSize = DisplayServer.screen_get_size()
-	print(screenSize)
 	DisplayServer.window_set_size(screenSize)
 	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
-	print(DisplayServer.screen_get_size())
 	
 	load_settings()
 	

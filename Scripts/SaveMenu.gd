@@ -9,12 +9,15 @@ func _ready():
 	
 
 
-func _on_save_pressed() -> void:
-	var customName = nameInput.text.strip_edges()
-	if customName != "":
-		SaveManager.save_game(customName)
+func _on_line_edit_text_submitted(new_text: String) -> void:
+	if new_text != "":
+		SaveManager.save_game(new_text)
 		nameInput.clear()
+		nameInput.hide()
 		refresh_list()
+
+func _on_save_pressed() -> void:
+	nameInput.show()
 		
 func refresh_list():
 	for i in saveList.get_children():
@@ -36,6 +39,9 @@ func create_save_row(displayName: String):
 	var loadBtn = Button.new()
 	loadBtn.text = "LOAD: " + displayName
 	loadBtn.pressed.connect(func(): SaveManager.load_game(displayName))
+	loadBtn.custom_minimum_size = Vector2(200, 80)
+	loadBtn.add_theme_font_size_override("font_size", 30)
+	loadBtn.alignment = HORIZONTAL_ALIGNMENT_LEFT
 	
 	var delBtn = Button.new()
 	delBtn.text = "X"
@@ -54,6 +60,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("Escape") and is_visible_in_tree():
 		accept_event()
 		hide()
+		nameInput.clear()
 		closed.emit()
 	
 		

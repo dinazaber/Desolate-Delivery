@@ -1,7 +1,12 @@
 extends Control
-@export var hud: Control
-func _unhandled_input(event: InputEvent) -> void:
 
+@export var hud: Control
+
+func _ready():
+	$SaveMenu/Add.show()
+
+
+func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("Escape"):
 		if is_visible_in_tree():
 			_on_resume_pressed()
@@ -24,7 +29,8 @@ func _on_settings_pressed() -> void:
 
 
 func _on_quit_pressed() -> void:
-	get_tree().quit()
+	get_tree().paused = false
+	get_tree().change_scene_to_file("res://Scenes/MainMenu.tscn")
 
 
 func _on_settings_closed() -> void:

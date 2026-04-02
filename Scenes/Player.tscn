@@ -133,15 +133,15 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "Settings"
 
-[node name="Quit" type="Button" parent="PauseMenu/PauseMenu/MarginContainer/VBoxContainer" unique_id=880679601]
-layout_mode = 2
-theme_override_font_sizes/font_size = 30
-text = "Quit"
-
 [node name="Save Menu" type="Button" parent="PauseMenu/PauseMenu/MarginContainer/VBoxContainer" unique_id=1396896519]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
-text = "Save Game"
+text = "Save Manager"
+
+[node name="Quit" type="Button" parent="PauseMenu/PauseMenu/MarginContainer/VBoxContainer" unique_id=880679601]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Main Menu"
 
 [node name="Settings" parent="PauseMenu" unique_id=307003582 instance=ExtResource("3_gntrk")]
 process_mode = 3
@@ -184,15 +184,11 @@ texture = ExtResource("5_5ixxa")
 modulate = Color(0.46666667, 1, 0.5254902, 1)
 self_modulate = Color(0.46666667, 1, 0.5254902, 0.78431374)
 layout_mode = 1
-anchors_preset = 12
+anchors_preset = 2
 anchor_top = 1.0
-anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 218.0
-offset_top = -227.0
-offset_right = -2583.0
-offset_bottom = -151.0
-grow_horizontal = 2
+offset_top = -76.0
+offset_right = 4.0
 grow_vertical = 0
 value = 100.0
 allow_greater = true
@@ -220,7 +216,7 @@ text = "DRAW CALLS HERE"
 [connection signal="timeout" from="SuperTimer" to="." method="SuperTimerTimeOut"]
 [connection signal="pressed" from="PauseMenu/PauseMenu/MarginContainer/VBoxContainer/Resume" to="PauseMenu" method="_on_resume_pressed"]
 [connection signal="pressed" from="PauseMenu/PauseMenu/MarginContainer/VBoxContainer/Settings" to="PauseMenu" method="_on_settings_pressed"]
-[connection signal="pressed" from="PauseMenu/PauseMenu/MarginContainer/VBoxContainer/Quit" to="PauseMenu" method="_on_quit_pressed"]
 [connection signal="pressed" from="PauseMenu/PauseMenu/MarginContainer/VBoxContainer/Save Menu" to="PauseMenu" method="_on_save_menu_pressed"]
+[connection signal="pressed" from="PauseMenu/PauseMenu/MarginContainer/VBoxContainer/Quit" to="PauseMenu" method="_on_quit_pressed"]
 [connection signal="closed" from="PauseMenu/Settings" to="PauseMenu" method="_on_settings_closed"]
 [connection signal="closed" from="PauseMenu/SaveMenu" to="PauseMenu" method="_on_save_menu_closed"]

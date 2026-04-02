@@ -2,6 +2,9 @@ extends Control
 
 const scene = preload("res://Scenes/test.tscn")
 
+func _ready() -> void:
+	$SaveMenu/Add.hide()
+
 func _on_start_pressed() -> void:
 	get_tree().change_scene_to_packed(scene)
 

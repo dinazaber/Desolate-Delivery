@@ -87,15 +87,15 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 45
 text = "Settings"
 
-[node name="Quit" type="Button" parent="MainMenu/MarginContainer/VBoxContainer" unique_id=1964139943]
-layout_mode = 2
-theme_override_font_sizes/font_size = 45
-text = "Quit"
-
 [node name="Load" type="Button" parent="MainMenu/MarginContainer/VBoxContainer" unique_id=986868753]
 layout_mode = 2
 theme_override_font_sizes/font_size = 45
 text = "Load Game"
+
+[node name="Quit" type="Button" parent="MainMenu/MarginContainer/VBoxContainer" unique_id=1964139943]
+layout_mode = 2
+theme_override_font_sizes/font_size = 45
+text = "Quit"
 
 [node name="Settings" parent="." unique_id=307003582 instance=ExtResource("2_853f1")]
 visible = false
@@ -130,7 +130,7 @@ sky_mode = 2
 
 [connection signal="pressed" from="MainMenu/MarginContainer/VBoxContainer/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="MainMenu/MarginContainer/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
-[connection signal="pressed" from="MainMenu/MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
 [connection signal="pressed" from="MainMenu/MarginContainer/VBoxContainer/Load" to="." method="_on_load_pressed"]
+[connection signal="pressed" from="MainMenu/MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
 [connection signal="closed" from="Settings" to="." method="_on_settings_closed"]
 [connection signal="closed" from="SaveMenu" to="." method="_on_save_menu_closed"]

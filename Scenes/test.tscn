@@ -145,8 +145,11 @@ sun = NodePath("../DirectionalLight3D")
 process_mode = 1
 show_behind_parent = true
 material = SubResource("ShaderMaterial_0qy5o")
-offset_right = 3440.0
-offset_bottom = 1440.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
 
 [node name="Barrack" type="MeshInstance3D" parent="." unique_id=1999639744]
