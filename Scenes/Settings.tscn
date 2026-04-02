@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://b2hljcs3010c5"]
 
 [ext_resource type="Script" uid="uid://cbwrq78vu403k" path="res://Scripts/Settings.gd" id="1_w1nw0"]
-[ext_resource type="Texture2D" uid="uid://bibmyot0esjfk" path="res://assets/Textures/Nature/Flower3.png" id="2_flfri"]
 
 [node name="Settings" type="Control" unique_id=307003582]
 layout_mode = 3
@@ -11,33 +10,32 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_w1nw0")
-selectedTexture = ExtResource("2_flfri")
 
-[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1262977672]
+[node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=366604364]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -675.5
-offset_top = -633.0
-offset_right = 675.5
-offset_bottom = 633.0
+offset_left = -185.0
+offset_top = -292.0
+offset_right = 256.0
+offset_bottom = 292.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=732182932]
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer" unique_id=732182932]
 layout_mode = 2
 
-[node name="Resolution" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1096892178]
+[node name="RenderScale" type="Label" parent="ScrollContainer/VBoxContainer" unique_id=1096892178]
 layout_mode = 2
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 20
 text = "Render Scale"
 
-[node name="ResolutionOption" type="OptionButton" parent="MarginContainer/VBoxContainer" unique_id=18711073]
+[node name="ScaleOption" type="OptionButton" parent="ScrollContainer/VBoxContainer" unique_id=18711073]
 layout_mode = 2
-theme_override_font_sizes/font_size = 40
+theme_override_font_sizes/font_size = 15
 item_count = 8
 popup/item_0/text = "2"
 popup/item_0/id = 0
@@ -56,14 +54,75 @@ popup/item_6/id = 6
 popup/item_7/text = "0.25"
 popup/item_7/id = 7
 
-[node name="MaxFps" type="Label" parent="MarginContainer/VBoxContainer" unique_id=723904688]
+[node name="MaxFps" type="Label" parent="ScrollContainer/VBoxContainer" unique_id=723904688]
 layout_mode = 2
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 20
 text = "Max FPS"
 
-[node name="MaxFpsEdit" type="LineEdit" parent="MarginContainer/VBoxContainer" unique_id=185004757]
+[node name="MaxFpsEdit" type="LineEdit" parent="ScrollContainer/VBoxContainer" unique_id=185004757]
 layout_mode = 2
-theme_override_font_sizes/font_size = 40
+theme_override_font_sizes/font_size = 15
 
-[connection signal="item_selected" from="MarginContainer/VBoxContainer/ResolutionOption" to="." method="_on_resolution_item_selected"]
-[connection signal="text_submitted" from="MarginContainer/VBoxContainer/MaxFpsEdit" to="." method="_on_max_fps_edit_text_submitted"]
+[node name="WindowedOption" type="HBoxContainer" parent="ScrollContainer/VBoxContainer" unique_id=1608606791]
+layout_mode = 2
+
+[node name="Windowed" type="Label" parent="ScrollContainer/VBoxContainer/WindowedOption" unique_id=2058494868]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Windowed"
+
+[node name="WindowedButton" type="CheckButton" parent="ScrollContainer/VBoxContainer/WindowedOption" unique_id=1747720199]
+layout_mode = 2
+action_mode = 0
+
+[node name="ResolutionOption" type="HBoxContainer" parent="ScrollContainer/VBoxContainer" unique_id=1897556156]
+layout_mode = 2
+
+[node name="Width" type="Label" parent="ScrollContainer/VBoxContainer/ResolutionOption" unique_id=1205772610]
+layout_mode = 2
+text = "Width:"
+
+[node name="WidthEdit" type="LineEdit" parent="ScrollContainer/VBoxContainer/ResolutionOption" unique_id=965594438]
+layout_mode = 2
+placeholder_text = "Screen Width"
+expand_to_text_length = true
+
+[node name="Height" type="Label" parent="ScrollContainer/VBoxContainer/ResolutionOption" unique_id=1718335663]
+layout_mode = 2
+text = "Height:"
+
+[node name="HeightEdit" type="LineEdit" parent="ScrollContainer/VBoxContainer/ResolutionOption" unique_id=1081672037]
+layout_mode = 2
+placeholder_text = "Screen Height"
+expand_to_text_length = true
+
+[node name="VsyncOption" type="HBoxContainer" parent="ScrollContainer/VBoxContainer" unique_id=1146306939]
+layout_mode = 2
+
+[node name="Vsync" type="Label" parent="ScrollContainer/VBoxContainer/VsyncOption" unique_id=390138117]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Vsync"
+
+[node name="VsyncButton" type="CheckButton" parent="ScrollContainer/VBoxContainer/VsyncOption" unique_id=1590685609]
+layout_mode = 2
+action_mode = 0
+
+[node name="ApplySettings" type="Button" parent="." unique_id=1566765507]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -170.445
+offset_top = -103.974976
+offset_right = -52.44458
+offset_bottom = -72.974976
+grow_horizontal = 0
+grow_vertical = 0
+text = "Apply Settings"
+
+[connection signal="item_selected" from="ScrollContainer/VBoxContainer/ScaleOption" to="." method="_on_resolution_item_selected"]
+[connection signal="text_submitted" from="ScrollContainer/VBoxContainer/MaxFpsEdit" to="." method="_on_max_fps_edit_text_submitted"]
+[connection signal="pressed" from="ApplySettings" to="." method="_on_apply_settings_pressed"]

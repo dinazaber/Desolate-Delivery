@@ -27,6 +27,8 @@ SettingsManager="*uid://dgst3buv1sy3g"
 
 [display]
 
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
 window/vsync/vsync_mode=0
 
 [dotnet]

@@ -34,7 +34,6 @@ func save():
 		"dead": dead,
 		"current_state": current_state
 	}
-	print(data)
 	return data
 
 # Called when the node enters the scene tree for the first time.
@@ -46,9 +45,8 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	# Fallback if player is missing
 	if not player:
-		player = get_tree().get_first_node_in_group("Player")
-		print("no player")
-		print(player)
+		if get_tree().get_first_node_in_group("Player"):
+			player = get_tree().get_first_node_in_group("Player")
 		return
 	
 	if !dead:
@@ -73,15 +71,15 @@ func process_dead_state():
 
 
 func follow(delta):
-	look_target.x = lerp(look_target.x, player.global_position.x, delta * 3.5)
-	look_target.y = lerp(look_target.y, player.global_position.y, delta * 3.5)
-	look_target.z = lerp(look_target.z, player.global_position.z, delta * 3.5)
+	look_target = lerp(look_target, player.global_position, delta * 3.5)
 	gun.look_at(look_target, Vector3.UP, true)
 	gun.rotation_degrees = gun.rotation_degrees + Vector3(90,0,0)
 	
-	var mount_look_target = look_target
-	mount_look_target.y = mount.global_position.y
-	mount.look_at(mount_look_target, Vector3.UP)
+	
+	# First look_at does this part it seems but i won't delete it, just for case
+	#var mount_look_target = look_target
+	#mount_look_target.y = mount.global_position.y
+	#mount.look_at(mount_look_target, Vector3.UP)
 
 func hit(recieved_damage, type):
 	if type == "player":

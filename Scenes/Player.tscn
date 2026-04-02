@@ -99,10 +99,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -403.5
-offset_top = -273.5
-offset_right = 403.5
-offset_bottom = 273.5
+offset_left = -219.75
+offset_top = -231.5
+offset_right = 219.75
+offset_bottom = 231.5
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -115,32 +115,32 @@ theme_override_constants/margin_bottom = 100
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu/PauseMenu/MarginContainer" unique_id=1709221619]
 layout_mode = 2
-theme_override_constants/separation = 20
+theme_override_constants/separation = 10
 
 [node name="Label" type="Label" parent="PauseMenu/PauseMenu/MarginContainer/VBoxContainer" unique_id=1913096271]
 layout_mode = 2
-theme_override_font_sizes/font_size = 100
+theme_override_font_sizes/font_size = 45
 text = "Pause"
 horizontal_alignment = 1
 
 [node name="Resume" type="Button" parent="PauseMenu/PauseMenu/MarginContainer/VBoxContainer" unique_id=1324442104]
 layout_mode = 2
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 15
 text = "Resume"
 
 [node name="Settings" type="Button" parent="PauseMenu/PauseMenu/MarginContainer/VBoxContainer" unique_id=386092316]
 layout_mode = 2
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 15
 text = "Settings"
 
 [node name="Save Menu" type="Button" parent="PauseMenu/PauseMenu/MarginContainer/VBoxContainer" unique_id=1396896519]
 layout_mode = 2
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 15
 text = "Save Manager"
 
 [node name="Quit" type="Button" parent="PauseMenu/PauseMenu/MarginContainer/VBoxContainer" unique_id=880679601]
 layout_mode = 2
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 15
 text = "Main Menu"
 
 [node name="Settings" parent="PauseMenu" unique_id=307003582 instance=ExtResource("3_gntrk")]
@@ -172,13 +172,14 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -32.0
-offset_top = -32.0
-offset_right = 32.0
-offset_bottom = 32.0
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("5_5ixxa")
+expand_mode = 1
 
 [node name="HealthBar" type="ProgressBar" parent="HUD" unique_id=2128502011]
 modulate = Color(0.46666667, 1, 0.5254902, 1)
@@ -187,8 +188,10 @@ layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = -76.0
-offset_right = 4.0
+offset_left = 105.0
+offset_top = -143.0
+offset_right = 305.0
+offset_bottom = -113.0
 grow_vertical = 0
 value = 100.0
 allow_greater = true
@@ -199,18 +202,18 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -444.0
+offset_left = -195.0
 offset_bottom = 198.0
 grow_horizontal = 0
 
 [node name="FPS" type="Label" parent="HUD/VBoxContainer" unique_id=1514150893]
 layout_mode = 2
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 10
 text = "FPS HERE"
 
 [node name="DrawCalls" type="Label" parent="HUD/VBoxContainer" unique_id=45565768]
 layout_mode = 2
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 10
 text = "DRAW CALLS HERE"
 
 [connection signal="timeout" from="SuperTimer" to="." method="SuperTimerTimeOut"]

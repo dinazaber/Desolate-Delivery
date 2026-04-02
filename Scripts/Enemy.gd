@@ -34,7 +34,6 @@ func save():
 		"dead": dead,
 		"current_state": current_state
 	}
-	print(data)
 	return data
 
 func _physics_process(delta):
@@ -42,9 +41,8 @@ func _physics_process(delta):
 		velocity.y -= 20 * delta
 	# Fallback if player is missing
 	if not player:
-		player = get_tree().get_first_node_in_group("Player")
-		print("no player")
-		print(player)
+		if get_tree().get_first_node_in_group("Player"):
+			player = get_tree().get_first_node_in_group("Player")
 		return
 	
 	if !dead:
@@ -164,7 +162,6 @@ func knockBack(direction, force, time):
 
 func checkLifeLine():
 	if enemy_health <= 0 and dead == false:
-		print("enemy felled")
 		dead = true
 		queue_free()
 

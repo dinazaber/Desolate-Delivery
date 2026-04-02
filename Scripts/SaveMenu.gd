@@ -39,8 +39,8 @@ func create_save_row(displayName: String):
 	var loadBtn = Button.new()
 	loadBtn.text = "LOAD: " + displayName
 	loadBtn.pressed.connect(func(): SaveManager.load_game(displayName))
-	loadBtn.custom_minimum_size = Vector2(200, 80)
-	loadBtn.add_theme_font_size_override("font_size", 30)
+	loadBtn.custom_minimum_size = Vector2(100, 40)
+	loadBtn.add_theme_font_size_override("font_size", 15)
 	loadBtn.alignment = HORIZONTAL_ALIGNMENT_LEFT
 	
 	var delBtn = Button.new()
@@ -61,6 +61,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		accept_event()
 		hide()
 		nameInput.clear()
+		nameInput.hide()
 		closed.emit()
 	
 		

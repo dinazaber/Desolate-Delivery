@@ -76,7 +76,6 @@ var current_gun = "smg"
 
 
 func save():
-	print("saved")
 	var data = {
 		"level_scene": get_tree().current_scene.scene_file_path,
 		"filename": get_scene_file_path(),
@@ -84,7 +83,6 @@ func save():
 		"transform": global_transform,
 		"player_health": player_health
 	}
-	print(data)
 	return data
 
 

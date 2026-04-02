@@ -7,7 +7,9 @@ var settings = {
 	"video": {
 		"max_fps": 60,
 		"vsync": false,
-		"render_scale": 1.0
+		"render_scale": 1.0,
+		"image_size": DisplayServer.screen_get_size(),
+		"windowed": false
 	},
 	"audio": {
 		"master_volume": 1.0
@@ -15,12 +17,14 @@ var settings = {
 }
 
 func _ready():
-	# Set screen resolution as window resolution(should fix black bars)
-	var screenSize = DisplayServer.screen_get_size()
-	DisplayServer.window_set_size(screenSize)
-	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+	
+	#save_settings() # When you add parameters to config, remove the hash. After first launch, return the hash.
 	
 	load_settings()
+	
+	if settings.video.windowed: 
+		@warning_ignore("integer_division")
+		DisplayServer.window_set_position(DisplayServer.screen_get_position() + DisplayServer.screen_get_size() / 2 - DisplayServer.window_get_size() / 2)
 	
 	
 func save_settings():
@@ -50,8 +54,14 @@ func apply_settings():
 	DisplayServer.window_set_vsync_mode(vsync)
 	
 	var viewport = get_tree().root
-	viewport.scaling_3d_mode = Viewport.SCALING_3D_MODE_BILINEAR
-	var renderScale: float = settings.video.render_scale
-	viewport.scaling_3d_scale = renderScale
+	viewport.scaling_3d_mode = Viewport.SCALING_3D_MODE_BILINEAR 
+	viewport.scaling_3d_scale = settings.video.render_scale
+	
+	
+	if settings.video.windowed:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+		DisplayServer.window_set_size(settings.video.image_size)
+	
+	else: DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 	 
 		
