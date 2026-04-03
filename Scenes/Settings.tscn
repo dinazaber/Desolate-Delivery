@@ -205,3 +205,5 @@ text = "Back"
 [connection signal="item_selected" from="ScrollContainer/VBoxContainer/Scale/ScaleOption" to="." method="_on_scale_option_item_selected"]
 [connection signal="item_selected" from="ScrollContainer/VBoxContainer/AntiAliasing/AntAliOp" to="." method="_on_anti_aliasing_item_selected"]
 [connection signal="pressed" from="ApplySettings" to="." method="_on_apply_settings_pressed"]
+[connection signal="pressed" from="Panel/Vbox/HBoxContainer/Discard" to="." method="_on_discard_pressed"]
+[connection signal="pressed" from="Panel/Vbox/HBoxContainer/Back" to="." method="_on_back_pressed"]
