@@ -10,19 +10,21 @@ var headTime = 0.0
 @onready var healthBar = $HUD/HealthBar
 @export var screenEffect: ColorRect
 @export var sun: DirectionalLight3D
+
 @onready var rightWeapon_smg: MeshInstance3D = $PlayerCamera/RightHand/SMG
+@onready var rightWeapon_beggarsShotgun: Marker3D = $PlayerCamera/RightHand/BeggarsShotgun
 @onready var rightWeapon_speargun: MeshInstance3D = $PlayerCamera/RightHand/SpeargunPlaceholder
 @onready var leftWeapon: MeshInstance3D = $PlayerCamera/LeftHand/Shotty
 
-var speed = 0
-var accel_mod = 1.0 #acceleration modifier
+var speed: float = 0
+var accel_mod: float = 1.0 #acceleration modifier
 var dash: bool = false
 var canDash: bool = true
 var knocked: bool = false
 var crouch: bool = false
 var slam: bool = false
 var dead: bool = false
-var switching: bool = false
+var canShoot: bool = true
 
 var isInInterior = false
 var currentRoof = null
@@ -36,11 +38,11 @@ var currentInput = Vector2()
 
 #player stats
 const PLAYER_MAX_HEALTH = 100
-@export var player_health = PLAYER_MAX_HEALTH
-@export var walk_speed = 5
-@export var dash_speed = 50
-@export var jump_speed = 10
-@export var slam_speed = -30
+@export var player_health: float = PLAYER_MAX_HEALTH
+@export var walk_speed: float = 5
+@export var dash_speed: float = 50
+@export var jump_speed: float = 10
+@export var slam_speed: float = -30
 
 #player boxes
 @onready var player_stand = $PlayerCollisionStand
@@ -64,6 +66,7 @@ var instance_grenade
 @onready var playerRay_end = $PlayerCamera/PlayerRayEnd
 
 var current_gun = "smg"
+var beggarsMag = 0
 @onready var rightWeaponAnim = $PlayerCamera/RightHand/AnimationPlayer
 @onready var spearSpawn = $PlayerCamera/RightHand/SpeargunPlaceholder/Barrel
 @onready var leftWeaponAnim = $PlayerCamera/LeftHand/AnimationPlayer
@@ -90,7 +93,6 @@ func save():
 func SuperTimerTimeOut() -> void:
 	if !canDash:
 		canDash = true
-		
 
 
 func updateScreenEffect(): #Function for current and future screen effects
@@ -136,24 +138,56 @@ func _physics_process(delta):
 	rotation.y = lerp_angle(rotation.y, yaw, delta*20) # left/right
 	$PlayerCamera.rotation.x = lerp_angle($PlayerCamera.rotation.x, -pitch, delta*20)
 	
-	if Input.is_action_just_pressed("1"):
-		switching = true
+	
+	if Input.is_action_just_pressed("1"): # smg
+		canShoot = false
 		rightWeapon_smg.visible = true
+		rightWeapon_beggarsShotgun.visible = false
 		rightWeapon_speargun.visible = false
 		current_gun = "smg"
-		switching = false
-	elif Input.is_action_just_pressed("2"):
-		switching = true
-		rightWeapon_smg.visible = false
-		rightWeapon_speargun.visible = true
-		current_gun = "speargun"
-		switching = false
+		canShoot = true
 	
-	if Input.is_action_pressed("LeftMouse"):
+	elif Input.is_action_just_pressed("2"): # beggars shotgun
+		canShoot = false
+		rightWeapon_smg.visible = false
+		rightWeapon_beggarsShotgun.visible = true
+		rightWeapon_speargun.visible = false
+		current_gun = "beggars shotgun"
+		canShoot = true
+	
+	#elif Input.is_action_just_pressed("3"): # speargun
+	#	canShoot = false
+	#	rightWeapon_smg.visible = false
+	#	rightWeapon_beggarsShotgun.visible = false
+	#	rightWeapon_speargun.visible = true
+	#	current_gun = "speargun"
+	#	canShoot = true
+	
+	
+	if Input.is_action_pressed("LeftMouse"): # shooting
 		if current_gun == "smg":
 			shoot_smg()
 		elif current_gun == "speargun":
 			shoot_speargun()
+	
+	if current_gun == "beggars shotgun": # shooting the beggars spesificaly
+		if canShoot:
+			if Input.is_action_pressed("LeftMouse"):
+				if beggarsMag < 4 and !rightWeaponAnim.is_playing():
+					rightWeaponAnim.play("LoadBeggarsShotgun")
+					await get_tree().create_timer(0.35).timeout
+					beggarsMag += 1
+			elif beggarsMag > 1 and !rightWeaponAnim.is_playing():
+				rightWeaponAnim.play("ShootBeggarsShotgun_consecutive")
+				await get_tree().create_timer(0.2).timeout
+				beggarsMag -= 1
+				shoot_beggarsShotgun()
+			elif beggarsMag == 1 and !rightWeaponAnim.is_playing():
+				rightWeaponAnim.play("ShootBeggarsShotgun_last")
+				await get_tree().create_timer(0.4).timeout
+				beggarsMag -= 1
+				shoot_beggarsShotgun()
+	
 	
 	if Input.is_action_just_pressed("RightMouse"):
 		shoot_offHandShotgun()
@@ -257,7 +291,7 @@ func throw_grenade():
 	get_parent().add_child(instance_grenade)
 
 func shoot_smg():
-	if !rightWeaponAnim.is_playing() and !switching:
+	if !rightWeaponAnim.is_playing() and canShoot:
 		rightWeaponAnim.play("ShootSMG")
 		if playerRay.is_colliding():
 			if playerRay.get_collider().is_in_group("Enemy"):
@@ -266,8 +300,11 @@ func shoot_smg():
 				playerRay.get_collider().shot()
 			
 
-func shoot_speargun():
-	if !rightWeaponAnim.is_playing() and !switching:
+func shoot_beggarsShotgun():
+	pass
+
+func shoot_speargun(): ## UNUSED
+	if !rightWeaponAnim.is_playing() and canShoot:
 		rightWeaponAnim.play("ShootSpeargun")
 		instance_spear = spear.instantiate()
 		instance_spear.position = spearSpawn.global_position

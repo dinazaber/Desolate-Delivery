@@ -31,7 +31,6 @@ collision_mask = 9
 floor_constant_speed = true
 floor_snap_length = 0.25
 script = ExtResource("1_g8lft")
-dash_speed = 11
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=620583355]
 visible = false
@@ -64,6 +63,7 @@ debug_color = Color(0.997045, 0, 0.18383858, 0.41960785)
 [node name="PlayerCamera" type="Camera3D" parent="." unique_id=1738772125]
 transform = Transform3D(-4.371213e-08, 9.313226e-10, -1, -5.1691977e-11, 1, 9.313226e-10, 1, 5.169202e-11, -4.371213e-08, 0, 0.639, 0)
 cull_mask = 1048573
+fov = 90.0
 size = 56.061
 
 [node name="throwableSpawn" type="Marker3D" parent="PlayerCamera" unique_id=67584433]
@@ -81,7 +81,7 @@ collision_mask = 6
 transform = Transform3D(-8.742278e-09, 0, 0.2, 7.66726e-24, 0.2, 0, -0.2, -4.5191364e-19, -8.742278e-09, -0.5461225, -0.38191456, -0.47322318)
 
 [node name="RightHand" parent="PlayerCamera" unique_id=267885530 instance=ExtResource("2_kyqiw")]
-transform = Transform3D(0.15, 0, 0, 0, 0.15, -3.3893527e-19, 0, -3.3893524e-19, 0.15, 0.40479383, -0.3045184, -0.44800004)
+transform = Transform3D(0.15, 0, 0, 0, 0.15, -3.3893527e-19, 0, -3.3893524e-19, 0.15, 0.24724317, -0.13591963, -0.30084935)
 
 [node name="PauseMenu" type="Control" parent="." unique_id=877245422 node_paths=PackedStringArray("hud")]
 process_mode = 3

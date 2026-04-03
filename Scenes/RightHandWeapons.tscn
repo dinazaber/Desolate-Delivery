@@ -3,6 +3,25 @@
 [ext_resource type="ArrayMesh" uid="uid://d4hn03go6odvn" path="res://assets/Meshes/Weapons/SMG.mesh" id="1_yltro"]
 [ext_resource type="Texture2D" uid="uid://24usakcrqsvh" path="res://assets/Textures/Architecture/Explosion1.png" id="2_02q03"]
 [ext_resource type="ArrayMesh" uid="uid://dgnpgu3vv3a5n" path="res://assets/Meshes/Weapons/Speargun - PLACEHOLDER.mesh" id="3_7mlgx"]
+[ext_resource type="ArrayMesh" uid="uid://c6nmdg8hnoe36" path="res://assets/Meshes/Weapons/beggarsShotgun/frame.mesh" id="4_vqio2"]
+[ext_resource type="ArrayMesh" uid="uid://eadvfmp34ewb" path="res://assets/Meshes/Weapons/beggarsShotgun/barrels.mesh" id="5_qqpya"]
+
+[sub_resource type="Animation" id="Animation_l5ase"]
+resource_name = "LoadBeggarsShotgun"
+length = 0.35
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BeggarsShotgun/Frame/Barrels:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.26, 0.3, 0.35),
+"transitions": PackedFloat32Array(0.6, 0.6, 5, 1, 1),
+"update": 0,
+"values": [Vector3(0, 3.1415925, 0), Vector3(0, 3.1415927, -1.7453293), Vector3(0, 3.1415927, -1.4835298), Vector3(0, 3.1415927, -1.5707964), Vector3(0, 3.1415927, -1.5707964)]
+}
 
 [sub_resource type="Animation" id="Animation_sjkk0"]
 length = 0.001
@@ -45,7 +64,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("SMG/Barrel/GPUParticles3D:emitting")
+tracks/3/path = NodePath("smg_tracers:emitting")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -54,10 +73,117 @@ tracks/3/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("BeggarsShotgun/Frame/Barrels:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 3.1415927, 1.8362658)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("SMG:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1.5707964, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_4ungy"]
+resource_name = "ShootBeggarsShotgun_consecutive"
+length = 0.2
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BeggarsShotgun/Frame/Barrels:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.18, 0.2),
+"transitions": PackedFloat32Array(0.42044842, 1, 1),
+"update": 0,
+"values": [Vector3(0, 3.1415925, 0), Vector3(0, 3.1415927, 1.5707964), Vector3(0, 3.1415927, 1.5707964)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BeggarsShotgun:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.04, 0.12, 0.19, 0.2),
+"transitions": PackedFloat32Array(0.4, 2, 0.6, 1.5, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.1, 0.1, 1), Vector3(0, 0.15, 0.86), Vector3(0, -0.05, 0), Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BeggarsShotgun:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.08, 0.14, 0.19, 0.2),
+"transitions": PackedFloat32Array(0.5, 1.3, 1, 0.6, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.034906585, -0.017453292, -0.07853982), Vector3(0.017453292, 0, 0.09599311), Vector3(-0.02617994, 0, -0.017453292), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_7ud7m"]
+resource_name = "ShootBeggarsShotgun_last"
+length = 0.4
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BeggarsShotgun/Frame/Barrels:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.18, 0.24, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 0.4, 2, 1.6, 1),
+"update": 0,
+"values": [Vector3(0, 3.1415925, 0), Vector3(0, 3.1415927, 1.5707964), Vector3(0, 3.1415927, 1.9198622), Vector3(0, 3.1415927, 1.5184364), Vector3(0, 3.1415927, 1.5707964)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BeggarsShotgun:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.04, 0.16, 0.35, 0.4),
+"transitions": PackedFloat32Array(0.4, 2, 0.5, 1.2, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.3, 0.15, 1.2), Vector3(0, 0.2, 0.3), Vector3(0, -0.05, 0), Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BeggarsShotgun:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.08, 0.35, 0.4),
+"transitions": PackedFloat32Array(0.6, 1.4, 1.5, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.12217305, 0, -0.08726646), Vector3(-0.05235988, 0, 0.05235988), Vector3(0, 0, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_yltro"]
 resource_name = "ShootSMG"
 length = 0.1
+step = 0.01
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -66,14 +192,14 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.025, 0.1),
-"transitions": PackedFloat32Array(1, 1, 1),
+"transitions": PackedFloat32Array(0.4, 0.5, 1),
 "update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, 0, 0.5), Vector3(0, 0, 0)]
+"values": [Vector3(0, 0, 0), Vector3(0, 0.1, 0.5), Vector3(0, 0, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = false
-tracks/1/path = NodePath("Sprite:visible")
+tracks/1/path = NodePath("SMG/Barrel/Sprite:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -85,7 +211,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("SMG/Barrel/GPUParticles3D:emitting")
+tracks/2/path = NodePath("smg_tracers:emitting")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -93,6 +219,18 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SMG:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.0001, 0.0002, 0.04, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1.8, 0.6, 1),
+"update": 0,
+"values": [Vector3(0, 1.5707964, 0), Vector3(0, 1.5707964, 0), Vector3(0, 1.5707964, 0), Vector3(0.034906585, 1.5707964, 0.034906585), Vector3(0, 1.5707964, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_vqio2"]
@@ -126,10 +264,29 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8qb6n"]
 _data = {
+&"LoadBeggarsShotgun": SubResource("Animation_l5ase"),
 &"RESET": SubResource("Animation_sjkk0"),
+&"ShootBeggarsShotgun_consecutive": SubResource("Animation_4ungy"),
+&"ShootBeggarsShotgun_last": SubResource("Animation_7ud7m"),
 &"ShootSMG": SubResource("Animation_yltro"),
 &"ShootSpeargun": SubResource("Animation_vqio2")
 }
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8qb6n"]
+transparency = 2
+alpha_scissor_threshold = 0.972
+alpha_antialiasing_mode = 0
+shading_mode = 0
+albedo_color = Color(1.6797683, 1.6797683, 1.6797683, 1)
+albedo_texture = ExtResource("2_02q03")
+texture_filter = 0
+billboard_mode = 1
+billboard_keep_scale = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ovc61"]
+material = SubResource("StandardMaterial3D_8qb6n")
+size = Vector2(3, 3)
+orientation = 2
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_7bpbl"]
 angle_min = 1.0728835e-05
@@ -149,22 +306,6 @@ albedo_color = Color(1.353256, 0.6884535, 0, 1)
 material = SubResource("StandardMaterial3D_7bpbl")
 size = Vector3(0.01, 0.01, 10)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8qb6n"]
-transparency = 2
-alpha_scissor_threshold = 0.972
-alpha_antialiasing_mode = 0
-shading_mode = 0
-albedo_color = Color(1.6797683, 1.6797683, 1.6797683, 1)
-albedo_texture = ExtResource("2_02q03")
-texture_filter = 0
-billboard_mode = 1
-billboard_keep_scale = true
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_ovc61"]
-material = SubResource("StandardMaterial3D_8qb6n")
-size = Vector2(3, 3)
-orientation = 2
-
 [node name="RightHand" type="Node3D" unique_id=267885530]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=207191350]
@@ -177,19 +318,20 @@ mesh = ExtResource("1_yltro")
 [node name="Barrel" type="Node3D" parent="SMG" unique_id=576063553]
 transform = Transform3D(-1.4570462e-07, 0, -3.3333328, 0, 3.3333328, 0, 3.3333328, 0, -1.4570462e-07, 22.520256, 0, 9.843917e-07)
 
-[node name="GPUParticles3D" type="GPUParticles3D" parent="SMG/Barrel" unique_id=1999863505]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -28)
+[node name="Sprite" type="MeshInstance3D" parent="SMG/Barrel" unique_id=1088014816]
+transform = Transform3D(0.53333324, 0, -1.4210855e-15, 0, 0.53333324, 0, 1.4210855e-15, 0, 0.53333324, 3.4206165e-14, 0, -0.28036118)
+visible = false
+mesh = SubResource("PlaneMesh_ovc61")
+skeleton = NodePath("../../..")
+
+[node name="smg_tracers" type="GPUParticles3D" parent="." unique_id=1999863505]
+transform = Transform3D(0.66666657, 0, -1.7763568e-15, 0, 0.66666657, 0, 1.7763568e-15, 0, 0.66666657, 0, 0, -24)
 amount = 1
 lifetime = 0.05
 one_shot = true
 fixed_fps = 60
 process_material = SubResource("ParticleProcessMaterial_7bpbl")
 draw_pass_1 = SubResource("PrismMesh_7mlgx")
-
-[node name="Sprite" type="MeshInstance3D" parent="." unique_id=1088014816]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, -4.5908794)
-visible = false
-mesh = SubResource("PlaneMesh_ovc61")
 
 [node name="SpeargunPlaceholder" type="MeshInstance3D" parent="." unique_id=734300311]
 transform = Transform3D(500, 0, 0, 0, 500, 0, 0, 0, 500, 0, 0, -1.9709859)
@@ -199,3 +341,16 @@ mesh = ExtResource("3_7mlgx")
 [node name="Barrel" type="RayCast3D" parent="SpeargunPlaceholder" unique_id=2056543243]
 transform = Transform3D(0.0019999982, 0, 0, 0, 0.0019999982, 0, 0, 0, 0.0019999982, 0, 0, 0.0039562345)
 target_position = Vector3(0, 0, -1)
+
+[node name="BeggarsShotgun" type="Marker3D" parent="." unique_id=1087278608]
+visible = false
+
+[node name="Frame" type="MeshInstance3D" parent="BeggarsShotgun" unique_id=972063788]
+transform = Transform3D(-0.19999996, -1.4279067e-09, -3.0035153e-08, -6.493792e-10, 0.19999996, -4.656613e-10, 2.9802322e-08, -4.656613e-10, -0.19999996, 0.012746229, -0.13472262, -3.8664975)
+mesh = ExtResource("4_vqio2")
+skeleton = NodePath("")
+
+[node name="Barrels" type="MeshInstance3D" parent="BeggarsShotgun/Frame" unique_id=1195580126]
+transform = Transform3D(0.26236233, 0.96496946, -8.742278e-08, 0.96496946, -0.26236233, 0, -2.2936444e-08, -8.436031e-08, -1, 0, 0, 0)
+mesh = ExtResource("5_qqpya")
+skeleton = NodePath("")
