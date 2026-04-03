@@ -69,10 +69,13 @@ size = 56.061
 [node name="throwableSpawn" type="Marker3D" parent="PlayerCamera" unique_id=67584433]
 transform = Transform3D(-4.371213e-08, -5.1691977e-11, 1, 9.313226e-10, 1, 5.169202e-11, -1, 9.313226e-10, -4.371213e-08, 4.426729e-09, 0, -1.4877298)
 
+[node name="PlayerRayEnd" type="Marker3D" parent="PlayerCamera" unique_id=1350417793]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -75)
+
 [node name="PlayerRay" type="RayCast3D" parent="PlayerCamera" unique_id=1906683229]
 transform = Transform3D(-4.371213e-08, -5.1691977e-11, 1, 9.313226e-10, 1, 5.169202e-11, -1, 9.313226e-10, -4.371213e-08, 0, 0, 0)
 target_position = Vector3(75, 0, 0)
-collision_mask = 2
+collision_mask = 6
 
 [node name="LeftHand" parent="PlayerCamera" unique_id=1896444700 instance=ExtResource("3_nn08x")]
 transform = Transform3D(-8.742278e-09, 0, 0.2, 7.66726e-24, 0.2, 0, -0.2, -4.5191364e-19, -8.742278e-09, -0.5461225, -0.38191456, -0.47322318)

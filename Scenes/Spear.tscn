@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://dbhks05dlhcgo"]
+
+[ext_resource type="Script" uid="uid://dwdabxxr2jtvc" path="res://Scripts/spear.gd" id="1_b6eji"]
+[ext_resource type="ArrayMesh" uid="uid://bv6p5vdqff1hk" path="res://assets/Meshes/Weapons/spear.mesh" id="1_nijt2"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_b6eji"]
+height = 5.5
+
+[node name="Spear" type="Node3D" unique_id=243557478]
+script = ExtResource("1_b6eji")
+
+[node name="SpearMesh" type="MeshInstance3D" parent="." unique_id=1325518231]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+mesh = ExtResource("1_nijt2")
+
+[node name="RayCast3D" type="RayCast3D" parent="." unique_id=2060999242]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.5)
+target_position = Vector3(0, 0, -4)
+collision_mask = 6
+
+[node name="shotTrigger" type="Area3D" parent="." unique_id=35586717 groups=["ShotReactable"]]
+visible = false
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="shotTrigger" unique_id=1513507413]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_b6eji")
+
+[node name="Timer" type="Timer" parent="." unique_id=1290818630]
+wait_time = 0.5
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

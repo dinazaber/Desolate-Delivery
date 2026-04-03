@@ -54,19 +54,19 @@ const PLAYER_MAX_HEALTH = 100
 
 
 #loading objects
-var bullet_trail = load("res://Scenes/BulletTrail.tscn")
-var instance_bullet
+var spear = load("res://Scenes/Spear.tscn")
+var instance_spear
 var grenade = load("res://Scenes/Grenade.tscn")
 var instance_grenade
 
 
 @onready var playerRay = $PlayerCamera/PlayerRay
-#@onready var eyes_end = $PlayerCamera/RayEnd
+@onready var playerRay_end = $PlayerCamera/PlayerRayEnd
 
 var current_gun = "smg"
 @onready var rightWeaponAnim = $PlayerCamera/RightHand/AnimationPlayer
+@onready var spearSpawn = $PlayerCamera/RightHand/SpeargunPlaceholder/Barrel
 @onready var leftWeaponAnim = $PlayerCamera/LeftHand/AnimationPlayer
-
 
 @onready var slam_area = $GroundSlam
 
@@ -269,6 +269,14 @@ func shoot_smg():
 func shoot_speargun():
 	if !rightWeaponAnim.is_playing() and !switching:
 		rightWeaponAnim.play("ShootSpeargun")
+		instance_spear = spear.instantiate()
+		instance_spear.position = spearSpawn.global_position
+		instance_spear.transform.basis = spearSpawn.global_transform.basis
+		get_parent().add_child(instance_spear)
+		if playerRay.is_colliding():
+			instance_spear.set_velocity(playerRay.get_collision_point())
+		else:
+			instance_spear.set_velocity(playerRay_end.global_position)
 
 func shoot_offHandShotgun():
 	if !leftWeaponAnim.is_playing():
