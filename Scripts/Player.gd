@@ -40,7 +40,7 @@ var currentInput = Vector2()
 const PLAYER_MAX_HEALTH = 100
 @export var player_health: float = PLAYER_MAX_HEALTH
 @export var walk_speed: float = 5
-@export var dash_speed: float = 50
+@export var dash_speed: float = 15
 @export var jump_speed: float = 10
 @export var slam_speed: float = -30
 
