@@ -18,10 +18,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -220.5
-offset_top = -292.0
-offset_right = 220.5
-offset_bottom = 292.0
+offset_left = -185.0
+offset_top = -176.5
+offset_right = 185.0
+offset_bottom = 176.5
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -29,20 +29,22 @@ grow_vertical = 2
 layout_mode = 2
 
 [node name="DisplayLabel" type="Label" parent="ScrollContainer/VBoxContainer" unique_id=1915149343]
+custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "Display"
+horizontal_alignment = 1
 
 [node name="Scale" type="HBoxContainer" parent="ScrollContainer/VBoxContainer" unique_id=1302624869]
 layout_mode = 2
 
 [node name="RenderScale" type="Label" parent="ScrollContainer/VBoxContainer/Scale" unique_id=1096892178]
+custom_minimum_size = Vector2(302, 0)
 layout_mode = 2
 text = "Render Scale"
 
 [node name="ScaleOption" type="OptionButton" parent="ScrollContainer/VBoxContainer/Scale" unique_id=18711073]
 layout_mode = 2
-theme_override_font_sizes/font_size = 15
 item_count = 8
 popup/item_0/text = "2"
 popup/item_0/id = 0
@@ -65,20 +67,23 @@ popup/item_7/id = 7
 layout_mode = 2
 
 [node name="MaxFps" type="Label" parent="ScrollContainer/VBoxContainer/Fps" unique_id=723904688]
+custom_minimum_size = Vector2(297.07, 0)
 layout_mode = 2
 text = "Max FPS"
 
 [node name="MaxFpsEdit" type="LineEdit" parent="ScrollContainer/VBoxContainer/Fps" unique_id=185004757]
 layout_mode = 2
-theme_override_font_sizes/font_size = 15
 
 [node name="Window" type="HBoxContainer" parent="ScrollContainer/VBoxContainer" unique_id=1608606791]
 layout_mode = 2
 
-[node name="CheckButton" type="CheckButton" parent="ScrollContainer/VBoxContainer/Window" unique_id=1747720199]
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/Window" unique_id=110104012]
+layout_mode = 2
+text = "Windowed"
+
+[node name="CheckButton" type="CheckBox" parent="ScrollContainer/VBoxContainer/Window" unique_id=845244673]
 layout_mode = 2
 action_mode = 0
-text = "Windowed"
 
 [node name="Resolution" type="HBoxContainer" parent="ScrollContainer/VBoxContainer" unique_id=1897556156]
 layout_mode = 2
@@ -92,6 +97,10 @@ layout_mode = 2
 placeholder_text = "Screen Width"
 expand_to_text_length = true
 
+[node name="Control" type="Control" parent="ScrollContainer/VBoxContainer/Resolution" unique_id=1074761119]
+custom_minimum_size = Vector2(18.045, 0)
+layout_mode = 2
+
 [node name="Height" type="Label" parent="ScrollContainer/VBoxContainer/Resolution" unique_id=1718335663]
 layout_mode = 2
 text = "Height:"
@@ -104,17 +113,27 @@ expand_to_text_length = true
 [node name="Vsync" type="HBoxContainer" parent="ScrollContainer/VBoxContainer" unique_id=1146306939]
 layout_mode = 2
 
-[node name="CheckNutton" type="CheckButton" parent="ScrollContainer/VBoxContainer/Vsync" unique_id=1590685609]
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/Vsync" unique_id=214328640]
+layout_mode = 2
+text = "Vsync"
+
+[node name="CheckNutton" type="CheckBox" parent="ScrollContainer/VBoxContainer/Vsync" unique_id=1278256868]
 layout_mode = 2
 action_mode = 0
-text = "Vsync"
 
 [node name="AntiAliasing" type="HBoxContainer" parent="ScrollContainer/VBoxContainer" unique_id=329488335]
 layout_mode = 2
 
-[node name="CheckButton" type="CheckButton" parent="ScrollContainer/VBoxContainer/AntiAliasing" unique_id=1364370409]
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/AntiAliasing" unique_id=562261702]
 layout_mode = 2
 text = "Anti Aliasing"
+
+[node name="CheckButton" type="CheckBox" parent="ScrollContainer/VBoxContainer/AntiAliasing" unique_id=1550905322]
+layout_mode = 2
+
+[node name="Control" type="Control" parent="ScrollContainer/VBoxContainer/AntiAliasing" unique_id=1194602833]
+custom_minimum_size = Vector2(139.555, 32)
+layout_mode = 2
 
 [node name="AntAliOp" type="OptionButton" parent="ScrollContainer/VBoxContainer/AntiAliasing" unique_id=409817811]
 layout_mode = 2
@@ -144,6 +163,44 @@ offset_bottom = -72.974976
 grow_horizontal = 0
 grow_vertical = 0
 text = "Apply Settings"
+
+[node name="Panel" type="Panel" parent="." unique_id=1997042312]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.5
+offset_top = -102.5
+offset_right = 150.5
+offset_bottom = 102.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Vbox" type="VBoxContainer" parent="Panel" unique_id=2003033489]
+layout_mode = 0
+offset_right = 301.0
+offset_bottom = 205.0
+theme_override_constants/separation = 100
+
+[node name="Label" type="Label" parent="Panel/Vbox" unique_id=967892038]
+layout_mode = 2
+text = "You left some settings unsaved. Leave?"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/Vbox" unique_id=122330727]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Discard" type="Button" parent="Panel/Vbox/HBoxContainer" unique_id=42781924]
+layout_mode = 2
+text = "Discard"
+
+[node name="Back" type="Button" parent="Panel/Vbox/HBoxContainer" unique_id=509922569]
+layout_mode = 2
+text = "Back"
 
 [connection signal="item_selected" from="ScrollContainer/VBoxContainer/Scale/ScaleOption" to="." method="_on_scale_option_item_selected"]
 [connection signal="item_selected" from="ScrollContainer/VBoxContainer/AntiAliasing/AntAliOp" to="." method="_on_anti_aliasing_item_selected"]

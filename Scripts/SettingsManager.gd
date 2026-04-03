@@ -10,7 +10,8 @@ var settings = {
 		"render_scale": 1.0,
 		"image_size": DisplayServer.screen_get_size(),
 		"windowed": false,
-		"anti_aliasing": "None"
+		"anti_aliasing_type": "FXAA",
+		"anti_aliasing_enabled": false
 	},
 	"audio": {
 		"master_volume": 1.0
@@ -69,19 +70,27 @@ func apply_settings():
 	else: DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 	
 	# Anti Aliasing
-	var string = settings.video.anti_aliasing
-	if "MSAA" in string:
-		var n = string[string.length() - 1].to_int()
-		match n:
-			2: get_viewport().msaa_3d = Viewport.MSAA_2X
-			4: get_viewport().msaa_3d = Viewport.MSAA_4X
-			8: get_viewport().msaa_3d = Viewport.MSAA_8X
+	var string = settings.video.anti_aliasing_type
+	if settings.video.anti_aliasing_enabled:
+		if "MSAA" in string:
+			get_viewport().screen_space_aa = Viewport.SCREEN_SPACE_AA_DISABLED
+			var n = string[string.length() - 2].to_int()
+			match n:
+				2: get_viewport().msaa_3d = Viewport.MSAA_2X
+				4: get_viewport().msaa_3d = Viewport.MSAA_4X
+				8: get_viewport().msaa_3d = Viewport.MSAA_8X
 	
-	elif "FXAA" == string: get_viewport().screen_space_aa = Viewport.SCREEN_SPACE_AA_FXAA
+		elif "FXAA" == string:
+			get_viewport().screen_space_aa = Viewport.SCREEN_SPACE_AA_DISABLED
+			get_viewport().screen_space_aa = Viewport.SCREEN_SPACE_AA_FXAA
+			get_viewport().msaa_3d = Viewport.MSAA_DISABLED
 		
-	elif "SMAA" == string: get_viewport().screen_space_aa = Viewport.SCREEN_SPACE_AA_SMAA
+		elif "SMAA" == string:
+			get_viewport().screen_space_aa = Viewport.SCREEN_SPACE_AA_DISABLED
+			get_viewport().screen_space_aa = Viewport.SCREEN_SPACE_AA_SMAA
+			get_viewport().msaa_3d = Viewport.MSAA_DISABLED
 	
-	elif string == "None":
+	else:
 		get_viewport().screen_space_aa = Viewport.SCREEN_SPACE_AA_DISABLED
 		get_viewport().msaa_3d = Viewport.MSAA_DISABLED
 	

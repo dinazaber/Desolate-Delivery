@@ -15,30 +15,7 @@ func _ready() -> void:
 	
 	get_tree().root.size_changed.connect(func(): on_window_size_changed())
 	
-	if !SettingsManager.settings.video.windowed: resolution.hide()
-	
-	# Set fps clamp to appear inside input line of max fps setting
-	fps.text = str(SettingsManager.settings.video.max_fps)
-	
-	# Set render scale to be selected
-	var renderScale = SettingsManager.settings.video.render_scale
-	setSelected(sclOpt, str(renderScale))
-	
-	# Set anti aliasing to be selected
-	var antAli = SettingsManager.settings.video.anti_aliasing
-	if antAli == "None":
-		antAliBtn.button_pressed = false
-		antAliOpt.hide()
-	else:
-		setSelected(antAliOpt, antAli)
-		antAliBtn.button_pressed = true
-			
-	# Set width/height values to appear inside input lines of resolution settings when game launches 
-	width.text = str(SettingsManager.settings.video.image_size.x)
-	height.text = str(SettingsManager.settings.video.image_size.y)
-	
-	windowBtn.button_pressed = SettingsManager.settings.video.windowed
-	vsyncBtn.button_pressed = SettingsManager.settings.video.vsync
+	uiRefresh.call_deferred()
 
 		
 
@@ -47,6 +24,28 @@ func setSelected(node: OptionButton, val: String):
 		if node.get_item_text(i) == val:
 			node.select(i)
 			return
+			
+
+func uiRefresh():
+	resolution.visible = SettingsManager.settings.video.windowed
+	antAliOpt.visible = SettingsManager.settings.video.anti_aliasing_enabled
+	windowBtn.button_pressed = SettingsManager.settings.video.windowed
+	vsyncBtn.button_pressed = SettingsManager.settings.video.vsync
+	antAliBtn.button_pressed = SettingsManager.settings.video.anti_aliasing_enabled
+	
+	# Set width/height values to appear inside input lines of resolution settings when game launches 
+	width.text = str(SettingsManager.settings.video.image_size.x)
+	height.text = str(SettingsManager.settings.video.image_size.y)
+	
+	# Set fps clamp to appear inside input line of max fps setting
+	fps.text = str(Engine.max_fps)
+	
+	# Set render scale to be selected
+	setSelected.call_deferred(sclOpt, str(SettingsManager.settings.video.render_scale))
+	
+	# Set anti aliasing to be selected
+	setSelected.call_deferred(antAliOpt, SettingsManager.settings.video.anti_aliasing_type)
+			
 		
 
 func on_window_size_changed():
@@ -71,51 +70,38 @@ func _on_scale_option_item_selected(index: int) -> void:
 	
 func _on_anti_aliasing_item_selected(index: int) -> void:
 	match index:
-		0: SettingsManager.settings.video.anti_aliasing = "MSAA X8"
-		1: SettingsManager.settings.video.anti_aliasing = "MSAA X4"
-		2: SettingsManager.settings.video.anti_aliasing = "MSAA X2"
-		3: SettingsManager.settings.video.anti_aliasing = "FXAA"
-		4: SettingsManager.settings.video.anti_aliasing = "SMAA"
+		0: SettingsManager.settings.video.anti_aliasing_type = "MSAA 8x"
+		1: SettingsManager.settings.video.anti_aliasing_type = "MSAA 4x"
+		2: SettingsManager.settings.video.anti_aliasing_type = "MSAA 2x"
+		3: SettingsManager.settings.video.anti_aliasing_type = "FXAA"
+		4: SettingsManager.settings.video.anti_aliasing_type = "SMAA"
 			
 
 
 func _on_apply_settings_pressed() -> void:
 	
 	SettingsManager.settings.video.windowed = windowBtn.button_pressed
-	resolution.visible = SettingsManager.settings.video.windowed
 	SettingsManager.settings.video.vsync = vsyncBtn.button_pressed
-	
-	if !antAliBtn.button_pressed:
-		SettingsManager.settings.video.anti_aliasing = "None"
-		antAliOpt.hide()
-	else:
-		if SettingsManager.settings.video.anti_aliasing == "None":
-			antAliOpt.show()
-			SettingsManager.settings.video.anti_aliasing = "FXAA"
-			setSelected(antAliOpt, SettingsManager.settings.video.anti_aliasing)
-		else: setSelected(antAliOpt, SettingsManager.settings.video.anti_aliasing)
+	SettingsManager.settings.video.anti_aliasing_enabled = antAliBtn.button_pressed
 	
 	if fps.text.is_valid_int():
-		if fps.text.to_int() >= 0:
-			SettingsManager.settings.video.max_fps = fps.text.to_int()
+		if fps.text.to_int() >= 0: SettingsManager.settings.video.max_fps = fps.text.to_int()
 	
 	if width.text.is_valid_int():
-		if width.text.to_int() > 0:
-			SettingsManager.settings.video.image_size.x = width.text.to_int()
+		if width.text.to_int() > 0: SettingsManager.settings.video.image_size.x = width.text.to_int()
 			
 	if height.text.is_valid_int():
-		if height.text.to_int() > 0:
-			SettingsManager.settings.video.image_size.y = height.text.to_int()
+		if height.text.to_int() > 0: SettingsManager.settings.video.image_size.y = height.text.to_int()
 		
 		
 	SettingsManager.save_settings()
 	SettingsManager.apply_settings()
+	uiRefresh()
 	
 	
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("Escape") and is_visible_in_tree():
+		
 		accept_event()
 		hide()
-		SettingsManager.save_settings()
-		SettingsManager.apply_settings()
 		closed.emit()
