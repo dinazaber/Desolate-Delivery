@@ -210,4 +210,4 @@ transform = Transform3D(-0.1834263, 0, 0.6755404, 0, 0.7, 0, -0.6755404, 0, -0.1
 mesh = ExtResource("14_0qy5o")
 
 [node name="turret" parent="." unique_id=1830225406 instance=ExtResource("15_0qy5o")]
-transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -9.043, 0.48821032, -7.072)
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -9.043, 2.235114, -8.83977)

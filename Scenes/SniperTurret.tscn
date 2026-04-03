@@ -1,12 +1,13 @@
 [gd_scene format=3 uid="uid://da8xo7bpr7w37"]
 
 [ext_resource type="Script" uid="uid://idsgqohuto4m" path="res://Scripts/SniperTurret.gd" id="1_4yweh"]
-[ext_resource type="ArrayMesh" uid="uid://brhrp1qv2wxup" path="res://assets/Meshes/Enemies/SniperTurret/Base.mesh" id="2_dh22p"]
-[ext_resource type="ArrayMesh" uid="uid://b2angk0lxn8ng" path="res://assets/Meshes/Enemies/SniperTurret/Mount.mesh" id="3_hqsxd"]
-[ext_resource type="ArrayMesh" uid="uid://3ys0kxbump5l" path="res://assets/Meshes/Enemies/SniperTurret/Gun.mesh" id="4_st424"]
+[ext_resource type="ArrayMesh" uid="uid://ureoytkbyoid" path="res://assets/Meshes/Weapons/SniperTurretBase.mesh" id="2_4yweh"]
+[ext_resource type="ArrayMesh" uid="uid://xqq3w1jrwm80" path="res://assets/Meshes/Weapons/SniperTurretPillar.mesh" id="3_dh22p"]
+[ext_resource type="ArrayMesh" uid="uid://dx6bg7qr0nw87" path="res://assets/Meshes/Weapons/SniperTurretBarrel.mesh" id="4_hqsxd"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_4yweh"]
-radius = 1.2
+height = 1.05
+radius = 0.65
 
 [node name="Node3D" type="StaticBody3D" unique_id=1830225406 groups=["Enemy", "Persist"]]
 collision_layer = 3
@@ -14,27 +15,28 @@ collision_mask = 3
 script = ExtResource("1_4yweh")
 
 [node name="RayCast3D" type="RayCast3D" parent="." unique_id=1379129722]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.28796625, 0)
 target_position = Vector3(0, 0, 100)
 
 [node name="BaseMesh" type="MeshInstance3D" parent="." unique_id=397604197]
-mesh = ExtResource("2_dh22p")
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+mesh = ExtResource("2_4yweh")
 
 [node name="BaseCollision" type="CollisionShape3D" parent="." unique_id=1740089601]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.9970186, 0)
 shape = SubResource("CylinderShape3D_4yweh")
 
 [node name="MountMesh" type="MeshInstance3D" parent="." unique_id=387465361]
-transform = Transform3D(0.7, 0, 0, 0, 0.084, 0, 0, 0, 0.7, 0, 2.5, 0)
-mesh = ExtResource("3_hqsxd")
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+mesh = ExtResource("3_dh22p")
 
 [node name="GunPivot" type="Marker3D" parent="." unique_id=1990229676]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 3, 0)
 
 [node name="GunMesh" type="MeshInstance3D" parent="GunPivot" unique_id=1487560660]
-transform = Transform3D(0.385, 0, 0, 0, 0.455, 1.7763568e-15, 0, -1.7763568e-15, 0.385, 0, 3.5, 0)
-mesh = ExtResource("4_st424")
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+mesh = ExtResource("4_hqsxd")
 skeleton = NodePath("../..")
 
 [node name="GunRay" type="RayCast3D" parent="GunPivot/GunMesh" unique_id=897733090]
-transform = Transform3D(1.0000005, 0, 0, 0, -4.3711385e-08, 0.9999999, 0, -1, -4.3711378e-08, 0, -7.6734567, 4.7683716e-07)
+transform = Transform3D(1.0000005, 0, 0, 0, 1, 0, 0, 0, 0.9999999, 0, 3.0758548, 28.689331)
 target_position = Vector3(0, 0, 260)

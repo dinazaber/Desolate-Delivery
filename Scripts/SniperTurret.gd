@@ -73,13 +73,14 @@ func process_dead_state():
 func follow(delta):
 	look_target = lerp(look_target, player.global_position, delta * 3.5)
 	gun.look_at(look_target, Vector3.UP, true)
-	gun.rotation_degrees = gun.rotation_degrees + Vector3(90,0,0)
+	gun.rotation.x = clamp(gun.rotation.x, deg_to_rad(-20), deg_to_rad(20))
+	gun.rotation_degrees = gun.rotation_degrees
 	
 	
-	# First look_at does this part it seems but i won't delete it, just for case
-	#var mount_look_target = look_target
-	#mount_look_target.y = mount.global_position.y
-	#mount.look_at(mount_look_target, Vector3.UP)
+	#First look_at does this part it seems but i won't delete it, just for case
+	var mount_look_target = look_target
+	mount_look_target.y = mount.global_position.y
+	mount.look_at(mount_look_target, Vector3.UP)
 
 func hit(recieved_damage, type):
 	if type == "player":
