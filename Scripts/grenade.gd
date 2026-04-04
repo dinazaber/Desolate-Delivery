@@ -1,6 +1,7 @@
 extends RigidBody3D
 
 var got_shot: bool = false
+var exploded: bool = false
 
 @onready var smoke: GPUParticles3D = $Smoke
 @onready var fire: GPUParticles3D = $Fire
@@ -27,9 +28,14 @@ func shot():
 	explosion_box_big.visible = true
 	current_exposion_box = explosion_box_big
 	current_damage = grenade_damage_big
-	explode()
+	if !exploded:
+		explode()
 
 func explode():
+	exploded = true
+	$GenadeMesh.visible = false
+	$hitBox_shotTrigger.visible = false
+	
 	$trauma_causer.cause_trauma()
 	if current_exposion_box.has_overlapping_bodies():
 		var bodies = current_exposion_box.get_overlapping_bodies()
@@ -37,8 +43,6 @@ func explode():
 			body.hit(current_damage, "player")
 			body.knockBack(body.global_position - global_position, current_damage/15, 0.1)
 	
-	
-	$GenadeMesh.visible = false
 	if got_shot:
 		debris.emitting = true
 	smoke.emitting = true
@@ -48,7 +52,7 @@ func explode():
 	queue_free()
 
 func _on_timer_timeout() -> void:
-	if !got_shot:
+	if !got_shot and !exploded:
 		explode()
 
 # --- Anti-Error Function Dump ---
