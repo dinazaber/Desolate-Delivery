@@ -6,37 +6,202 @@
 [ext_resource type="ArrayMesh" uid="uid://dx6bg7qr0nw87" path="res://assets/Meshes/Weapons/SniperTurretBarrel.mesh" id="4_hqsxd"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_4yweh"]
-height = 1.05
-radius = 0.65
+height = 0.69
+radius = 0.43
 
-[node name="Node3D" type="StaticBody3D" unique_id=1830225406 groups=["Enemy", "Persist"]]
+[sub_resource type="Curve" id="Curve_st424"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.18803418, 1), 0.0, 0.0, 0, 0, Vector2(0.7051282, 0.85506), -0.62078655, -0.62078655, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_bbe7t"]
+curve = SubResource("Curve_st424")
+
+[sub_resource type="Curve" id="Curve_62glx"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.24719107), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_x0sam"]
+curve = SubResource("Curve_62glx")
+
+[sub_resource type="Curve" id="Curve_ndkqn"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.14529917, 1), 0.0, 0.0, 0, 0, Vector2(0.71794873, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_g0gsv"]
+curve = SubResource("Curve_ndkqn")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_xmnhq"]
+particle_flag_align_y = true
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 0.26
+emission_ring_radius = 0.75
+emission_ring_inner_radius = 0.2
+emission_ring_cone_angle = 90.0
+direction = Vector3(0, 0, 1)
+spread = 0.0
+orbit_velocity_min = 0.2000001
+orbit_velocity_max = 0.40000013
+orbit_velocity_curve = SubResource("CurveTexture_x0sam")
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_g0gsv")
+alpha_curve = SubResource("CurveTexture_bbe7t")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4kpjt"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_color = Color(1, 0.83137256, 0, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_e4n6m"]
+material = SubResource("StandardMaterial3D_4kpjt")
+top_radius = 0.0
+bottom_radius = 0.01
+height = 0.115
+radial_segments = 4
+
+[sub_resource type="Curve" id="Curve_4yweh"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.06837607, 1), 0.0, 0.0, 0, 0, Vector2(0.21794873, 0.7191012), 0.0, 0.0, 0, 0, Vector2(0.3632479, 0.97752815), 0.0, 0.0, 0, 0, Vector2(0.54273504, 0.82022476), 0.0, 0.0, 0, 0, Vector2(0.5982906, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 7
+
+[sub_resource type="Curve" id="Curve_dh22p"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.072649576, 1), 0.0, 0.0, 0, 0, Vector2(0.12393164, 0.7865169), 0.0, 0.0, 0, 0, Vector2(0.2777778, 0.9101124), 3.0498874, 3.0498874, 0, 0, Vector2(0.41880342, 0.7865169), 0.0, 0.0, 0, 0, Vector2(0.6025641, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 7
+
+[sub_resource type="Curve" id="Curve_hqsxd"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.072649576, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_st424"]
+curve_x = SubResource("Curve_4yweh")
+curve_y = SubResource("Curve_dh22p")
+curve_z = SubResource("Curve_hqsxd")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_bbe7t"]
+emission_shape_offset = Vector3(0, 0, 250)
+direction = Vector3(0, 0, -1)
+spread = 0.0
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveXYZTexture_st424")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_62glx"]
+shading_mode = 0
+albedo_color = Color(1, 0.4392157, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_x0sam"]
+material = SubResource("StandardMaterial3D_62glx")
+size = Vector3(0.2, 0.2, 500)
+
+[sub_resource type="Curve" id="Curve_bbe7t"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.06837607, 1), 0.0, 0.0, 0, 0, Vector2(0.21794873, 0.7191012), 0.0, 0.0, 0, 0, Vector2(0.3632479, 0.97752815), 0.0, 0.0, 0, 0, Vector2(0.54273504, 0.82022476), 0.0, 0.0, 0, 0, Vector2(0.5982906, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 7
+
+[sub_resource type="Curve" id="Curve_x0sam"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.072649576, 1), 0.0, 0.0, 0, 0, Vector2(0.12393164, 0.7865169), 0.0, 0.0, 0, 0, Vector2(0.2777778, 0.9101124), 3.0498874, 3.0498874, 0, 0, Vector2(0.41880342, 0.7865169), 0.0, 0.0, 0, 0, Vector2(0.6025641, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 7
+
+[sub_resource type="Curve" id="Curve_g0gsv"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.072649576, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_xmnhq"]
+curve_x = SubResource("Curve_bbe7t")
+curve_y = SubResource("Curve_x0sam")
+curve_z = SubResource("Curve_g0gsv")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_4kpjt"]
+emission_shape_offset = Vector3(0, 0, 250)
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 1.0
+emission_ring_radius = 0.3
+emission_ring_inner_radius = 0.2
+emission_ring_cone_angle = 90.0
+direction = Vector3(0, 0, -1)
+spread = 0.0
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveXYZTexture_xmnhq")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e4n6m"]
+shading_mode = 0
+albedo_color = Color(1, 0.5529412, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_qoa7d"]
+material = SubResource("StandardMaterial3D_e4n6m")
+size = Vector3(0.02, 0.02, 500)
+
+[node name="SniperTurret" type="StaticBody3D" unique_id=1830225406 groups=["Enemy", "Persist"]]
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("1_4yweh")
 
 [node name="RayCast3D" type="RayCast3D" parent="." unique_id=1379129722]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.28796625, 0)
-target_position = Vector3(0, 0, 100)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2142391, 0)
+target_position = Vector3(0, 0, 500)
 
 [node name="BaseMesh" type="MeshInstance3D" parent="." unique_id=397604197]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+transform = Transform3D(0.065, 0, 0, 0, 0.065, 0, 0, 0, 0.065, 0, 0, 0)
 mesh = ExtResource("2_4yweh")
 
 [node name="BaseCollision" type="CollisionShape3D" parent="." unique_id=1740089601]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.9970186, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.2941844, 0)
 shape = SubResource("CylinderShape3D_4yweh")
 
 [node name="MountMesh" type="MeshInstance3D" parent="." unique_id=387465361]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+transform = Transform3D(0.065, 0, 0, 0, 0.065, 0, 0, 0, 0.065, 0, 0, 0)
 mesh = ExtResource("3_dh22p")
 
 [node name="GunPivot" type="Marker3D" parent="." unique_id=1990229676]
 
+[node name="Charge" type="GPUParticles3D" parent="GunPivot" unique_id=1246534581]
+transform = Transform3D(0.4956177, 0.5043442, -0.70710677, -0.71325046, 0.70090926, 0, 0.4956177, 0.5043442, 0.70710677, 0, 0.215, 1.394414)
+layers = 2
+emitting = false
+amount = 16
+lifetime = 4.0
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_xmnhq")
+draw_pass_1 = SubResource("CylinderMesh_e4n6m")
+
+[node name="GPUParticlesAttractorSphere3D" type="GPUParticlesAttractorSphere3D" parent="GunPivot" unique_id=1809729407]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.215, 1.394414)
+layers = 2
+strength = 3.0
+attenuation = 0.05
+cull_mask = 4293918722
+radius = 2.0
+
+[node name="Beam" type="GPUParticles3D" parent="GunPivot" unique_id=1953904942]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2154708, 1.9253349)
+cast_shadow = 0
+emitting = false
+amount = 1
+one_shot = true
+visibility_aabb = AABB(-1, -1, -1, 2, 2, 502)
+process_material = SubResource("ParticleProcessMaterial_bbe7t")
+draw_pass_1 = SubResource("BoxMesh_x0sam")
+
+[node name="Beamies" type="GPUParticles3D" parent="GunPivot" unique_id=587968733]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.215, 2.6787531)
+cast_shadow = 0
+emitting = false
+lifetime = 0.09999999999999999
+one_shot = true
+visibility_aabb = AABB(-1, -1, -1, 2, 2, 502)
+process_material = SubResource("ParticleProcessMaterial_4kpjt")
+draw_pass_1 = SubResource("BoxMesh_qoa7d")
+
 [node name="GunMesh" type="MeshInstance3D" parent="GunPivot" unique_id=1487560660]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+transform = Transform3D(0.065, 0, 0, 0, 0.065, 0, 0, 0, 0.065, 0, 0, 0)
 mesh = ExtResource("4_hqsxd")
 skeleton = NodePath("../..")
 
 [node name="GunRay" type="RayCast3D" parent="GunPivot/GunMesh" unique_id=897733090]
-transform = Transform3D(1.0000005, 0, 0, 0, 1, 0, 0, 0, 0.9999999, 0, 3.0758548, 28.689331)
-target_position = Vector3(0, 0, 260)
+transform = Transform3D(1.0000005, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 3.33, 0)
+target_position = Vector3(0, 0, 5000)
+
+[node name="Timer" type="Timer" parent="." unique_id=1865930971]
+wait_time = 4.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

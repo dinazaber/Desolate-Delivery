@@ -289,8 +289,6 @@ size = Vector2(3, 3)
 orientation = 2
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_7bpbl"]
-angle_min = 1.0728835e-05
-angle_max = 30.000011
 direction = Vector3(0, 0, -1)
 spread = 0.0
 initial_velocity_min = 1000.0

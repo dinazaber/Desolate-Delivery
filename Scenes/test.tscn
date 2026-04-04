@@ -210,9 +210,6 @@ mesh = ExtResource("13_mie3u")
 transform = Transform3D(-0.1834263, 0, 0.6755404, 0, 0.7, 0, -0.6755404, 0, -0.1834263, -11.039281, 0.8620014, -4.886943)
 mesh = ExtResource("14_0qy5o")
 
-[node name="turret" parent="." unique_id=1830225406 instance=ExtResource("15_0qy5o")]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -9.043, 2.235114, -8.83977)
-
 [node name="RigidBody" parent="." unique_id=707473027 instance=ExtResource("16_7nf3m")]
 transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -7.1405044, 0.7930865, 2.975814)
 mass = 8.0
@@ -228,3 +225,6 @@ mass = 8.0
 [node name="RigidBody4" parent="." unique_id=2132569094 instance=ExtResource("16_7nf3m")]
 transform = Transform3D(-1.671231e-09, -0.038233314, -0.69895506, 0.7, -3.059797e-08, 0, -3.0552297e-08, -0.69895506, 0.038233314, -8.045181, 0.5738101, 2.8969457)
 mass = 8.0
+
+[node name="SniperTurret" parent="." unique_id=1830225406 instance=ExtResource("15_0qy5o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.8555603, 1.8013512, -6.9611273)

@@ -1,10 +1,10 @@
 extends Node3D
 
 # --- Settings ---
-enum State { IDLE, ATTACK }
+enum State { IDLE, AIM, ATTACK }
 var current_state = State.IDLE
 
-@export var detection_range = 15
+@export var detection_range = 50
 @export var enemy_damage = 50
 @export var enemy_health = 100
 
@@ -22,6 +22,8 @@ var inTransition: bool = false
 var isInAttack: bool = false
 var damagedByPlayer: bool = false
 var dead: bool = false
+var timerFlag: bool = false
+var player_hit: bool = false
 var look_target
 
 func save():
@@ -53,18 +55,36 @@ func _process(delta: float) -> void:
 		match current_state:
 			State.IDLE:
 				process_idle_state()
+			State.AIM:
+				process_aim_state(delta)
 			State.ATTACK:
-				process_attack_state(delta)
+				process_attack_state()
 	else:
 		process_dead_state()
 
 
 func process_idle_state():
-	if (can_see_player() or damagedByPlayer == true) and player.dead == false:
-		current_state = State.ATTACK
+	if (can_see_player() or damagedByPlayer == true) and !player.dead and !isInAttack:
+		current_state = State.AIM
 
-func process_attack_state(delta):
+func process_aim_state(delta):
+	if !timerFlag:
+		timerFlag = true
+		$Timer.start()
+		$GunPivot/Charge.restart()
+		$GunPivot/Charge.emitting = true
 	follow(delta)
+
+func process_attack_state():
+	$GunPivot/Beam.emitting = true
+	$GunPivot/Beamies.emitting = true
+	if gunRay.is_colliding():
+		if gunRay.get_collider().is_in_group("Player") and !player_hit:
+			player_hit = true
+			gunRay.get_collider().hit(enemy_damage, "enemy")
+	await get_tree().create_timer(0.6).timeout
+	current_state = State.IDLE
+	isInAttack = false
 
 func process_dead_state():
 	pass
@@ -74,8 +94,6 @@ func follow(delta):
 	look_target = lerp(look_target, player.global_position, delta * 3.5)
 	gun.look_at(look_target, Vector3.UP, true)
 	gun.rotation.x = clamp(gun.rotation.x, deg_to_rad(-20), deg_to_rad(20))
-	gun.rotation_degrees = gun.rotation_degrees
-	
 	
 	#First look_at does this part it seems but i won't delete it, just for case
 	var mount_look_target = look_target
@@ -98,7 +116,11 @@ func checkLifeLine():
 		dead = true
 		queue_free()
 
-
+func _on_timer_timeout() -> void:
+	timerFlag = false
+	isInAttack = true
+	player_hit = false
+	current_state = State.ATTACK
 
 # --- Helpers ---
 
