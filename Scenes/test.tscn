@@ -15,6 +15,7 @@
 [ext_resource type="ArrayMesh" uid="uid://dufaqga62sfgh" path="res://assets/Meshes/Objects/Car2.mesh" id="13_mie3u"]
 [ext_resource type="ArrayMesh" uid="uid://dxoddmwgtq2gq" path="res://assets/Meshes/Objects/Car1.mesh" id="14_0qy5o"]
 [ext_resource type="PackedScene" uid="uid://da8xo7bpr7w37" path="res://Scenes/SniperTurret.tscn" id="15_0qy5o"]
+[ext_resource type="PackedScene" uid="uid://d23s0inguh17p" path="res://Scenes/RigidBody.tscn" id="16_7nf3m"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_yb21e"]
 vertices = PackedVector3Array(-49.1, 0.5, -49.1, -49.1, 0.5, 49.000008, 49.000008, 0.5, 49.000008, 49.000008, 0.5, -49.1)
@@ -206,8 +207,24 @@ transform = Transform3D(0.65984905, 0, -0.23366481, 0, 0.7, 0, 0.23366481, 0, 0.
 mesh = ExtResource("13_mie3u")
 
 [node name="Car1" type="MeshInstance3D" parent="." unique_id=581080434]
-transform = Transform3D(-0.1834263, 0, 0.6755404, 0, 0.7, 0, -0.6755404, 0, -0.1834263, -10.739203, 1.081026, -2.9659238)
+transform = Transform3D(-0.1834263, 0, 0.6755404, 0, 0.7, 0, -0.6755404, 0, -0.1834263, -11.039281, 0.8620014, -4.886943)
 mesh = ExtResource("14_0qy5o")
 
 [node name="turret" parent="." unique_id=1830225406 instance=ExtResource("15_0qy5o")]
 transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -9.043, 2.235114, -8.83977)
+
+[node name="RigidBody" parent="." unique_id=707473027 instance=ExtResource("16_7nf3m")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -7.1405044, 0.7930865, 2.975814)
+mass = 8.0
+
+[node name="RigidBody2" parent="." unique_id=1651338683 instance=ExtResource("16_7nf3m")]
+transform = Transform3D(-2.9894473e-08, -0.6839059, 0.14924064, 0.7, -3.059797e-08, 0, 6.523515e-09, 0.14924064, 0.6839059, -7.188091, 0.5455829, 2.1120596)
+mass = 8.0
+
+[node name="RigidBody3" parent="." unique_id=629633255 instance=ExtResource("16_7nf3m")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -8.798324, 0.7930865, 3.072209)
+mass = 8.0
+
+[node name="RigidBody4" parent="." unique_id=2132569094 instance=ExtResource("16_7nf3m")]
+transform = Transform3D(-1.671231e-09, -0.038233314, -0.69895506, 0.7, -3.059797e-08, 0, -3.0552297e-08, -0.69895506, 0.038233314, -8.045181, 0.5738101, 2.8969457)
+mass = 8.0
