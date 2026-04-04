@@ -5,7 +5,6 @@
 [ext_resource type="ArrayMesh" uid="uid://dgnpgu3vv3a5n" path="res://assets/Meshes/Weapons/Speargun - PLACEHOLDER.mesh" id="3_7mlgx"]
 [ext_resource type="ArrayMesh" uid="uid://c6nmdg8hnoe36" path="res://assets/Meshes/Weapons/beggarsShotgun/frame.mesh" id="4_vqio2"]
 [ext_resource type="ArrayMesh" uid="uid://eadvfmp34ewb" path="res://assets/Meshes/Weapons/beggarsShotgun/barrels.mesh" id="5_qqpya"]
-[ext_resource type="PackedScene" uid="uid://b4wyneleeqxp" path="res://Scenes/trauma_causer.tscn" id="6_qqpya"]
 
 [sub_resource type="Animation" id="Animation_l5ase"]
 resource_name = "LoadBeggarsShotgun"
@@ -273,9 +272,6 @@ _data = {
 &"ShootSpeargun": SubResource("Animation_vqio2")
 }
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_l5ase"]
-radius = 15.0
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8qb6n"]
 transparency = 2
 alpha_scissor_threshold = 0.972
@@ -310,8 +306,6 @@ albedo_color = Color(1.353256, 0.6884535, 0, 1)
 material = SubResource("StandardMaterial3D_7bpbl")
 size = Vector3(0.01, 0.01, 10)
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_qqpya"]
-
 [node name="RightHand" type="Node3D" unique_id=267885530]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=207191350]
@@ -320,12 +314,6 @@ libraries/ = SubResource("AnimationLibrary_8qb6n")
 [node name="SMG" type="MeshInstance3D" parent="." unique_id=559022510]
 transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, 0, 0, 0)
 mesh = ExtResource("1_yltro")
-
-[node name="trauma_causer" parent="SMG" unique_id=1675244516 instance=ExtResource("6_qqpya")]
-trauma_amount = 0.3
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="SMG/trauma_causer" unique_id=1452703017]
-shape = SubResource("SphereShape3D_l5ase")
 
 [node name="Barrel" type="Node3D" parent="SMG" unique_id=576063553]
 transform = Transform3D(-1.4570462e-07, 0, -3.3333328, 0, 3.3333328, 0, 3.3333328, 0, -1.4570462e-07, 22.520256, 0, 9.843917e-07)
@@ -356,12 +344,6 @@ target_position = Vector3(0, 0, -1)
 
 [node name="BeggarsShotgun" type="Marker3D" parent="." unique_id=1087278608]
 visible = false
-
-[node name="trauma_causer" parent="BeggarsShotgun" unique_id=1077320746 instance=ExtResource("6_qqpya")]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="BeggarsShotgun/trauma_causer" unique_id=1212888430]
-transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
-shape = SubResource("SphereShape3D_qqpya")
 
 [node name="Frame" type="MeshInstance3D" parent="BeggarsShotgun" unique_id=972063788]
 transform = Transform3D(-0.19999996, -1.4279067e-09, -3.0035153e-08, -6.493792e-10, 0.19999996, -4.656613e-10, 2.9802322e-08, -4.656613e-10, -0.19999996, 0.012746229, -0.13472262, -3.8664975)

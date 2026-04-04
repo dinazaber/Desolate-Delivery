@@ -17,9 +17,6 @@ var headTime = 0.0
 @onready var rightWeapon_speargun: MeshInstance3D = $shakeable_camera/RightHand/SpeargunPlaceholder
 @onready var leftWeapon: MeshInstance3D = $shakeable_camera/LeftHand/Shotty
 
-@onready var smg_shake = $shakeable_camera/RightHand/SMG/trauma_causer
-@onready var beggarsShotgun_shake = $shakeable_camera/RightHand/BeggarsShotgun/trauma_causer
-@onready var offHandShotgun_shake = $shakeable_camera/LeftHand/trauma_causer
 
 var speed: float = 0
 var accel_mod: float = 1.0 #acceleration modifier
@@ -56,7 +53,12 @@ const PLAYER_MAX_HEALTH = 100
 
 #gun stats
 @export var smg_damage = 15
+@export var smg_recoil = 0.3
+
+@export var beggarsShotgun_recoil = 1.0
+
 @export var quickDraw_damage = 70
+@export var quickDraw_recoil = 1.5
 
 @export var slam_damage = 40
 
@@ -185,13 +187,13 @@ func _physics_process(delta):
 					beggarsMag += 1
 			elif beggarsMag > 1 and !rightWeaponAnim.is_playing():
 				rightWeaponAnim.play("ShootBeggarsShotgun_consecutive")
-				beggarsShotgun_shake.cause_trauma()
+				camera.add_trauma(beggarsShotgun_recoil)
 				await get_tree().create_timer(0.2).timeout
 				beggarsMag -= 1
 				shoot_beggarsShotgun()
 			elif beggarsMag == 1 and !rightWeaponAnim.is_playing():
 				rightWeaponAnim.play("ShootBeggarsShotgun_last")
-				beggarsShotgun_shake.cause_trauma()
+				camera.add_trauma(beggarsShotgun_recoil)
 				await get_tree().create_timer(0.4).timeout
 				beggarsMag -= 1
 				shoot_beggarsShotgun()
@@ -307,7 +309,7 @@ func throw_grenade():
 func shoot_smg():
 	if !rightWeaponAnim.is_playing() and canShoot:
 		rightWeaponAnim.play("ShootSMG")
-		smg_shake.cause_trauma()
+		camera.add_trauma(smg_recoil)
 		if playerRay.is_colliding():
 			if playerRay.get_collider().is_in_group("Enemy"):
 				playerRay.get_collider().hit(smg_damage, "player")
@@ -335,7 +337,7 @@ func shoot_offHandShotgun():
 		leftWeaponAnim.play("DrawShotgun")
 		await get_tree().create_timer(0.25).timeout
 		leftWeaponAnim.play("ShootShotgun")
-		offHandShotgun_shake.cause_trauma()
+		camera.add_trauma(quickDraw_recoil)
 		
 		if !is_on_floor():
 			var direction = camera.global_transform.basis.z.normalized()
