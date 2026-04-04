@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dh81y2wk5ijn" path="res://Scripts/Player.gd" id="1_g8lft"]
 [ext_resource type="PackedScene" uid="uid://4ercdvy5pe3t" path="res://Scenes/RightHandWeapons.tscn" id="2_kyqiw"]
+[ext_resource type="PackedScene" uid="uid://dvs50w2owu2rs" path="res://Scenes/shakeable_camera.tscn" id="2_megsn"]
 [ext_resource type="Script" uid="uid://mnanpq21gwd4" path="res://Scripts/PauseMenu.gd" id="3_dewec"]
 [ext_resource type="PackedScene" uid="uid://b2hljcs3010c5" path="res://Scenes/Settings.tscn" id="3_gntrk"]
 [ext_resource type="PackedScene" uid="uid://d3y1m515qojp2" path="res://Scenes/LeftHandWeapons.tscn" id="3_nn08x"]
@@ -62,26 +63,32 @@ debug_color = Color(0.997045, 0, 0.18383858, 0.41960785)
 
 [node name="PlayerCamera" type="Camera3D" parent="." unique_id=1738772125]
 transform = Transform3D(-4.371213e-08, 9.313226e-10, -1, -5.1691977e-11, 1, 9.313226e-10, 1, 5.169202e-11, -4.371213e-08, 0, 0.639, 0)
+visible = false
 cull_mask = 1048573
 fov = 90.0
 size = 56.061
 
-[node name="throwableSpawn" type="Marker3D" parent="PlayerCamera" unique_id=67584433]
+[node name="shakeable_camera" parent="." unique_id=1373532385 instance=ExtResource("2_megsn")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0.64, 0)
+trauma_reduction_rate = 3.0
+noise_speed = 30.0
+
+[node name="throwableSpawn" type="Marker3D" parent="shakeable_camera" unique_id=67584433]
 transform = Transform3D(-4.371213e-08, -5.1691977e-11, 1, 9.313226e-10, 1, 5.169202e-11, -1, 9.313226e-10, -4.371213e-08, 4.426729e-09, 0, -1.4877298)
 
-[node name="PlayerRayEnd" type="Marker3D" parent="PlayerCamera" unique_id=1350417793]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -75)
+[node name="PlayerRayEnd" type="Marker3D" parent="shakeable_camera" unique_id=1350417793]
+transform = Transform3D(1, 5.1691977e-11, -7.4251716e-13, -5.1691977e-11, 1, 9.313226e-10, 7.4251716e-13, -9.313226e-10, 1, 5.570655e-11, -0.0010000467, -75)
 
-[node name="PlayerRay" type="RayCast3D" parent="PlayerCamera" unique_id=1906683229]
-transform = Transform3D(-4.371213e-08, -5.1691977e-11, 1, 9.313226e-10, 1, 5.169202e-11, -1, 9.313226e-10, -4.371213e-08, 0, 0, 0)
+[node name="PlayerRay" type="RayCast3D" parent="shakeable_camera" unique_id=1906683229]
+transform = Transform3D(-4.371139e-08, 9.232692e-19, 1, 0, 1, 9.232692e-19, -1, -4.0357378e-26, -4.371139e-08, 0, -0.0009999871, 0)
 target_position = Vector3(75, 0, 0)
 collision_mask = 6
 
-[node name="LeftHand" parent="PlayerCamera" unique_id=1896444700 instance=ExtResource("3_nn08x")]
-transform = Transform3D(-8.742278e-09, 0, 0.2, 7.66726e-24, 0.2, 0, -0.2, -4.5191364e-19, -8.742278e-09, -0.5461225, -0.38191456, -0.47322318)
+[node name="LeftHand" parent="shakeable_camera" unique_id=1896444700 instance=ExtResource("3_nn08x")]
+transform = Transform3D(-8.74213e-09, 1.0338396e-11, 0.2, -1.8626452e-10, 0.2, -1.0338404e-11, -0.2, -1.8626452e-10, -8.74213e-09, -0.5461225, -0.38291454, -0.47322318)
 
-[node name="RightHand" parent="PlayerCamera" unique_id=267885530 instance=ExtResource("2_kyqiw")]
-transform = Transform3D(0.15, 0, 0, 0, 0.15, -3.3893527e-19, 0, -3.3893524e-19, 0.15, 0.24724317, -0.13591963, -0.30084935)
+[node name="RightHand" parent="shakeable_camera" unique_id=267885530 instance=ExtResource("2_kyqiw")]
+transform = Transform3D(0.15, 7.753797e-12, -1.1146639e-13, -7.753797e-12, 0.15, 1.3969839e-10, 1.1146639e-13, -1.3969839e-10, 0.15, 0.24724317, -0.13691962, -0.30084935)
 
 [node name="PauseMenu" type="Control" parent="." unique_id=877245422 node_paths=PackedStringArray("hud")]
 process_mode = 3

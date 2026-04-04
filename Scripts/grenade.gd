@@ -30,6 +30,7 @@ func shot():
 	explode()
 
 func explode():
+	$trauma_causer.cause_trauma()
 	if current_exposion_box.has_overlapping_bodies():
 		var bodies = current_exposion_box.get_overlapping_bodies()
 		for body in bodies:
@@ -44,7 +45,6 @@ func explode():
 	fire.emitting = true
 	await get_tree().create_timer(2.0).timeout
 	
-	print("boom")
 	queue_free()
 
 func _on_timer_timeout() -> void:

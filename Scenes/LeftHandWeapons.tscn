@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://d3y1m515qojp2"]
 
 [ext_resource type="ArrayMesh" uid="uid://c1ua4nhpxyyli" path="res://assets/Meshes/Weapons/shotty.mesh" id="1_32bl7"]
+[ext_resource type="PackedScene" uid="uid://b4wyneleeqxp" path="res://Scenes/trauma_causer.tscn" id="2_2xa8l"]
 
 [sub_resource type="Animation" id="Animation_u6d72"]
 resource_name = "DrawShotgun"
@@ -96,6 +97,9 @@ _data = {
 &"ShootShotgun": SubResource("Animation_jrs8s")
 }
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_7x6it"]
+radius = 4.0
+
 [node name="LeftHand" type="Node3D" unique_id=1896444700]
 
 [node name="Shotty" type="MeshInstance3D" parent="." unique_id=48255100]
@@ -105,3 +109,9 @@ mesh = ExtResource("1_32bl7")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1787380741]
 libraries/ = SubResource("AnimationLibrary_lekgj")
+
+[node name="trauma_causer" parent="." unique_id=1675244516 instance=ExtResource("2_2xa8l")]
+trauma_amount = 1.5
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="trauma_causer" unique_id=169594543]
+shape = SubResource("SphereShape3D_7x6it")

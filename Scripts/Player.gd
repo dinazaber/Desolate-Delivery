@@ -6,15 +6,20 @@ const headFreq = 2.4
 const headAmp = 0.08
 var headTime = 0.0
 
-@onready var camDefHeight = $PlayerCamera.position.y
+@onready var camera = $shakeable_camera
+@onready var camDefHeight = camera.position.y
 @onready var healthBar = $HUD/HealthBar
 @export var screenEffect: ColorRect
 @export var sun: DirectionalLight3D
 
-@onready var rightWeapon_smg: MeshInstance3D = $PlayerCamera/RightHand/SMG
-@onready var rightWeapon_beggarsShotgun: Marker3D = $PlayerCamera/RightHand/BeggarsShotgun
-@onready var rightWeapon_speargun: MeshInstance3D = $PlayerCamera/RightHand/SpeargunPlaceholder
-@onready var leftWeapon: MeshInstance3D = $PlayerCamera/LeftHand/Shotty
+@onready var rightWeapon_smg: MeshInstance3D = $shakeable_camera/RightHand/SMG
+@onready var rightWeapon_beggarsShotgun: Marker3D = $shakeable_camera/RightHand/BeggarsShotgun
+@onready var rightWeapon_speargun: MeshInstance3D = $shakeable_camera/RightHand/SpeargunPlaceholder
+@onready var leftWeapon: MeshInstance3D = $shakeable_camera/LeftHand/Shotty
+
+@onready var smg_shake = $shakeable_camera/RightHand/SMG/trauma_causer
+@onready var beggarsShotgun_shake = $shakeable_camera/RightHand/BeggarsShotgun/trauma_causer
+@onready var offHandShotgun_shake = $shakeable_camera/LeftHand/trauma_causer
 
 var speed: float = 0
 var accel_mod: float = 1.0 #acceleration modifier
@@ -23,6 +28,7 @@ var canDash: bool = true
 var knocked: bool = false
 var crouch: bool = false
 var slam: bool = false
+var airborne: bool = false
 var dead: bool = false
 var canShoot: bool = true
 
@@ -62,14 +68,14 @@ var grenade = load("res://Scenes/Grenade.tscn")
 var instance_grenade
 
 
-@onready var playerRay = $PlayerCamera/PlayerRay
-@onready var playerRay_end = $PlayerCamera/PlayerRayEnd
+@onready var playerRay = $shakeable_camera/PlayerRay
+@onready var playerRay_end = $shakeable_camera/PlayerRayEnd
 
 var current_gun = "smg"
 var beggarsMag = 0
-@onready var rightWeaponAnim = $PlayerCamera/RightHand/AnimationPlayer
-@onready var spearSpawn = $PlayerCamera/RightHand/SpeargunPlaceholder/Barrel
-@onready var leftWeaponAnim = $PlayerCamera/LeftHand/AnimationPlayer
+@onready var rightWeaponAnim = $shakeable_camera/RightHand/AnimationPlayer
+@onready var spearSpawn = $shakeable_camera/RightHand/SpeargunPlaceholder/Barrel
+@onready var leftWeaponAnim = $shakeable_camera/LeftHand/AnimationPlayer
 
 @onready var slam_area = $GroundSlam
 
@@ -96,14 +102,14 @@ func SuperTimerTimeOut() -> void:
 
 
 func updateScreenEffect(): #Function for current and future screen effects
-	var forward = -$PlayerCamera.global_transform.basis.z
+	var forward = -camera.global_transform.basis.z
 	var horizontal_forward = Vector3(forward.x, 0, forward.z).normalized()
 	var dot = forward.dot(horizontal_forward)
 	var factor = clamp(dot, 0.0, 1.0)
 	screenEffect.material.set("shader_parameter/look_angle_factor", factor)
 
 func _ready() -> void:
-	$PlayerCamera.make_current()
+	$shakeable_camera/Camera3D.make_current()
 	healthBar.max_value = PLAYER_MAX_HEALTH
 	
 	if sun!=null: 
@@ -136,7 +142,7 @@ func _physics_process(delta):
 	#cameraDistance = clamp(cameraDistance,15, 45)
 	
 	rotation.y = lerp_angle(rotation.y, yaw, delta*20) # left/right
-	$PlayerCamera.rotation.x = lerp_angle($PlayerCamera.rotation.x, -pitch, delta*20)
+	camera.rotation.x = lerp_angle(camera.rotation.x, -pitch, delta*20)
 	
 	
 	if Input.is_action_just_pressed("1"): # smg
@@ -179,11 +185,13 @@ func _physics_process(delta):
 					beggarsMag += 1
 			elif beggarsMag > 1 and !rightWeaponAnim.is_playing():
 				rightWeaponAnim.play("ShootBeggarsShotgun_consecutive")
+				beggarsShotgun_shake.cause_trauma()
 				await get_tree().create_timer(0.2).timeout
 				beggarsMag -= 1
 				shoot_beggarsShotgun()
 			elif beggarsMag == 1 and !rightWeaponAnim.is_playing():
 				rightWeaponAnim.play("ShootBeggarsShotgun_last")
+				beggarsShotgun_shake.cause_trauma()
 				await get_tree().create_timer(0.4).timeout
 				beggarsMag -= 1
 				shoot_beggarsShotgun()
@@ -208,13 +216,13 @@ func _physics_process(delta):
 		crouch = true
 		player_crouch.visible = true
 		player_stand.visible = false
-		$PlayerCamera.position.y = lerp($PlayerCamera.position.y, camDefHeight - 0.5, 20 * delta)
+		camera.position.y = lerp(camera.position.y, camDefHeight - 0.5, 20 * delta)
 		accel_mod = 0.08
 	else:
 		crouch = false
 		player_crouch.visible = false
 		player_stand.visible = true
-		$PlayerCamera.position.y = lerp($PlayerCamera.position.y, camDefHeight, 20 * delta)
+		camera.position.y = lerp(camera.position.y, camDefHeight, 20 * delta)
 		accel_mod = 1.0
 	
 	speed = move_toward(speed, walk_speed, delta * 15.0)
@@ -236,6 +244,10 @@ func _physics_process(delta):
 			slam = false
 			slam_ground()
 		
+		if airborne:
+			airborne = false
+			camera.add_trauma(0.7)
+		
 		if Input.is_action_just_pressed("Space"):
 			velocity.y += jump_speed
 		
@@ -252,14 +264,15 @@ func _physics_process(delta):
 			# head bob
 			headTime += delta * velocity.length() * float(is_on_floor())
 			var pos = Vector3.ZERO
-			pos.y = $PlayerCamera.position.y + sin(headTime*headFreq) * headAmp
-			$PlayerCamera.position.y = lerp($PlayerCamera.position.y, pos.y, 20 * delta)
+			pos.y = camera.position.y + sin(headTime*headFreq) * headAmp
+			camera.position.y = lerp(camera.position.y, pos.y, 20 * delta)
 		
 		else: # no input speed
 			velocity.x = lerp(velocity.x, direction.x * speed, delta * 5.0 * accel_mod)
 			velocity.z = lerp(velocity.z, direction.z * speed, delta * 5.0 * accel_mod)
 			
 	else: # airborne speed
+		airborne = true
 		velocity.y -= 20 * delta # Gravity
 		
 		if Input.is_action_just_pressed("Ctrl") and !$GroundSlamCheck.is_colliding(): # Groundslam
@@ -279,12 +292,13 @@ func hit(recieved_damage, type):
 	if type == "player":
 		recieved_damage /= 5
 	player_health -= recieved_damage
+	camera.add_trauma(recieved_damage/20)
 	checkLifeLine()
 
 func throw_grenade():
 	instance_grenade = grenade.instantiate()
-	instance_grenade.position = $PlayerCamera/throwableSpawn.global_position
-	var throw_dir = -$PlayerCamera.global_transform.basis.z.normalized()
+	instance_grenade.position = $shakeable_camera/throwableSpawn.global_position
+	var throw_dir = -camera.global_transform.basis.z.normalized()
 	var forward_force = 10
 	var upward_force = 3.5
 	instance_grenade.apply_central_impulse((throw_dir * forward_force) + Vector3(0, upward_force, 0) + velocity)
@@ -293,6 +307,7 @@ func throw_grenade():
 func shoot_smg():
 	if !rightWeaponAnim.is_playing() and canShoot:
 		rightWeaponAnim.play("ShootSMG")
+		smg_shake.cause_trauma()
 		if playerRay.is_colliding():
 			if playerRay.get_collider().is_in_group("Enemy"):
 				playerRay.get_collider().hit(smg_damage, "player")
@@ -320,9 +335,10 @@ func shoot_offHandShotgun():
 		leftWeaponAnim.play("DrawShotgun")
 		await get_tree().create_timer(0.25).timeout
 		leftWeaponAnim.play("ShootShotgun")
+		offHandShotgun_shake.cause_trauma()
 		
 		if !is_on_floor():
-			var direction = $PlayerCamera.global_transform.basis.z.normalized()
+			var direction = camera.global_transform.basis.z.normalized()
 			knockBack(direction, 10, 0.2)
 		
 		if playerRay.is_colliding():
