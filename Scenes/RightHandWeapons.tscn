@@ -198,7 +198,7 @@ tracks/0/keys = {
 }
 tracks/1/type = "value"
 tracks/1/imported = false
-tracks/1/enabled = false
+tracks/1/enabled = true
 tracks/1/path = NodePath("SMG/Barrel/Sprite:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
@@ -274,12 +274,12 @@ _data = {
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8qb6n"]
 transparency = 2
-alpha_scissor_threshold = 0.972
+alpha_scissor_threshold = 0.7
 alpha_antialiasing_mode = 0
 shading_mode = 0
 albedo_color = Color(1.6797683, 1.6797683, 1.6797683, 1)
 albedo_texture = ExtResource("2_02q03")
-texture_filter = 0
+texture_filter = 1
 billboard_mode = 1
 billboard_keep_scale = true
 
@@ -317,7 +317,7 @@ mesh = ExtResource("1_yltro")
 transform = Transform3D(-1.4570462e-07, 0, -3.3333328, 0, 3.3333328, 0, 3.3333328, 0, -1.4570462e-07, 22.520256, 0, 9.843917e-07)
 
 [node name="Sprite" type="MeshInstance3D" parent="SMG/Barrel" unique_id=1088014816]
-transform = Transform3D(0.53333324, 0, -1.4210855e-15, 0, 0.53333324, 0, 1.4210855e-15, 0, 0.53333324, 3.4206165e-14, 0, -0.28036118)
+transform = Transform3D(0.53333336, 4.656147e-10, -8.003306e-12, 3.8875e-14, 0.53333324, -1.8626451e-09, 3.6446705e-12, 4.656613e-10, 0.53333336, 0.00046814635, -0.044251986, -0.03366947)
 visible = false
 mesh = SubResource("PlaneMesh_ovc61")
 skeleton = NodePath("../../..")
@@ -341,6 +341,7 @@ transform = Transform3D(0.0019999982, 0, 0, 0, 0.0019999982, 0, 0, 0, 0.00199999
 target_position = Vector3(0, 0, -1)
 
 [node name="BeggarsShotgun" type="Marker3D" parent="." unique_id=1087278608]
+transform = Transform3D(0.99986327, 0.016537195, 0, -0.016532762, 0.9995953, -0.023151062, -0.00038285364, 0.023147898, 0.99973196, 0.14739014, 0.07369507, 0.58956057)
 visible = false
 
 [node name="Frame" type="MeshInstance3D" parent="BeggarsShotgun" unique_id=972063788]

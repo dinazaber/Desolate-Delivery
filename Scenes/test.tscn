@@ -52,6 +52,7 @@ ssr_fade_out = 3.8637512
 ssao_power = 1.9792577
 sdfgi_cascades = 1
 sdfgi_y_scale = 0
+fog_enabled = true
 fog_light_color = Color(0.77, 0.687995, 0.22330001, 1)
 fog_sun_scatter = 0.25
 fog_density = 0.02
