@@ -103,6 +103,13 @@ shader_parameter/density_slow = 1.0
 [sub_resource type="BoxShape3D" id="BoxShape3D_qpfo2"]
 size = Vector3(4.298645, 3.5697021, 2.6156006)
 
+[sub_resource type="MultiMesh" id="MultiMesh_7nf3m"]
+transform_format = 1
+instance_count = 3
+visible_instance_count = 3
+mesh = ExtResource("11_qpfo2")
+buffer = PackedFloat32Array(-3.059797e-07, 0, -7, -2.5953841, 0, 7, 0, 0.049293876, 7, 0, -3.059797e-07, 10.839995, -3.059797e-07, 0, -7, -23.358984, 0, 7, 0, 0.049293876, 7, 0, -3.059797e-07, 10.839995, -3.059797e-07, 0, -7, 18.010592, 0, 7, 0, 0.049293876, 7, 0, -3.059797e-07, 10.839995)
+
 [node name="Node" type="Node" unique_id=310413080]
 script = ExtResource("1_yb21e")
 
@@ -175,11 +182,6 @@ cull_mask = 1048574
 
 [node name="Hangars" type="StaticBody3D" parent="." unique_id=642156433]
 
-[node name="Hangar1" type="MeshInstance3D" parent="Hangars" unique_id=242541542]
-transform = Transform3D(-3.059797e-07, 0, -7, 0, 7, 0, 7, 0, -3.059797e-07, -2.5953841, 0.049293876, 10.839995)
-mesh = ExtResource("11_qpfo2")
-skeleton = NodePath("../..")
-
 [node name="Plane" type="MeshInstance3D" parent="Hangars" unique_id=2135900176]
 transform = Transform3D(-3.4969112e-08, 0, -0.79999995, 0, 0.8, 0, 0.8, 0, -3.496911e-08, -2.6077056, 1.3059026, 10.445118)
 mesh = ExtResource("3_i3aeo")
@@ -198,6 +200,14 @@ cull_mask = 1048574
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hangars" unique_id=1651806058]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.09384155, 1.2848511, -0.12237549)
 shape = SubResource("BoxShape3D_qpfo2")
+
+[node name="MetaMultimeshInstance3D" type="MultiMeshInstance3D" parent="Hangars" unique_id=254532433]
+multimesh = SubResource("MultiMesh_7nf3m")
+script = ExtResource("8_2cgwh")
+go_explode = null
+shape_type = 0
+go_make_colliders = null
+metadata/_custom_type_script = "uid://cfwmt6vc7y70h"
 
 [node name="Enemy" parent="." unique_id=546459934 instance=ExtResource("12_yb21e")]
 transform = Transform3D(-0.32304215, 0, 0.9463846, 0, 1, 0, -0.9463846, 0, -0.32304215, 8.692926, 0.9878535, -7.377297)
