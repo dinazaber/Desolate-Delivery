@@ -172,6 +172,7 @@ mesh = ExtResource("8_0c07c")
 
 [node name="Decal2" type="Decal" parent="Car3" unique_id=31879390]
 transform = Transform3D(1.3331356, 0, -5.9604645e-08, 0, 1.3331364, 0, 5.9604645e-08, 0, 1.3333325, 0.07499492, -0.9160811, -0.14660564)
+visible = false
 size = Vector3(4.295791, 0.34991455, 5.2655067)
 texture_albedo = ExtResource("8_iaow0")
 albedo_mix = 0.5
@@ -202,6 +203,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.09384155, 1.2848511, -0.12
 shape = SubResource("BoxShape3D_qpfo2")
 
 [node name="MetaMultimeshInstance3D" type="MultiMeshInstance3D" parent="Hangars" unique_id=254532433]
+lod_bias = 0.3
 multimesh = SubResource("MultiMesh_7nf3m")
 script = ExtResource("8_2cgwh")
 go_explode = null
