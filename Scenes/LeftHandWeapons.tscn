@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://d3y1m515qojp2"]
 
 [ext_resource type="ArrayMesh" uid="uid://c1ua4nhpxyyli" path="res://assets/Meshes/Weapons/shotty.mesh" id="1_32bl7"]
-[ext_resource type="PackedScene" uid="uid://b4wyneleeqxp" path="res://Scenes/trauma_causer.tscn" id="2_2xa8l"]
+[ext_resource type="Script" uid="uid://cfdheqlfxu5y7" path="res://Scripts/Weapons.gd" id="2_2xa8l"]
 
 [sub_resource type="Animation" id="Animation_u6d72"]
 resource_name = "DrawShotgun"
@@ -72,7 +72,7 @@ tracks/0/path = NodePath("Shotty:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.17, 0.35, 0.4),
+"times": PackedFloat32Array(0, 0.04, 0.15, 0.35, 0.4),
 "transitions": PackedFloat32Array(0.3, 1.8025019, 2, 2, 1),
 "update": 0,
 "values": [Vector3(0, -0.73, 0), Vector3(-1, -1.33, 0), Vector3(0, -0.53, 0), Vector3(0, -0.83, 0), Vector3(0, -0.73, 0)]
@@ -97,21 +97,13 @@ _data = {
 &"ShootShotgun": SubResource("Animation_jrs8s")
 }
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_7x6it"]
-radius = 4.0
-
 [node name="LeftHand" type="Node3D" unique_id=1896444700]
-
-[node name="Shotty" type="MeshInstance3D" parent="." unique_id=48255100]
-transform = Transform3D(44.999996, 77.94228, 155.88458, -77.942276, -135.00002, 89.99999, 155.88458, -89.99999, -3.934025e-06, 0, -3.73, 1.5)
-rotation_order = 0
-mesh = ExtResource("1_32bl7")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1787380741]
 libraries/ = SubResource("AnimationLibrary_lekgj")
 
-[node name="trauma_causer" parent="." unique_id=1675244516 instance=ExtResource("2_2xa8l")]
-trauma_amount = 1.5
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="trauma_causer" unique_id=169594543]
-shape = SubResource("SphereShape3D_7x6it")
+[node name="Shotty" type="MeshInstance3D" parent="." unique_id=48255100]
+transform = Transform3D(34.999996, 60.621777, 121.24356, -60.621773, -105.00001, 69.99999, 121.24356, -69.99999, -3.0597969e-06, 0, -3.73, 1.5)
+rotation_order = 0
+mesh = ExtResource("1_32bl7")
+script = ExtResource("2_2xa8l")

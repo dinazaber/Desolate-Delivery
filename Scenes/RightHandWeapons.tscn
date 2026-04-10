@@ -1,5 +1,6 @@
 [gd_scene format=4 uid="uid://4ercdvy5pe3t"]
 
+[ext_resource type="Script" uid="uid://cfdheqlfxu5y7" path="res://Scripts/Weapons.gd" id="1_qqpya"]
 [ext_resource type="Shader" uid="uid://u33lqf00j50h" path="res://Shaders/PlayerObjectShader.gdshader" id="1_vqio2"]
 [ext_resource type="Texture2D" uid="uid://24usakcrqsvh" path="res://assets/Textures/Architecture/Explosion1.png" id="2_02q03"]
 [ext_resource type="Texture2D" uid="uid://bnvro65uaa4np" path="res://assets/Textures/Colors.png" id="2_qqpya"]
@@ -191,7 +192,7 @@ tracks/0/path = NodePath("SMG:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.025, 0.1),
+"times": PackedFloat32Array(0, 0.03, 0.1),
 "transitions": PackedFloat32Array(0.4, 0.5, 1),
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(0, 0.1, 0.5), Vector3(0, 0, 0)]
@@ -203,7 +204,7 @@ tracks/1/path = NodePath("SMG/Barrel/Sprite:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.06666667),
+"times": PackedFloat32Array(0.002, 0.07),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -227,10 +228,10 @@ tracks/3/path = NodePath("SMG:rotation")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.0001, 0.0002, 0.04, 0.1),
-"transitions": PackedFloat32Array(1, 1, 1.8, 0.6, 1),
+"times": PackedFloat32Array(0, 0.0001, 0.04, 0.1),
+"transitions": PackedFloat32Array(1.8, 1, 0.6, 1),
 "update": 0,
-"values": [Vector3(0, 1.5707964, 0), Vector3(0, 1.5707964, 0), Vector3(0, 1.5707964, 0), Vector3(0.034906585, 1.5707964, 0.034906585), Vector3(0, 1.5707964, 0)]
+"values": [Vector3(0, 1.5707964, 0), Vector3(0, 1.5707964, 0), Vector3(0.034906585, 1.5707964, 0.034906585), Vector3(0, 1.5707964, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_vqio2"]
@@ -313,7 +314,7 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_02fu5")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8qb6n"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vqio2"]
 transparency = 2
 alpha_scissor_threshold = 0.7
 alpha_antialiasing_mode = 0
@@ -325,7 +326,7 @@ billboard_mode = 1
 billboard_keep_scale = true
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_ovc61"]
-material = SubResource("StandardMaterial3D_8qb6n")
+material = SubResource("StandardMaterial3D_vqio2")
 size = Vector2(3, 3)
 orientation = 2
 
@@ -337,12 +338,12 @@ initial_velocity_max = 1000.0
 gravity = Vector3(0, 0, 0)
 collision_mode = 2
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7bpbl"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qqpya"]
 shading_mode = 0
 albedo_color = Color(1.353256, 0.6884535, 0, 1)
 
 [sub_resource type="PrismMesh" id="PrismMesh_7mlgx"]
-material = SubResource("StandardMaterial3D_7bpbl")
+material = SubResource("StandardMaterial3D_qqpya")
 size = Vector3(0.01, 0.01, 10)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1gxoh"]
@@ -387,6 +388,9 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_u0iia")
 
 [node name="RightHand" type="Node3D" unique_id=267885530]
+script = ExtResource("1_qqpya")
+sway_speed_rot = 0.05
+sway_amount_rot = 50.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=207191350]
 libraries/ = SubResource("AnimationLibrary_8qb6n")

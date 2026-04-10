@@ -84,11 +84,17 @@ transform = Transform3D(-4.371139e-08, 9.232692e-19, 1, 0, 1, 9.232692e-19, -1, 
 target_position = Vector3(75, 0, 0)
 collision_mask = 6
 
-[node name="LeftHand" parent="shakeable_camera" unique_id=1896444700 instance=ExtResource("3_nn08x")]
-transform = Transform3D(-8.74213e-09, 1.0338396e-11, 0.2, -1.8626452e-10, 0.2, -1.0338404e-11, -0.2, -1.8626452e-10, -8.74213e-09, -0.5461225, -0.38291454, -0.47322318)
-
 [node name="RightHand" parent="shakeable_camera" unique_id=267885530 instance=ExtResource("2_kyqiw")]
-transform = Transform3D(0.15, 7.753797e-12, -1.1146639e-13, -7.753797e-12, 0.15, 1.3969839e-10, 1.1146639e-13, -1.3969839e-10, 0.15, 0.24724317, -0.13691962, -0.30084935)
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0.247, -0.137, -0.3)
+
+[node name="LeftHand" parent="shakeable_camera" unique_id=1896444700 instance=ExtResource("3_nn08x")]
+transform = Transform3D(-6.5567085e-09, 0, 0.15, 0, 0.15, 0, -0.15, 0, -6.5567085e-09, -0.247, -0.137, -0.3)
+
+[node name="RightWepPos" type="Marker3D" parent="shakeable_camera" unique_id=1509876171]
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0.247, -0.13699996, -0.3)
+
+[node name="LeftWepPos" type="Marker3D" parent="shakeable_camera" unique_id=1947406330]
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, -0.247, -0.137, -0.3)
 
 [node name="PauseMenu" type="Control" parent="." unique_id=877245422 node_paths=PackedStringArray("hud")]
 process_mode = 3

@@ -146,7 +146,6 @@ func _physics_process(delta):
 	rotation.y = lerp_angle(rotation.y, yaw, delta*20) # left/right
 	camera.rotation.x = lerp_angle(camera.rotation.x, -pitch, delta*20)
 	
-	
 	if Input.is_action_just_pressed("1"): # smg
 		canShoot = false
 		rightWeapon_smg.visible = true
