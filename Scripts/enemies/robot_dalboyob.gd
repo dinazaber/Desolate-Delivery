@@ -1,0 +1,233 @@
+extends CharacterBody3D
+
+# --- Settings ---
+enum State { IDLE, CHASE, ATTACK }
+var current_state = State.IDLE
+
+@export var speed: float = 3.5
+@export var attack_start_distance: float = 8.0 # when start shooting
+@export var attack_stop_distance: float = 12.0 # when stop shooting
+@export var detection_range: float = 25.0
+@export var enemy_damage: float = 30.0
+@export var enemy_health: float = 100.0
+
+# --- Nodes ---
+@onready var animation = $AnimationPlayer
+@onready var skeleton = $Skeleton3D
+@onready var aimHand = $aimHand
+@onready var eyes = $RayCast3D
+@onready var navAgent = $NavigationAgent3D
+@onready var player = get_tree().get_first_node_in_group("Player")
+
+# --- Variables ---
+var inTransition: bool = false
+var isInAttack: bool = false
+var damagedByPlayer: bool = false
+var awake: bool = false
+var walking: bool = false
+var dead: bool = false
+var knocked: bool = false
+var walkAnimScale = 0.5 * speed
+var look_target_desired
+var look_target
+var aim_target = 0.0
+
+func save():
+	var data = {
+		"level_scene": get_tree().current_scene.scene_file_path,
+		"filename": get_scene_file_path(),
+		"parent": get_parent().get_path(),
+		"transform": global_transform,
+		"enemy_health": enemy_health,
+		"dead": dead,
+		"current_state": current_state
+	}
+	return data
+
+func _ready() -> void:
+	look_target_desired = global_position
+	look_target = look_target_desired
+
+func _physics_process(delta):
+	if !is_on_floor():
+		velocity.y -= 20 * delta
+	# Fallback if player is missing
+	if not player:
+		if get_tree().get_first_node_in_group("Player"):
+			player = get_tree().get_first_node_in_group("Player")
+		return
+	
+	if !dead:
+		match current_state:
+			State.IDLE:
+				process_idle_state()
+			State.CHASE:
+				process_chase_state(delta)
+			State.ATTACK:
+				process_attack_state(delta)
+	else:
+		process_dead_state()
+
+# --- State Logic ---
+
+func process_idle_state():
+	if inTransition: return
+	
+	if player.dead and awake:
+		awake = false
+		if animation.is_playing():
+			await animation.animation_finished
+		animation.play("undraw")
+		return
+	
+	if walking:
+		animation.play_section("walk", 1.7, 1.8, -1, walkAnimScale)
+		walking = false
+	
+	velocity.x = move_toward(velocity.x, 0.0, 3.0)
+	velocity.z = move_toward(velocity.z, 0.0, 3.0)
+	
+	if (can_see_player() or damagedByPlayer) and !player.dead:
+		inTransition = true
+		if !awake:
+			awake = true
+			animation.play("alert")
+			await get_tree().create_timer(0.4).timeout
+		animation.play("draw")
+		await get_tree().create_timer(0.35).timeout
+		inTransition = false
+		current_state = State.CHASE
+
+func process_chase_state(delta):
+	if inTransition: return
+	
+	if player.dead:
+		current_state = State.IDLE
+		return
+	
+	navAgent.target_position = player.global_position
+	
+	# Check if the path is ready
+	if navAgent.is_navigation_finished(): return
+	
+	var nextPathPos = navAgent.get_next_path_position()
+	
+	if !animation.is_playing():
+		if !walking:
+			animation.play_section("walk", 0.0, 1.7, -1, walkAnimScale)
+			walking = true
+		else:
+			animation.play_section("walk", 0.1, 1.7, -1, walkAnimScale)
+	
+	# Rotate to look at player (Y-axis only)
+	look_target_desired = nextPathPos
+	look_target_desired.y = global_position.y
+	look_target = lerp(look_target, look_target_desired, delta * 3.5)
+	look_at(look_target, Vector3.UP)
+	
+	# Move toward player
+	var dir = (nextPathPos - global_position).normalized()
+	velocity.x = move_toward(velocity.x, dir.x * speed, 3.0)
+	velocity.z = move_toward(velocity.z, dir.z * speed, 3.0)
+	move_and_slide()
+	
+	# Check transitions
+	var dist = global_position.distance_to(player.global_position)
+	if dist <= attack_start_distance:
+		current_state = State.ATTACK
+	elif !can_see_player() and dist > detection_range and !damagedByPlayer:
+		inTransition = true
+		animation.play("undraw")
+		await get_tree().create_timer(0.35).timeout
+		inTransition = false
+		current_state = State.IDLE
+
+func process_attack_state(delta):
+	if player.dead:
+		current_state = State.IDLE
+		return
+	
+	# Stop movement during shooting
+	if walking:
+		animation.play_section("walk", 1.7, 1.8, -1, walkAnimScale)
+		walking = false
+	
+	velocity.x = move_toward(velocity.x, 0.0, 3.0)
+	velocity.z = move_toward(velocity.z, 0.0, 3.0)
+	
+	# Look at player
+	look_target_desired = player.global_position
+	look_target_desired.y = global_position.y
+	look_target = lerp(look_target, look_target_desired, delta * 3.5)
+	look_at(look_target, Vector3.UP)
+	aim(delta)
+	
+	# Decide: Player forever-napping or keep attaking?
+	if !isInAttack:
+		isInAttack = true
+		attack()
+	
+	
+	# Decide: Chase again or keep attacking?
+	if player.dead == true:
+		current_state = State.IDLE
+	
+	if global_position.distance_to(player.global_position) > attack_stop_distance:
+		current_state = State.CHASE
+
+
+func process_dead_state(): # gotta make death anim   Zzzzz
+	queue_free()
+
+func aim(delta):
+	var hand_bone = skeleton.find_bone("Hand.R")
+	aimHand.look_at(player.global_position, Vector3.UP, true)
+	aim_target = lerp_angle(aim_target, aimHand.rotation.x, delta * 3.0)
+	
+	var new_rotation = Quaternion.from_euler(Vector3(aim_target + PI/2, deg_to_rad(90), 0))
+	skeleton.set_bone_pose_rotation(hand_bone, new_rotation)
+
+
+func attack():
+	isInAttack = false
+	pass
+
+func hit(recieved_damage, type):
+	if type == "player":
+		damagedByPlayer = true
+	enemy_health -= recieved_damage
+	checkLifeLine()
+
+func get_pounded(recieved_damage):
+	enemy_health -= recieved_damage
+	# Push away
+	var push_dir = global_position - player.global_position
+	knockBack(push_dir, 15, 0.05)
+	
+	checkLifeLine()
+
+func knockBack(direction, force, time):
+	print("DEBUG")
+	knocked = true
+	velocity += direction * force
+	await get_tree().create_timer(time).timeout
+	knocked = false
+
+func checkLifeLine():
+	if enemy_health <= 0 and dead == false:
+		dead = true
+
+
+# --- Helpers ---
+
+func can_see_player() -> bool:
+	var dist = global_position.distance_to(player.global_position)
+	if dist > detection_range: return false
+	
+	# Point the RayCast eyes at the player
+	eyes.look_at(player.global_position) # Look at chest/head
+	eyes.force_raycast_update()
+	
+	if eyes.is_colliding():
+		return eyes.get_collider().is_in_group("Player")
+	return false

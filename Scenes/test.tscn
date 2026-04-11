@@ -11,11 +11,10 @@
 [ext_resource type="Texture2D" uid="uid://dayne5ld0pqyg" path="res://assets/Textures/Shadows/JeepShadow.png" id="8_iaow0"]
 [ext_resource type="Shader" uid="uid://no1jy7cyw0an" path="res://Shaders/MainMenu.gdshader" id="10_iaow0"]
 [ext_resource type="ArrayMesh" uid="uid://q8g0hhj850vv" path="res://assets/Meshes/Architecture/Hangar1.mesh" id="11_qpfo2"]
-[ext_resource type="PackedScene" uid="uid://syntm5qccbh2" path="res://Scenes/Enemy.tscn" id="12_yb21e"]
 [ext_resource type="ArrayMesh" uid="uid://dufaqga62sfgh" path="res://assets/Meshes/Objects/Car2.mesh" id="13_mie3u"]
 [ext_resource type="ArrayMesh" uid="uid://dxoddmwgtq2gq" path="res://assets/Meshes/Objects/Car1.mesh" id="14_0qy5o"]
-[ext_resource type="PackedScene" uid="uid://da8xo7bpr7w37" path="res://Scenes/SniperTurret.tscn" id="15_0qy5o"]
 [ext_resource type="PackedScene" uid="uid://d23s0inguh17p" path="res://Scenes/RigidBody.tscn" id="16_7nf3m"]
+[ext_resource type="PackedScene" uid="uid://beqguglkai1oh" path="res://Scenes/robot_dalboyob.tscn" id="17_2ocox"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_yb21e"]
 vertices = PackedVector3Array(-49.1, 0.5, -49.1, -49.1, 0.5, 49.000008, 49.000008, 0.5, 49.000008, 49.000008, 0.5, -49.1)
@@ -146,7 +145,7 @@ shadow_blur = 3.0
 environment = SubResource("Environment_ys1qc")
 
 [node name="Player" parent="." unique_id=1941692924 node_paths=PackedStringArray("screenEffect", "sun") instance=ExtResource("2_8od7v")]
-transform = Transform3D(0.8183203, 0, -0.57476246, 0, 1, 0, 0.57476246, 0, 0.8183203, -3.9721003, 0.59070325, -3.147481)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.0430093, 0.5907028, -4.9141726)
 screenEffect = NodePath("SandHaze")
 sun = NodePath("../DirectionalLight3D")
 
@@ -211,10 +210,6 @@ shape_type = 0
 go_make_colliders = null
 metadata/_custom_type_script = "uid://cfwmt6vc7y70h"
 
-[node name="Enemy" parent="." unique_id=546459934 instance=ExtResource("12_yb21e")]
-transform = Transform3D(-0.32304215, 0, 0.9463846, 0, 1, 0, -0.9463846, 0, -0.32304215, 8.692926, 0.9878535, -7.377297)
-collision_mask = 1
-
 [node name="Car2" type="MeshInstance3D" parent="." unique_id=1601625731]
 transform = Transform3D(0.65984905, 0, -0.23366481, 0, 0.7, 0, 0.23366481, 0, 0.65984905, 7.349476, 0.92282784, -2.2247424)
 mesh = ExtResource("13_mie3u")
@@ -239,5 +234,5 @@ mass = 8.0
 transform = Transform3D(-1.671231e-09, -0.038233314, -0.69895506, 0.7, -3.059797e-08, 0, -3.0552297e-08, -0.69895506, 0.038233314, -8.045181, 0.5738101, 2.8969457)
 mass = 8.0
 
-[node name="SniperTurret" parent="." unique_id=1830225406 instance=ExtResource("15_0qy5o")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.8555603, 1.8013512, -6.9611273)
+[node name="robotDalboyob" parent="." unique_id=1918605905 instance=ExtResource("17_2ocox")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 17.462605, 9.536743e-07, -4.6002545)
