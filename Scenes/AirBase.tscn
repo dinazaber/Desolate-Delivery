@@ -1,19 +1,19 @@
 [gd_scene format=3 uid="uid://ds8hiut7cj5b0"]
 
 [ext_resource type="ArrayMesh" uid="uid://daka58ay8ex6l" path="res://assets/Meshes/Nature/Sands.mesh" id="1_pxegc"]
-[ext_resource type="Shader" uid="uid://cxaiw2xedmgmc" path="res://Shaders/MeshShaders/Water.gdshader" id="2_pxegc"]
+[ext_resource type="Shader" uid="uid://cxaiw2xedmgmc" path="res://Shaders/Water.gdshader" id="2_pxegc"]
 [ext_resource type="PackedScene" uid="uid://cpi1xrpot2ipt" path="res://Scenes/Player.tscn" id="3_uinfi"]
 [ext_resource type="PackedScene" uid="uid://syntm5qccbh2" path="res://Scenes/Enemy.tscn" id="4_socb2"]
-[ext_resource type="Shader" uid="uid://bog2d5u5vhtmo" path="res://Shaders/MeshShaders/Flag.gdshader" id="5_dj3pt"]
+[ext_resource type="Shader" uid="uid://bog2d5u5vhtmo" path="res://Shaders/Flag.gdshader" id="5_dj3pt"]
 [ext_resource type="Texture2D" uid="uid://c66pm4mbkxy6n" path="res://assets/Textures/Architecture/Flag.png" id="6_4x86n"]
-[ext_resource type="Shader" path="res://Shaders/Post-Process/SandHaze.gdshader" id="6_dxaf4"]
+[ext_resource type="Shader" uid="uid://5sxuhqjwtd51" path="res://Shaders/SandHaze.gdshader" id="6_dxaf4"]
 [ext_resource type="Texture2D" uid="uid://dye1bkkxqrpse" path="res://assets/Textures/Architecture/HangarDoor.png" id="7_pxegc"]
 [ext_resource type="ArrayMesh" uid="uid://dxoddmwgtq2gq" path="res://assets/Meshes/Objects/Car1.mesh" id="8_cux0m"]
 [ext_resource type="ArrayMesh" uid="uid://7ho7ltov0iyb" path="res://assets/Meshes/Objects/Car3.mesh" id="9_flf77"]
 [ext_resource type="Script" uid="uid://cfwmt6vc7y70h" path="res://addons/MetaMultimeshInstance3D/src/MetaMultimeshInstance3D.gd" id="12_nqfut"]
 [ext_resource type="ArrayMesh" uid="uid://q8g0hhj850vv" path="res://assets/Meshes/Architecture/Hangar1.mesh" id="13_swfp1"]
 [ext_resource type="ArrayMesh" uid="uid://qdmyf5e4rqff" path="res://assets/Meshes/Objects/Plane.mesh" id="16_75e2l"]
-[ext_resource type="PackedScene" uid="uid://d23s0inguh17p" path="res://Scenes/Barrel.tscn" id="16_pxegc"]
+[ext_resource type="PackedScene" uid="uid://d23s0inguh17p" path="res://Scenes/RigidBody.tscn" id="16_pxegc"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0lpba"]
 

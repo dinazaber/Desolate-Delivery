@@ -10,8 +10,8 @@ extends Node3D
 @export var idle_sway_adjustment: float = 10.0
 @export var idle_sway_rotation_strength: float = 300.0
 @export_range(0.1, 10.0, 0.1) var random_sway_amount = 5.0
-@export var sway_speed: float = 1.2
 #--------------------------------------------------------------
+@export var sway_speed: float = 1.2
 
 
 var mouse_movement: Vector2 = Vector2.ZERO

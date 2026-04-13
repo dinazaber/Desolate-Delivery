@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c4tcnkstn4rig"]
 
-[ext_resource type="Script" uid="uid://b3a2aylon8065" path="res://Scripts/Files+Interface/MainMenu.gd" id="1_tt5f1"]
+[ext_resource type="Script" uid="uid://b3a2aylon8065" path="res://Scripts/MainMenu.gd" id="1_tt5f1"]
 [ext_resource type="PackedScene" uid="uid://b2hljcs3010c5" path="res://Scenes/Settings.tscn" id="2_853f1"]
 [ext_resource type="PackedScene" uid="uid://yhfwhi177tdg" path="res://Scenes/SaveMenu.tscn" id="3_df05h"]
 [ext_resource type="ArrayMesh" uid="uid://daka58ay8ex6l" path="res://assets/Meshes/Nature/Sands.mesh" id="3_ghw46"]

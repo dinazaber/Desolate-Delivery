@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://d23s0inguh17p"]
 
-[ext_resource type="ArrayMesh" uid="uid://c38lj2xgan0m6" path="res://assets/Meshes/Objects/Barrel.mesh" id="1_a0v44"]
-[ext_resource type="Texture2D" uid="uid://cwhfnmqmj2nse" path="res://assets/Textures/Architecture/ExplosionHazard.png" id="2_x12qv"]
-[ext_resource type="Texture2D" uid="uid://b7kptgyge4m5j" path="res://assets/Textures/Architecture/MagicEffect2.png" id="3_y3xgc"]
+[ext_resource type="ArrayMesh" uid="uid://c38lj2xgan0m6" path="res://assets/Meshes/Objects/Barrel.mesh" id="1_vkgwf"]
+[ext_resource type="Texture2D" uid="uid://cwhfnmqmj2nse" path="res://assets/Textures/Architecture/ExplosionHazard.png" id="2_m5ibw"]
+[ext_resource type="Texture2D" uid="uid://b7kptgyge4m5j" path="res://assets/Textures/Architecture/MagicEffect2.png" id="3_3t8db"]
 
 [sub_resource type="Curve" id="Curve_ettcv"]
 _data = [Vector2(0, 1), 0.0, -1.0, 0, 1, Vector2(1, 0), -1.0, 0.0, 1, 0]
@@ -32,7 +32,7 @@ transparency = 1
 shading_mode = 0
 vertex_color_use_as_albedo = true
 albedo_color = Color(1.353256, 1.353256, 1.353256, 0.39215687)
-albedo_texture = ExtResource("3_y3xgc")
+albedo_texture = ExtResource("3_3t8db")
 texture_filter = 0
 billboard_mode = 1
 
@@ -51,12 +51,12 @@ mass = 4.0
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1485554187]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0.197)
 layers = 3
-mesh = ExtResource("1_a0v44")
+mesh = ExtResource("1_vkgwf")
 
 [node name="Decal" type="Decal" parent="MeshInstance3D" unique_id=486826062]
 transform = Transform3D(1.9106857e-15, 4.3711392e-08, -1.0000001, 1.0000001, -4.3711392e-08, 0, -4.3711392e-08, -1.0000001, -4.3711392e-08, 0, 0, 0.481)
 size = Vector3(1.1, 0.3, 1.1)
-texture_albedo = ExtResource("2_x12qv")
+texture_albedo = ExtResource("2_m5ibw")
 modulate = Color(0.9974857, 0.82397175, 7.70092e-07, 1)
 albedo_mix = 0.4
 cull_mask = 1048574

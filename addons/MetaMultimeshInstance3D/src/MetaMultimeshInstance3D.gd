@@ -275,7 +275,6 @@ func _implode():
 			if m.mesh:
 				themesh = m.mesh
 				break
-	
 
 	var child : Node3D
 	var count : int = mesh_children.size()
@@ -339,3 +338,4 @@ func _make_colliders():
 				sbod.add_child(coll)
 				coll.set_owner(self.owner)
 				coll.transform = multimesh.get_instance_transform(index)
+

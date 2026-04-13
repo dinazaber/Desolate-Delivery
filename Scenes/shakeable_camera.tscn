@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://dvs50w2owu2rs"]
 
 [ext_resource type="Script" uid="uid://c7e3sbb04x4n1" path="res://Scripts/shakeable_camera.gd" id="1_a31he"]
-[ext_resource type="Shader" uid="uid://bhkwtho04nafd" path="res://Shaders/PostProcess/Outline.gdshader" id="2_fh7ym"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_fh7ym"]
 frequency = 0.05
@@ -10,21 +9,6 @@ fractal_gain = 0.8
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_w2e3y"]
 radius = 1.5
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_xheh1"]
-render_priority = 0
-shader = ExtResource("2_fh7ym")
-shader_parameter/thickness = 0.50000002049012
-shader_parameter/outline_color = Color(0, 0, 0, 1)
-shader_parameter/samples = 4
-shader_parameter/sensitivity = 0.00101000004725
-shader_parameter/edge_fade = 0.015
-shader_parameter/max_distance = 70.0000032775
-shader_parameter/fade_range = 100.0000047025
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_0d2sn"]
-material = SubResource("ShaderMaterial_xheh1")
-orientation = 2
 
 [node name="shakeable_camera" type="Area3D" unique_id=1373532385]
 script = ExtResource("1_a31he")
@@ -35,7 +19,3 @@ shape = SubResource("SphereShape3D_w2e3y")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=696304236]
 fov = 90.0
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Camera3D" unique_id=2017730439]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.2028006)
-mesh = SubResource("PlaneMesh_0d2sn")
