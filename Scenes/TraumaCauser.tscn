@@ -2,5 +2,11 @@
 
 [ext_resource type="Script" uid="uid://djtsqhxg1n87g" path="res://Scripts/trauma_causer.gd" id="1_f1ote"]
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_f1ote"]
+resource_local_to_scene = true
+
 [node name="trauma_causer" type="Area3D" unique_id=1675244516]
 script = ExtResource("1_f1ote")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1594897438]
+shape = SubResource("SphereShape3D_f1ote")

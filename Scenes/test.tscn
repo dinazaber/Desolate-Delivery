@@ -9,7 +9,7 @@
 [ext_resource type="ArrayMesh" uid="uid://7ho7ltov0iyb" path="res://assets/Meshes/Objects/Car3.mesh" id="8_0c07c"]
 [ext_resource type="Script" uid="uid://cfwmt6vc7y70h" path="res://addons/MetaMultimeshInstance3D/src/MetaMultimeshInstance3D.gd" id="8_2cgwh"]
 [ext_resource type="Texture2D" uid="uid://dayne5ld0pqyg" path="res://assets/Textures/Shadows/JeepShadow.png" id="8_iaow0"]
-[ext_resource type="Shader" uid="uid://no1jy7cyw0an" path="res://Shaders/MainMenu.gdshader" id="10_iaow0"]
+[ext_resource type="Shader" uid="uid://no1jy7cyw0an" path="res://Shaders/SandStorm.gdshader" id="10_iaow0"]
 [ext_resource type="ArrayMesh" uid="uid://q8g0hhj850vv" path="res://assets/Meshes/Architecture/Hangar1.mesh" id="11_qpfo2"]
 [ext_resource type="PackedScene" uid="uid://syntm5qccbh2" path="res://Scenes/Enemy.tscn" id="12_yb21e"]
 [ext_resource type="ArrayMesh" uid="uid://dufaqga62sfgh" path="res://assets/Meshes/Objects/Car2.mesh" id="13_mie3u"]

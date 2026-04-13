@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dh81y2wk5ijn" path="res://Scripts/Player.gd" id="1_g8lft"]
 [ext_resource type="PackedScene" uid="uid://4ercdvy5pe3t" path="res://Scenes/RightHandWeapons.tscn" id="2_kyqiw"]
-[ext_resource type="PackedScene" uid="uid://dvs50w2owu2rs" path="res://Scenes/shakeable_camera.tscn" id="2_megsn"]
+[ext_resource type="PackedScene" uid="uid://dvs50w2owu2rs" path="res://Scenes/ShakeableCamera.tscn" id="2_megsn"]
 [ext_resource type="Script" uid="uid://mnanpq21gwd4" path="res://Scripts/PauseMenu.gd" id="3_dewec"]
 [ext_resource type="PackedScene" uid="uid://b2hljcs3010c5" path="res://Scenes/Settings.tscn" id="3_gntrk"]
 [ext_resource type="PackedScene" uid="uid://d3y1m515qojp2" path="res://Scenes/LeftHandWeapons.tscn" id="3_nn08x"]
