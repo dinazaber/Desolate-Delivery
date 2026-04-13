@@ -1,6 +1,11 @@
 [gd_scene format=3 uid="uid://beqguglkai1oh"]
 
 [ext_resource type="ArrayMesh" uid="uid://cwhuegir0snfi" path="res://assets/Meshes/Enemies/robotDalboyob.mesh" id="1_grc7g"]
+[ext_resource type="Script" uid="uid://dm2yl7b4griiw" path="res://Scripts/enemies/robot_dalboyob.gd" id="1_h872o"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_h872o"]
+radius = 0.5307617
+height = 2.3052979
 
 [sub_resource type="Animation" id="Animation_d13cv"]
 length = 0.001
@@ -274,19 +279,24 @@ bind/10/name = &"Foot.R"
 bind/10/bone = -1
 bind/10/pose = Transform3D(0.3589791, 0.9333457, 9.4146e-08, 0.9333456, -0.35897905, 1.2780668e-08, 4.572519e-08, 1.1888548e-07, -1, 5.9703035, -2.2962694, 1.3876514)
 
-[node name="robotDalboyob" type="Node3D" unique_id=1610408567]
+[node name="robotDalboyob" type="CharacterBody3D" unique_id=969091388]
+script = ExtResource("1_h872o")
+
+[node name="CollisionEnv" type="CollisionShape3D" parent="." unique_id=177358311]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1535034, 0)
+shape = SubResource("CapsuleShape3D_h872o")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1869225451]
 root_node = NodePath("../Skeleton3D")
 libraries/ = SubResource("AnimationLibrary_anr4p")
 
 [node name="Skeleton3D" type="Skeleton3D" parent="." unique_id=1654080903]
-transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 2.0961425, 0)
+transform = Transform3D(-6.556708e-09, 0, 0.14999999, 0, 0.14999999, 0, -0.14999999, 0, -6.556708e-09, 0, 2.0961425, 0)
 bones/0/name = "Base"
 bones/0/parent = -1
 bones/0/rest = Transform3D(1, -1.1073507e-15, 1.2441222e-07, -2.6340133e-14, 1, 2.2061725e-07, -1.2441222e-07, -2.2061725e-07, 1, 0, -5.994387, 0)
 bones/0/enabled = true
-bones/0/position = Vector3(0, -6.045452, 0)
+bones/0/position = Vector3(0, -5.994387, 0)
 bones/0/rotation = Quaternion(1.7770675e-15, 0, -0.29211685, 0.9563826)
 bones/0/scale = Vector3(0.99999976, 0.99999976, 0.99999976)
 bones/1/name = "Hand.L"
@@ -363,3 +373,12 @@ bones/10/scale = Vector3(1, 0.9999999, 0.99999964)
 [node name="Robot" type="MeshInstance3D" parent="Skeleton3D" unique_id=257881901]
 mesh = ExtResource("1_grc7g")
 skin = SubResource("Skin_v6sto")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1425088459]
+
+[node name="RayCast3D" type="RayCast3D" parent="." unique_id=1762672619]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.0914974, 0)
+target_position = Vector3(0, 0, -20)
+
+[node name="aimHand" type="Marker3D" parent="." unique_id=1413270498]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3850249, 1.778611, 0)
