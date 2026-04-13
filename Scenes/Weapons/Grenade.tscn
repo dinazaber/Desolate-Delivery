@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://ddqu8tn7kxpd4"]
 
-[ext_resource type="ArrayMesh" uid="uid://bx1fs0t7d5ng3" path="res://assets/Meshes/Weapons/Genade.mesh" id="1_be0jk"]
-[ext_resource type="Script" uid="uid://4i0nsk0syjsv" path="res://Scripts/grenade.gd" id="1_t2ec2"]
-[ext_resource type="PackedScene" uid="uid://b4wyneleeqxp" path="res://Scenes/TraumaCauser.tscn" id="3_6rbch"]
+[ext_resource type="Script" uid="uid://4i0nsk0syjsv" path="res://Scripts/Weapons/Grenade.gd" id="1_k3jl2"]
+[ext_resource type="ArrayMesh" uid="uid://bx1fs0t7d5ng3" path="res://assets/Meshes/Weapons/Genade.mesh" id="2_2byne"]
+[ext_resource type="PackedScene" uid="uid://b4wyneleeqxp" path="res://Scenes/Modules/TraumaCauser.tscn" id="3_5oibr"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_t2ec2"]
 height = 0.22
@@ -141,7 +141,7 @@ rings = 4
 collision_layer = 6
 collision_mask = 6
 mass = 0.4
-script = ExtResource("1_t2ec2")
+script = ExtResource("1_k3jl2")
 
 [node name="hitBox_physics" type="CollisionShape3D" parent="." unique_id=1777226438]
 visible = false
@@ -152,7 +152,7 @@ shape = SubResource("CapsuleShape3D_t2ec2")
 
 [node name="GenadeMesh" type="MeshInstance3D" parent="." unique_id=1477165798]
 transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 0.02, 0)
-mesh = ExtResource("1_be0jk")
+mesh = ExtResource("2_2byne")
 
 [node name="ExplosionBox1" type="Area3D" parent="." unique_id=1186377403]
 collision_layer = 10
@@ -202,7 +202,7 @@ fixed_fps = 60
 process_material = SubResource("ParticleProcessMaterial_ij7c0")
 draw_pass_1 = SubResource("SphereMesh_e1jli")
 
-[node name="trauma_causer" parent="." unique_id=1675244516 instance=ExtResource("3_6rbch")]
+[node name="trauma_causer" parent="." unique_id=1675244516 instance=ExtResource("3_5oibr")]
 trauma_amount = 15.0
 sphere_radius = 10.0
 

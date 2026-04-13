@@ -1,6 +1,6 @@
 extends Control
 
-const scene = preload("res://Scenes/test.tscn")
+const scene = preload("res://Scenes/Locations/test.tscn")
 
 func _ready() -> void:
 	$SaveMenu/Add.hide()

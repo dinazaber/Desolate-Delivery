@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://4ercdvy5pe3t"]
 
-[ext_resource type="Script" uid="uid://cfdheqlfxu5y7" path="res://Scripts/Weapons.gd" id="1_qqpya"]
-[ext_resource type="Shader" uid="uid://u33lqf00j50h" path="res://Shaders/PlayerObjectShader.gdshader" id="1_vqio2"]
+[ext_resource type="Script" uid="uid://cfdheqlfxu5y7" path="res://Scripts/Weapons/Weapons.gd" id="1_qqpya"]
+[ext_resource type="Shader" uid="uid://u33lqf00j50h" path="res://Shaders/MeshShaders/PlayerObjectShader.gdshader" id="1_vqio2"]
 [ext_resource type="Texture2D" uid="uid://24usakcrqsvh" path="res://assets/Textures/Architecture/Explosion1.png" id="2_02q03"]
 [ext_resource type="Texture2D" uid="uid://bnvro65uaa4np" path="res://assets/Textures/Colors.png" id="2_qqpya"]
 [ext_resource type="ArrayMesh" uid="uid://dgnpgu3vv3a5n" path="res://assets/Meshes/Weapons/Speargun - PLACEHOLDER.mesh" id="3_7mlgx"]

@@ -64,9 +64,9 @@ const PLAYER_MAX_HEALTH = 100
 
 
 #loading objects
-var spear = load("res://Scenes/Spear.tscn")
+var spear = load("res://Scenes/Weapons/Spear.tscn")
 var instance_spear
-var grenade = load("res://Scenes/Grenade.tscn")
+var grenade = load("res://Scenes/Weapons/Grenade.tscn")
 var instance_grenade
 
 

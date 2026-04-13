@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dbhks05dlhcgo"]
 
-[ext_resource type="Script" uid="uid://dwdabxxr2jtvc" path="res://Scripts/spear.gd" id="1_b6eji"]
+[ext_resource type="Script" uid="uid://dwdabxxr2jtvc" path="res://Scripts/Weapons/spear.gd" id="1_b6eji"]
 [ext_resource type="ArrayMesh" uid="uid://bv6p5vdqff1hk" path="res://assets/Meshes/Weapons/spear.mesh" id="1_nijt2"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_b6eji"]

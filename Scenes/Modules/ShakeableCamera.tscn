@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dvs50w2owu2rs"]
 
-[ext_resource type="Script" uid="uid://c7e3sbb04x4n1" path="res://Scripts/shakeable_camera.gd" id="1_a31he"]
-[ext_resource type="Shader" uid="uid://3ytpincjft0b" path="res://Shaders/Outline.gdshader" id="2_hsjle"]
+[ext_resource type="Script" uid="uid://c7e3sbb04x4n1" path="res://Scripts/Modules/shakeable_camera.gd" id="1_dhhco"]
+[ext_resource type="Shader" uid="uid://3ytpincjft0b" path="res://Shaders/PostProcess/Outline.gdshader" id="2_wd55p"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_fh7ym"]
 frequency = 0.05
@@ -13,7 +13,7 @@ radius = 1.5
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bskmo"]
 render_priority = 0
-shader = ExtResource("2_hsjle")
+shader = ExtResource("2_wd55p")
 shader_parameter/thickness = 0.5
 shader_parameter/outline_color = Color(0, 0, 0, 1)
 shader_parameter/samples = 4
@@ -27,7 +27,7 @@ material = SubResource("ShaderMaterial_bskmo")
 orientation = 2
 
 [node name="shakeable_camera" type="Area3D" unique_id=1373532385]
-script = ExtResource("1_a31he")
+script = ExtResource("1_dhhco")
 noise = SubResource("FastNoiseLite_fh7ym")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=42415818]
