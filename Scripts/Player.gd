@@ -111,12 +111,11 @@ func updateScreenEffect(): #Function for current and future screen effects
 	screenEffect.material.set("shader_parameter/look_angle_factor", factor)
 
 func _ready() -> void:
-	$shakeable_camera/Camera3D.make_current()
 	healthBar.max_value = PLAYER_MAX_HEALTH
 	
 	if sun!=null: 
 		var sunDir = sun.global_transform.basis.z.normalized()
-		rightWeapon_smg.set_instance_shader_parameter("sun_direction", sunDir)
+		rightWeapon_smg.set_instance_shader_parameter("shader_parameter/sun_position", sunDir)
 
 func _input(event):
 	#if event is InputEventMouseButton:
@@ -173,7 +172,8 @@ func _physics_process(delta):
 	
 	if Input.is_action_pressed("LeftMouse"): # shooting
 		if current_gun == "smg":
-			shoot_smg()
+			#shoot_smg()
+			pass
 		elif current_gun == "speargun":
 			shoot_speargun()
 	
@@ -204,6 +204,7 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("R"):
 		throw_grenade()
 	
+	# Rigid bodies interaction:
 	for i in get_slide_collision_count():
 		var collision = get_slide_collision(i)
 		var collider = collision.get_collider()
@@ -215,14 +216,14 @@ func _physics_process(delta):
 	
 	if Input.is_action_pressed("Ctrl"): # crouch/slide
 		crouch = true
-		player_crouch.visible = true
-		player_stand.visible = false
+		player_crouch.disabled = false
+		player_stand.disabled = true
 		camera.position.y = lerp(camera.position.y, camDefHeight - 0.5, 20 * delta)
 		accel_mod = 0.08
 	else:
 		crouch = false
-		player_crouch.visible = false
-		player_stand.visible = true
+		player_crouch.disabled = true
+		player_stand.disabled = false
 		camera.position.y = lerp(camera.position.y, camDefHeight, 20 * delta)
 		accel_mod = 1.0
 	
@@ -305,15 +306,15 @@ func throw_grenade():
 	instance_grenade.apply_central_impulse((throw_dir * forward_force) + Vector3(0, upward_force, 0) + velocity)
 	get_parent().add_child(instance_grenade)
 
-func shoot_smg():
-	if !rightWeaponAnim.is_playing() and canShoot:
-		rightWeaponAnim.play("ShootSMG")
-		camera.add_trauma(smg_recoil)
-		if playerRay.is_colliding():
-			if playerRay.get_collider().is_in_group("Enemy"):
-				playerRay.get_collider().hit(smg_damage, "player")
-			if playerRay.get_collider().is_in_group("ShotReactable"):
-				playerRay.get_collider().shot()
+#func shoot_smg():
+	#if !rightWeaponAnim.is_playing() and canShoot:
+		#rightWeaponAnim.play("ShootSMG")
+		#camera.add_trauma(smg_recoil)
+		#if playerRay.is_colliding():
+			#if playerRay.get_collider().is_in_group("Enemy"):
+				#playerRay.get_collider().hit(smg_damage, "player")
+			#if playerRay.get_collider().is_in_group("ShotReactable"):
+				#playerRay.get_collider().shot()
 			
 
 func shoot_beggarsShotgun():

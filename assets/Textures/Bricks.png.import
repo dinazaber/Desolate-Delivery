@@ -2,20 +2,17 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cbgl0j3qicsu4"
-path.bptc="res://.godot/imported/Speargun - PLACEHOLDER_Diffuse_palette_2.jpg-e43a551193f517bad389c5809212a1a1.bptc.ctex"
+uid="uid://b1qbdwmbllu4x"
+path.bptc="res://.godot/imported/Bricks.png-0d757ff806ca8c4f69ec622cd516f7d3.bptc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
-generator_parameters={
-"md5": "d3c5453fdd496fbbcc5afaf739b91fdf"
-}
 
 [deps]
 
-source_file="res://Speargun - PLACEHOLDER_Diffuse_palette_2.jpg"
-dest_files=["res://.godot/imported/Speargun - PLACEHOLDER_Diffuse_palette_2.jpg-e43a551193f517bad389c5809212a1a1.bptc.ctex"]
+source_file="res://assets/Textures/Bricks.png"
+dest_files=["res://.godot/imported/Bricks.png-0d757ff806ca8c4f69ec622cd516f7d3.bptc.ctex"]
 
 [params]
 

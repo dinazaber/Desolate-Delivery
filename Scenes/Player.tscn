@@ -3,12 +3,12 @@
 [ext_resource type="Script" uid="uid://dh81y2wk5ijn" path="res://Scripts/Player.gd" id="1_g8lft"]
 [ext_resource type="PackedScene" uid="uid://4ercdvy5pe3t" path="res://Scenes/RightHandWeapons.tscn" id="2_kyqiw"]
 [ext_resource type="PackedScene" uid="uid://dvs50w2owu2rs" path="res://Scenes/shakeable_camera.tscn" id="2_megsn"]
-[ext_resource type="Script" uid="uid://mnanpq21gwd4" path="res://Scripts/PauseMenu.gd" id="3_dewec"]
+[ext_resource type="Script" uid="uid://mnanpq21gwd4" path="res://Scripts/Files+Interface/PauseMenu.gd" id="3_dewec"]
 [ext_resource type="PackedScene" uid="uid://b2hljcs3010c5" path="res://Scenes/Settings.tscn" id="3_gntrk"]
 [ext_resource type="PackedScene" uid="uid://d3y1m515qojp2" path="res://Scenes/LeftHandWeapons.tscn" id="3_nn08x"]
 [ext_resource type="Texture2D" uid="uid://b6vcboeh4uetd" path="res://assets/HUD/crosshair.png" id="5_5ixxa"]
 [ext_resource type="PackedScene" uid="uid://yhfwhi177tdg" path="res://Scenes/SaveMenu.tscn" id="6_52ee3"]
-[ext_resource type="Script" uid="uid://b1yx1tjjakl1w" path="res://Scripts/HUD.gd" id="7_bhhdu"]
+[ext_resource type="Script" uid="uid://b1yx1tjjakl1w" path="res://Scripts/Files+Interface/HUD.gd" id="7_bhhdu"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kyqiw"]
 shading_mode = 0
@@ -43,7 +43,6 @@ shape = SubResource("CapsuleShape3D_kyqiw")
 
 [node name="PlayerCollisionCrouch" type="CollisionShape3D" parent="." unique_id=1903917560]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
-visible = false
 shape = SubResource("CapsuleShape3D_nn08x")
 
 [node name="SuperTimer" type="Timer" parent="." unique_id=267019974]
@@ -60,13 +59,6 @@ collision_mask = 2
 [node name="CollisionShape3D" type="CollisionShape3D" parent="GroundSlam" unique_id=622411142]
 shape = SubResource("CylinderShape3D_nn08x")
 debug_color = Color(0.997045, 0, 0.18383858, 0.41960785)
-
-[node name="PlayerCamera" type="Camera3D" parent="." unique_id=1738772125]
-transform = Transform3D(-4.371213e-08, 9.313226e-10, -1, -5.1691977e-11, 1, 9.313226e-10, 1, 5.169202e-11, -4.371213e-08, 0, 0.639, 0)
-visible = false
-cull_mask = 1048573
-fov = 90.0
-size = 56.061
 
 [node name="shakeable_camera" parent="." unique_id=1373532385 instance=ExtResource("2_megsn")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0.64, 0)
@@ -85,7 +77,7 @@ target_position = Vector3(75, 0, 0)
 collision_mask = 6
 
 [node name="RightHand" parent="shakeable_camera" unique_id=267885530 instance=ExtResource("2_kyqiw")]
-transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0.247, -0.137, -0.3)
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0.115960054, -0.12376529, -0.20839053)
 
 [node name="LeftHand" parent="shakeable_camera" unique_id=1896444700 instance=ExtResource("3_nn08x")]
 transform = Transform3D(-6.5567085e-09, 0, 0.15, 0, 0.15, 0, -0.15, 0, -6.5567085e-09, -0.247, -0.137, -0.3)

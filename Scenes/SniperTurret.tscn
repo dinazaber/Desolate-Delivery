@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://da8xo7bpr7w37"]
 
-[ext_resource type="Script" uid="uid://idsgqohuto4m" path="res://Scripts/SniperTurret.gd" id="1_4yweh"]
+[ext_resource type="Script" uid="uid://idsgqohuto4m" path="res://Scripts/Enemies/SniperTurret.gd" id="1_4yweh"]
 [ext_resource type="ArrayMesh" uid="uid://ureoytkbyoid" path="res://assets/Meshes/Weapons/SniperTurretBase.mesh" id="2_4yweh"]
 [ext_resource type="ArrayMesh" uid="uid://xqq3w1jrwm80" path="res://assets/Meshes/Weapons/SniperTurretPillar.mesh" id="3_dh22p"]
 [ext_resource type="ArrayMesh" uid="uid://dx6bg7qr0nw87" path="res://assets/Meshes/Weapons/SniperTurretBarrel.mesh" id="4_hqsxd"]

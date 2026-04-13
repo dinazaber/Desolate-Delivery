@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://syntm5qccbh2"]
 
 [ext_resource type="SpriteFrames" uid="uid://do4xm5l0uk7li" path="res://assets/Animations/Human/CaliphateWarrior1.res" id="1_m1htj"]
-[ext_resource type="Script" uid="uid://d21t5vlquryax" path="res://Scripts/Enemy.gd" id="1_wovta"]
+[ext_resource type="Script" uid="uid://d21t5vlquryax" path="res://Scripts/Enemies/Enemy.gd" id="1_wovta"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wovta"]
 
