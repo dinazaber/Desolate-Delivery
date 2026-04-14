@@ -106,11 +106,11 @@ func _on_scale_option_item_selected(index: int) -> void:
 	
 func _on_anti_aliasing_item_selected(index: int) -> void:
 	match index:
-		0: settings.video.anti_aliasing = "MSAA 8x"
-		1: settings.video.anti_aliasing = "MSAA 4x"
-		2: settings.video.anti_aliasing = "MSAA 2x"
-		3: settings.video.anti_aliasing = "FXAA"
-		4: settings.video.anti_aliasing = "SMAA"
+		0: settings.video.anti_aliasing_type = "MSAA 8x"
+		1: settings.video.anti_aliasing_type = "MSAA 4x"
+		2: settings.video.anti_aliasing_type = "MSAA 2x"
+		3: settings.video.anti_aliasing_type = "FXAA"
+		4: settings.video.anti_aliasing_type = "SMAA"
 			
 
 
@@ -118,6 +118,7 @@ func _on_apply_settings_pressed() -> void:
 	buildSettings()
 	copyToConfig()
 	uiRefresh()
+	print(settings.video.render_scale)
 	
 	
 func _unhandled_input(event: InputEvent) -> void:

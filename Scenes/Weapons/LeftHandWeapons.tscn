@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://d3y1m515qojp2"]
 
 [ext_resource type="ArrayMesh" uid="uid://c1ua4nhpxyyli" path="res://assets/Meshes/Weapons/shotty.mesh" id="1_32bl7"]
-[ext_resource type="Script" uid="uid://cfdheqlfxu5y7" path="res://Scripts/Weapons/Weapons.gd" id="2_2xa8l"]
+[ext_resource type="Script" uid="uid://cfdheqlfxu5y7" path="res://Scripts/Weapons/WeaponSway.gd" id="2_2xa8l"]
 
 [sub_resource type="Animation" id="Animation_u6d72"]
 resource_name = "DrawShotgun"
