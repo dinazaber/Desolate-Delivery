@@ -203,7 +203,7 @@ func _physics_process(delta):
 		player_stand.disabled = true
 		camera.position.y = lerp(camera.position.y, camDefHeight - 0.5, 20 * delta)
 		SPEED = crouch_speed
-		if SPEED > walk_speed:
+		if !canDash:
 			accel_mod = 0.08
 			SPEED = walk_speed
 	else:
