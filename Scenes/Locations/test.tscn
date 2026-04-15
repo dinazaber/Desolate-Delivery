@@ -156,7 +156,7 @@ shadow_blur = 3.0
 environment = SubResource("Environment_ys1qc")
 
 [node name="Player" parent="." unique_id=1941692924 node_paths=PackedStringArray("screenEffect", "sun") instance=ExtResource("4_ru70h")]
-transform = Transform3D(0.8183203, 0, -0.57476246, 0, 1, 0, 0.57476246, 0, 0.8183203, -3.9721003, 0.59070325, -3.147481)
+transform = Transform3D(0.8183203, 0, -0.57476246, 0, 1, 0, 0.57476246, 0, 0.8183203, -3.972, 1, -3.147)
 screenEffect = NodePath("SandHaze")
 sun = NodePath("../DirectionalLight3D")
 

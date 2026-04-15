@@ -3,7 +3,7 @@ extends CharacterBody3D
 var cameraDistance = 15
 
 const headFreq = 2.4
-const headAmp = 0.08
+const headAmp = 0.04
 var headTime = 0.0
 
 @onready var camera = $shakeable_camera
@@ -177,21 +177,19 @@ func _physics_process(delta):
 	
 	if Input.is_action_pressed("Ctrl"): # crouch/slide
 		crouch = true
-		playerCollision.shape.height = 1
-		playerCollision.position.y = -0.5
-		camera.position.y = lerp(camera.position.y, camDefHeight - 0.5, 20 * delta)
-		SPEED = crouch_speed
-		if !canDash:
-			accel_mod = 0.2
-			SPEED = walk_speed
+		playerCollision.shape.height = lerp(playerCollision.shape.height, 1.0, delta * 15.0)
+		if velocity.length() > crouch_speed + 0.1: # 0.1 is epsilon for numerical error
+			accel_mod = 0.1
+		else: accel_mod = 1.0
 	else:
 		crouch = false
-		playerCollision.shape.height = 2
-		playerCollision.position.y = 0
-		camera.position.y = lerp(camera.position.y, camDefHeight, 20 * delta)
+		playerCollision.shape.height = lerp(playerCollision.shape.height, 2.0, delta * 15.0)
 		accel_mod = 1.0
 	
-	SPEED = move_toward(SPEED, walk_speed, delta * 15.0)
+	if crouch:
+		SPEED = move_toward(SPEED, crouch_speed, delta * 15.0)
+	else:
+		SPEED = move_toward(SPEED, walk_speed, delta * 15.0)
 	
 	
 	# Get direction
@@ -215,6 +213,8 @@ func _physics_process(delta):
 		if Input.is_action_just_pressed("Space"):
 			velocity.y += jump_speed
 		
+		# without this line the camera does some goofy stuff when walking into an object. keep it.
+		camera.position.y = lerp(camera.position.y, camDefHeight, 10 * delta)
 		
 		if direction:
 			if Input.is_action_just_pressed("Shift") and canDash and !crouch:
@@ -231,7 +231,9 @@ func _physics_process(delta):
 			pos.y = camera.position.y + sin(headTime*headFreq) * headAmp
 			camera.position.y = lerp(camera.position.y, pos.y, 20 * delta)
 		
+		
 		else: # no input speed
+			headTime = 0.0
 			velocity.x = lerp(velocity.x, direction.x * SPEED, delta * 5.0 * accel_mod)
 			velocity.z = lerp(velocity.z, direction.z * SPEED, delta * 5.0 * accel_mod)
 			
@@ -239,9 +241,9 @@ func _physics_process(delta):
 		airborne = true
 		velocity.y -= 20 * delta # Gravity
 		
-		if Input.is_action_just_pressed("Ctrl") and !$GroundSlamCheck.is_colliding(): # Groundslam
-			slam = true
-			velocity.y += slam_speed
+		#if Input.is_action_just_pressed("Ctrl") and !$GroundSlamCheck.is_colliding(): # Groundslam
+		#	slam = true
+		#	velocity.y += slam_speed
 		
 		
 		velocity.x = lerp(velocity.x, direction.x * SPEED, delta * 0.5)
@@ -292,11 +294,12 @@ func slam_ground():
 			body.get_pounded(slam_damage)
 
 func knockBack(direction, force, time): #Not just shotgun, if we plan to add more weapons that
-	if !is_on_floor():
-		knocked = true
-		velocity += direction * force
-		await get_tree().create_timer(time).timeout
-		knocked = false
+	if is_on_floor():
+		force /= 2
+	knocked = true
+	velocity += direction * force
+	await get_tree().create_timer(time).timeout
+	knocked = false
 
 func checkLifeLine():
 	print(player_health)
