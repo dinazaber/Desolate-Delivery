@@ -7,15 +7,23 @@ var current_state = State.IDLE
 @export var speed: float = 3.5
 @export var attack_start_distance: float = 8.0 # when start shooting
 @export var attack_stop_distance: float = 12.0 # when stop shooting
+@export var kick_distance: float = 2.5
 @export var detection_range: float = 25.0
-@export var enemy_damage: float = 30.0
+@export var enemy_gun_damage: float = 30.0
+@export var enemy_kick_damage: float = 50.0
 @export var enemy_health: float = 100.0
 
 # --- Nodes ---
+@onready var chargeBall = $Skeleton3D/ArmR/chargeBall
+@onready var chargeBalls = $Skeleton3D/ArmR/chargeBalls
+@onready var bullet = $Skeleton3D/ArmR/Bullet
 @onready var animation = $AnimationPlayer
 @onready var skeleton = $Skeleton3D
 @onready var aimHand = $aimHand
 @onready var eyes = $RayCast3D
+@onready var bulletRay = $Skeleton3D/ArmR/BulletRay
+@onready var bulletRayEnd = $Skeleton3D/ArmR/BulletRayEnd
+@onready var kickRay = $Skeleton3D/LegL/kick
 @onready var navAgent = $NavigationAgent3D
 @onready var player = get_tree().get_first_node_in_group("Player")
 
@@ -28,9 +36,11 @@ var walking: bool = false
 var dead: bool = false
 var knocked: bool = false
 var walkAnimScale = 0.5 * speed
+var turn_mod = 1.0
 var look_target_desired
 var look_target
 var aim_target = 0.0
+var dist = 9999.0
 
 func save():
 	var data = {
@@ -56,6 +66,8 @@ func _physics_process(delta):
 		if get_tree().get_first_node_in_group("Player"):
 			player = get_tree().get_first_node_in_group("Player")
 		return
+	
+	dist = global_position.distance_to(player.global_position)
 	
 	if !dead:
 		match current_state:
@@ -132,7 +144,7 @@ func process_chase_state(delta):
 	move_and_slide()
 	
 	# Check transitions
-	var dist = global_position.distance_to(player.global_position)
+	dist = global_position.distance_to(player.global_position)
 	if dist <= attack_start_distance:
 		current_state = State.ATTACK
 	elif !can_see_player() and dist > detection_range and !damagedByPlayer:
@@ -155,17 +167,26 @@ func process_attack_state(delta):
 	velocity.x = move_toward(velocity.x, 0.0, 3.0)
 	velocity.z = move_toward(velocity.z, 0.0, 3.0)
 	
+	dist = global_position.distance_to(player.global_position)
+	if dist <= kick_distance:
+		turn_mod = 4.0
+	else:
+		turn_mod = 0.8
+	
 	# Look at player
 	look_target_desired = player.global_position
 	look_target_desired.y = global_position.y
-	look_target = lerp(look_target, look_target_desired, delta * 3.5)
+	look_target = lerp(look_target, look_target_desired, delta * 3.5 * turn_mod)
 	look_at(look_target, Vector3.UP)
 	aim(delta)
 	
 	# Decide: Player forever-napping or keep attaking?
 	if !isInAttack:
 		isInAttack = true
-		attack()
+		if dist <= kick_distance:
+			kick()
+		else:
+			shoot()
 	
 	
 	# Decide: Chase again or keep attacking?
@@ -187,10 +208,36 @@ func aim(delta):
 	var new_rotation = Quaternion.from_euler(Vector3(aim_target + PI/2, deg_to_rad(90), 0))
 	skeleton.set_bone_pose_rotation(hand_bone, new_rotation)
 
-
-func attack():
+func kick():
+	if animation.is_playing(): pass
+	animation.play("kick")
+	await get_tree().create_timer(0.21).timeout
+	if kickRay.is_colliding():
+		if kickRay.get_collider().is_in_group("Player"):
+			kickRay.get_collider().hit(enemy_kick_damage, "enemy")
+			var dir = player.global_position - global_position
+			kickRay.get_collider().knockBack(dir + Vector3(0,0.1,0), 15, 0.3)
+	await get_tree().create_timer(0.3).timeout
 	isInAttack = false
-	pass
+
+func shoot():
+	chargeBall.restart()
+	chargeBall.emitting = true
+	chargeBalls.restart()
+	chargeBalls.emitting = true
+	await get_tree().create_timer(1.25).timeout
+	if dist <= kick_distance: 
+		kick()
+		return
+	if bulletRay.is_colliding():
+		bullet.lifetime = bulletRay.global_position.distance_to(bulletRay.get_collision_point()) / bulletRay.global_position.distance_to(bulletRayEnd.global_position)
+	else: bullet.lifetime = 0.5
+	bullet.emitting = true
+	if bulletRay.is_colliding():
+		if bulletRay.get_collider().is_in_group("Player"):
+			bulletRay.get_collider().hit(enemy_gun_damage, "enemy")
+	await get_tree().create_timer(1.0).timeout
+	isInAttack = false
 
 func hit(recieved_damage, type):
 	if type == "player":
@@ -221,7 +268,6 @@ func checkLifeLine():
 # --- Helpers ---
 
 func can_see_player() -> bool:
-	var dist = global_position.distance_to(player.global_position)
 	if dist > detection_range: return false
 	
 	# Point the RayCast eyes at the player
