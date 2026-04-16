@@ -38,4 +38,5 @@ fov = 90.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Camera3D" unique_id=1190222455]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.18537882)
+visible = false
 mesh = SubResource("PlaneMesh_rgxeb")

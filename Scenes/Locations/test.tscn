@@ -176,11 +176,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.35177, 1.0000209, 1.8640761
 visible = false
 mesh = ExtResource("6_xe0hb")
 
-[node name="Car3" type="MeshInstance3D" parent="." unique_id=673387538]
+[node name="Jeep" type="MeshInstance3D" parent="." unique_id=673387538]
 transform = Transform3D(0.76178885, 0, -0.24429034, 0, 0.8, 0, 0.24429034, 0, 0.76178885, 0.6187975, 0.94204694, 0)
 mesh = ExtResource("7_ijbfb")
 
-[node name="Decal2" type="Decal" parent="Car3" unique_id=31879390]
+[node name="Decal2" type="Decal" parent="Jeep" unique_id=31879390]
 transform = Transform3D(1.3331356, 0, -5.9604645e-08, 0, 1.3331364, 0, 5.9604645e-08, 0, 1.3333325, 0.07499492, -0.9160811, -0.14660564)
 size = Vector3(4.295791, 0.34991455, 5.2655067)
 texture_albedo = ExtResource("8_wr8wa")

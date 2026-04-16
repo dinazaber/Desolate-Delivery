@@ -109,10 +109,7 @@ func _ready() -> void:
 		$shakeable_camera/RightHand/SMG/SMG.get_active_material(0).set("shader_parameter/sun_direction", sunDir)
 
 func _input(event):
-	#if event is InputEventMouseButton:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	#elif event.is_action_pressed("cancel"):
-		#Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	
 	if Input.is_action_just_pressed("1"): # smg
 		hideWeapons()
