@@ -24,7 +24,7 @@ height = 0.3
 radius = 6.0
 
 [node name="Player" type="CharacterBody3D" unique_id=1941692924 groups=["Persist", "Player"]]
-collision_layer = 9
+collision_layer = 25
 collision_mask = 9
 floor_constant_speed = true
 floor_snap_length = 0.25
@@ -69,6 +69,7 @@ transform = Transform3D(1, 5.1691977e-11, -7.4251716e-13, -5.1691977e-11, 1, 9.3
 transform = Transform3D(-4.371139e-08, 9.232692e-19, 1, 0, 1, 9.232692e-19, -1, -4.0357378e-26, -4.371139e-08, 0, -0.0009999871, 0)
 target_position = Vector3(75, 0, 0)
 collision_mask = 6
+collide_with_areas = true
 
 [node name="RightHand" parent="shakeable_camera" unique_id=267885530 instance=ExtResource("2_kyqiw")]
 transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0.11832347, -0.13699996, -0.22346115)

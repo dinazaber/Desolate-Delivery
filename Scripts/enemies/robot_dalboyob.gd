@@ -239,7 +239,7 @@ func shoot():
 	await get_tree().create_timer(1.0).timeout
 	isInAttack = false
 
-func hit(recieved_damage, type):
+func _on_area_3d_damage_taken(recieved_damage: float, type: String) -> void:
 	if type == "player":
 		damagedByPlayer = true
 	enemy_health -= recieved_damage
