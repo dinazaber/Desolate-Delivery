@@ -16,7 +16,6 @@
 [ext_resource type="PackedScene" uid="uid://d23s0inguh17p" path="res://Scenes/RigidBody.tscn" id="15_iyf6e"]
 [ext_resource type="PackedScene" uid="uid://beqguglkai1oh" path="res://Scenes/Enemies/robot_dalboyob.tscn" id="15_xm5mx"]
 [ext_resource type="ArrayMesh" uid="uid://tnqtnrxm02k4" path="res://assets/Meshes/Objects/Crate.mesh" id="16_jcbmq"]
-[ext_resource type="PackedScene" uid="uid://da8xo7bpr7w37" path="res://Scenes/Enemies/SniperTurret.tscn" id="17_obpdj"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_yb21e"]
 vertices = PackedVector3Array(-49.1, 0.5, -49.1, -49.1, 0.5, 49.000008, 49.000008, 0.5, 49.000008, 49.000008, 0.5, -49.1)
@@ -254,6 +253,3 @@ go_explode = null
 shape_type = 0
 go_make_colliders = null
 metadata/_custom_type_script = "uid://cfwmt6vc7y70h"
-
-[node name="SniperTurret" parent="." unique_id=1830225406 instance=ExtResource("17_obpdj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.147627, 1.781839, -17.815159)

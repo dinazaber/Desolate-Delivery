@@ -160,6 +160,81 @@ tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = PackedFloat32Array(0, 1, 7.150818e-07, 0.70710665, 4.2495365e-08, 0.7071069, 0.07, 1, 0.15269722, 0.6904227, 0.15269648, 0.6904229, 0.13, 1, 0.15269722, 0.6904227, 0.15269648, 0.6904229, 0.23, 1, -0.092, 0.701, -0.092, 0.701, 0.24, 1, -0.092, 0.701, -0.092, 0.701, 0.31, 1, 0.040361006, 0.7059538, 0.040360514, 0.70595413, 0.32, 1, 0.040361006, 0.7059538, 0.040360514, 0.70595413, 0.35, 1, 7.150818e-07, 0.70710665, 4.2495365e-08, 0.7071069)
 
+[sub_resource type="Animation" id="Animation_h872o"]
+resource_name = "kick"
+length = 0.6
+step = 0.01
+tracks/0/type = "rotation_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:Base")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 0.05, 1, 0, 1.660661e-24, -0.087018065, 0.9962067, 0.06999999, 1, 0, 1.660661e-24, -0.087018065, 0.9962067, 0.18, 1, -1.6693056e-15, -6.0734316e-16, 0.34190357, 0.93973505, 0.53, 1, 0, 0, -0.052, 0.999, 0.53999996, 1, 0, 0, -0.052, 0.999, 0.6, 1, 0, 0, 0, 1)
+tracks/1/type = "position_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:Base")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0, -5.994387, 0, 0.05, 1, 0, -6.1406465, 0, 0.06999999, 1, 0, -6.1406465, 0, 0.18, 1, 0, -6.0025125, 0, 0.53, 1, 0, -5.994387, 0, 0.6, 1, 0, -5.994387, 0)
+tracks/2/type = "rotation_3d"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:Hand.L")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(0, 1, 0.7071068, 2.1319504e-14, -0.7071068, -1.4213003e-14, 0.080000006, 1, -0.63364345, 0.3138407, 0.63364345, 0.31384072, 0.1, 1, -0.63364345, 0.3138407, 0.63364345, 0.31384072, 0.18, 1, 0.68415433, -0.17869776, -0.6841543, -0.17869778, 0.53, 1, 0.7071068, -7.105428e-15, -0.7071068, -2.1316285e-14, 0.6, 1, 0.7071068, -7.105428e-15, -0.7071068, -2.1316285e-14)
+tracks/3/type = "rotation_3d"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:Arm.L")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = PackedFloat32Array(0, 1, 7.1508134e-07, 0.70710665, 4.2495508e-08, 0.7071069, 0.080000006, 1, -0.46786296, 0.5301922, -0.4678633, 0.53019285, 0.1, 1, -0.46786296, 0.5301922, -0.4678633, 0.53019285, 0.18, 1, -0.27645534, 0.6508241, -0.27645582, 0.65082455, 0.53, 1, 7.1508134e-07, 0.70710665, 4.2495508e-08, 0.7071069, 0.6, 1, 7.1508134e-07, 0.70710665, 4.2495508e-08, 0.7071069)
+tracks/4/type = "rotation_3d"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:UpperLeg.L")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = PackedFloat32Array(0, 1, 0.7071068, 0, -0.7071068, -7.106501e-15, 0.08, 1, 0.508, 0.492, -0.508, 0.492, 0.099999994, 1, 0.508, 0.492, -0.508, 0.492, 0.18, 1, 0.5182232, 0.48108697, -0.51822317, 0.48108697, 0.21, 1, 0.5973984, 0.3783058, -0.59739816, 0.37830576, 0.23999998, 1, 0.5973984, 0.3783058, -0.59739816, 0.37830576, 0.53, 1, -0.706, -0.037, 0.706, -0.037, 0.53999996, 1, -0.706, -0.037, 0.706, -0.037, 0.6, 1, 0.7071068, 1.4210856e-14, -0.7071068, -3.552714e-15)
+tracks/5/type = "rotation_3d"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".:Leg.L")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = PackedFloat32Array(0, 1, -3.6430038e-08, 0.70710665, -1.5058501e-07, 0.7071069, 0.08, 1, 0.6004539, 0.37343705, 0.60045356, 0.3734372, 0.099999994, 1, 0.6004539, 0.37343705, 0.60045356, 0.3734372, 0.18, 1, 0.54197055, 0.45416754, 0.5419702, 0.45416754, 0.21, 1, 0.16028753, 0.6887001, 0.16028704, 0.6887004, 0.23999998, 1, 0.16028753, 0.6887001, 0.16028704, 0.6887004, 0.53, 1, -3.6430038e-08, 0.70710665, -1.5058501e-07, 0.7071069, 0.6, 1, -3.6430038e-08, 0.70710665, -1.5058501e-07, 0.7071069)
+tracks/6/type = "rotation_3d"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath(".:Foot.L")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = PackedFloat32Array(0, 1, -8.109573e-08, 1.497527e-08, -0.56613636, 0.8243116, 0.08, 1, -8.109573e-08, 1.497527e-08, -0.56613636, 0.8243116, 0.099999994, 1, -8.109573e-08, 1.497527e-08, -0.56613636, 0.8243116, 0.18, 1, -9.153784e-08, -3.2422577e-08, -0.6450408, 0.7641481, 0.21, 1, -9.1537835e-08, -3.242257e-08, -0.6450408, 0.76414806, 0.23999998, 1, -9.1537835e-08, -3.242257e-08, -0.6450408, 0.76414806, 0.53, 1, -8.109573e-08, 1.497527e-08, -0.56613636, 0.8243116, 0.6, 1, -8.109573e-08, 1.497527e-08, -0.56613636, 0.8243116)
+tracks/7/type = "rotation_3d"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath(".:UpperLeg.R")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = PackedFloat32Array(0, 1, 0.7071068, 0, -0.7071068, 0, 0.05, 1, -0.696, -0.123, 0.696, -0.123, 0.06999999, 1, -0.696, -0.123, 0.696, -0.123, 0.18, 1, -0.663, 0.245, 0.663, 0.245, 0.53, 1, -0.706, -0.037, 0.706, -0.037, 0.53999996, 1, -0.706, -0.037, 0.706, -0.037, 0.6, 1, 0.7071068, 0, -0.7071068, 3.552714e-15)
+tracks/8/type = "rotation_3d"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath(".:Leg.R")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = PackedFloat32Array(0, 1, -3.6424062e-08, 0.70710665, -1.505838e-07, 0.7071069, 0.05, 1, 0.123, 0.696, 0.123, 0.696, 0.06999999, 1, 0.123, 0.696, 0.123, 0.696, 0.18, 1, 0.00025477205, 0.70710677, 0.00025470383, 0.7071067, 0.53, 1, -3.6424062e-08, 0.70710665, -1.505838e-07, 0.7071069, 0.6, 1, -3.6424062e-08, 0.70710665, -1.505838e-07, 0.7071069)
+tracks/9/type = "rotation_3d"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath(".:Foot.R")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = PackedFloat32Array(0, 1, -9.47838e-09, 4.36622e-08, -0.5661365, 0.82431155, 0.05, 1, -2.3580972e-08, 3.714771e-08, -0.636472, 0.77129984, 0.06999999, 1, -2.3580972e-08, 3.714771e-08, -0.636472, 0.77129984, 0.18, 1, 0, 0, -0.566, 0.824, 0.53, 1, -9.47838e-09, 4.36622e-08, -0.5661365, 0.82431155, 0.6, 1, -9.47838e-09, 4.36622e-08, -0.5661365, 0.82431155)
+
 [sub_resource type="Animation" id="Animation_dxebr"]
 resource_name = "undraw"
 length = 0.35
@@ -238,6 +313,7 @@ _data = {
 &"RESET": SubResource("Animation_d13cv"),
 &"alert": SubResource("Animation_2nltl"),
 &"draw": SubResource("Animation_016ir"),
+&"kick": SubResource("Animation_h872o"),
 &"undraw": SubResource("Animation_dxebr"),
 &"walk": SubResource("Animation_grc7g")
 }
@@ -279,6 +355,107 @@ bind/10/name = &"Foot.R"
 bind/10/bone = -1
 bind/10/pose = Transform3D(0.3589791, 0.9333457, 9.4146e-08, 0.9333456, -0.35897905, 1.2780668e-08, 4.572519e-08, 1.1888548e-07, -1, 5.9703035, -2.2962694, 1.3876514)
 
+[sub_resource type="Gradient" id="Gradient_h872o"]
+colors = PackedColorArray(1, 1, 0, 1, 1, 0.5882353, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_hfj1t"]
+gradient = SubResource("Gradient_h872o")
+
+[sub_resource type="Curve" id="Curve_hq11t"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.05785124, 0.21348321), 0.0, 0.0, 0, 0, Vector2(0.13636363, 0.32584274), 0.0, 0.0, 0, 0, Vector2(0.21900825, 0.17977536), 0.0, 0.0, 0, 0, Vector2(0.29752064, 0.46067423), 0.0, 0.0, 0, 0, Vector2(0.40082645, 0.25842702), 0.0, 0.0, 0, 0, Vector2(0.48347104, 0.61797756), 0.0, 0.0, 0, 0, Vector2(0.59090906, 0.47191018), 0.0, 0.0, 0, 0, Vector2(0.6818181, 0.8764045), 0.0, 0.0, 0, 0, Vector2(0.7561983, 0.8089888), 0.0, 0.0, 0, 0, Vector2(0.83057845, 1), 0.0, 0.0, 0, 0, Vector2(0.9338842, 0.9662922), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 13
+
+[sub_resource type="CurveTexture" id="CurveTexture_o787m"]
+curve = SubResource("Curve_hq11t")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_tykr4"]
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_o787m")
+color_ramp = SubResource("GradientTexture1D_hfj1t")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2a8ro"]
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_color = Color(1, 0.6862745, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_a3cge"]
+material = SubResource("StandardMaterial3D_2a8ro")
+radius = 0.267
+height = 0.534
+radial_segments = 16
+rings = 8
+
+[sub_resource type="Gradient" id="Gradient_ftkyl"]
+offsets = PackedFloat32Array(0.018691588, 1)
+colors = PackedColorArray(1, 0.78431374, 0, 1, 1, 0.5882353, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_pat76"]
+gradient = SubResource("Gradient_ftkyl")
+
+[sub_resource type="Curve" id="Curve_y1tll"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.10416668, 0), 0.0, 0.0, 0, 0, Vector2(0.28333336, 0.48314613), 0.0, 0.0, 0, 0, Vector2(0.62916666, 0.48314613), 0.0, 0.0, 0, 0, Vector2(0.6333333, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 6
+
+[sub_resource type="CurveTexture" id="CurveTexture_bgpjt"]
+curve = SubResource("Curve_y1tll")
+
+[sub_resource type="Curve" id="Curve_h2sur"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_sxk8o"]
+curve = SubResource("Curve_h2sur")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_uv04q"]
+emission_shape = 1
+emission_sphere_radius = 1.6
+gravity = Vector3(0, 0, 0)
+radial_accel_min = -8.000002
+radial_accel_max = -4.0000024
+radial_accel_curve = SubResource("CurveTexture_bgpjt")
+scale_curve = SubResource("CurveTexture_sxk8o")
+color_ramp = SubResource("GradientTexture1D_pat76")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0dti8"]
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_color = Color(1, 0.6862745, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_oqbdp"]
+material = SubResource("StandardMaterial3D_0dti8")
+size = Vector3(0.1, 0.1, 0.1)
+
+[sub_resource type="Gradient" id="Gradient_hfj1t"]
+colors = PackedColorArray(1, 0.5882353, 0, 1, 1, 0.39215687, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_hq11t"]
+gradient = SubResource("Gradient_hfj1t")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_h872o"]
+emission_shape_offset = Vector3(0, -5.5, 0)
+direction = Vector3(0, 1, 0)
+spread = 0.0
+initial_velocity_min = 666.0
+initial_velocity_max = 666.0
+gravity = Vector3(0, 0, 0)
+color_ramp = SubResource("GradientTexture1D_hq11t")
+
+[sub_resource type="Curve" id="Curve_hfj1t"]
+_data = [Vector2(0.006451614, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hq11t"]
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_color = Color(1, 0.6862745, 0, 1)
+use_particle_trails = true
+
+[sub_resource type="TubeTrailMesh" id="TubeTrailMesh_o787m"]
+material = SubResource("StandardMaterial3D_hq11t")
+radius = 0.01
+section_length = 0.1
+curve = SubResource("Curve_hfj1t")
+
 [node name="robotDalboyob" type="CharacterBody3D" unique_id=969091388 groups=["Enemy"]]
 collision_layer = 3
 collision_mask = 3
@@ -300,21 +477,21 @@ bones/0/rest = Transform3D(1, -1.1073507e-15, 1.2441222e-07, -2.6340133e-14, 1, 
 bones/0/enabled = true
 bones/0/position = Vector3(0, -5.994387, 0)
 bones/0/rotation = Quaternion(1.7770675e-15, 0, -0.29211685, 0.9563826)
-bones/0/scale = Vector3(0.99999976, 0.99999976, 0.99999976)
+bones/0/scale = Vector3(0.9999994, 0.9999994, 0.99999976)
 bones/1/name = "Hand.L"
 bones/1/parent = 0
 bones/1/rest = Transform3D(1.7881395e-07, 1.0713756e-06, -1, -2.284384e-07, -0.99999994, -1.0713757e-06, -1, 2.2843857e-07, -1.788137e-07, 3.2065128e-07, 3.822006, -2.5773292)
 bones/1/enabled = true
-bones/1/position = Vector3(3.2065128e-07, 3.822006, -2.5773292)
+bones/1/position = Vector3(2.206132e-07, 3.8220062, -2.5773292)
 bones/1/rotation = Quaternion(0.6761184, 0.20703624, -0.6761183, 0.20703624)
-bones/1/scale = Vector3(1, 0.99999994, 1)
+bones/1/scale = Vector3(1, 1, 1)
 bones/2/name = "Arm.L"
 bones/2/parent = 1
 bones/2/rest = Transform3D(3.5762787e-07, 9.5117986e-07, 0.99999994, 1.0713752e-06, 1, -9.511802e-07, -0.99999994, 1.0713754e-06, 3.5762787e-07, 1.8240702e-06, 1.8342514, -1.9895197e-13)
 bones/2/enabled = true
 bones/2/position = Vector3(1.8240702e-06, 1.8342514, -1.9895197e-13)
 bones/2/rotation = Quaternion(7.1508134e-07, 0.70710665, 4.2495508e-08, 0.7071069)
-bones/2/scale = Vector3(0.99999994, 1, 0.99999994)
+bones/2/scale = Vector3(0.99999994, 0.99999994, 0.99999976)
 bones/3/name = "Hand.R"
 bones/3/parent = 0
 bones/3/rest = Transform3D(1.7881395e-07, 1.0713757e-06, -1, -2.284388e-07, -0.99999994, -1.0713758e-06, -1, 2.2843896e-07, -1.788137e-07, -3.1837027e-07, 3.8220026, 2.558996)
@@ -333,48 +510,104 @@ bones/5/name = "UpperLeg.L"
 bones/5/parent = 0
 bones/5/rest = Transform3D(3.576279e-07, -2.4566347e-07, -1, 1.2645424e-07, -0.99999994, 2.4566356e-07, -1, -1.2645431e-07, -3.5762787e-07, 1.7008854e-07, 0.04098591, -1.367137)
 bones/5/enabled = true
-bones/5/position = Vector3(1.7008853e-07, 0.040989246, -1.3671367)
+bones/5/position = Vector3(2.5612042e-07, 0.040988777, -1.3671367)
 bones/5/rotation = Quaternion(0.6761184, 0.20703623, -0.6761183, 0.20703626)
-bones/5/scale = Vector3(0.99999976, 0.99999905, 0.9999993)
+bones/5/scale = Vector3(0.99999994, 0.9999994, 0.999999)
 bones/6/name = "Leg.L"
 bones/6/parent = 5
 bones/6/rest = Transform3D(3.5762787e-07, 1.6143954e-07, 0.99999994, -2.644792e-07, 0.9999999, -1.6143944e-07, -0.99999994, -2.6447916e-07, 3.5762793e-07, 2.8666668e-07, 3.2035372, -1.1368684e-13)
 bones/6/enabled = true
-bones/6/position = Vector3(-3.093803e-07, 3.2035344, 6.578042e-07)
+bones/6/position = Vector3(-3.0938045e-07, 3.2035346, 9.2084474e-07)
 bones/6/rotation = Quaternion(-3.6430038e-08, 0.70710665, -1.5058501e-07, 0.7071069)
-bones/6/scale = Vector3(0.9999998, 0.9999994, 0.9999995)
+bones/6/scale = Vector3(1.0000004, 0.9999995, 0.999999)
 bones/7/name = "Foot.L"
 bones/7/parent = 6
 bones/7/rest = Transform3D(0.35897923, 0.93334556, 1.1651106e-07, -0.93334556, 0.35897923, 1.1674023e-07, 6.713391e-08, -1.506524e-07, 1, -7.1054274e-15, 4.2035384, 1.7105597e-07)
 bones/7/enabled = true
-bones/7/position = Vector3(-5.9903607e-07, 4.2035356, -4.2499087e-07)
+bones/7/position = Vector3(-7.014494e-07, 4.203535, -4.249907e-07)
 bones/7/rotation = Quaternion(-8.109573e-08, 1.497527e-08, -0.56613636, 0.8243116)
-bones/7/scale = Vector3(0.9999995, 0.9999999, 0.9999993)
+bones/7/scale = Vector3(0.99999964, 0.9999997, 0.9999993)
 bones/8/name = "UpperLeg.R"
 bones/8/parent = 0
 bones/8/rest = Transform3D(3.576279e-07, -2.4565313e-07, -1, 1.2644384e-07, -0.99999994, 2.456532e-07, -1, -1.2644391e-07, -3.5762787e-07, -1.7264075e-07, 0.041164543, 1.387651)
 bones/8/enabled = true
-bones/8/position = Vector3(-1.7264074e-07, 0.04116788, 1.3876507)
+bones/8/position = Vector3(6.253338e-08, 0.041167863, 1.3876507)
 bones/8/rotation = Quaternion(0.6761184, 0.20703623, -0.6761183, 0.20703626)
-bones/8/scale = Vector3(0.9999993, 0.99999905, 0.99999934)
+bones/8/scale = Vector3(0.9999994, 0.9999995, 0.9999995)
 bones/9/name = "Leg.R"
 bones/9/parent = 8
 bones/9/rest = Transform3D(3.5762787e-07, 1.6144631e-07, 0.99999994, -2.6446907e-07, 1, -1.6144622e-07, -0.99999994, -2.64469e-07, 3.5762787e-07, 2.8668953e-07, 3.2037168, -5.684342e-14)
 bones/9/enabled = true
-bones/9/position = Vector3(8.827364e-07, 3.2037132, -7.6426863e-07)
+bones/9/position = Vector3(8.8273646e-07, 3.2037132, -7.6426863e-07)
 bones/9/rotation = Quaternion(-3.6424062e-08, 0.70710665, -1.505838e-07, 0.7071069)
-bones/9/scale = Vector3(1.0000001, 1.0000002, 0.9999997)
+bones/9/scale = Vector3(1.0000001, 0.9999999, 0.9999994)
 bones/10/name = "Foot.R"
 bones/10/parent = 9
 bones/10/rest = Transform3D(0.358979, 0.9333457, 8.271463e-08, -0.9333457, 0.358979, -3.3811247e-08, -6.12504e-08, -6.506381e-08, 1, 2.842171e-14, 4.2037168, 5.185481e-08)
 bones/10/enabled = true
-bones/10/position = Vector3(-2.8912822e-07, 4.203713, 2.902744e-07)
+bones/10/position = Vector3(-2.8788403e-07, 4.203712, 2.9027447e-07)
 bones/10/rotation = Quaternion(-9.47838e-09, 4.36622e-08, -0.5661365, 0.82431155)
-bones/10/scale = Vector3(1, 0.9999999, 0.99999964)
+bones/10/scale = Vector3(1, 0.99999964, 0.9999995)
 
 [node name="Robot" type="MeshInstance3D" parent="Skeleton3D" unique_id=257881901]
 mesh = ExtResource("1_grc7g")
 skin = SubResource("Skin_v6sto")
+
+[node name="ArmR" type="BoneAttachment3D" parent="Skeleton3D" unique_id=172844002]
+transform = Transform3D(-0.0059854006, 0.9999802, -4.721845e-07, 0.99998045, 0.005985429, -1.8450137e-07, -2.3841807e-07, -5.3394837e-07, -0.9999993, 1.8342124, -2.1614046, 2.5589933)
+bone_name = "Arm.R"
+bone_idx = 4
+
+[node name="chargeBall" type="GPUParticles3D" parent="Skeleton3D/ArmR" unique_id=1955690883]
+transform = Transform3D(1, -1.3969839e-09, -7.5495166e-15, 0, 1.0000001, 0, -5.3734794e-14, 0, 1, 0, 3.2, 0)
+emitting = false
+amount = 1
+lifetime = 1.5
+one_shot = true
+visibility_aabb = AABB(-0.5, -0.5, -0.5, 1, 1, 1)
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_tykr4")
+draw_pass_1 = SubResource("SphereMesh_a3cge")
+
+[node name="chargeBalls" type="GPUParticles3D" parent="Skeleton3D/ArmR" unique_id=495253602]
+transform = Transform3D(1.0000001, -1.3969839e-09, -7.771561e-15, 0, 1.0000001, 5.684342e-14, -5.351275e-14, -5.684342e-14, 1, 1.9073486e-06, 3.2000003, -4.7683716e-07)
+emitting = false
+amount = 12
+lifetime = 1.2
+one_shot = true
+explosiveness = 0.7
+visibility_aabb = AABB(-1, -1, -1, 2, 2, 2)
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_uv04q")
+draw_pass_1 = SubResource("BoxMesh_oqbdp")
+
+[node name="BulletRay" type="RayCast3D" parent="Skeleton3D/ArmR" unique_id=2123343728]
+transform = Transform3D(1, -1.3969839e-09, -7.5495166e-15, 0, 1.0000001, 0, -5.3734794e-14, 0, 1, 9.536743e-07, 3.2000003, -2.3841858e-07)
+target_position = Vector3(0, 333, 0)
+
+[node name="BulletRayEnd" type="Marker3D" parent="Skeleton3D/ArmR" unique_id=477852913]
+transform = Transform3D(1.0000001, -1.3969839e-09, -2.1982416e-14, 0, 1.0000001, 5.684342e-14, -2.5757174e-14, 5.684342e-14, 1.0000001, 0, 336.2, 0)
+
+[node name="Bullet" type="GPUParticles3D" parent="Skeleton3D/ArmR" unique_id=111125711]
+transform = Transform3D(1.0000002, 9.313226e-10, -2.1982416e-14, -4.656613e-10, 1, 5.684342e-14, 4.574119e-14, 1.1368684e-13, 1.0000001, -0.019000053, 3.2, 0)
+emitting = false
+amount = 1
+lifetime = 0.5
+one_shot = true
+fixed_fps = 144
+visibility_aabb = AABB(-1, -1, -1, 2, 335, 2)
+trail_enabled = true
+trail_lifetime = 0.5
+process_material = SubResource("ParticleProcessMaterial_h872o")
+draw_pass_1 = SubResource("TubeTrailMesh_o787m")
+
+[node name="LegL" type="BoneAttachment3D" parent="Skeleton3D" unique_id=1221228802]
+transform = Transform3D(0.9999986, 2.6447864e-07, -3.5762693e-07, 2.64479e-07, -0.99999833, 1.614391e-07, -3.5762787e-07, -1.6143944e-07, -0.9999986, -6.647231e-07, -9.156929, -1.367136)
+bone_name = "Leg.L"
+bone_idx = 6
+
+[node name="kick" type="RayCast3D" parent="Skeleton3D/LegL" unique_id=58551326]
+target_position = Vector3(0, 10, 0)
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1425088459]
 
