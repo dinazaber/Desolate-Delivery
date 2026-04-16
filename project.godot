@@ -195,7 +195,7 @@ G={
 [layer_names]
 
 3d_physics/layer_1="ground and player"
-3d_physics/layer_2="enemy and shoot-ables"
+3d_physics/layer_2="enemies and shootables"
 3d_physics/layer_3="ground"
 3d_physics/layer_4="player"
 3d_physics/layer_5="env"

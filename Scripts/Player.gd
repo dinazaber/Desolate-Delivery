@@ -7,6 +7,7 @@ const headAmp = 0.04
 var headTime = 0.0
 
 @onready var camera = $shakeable_camera
+@onready var camAnim = $cameraAnimation
 @onready var camDefHeight = camera.position.y
 @onready var healthBar = $HUD/HealthBar
 @export var screenEffect: ColorRect
@@ -40,6 +41,7 @@ var pitch = 0.0
 
 
 #player stats
+@export var DEBUG_deathBypass: bool = false
 const PLAYER_MAX_HEALTH = 100
 @export var player_health: float = PLAYER_MAX_HEALTH
 @export var walk_speed: float = 5
@@ -109,6 +111,8 @@ func _ready() -> void:
 		$shakeable_camera/RightHand/SMG/SMG.get_active_material(0).set("shader_parameter/sun_direction", sunDir)
 
 func _input(event):
+	if dead: return
+	
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	
 	if Input.is_action_just_pressed("1"): # smg
@@ -144,24 +148,24 @@ func _physics_process(delta):
 
 	#cameraDistance = clamp(cameraDistance,15, 45)
 	
-	rotation.y = lerp_angle(rotation.y, yaw, delta*20) # left/right
-	camera.rotation.x = lerp_angle(camera.rotation.x, -pitch, delta*20)
+	if !dead:
+		rotation.y = lerp_angle(rotation.y, yaw, delta*20) # left/right
+		camera.rotation.x = lerp_angle(camera.rotation.x, -pitch, delta*20)
 	
 	
-	if Input.is_action_pressed("LeftMouse"): # shooting
+	if Input.is_action_pressed("LeftMouse") and !dead: # shooting
 		match current_gun:
 			SMG: current_gun.shoot()
 			beggarsShotgun: current_gun.charge()
 	
-	if Input.is_action_just_released("LeftMouse"):
+	if Input.is_action_just_released("LeftMouse") and !dead:
 		match current_gun:
 			beggarsShotgun: current_gun.shoot()
 	
 	
-	if Input.is_action_just_pressed("RightMouse"):
+	if Input.is_action_just_pressed("RightMouse") and !dead:
 		offHandShotgun.shoot()
 	
-
 	
 	for i in get_slide_collision_count():
 		var collision = get_slide_collision(i)
@@ -172,7 +176,7 @@ func _physics_process(delta):
 			collider.apply_impulse(pushDir * 4, collision.get_position() - collider.global_position)
 	
 	
-	if Input.is_action_pressed("Ctrl"): # crouch/slide
+	if Input.is_action_pressed("Ctrl") and !dead: # crouch/slide
 		crouch = true
 		playerCollision.shape.height = lerp(playerCollision.shape.height, 1.0, delta * 15.0)
 		if velocity.length() > crouch_speed + 0.1: # 0.1 is epsilon for numerical error
@@ -191,6 +195,8 @@ func _physics_process(delta):
 	
 	# Get direction
 	var currentInput = Input.get_vector("A", "D", "S", "W")
+	if dead:
+		currentInput = Vector3.ZERO
 	var direction = (transform.basis * Vector3(currentInput.y, 0, currentInput.x)).normalized()
 	
 	if direction and !knocked:
@@ -207,14 +213,17 @@ func _physics_process(delta):
 			airborne = false
 			camera.add_trauma(0.7)
 		
-		if Input.is_action_just_pressed("Space"):
+		if Input.is_action_just_pressed("Space") and !dead:
 			velocity.y += jump_speed
 		
+		if !dead:
 		# without this line the camera does some goofy stuff when walking into an object. keep it.
-		camera.position.y = lerp(camera.position.y, camDefHeight, 10 * delta)
+			camera.position.y = lerp(camera.position.y, camDefHeight, delta * 10.0)
+		else:
+			camera.rotation.x = lerp_angle(camera.rotation.x, 0.0, delta * 10.0)
 		
 		if direction:
-			if Input.is_action_just_pressed("Shift") and canDash and !crouch:
+			if Input.is_action_just_pressed("Shift") and canDash and !crouch and !dead:
 				SPEED = dash_speed
 				velocity = direction * SPEED
 				canDash = false
@@ -302,7 +311,10 @@ func checkLifeLine():
 	print(player_health)
 	if player_health <= 0 and dead == false:
 		print("u ded lol")
-		dead = true
+		if !DEBUG_deathBypass:
+			dead = true
+			await get_tree().create_timer(0.3).timeout
+			camAnim.play("death")
 		#get_tree().quit()
 
 func handle_healthBar():

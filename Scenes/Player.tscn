@@ -23,6 +23,68 @@ size = Vector3(1, 2, 1)
 height = 0.3
 radius = 6.0
 
+[sub_resource type="Animation" id="Animation_yoq75"]
+resource_name = "RESET"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("shakeable_camera:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.5, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("shakeable_camera:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -1.5707964, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_megsn"]
+resource_name = "death"
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("shakeable_camera:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.43, 0.6, 0.8),
+"transitions": PackedFloat32Array(2, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0.5, 0), Vector3(0, -0.4, 0), Vector3(0, -0.25, 0), Vector3(0, -0.25, 0), Vector3(0, -0.4, 0), Vector3(0, -0.4, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("shakeable_camera:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.43, 0.6, 0.6333333, 0.8),
+"transitions": PackedFloat32Array(0.3, 2, 2, 2, 0.2, 0.4, 1),
+"update": 0,
+"values": [Vector3(0, -1.5707964, 0), Vector3(0.10471976, -1.5707964, 0), Vector3(-0.12217305, -1.5707964, 0), Vector3(0.017453292, -1.5707964, 0), Vector3(0, -1.5707964, -1.0471976), Vector3(-0.08726646, -1.5707964, -1.0471976), Vector3(0, -1.5707964, -1.0471976)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yoq75"]
+_data = {
+&"RESET": SubResource("Animation_yoq75"),
+&"death": SubResource("Animation_megsn")
+}
+
 [node name="Player" type="CharacterBody3D" unique_id=1941692924 groups=["Persist", "Player"]]
 collision_layer = 25
 collision_mask = 9
@@ -47,15 +109,18 @@ target_position = Vector3(0, -1.5, 0)
 
 [node name="GroundSlam" type="Area3D" parent="." unique_id=1921784648]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
-collision_layer = 2
+collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="GroundSlam" unique_id=622411142]
 shape = SubResource("CylinderShape3D_nn08x")
 debug_color = Color(0.997045, 0, 0.18383858, 0.41960785)
 
+[node name="cameraAnimation" type="AnimationPlayer" parent="." unique_id=1078308482]
+libraries/ = SubResource("AnimationLibrary_yoq75")
+
 [node name="shakeable_camera" parent="." unique_id=1373532385 instance=ExtResource("2_megsn")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0.64, 0)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0.5, 0)
 trauma_reduction_rate = 3.0
 noise_speed = 30.0
 

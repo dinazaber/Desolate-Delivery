@@ -17,7 +17,7 @@ var current_damage
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	explosion_box_small.visible = true
+	explosion_box_small.visible = false
 	explosion_box_big.visible = false
 	current_exposion_box = explosion_box_small
 	current_damage = grenade_damage_small
@@ -53,6 +53,8 @@ func explode():
 
 func _on_timer_timeout() -> void:
 	if !got_shot and !exploded:
+		explosion_box_small.visible = true
+		explosion_box_big.visible = false
 		explode()
 
 # --- Anti-Error Function Dump ---
