@@ -6,16 +6,20 @@
 [ext_resource type="PackedScene" uid="uid://cpi1xrpot2ipt" path="res://Scenes/Player.tscn" id="4_ru70h"]
 [ext_resource type="Shader" uid="uid://no1jy7cyw0an" path="res://Shaders/PostProcess/SandStorm.gdshader" id="5_qhj8q"]
 [ext_resource type="ArrayMesh" uid="uid://bdly7xwroyu0j" path="res://assets/Meshes/Architecture/Barrack.mesh" id="6_xe0hb"]
-[ext_resource type="ArrayMesh" uid="uid://7ho7ltov0iyb" path="res://assets/Meshes/Objects/Car3.mesh" id="7_ijbfb"]
+[ext_resource type="ArrayMesh" uid="uid://7ho7ltov0iyb" path="res://assets/Meshes/Objects/Jeep.mesh" id="7_ijbfb"]
 [ext_resource type="Texture2D" uid="uid://dayne5ld0pqyg" path="res://assets/Textures/Shadows/JeepShadow.png" id="8_wr8wa"]
 [ext_resource type="ArrayMesh" uid="uid://qdmyf5e4rqff" path="res://assets/Meshes/Objects/Plane.mesh" id="9_3haq7"]
+[ext_resource type="ArrayMesh" uid="uid://unogx422rgbl" path="res://assets/Meshes/Objects/JeepChassis.mesh" id="9_obpdj"]
 [ext_resource type="Texture2D" uid="uid://c0bmkoyrxxxnf" path="res://assets/Textures/Shadows/PlaneShadow.png" id="10_8m8kg"]
 [ext_resource type="ArrayMesh" uid="uid://q8g0hhj850vv" path="res://assets/Meshes/Architecture/Hangar1.mesh" id="11_a87j4"]
 [ext_resource type="ArrayMesh" uid="uid://dufaqga62sfgh" path="res://assets/Meshes/Objects/Car2.mesh" id="13_lghlv"]
 [ext_resource type="ArrayMesh" uid="uid://dxoddmwgtq2gq" path="res://assets/Meshes/Objects/Car1.mesh" id="14_h62tq"]
+[ext_resource type="ArrayMesh" uid="uid://6fnhie3k6sd7" path="res://assets/Meshes/Objects/Car2Chassis.mesh" id="14_qhj8q"]
 [ext_resource type="PackedScene" uid="uid://d23s0inguh17p" path="res://Scenes/RigidBody.tscn" id="15_iyf6e"]
 [ext_resource type="PackedScene" uid="uid://beqguglkai1oh" path="res://Scenes/Enemies/Robot.tscn" id="15_xm5mx"]
 [ext_resource type="ArrayMesh" uid="uid://tnqtnrxm02k4" path="res://assets/Meshes/Objects/Crate.mesh" id="16_jcbmq"]
+[ext_resource type="ArrayMesh" uid="uid://duisheavfmqh2" path="res://assets/Meshes/Objects/Car1Chassis.mesh" id="16_xe0hb"]
+[ext_resource type="PackedScene" uid="uid://da8xo7bpr7w37" path="res://Scenes/Enemies/SniperTurret.tscn" id="18_u4tly"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_yb21e"]
 vertices = PackedVector3Array(-49.1, 0.5, -49.1, -49.1, 0.5, 49.000008, 49.000008, 0.5, 49.000008, 49.000008, 0.5, -49.1)
@@ -52,13 +56,9 @@ ssr_fade_out = 3.8637512
 ssao_power = 1.9792577
 sdfgi_cascades = 1
 sdfgi_y_scale = 0
-fog_enabled = true
 fog_light_color = Color(0.77, 0.687995, 0.22330001, 1)
 fog_sun_scatter = 0.25
-fog_density = 0.02
-fog_sky_affect = 0.3
-fog_height = 1.0
-fog_height_density = 1.0
+fog_sky_affect = 0.4
 volumetric_fog_albedo = Color(0.9083146, 0.86870986, 0.5665593, 1)
 volumetric_fog_emission = Color(0.529485, 0.4258827, 0.27379614, 1)
 volumetric_fog_sky_affect = 0.566
@@ -110,6 +110,13 @@ visible_instance_count = 3
 mesh = ExtResource("11_a87j4")
 buffer = PackedFloat32Array(-3.059797e-07, 0, -7, -2.5953841, 0, 7, 0, 0.049293876, 7, 0, -3.059797e-07, 10.839995, -3.059797e-07, 0, -7, -23.358984, 0, 7, 0, 0.049293876, 7, 0, -3.059797e-07, 10.839995, -3.059797e-07, 0, -7, 18.010592, 0, 7, 0, 0.049293876, 7, 0, -3.059797e-07, 10.839995)
 
+[sub_resource type="MultiMesh" id="MultiMesh_u4tly"]
+transform_format = 1
+instance_count = 3
+visible_instance_count = 3
+mesh = ExtResource("9_3haq7")
+buffer = PackedFloat32Array(-3.4969112e-08, 0, -0.79999995, -2.6077056, 0, 0.8, 0, 1.3059026, 0.8, 0, -3.496911e-08, 10.445118, -0.023719072, 0, -0.79964817, -24.079014, 0, 0.79999995, 0, 1.3059026, 0.7996482, 0, -0.02371907, 10.445118, 0.08148396, 0, -0.7958393, 18.658833, 0, 0.79999995, 0, 1.3059026, 0.79583937, 0, 0.08148395, 10.445118)
+
 [sub_resource type="MultiMesh" id="MultiMesh_obpdj"]
 transform_format = 1
 instance_count = 6
@@ -149,6 +156,7 @@ transform = Transform3D(0.8860661, 2.0262807e-08, -0.46355897, 0.46355897, -3.87
 light_color = Color(0.92, 0.85866666, 0.69, 1)
 light_energy = 1.2
 light_angular_distance = 3.0
+light_cull_mask = 4294967292
 shadow_blur = 3.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=493655703]
@@ -175,12 +183,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.35177, 1.0000209, 1.8640761
 visible = false
 mesh = ExtResource("6_xe0hb")
 
-[node name="Jeep" type="MeshInstance3D" parent="." unique_id=673387538]
-transform = Transform3D(0.76178885, 0, -0.24429034, 0, 0.8, 0, 0.24429034, 0, 0.76178885, 0.6187975, 0.94204694, 0)
-mesh = ExtResource("7_ijbfb")
+[node name="Jeeps" type="StaticBody3D" parent="." unique_id=1207635136]
 
-[node name="Decal2" type="Decal" parent="Jeep" unique_id=31879390]
-transform = Transform3D(1.3331356, 0, -5.9604645e-08, 0, 1.3331364, 0, 5.9604645e-08, 0, 1.3333325, 0.07499492, -0.9160811, -0.14660564)
+[node name="Decal2" type="Decal" parent="Jeeps" unique_id=31879390]
+transform = Transform3D(1.0665085, 0, -4.7683717e-08, 0, 1.0665091, 0, 4.7683717e-08, 0, 1.066666, 0.67879343, 0.22696972, -0.117284514)
 size = Vector3(4.295791, 0.34991455, 5.2655067)
 texture_albedo = ExtResource("8_wr8wa")
 albedo_mix = 0.5
@@ -189,15 +195,40 @@ upper_fade = 0.0
 lower_fade = 0.0
 cull_mask = 1048574
 
+[node name="Jeep" type="MeshInstance3D" parent="Jeeps" unique_id=673387538]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0.6187975, 0.9598346, 0)
+mesh = ExtResource("7_ijbfb")
+skeleton = NodePath("../..")
+
+[node name="JeepChassis2" type="MeshInstance3D" parent="Jeeps/Jeep" unique_id=1783897196]
+transform = Transform3D(0.99999934, 0, 0, 0, 1, 0, 0, 0, 0.99999934, -1.6582917, -0.72166556, 0.038370803)
+mesh = ExtResource("9_obpdj")
+skeleton = NodePath("../../..")
+
+[node name="JeepChassis" type="MeshInstance3D" parent="Jeeps/Jeep" unique_id=292072065]
+transform = Transform3D(0.9999997, 0, 5.9604645e-08, 0, 1, 0, -5.9604645e-08, 0, 0.9999997, 1.4817381, -0.74370205, 0.013205754)
+mesh = ExtResource("9_obpdj")
+skeleton = NodePath("../../..")
+
+[node name="Jeep2" type="MeshInstance3D" parent="Jeeps" unique_id=840787650]
+transform = Transform3D(-0.7999071, 5.889725e-11, -0.01218894, 0.012188803, 0.003825765, -0.7998982, 5.8289792e-05, -0.799991, -0.0038253106, -28.80742, 1.2213886, -6.9322715)
+mesh = ExtResource("7_ijbfb")
+skeleton = NodePath("../..")
+
+[node name="JeepChassis2" type="MeshInstance3D" parent="Jeeps/Jeep2" unique_id=630737727]
+transform = Transform3D(0.99999934, 0, 0, 0, 1, 0, 0, 0, 0.99999934, -1.6582917, -0.72166556, 0.038370803)
+mesh = ExtResource("9_obpdj")
+skeleton = NodePath("../../..")
+
+[node name="JeepChassis" type="MeshInstance3D" parent="Jeeps/Jeep2" unique_id=1417920440]
+transform = Transform3D(0.9999997, 0, 5.9604645e-08, 0, 1, 0, -5.9604645e-08, 0, 0.9999997, 1.4817381, -0.74370205, 0.013205754)
+mesh = ExtResource("9_obpdj")
+skeleton = NodePath("../../..")
+
 [node name="Hangars" type="StaticBody3D" parent="." unique_id=642156433]
 
-[node name="Plane" type="MeshInstance3D" parent="Hangars" unique_id=2135900176]
-transform = Transform3D(-3.4969112e-08, 0, -0.79999995, 0, 0.8, 0, 0.8, 0, -3.496911e-08, -2.6077056, 1.3059026, 10.445118)
-mesh = ExtResource("9_3haq7")
-skeleton = NodePath("../../NavigationRegion3D/StaticBody3D")
-
-[node name="Decal" type="Decal" parent="Hangars/Plane" unique_id=2097765076]
-transform = Transform3D(0.99985224, 0, 0, 0, 0.99985224, 0, 0, 0, 0.9999995, 0.61929345, -1.2325033, 0.08844042)
+[node name="Decal" type="Decal" parent="Hangars" unique_id=2097765076]
+transform = Transform3D(-3.4963946e-08, 0, -0.7999996, 0, 0.7998818, 0, 0.7998818, 0, -3.496909e-08, -2.678458, 0.31989998, 10.940553)
 size = Vector3(10.26, 1, 10.177)
 texture_albedo = ExtResource("10_8m8kg")
 albedo_mix = 0.5
@@ -219,13 +250,41 @@ shape_type = 0
 go_make_colliders = null
 metadata/_custom_type_script = "uid://cfwmt6vc7y70h"
 
+[node name="Planes" type="MultiMeshInstance3D" parent="Hangars" unique_id=476349040]
+multimesh = SubResource("MultiMesh_u4tly")
+script = ExtResource("3_u4tly")
+go_explode = null
+shape_type = 0
+go_make_colliders = null
+metadata/_custom_type_script = "uid://cfwmt6vc7y70h"
+
 [node name="Car2" type="MeshInstance3D" parent="." unique_id=1601625731]
-transform = Transform3D(0.65984905, 0, -0.23366481, 0, 0.7, 0, 0.23366481, 0, 0.65984905, 7.349476, 0.92282784, -2.2247424)
+transform = Transform3D(0.5818522, 0, -0.38916323, 0, 0.6999999, 0, 0.38916323, 0, 0.5818522, 7.349476, 0.9291978, -2.2247424)
 mesh = ExtResource("13_lghlv")
 
+[node name="Car2Chassis" type="MeshInstance3D" parent="Car2" unique_id=1999026375]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5643234, -0.649667, 0)
+mesh = ExtResource("14_qhj8q")
+skeleton = NodePath("../..")
+
+[node name="Car2Chassis2" type="MeshInstance3D" parent="Car2" unique_id=33471895]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8870964, -0.649667, 0)
+mesh = ExtResource("14_qhj8q")
+skeleton = NodePath("../..")
+
 [node name="Car1" type="MeshInstance3D" parent="." unique_id=581080434]
-transform = Transform3D(-0.1834263, 0, 0.6755404, 0, 0.7, 0, -0.6755404, 0, -0.1834263, -11.039281, 0.8620014, -4.886943)
+transform = Transform3D(0.21683472, 0, 0.6655695, 0, 0.7, 0, -0.66556954, 0, 0.21683471, -11.039281, 0.83704984, -4.886943)
 mesh = ExtResource("14_h62tq")
+
+[node name="Car1Chassis" type="MeshInstance3D" parent="Car1" unique_id=688644803]
+transform = Transform3D(0.99999964, 0, 0, 0, 0.99999964, 0, 0, 0, 0.99999964, -2.2694807, -0.65109944, 0)
+mesh = ExtResource("16_xe0hb")
+skeleton = NodePath("../..")
+
+[node name="Car1Chassis2" type="MeshInstance3D" parent="Car1" unique_id=161684612]
+transform = Transform3D(0.99999934, 0, 0, 0, 0.99999934, 0, 0, 0, 0.99999934, 1.8736973, -0.65109944, 0)
+mesh = ExtResource("16_xe0hb")
+skeleton = NodePath("../..")
 
 [node name="RigidBody" parent="." unique_id=707473027 instance=ExtResource("15_iyf6e")]
 transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -7.1405044, 0.7930865, 2.975814)
@@ -243,7 +302,7 @@ mass = 8.0
 transform = Transform3D(-1.671231e-09, -0.038233314, -0.69895506, 0.7, -3.059797e-08, 0, -3.0552297e-08, -0.69895506, 0.038233314, -8.045181, 0.5738101, 2.8969457)
 mass = 8.0
 
-[node name="robotDalboyob" parent="." unique_id=1610408567 instance=ExtResource("15_xm5mx")]
+[node name="Robot" parent="." unique_id=1610408567 instance=ExtResource("15_xm5mx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.835869, 0, -6.579933)
 
 [node name="Crates" type="MultiMeshInstance3D" parent="." unique_id=1308017449]
@@ -253,3 +312,6 @@ go_explode = null
 shape_type = 0
 go_make_colliders = null
 metadata/_custom_type_script = "uid://cfwmt6vc7y70h"
+
+[node name="SniperTurret" parent="." unique_id=1830225406 instance=ExtResource("18_u4tly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.343963, 1.7850004, -14.588949)

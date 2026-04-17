@@ -7,9 +7,9 @@ render_mode unshaded, cull_disabled;
 uniform sampler2D mask_palette : source_color, filter_nearest;
 
 group_uniforms Wireframe;
-uniform vec4 wire_color : source_color = vec4(0.0, 1.0, 1.0, 1.0);
+uniform vec3 wire_color : source_color = vec3(0.0, 0.0, 0.0);
 uniform float wire_width : hint_range(0.0, 0.2) = 0.01; // Width in meters
-uniform float wire_transparency : hint_range(0.0, 1.0) = 1.0;
+uniform float wire_transparency : hint_range(0.0, 1.0) = 0.5;
 
 group_uniforms Detail1;
 uniform sampler2D detail1 : source_color, filter_linear;
@@ -33,18 +33,35 @@ varying vec3 world_normal;
 
 // --- THE OPTIMIZED BOX PROJECTION FUNCTION ---
 vec4 get_box_projection(sampler2D p_sampler, vec3 p_normal, vec3 p_pos) {
-    vec3 abs_n = abs(p_normal);
-    vec2 uv;
+     vec3 n = abs(normalize(p_normal));
     
-    if (abs_n.x > abs_n.y && abs_n.x > abs_n.z) {
-        uv = p_pos.zy;
-    } else if (abs_n.y > abs_n.x && abs_n.y > abs_n.z) {
-        uv = p_pos.xz;
-    } else {
-        uv = p_pos.xy;
+    // 1. Determine which axis to skip (the smallest one)
+    // We create weights that only care about the two strongest directions
+    vec3 weights = n;
+    
+    // This math "zeros out" the smallest component
+    float low_mask = min(min(weights.x, weights.y), weights.z);
+    weights -= low_mask; 
+    
+    // Normalize weights so they sum to 1.0
+    weights /= (weights.x + weights.y + weights.z);
+
+    // 2. Sample only the two necessary planes
+    vec4 color = vec4(0.0);
+    
+    // We still write three logic blocks, but the GPU only 
+    // executes the ones where the weight is > 0
+    if (weights.x > 0.0) {
+        color += texture(p_sampler, p_pos.zy) * weights.x;
     }
-    
-    return texture(p_sampler, uv);
+    if (weights.y > 0.0) {
+        color += texture(p_sampler, p_pos.xz) * weights.y;
+    }
+    if (weights.z > 0.0) {
+        color += texture(p_sampler, p_pos.xy) * weights.z;
+    }
+
+    return color;
 }
 
 void vertex(){

@@ -1,4 +1,4 @@
-// Use this shader on objects that use 3 detail textures
+// Use this shader on MultiMeshInstance meshes that use 2 detail textures
 
 shader_type spatial;
 render_mode unshaded, cull_disabled;
@@ -21,24 +21,26 @@ uniform sampler2D detail2 : source_color, filter_linear;
 uniform float detail2_scale = 1.0;
 uniform float alpha2 = 1.0;
 
-group_uniforms Detail3;
-uniform sampler2D detail3 : source_color, filter_linear;
-uniform float detail3_scale = 1.0;
-uniform float alpha3 = 1.0;
-
 group_uniforms Lighting_Adjustments;
 uniform float light_x = 0.5;
 uniform float light_y = 0.5;
 uniform float light_z = 0.5;
 uniform float facet_intensity = 0.5;
 
+group_uniforms Instances;
+uniform vec3 palette[15] : source_color;
+uniform int color_variants: hint_range(0, 15) = 1;
+uniform int i = 1;
+
+varying flat int index;
+
 varying vec3 worldPos;
 varying vec3 world_normal;
-
+varying vec2 uv3;
 
 // --- THE OPTIMIZED BOX PROJECTION FUNCTION ---
 vec4 get_box_projection(sampler2D p_sampler, vec3 p_normal, vec3 p_pos) {
-    vec3 n = abs(normalize(p_normal));
+     vec3 n = abs(normalize(p_normal));
     
     // 1. Determine which axis to skip (the smallest one)
     // We create weights that only care about the two strongest directions
@@ -72,32 +74,38 @@ vec4 get_box_projection(sampler2D p_sampler, vec3 p_normal, vec3 p_pos) {
 void vertex(){
     worldPos = VERTEX;
     world_normal = NORMAL;
+	
+	index = (INSTANCE_ID / i) % color_variants;
+	
+	uv3 = CUSTOM0.xy;
+    
 }
 
 void fragment() {
 	
 	// --- DETAILS ---
+	float mask = uv3.x; // Instance mask
+	vec3 target_color = palette[index];
     vec3 base_color = COLOR.rgb;
+    
     // Identify the mask from the varying we passed (UV2)
     vec3 d_id = texture(mask_palette, UV2).rgb;
     vec3 out_color = base_color;
 	
+	out_color = mix(out_color, target_color, mask);
+	
     vec3 n = normalize(world_normal);
     
     // Sample textures using Box Projection based on Vertex Mask
+    
     if (d_id.r > 0.5) {
         vec4 tex_r = get_box_projection(detail1, n, worldPos * detail1_scale);
         out_color = mix(out_color, tex_r.rgb, tex_r.a * alpha1);
     }
     
     if (d_id.g > 0.5) {
-        vec4 tex_g = get_box_projection(detail3, n, worldPos * detail3_scale);
-        out_color = mix(out_color, tex_g.rgb, tex_g.a * alpha3);
-    }
-    
-    if (d_id.b > 0.5) {
-        vec4 tex_b = get_box_projection(detail2, n, worldPos * detail2_scale);
-        out_color = mix(out_color, tex_b.rgb, tex_b.a * alpha2);
+        vec4 tex_g = get_box_projection(detail2, n, worldPos * detail2_scale);
+        out_color = mix(out_color, tex_g.rgb, tex_g.a * alpha2);
     }
 	
     
@@ -117,7 +125,6 @@ void fragment() {
     vec2 d_uv = fwidth(uv);
     
     // We calculate how many meters are in one screen pixel at this depth
-    // This is mathematically more stable than comparing UV-to-Vertex directly
     float pixel_to_meter = length(fwidth(VERTEX));
     
     // Convert UV distance to Meters

@@ -17,6 +17,7 @@ var current_state = State.IDLE
 @onready var mount = $MountMesh
 @onready var gun = $GunPivot
 
+
 # --- Variables ---
 var inTransition: bool = false
 var isInAttack: bool = false

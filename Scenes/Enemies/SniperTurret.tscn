@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://da8xo7bpr7w37"]
 
 [ext_resource type="Script" uid="uid://idsgqohuto4m" path="res://Scripts/Enemies/SniperTurret.gd" id="1_4yweh"]
-[ext_resource type="ArrayMesh" uid="uid://ureoytkbyoid" path="res://assets/Meshes/Weapons/SniperTurretBase.mesh" id="2_4yweh"]
-[ext_resource type="ArrayMesh" uid="uid://xqq3w1jrwm80" path="res://assets/Meshes/Weapons/SniperTurretPillar.mesh" id="3_dh22p"]
-[ext_resource type="ArrayMesh" uid="uid://dx6bg7qr0nw87" path="res://assets/Meshes/Weapons/SniperTurretBarrel.mesh" id="4_hqsxd"]
+[ext_resource type="ArrayMesh" uid="uid://brhrp1qv2wxup" path="res://assets/Meshes/Enemies/SniperTurret/Base.mesh" id="2_pd8i8"]
+[ext_resource type="ArrayMesh" uid="uid://b2angk0lxn8ng" path="res://assets/Meshes/Enemies/SniperTurret/Mount.mesh" id="3_8iha5"]
+[ext_resource type="ArrayMesh" uid="uid://3ys0kxbump5l" path="res://assets/Meshes/Enemies/SniperTurret/Gun.mesh" id="4_h5qh4"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_4yweh"]
 height = 0.69
@@ -141,7 +141,7 @@ target_position = Vector3(0, 0, 500)
 
 [node name="BaseMesh" type="MeshInstance3D" parent="." unique_id=397604197]
 transform = Transform3D(0.065, 0, 0, 0, 0.065, 0, 0, 0, 0.065, 0, 0, 0)
-mesh = ExtResource("2_4yweh")
+mesh = ExtResource("2_pd8i8")
 
 [node name="BaseCollision" type="CollisionShape3D" parent="." unique_id=1740089601]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.2941844, 0)
@@ -149,7 +149,7 @@ shape = SubResource("CylinderShape3D_4yweh")
 
 [node name="MountMesh" type="MeshInstance3D" parent="." unique_id=387465361]
 transform = Transform3D(0.065, 0, 0, 0, 0.065, 0, 0, 0, 0.065, 0, 0, 0)
-mesh = ExtResource("3_dh22p")
+mesh = ExtResource("3_8iha5")
 
 [node name="GunPivot" type="Marker3D" parent="." unique_id=1990229676]
 
@@ -194,7 +194,7 @@ draw_pass_1 = SubResource("BoxMesh_qoa7d")
 
 [node name="GunMesh" type="MeshInstance3D" parent="GunPivot" unique_id=1487560660]
 transform = Transform3D(0.065, 0, 0, 0, 0.065, 0, 0, 0, 0.065, 0, 0, 0)
-mesh = ExtResource("4_hqsxd")
+mesh = ExtResource("4_h5qh4")
 skeleton = NodePath("../..")
 
 [node name="GunRay" type="RayCast3D" parent="GunPivot/GunMesh" unique_id=897733090]

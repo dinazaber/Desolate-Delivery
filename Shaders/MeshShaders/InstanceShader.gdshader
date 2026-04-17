@@ -7,9 +7,9 @@ render_mode unshaded, cull_disabled;
 uniform sampler2D mask_palette : source_color, filter_nearest;
 
 group_uniforms Wireframe;
-uniform vec4 wire_color : source_color = vec4(0.0, 1.0, 1.0, 1.0);
+uniform vec3 wire_color : source_color = vec3(0.0, 0.0, 0.0);
 uniform float wire_width : hint_range(0.0, 0.2) = 0.01; // Width in meters
-uniform float wire_transparency : hint_range(0.0, 1.0) = 1.0;
+uniform float wire_transparency : hint_range(0.0, 1.0) = 0.5;
 
 group_uniforms Detail1;
 uniform sampler2D detail1 : source_color, filter_linear;
@@ -34,6 +34,7 @@ uniform float facet_intensity = 0.5;
 
 group_uniforms Instances;
 uniform vec3 palette[7] : source_color;
+uniform int color_variants: hint_range(0, 15) = 1;
 uniform int i = 1;
 
 varying flat int index;
@@ -44,25 +45,26 @@ varying vec2 uv3;
 
 // --- THE OPTIMIZED BOX PROJECTION FUNCTION ---
 vec4 get_box_projection(sampler2D p_sampler, vec3 p_normal, vec3 p_pos) {
-    vec3 abs_n = abs(p_normal);
-    vec2 uv;
+    vec3 n = abs(normalize(p_normal));
     
-    if (abs_n.x > abs_n.y && abs_n.x > abs_n.z) {
-        uv = p_pos.zy;
-    } else if (abs_n.y > abs_n.x && abs_n.y > abs_n.z) {
-        uv = p_pos.xz;
-    } else {
-        uv = p_pos.xy;
-    }
-    
-    return texture(p_sampler, uv);
+    // Create a "sharpness" power. 
+    // Higher = sharper transitions (more like your if/else)
+    // Lower = smoother transitions (fixes the 45-degree smear)
+    vec3 weights = pow(n, vec3(1.0)); 
+    weights /= (weights.x + weights.y + weights.z);
+
+    vec4 tex_x = texture(p_sampler, p_pos.zy);
+    vec4 tex_y = texture(p_sampler, p_pos.xz);
+    vec4 tex_z = texture(p_sampler, p_pos.xy);
+
+    return tex_x * weights.x + tex_y * weights.y + tex_z * weights.z;
 }
 
 void vertex(){
     worldPos = VERTEX;
     world_normal = NORMAL;
 	
-	index = (INSTANCE_ID / i) % 7;
+	index = (INSTANCE_ID / i) % color_variants;
 	
 	uv3 = CUSTOM0.xy;
     

@@ -257,7 +257,7 @@ tracks/1/keys = PackedFloat32Array(0, 1, 7.150818e-07, 0.70710665, 4.2495365e-08
 
 [sub_resource type="Animation" id="Animation_grc7g"]
 resource_name = "walk"
-length = 1.8
+length = 1.04
 step = 0.01
 tracks/0/type = "position_3d"
 tracks/0/imported = false
@@ -478,7 +478,7 @@ size = Vector3(1.2919312, 4.820801, 1.2919922)
 [sub_resource type="BoxShape3D" id="BoxShape3D_a3cge"]
 size = Vector3(0.8988037, 2.0927734, 1.0786743)
 
-[node name="robotDalboyob" type="CharacterBody3D" unique_id=969091388 groups=["Persist"]]
+[node name="Robot" type="CharacterBody3D" unique_id=969091388 groups=["Persist"]]
 collision_layer = 8
 collision_mask = 16
 script = ExtResource("1_h872o")
