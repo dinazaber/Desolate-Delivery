@@ -9,8 +9,10 @@ func _ready() -> void:
 	# Create the folder if it doesn't exist
 	if not DirAccess.dir_exists_absolute(SAVEDIR):
 		DirAccess.make_dir_absolute(SAVEDIR)
+	else: curSave = get_most_recent_save()
 
 func save_game(slotName: String):
+	curSave = slotName
 	var path = SAVEDIR + slotName + ".bin"
 	var save_file = FileAccess.open(path, FileAccess.WRITE)
 	var save_nodes = get_tree().get_nodes_in_group("Persist")
@@ -81,4 +83,27 @@ func delete_game(slotName: String):
 	if FileAccess.file_exists(path):
 		DirAccess.remove_absolute(path)
 		print("Deleted: " + path)
+		
+		
+func get_most_recent_save():
+	var dir = DirAccess.open(SAVEDIR)
+	var latestFile = ""
+	var latestTime = -1
+	
+	dir.list_dir_begin()
+	var file = dir.get_next()
+	
+	while file != "":
+		if !dir.current_is_dir() and file.ends_with(".bin"):
+			var full_path = SAVEDIR + file
+			var modified_time = FileAccess.get_modified_time(full_path)
+			
+			if modified_time > latestTime:
+				latestTime = modified_time
+				latestFile = file.remove_chars(".bin")
+				
+		file = dir.get_next()
+		
+	dir.list_dir_end()
+	return latestFile
 	

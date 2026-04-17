@@ -1,3 +1,5 @@
+// Use this shader on MultiMeshInstance meshes that use 3 detail textures
+
 shader_type spatial;
 render_mode unshaded, cull_disabled;
 
@@ -31,13 +33,7 @@ uniform float light_z = 0.5;
 uniform float facet_intensity = 0.5;
 
 group_uniforms Instances;
-uniform vec3 color0: source_color;
-uniform vec3 color1: source_color;
-uniform vec3 color2: source_color;
-uniform vec3 color3: source_color;
-uniform vec3 color4: source_color;
-uniform vec3 color5: source_color;
-uniform vec3 color6: source_color;
+uniform vec3 palette[7] : source_color;
 uniform int i = 1;
 
 varying flat int index;
@@ -74,34 +70,20 @@ void vertex(){
 
 void fragment() {
 	
-	float mask = uv3.x;
-	
-	vec3 palette[7];
-    palette[0] = color0;
-    palette[1] = color1;
-    palette[2] = color2;
-    palette[3] = color3;
-	palette[4] = color4;
-	palette[5] = color5;
-	palette[6] = color6;
-	
+	// --- DETAILS ---
+	float mask = uv3.x; // Instance mask
 	vec3 target_color = palette[index];
-	
-	
-    // 1. Get Base Color directly from Vertex Color (First Layer)
     vec3 base_color = COLOR.rgb;
     
-    // 2. Identify the mask from the varying we passed (Layer 2)
+    // Identify the mask from the varying we passed (UV2)
     vec3 d_id = texture(mask_palette, UV2).rgb;
-    
     vec3 out_color = base_color;
 	
 	out_color = mix(out_color, target_color, mask);
 	
     vec3 n = normalize(world_normal);
     
-    // 3. Sample textures using Box Projection based on Vertex Mask
-    // Note: Since Face Corner is sharp, d_id.r > 0.5 is very reliable
+    // Sample textures using Box Projection based on Vertex Mask
     
     if (d_id.r > 0.5) {
         vec4 tex_r = get_box_projection(detail1, n, worldPos * detail1_scale);
@@ -124,27 +106,26 @@ void fragment() {
     float lum = dot(n, light_dir);
     float final_diffuse = mix(1.0, clamp(lum, 0.0, 1.0), facet_intensity);
 	
+	// --- WIREFRAME ---
+	
 	vec2 uv = UV;
     
-    // 1. Distance to edge in UV space
+    // Distance to edge in UV space
     vec2 dist_to_edge = min(uv, 1.0 - uv);
     
-    // 2. Get the screen-space change of UVs
+    // Get the screen-space change of UVs
     vec2 d_uv = fwidth(uv);
     
-    // 3. THE FIX: Pixel-to-World Scale
     // We calculate how many meters are in one screen pixel at this depth
-    // This is mathematically more stable than comparing UV-to-Vertex directly
     float pixel_to_meter = length(fwidth(VERTEX));
     
-    // 4. Convert UV distance to Meters
+    // Convert UV distance to Meters
     // We divide UV distance by (UV-per-pixel) to get pixels, 
     // then multiply by (Meters-per-pixel) to get meters.
     vec2 dist_in_meters = (dist_to_edge / max(d_uv, 0.0001)) * pixel_to_meter;
     float closest_dist = min(dist_in_meters.x, dist_in_meters.y);
     
-    // 5. Create the crisp mask
-    // We use a tiny 0.001 transition for anti-aliasing
+    // Create the crisp mask
     float wire_mask = 1.0 - smoothstep(wire_width, wire_width + 0.002, closest_dist);
 	
 	vec3 blended_wire = mix(out_color * final_diffuse, wire_color.rgb, wire_transparency);

@@ -14,7 +14,7 @@
 [ext_resource type="ArrayMesh" uid="uid://dufaqga62sfgh" path="res://assets/Meshes/Objects/Car2.mesh" id="13_lghlv"]
 [ext_resource type="ArrayMesh" uid="uid://dxoddmwgtq2gq" path="res://assets/Meshes/Objects/Car1.mesh" id="14_h62tq"]
 [ext_resource type="PackedScene" uid="uid://d23s0inguh17p" path="res://Scenes/RigidBody.tscn" id="15_iyf6e"]
-[ext_resource type="PackedScene" uid="uid://beqguglkai1oh" path="res://Scenes/Enemies/robot_dalboyob.tscn" id="15_xm5mx"]
+[ext_resource type="PackedScene" uid="uid://beqguglkai1oh" path="res://Scenes/Enemies/Robot.tscn" id="15_xm5mx"]
 [ext_resource type="ArrayMesh" uid="uid://tnqtnrxm02k4" path="res://assets/Meshes/Objects/Crate.mesh" id="16_jcbmq"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_yb21e"]
@@ -115,7 +115,7 @@ transform_format = 1
 instance_count = 6
 visible_instance_count = 6
 mesh = ExtResource("16_jcbmq")
-buffer = PackedFloat32Array(-0.07225584, 0, -0.49475154, 3.547553, 0, 0.5, 0, 1.2151961, 0.49475154, 0, -0.07225584, -19.09034, -0.07225584, 0, -0.49475154, -0.24313545, 0, 0.5, 0, 1.2151961, 0.49475154, 0, -0.07225584, -19.09034, -0.07225584, 0, -0.49475154, -0.24313545, 0, 0.5, 0, 1.2151961, 0.49475154, 0, -0.07225584, -21.706053, -0.07225584, 0, -0.49475154, -0.24313545, 0, 0.5, 0, 1.2151961, 0.49475154, 0, -0.07225584, -24.222898, -0.07225584, 0, -0.49475154, 3.59828, 0, 0.5, 0, 1.2151961, 0.49475154, 0, -0.07225584, -21.706053, -0.07225584, 0, -0.49475154, 3.59828, 0, 0.5, 0, 1.2151961, 0.49475154, 0, -0.07225584, -23.976553)
+buffer = PackedFloat32Array(-0.028902337, 0, -0.19790062, 3.547553, 0, 0.2, 0, 0.3667109, 0.19790062, 0, -0.028902337, -19.09034, -0.028902337, 0, -0.19790062, -0.24313545, 0, 0.2, 0, 0.3667109, 0.19790062, 0, -0.028902337, -19.09034, -0.028902337, 0, -0.19790062, -0.24313545, 0, 0.2, 0, 0.3667109, 0.19790062, 0, -0.028902337, -21.706053, -0.028902337, 0, -0.19790062, -0.24313545, 0, 0.2, 0, 0.3667109, 0.19790062, 0, -0.028902337, -24.222898, -0.028902337, 0, -0.19790062, 3.59828, 0, 0.2, 0, 0.3667109, 0.19790062, 0, -0.028902337, -21.706053, -0.028902337, 0, -0.19790062, 3.59828, 0, 0.2, 0, 0.3667109, 0.19790062, 0, -0.028902337, -23.976553)
 
 [node name="Node" type="Node" unique_id=310413080]
 script = ExtResource("1_jcbmq")
@@ -210,7 +210,7 @@ cull_mask = 1048574
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.09384155, 1.2848511, -0.12237549)
 shape = SubResource("BoxShape3D_qpfo2")
 
-[node name="MetaMultimeshInstance3D" type="MultiMeshInstance3D" parent="Hangars" unique_id=254532433]
+[node name="Hangars" type="MultiMeshInstance3D" parent="Hangars" unique_id=254532433]
 lod_bias = 0.3
 multimesh = SubResource("MultiMesh_7nf3m")
 script = ExtResource("3_u4tly")
@@ -246,7 +246,7 @@ mass = 8.0
 [node name="robotDalboyob" parent="." unique_id=1610408567 instance=ExtResource("15_xm5mx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.835869, 0, -6.579933)
 
-[node name="MetaMultimeshInstance3D" type="MultiMeshInstance3D" parent="." unique_id=1308017449]
+[node name="Crates" type="MultiMeshInstance3D" parent="." unique_id=1308017449]
 multimesh = SubResource("MultiMesh_obpdj")
 script = ExtResource("3_u4tly")
 go_explode = null

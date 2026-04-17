@@ -1,4 +1,5 @@
 extends CharacterBody3D
+signal playerDead
 
 var cameraDistance = 15
 
@@ -108,7 +109,7 @@ func _ready() -> void:
 	
 	if sun!=null: 
 		var sunDir = sun.global_transform.basis.z.normalized()
-		$shakeable_camera/RightHand/SMG/SMG.get_active_material(0).set("shader_parameter/sun_direction", sunDir)
+		#current_gun.get_active_material(0).set("shader_parameter/sun_direction", sunDir)
 
 func _input(event):
 	if dead: return
@@ -315,7 +316,7 @@ func checkLifeLine():
 			dead = true
 			await get_tree().create_timer(0.3).timeout
 			camAnim.play("death")
-		#get_tree().quit()
+			playerDead.emit()
 
 func handle_healthBar():
 	var health_dif = healthBar.value - player_health

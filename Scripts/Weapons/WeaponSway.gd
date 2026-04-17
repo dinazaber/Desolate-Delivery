@@ -10,8 +10,10 @@ extends Node3D
 @export var idle_sway_adjustment: float = 10.0
 @export var idle_sway_rotation_strength: float = 300.0
 @export_range(0.1, 10.0, 0.1) var random_sway_amount = 5.0
-#--------------------------------------------------------------
 @export var sway_speed: float = 1.2
+#--------------------------------------------------------------
+
+var block: bool = false
 
 
 var mouse_movement: Vector2 = Vector2.ZERO
@@ -24,6 +26,7 @@ func _ready() -> void:
 	await owner.ready
 
 func _input(event: InputEvent) -> void:
+	if block: return
 	if event is InputEventMouseMotion:
 		mouse_movement = event.relative
 	else:
@@ -54,3 +57,7 @@ func sway_gun(delta):
 
 func _process(delta: float) -> void:
 	sway_gun(delta)
+
+
+func _on_player_player_dead() -> void:
+	block = true

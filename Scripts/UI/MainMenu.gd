@@ -1,12 +1,13 @@
 extends Control
 
-const scene = preload("res://Scenes/Locations/test.tscn")
-
 func _ready() -> void:
 	$SaveMenu/Add.hide()
 
 func _on_start_pressed() -> void:
-	get_tree().change_scene_to_packed(scene)
+	var curSave = SaveManager.curSave
+	if curSave: SaveManager.load_game(curSave)
+	
+	else: get_tree().change_scene_to_file("res://Scenes/Locations/test.tscn")
 
 
 func _on_settings_pressed() -> void:

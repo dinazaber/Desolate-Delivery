@@ -1,4 +1,4 @@
-// Use this shader on objects that use 3 detail textures
+// Use this shader on objects that use only 2 detail textures
 
 shader_type spatial;
 render_mode unshaded, cull_disabled;
@@ -20,11 +20,6 @@ group_uniforms Detail2;
 uniform sampler2D detail2 : source_color, filter_linear;
 uniform float detail2_scale = 1.0;
 uniform float alpha2 = 1.0;
-
-group_uniforms Detail3;
-uniform sampler2D detail3 : source_color, filter_linear;
-uniform float detail3_scale = 1.0;
-uniform float alpha3 = 1.0;
 
 group_uniforms Lighting_Adjustments;
 uniform float light_x = 0.5;
@@ -74,13 +69,8 @@ void fragment() {
     }
     
     if (d_id.g > 0.5) {
-        vec4 tex_g = get_box_projection(detail3, n, worldPos * detail3_scale);
-        out_color = mix(out_color, tex_g.rgb, tex_g.a * alpha3);
-    }
-    
-    if (d_id.b > 0.5) {
-        vec4 tex_b = get_box_projection(detail2, n, worldPos * detail2_scale);
-        out_color = mix(out_color, tex_b.rgb, tex_b.a * alpha2);
+        vec4 tex_g = get_box_projection(detail2, n, worldPos * detail2_scale);
+        out_color = mix(out_color, tex_g.rgb, tex_g.a * alpha2);
     }
 	
     
@@ -90,7 +80,6 @@ void fragment() {
     float final_diffuse = mix(1.0, clamp(lum, 0.0, 1.0), facet_intensity);
 	
 	// --- WIREFRAME ---
-	
 	vec2 uv = UV;
     
     // Distance to edge in UV space

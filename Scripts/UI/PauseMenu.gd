@@ -1,12 +1,14 @@
 extends Control
 
 @export var hud: Control
+var block: bool = false
 
 func _ready():
 	$SaveMenu/Add.show()
 
 
 func _unhandled_input(event: InputEvent) -> void:
+	if block: return
 	if event.is_action_pressed("Escape"):
 		if is_visible_in_tree():
 			_on_resume_pressed()
@@ -44,3 +46,7 @@ func _on_save_menu_pressed() -> void:
 
 func _on_save_menu_closed() -> void:
 	$PauseMenu.show()
+
+
+func _on_player_player_dead() -> void:
+	block = true

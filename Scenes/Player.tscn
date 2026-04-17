@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://b6vcboeh4uetd" path="res://assets/HUD/crosshair.png" id="5_5ixxa"]
 [ext_resource type="PackedScene" uid="uid://yhfwhi177tdg" path="res://Scenes/UI/SaveMenu.tscn" id="6_52ee3"]
 [ext_resource type="Script" uid="uid://b1yx1tjjakl1w" path="res://Scripts/UI/HUD.gd" id="7_bhhdu"]
+[ext_resource type="PackedScene" uid="uid://bm2ti0vwyvub4" path="res://Scenes/UI/DeadScreen.tscn" id="10_yoq75"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kyqiw"]
 shading_mode = 0
@@ -296,6 +297,12 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 10
 text = "DRAW CALLS HERE"
 
+[node name="DeadScreen" parent="." unique_id=1831384756 instance=ExtResource("10_yoq75")]
+visible = false
+
+[connection signal="playerDead" from="." to="shakeable_camera/RightHand" method="_on_player_player_dead"]
+[connection signal="playerDead" from="." to="PauseMenu" method="_on_player_player_dead"]
+[connection signal="playerDead" from="." to="DeadScreen" method="_on_player_dead"]
 [connection signal="timeout" from="SuperTimer" to="." method="SuperTimerTimeOut"]
 [connection signal="knockBack" from="shakeable_camera/LeftHand/OffHandShotgun" to="." method="knockBack"]
 [connection signal="pressed" from="PauseMenu/PauseMenu/MarginContainer/VBoxContainer/Resume" to="PauseMenu" method="_on_resume_pressed"]

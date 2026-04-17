@@ -1,0 +1,69 @@
+[gd_scene format=3 uid="uid://bm2ti0vwyvub4"]
+
+[ext_resource type="Script" uid="uid://b78q4i3muaarp" path="res://Scripts/UI/DeadScreen.gd" id="1_0kbwv"]
+[ext_resource type="PackedScene" uid="uid://b2hljcs3010c5" path="res://Scenes/UI/Settings.tscn" id="1_pfvpy"]
+[ext_resource type="PackedScene" uid="uid://yhfwhi177tdg" path="res://Scenes/UI/SaveMenu.tscn" id="2_0kbwv"]
+
+[node name="DeadScreen" type="Control" unique_id=1831384756]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0kbwv")
+
+[node name="Settings" parent="." unique_id=307003582 instance=ExtResource("1_pfvpy")]
+visible = false
+layout_mode = 1
+
+[node name="SaveMenu" parent="." unique_id=1653560853 instance=ExtResource("2_0kbwv")]
+visible = false
+layout_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1724360613]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -186.5
+offset_top = -185.5
+offset_right = 186.5
+offset_bottom = 185.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="VBoxContainer" unique_id=2048575944]
+layout_mode = 2
+text = "SLEEP MODE: %PERMANENT%"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="VBoxContainer" unique_id=608961434]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Restart From Last Save"
+
+[node name="Button2" type="Button" parent="VBoxContainer" unique_id=412420260]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Load Save"
+
+[node name="Button3" type="Button" parent="VBoxContainer" unique_id=273530799]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Settings"
+
+[node name="Button4" type="Button" parent="VBoxContainer" unique_id=2026734310]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Main Menu
+"
+
+[connection signal="closed" from="Settings" to="." method="_on_settings_closed"]
+[connection signal="closed" from="SaveMenu" to="." method="_on_save_menu_closed"]
+[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="VBoxContainer/Button2" to="." method="_on_load_save_pressed"]
+[connection signal="pressed" from="VBoxContainer/Button3" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="VBoxContainer/Button4" to="." method="_on_quit_pressed"]
