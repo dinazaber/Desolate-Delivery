@@ -4,8 +4,88 @@
 [ext_resource type="Texture2D" uid="uid://bnvro65uaa4np" path="res://assets/Textures/Colors.png" id="3_6f1rn"]
 [ext_resource type="ArrayMesh" uid="uid://eadvfmp34ewb" path="res://assets/Meshes/Weapons/beggarsShotgun/barrels.mesh" id="6_pc0kw"]
 
+[sub_resource type="Animation" id="Animation_sjkk0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BeggarsShotgun/Frame/Barrels:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 3.1415927, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BeggarsShotgun:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, -9, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BeggarsShotgun:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.3089969, 0, -0.17453292)]
+}
+
+[sub_resource type="Animation" id="Animation_e0py8"]
+resource_name = "draw"
+length = 0.6
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/path = NodePath("BeggarsShotgun/Frame/Barrels:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.25, 0.4, 0.5, 0.58000004, 0.6),
+"transitions": PackedFloat32Array(1, 2.0000005, 0.5, 3, 2, 1, 1),
+"update": 0,
+"values": [Vector3(0, 3.1415927, 0), Vector3(0, 3.1415927, 0), Vector3(0, 3.1415927, -1.7016954), Vector3(0, 3.1415927, -6.806784), Vector3(0, 3.1415927, -6.1086526), Vector3(0, 3.1415927, -6.2831855), Vector3(0, 3.1415927, -6.2831855)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BeggarsShotgun:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.44, 0.6),
+"transitions": PackedFloat32Array(0.7, 2, 1, 1),
+"update": 0,
+"values": [Vector3(1, -9, 1), Vector3(-0.2, -1, -0.7), Vector3(0, 0.05, 0), Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BeggarsShotgun:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.24999999, 0.38, 0.48999995, 0.6),
+"transitions": PackedFloat32Array(3, 0.3, 2, 0.42044818, 1),
+"update": 0,
+"values": [Vector3(1.3089969, 0, -0.17453292), Vector3(0.2617994, 0, -0.12217305), Vector3(-0.17453292, 0, 0), Vector3(0.017453292, 0, 0), Vector3(0, 0, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_l5ase"]
-resource_name = "Load"
+resource_name = "load"
 length = 0.35
 step = 0.01
 tracks/0/type = "value"
@@ -21,23 +101,8 @@ tracks/0/keys = {
 "values": [Vector3(0, 3.1415925, 0), Vector3(0, 3.1415927, -1.7453293), Vector3(0, 3.1415927, -1.4835298), Vector3(0, 3.1415927, -1.5707964), Vector3(0, 3.1415927, -1.5707964)]
 }
 
-[sub_resource type="Animation" id="Animation_sjkk0"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("BeggarsShotgun/Frame/Barrels:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 3.1415927, 1.8362658)]
-}
-
 [sub_resource type="Animation" id="Animation_4ungy"]
-resource_name = "ShootConsecutive"
+resource_name = "shootConsecutive"
 length = 0.2
 step = 0.01
 tracks/0/type = "value"
@@ -72,13 +137,13 @@ tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.08, 0.14, 0.19, 0.2),
-"transitions": PackedFloat32Array(0.5, 1.3, 1, 0.6, 1),
+"transitions": PackedFloat32Array(0.5, 1.3, 2.0000007, 0.6, 1),
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(0.034906585, -0.017453292, -0.07853982), Vector3(0.017453292, 0, 0.09599311), Vector3(-0.02617994, 0, -0.017453292), Vector3(0, 0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_7ud7m"]
-resource_name = "ShootLast"
+resource_name = "shootLast"
 length = 0.4
 step = 0.01
 tracks/0/type = "value"
@@ -118,12 +183,43 @@ tracks/2/keys = {
 "values": [Vector3(0, 0, 0), Vector3(0.12217305, 0, -0.08726646), Vector3(-0.05235988, 0, 0.05235988), Vector3(0, 0, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_ktqvf"]
+resource_name = "undraw"
+length = 0.3
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BeggarsShotgun:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.07, 0.3),
+"transitions": PackedFloat32Array(0.4, 2, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -0.2, -0.5), Vector3(2, -9, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BeggarsShotgun:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3),
+"transitions": PackedFloat32Array(1.5, 0.6666667, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.32637656, 0, 0.43633232), Vector3(1.3089969, 0, 0.17453292)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8qb6n"]
 _data = {
-&"Load": SubResource("Animation_l5ase"),
 &"RESET": SubResource("Animation_sjkk0"),
-&"ShootConsecutive": SubResource("Animation_4ungy"),
-&"ShootLast": SubResource("Animation_7ud7m")
+&"draw": SubResource("Animation_e0py8"),
+&"load": SubResource("Animation_l5ase"),
+&"shootConsecutive": SubResource("Animation_4ungy"),
+&"shootLast": SubResource("Animation_7ud7m"),
+&"undraw": SubResource("Animation_ktqvf")
 }
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1gxoh"]
@@ -174,11 +270,12 @@ script = ExtResource("1_e0py8")
 libraries/ = SubResource("AnimationLibrary_8qb6n")
 
 [node name="BeggarsShotgun" type="Marker3D" parent="." unique_id=1087278608]
+transform = Transform3D(0.98480767, 0.17364816, 0, -0.044943456, 0.25488698, -0.9659258, -0.16773124, 0.95125115, 0.25881907, 1, -9, 1)
 
 [node name="Frame" type="MeshInstance3D" parent="BeggarsShotgun" unique_id=972063788]
-transform = Transform3D(-0.19999996, -1.4279067e-09, -3.0035153e-08, -6.493792e-10, 0.19999996, -4.656613e-10, 2.9802322e-08, -4.656613e-10, -0.19999996, 0.012746229, -0.13472262, -3.8664975)
+transform = Transform3D(-0.19999996, -1.4279067e-09, -3.0035153e-08, -6.493792e-10, 0.19999996, -4.656613e-10, 2.9802322e-08, -4.656613e-10, -0.19999996, 0.013, -0.2, -3.866)
 mesh = SubResource("ArrayMesh_06o6c")
 
 [node name="Barrels" type="MeshInstance3D" parent="BeggarsShotgun/Frame" unique_id=1195580126]
-transform = Transform3D(0.26236233, 0.96496946, -8.742278e-08, 0.96496946, -0.26236233, 0, -2.2936444e-08, -8.436031e-08, -1, 0, 0, 0)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
 mesh = ExtResource("6_pc0kw")

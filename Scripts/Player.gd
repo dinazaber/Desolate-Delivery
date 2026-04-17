@@ -106,6 +106,7 @@ func updateScreenEffect(): #Function for current and future screen effects
 
 func _ready() -> void:
 	healthBar.max_value = PLAYER_MAX_HEALTH
+	current_gun.draw()
 	
 	if sun!=null: 
 		var sunDir = sun.global_transform.basis.z.normalized()
@@ -117,14 +118,20 @@ func _input(event):
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	
 	if Input.is_action_just_pressed("1"): # smg
-		hideWeapons()
-		current_gun = SMG
-		current_gun.show()
+		if current_gun != SMG:
+			await current_gun.undraw()
+			hideWeapons()
+			current_gun = SMG
+			current_gun.show()
+			current_gun.draw()
 	
 	elif Input.is_action_just_pressed("2"): # beggars shotgun
-		hideWeapons()
-		current_gun = beggarsShotgun
-		current_gun.show()
+		if current_gun != beggarsShotgun:
+			await current_gun.undraw()
+			hideWeapons()
+			current_gun = beggarsShotgun
+			current_gun.show()
+			current_gun.draw()
 	
 	
 	if Input.is_action_just_pressed("R"):
@@ -314,6 +321,7 @@ func checkLifeLine():
 		print("u ded lol")
 		if !DEBUG_deathBypass:
 			dead = true
+			current_gun.undraw()
 			await get_tree().create_timer(0.3).timeout
 			camAnim.play("death")
 			playerDead.emit()

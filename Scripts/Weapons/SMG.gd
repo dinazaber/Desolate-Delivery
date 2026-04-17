@@ -8,9 +8,18 @@ extends Node3D
 
 @onready var anim = $AnimationPlayer
 
+func draw():
+	anim.play("draw")
+
+func undraw():
+	if anim.is_playing():
+		await anim.animation_finished
+	anim.play("undraw")
+	await anim.animation_finished
+
 func shoot():
 	if !anim.is_playing():
-		anim.play("Shoot")
+		anim.play("shoot")
 		camera.add_trauma(recoil)
 		if playerRay.is_colliding():
 			if playerRay.get_collider().is_in_group("Enemy"):
