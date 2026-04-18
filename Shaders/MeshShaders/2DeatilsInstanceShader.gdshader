@@ -37,7 +37,7 @@ varying flat int index;
 varying vec3 worldPos;
 varying vec3 world_normal;
 varying vec2 uv3;
-varying float v_final_diffuse;
+varying float final_diffuse;
 
 // --- THE OPTIMIZED BOX PROJECTION FUNCTION ---
 vec4 get_box_projection(sampler2D p_sampler, vec3 p_normal, vec3 p_pos) {
@@ -86,7 +86,7 @@ void vertex(){
     vec3 light_dir = normalize(vec3(light_x, light_y, light_z));
     
     float lum = dot(n, light_dir);
-    v_final_diffuse = mix(1.0, clamp(lum, 0.0, 1.0), facet_intensity);
+    final_diffuse = mix(1.0, clamp(lum, 0.0, 1.0), facet_intensity);
     
 }
 
@@ -137,7 +137,7 @@ void fragment() {
     
     float alpha_fade = distance_factor; 
 	
-	vec3 blended_wire = mix(out_color * v_final_diffuse, wire_color.rgb, wire_transparency);
+	vec3 blended_wire = mix(out_color * final_diffuse, wire_color.rgb, wire_transparency);
 	
-    ALBEDO = mix(out_color * v_final_diffuse, blended_wire, wire_mask * alpha_fade);
+    ALBEDO = mix(out_color * final_diffuse, blended_wire, wire_mask * alpha_fade);
 }
