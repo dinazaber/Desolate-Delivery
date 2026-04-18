@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://d3y1m515qojp2"]
 
-[ext_resource type="PackedScene" uid="uid://coe8phy1st24j" path="res://Scenes/Weapons/OffHandShotgun.tscn" id="1_sdlib"]
+[ext_resource type="PackedScene" uid="uid://coe8phy1st24j" path="res://Scenes/Weapons/Steamer.tscn" id="1_sdlib"]
 
 [node name="LeftHand" type="Node3D" unique_id=1896444700]
 
-[node name="OffHandShotgun" parent="." unique_id=1493507664 instance=ExtResource("1_sdlib")]
+[node name="Steamer" parent="." unique_id=1493507664 instance=ExtResource("1_sdlib")]

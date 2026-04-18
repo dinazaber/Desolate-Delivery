@@ -1,5 +1,4 @@
 extends CharacterBody3D
-signal playerDead
 
 var cameraDistance = 15
 
@@ -10,7 +9,6 @@ var headTime = 0.0
 @onready var camera = $shakeable_camera
 @onready var camAnim = $cameraAnimation
 @onready var camDefHeight = camera.position.y
-@onready var healthBar = $HUD/HealthBar
 @export var screenEffect: ColorRect
 @export var sun: DirectionalLight3D
 
@@ -19,7 +17,7 @@ var headTime = 0.0
 #Weapons
 @onready var SMG = $shakeable_camera/Hands/RightHand/SMG
 @onready var beggarsShotgun = $shakeable_camera/Hands/RightHand/BeggarsShotgun
-@onready var offHandShotgun = $shakeable_camera/Hands/LeftHand/OffHandShotgun
+@onready var steamer = $shakeable_camera/Hands/LeftHand/Steamer
 
 
 var SPEED: float
@@ -47,6 +45,7 @@ var mouse_input: Vector2
 @export var DEBUG_deathBypass: bool = false
 const PLAYER_MAX_HEALTH = 100
 @export var player_health: float = PLAYER_MAX_HEALTH
+@export var coolOnKill: float = 15.0
 @export var walk_speed: float = 5
 @export var crouch_speed: float = 2.5
 @export var dash_speed: float = 15
@@ -70,7 +69,8 @@ var instance_grenade
 @onready var playerRay = $shakeable_camera/PlayerRay
 @onready var playerRay_end = $shakeable_camera/PlayerRayEnd
 
-@onready var current_gun = SMG
+@onready var current_gun_R = SMG
+@onready var current_gun_L = steamer
 @onready var spearSpawn = $shakeable_camera/Hands/RightHand/SpeargunPlaceholder/Barrel
 
 @onready var slam_area = $GroundSlam
@@ -78,6 +78,9 @@ var instance_grenade
 
 #UI
 @onready var crosshair = $HUD/crosshair
+@onready var healthBar = $HUD/HealthBar
+@onready var heatBar_R = $HUD/HeatRight
+@onready var heatBar_L = $HUD/HeatLeft
 
 # camera settings
 @export var cam_speed: float = 0.005 #mouse sens
@@ -89,6 +92,9 @@ var def_gun_pos: Vector3
 @export var gun_sway_amount: float = 5.0
 @export var gun_rot_amount: float = 0.01
 
+#signals
+signal playerDead
+signal restoreCool(coolOnKill)
 
 func save():
 	var data = {
@@ -120,7 +126,7 @@ func _ready() -> void:
 	def_gun_pos = hands.position
 	
 	healthBar.max_value = PLAYER_MAX_HEALTH
-	current_gun.draw()
+	current_gun_R.draw()
 	
 	if sun!=null: 
 		var sunDir = -sun.global_transform.basis.z
@@ -132,20 +138,20 @@ func _input(event):
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	
 	if Input.is_action_just_pressed("1"): # smg
-		if current_gun != SMG:
-			await current_gun.undraw()
+		if current_gun_R != SMG:
+			await current_gun_R.undraw()
 			hideWeapons()
-			current_gun = SMG
-			current_gun.show()
-			current_gun.draw()
+			current_gun_R = SMG
+			current_gun_R.show()
+			current_gun_R.draw()
 	
 	elif Input.is_action_just_pressed("2"): # beggars shotgun
-		if current_gun != beggarsShotgun:
-			await current_gun.undraw()
+		if current_gun_R != beggarsShotgun:
+			await current_gun_R.undraw()
 			hideWeapons()
-			current_gun = beggarsShotgun
-			current_gun.show()
-			current_gun.draw()
+			current_gun_R = beggarsShotgun
+			current_gun_R.show()
+			current_gun_R.draw()
 	
 	
 	if Input.is_action_just_pressed("R"):
@@ -178,17 +184,17 @@ func _physics_process(delta):
 	
 	
 	if Input.is_action_pressed("LeftMouse") and !dead: # shooting
-		match current_gun:
-			SMG: current_gun.shoot()
-			beggarsShotgun: current_gun.charge()
+		match current_gun_R:
+			SMG: current_gun_R.shoot()
+			beggarsShotgun: current_gun_R.charge()
 	
 	if Input.is_action_just_released("LeftMouse") and !dead:
-		match current_gun:
-			beggarsShotgun: current_gun.shoot()
+		match current_gun_R:
+			beggarsShotgun: current_gun_R.shoot()
 	
 	
 	if Input.is_action_just_pressed("RightMouse") and !dead:
-		offHandShotgun.shoot()
+		current_gun_L.shoot()
 	
 	
 	for i in get_slide_collision_count():
@@ -296,6 +302,7 @@ func _physics_process(delta):
 		gun_bob(velocity.length(), currentInput, delta)
 	
 	handle_healthBar()
+	handle_heatBars()
 	move_and_slide()
 
 
@@ -368,7 +375,7 @@ func slam_ground():
 		for body in bodies:
 			body.get_pounded(slam_damage)
 
-func knockBack(direction, force, time): #Not just shotgun, if we plan to add more weapons that
+func knockBack(direction, force, time):
 	if is_on_floor():
 		force /= 2
 	knocked = true
@@ -382,12 +389,20 @@ func checkLifeLine():
 		print("u ded lol")
 		if !DEBUG_deathBypass:
 			dead = true
-			current_gun.undraw()
+			current_gun_R.undraw()
 			await get_tree().create_timer(0.3).timeout
 			camAnim.play("death")
 			playerDead.emit()
 
+func enemy_killed():
+	restoreCool.emit(coolOnKill)
+
 func handle_healthBar():
-	var health_dif = healthBar.value - player_health
+	var health_dif = abs(healthBar.value - player_health)
 	healthBar.value = move_toward(healthBar.value, player_health, health_dif/5)
-	
+
+func handle_heatBars():
+	var heat_dif_R = abs(heatBar_R.value - current_gun_R.get_heat())
+	heatBar_R.value = move_toward(heatBar_R.value, current_gun_R.get_heat(), heat_dif_R/5)
+	var heat_dif_L = abs(heatBar_L.value - current_gun_L.get_heat())
+	heatBar_L.value = move_toward(heatBar_L.value, current_gun_L.get_heat(), heat_dif_L/5)

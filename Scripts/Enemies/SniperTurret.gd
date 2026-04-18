@@ -88,7 +88,8 @@ func process_attack_state():
 	isInAttack = false
 
 func process_dead_state():
-	pass
+	player.enemy_killed()
+	queue_free()
 
 
 func follow(delta):
@@ -113,9 +114,7 @@ func get_pounded(recieved_damage): # DONT REMOVE still needed so the ground poun
 
 func checkLifeLine():
 	if enemy_health <= 0 and dead == false:
-		print("enemy felled")
 		dead = true
-		queue_free()
 
 func _on_timer_timeout() -> void:
 	timerFlag = false

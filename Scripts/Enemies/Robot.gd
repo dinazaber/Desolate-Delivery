@@ -42,6 +42,7 @@ var look_target
 var aim_target = 0.0
 var dist = 9999.0
 
+
 func save():
 	var data = {
 		"level_scene": get_tree().current_scene.scene_file_path,
@@ -198,6 +199,7 @@ func process_attack_state(delta):
 
 
 func process_dead_state(): # gotta make death anim   Zzzzz
+	player.enemy_killed()
 	queue_free()
 
 func aim(delta):

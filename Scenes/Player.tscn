@@ -153,7 +153,7 @@ playerRay = NodePath("../../../PlayerRay")
 [node name="LeftHand" parent="shakeable_camera/Hands" unique_id=1896444700 instance=ExtResource("3_nn08x")]
 transform = Transform3D(-6.5567085e-09, 0, 0.15, 0, 0.15, 0, -0.15, 0, -6.5567085e-09, -0.247, -0.137, -0.3)
 
-[node name="OffHandShotgun" parent="shakeable_camera/Hands/LeftHand" index="0" unique_id=1493507664 node_paths=PackedStringArray("camera", "playerRay")]
+[node name="Steamer" parent="shakeable_camera/Hands/LeftHand" index="0" unique_id=1493507664 node_paths=PackedStringArray("camera", "playerRay")]
 camera = NodePath("../../..")
 playerRay = NodePath("../../../PlayerRay")
 
@@ -240,6 +240,58 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("7_bhhdu")
 
+[node name="HealthBar" type="ProgressBar" parent="HUD" unique_id=159323656]
+modulate = Color(0.46666667, 1, 0.5254902, 1)
+self_modulate = Color(0.46666667, 1, 0.5254902, 0.78431374)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -100.0
+offset_top = -98.0
+offset_right = 100.0
+offset_bottom = -68.0
+grow_horizontal = 2
+grow_vertical = 0
+pivot_offset_ratio = Vector2(0.5, 0.5)
+value = 100.0
+allow_greater = true
+allow_lesser = true
+
+[node name="HeatRight" type="ProgressBar" parent="HUD" unique_id=68039069]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -376.0
+offset_top = -148.0
+offset_right = -176.0
+offset_bottom = -128.0
+grow_horizontal = 0
+grow_vertical = 0
+rotation = -0.2617994
+pivot_offset_ratio = Vector2(0.5, 0.5)
+show_percentage = false
+
+[node name="HeatLeft" type="ProgressBar" parent="HUD" unique_id=396079448]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 176.0
+offset_top = -148.0
+offset_right = 376.0
+offset_bottom = -128.0
+grow_vertical = 0
+rotation = 0.2617994
+pivot_offset_ratio = Vector2(0.5, 0.5)
+fill_mode = 1
+show_percentage = false
+
 [node name="crosshair" type="TextureRect" parent="HUD" unique_id=1178379776]
 modulate = Color(18.892157, 18.892157, 18.892157, 1)
 texture_filter = 1
@@ -257,22 +309,6 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("5_5ixxa")
 expand_mode = 1
-
-[node name="HealthBar" type="ProgressBar" parent="HUD" unique_id=2128502011]
-modulate = Color(0.46666667, 1, 0.5254902, 1)
-self_modulate = Color(0.46666667, 1, 0.5254902, 0.78431374)
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 105.0
-offset_top = -143.0
-offset_right = 305.0
-offset_bottom = -113.0
-grow_vertical = 0
-value = 100.0
-allow_greater = true
-allow_lesser = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HUD" unique_id=1570974789]
 layout_mode = 1
@@ -299,8 +335,11 @@ visible = false
 [connection signal="playerDead" from="." to="shakeable_camera/Hands/RightHand" method="_on_player_player_dead"]
 [connection signal="playerDead" from="." to="PauseMenu" method="_on_player_player_dead"]
 [connection signal="playerDead" from="." to="DeadScreen" method="_on_player_dead"]
+[connection signal="restoreCool" from="." to="shakeable_camera/Hands/RightHand/SMG" method="_on_restore_cool"]
+[connection signal="restoreCool" from="." to="shakeable_camera/Hands/RightHand/BeggarsShotgun" method="_on_restore_cool"]
+[connection signal="restoreCool" from="." to="shakeable_camera/Hands/LeftHand/Steamer" method="_on_restore_cool"]
 [connection signal="timeout" from="SuperTimer" to="." method="SuperTimerTimeOut"]
-[connection signal="knockBack" from="shakeable_camera/Hands/LeftHand/OffHandShotgun" to="." method="knockBack"]
+[connection signal="knockBack" from="shakeable_camera/Hands/LeftHand/Steamer" to="." method="knockBack"]
 [connection signal="pressed" from="PauseMenu/PauseMenu/MarginContainer/VBoxContainer/Resume" to="PauseMenu" method="_on_resume_pressed"]
 [connection signal="pressed" from="PauseMenu/PauseMenu/MarginContainer/VBoxContainer/Settings" to="PauseMenu" method="_on_settings_pressed"]
 [connection signal="pressed" from="PauseMenu/PauseMenu/MarginContainer/VBoxContainer/Save Menu" to="PauseMenu" method="_on_save_menu_pressed"]

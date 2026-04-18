@@ -234,3 +234,8 @@ one_shot = true
 fixed_fps = 60
 process_material = SubResource("ParticleProcessMaterial_7bpbl")
 draw_pass_1 = SubResource("PrismMesh_7mlgx")
+
+[node name="HeatBuffer" type="Timer" parent="." unique_id=1903202031]
+one_shot = true
+
+[connection signal="timeout" from="HeatBuffer" to="." method="_on_heat_buffer_timeout"]

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://coe8phy1st24j"]
 
-[ext_resource type="ArrayMesh" uid="uid://c1ua4nhpxyyli" path="res://assets/Meshes/Weapons/shotty.mesh" id="1_ap7js"]
-[ext_resource type="Script" uid="uid://dhtqm0ik5xqic" path="res://Scripts/Weapons/OffHandShotgun.gd" id="1_ctp8a"]
+[ext_resource type="Script" uid="uid://dhtqm0ik5xqic" path="res://Scripts/Weapons/Steamer.gd" id="1_a8h82"]
+[ext_resource type="ArrayMesh" uid="uid://c1ua4nhpxyyli" path="res://assets/Meshes/Weapons/shotty.mesh" id="2_6xrp2"]
 
 [sub_resource type="Animation" id="Animation_u6d72"]
 resource_name = "Draw"
@@ -97,8 +97,8 @@ _data = {
 &"Shoot": SubResource("Animation_jrs8s")
 }
 
-[node name="OffHandShotgun" type="Node3D" unique_id=1896444700]
-script = ExtResource("1_ctp8a")
+[node name="Steamer" type="Node3D" unique_id=1896444700]
+script = ExtResource("1_a8h82")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1787380741]
 libraries/ = SubResource("AnimationLibrary_lekgj")
@@ -106,4 +106,8 @@ libraries/ = SubResource("AnimationLibrary_lekgj")
 [node name="Shotty" type="MeshInstance3D" parent="." unique_id=48255100]
 transform = Transform3D(34.999996, 60.621777, 121.24356, -60.621773, -105.00001, 69.99999, 121.24356, -69.99999, -3.0597969e-06, 0, -3.73, 1.5)
 rotation_order = 0
-mesh = ExtResource("1_ap7js")
+mesh = ExtResource("2_6xrp2")
+
+[node name="HeatBuffer" type="Timer" parent="." unique_id=490756705]
+
+[connection signal="timeout" from="HeatBuffer" to="." method="_on_heat_buffer_timeout"]

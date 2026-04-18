@@ -7,6 +7,7 @@
 [ext_resource type="Shader" uid="uid://no1jy7cyw0an" path="res://Shaders/PostProcess/SandStorm.gdshader" id="5_qhj8q"]
 [ext_resource type="ArrayMesh" uid="uid://bdly7xwroyu0j" path="res://assets/Meshes/Architecture/Barrack.mesh" id="6_xe0hb"]
 [ext_resource type="ArrayMesh" uid="uid://7ho7ltov0iyb" path="res://assets/Meshes/Objects/Vehicles/Jeep/Jeep.mesh" id="7_ijbfb"]
+[ext_resource type="PackedScene" uid="uid://da8xo7bpr7w37" path="res://Scenes/Enemies/SniperTurret.tscn" id="7_xe0hb"]
 [ext_resource type="Texture2D" uid="uid://dayne5ld0pqyg" path="res://assets/Textures/Shadows/JeepShadow.png" id="8_wr8wa"]
 [ext_resource type="ArrayMesh" uid="uid://qdmyf5e4rqff" path="res://assets/Meshes/Objects/Vehicles/Plane.mesh" id="9_3haq7"]
 [ext_resource type="ArrayMesh" uid="uid://unogx422rgbl" path="res://assets/Meshes/Objects/Vehicles/Jeep/JeepChassis.mesh" id="9_obpdj"]
@@ -187,6 +188,12 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
+[node name="Robot" parent="." unique_id=969091388 instance=ExtResource("15_xm5mx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.63, 0, -5.918)
+
+[node name="SniperTurret" parent="." unique_id=1830225406 instance=ExtResource("7_xe0hb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.673558, 1.785, -11.888981)
+
 [node name="Barrack" type="MeshInstance3D" parent="." unique_id=1999639744]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.35177, 1.0000209, 1.8640761)
 visible = false
@@ -310,9 +317,6 @@ mass = 8.0
 [node name="RigidBody4" parent="." unique_id=2132569094 instance=ExtResource("15_iyf6e")]
 transform = Transform3D(-1.671231e-09, -0.038233314, -0.69895506, 0.7, -3.059797e-08, 0, -3.0552297e-08, -0.69895506, 0.038233314, -8.045181, 0.5738101, 2.8969457)
 mass = 8.0
-
-[node name="Robot" parent="." unique_id=1610408567 instance=ExtResource("15_xm5mx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.835869, 0, -6.579933)
 
 [node name="Crates" type="MultiMeshInstance3D" parent="." unique_id=1308017449]
 multimesh = SubResource("MultiMesh_obpdj")
