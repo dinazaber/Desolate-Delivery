@@ -29,6 +29,7 @@ uniform float facet_intensity = 0.5;
 
 varying vec3 worldPos;
 varying vec3 world_normal;
+varying float final_diffuse;
 
 
 // --- THE OPTIMIZED BOX PROJECTION FUNCTION ---
@@ -67,6 +68,14 @@ vec4 get_box_projection(sampler2D p_sampler, vec3 p_normal, vec3 p_pos) {
 void vertex(){
     worldPos = VERTEX;
     world_normal = NORMAL;
+	
+	// --- LIGHTING --
+	
+	vec3 n = normalize(NORMAL);
+    vec3 light_dir = normalize(vec3(light_x, light_y, light_z));
+    
+    float lum = dot(n, light_dir);
+    final_diffuse = (mix(1.0, clamp(lum, 0.0, 1.0), facet_intensity));
 }
 
 void fragment() {
@@ -91,10 +100,6 @@ void fragment() {
     }
 	
     
-    // --- LIGHTING ---
-    vec3 light_dir = normalize(vec3(light_x, light_y, light_z));
-    float lum = dot(n, light_dir);
-    float final_diffuse = mix(1.0, clamp(lum, 0.0, 1.0), facet_intensity);
 	
 	// --- WIREFRAME ---
 	vec2 uv = UV;

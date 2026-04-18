@@ -215,3 +215,10 @@ global_illumination/sdfgi/frames_to_converge=0
 lightmapping/bake_quality/low_quality_ray_count=1
 lights_and_shadows/positional_shadow/atlas_quadrant_2_subdiv=2
 lights_and_shadows/positional_shadow/atlas_quadrant_3_subdiv=2
+
+[shader_globals]
+
+sun_direction={
+"type": "vec3",
+"value": Vector3(0.5, 0.5, 0.5)
+}

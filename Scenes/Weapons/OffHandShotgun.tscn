@@ -2,7 +2,6 @@
 
 [ext_resource type="ArrayMesh" uid="uid://c1ua4nhpxyyli" path="res://assets/Meshes/Weapons/shotty.mesh" id="1_ap7js"]
 [ext_resource type="Script" uid="uid://dhtqm0ik5xqic" path="res://Scripts/Weapons/OffHandShotgun.gd" id="1_ctp8a"]
-[ext_resource type="Script" uid="uid://cfdheqlfxu5y7" path="res://Scripts/Weapons/[UNUSED]WeaponSway.gd" id="2_ctp8a"]
 
 [sub_resource type="Animation" id="Animation_u6d72"]
 resource_name = "Draw"
@@ -108,4 +107,3 @@ libraries/ = SubResource("AnimationLibrary_lekgj")
 transform = Transform3D(34.999996, 60.621777, 121.24356, -60.621773, -105.00001, 69.99999, 121.24356, -69.99999, -3.0597969e-06, 0, -3.73, 1.5)
 rotation_order = 0
 mesh = ExtResource("1_ap7js")
-script = ExtResource("2_ctp8a")

@@ -153,8 +153,7 @@ go_make_colliders = null
 metadata/_custom_type_script = "uid://cfwmt6vc7y70h"
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1254300921]
-transform = Transform3D(0.8860661, 2.0262807e-08, -0.46355897, 0.46355897, -3.8731176e-08, 0.8860661, 0, -1, -4.371139e-08, -6.651168, 8.92315, 0)
-visible = false
+transform = Transform3D(0.9063078, 4.0954156e-09, -0.42261824, 0.42261824, -1.847323e-08, 0.9063078, -4.0954156e-09, -1, -1.847323e-08, -6.651168, 8.92315, 0)
 light_color = Color(0.92, 0.85866666, 0.69, 1)
 light_energy = 1.2
 light_angular_distance = 3.0

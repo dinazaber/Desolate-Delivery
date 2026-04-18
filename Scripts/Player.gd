@@ -123,8 +123,8 @@ func _ready() -> void:
 	current_gun.draw()
 	
 	if sun!=null: 
-		var sunDir = sun.global_transform.basis.z.normalized()
-		#current_gun.get_active_material(0).set("shader_parameter/sun_direction", sunDir)
+		var sunDir = -sun.global_transform.basis.z
+		RenderingServer.global_shader_parameter_set("sun_direction", sunDir)
 
 func _input(event):
 	if dead: return
