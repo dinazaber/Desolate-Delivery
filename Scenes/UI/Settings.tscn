@@ -46,7 +46,7 @@ text = "Render Scale"
 [node name="ScaleOption" type="OptionButton" parent="ScrollContainer/VBoxContainer/Scale" unique_id=18711073]
 layout_mode = 2
 item_count = 8
-popup/item_0/text = "2"
+popup/item_0/text = "2.0"
 popup/item_0/id = 0
 popup/item_1/text = "1.75"
 popup/item_1/id = 1

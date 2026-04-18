@@ -11,13 +11,15 @@ signal closed
 @onready var windowBtn = $ScrollContainer/VBoxContainer/Window/CheckButton
 @onready var vsyncBtn = $ScrollContainer/VBoxContainer/Vsync/CheckNutton
 
-var settings = SettingsManager.settings.duplicate(true)
+var settings
 
 func _ready() -> void:
 	
+	settings = SettingsManager.settings.duplicate(true)
+	uiRefresh()
+	
 	get_tree().root.size_changed.connect(func(): on_window_size_changed())
 	
-	uiRefresh.call_deferred()
 
 		
 
@@ -41,8 +43,8 @@ func buildSettings() -> void:
 	if height.text.is_valid_int():
 		if height.text.to_int() > 0: settings.video.image_size.y = height.text.to_int()
 	
-	print(settings)
-	print(SettingsManager.settings)
+	print("Duplicate: " + str(settings))
+	print("Config: " + str(SettingsManager.settings))
 	
 
 func isEqualToConfig() -> bool:
@@ -118,7 +120,7 @@ func _on_apply_settings_pressed() -> void:
 	buildSettings()
 	copyToConfig()
 	uiRefresh()
-	print(settings.video.render_scale)
+	print(SettingsManager.settings.video.render_scale)
 	
 	
 func _unhandled_input(event: InputEvent) -> void:
