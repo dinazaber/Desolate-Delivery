@@ -156,8 +156,6 @@ func _input(event):
 			yaw-=event.relative.x * cam_speed
 			pitch+=event.relative.y * cam_speed
 			pitch = clamp(pitch, deg_to_rad(-90), deg_to_rad(90))
-			rotation.y = yaw
-			camera.rotation.x = -pitch
 			mouse_input = event.relative
 			
 		#if event is InputEventMouseButton: #UNUSED
@@ -174,9 +172,9 @@ func _physics_process(delta):
 
 	#cameraDistance = clamp(cameraDistance,15, 45)
 	
-	#if !dead: #mouse smoothing - ewww
-	#	rotation.y = lerp_angle(rotation.y, yaw, delta*20) # left/right
-	#	camera.rotation.x = lerp_angle(camera.rotation.x, -pitch, delta*20)
+	if !dead:
+		rotation.y = lerp_angle(rotation.y, yaw, delta * 30.0) # left/right
+		camera.rotation.x = lerp_angle(camera.rotation.x, -pitch, delta * 30.0)
 	
 	
 	if Input.is_action_pressed("LeftMouse") and !dead: # shooting
