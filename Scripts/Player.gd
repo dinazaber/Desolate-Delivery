@@ -205,12 +205,19 @@ func _physics_process(delta):
 		playerCollision.shape.height = lerp(playerCollision.shape.height, 1.0, delta * 15.0)
 		if velocity.length() > crouch_speed + 0.1: # 0.1 is epsilon for numerical error
 			slide = true
+			floor_stop_on_slope = false
 			accel_mod = 0.1
+			if is_on_floor():
+				var normal = get_floor_normal()
+				normal.y = -normal.y
+				velocity += normal * 0.3
 		else:
 			slide = false
+			floor_stop_on_slope = true
 			accel_mod = 1.0
 	else:
 		slide = false
+		floor_constant_speed = true
 		crouch = false
 		playerCollision.shape.height = lerp(playerCollision.shape.height, 2.0, delta * 15.0)
 		accel_mod = 1.0
