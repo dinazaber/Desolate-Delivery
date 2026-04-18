@@ -260,10 +260,11 @@ func _physics_process(delta):
 			
 			
 			# head bob
-			headTime += delta * velocity.length() * float(is_on_floor())
-			var pos = Vector3.ZERO
-			pos.y = camera.position.y + sin(headTime*headFreq) * headAmp
-			camera.position.y = lerp(camera.position.y, pos.y, 20 * delta)
+			if !slide:
+				headTime += delta * velocity.length() * float(is_on_floor())
+				var pos = Vector3.ZERO
+				pos.y = camera.position.y + sin(headTime*headFreq) * headAmp
+				camera.position.y = lerp(camera.position.y, pos.y, 20 * delta)
 		
 		
 		else: # no input speed
