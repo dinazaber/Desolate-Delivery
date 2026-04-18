@@ -2,7 +2,7 @@ extends Node3D
 
 #gun stats
 @export var damage = 15
-@export var recoil = 0.3
+@export var recoil = 0.4
 @export var camera: Area3D
 @export var playerRay: RayCast3D
 

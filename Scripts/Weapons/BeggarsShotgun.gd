@@ -12,11 +12,13 @@ var shotNum = 0
 
 func draw():
 	anim.play("draw")
+	shotNum = 0
 
 func undraw():
 	if anim.is_playing():
 		await anim.animation_finished
 	anim.play("undraw")
+	shotNum = 0
 	await anim.animation_finished
 
 func charge():
