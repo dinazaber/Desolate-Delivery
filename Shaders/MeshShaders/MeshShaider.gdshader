@@ -8,7 +8,7 @@ uniform sampler2D mask_palette : source_color, filter_nearest;
 
 group_uniforms Wireframe;
 uniform vec3 wire_color : source_color = vec3(0.0, 0.0, 0.0);
-uniform float wire_width : hint_range(0.0, 0.2) = 0.01; // Width in meters
+uniform float wire_width : hint_range(0.0, 5) = 2; // Width in meters
 uniform float wire_transparency : hint_range(0.0, 1.0) = 0.5;
 
 group_uniforms Detail1;
@@ -109,27 +109,23 @@ void fragment() {
 	// --- WIREFRAME ---
 	
 	vec2 uv = UV;
-    
-    // Distance to edge in UV space
     vec2 dist_to_edge = min(uv, 1.0 - uv);
+    vec2 derivative = fwidth(uv);
     
-    // Get the screen-space change of UVs
-    vec2 d_uv = fwidth(uv);
+    float depth = abs(VERTEX.z);
     
-    // We calculate how many meters are in one screen pixel at this depth
-    // This is mathematically more stable than comparing UV-to-Vertex directly
-    float pixel_to_meter = length(fwidth(VERTEX));
+    float distance_factor = clamp(1.0 - (depth / 20.0), 0.0, 1.0);
     
-    // Convert UV distance to Meters
-    // We divide UV distance by (UV-per-pixel) to get pixels, 
-    // then multiply by (Meters-per-pixel) to get meters.
-    vec2 dist_in_meters = (dist_to_edge / max(d_uv, 0.0001)) * pixel_to_meter;
-    float closest_dist = min(dist_in_meters.x, dist_in_meters.y);
+    float final_thickness = wire_width * pow(distance_factor, 2.0);
     
-    // Create the crisp mask
-    float wire_mask = 1.0 - smoothstep(wire_width, wire_width + 0.002, closest_dist);
+    vec2 pixel_dist = dist_to_edge / derivative;
+    float closest_pixel_edge = min(pixel_dist.x, pixel_dist.y);
+    
+    float wire_mask = 1.0 - smoothstep(final_thickness - 0.5, final_thickness + 0.5, closest_pixel_edge);
+    
+    float alpha_fade = distance_factor; 
 	
 	vec3 blended_wire = mix(out_color * final_diffuse, wire_color.rgb, wire_transparency);
 	
-    ALBEDO = mix(out_color * final_diffuse, blended_wire, wire_mask);
+    ALBEDO = mix(out_color * final_diffuse, blended_wire, wire_mask * alpha_fade);
 }
