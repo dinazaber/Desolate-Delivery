@@ -17,7 +17,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(1.5, -4, 1)]
+"values": [Vector3(1.5, -5, 1)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -43,6 +43,18 @@ tracks/2/keys = {
 "update": 0,
 "values": [Vector3(-0.87266463, 1.5707964, -0.5235988)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SMG/Barrel/Sprite:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_u4wyd"]
 resource_name = "draw"
@@ -58,7 +70,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.15, 0.3, 0.4),
 "transitions": PackedFloat32Array(0.5, 0.6, 1.5, 1),
 "update": 0,
-"values": [Vector3(1.5, -4, 1), Vector3(0.4, 0.2, -0.3), Vector3(0, -0.2, 0), Vector3(0, 0, 0)]
+"values": [Vector3(1.5, -5, 1), Vector3(0.4, 0.2, -0.3), Vector3(0, -0.2, 0), Vector3(0, 0, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -75,7 +87,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_yltro"]
 resource_name = "shoot"
-length = 0.1
+length = 0.12
 step = 0.01
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -84,7 +96,7 @@ tracks/0/path = NodePath("SMG:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.03, 0.1),
+"times": PackedFloat32Array(0, 0.04, 0.12),
 "transitions": PackedFloat32Array(0.4, 0.5, 1),
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(0, 0.1, 0.5), Vector3(0, 0, 0)]
@@ -96,7 +108,7 @@ tracks/1/path = NodePath("SMG/Barrel/Sprite:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.002, 0.07),
+"times": PackedFloat32Array(0, 0.060000002),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -120,7 +132,7 @@ tracks/3/path = NodePath("SMG:rotation")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.0001, 0.04, 0.1),
+"times": PackedFloat32Array(0, 0.0001, 0.06, 0.12),
 "transitions": PackedFloat32Array(1.8, 1, 0.6, 1),
 "update": 0,
 "values": [Vector3(0, 1.5707964, 0), Vector3(0, 1.5707964, 0), Vector3(0.034906585, 1.5707964, 0.034906585), Vector3(0, 1.5707964, 0)]
@@ -140,7 +152,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(1.5, 1),
 "update": 0,
-"values": [Vector3(0, 0, 0), Vector3(2, -4, 0)]
+"values": [Vector3(0, 0, 0), Vector3(2, -5, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -243,7 +255,7 @@ script = ExtResource("1_u4wyd")
 libraries/ = SubResource("AnimationLibrary_8qb6n")
 
 [node name="SMG" type="MeshInstance3D" parent="." unique_id=559022510]
-transform = Transform3D(0.07660444, -0.13268279, 0.12855753, -0.06427877, 0.111334085, 0.1532089, -0.17320508, -0.099999994, -5.6194285e-09, 1.5, -4, 1)
+transform = Transform3D(0.07660444, -0.13268279, 0.12855753, -0.06427877, 0.111334085, 0.1532089, -0.17320508, -0.099999994, -5.6194285e-09, 1.5, -5, 1)
 mesh = SubResource("ArrayMesh_l5ase")
 
 [node name="Barrel" type="Node3D" parent="SMG" unique_id=576063553]

@@ -17,9 +17,9 @@ var headTime = 0.0
 
 
 #Weapons
-@onready var SMG = $shakeable_camera/RightHand/SMG
-@onready var beggarsShotgun = $shakeable_camera/RightHand/BeggarsShotgun
-@onready var offHandShotgun = $shakeable_camera/LeftHand/OffHandShotgun
+@onready var SMG = $shakeable_camera/Hands/RightHand/SMG
+@onready var beggarsShotgun = $shakeable_camera/Hands/RightHand/BeggarsShotgun
+@onready var offHandShotgun = $shakeable_camera/Hands/LeftHand/OffHandShotgun
 
 
 var SPEED: float
@@ -28,6 +28,7 @@ var dash: bool = false
 var canDash: bool = true
 var knocked: bool = false
 var crouch: bool = false
+var slide: bool = false
 var slam: bool = false
 var airborne: bool = false
 var dead: bool = false
@@ -38,6 +39,7 @@ var currentRoof = null
 
 var yaw = 0.0
 var pitch = 0.0
+var mouse_input: Vector2
 
 
 
@@ -69,13 +71,23 @@ var instance_grenade
 @onready var playerRay_end = $shakeable_camera/PlayerRayEnd
 
 @onready var current_gun = SMG
-@onready var spearSpawn = $shakeable_camera/RightHand/SpeargunPlaceholder/Barrel
+@onready var spearSpawn = $shakeable_camera/Hands/RightHand/SpeargunPlaceholder/Barrel
 
 @onready var slam_area = $GroundSlam
 
 
 #UI
 @onready var crosshair = $HUD/crosshair
+
+# camera settings
+@export var cam_speed: float = 0.005 #mouse sens
+@export var cam_rot_amount: float = 0.03 #camera tilt
+
+#weapon tilt & sway settings
+@onready var hands = $shakeable_camera/Hands
+var def_gun_pos: Vector3
+@export var gun_sway_amount: float = 5.0
+@export var gun_rot_amount: float = 0.01
 
 
 func save():
@@ -105,6 +117,8 @@ func updateScreenEffect(): #Function for current and future screen effects
 
 
 func _ready() -> void:
+	def_gun_pos = hands.position
+	
 	healthBar.max_value = PLAYER_MAX_HEALTH
 	current_gun.draw()
 	
@@ -139,9 +153,13 @@ func _input(event):
 			
 	if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
 		if event is InputEventMouseMotion:
-			yaw-=event.relative.x * 0.005
-			pitch+=event.relative.y * 0.005
+			yaw-=event.relative.x * cam_speed
+			pitch+=event.relative.y * cam_speed
 			pitch = clamp(pitch, deg_to_rad(-90), deg_to_rad(90))
+			rotation.y = yaw
+			camera.rotation.x = -pitch
+			mouse_input = event.relative
+			
 		#if event is InputEventMouseButton: #UNUSED
 			#if event.button_index == MOUSE_BUTTON_WHEEL_UP:
 				#cameraDistance+=1.5
@@ -156,9 +174,9 @@ func _physics_process(delta):
 
 	#cameraDistance = clamp(cameraDistance,15, 45)
 	
-	if !dead:
-		rotation.y = lerp_angle(rotation.y, yaw, delta*20) # left/right
-		camera.rotation.x = lerp_angle(camera.rotation.x, -pitch, delta*20)
+	#if !dead: #mouse smoothing - ewww
+	#	rotation.y = lerp_angle(rotation.y, yaw, delta*20) # left/right
+	#	camera.rotation.x = lerp_angle(camera.rotation.x, -pitch, delta*20)
 	
 	
 	if Input.is_action_pressed("LeftMouse") and !dead: # shooting
@@ -188,9 +206,13 @@ func _physics_process(delta):
 		crouch = true
 		playerCollision.shape.height = lerp(playerCollision.shape.height, 1.0, delta * 15.0)
 		if velocity.length() > crouch_speed + 0.1: # 0.1 is epsilon for numerical error
+			slide = true
 			accel_mod = 0.1
-		else: accel_mod = 1.0
+		else:
+			slide = false
+			accel_mod = 1.0
 	else:
+		slide = false
 		crouch = false
 		playerCollision.shape.height = lerp(playerCollision.shape.height, 2.0, delta * 15.0)
 		accel_mod = 1.0
@@ -202,10 +224,10 @@ func _physics_process(delta):
 	
 	
 	# Get direction
-	var currentInput = Input.get_vector("A", "D", "S", "W")
+	var currentInput = Input.get_vector("A", "D", "W", "S")
 	if dead:
 		currentInput = Vector3.ZERO
-	var direction = (transform.basis * Vector3(currentInput.y, 0, currentInput.x)).normalized()
+	var direction = (transform.basis * Vector3(currentInput.x, 0, currentInput.y)).normalized()
 	
 	if direction and !knocked:
 		velocity.x = move_toward(velocity.x, direction.x * SPEED, delta * 20.0 * accel_mod)
@@ -263,14 +285,47 @@ func _physics_process(delta):
 		velocity.x = lerp(velocity.x, direction.x * SPEED, delta * 0.5)
 		velocity.z = lerp(velocity.z, direction.z * SPEED, delta * 0.5)
 	
+	if !dead:
+		cam_gun_tilt_sway(currentInput.x,currentInput.y, delta)
+		gun_bob(velocity.length(), currentInput, delta)
+	
 	handle_healthBar()
 	move_and_slide()
 
 
-func hideWeapons(): #We will add here check for left/right side later I guess
-	for i in $shakeable_camera/RightHand.get_children():
-		if i is Node3D: i.hide()
+func cam_gun_tilt_sway(input_x, input_y, delta):
+	if camera:
+		camera.rotation.z = lerp(camera.rotation.z, -input_x * cam_rot_amount, delta * 5.0)
+	if hands:
+		hands.rotation.z = lerp(hands.rotation.z, -input_x * gun_rot_amount * 10, delta * 3.0)
+		hands.rotation.x = lerp(hands.rotation.x, input_y * gun_rot_amount * 20, delta * 1.5)
+		
+	mouse_input = lerp(mouse_input, Vector2.ZERO, delta * 10.0)
+	hands.rotation.x = lerp(hands.rotation.x, mouse_input.y * gun_rot_amount, delta * 15.0)
+	hands.rotation.y = lerp(hands.rotation.y, mouse_input.x * gun_rot_amount, delta * 15.0)
 
+func gun_bob(vel: float, input, delta):
+	if hands:
+		if vel > 0.5:
+			var bob_amount: float = 0.01 * clamp(vel/5, 0, 2)
+			var bob_freq: float = 0.005
+			var bob_y
+			var bob_x
+			if is_on_floor() and input and !slide:
+				bob_y = sin(Time.get_ticks_msec() * 2 * bob_freq)
+				bob_x = sin(Time.get_ticks_msec() * bob_freq)
+			else:
+				bob_y = -velocity.y * 0.1
+				bob_x = 0
+			hands.position.y = lerp(hands.position.y, def_gun_pos.y + bob_y * bob_amount, delta * 10.0)
+			hands.position.x = lerp(hands.position.x, def_gun_pos.x + bob_x * bob_amount, delta * 10.0)
+		else:
+			hands.position.y = lerp(hands.position.y, def_gun_pos.y, delta * 10.0)
+			hands.position.x = lerp(hands.position.x, def_gun_pos.x, delta * 10.0)
+
+func hideWeapons(): #We will add here check for left/right side later I guess
+	for i in $shakeable_camera/Hands/RightHand.get_children():
+		if i is Node3D: i.hide()
 
 func hit(recieved_damage, type):
 	if type == "player":

@@ -1,6 +1,5 @@
 [gd_scene format=3 uid="uid://4ercdvy5pe3t"]
 
-[ext_resource type="Script" uid="uid://cfdheqlfxu5y7" path="res://Scripts/Weapons/WeaponSway.gd" id="1_qqpya"]
 [ext_resource type="ArrayMesh" uid="uid://dgnpgu3vv3a5n" path="res://assets/Meshes/Weapons/Speargun - PLACEHOLDER.mesh" id="3_7mlgx"]
 [ext_resource type="PackedScene" uid="uid://b25o4c3ic6crd" path="res://Scenes/Weapons/SMG.tscn" id="3_q2hde"]
 [ext_resource type="PackedScene" uid="uid://bt5hphta86l3o" path="res://Scenes/Weapons/BeggarsShotgun.tscn" id="4_vxlr5"]
@@ -92,9 +91,6 @@ _data = {
 }
 
 [node name="RightHand" type="Node3D" unique_id=267885530]
-script = ExtResource("1_qqpya")
-sway_speed_rot = 0.05
-sway_amount_rot = 50.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=207191350]
 active = false
