@@ -6,20 +6,24 @@ const headFreq = 2.4
 const headAmp = 0.04
 var headTime = 0.0
 
-@onready var camera = $shakeable_camera
-@onready var camAnim = $cameraAnimation
-@onready var camDefHeight = camera.position.y
+# --- NODES ---
+@onready var playerCollision = $PlayerCollision
 @export var screenEffect: ColorRect
-@export var sun: DirectionalLight3D
+@onready var playerRay = $shakeable_camera/PlayerRay
+var grabbedObject: RigidBody3D = null
+@onready var slam_area = $GroundSlam
 
 
 
-#Weapons
+# --- WEAPONS ---
 @onready var SMG = $shakeable_camera/Hands/RightHand/SMG
 @onready var beggarsShotgun = $shakeable_camera/Hands/RightHand/BeggarsShotgun
 @onready var steamer = $shakeable_camera/Hands/LeftHand/Steamer
+@onready var current_gun_R = SMG
+@onready var current_gun_L = steamer
 
 
+# --- VARIABLES ---
 var SPEED: float
 var accel_mod: float = 1.0 #acceleration modifier
 var dash: bool = false
@@ -40,9 +44,10 @@ var pitch = 0.0
 var mouse_input: Vector2
 var grenadeCool: float = 100.0
 var landVel: float = 0.0
+var fireDelay = 10
 
 
-#player stats
+# --- PLAYER STATS ---
 @export var DEBUG_deathBypass: bool = false
 const PLAYER_MAX_HEALTH = 100
 @export var player_health: float = PLAYER_MAX_HEALTH
@@ -53,49 +58,42 @@ const PLAYER_MAX_HEALTH = 100
 @export var dash_speed: float = 15
 @export var jump_speed: float = 10
 @export var slam_speed: float = -30
-
-#player collision
-@onready var playerCollision = $PlayerCollision
-
-
 @export var slam_damage = 40
 
 
-#loading objects
+# --- INSTANCES ---
 var spear = load("res://Scenes/Weapons/Spear.tscn")
 var instance_spear
 var grenade = load("res://Scenes/Weapons/Grenade.tscn")
 var instance_grenade
 
 
-@onready var playerRay = $shakeable_camera/PlayerRay
-@onready var playerRay_end = $shakeable_camera/PlayerRayEnd
-
-@onready var current_gun_R = SMG
-@onready var current_gun_L = steamer
-@onready var spearSpawn = $shakeable_camera/Hands/RightHand/SpeargunPlaceholder/Barrel
-
-@onready var slam_area = $GroundSlam
 
 
-#UI
+@onready var spearSpawn = $shakeable_camera/Hands/RightHand/SpeargunPlaceholder/Barrel #What to do with this???
+
+
+# --- UI ---
 @onready var crosshair = $HUD/crosshair
 @onready var healthBar = $HUD/HealthBar
 @onready var grenadeBar = $HUD/GrenadeBar
 @onready var heatBar_R = $HUD/HeatRight
 @onready var heatBar_L = $HUD/HeatLeft
 
-# camera settings
+# --- CAMERA ---
+@onready var camera = $shakeable_camera
+@onready var camAnim = $cameraAnimation
+@onready var camDefHeight = camera.position.y
 @export var cam_speed: float = 0.005 #mouse sens
 @export var cam_rot_amount: float = 0.03 #camera tilt
 
-#weapon tilt & sway settings
+# --- Effects ---
 @onready var hands = $shakeable_camera/Hands
 var def_gun_pos: Vector3
 @export var gun_sway_amount: float = 5.0
 @export var gun_rot_amount: float = 0.01
 
-#signals
+# --- SIGNALS ---
 signal playerDead
 signal restoreCool(coolOnKill)
 
@@ -130,15 +128,28 @@ func _ready() -> void:
 	
 	healthBar.max_value = PLAYER_MAX_HEALTH
 	current_gun_R.draw()
-	
-	if sun!=null: 
-		var sunDir = -sun.global_transform.basis.z
-		RenderingServer.global_shader_parameter_set("sun_direction", sunDir)
 
 func _input(event):
 	if dead: return
 	
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	
+	
+	# Throwable objects
+	if Input.is_action_just_pressed("E"):
+		if grabbedObject: 
+			grabbedObject.gravity_scale = 1
+			remove_collision_exception_with(grabbedObject)
+			grabbedObject = null
+		else: 
+			if playerRay.is_colliding():
+				var collider = playerRay.get_collider()
+				var distance = global_position.distance_to(collider.global_position)
+				if collider is RigidBody3D and distance < 3:
+					grabbedObject = collider
+					grabbedObject.gravity_scale = 0
+					add_collision_exception_with(grabbedObject)
+		
 	
 	if Input.is_action_just_pressed("1"): # smg
 		if current_gun_R != SMG:
@@ -159,6 +170,7 @@ func _input(event):
 	
 	if Input.is_action_just_pressed("R"):
 		throw_grenade()
+		
 			
 	if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
 		if event is InputEventMouseMotion:
@@ -181,17 +193,27 @@ func _physics_process(delta):
 
 	#cameraDistance = clamp(cameraDistance,15, 45)
 	
-	grenadeCool = clamp(grenadeCool + (100 * delta) / grenadeCoolTime, -5.0, 100.0)
+	grenadeCool = clamp(grenadeCool + (100 * delta) / grenadeCoolTime, 0, 100.0)
+	
+	fireDelay = clamp(fireDelay + (100 * delta), 0, 10.0)
 	
 	if !dead:
 		rotation.y = lerp_angle(rotation.y, yaw, delta * 30.0) # left/right
 		camera.rotation.x = lerp_angle(camera.rotation.x, -pitch, delta * 30.0)
+		
 	
-	
-	if Input.is_action_pressed("LeftMouse") and !dead: # shooting
-		match current_gun_R:
-			SMG: current_gun_R.shoot()
-			beggarsShotgun: current_gun_R.charge()
+	if Input.is_action_pressed("LeftMouse") and !dead:
+		if !grabbedObject and fireDelay==10:
+			match current_gun_R:
+				SMG: current_gun_R.shoot()
+				beggarsShotgun: current_gun_R.charge()
+		elif grabbedObject:
+			var dir = -camera.global_basis.z
+			grabbedObject.gravity_scale = 1
+			grabbedObject.apply_central_impulse(dir * 100)
+			remove_collision_exception_with(grabbedObject)
+			grabbedObject = null
+			fireDelay = 0
 	
 	if Input.is_action_just_released("LeftMouse") and !dead:
 		match current_gun_R:
@@ -200,9 +222,21 @@ func _physics_process(delta):
 	
 	if Input.is_action_just_pressed("RightMouse") and !dead:
 		current_gun_L.shoot()
+		
+	
+	if grabbedObject: # Grabbed Object
+		var holdPos = $shakeable_camera/throwableSpawn
+		var distance = grabbedObject.global_position.distance_to(holdPos.global_position)
+		if distance > 1.5:
+			grabbedObject.gravity_scale = 1
+			grabbedObject = null
+			return
+		
+		grabbedObject.global_position = holdPos.global_position
+		grabbedObject.global_rotation = holdPos.global_rotation
 	
 	
-	for i in get_slide_collision_count():
+	for i in get_slide_collision_count(): # Rigid bodies pushing
 		var collision = get_slide_collision(i)
 		var collider = collision.get_collider()
 			
@@ -313,6 +347,8 @@ func _physics_process(delta):
 	move_and_slide()
 
 
+
+# --- EFFECTS ---
 func cam_gun_tilt_sway(input_x, input_y, delta):
 	if camera:
 		camera.rotation.z = lerp(camera.rotation.z, -input_x * cam_rot_amount, delta * 5.0)
@@ -342,6 +378,8 @@ func gun_bob(vel: float, input, delta):
 		else:
 			hands.position.y = lerp(hands.position.y, def_gun_pos.y, delta * 10.0)
 			hands.position.x = lerp(hands.position.x, def_gun_pos.x, delta * 10.0)
+			
+			
 
 func hideWeapons(): #We will add here check for left/right side later I guess
 	for i in $shakeable_camera/Hands/RightHand.get_children():
@@ -363,7 +401,7 @@ func throw_grenade():
 		var upward_force = 3.5
 		instance_grenade.apply_central_impulse((throw_dir * forward_force) + Vector3(0, upward_force, 0) + velocity)
 		get_parent().add_child(instance_grenade)
-		grenadeCool -= 105.0
+		grenadeCool = 0
 
 #func shoot_speargun(): ## UNUSED
 	#if !rightWeaponAnim.is_playing() and canShoot:
@@ -404,6 +442,9 @@ func checkLifeLine():
 
 func enemy_killed():
 	restoreCool.emit(coolOnKill)
+	
+
+# --- UI ---
 
 func handle_healthBar():
 	var health_dif = abs(healthBar.value - player_health)

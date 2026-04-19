@@ -128,13 +128,10 @@ noise_speed = 30.0
 [node name="throwableSpawn" type="Marker3D" parent="shakeable_camera" unique_id=67584433]
 transform = Transform3D(-4.371213e-08, -5.1691977e-11, 1, 9.313226e-10, 1, 5.169202e-11, -1, 9.313226e-10, -4.371213e-08, 4.426729e-09, 0, -1.4877298)
 
-[node name="PlayerRayEnd" type="Marker3D" parent="shakeable_camera" unique_id=1350417793]
-transform = Transform3D(1, 5.1691977e-11, -7.4251716e-13, -5.1691977e-11, 1, 9.313226e-10, 7.4251716e-13, -9.313226e-10, 1, 5.570655e-11, -0.0010000467, -75)
-
 [node name="PlayerRay" type="RayCast3D" parent="shakeable_camera" unique_id=1906683229]
 transform = Transform3D(-4.371139e-08, 9.232692e-19, 1, 0, 1, 9.232692e-19, -1, -4.0357378e-26, -4.371139e-08, 0, -0.0009999871, 0)
 target_position = Vector3(75, 0, 0)
-collision_mask = 6
+collision_mask = 7
 collide_with_areas = true
 
 [node name="Hands" type="Node3D" parent="shakeable_camera" unique_id=1293429431]
