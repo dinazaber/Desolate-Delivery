@@ -44,7 +44,7 @@ var pitch = 0.0
 var mouse_input: Vector2
 var grenadeCool: float = 100.0
 var landVel: float = 0.0
-var fireDelay = 10
+var fireDelay = 10 # Delay between object throwing and shooting
 
 
 # --- PLAYER STATS ---
