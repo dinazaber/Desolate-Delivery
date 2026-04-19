@@ -50,7 +50,10 @@ func load_settings():
 		save_settings()
 		return
 		
-	if !isConfigValid(): save_settings()
+	if !isConfigValid():
+		print("Error! Config file isn't updated!")
+		save_settings()
+		return
 		
 	for section in settings.keys():
 		for key in settings[section].keys():
