@@ -8,7 +8,7 @@ uniform sampler2D mask_palette : source_color, filter_nearest;
 
 group_uniforms Wireframe;
 uniform vec3 wire_color : source_color = vec3(0.0, 0.0, 0.0);
-uniform float wire_width : hint_range(0.0, 5) = 2; // Width in meters
+uniform float wire_width : hint_range(0.0, 5) = 1; // Width in meters
 uniform float wire_transparency : hint_range(0.0, 1.0) = 0.5;
 
 group_uniforms Detail1;
