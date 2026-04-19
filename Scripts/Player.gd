@@ -38,7 +38,7 @@ var currentRoof = null
 var yaw = 0.0
 var pitch = 0.0
 var mouse_input: Vector2
-
+var grenadeCool: float = 100.0
 
 
 #player stats
@@ -46,6 +46,7 @@ var mouse_input: Vector2
 const PLAYER_MAX_HEALTH = 100
 @export var player_health: float = PLAYER_MAX_HEALTH
 @export var coolOnKill: float = 15.0
+@export var grenadeCoolTime: float = 10.0 # cooldown time
 @export var walk_speed: float = 5
 @export var crouch_speed: float = 2.5
 @export var dash_speed: float = 15
@@ -79,6 +80,7 @@ var instance_grenade
 #UI
 @onready var crosshair = $HUD/crosshair
 @onready var healthBar = $HUD/HealthBar
+@onready var grenadeBar = $HUD/GrenadeBar
 @onready var heatBar_R = $HUD/HeatRight
 @onready var heatBar_L = $HUD/HeatLeft
 
@@ -177,6 +179,8 @@ func _physics_process(delta):
 	if screenEffect!=null: updateScreenEffect()
 
 	#cameraDistance = clamp(cameraDistance,15, 45)
+	
+	grenadeCool = clamp(grenadeCool + (100 * delta) / grenadeCoolTime, -5.0, 100.0)
 	
 	if !dead:
 		rotation.y = lerp_angle(rotation.y, yaw, delta * 30.0) # left/right
@@ -348,14 +352,15 @@ func hit(recieved_damage, type):
 	checkLifeLine()
 
 func throw_grenade():
-	instance_grenade = grenade.instantiate()
-	instance_grenade.position = $shakeable_camera/throwableSpawn.global_position
-	var throw_dir = -camera.global_transform.basis.z.normalized()
-	var forward_force = 10
-	var upward_force = 3.5
-	instance_grenade.apply_central_impulse((throw_dir * forward_force) + Vector3(0, upward_force, 0) + velocity)
-	get_parent().add_child(instance_grenade)
-			
+	if grenadeCool == 100.0:
+		instance_grenade = grenade.instantiate()
+		instance_grenade.position = $shakeable_camera/throwableSpawn.global_position
+		var throw_dir = -camera.global_transform.basis.z.normalized()
+		var forward_force = 10
+		var upward_force = 3.5
+		instance_grenade.apply_central_impulse((throw_dir * forward_force) + Vector3(0, upward_force, 0) + velocity)
+		get_parent().add_child(instance_grenade)
+		grenadeCool -= 105.0
 
 #func shoot_speargun(): ## UNUSED
 	#if !rightWeaponAnim.is_playing() and canShoot:
@@ -406,3 +411,5 @@ func handle_heatBars():
 	heatBar_R.value = move_toward(heatBar_R.value, current_gun_R.get_heat(), heat_dif_R/5)
 	var heat_dif_L = abs(heatBar_L.value - current_gun_L.get_heat())
 	heatBar_L.value = move_toward(heatBar_L.value, current_gun_L.get_heat(), heat_dif_L/5)
+	var grenade_dif = abs(grenadeBar.value - grenadeCool)
+	grenadeBar.value = move_toward(grenadeBar.value, grenadeCool, grenade_dif/5)
