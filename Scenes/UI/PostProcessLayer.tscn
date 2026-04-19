@@ -1,30 +1,25 @@
 [gd_scene format=3 uid="uid://cn3q7bykvbh6f"]
 
-[ext_resource type="Shader" uid="uid://1j06oc2vwm7a" path="res://Shaders/PostProcess/PostProcessLayer.gdshader" id="1_jn7xs"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_j6m0o"]
-shader = ExtResource("1_jn7xs")
-shader_parameter/brightness = 1.0
-shader_parameter/contrast = 1.0
-shader_parameter/saturation = 1.0
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_x5s4v"]
+blend_mode = 1
 
 [node name="CanvasLayer" type="CanvasLayer" unique_id=276710456]
 layer = 128
 
-[node name="BackBufferCopy" type="BackBufferCopy" parent="." unique_id=1889325066]
-position = Vector2(623, 457.49988)
-scale = Vector2(16.130001, 9.915001)
-copy_mode = 2
-
-[node name="ColorRect" type="ColorRect" parent="BackBufferCopy" unique_id=1699164780]
-material = SubResource("ShaderMaterial_j6m0o")
+[node name="White" type="ColorRect" parent="." unique_id=1699164780]
+material = SubResource("CanvasItemMaterial_x5s4v")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -100.0
-offset_top = -100.0
-offset_right = -100.0
-offset_bottom = -100.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+
+[node name="Black" type="ColorRect" parent="." unique_id=1627105832]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)

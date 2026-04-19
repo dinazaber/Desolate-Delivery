@@ -12,9 +12,7 @@ var settings = {
 		"windowed": false,
 		"anti_aliasing_type": "FXAA",
 		"anti_aliasing_enabled": false,
-		"brightness": 1.0,
-		"contrast": 1.0,
-		"saturation": 1.0
+		"brightness": 1.0
 	},
 	"audio": {
 		"master_volume": 1.0
@@ -96,13 +94,6 @@ func apply_settings():
 	else:
 		get_viewport().screen_space_aa = Viewport.SCREEN_SPACE_AA_DISABLED
 		get_viewport().msaa_3d = Viewport.MSAA_DISABLED
-	
-	var brightness = settings.video.brightness
-	var contrast = settings.video.contrast
-	var saturation = settings.video.saturation
-	PostProcessLayer.get_node("BackBufferCopy/ColorRect").material.set("shader_parameter/brightness", brightness)
-	PostProcessLayer.get_node("BackBufferCopy/ColorRect").material.set("shader_parameter/contrast", contrast)
-	PostProcessLayer.get_node("BackBufferCopy/ColorRect").material.set("shader_parameter/saturation", saturation)
 	
 	
 	

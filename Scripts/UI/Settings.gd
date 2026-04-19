@@ -11,8 +11,6 @@ signal closed
 @onready var windowBtn = $ScrollContainer/VBoxContainer/Window/CheckButton
 @onready var vsyncBtn = $ScrollContainer/VBoxContainer/Vsync/CheckNutton
 @onready var brightBar = $ScrollContainer/VBoxContainer/Brighness/HSlider
-@onready var contrBar = $ScrollContainer/VBoxContainer/Contrast/HSlider
-@onready var saturBar = $ScrollContainer/VBoxContainer/Saturation/HSlider
 
 var settings
 
@@ -50,8 +48,6 @@ func buildSettings() -> void:
 		if height.text.to_int() > 0: settings.video.image_size.y = height.text.to_int()
 	
 	settings.video.brightness = brightBar.value
-	settings.video.contrast = contrBar.value
-	settings.video.saturation = saturBar.value
 	
 	
 	print("Duplicate: " + str(settings))
@@ -95,12 +91,9 @@ func uiRefresh():
 	# Set anti aliasing to be selected
 	setSelected.call_deferred(antAliOpt, SettingsManager.settings.video.anti_aliasing_type)
 	
+	# Adjust brightness slider
 	setSelected.call_deferred(brightBar, SettingsManager.settings.video.brightness)
-	setSelected.call_deferred(contrBar, SettingsManager.settings.video.contrast)
-	setSelected.call_deferred(saturBar, SettingsManager.settings.video.saturation)
 	$ScrollContainer/VBoxContainer/Brighness/Label2.text = str(SettingsManager.settings.video.brightness)
-	$ScrollContainer/VBoxContainer/Contrast/Label2.text = str(SettingsManager.settings.video.contrast)
-	$ScrollContainer/VBoxContainer/Saturation/Label2.text = str(SettingsManager.settings.video.saturation)
 			
 		
 
@@ -138,7 +131,6 @@ func _on_apply_settings_pressed() -> void:
 	buildSettings()
 	copyToConfig()
 	uiRefresh()
-	print(SettingsManager.settings.video.render_scale)
 	
 	
 func _unhandled_input(event: InputEvent) -> void:
@@ -167,11 +159,11 @@ func _on_back_pressed() -> void:
 
 func _on_brightness_slider_value_changed(value: float) -> void:
 	$ScrollContainer/VBoxContainer/Brighness/Label2.text = str(value)
-
-
-func _on_contrast_slider_value_changed(value: float) -> void:
-	$ScrollContainer/VBoxContainer/Contrast/Label2.text = str(value)
-
-
-func _on_saturation_slider_value_changed(value: float) -> void:
-	$ScrollContainer/VBoxContainer/Saturation/Label2.text = str(value)
+	if value < 1.0:
+		PostProcessLayer.get_node("Black").show()
+		PostProcessLayer.get_node("White").hide()
+		PostProcessLayer.get_node("Black").modulate.a = 1.0 - value
+	else: 
+		PostProcessLayer.get_node("White").show()
+		PostProcessLayer.get_node("Black").hide()
+		PostProcessLayer.get_node("White").modulate.a = value - 1.0
