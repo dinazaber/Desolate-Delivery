@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://4i0nsk0syjsv" path="res://Scripts/Weapons/Grenade.gd" id="1_k3jl2"]
 [ext_resource type="ArrayMesh" uid="uid://bx1fs0t7d5ng3" path="res://assets/Meshes/Weapons/Genade.mesh" id="2_2byne"]
+[ext_resource type="Shader" uid="uid://w3eyk752ljxw" path="res://Shaders/MeshShaders/ParticlesShader.gdshader" id="3_2byne"]
 [ext_resource type="PackedScene" uid="uid://b4wyneleeqxp" path="res://Scenes/Modules/TraumaCauser.tscn" id="3_5oibr"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_t2ec2"]
@@ -30,16 +31,17 @@ scale_min = 0.5
 scale_max = 1.1999999
 scale_curve = SubResource("CurveTexture_6rbch")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ou7vq"]
-shading_mode = 0
-albedo_color = Color(1, 0.39215687, 0, 1)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5oibr"]
+render_priority = 0
+shader = ExtResource("3_2byne")
+shader_parameter/color = Color(1, 0.4627451, 0, 1)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_2jest"]
-material = SubResource("StandardMaterial3D_ou7vq")
+material = SubResource("ShaderMaterial_5oibr")
 top_radius = 0.1
 bottom_radius = 0.0
 radial_segments = 4
-rings = 1
+rings = 0
 
 [sub_resource type="Curve" id="Curve_ou7vq"]
 _data = [Vector2(0, 0.011235952), 0.0, 0.0, 0, 0, Vector2(0.6034483, 0.79775286), 0.0, 0.0, 0, 0, Vector2(1, 0.011235952), 0.0, 0.0, 0, 0]
@@ -77,13 +79,13 @@ color = Color(0.27450982, 0.27450982, 0.27450982, 1)
 alpha_curve = SubResource("CurveTexture_rgnl6")
 emission_curve = SubResource("CurveTexture_oxblh")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e1jli"]
-transparency = 1
-shading_mode = 0
-vertex_color_use_as_albedo = true
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7uf86"]
+render_priority = 0
+shader = ExtResource("3_2byne")
+shader_parameter/color = Color(0.7279856, 0.7279857, 0.7279856, 1)
 
 [sub_resource type="SphereMesh" id="SphereMesh_lcisc"]
-material = SubResource("StandardMaterial3D_e1jli")
+material = SubResource("ShaderMaterial_7uf86")
 radial_segments = 8
 rings = 4
 
@@ -123,13 +125,13 @@ color = Color(1, 0.7254902, 0, 1)
 color_ramp = SubResource("GradientTexture1D_dh2ry")
 emission_curve = SubResource("CurveTexture_mf0rl")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pw34q"]
-transparency = 1
-shading_mode = 0
-vertex_color_use_as_albedo = true
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jmlml"]
+render_priority = 0
+shader = ExtResource("3_2byne")
+shader_parameter/color = Color(0.9843137, 0.6627451, 0, 1)
 
 [sub_resource type="SphereMesh" id="SphereMesh_e1jli"]
-material = SubResource("StandardMaterial3D_pw34q")
+material = SubResource("ShaderMaterial_jmlml")
 radial_segments = 8
 rings = 4
 
