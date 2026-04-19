@@ -39,6 +39,7 @@ var yaw = 0.0
 var pitch = 0.0
 var mouse_input: Vector2
 var grenadeCool: float = 100.0
+var landVel: float = 0.0
 
 
 #player stats
@@ -229,7 +230,7 @@ func _physics_process(delta):
 		slide = false
 		floor_constant_speed = true
 		crouch = false
-		playerCollision.shape.height = lerp(playerCollision.shape.height, 2.0, delta * 15.0)
+		playerCollision.shape.height = lerp(playerCollision.shape.height, 2.0, delta * 10.0)
 		accel_mod = 1.0
 	
 	if crouch:
@@ -256,7 +257,8 @@ func _physics_process(delta):
 		
 		if airborne:
 			airborne = false
-			camera.add_trauma(0.7)
+			camera.add_trauma(clamp(0.7 * landVel/10, 0.0, 5.0))
+			landVel = 0.0
 		
 		if Input.is_action_just_pressed("Space") and !dead:
 			velocity.y += jump_speed
@@ -291,6 +293,7 @@ func _physics_process(delta):
 			
 	else: # airborne speed
 		airborne = true
+		landVel = abs(velocity.y)
 		velocity.y -= 20 * delta # Gravity
 		
 		#if Input.is_action_just_pressed("Ctrl") and !$GroundSlamCheck.is_colliding(): # Groundslam

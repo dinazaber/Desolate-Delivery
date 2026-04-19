@@ -3,9 +3,9 @@ signal knockBack(force: int, time: float)
 
 #gun stats
 @export var damage = 70
-@export var recoil = 1.5
-@export var heatPerShot: float = 60.0
-@export var coolDown: float = 7.0 # time (s) it takes to go from 100 to 0 heat
+@export var recoil = 10.0 # degree rotation
+@export var heatPerShot: float = 100.0
+@export var coolDown: float = 5.0 # time (s) it takes to go from 100 to 0 heat
 
 @export var camera: Area3D
 @export var playerRay: RayCast3D
@@ -23,7 +23,7 @@ func shoot():
 		await anim.animation_finished
 		anim.play("Shoot")
 		
-		camera.add_trauma(recoil)
+		camera.add_recoil(recoil)
 		heatBuffer.start()
 		can_cool = false
 		heat = clamp(heat + heatPerShot, 0.0, 100.0)

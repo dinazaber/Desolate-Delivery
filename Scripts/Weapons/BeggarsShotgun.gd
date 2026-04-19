@@ -2,7 +2,7 @@ extends Node3D
 
 #gun stats
 @export var damage: float = 40.0
-@export var recoil: float = 1.0
+@export var recoil: float = 5.0 # degree rotation
 @export var mag: int = 4
 @export var heatPerShot: float = 22.25
 @export var coolDown: float = 5.0 # time (s) it takes to go from 100 to 0 heat
@@ -44,7 +44,7 @@ func shoot():
 		heatBuffer.start()
 		can_cool = false
 		heat = clamp(heat + heatPerShot, 0.0, 100.0)
-		camera.add_trauma(recoil)
+		camera.add_recoil(recoil)
 		shotNum -= 1
 		
 		if playerRay.is_colliding():
