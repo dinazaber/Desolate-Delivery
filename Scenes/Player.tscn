@@ -11,19 +11,6 @@
 [ext_resource type="Script" uid="uid://b1yx1tjjakl1w" path="res://Scripts/UI/HUD.gd" id="7_bhhdu"]
 [ext_resource type="PackedScene" uid="uid://bm2ti0vwyvub4" path="res://Scenes/UI/DeadScreen.tscn" id="10_yoq75"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kyqiw"]
-shading_mode = 0
-
-[sub_resource type="BoxMesh" id="BoxMesh_rpqav"]
-material = SubResource("StandardMaterial3D_kyqiw")
-size = Vector3(1, 2, 1)
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kyqiw"]
-
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_nn08x"]
-height = 0.3
-radius = 6.0
-
 [sub_resource type="Animation" id="Animation_yoq75"]
 resource_name = "RESET"
 length = 0.001
@@ -86,12 +73,28 @@ _data = {
 &"death": SubResource("Animation_megsn")
 }
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kyqiw"]
+shading_mode = 0
+
+[sub_resource type="BoxMesh" id="BoxMesh_rpqav"]
+material = SubResource("StandardMaterial3D_kyqiw")
+size = Vector3(1, 2, 1)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kyqiw"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_nn08x"]
+height = 0.3
+radius = 6.0
+
 [node name="Player" type="CharacterBody3D" unique_id=1941692924 groups=["Persist", "Player"]]
 collision_layer = 25
 collision_mask = 9
 floor_constant_speed = true
 floor_snap_length = 0.25
 script = ExtResource("1_g8lft")
+
+[node name="cameraAnimation" type="AnimationPlayer" parent="." unique_id=1078308482]
+libraries/ = SubResource("AnimationLibrary_yoq75")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=620583355]
 visible = false
@@ -116,9 +119,6 @@ collision_mask = 2
 [node name="CollisionShape3D" type="CollisionShape3D" parent="GroundSlam" unique_id=622411142]
 shape = SubResource("CylinderShape3D_nn08x")
 debug_color = Color(0.997045, 0, 0.18383858, 0.41960785)
-
-[node name="cameraAnimation" type="AnimationPlayer" parent="." unique_id=1078308482]
-libraries/ = SubResource("AnimationLibrary_yoq75")
 
 [node name="shakeable_camera" parent="." unique_id=1373532385 instance=ExtResource("2_megsn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)

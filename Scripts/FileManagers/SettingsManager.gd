@@ -21,13 +21,19 @@ var settings = {
 
 func _ready():
 	
-	#save_settings() # When you add parameters to config, remove the hash. After first launch, return the hash.
-	
 	load_settings()
 	
 	if settings.video.windowed: 
 		@warning_ignore("integer_division")
 		DisplayServer.window_set_position(DisplayServer.screen_get_position() + DisplayServer.screen_get_size() / 2 - DisplayServer.window_get_size() / 2)
+		
+
+func isConfigValid() -> bool:
+	for section in settings.keys():
+		if not config.has_section(section): return false
+		for key in settings[section].keys():
+			if not config.has_section_key(section, key): return false
+	return true
 	
 	
 func save_settings():
@@ -43,6 +49,8 @@ func load_settings():
 		print("Error! Missing config file!")
 		save_settings()
 		return
+		
+	if !isConfigValid(): save_settings()
 		
 	for section in settings.keys():
 		for key in settings[section].keys():
