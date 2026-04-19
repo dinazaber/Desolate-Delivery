@@ -10,6 +10,9 @@ signal closed
 @onready var fps = $ScrollContainer/VBoxContainer/Fps/MaxFpsEdit
 @onready var windowBtn = $ScrollContainer/VBoxContainer/Window/CheckButton
 @onready var vsyncBtn = $ScrollContainer/VBoxContainer/Vsync/CheckNutton
+@onready var brightBar = $ScrollContainer/VBoxContainer/Brighness/HSlider
+@onready var contrBar = $ScrollContainer/VBoxContainer/Contrast/HSlider
+@onready var saturBar = $ScrollContainer/VBoxContainer/Saturation/HSlider
 
 var settings
 
@@ -23,11 +26,14 @@ func _ready() -> void:
 
 		
 
-func setSelected(node: OptionButton, val: String) -> void:
-	for i in range(node.item_count):
-		if node.get_item_text(i) == val:
-			node.select(i)
-			return
+func setSelected(node, val) -> void:
+	if node is OptionButton:
+		for i in range(node.item_count):
+			if node.get_item_text(i) == val:
+				node.select(i)
+				return
+	elif node is HSlider:
+		node.set("value", val)
 			
 
 func buildSettings() -> void:
@@ -42,6 +48,11 @@ func buildSettings() -> void:
 			
 	if height.text.is_valid_int():
 		if height.text.to_int() > 0: settings.video.image_size.y = height.text.to_int()
+	
+	settings.video.brightness = brightBar.value
+	settings.video.contrast = contrBar.value
+	settings.video.saturation = saturBar.value
+	
 	
 	print("Duplicate: " + str(settings))
 	print("Config: " + str(SettingsManager.settings))
@@ -83,6 +94,13 @@ func uiRefresh():
 	
 	# Set anti aliasing to be selected
 	setSelected.call_deferred(antAliOpt, SettingsManager.settings.video.anti_aliasing_type)
+	
+	setSelected.call_deferred(brightBar, SettingsManager.settings.video.brightness)
+	setSelected.call_deferred(contrBar, SettingsManager.settings.video.contrast)
+	setSelected.call_deferred(saturBar, SettingsManager.settings.video.saturation)
+	$ScrollContainer/VBoxContainer/Brighness/Label2.text = str(SettingsManager.settings.video.brightness)
+	$ScrollContainer/VBoxContainer/Contrast/Label2.text = str(SettingsManager.settings.video.contrast)
+	$ScrollContainer/VBoxContainer/Saturation/Label2.text = str(SettingsManager.settings.video.saturation)
 			
 		
 
@@ -113,7 +131,7 @@ func _on_anti_aliasing_item_selected(index: int) -> void:
 		2: settings.video.anti_aliasing_type = "MSAA 2x"
 		3: settings.video.anti_aliasing_type = "FXAA"
 		4: settings.video.anti_aliasing_type = "SMAA"
-			
+		
 
 
 func _on_apply_settings_pressed() -> void:
@@ -145,3 +163,15 @@ func _on_discard_pressed() -> void:
 func _on_back_pressed() -> void:
 	$Panel.hide()
 	$ScrollContainer.mouse_filter = Control.MOUSE_FILTER_PASS
+
+
+func _on_brightness_slider_value_changed(value: float) -> void:
+	$ScrollContainer/VBoxContainer/Brighness/Label2.text = str(value)
+
+
+func _on_contrast_slider_value_changed(value: float) -> void:
+	$ScrollContainer/VBoxContainer/Contrast/Label2.text = str(value)
+
+
+func _on_saturation_slider_value_changed(value: float) -> void:
+	$ScrollContainer/VBoxContainer/Saturation/Label2.text = str(value)

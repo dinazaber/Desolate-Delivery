@@ -24,6 +24,7 @@ config/icon="res://icon.svg"
 
 SaveManager="*uid://dbihyb2ex78ls"
 SettingsManager="*uid://dgst3buv1sy3g"
+PostProcessLayer="*uid://cn3q7bykvbh6f"
 
 [display]
 

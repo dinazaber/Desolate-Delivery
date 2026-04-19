@@ -33,6 +33,8 @@ sky = SubResource("Sky_df05h")
 fog_light_color = Color(0.8499037, 0.6756193, 0, 1)
 fog_density = 0.0692
 fog_sky_affect = 0.0
+adjustment_enabled = true
+adjustment_brightness = 1.1
 
 [node name="MainMenu" type="Control" unique_id=1079908484]
 layout_mode = 3
