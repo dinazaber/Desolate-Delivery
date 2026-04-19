@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://d23s0inguh17p"]
 
+[ext_resource type="Script" uid="uid://dg8y87gh5eurk" path="res://Scripts/Modules/RigidBody.gd" id="1_3t8db"]
 [ext_resource type="ArrayMesh" uid="uid://c38lj2xgan0m6" path="res://assets/Meshes/Objects/Barrel.mesh" id="1_vkgwf"]
 [ext_resource type="Texture2D" uid="uid://cwhfnmqmj2nse" path="res://assets/Textures/Architecture/ExplosionHazard.png" id="2_m5ibw"]
 [ext_resource type="Texture2D" uid="uid://b7kptgyge4m5j" path="res://assets/Textures/Architecture/MagicEffect2.png" id="3_3t8db"]
@@ -46,10 +47,11 @@ height = 2.980957
 radius = 1.0263672
 
 [node name="RigidBody" type="RigidBody3D" unique_id=707473027]
-mass = 4.0
+mass = 8.0
+script = ExtResource("1_3t8db")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1485554187]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0.197)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.197)
 layers = 3
 mesh = ExtResource("1_vkgwf")
 

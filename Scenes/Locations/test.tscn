@@ -303,19 +303,18 @@ skeleton = NodePath("../..")
 
 [node name="RigidBody" parent="." unique_id=707473027 instance=ExtResource("15_iyf6e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.1405044, 0.7930865, 2.975814)
-mass = 8.0
+mass = 6.0
+total_scale = 0.4
 
 [node name="RigidBody2" parent="." unique_id=1651338683 instance=ExtResource("15_iyf6e")]
-transform = Transform3D(-4.2706393e-08, -0.9770084, 0.2132009, 1, -4.371139e-08, -6.344131e-16, 9.319308e-09, 0.2132009, 0.9770084, -7.188091, 0.5455829, 2.1120596)
-mass = 8.0
+transform = Transform3D(-4.2706393e-08, -0.9770084, 0.21320088, 1, -4.371139e-08, -6.344131e-16, 9.319307e-09, 0.21320088, 0.9770084, -7.188091, 0.5455829, 2.1120596)
+mass = 6.0
+total_scale = 0.4
 
 [node name="RigidBody3" parent="." unique_id=629633255 instance=ExtResource("15_iyf6e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.798324, 0.7930865, 3.072209)
-mass = 8.0
-
-[node name="RigidBody4" parent="." unique_id=2132569094 instance=ExtResource("15_iyf6e")]
-transform = Transform3D(-2.3874729e-09, -0.054619018, -0.99850726, 1, -4.371139e-08, 3.1720659e-16, -4.364614e-08, -0.99850726, 0.054619018, -8.045181, 0.5738101, 2.8969457)
-mass = 8.0
+mass = 6.0
+total_scale = 0.4
 
 [node name="Crates" type="MultiMeshInstance3D" parent="." unique_id=1308017449]
 multimesh = SubResource("MultiMesh_obpdj")
