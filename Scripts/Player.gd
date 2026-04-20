@@ -140,8 +140,9 @@ func _input(event):
 	# Throwable objects
 	if Input.is_action_just_pressed("E"):
 		if grabbedObject: 
-			grabbedObject.gravity_scale = 1
-			remove_collision_exception_with(grabbedObject)
+			grabbedObject.gravity_scale = 1.0
+			grabbedObject.linear_damp = 0.0
+			#remove_collision_exception_with(grabbedObject)
 			grabbedObject = null
 		else: 
 			if playerRay.is_colliding():
@@ -149,8 +150,9 @@ func _input(event):
 				var distance = global_position.distance_to(collider.global_position)
 				if collider is RigidBody3D and distance < 3:
 					grabbedObject = collider
-					grabbedObject.gravity_scale = 0
-					add_collision_exception_with(grabbedObject)
+					grabbedObject.gravity_scale = 0.0
+					grabbedObject.linear_damp = 0.0
+					#add_collision_exception_with(grabbedObject)
 		
 	
 	# Weapon Switch
@@ -189,14 +191,14 @@ func _input(event):
 				#cameraDistance-=1.5
 				
 
-
 func _physics_process(delta):
 	
 	if screenEffect!=null: updateScreenEffect()
 
 	#cameraDistance = clamp(cameraDistance,15, 45)
 	
-	grenadeCool = clamp(grenadeCool + (100 * delta) / grenadeCoolTime, 0, 100.0)
+	#neg vals are for recharge delay i.e -5 is 0.5 sec rechare delay VLAD
+	grenadeCool = clamp(grenadeCool + (100 * delta) / grenadeCoolTime, -5.0, 100.0)
 	
 	fireDelay = clamp(fireDelay + (100 * delta), 0, 10.0)
 	
@@ -213,8 +215,10 @@ func _physics_process(delta):
 		elif grabbedObject:
 			var dir = -camera.global_basis.z
 			grabbedObject.gravity_scale = 1
-			grabbedObject.apply_central_impulse(dir * 100)
-			remove_collision_exception_with(grabbedObject)
+			grabbedObject.linear_damp = 0.0
+			var lim = 1.0 if grabbedObject.mass > 0.5 else grabbedObject.mass
+			grabbedObject.apply_central_impulse(dir * 40.0 * lim)
+			#remove_collision_exception_with(grabbedObject)
 			grabbedObject = null
 			fireDelay = 0
 	
@@ -227,25 +231,26 @@ func _physics_process(delta):
 		current_gun_L.shoot()
 		
 	
+	
 	if grabbedObject: # Grabbed Object
 		var holdPos = $shakeable_camera/throwableSpawn
 		var distance = grabbedObject.global_position.distance_to(holdPos.global_position)
+		var dir = holdPos.global_position - grabbedObject.global_position
 		if distance > 1.5:
-			grabbedObject.gravity_scale = 1
+			grabbedObject.gravity_scale = 1.0
+			grabbedObject.linear_damp = 0.0
 			grabbedObject = null
 			return
 		
-		grabbedObject.global_position = holdPos.global_position
-		grabbedObject.global_rotation = holdPos.global_rotation
-	
-	
-	for i in get_slide_collision_count(): # Rigid bodies pushing
-		var collision = get_slide_collision(i)
-		var collider = collision.get_collider()
-			
-		if collider is RigidBody3D:
-			var pushDir = -collision.get_normal()
-			collider.apply_impulse(pushDir * 4, collision.get_position() - collider.global_position)
+		grabbedObject.linear_damp = 16/(grabbedObject.mass**0.67)
+		
+		var force = dir * distance**0.25 * 5000/(10 + grabbedObject.mass)
+		force = clamp(force, Vector3.ZERO, dir * distance**0.25 * 357) # limit force
+		grabbedObject.apply_central_force(force)
+		grabbedObject.angular_velocity = Vector3.ZERO
+		grabbedObject.global_rotation.x = lerp_angle(grabbedObject.global_rotation.x, holdPos.global_rotation.x, delta * 100/(10 + grabbedObject.mass))
+		grabbedObject.global_rotation.y = lerp_angle(grabbedObject.global_rotation.y, holdPos.global_rotation.y, delta * 100/(10 + grabbedObject.mass))
+		grabbedObject.global_rotation.z = lerp_angle(grabbedObject.global_rotation.z, holdPos.global_rotation.z, delta * 100/(10 + grabbedObject.mass))
 	
 	
 	if Input.is_action_pressed("Ctrl") and !dead: # crouch/slide
@@ -298,7 +303,7 @@ func _physics_process(delta):
 			landVel = 0.0
 		
 		if Input.is_action_just_pressed("Space") and !dead:
-			velocity.y += jump_speed
+			velocity.y += jump_speed * (0.75 if crouch else 1.0)
 		
 		if !dead:
 		# without this line the camera does some goofy stuff when walking into an object. keep it.
@@ -347,6 +352,8 @@ func _physics_process(delta):
 	
 	handle_healthBar()
 	handle_heatBars()
+	
+	push_object()
 	move_and_slide()
 
 
@@ -381,8 +388,24 @@ func gun_bob(vel: float, input, delta):
 		else:
 			hands.position.y = lerp(hands.position.y, def_gun_pos.y, delta * 10.0)
 			hands.position.x = lerp(hands.position.x, def_gun_pos.x, delta * 10.0)
+
+func push_object():
+	for i in get_slide_collision_count():
+		var collision = get_slide_collision(i)
+		var collider = collision.get_collider()
 			
+		if collider is RigidBody3D and collider != grabbedObject:
+			var push_dir = -collision.get_normal()
+			var push_dir_vel_dif = velocity.dot(push_dir) - collider.linear_velocity.dot(push_dir)
+			push_dir_vel_dif = max(0.0, push_dir_vel_dif)
 			
+			const PLAYER_MASS = 80.0
+			var mass_ratio = min(1.0, PLAYER_MASS / collider.mass)
+			
+			push_dir.y = 0.0
+			var push_force = mass_ratio * 5.0
+			collider.apply_force(push_dir * push_dir_vel_dif * push_force, collision.get_position() - collider.global_position)
+
 
 func hideWeapons(): #We will add here check for left/right side later I guess
 	for i in $shakeable_camera/Hands/RightHand.get_children():
@@ -404,7 +427,7 @@ func throw_grenade():
 		var upward_force = 3.5
 		instance_grenade.apply_central_impulse((throw_dir * forward_force) + Vector3(0, upward_force, 0) + velocity)
 		get_parent().add_child(instance_grenade)
-		grenadeCool = 0
+		grenadeCool = -5.0
 
 #func shoot_speargun(): ## UNUSED
 	#if !rightWeaponAnim.is_playing() and canShoot:

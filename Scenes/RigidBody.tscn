@@ -48,10 +48,11 @@ radius = 1.0263672
 
 [node name="RigidBody" type="RigidBody3D" unique_id=707473027]
 mass = 8.0
+continuous_cd = true
 script = ExtResource("1_3t8db")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1485554187]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.197)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.4)
 layers = 3
 mesh = ExtResource("1_vkgwf")
 
@@ -71,5 +72,4 @@ process_material = SubResource("ParticleProcessMaterial_m5ibw")
 draw_pass_1 = SubResource("PlaneMesh_ettcv")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1527479017]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -0.0021972656, 0)
 shape = SubResource("CylinderShape3D_m5ibw")
