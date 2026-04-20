@@ -21,6 +21,7 @@
 [ext_resource type="ArrayMesh" uid="uid://tnqtnrxm02k4" path="res://assets/Meshes/Objects/Crate.mesh" id="16_jcbmq"]
 [ext_resource type="ArrayMesh" uid="uid://duisheavfmqh2" path="res://assets/Meshes/Objects/Vehicles/Car1/Car1Chassis.mesh" id="16_xe0hb"]
 [ext_resource type="ArrayMesh" uid="uid://bhdj6x3k5qagf" path="res://assets/Meshes/Architecture/CommandCenter.mesh" id="21_xe0hb"]
+[ext_resource type="ArrayMesh" uid="uid://bvbx2g5lkenkl" path="res://assets/Meshes/Architecture/OilTank.mesh" id="22_ijbfb"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_yb21e"]
 vertices = PackedVector3Array(-49.1, 0.5, -49.1, -49.1, 0.5, 49.000008, 49.000008, 0.5, 49.000008, 49.000008, 0.5, -49.1)
@@ -134,11 +135,15 @@ left_to_right = -0.5
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ijbfb"]
 
+[sub_resource type="MultiMesh" id="MultiMesh_ijbfb"]
+transform_format = 1
+instance_count = 3
+visible_instance_count = 3
+mesh = ExtResource("22_ijbfb")
+buffer = PackedFloat32Array(1.5, 0, 0, -14.357278, 0, 1.5, 0, 2.8921862, 0, 0, 1.5, 7.3152604, 1.5, 0, 0, 5.7395964, 0, 1.5, 0, 2.8921862, 0, 0, 1.5, 7.3152604, 1.5, 0, 0, 26.780369, 0, 1.5, 0, 2.8921862, 0, 0, 1.5, 7.3152604)
+
 [node name="Node" type="Node" unique_id=310413080]
 script = ExtResource("1_jcbmq")
-
-[node name="instances" type="Node3D" parent="." unique_id=375515516]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 0)
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=628531476]
 navigation_mesh = SubResource("NavigationMesh_yb21e")
@@ -303,17 +308,18 @@ skeleton = NodePath("../..")
 
 [node name="RigidBody" parent="." unique_id=707473027 instance=ExtResource("15_iyf6e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.1405044, 0.7930865, 2.975814)
-mass = 6.0
 total_scale = 0.4
 
 [node name="RigidBody2" parent="." unique_id=1651338683 instance=ExtResource("15_iyf6e")]
 transform = Transform3D(-4.2706393e-08, -0.9770084, 0.21320088, 1, -4.371139e-08, -6.344131e-16, 9.319307e-09, 0.21320088, 0.9770084, -7.188091, 0.5455829, 2.1120596)
-mass = 6.0
 total_scale = 0.4
 
 [node name="RigidBody3" parent="." unique_id=629633255 instance=ExtResource("15_iyf6e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.798324, 0.7930865, 3.072209)
-mass = 6.0
+total_scale = 0.4
+
+[node name="RigidBody4" parent="." unique_id=590815455 instance=ExtResource("15_iyf6e")]
+transform = Transform3D(-0.75855535, 0, -0.6516086, 0, 1, 0, 0.6516086, 0, -0.75855535, -8.223284, 0.7930865, 2.4221127)
 total_scale = 0.4
 
 [node name="Crates" type="MultiMeshInstance3D" parent="." unique_id=1308017449]
@@ -346,3 +352,11 @@ mesh = SubResource("PrismMesh_ijbfb")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D2/Area3D" unique_id=42844599]
 transform = Transform3D(1.0009983, 0.6618177, -2.2252168e-12, -0.6618177, 1.0009983, 4.842997e-10, 2.6895464e-10, -4.0275872e-10, 1.2, -0.8252926, -0.33310908, 0)
 shape = SubResource("BoxShape3D_ijbfb")
+
+[node name="Tanks" type="MultiMeshInstance3D" parent="." unique_id=1264175345]
+multimesh = SubResource("MultiMesh_ijbfb")
+script = ExtResource("3_u4tly")
+go_explode = null
+shape_type = 0
+go_make_colliders = null
+metadata/_custom_type_script = "uid://cfwmt6vc7y70h"
