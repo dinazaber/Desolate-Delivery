@@ -49,7 +49,7 @@ func buildSettings() -> void:
 		if height.text.to_int() > 0: settings.video.image_size.y = height.text.to_int()
 	
 	settings.video.brightness = brightBar.value
-	settings.controls.mouse_sensitivity = mousSensBar.value
+	settings.controls.mouse_sensitivity = mousSensBar.value/10000
 	
 	print("Duplicate: " + str(settings))
 	print("Config: " + str(SettingsManager.settings))
@@ -96,9 +96,9 @@ func uiRefresh():
 	setSelected.call_deferred(brightBar, SettingsManager.settings.video.brightness)
 	
 	# Adjust mouse sensitivity slider
-	setSelected.call_deferred(mousSensBar, SettingsManager.settings.controls.mouse_sensitivity)
+	setSelected.call_deferred(mousSensBar, SettingsManager.settings.controls.mouse_sensitivity*10000)
 	$ScrollContainer/VBoxContainer/Brighness/Label2.text = str(SettingsManager.settings.video.brightness)
-	$ScrollContainer/VBoxContainer/MouseSens/Label2.text = str(SettingsManager.settings.controls.mouse_sensitivity/10000)
+	$ScrollContainer/VBoxContainer/MouseSens/Label2.text = str(SettingsManager.settings.controls.mouse_sensitivity)
 			
 		
 

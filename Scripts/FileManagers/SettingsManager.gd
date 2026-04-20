@@ -112,7 +112,7 @@ func apply_settings():
 		get_viewport().screen_space_aa = Viewport.SCREEN_SPACE_AA_DISABLED
 		get_viewport().msaa_3d = Viewport.MSAA_DISABLED
 	
-	if player: player.cam_speed = settings.controls.mouse_sensitivity/10000
+	if player: player.cam_speed = settings.controls.mouse_sensitivity
 	
 	
 	

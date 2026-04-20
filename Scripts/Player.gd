@@ -124,7 +124,7 @@ func updateScreenEffect(): #Function for current and future screen effects
 
 
 func _ready() -> void:
-	cam_speed = SettingsManager.settings.controls.mouse_sensitivity/10000
+	cam_speed = SettingsManager.settings.controls.mouse_sensitivity
 	SettingsManager.player = self
 	def_gun_pos = hands.position
 	
