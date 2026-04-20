@@ -2,6 +2,7 @@ extends Node
 
 const SAVE_PATH = "user://settings.cfg"
 var config = ConfigFile.new()
+var player: CharacterBody3D
 
 var settings = {
 	"video": {
@@ -16,6 +17,9 @@ var settings = {
 	},
 	"audio": {
 		"master_volume": 1.0
+	},
+	"controls": {
+		"mouse_sensitivity": 50
 	}
 }
 
@@ -47,11 +51,13 @@ func load_settings():
 	
 	if error != OK:
 		print("Error! Missing config file!")
+		print("Creating new config...")
 		save_settings()
 		return
 		
 	if !isConfigValid():
 		print("Error! Config file isn't updated!")
+		print("Creating new config...")
 		save_settings()
 		return
 		
@@ -105,6 +111,8 @@ func apply_settings():
 	else:
 		get_viewport().screen_space_aa = Viewport.SCREEN_SPACE_AA_DISABLED
 		get_viewport().msaa_3d = Viewport.MSAA_DISABLED
+	
+	if player: player.cam_speed = settings.controls.mouse_sensitivity/10000
 	
 	
 	

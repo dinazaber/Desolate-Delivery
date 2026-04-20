@@ -11,6 +11,7 @@ signal closed
 @onready var windowBtn = $ScrollContainer/VBoxContainer/Window/CheckButton
 @onready var vsyncBtn = $ScrollContainer/VBoxContainer/Vsync/CheckNutton
 @onready var brightBar = $ScrollContainer/VBoxContainer/Brighness/HSlider
+@onready var mousSensBar = $ScrollContainer/VBoxContainer/MouseSens/HSlider
 
 var settings
 
@@ -48,7 +49,7 @@ func buildSettings() -> void:
 		if height.text.to_int() > 0: settings.video.image_size.y = height.text.to_int()
 	
 	settings.video.brightness = brightBar.value
-	
+	settings.controls.mouse_sensitivity = mousSensBar.value
 	
 	print("Duplicate: " + str(settings))
 	print("Config: " + str(SettingsManager.settings))
@@ -93,7 +94,11 @@ func uiRefresh():
 	
 	# Adjust brightness slider
 	setSelected.call_deferred(brightBar, SettingsManager.settings.video.brightness)
+	
+	# Adjust mouse sensitivity slider
+	setSelected.call_deferred(mousSensBar, SettingsManager.settings.controls.mouse_sensitivity)
 	$ScrollContainer/VBoxContainer/Brighness/Label2.text = str(SettingsManager.settings.video.brightness)
+	$ScrollContainer/VBoxContainer/MouseSens/Label2.text = str(SettingsManager.settings.controls.mouse_sensitivity/10000)
 			
 		
 
@@ -167,3 +172,7 @@ func _on_brightness_slider_value_changed(value: float) -> void:
 		PostProcessLayer.get_node("White").show()
 		PostProcessLayer.get_node("Black").hide()
 		PostProcessLayer.get_node("White").modulate.a = value - 1.0
+
+
+func _on_mousSens_slider_value_changed(value: float) -> void:
+	$ScrollContainer/VBoxContainer/MouseSens/Label2.text = str(value/10000)

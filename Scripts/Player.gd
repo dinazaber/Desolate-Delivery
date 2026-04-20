@@ -124,6 +124,8 @@ func updateScreenEffect(): #Function for current and future screen effects
 
 
 func _ready() -> void:
+	cam_speed = SettingsManager.settings.controls.mouse_sensitivity/10000
+	SettingsManager.player = self
 	def_gun_pos = hands.position
 	
 	healthBar.max_value = PLAYER_MAX_HEALTH
@@ -151,6 +153,7 @@ func _input(event):
 					add_collision_exception_with(grabbedObject)
 		
 	
+	# Weapon Switch
 	if Input.is_action_just_pressed("1"): # smg
 		if current_gun_R != SMG:
 			await current_gun_R.undraw()

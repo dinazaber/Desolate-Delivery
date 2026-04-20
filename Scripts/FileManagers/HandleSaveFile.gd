@@ -10,3 +10,5 @@ func _ready():
 		var sunDir = -sun.global_transform.basis.z
 		RenderingServer.global_shader_parameter_set("sun_direction", sunDir)
 	
+	
+	

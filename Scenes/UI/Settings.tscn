@@ -24,6 +24,7 @@ offset_right = 211.0
 offset_bottom = 176.5
 grow_horizontal = 2
 grow_vertical = 2
+scroll_vertical = 38
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer" unique_id=732182932]
 layout_mode = 2
@@ -158,7 +159,7 @@ text = "Brightness
 "
 
 [node name="HSlider" type="HSlider" parent="ScrollContainer/VBoxContainer/Brighness" unique_id=129257287]
-custom_minimum_size = Vector2(259, 27.895)
+custom_minimum_size = Vector2(248.275, 27.895)
 layout_mode = 2
 min_value = 0.3
 max_value = 1.2
@@ -167,7 +168,34 @@ value = 0.3
 
 [node name="Label2" type="Label" parent="ScrollContainer/VBoxContainer/Brighness" unique_id=929891435]
 layout_mode = 2
-text = "1.0
+text = "1.15
+"
+
+[node name="ControlslLabel" type="Label" parent="ScrollContainer/VBoxContainer" unique_id=456451572]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Controls"
+horizontal_alignment = 1
+
+[node name="MouseSens" type="HBoxContainer" parent="ScrollContainer/VBoxContainer" unique_id=1217159991]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/MouseSens" unique_id=1421933019]
+layout_mode = 2
+text = "Mouse Sensitivity
+"
+
+[node name="HSlider" type="HSlider" parent="ScrollContainer/VBoxContainer/MouseSens" unique_id=1593189226]
+custom_minimum_size = Vector2(185, 27.895)
+layout_mode = 2
+min_value = 10.0
+step = 10.0
+value = 10.0
+
+[node name="Label2" type="Label" parent="ScrollContainer/VBoxContainer/MouseSens" unique_id=1172161025]
+layout_mode = 2
+text = "0.001
 "
 
 [node name="ApplySettings" type="Button" parent="." unique_id=1566765507]
@@ -226,6 +254,7 @@ text = "Back"
 [connection signal="item_selected" from="ScrollContainer/VBoxContainer/Scale/ScaleOption" to="." method="_on_scale_option_item_selected"]
 [connection signal="item_selected" from="ScrollContainer/VBoxContainer/AntiAliasing/AntAliOp" to="." method="_on_anti_aliasing_item_selected"]
 [connection signal="value_changed" from="ScrollContainer/VBoxContainer/Brighness/HSlider" to="." method="_on_brightness_slider_value_changed"]
+[connection signal="value_changed" from="ScrollContainer/VBoxContainer/MouseSens/HSlider" to="." method="_on_mousSens_slider_value_changed"]
 [connection signal="pressed" from="ApplySettings" to="." method="_on_apply_settings_pressed"]
 [connection signal="pressed" from="Panel/Vbox/HBoxContainer/Discard" to="." method="_on_discard_pressed"]
 [connection signal="pressed" from="Panel/Vbox/HBoxContainer/Back" to="." method="_on_back_pressed"]
