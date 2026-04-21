@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dqs2csmfgctot"
-path.bptc="res://.godot/imported/PlayerIdle.png-c4f7528fa9962e63722a6ac1b5f9affc.bptc.ctex"
+uid="uid://dghl77bwxa0m1"
+path.bptc="res://.godot/imported/Crack2.png-3d3c4d29ea0351ddae0b78412bd45a15.bptc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/Textures/Architecture/PlayerIdle.png"
-dest_files=["res://.godot/imported/PlayerIdle.png-c4f7528fa9962e63722a6ac1b5f9affc.bptc.ctex"]
+source_file="res://assets/Textures/Architecture/Crack2.png"
+dest_files=["res://.godot/imported/Crack2.png-3d3c4d29ea0351ddae0b78412bd45a15.bptc.ctex"]
 
 [params]
 

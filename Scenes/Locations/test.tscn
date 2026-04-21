@@ -23,6 +23,10 @@
 [ext_resource type="ArrayMesh" uid="uid://bhdj6x3k5qagf" path="res://assets/Meshes/Architecture/CommandCenter.mesh" id="21_xe0hb"]
 [ext_resource type="ArrayMesh" uid="uid://bvbx2g5lkenkl" path="res://assets/Meshes/Architecture/OilTank.mesh" id="22_ijbfb"]
 [ext_resource type="ArrayMesh" uid="uid://br33wg26qu7sk" path="res://assets/Meshes/Objects/Crate2.mesh" id="23_wr8wa"]
+[ext_resource type="ArrayMesh" uid="uid://dg5v2a8wb7y1i" path="res://assets/Meshes/Architecture/FlightRoad1.mesh" id="24_8m8kg"]
+[ext_resource type="ArrayMesh" uid="uid://ctwgbcoa041dw" path="res://assets/Meshes/Architecture/FlightRoad2.mesh" id="25_a87j4"]
+[ext_resource type="ArrayMesh" uid="uid://bkr71h5a7ujcd" path="res://assets/Meshes/Architecture/FlightRoad3.mesh" id="26_d53pk"]
+[ext_resource type="ArrayMesh" uid="uid://c1vnvnx5yvnwh" path="res://assets/Meshes/Architecture/FlightRoad4.mesh" id="27_lghlv"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_qpfo2"]
 noise_type = 4
@@ -384,3 +388,19 @@ go_explode = null
 shape_type = 0
 go_make_colliders = null
 metadata/_custom_type_script = "uid://cfwmt6vc7y70h"
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="." unique_id=176642363]
+transform = Transform3D(-2.1855695e-07, 0, -5, 0, 5, 0, 5, 0, -2.1855695e-07, 5, 0.186, -11.963)
+mesh = ExtResource("24_8m8kg")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="." unique_id=2033277997]
+transform = Transform3D(-2.1855695e-07, 0, -5, 0, 5, 0, 5, 0, -2.1855695e-07, 15, 0.186, -11.963)
+mesh = ExtResource("25_a87j4")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="." unique_id=1355379276]
+transform = Transform3D(-2.1855695e-07, 0, -5, 0, 5, 0, 5, 0, -2.1855695e-07, 25, 0.186, -11.963)
+mesh = ExtResource("26_d53pk")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="." unique_id=854384402]
+transform = Transform3D(-2.1855695e-07, 0, -5, 0, 5, 0, 5, 0, -2.1855695e-07, 35, 0.186, -11.963)
+mesh = ExtResource("27_lghlv")

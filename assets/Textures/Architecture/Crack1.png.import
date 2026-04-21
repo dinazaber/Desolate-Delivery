@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b3cf80eusloud"
-path.bptc="res://.godot/imported/PlayerAttack.png-e8b275234faa0e20477e124cc43fcc9d.bptc.ctex"
+uid="uid://ba1rx18flr63r"
+path.bptc="res://.godot/imported/Crack1.png-8cf3f7205cba2d829e041c54d1a0b91f.bptc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/Textures/Architecture/PlayerAttack.png"
-dest_files=["res://.godot/imported/PlayerAttack.png-e8b275234faa0e20477e124cc43fcc9d.bptc.ctex"]
+source_file="res://assets/Textures/Architecture/Crack1.png"
+dest_files=["res://.godot/imported/Crack1.png-8cf3f7205cba2d829e041c54d1a0b91f.bptc.ctex"]
 
 [params]
 
@@ -26,7 +26,7 @@ compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=false
 mipmaps/limit=-1
-roughness/mode=1
+roughness/mode=0
 roughness/src_normal=""
 process/channel_remap/red=0
 process/channel_remap/green=1
