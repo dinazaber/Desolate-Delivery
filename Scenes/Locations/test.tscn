@@ -24,6 +24,40 @@
 [ext_resource type="ArrayMesh" uid="uid://bvbx2g5lkenkl" path="res://assets/Meshes/Architecture/OilTank.mesh" id="22_ijbfb"]
 [ext_resource type="ArrayMesh" uid="uid://br33wg26qu7sk" path="res://assets/Meshes/Objects/Crate2.mesh" id="23_wr8wa"]
 
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_qpfo2"]
+noise_type = 4
+fractal_type = 2
+domain_warp_type = 1
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_yb21e"]
+generate_mipmaps = false
+noise = SubResource("FastNoiseLite_qpfo2")
+seamless = true
+seamless_blend_skirt = 1.0
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_aees8"]
+frequency = 0.05
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_mie3u"]
+width = 64
+height = 64
+generate_mipmaps = false
+noise = SubResource("FastNoiseLite_aees8")
+seamless = true
+seamless_blend_skirt = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0qy5o"]
+shader = ExtResource("5_qhj8q")
+shader_parameter/noise_img_fast = SubResource("NoiseTexture2D_yb21e")
+shader_parameter/noise_img_slow = SubResource("NoiseTexture2D_mie3u")
+shader_parameter/dust_color = Color(0.8, 0.7, 0.5, 0.5)
+shader_parameter/total_opacity = 0.5
+shader_parameter/look_angle_factor = 1.0
+shader_parameter/speed_fast = Vector2(0.01, -0.01)
+shader_parameter/speed_slow = Vector2(0.02, -0.01)
+shader_parameter/density_fast = 0.5
+shader_parameter/density_slow = 1.0
+
 [sub_resource type="NavigationMesh" id="NavigationMesh_yb21e"]
 vertices = PackedVector3Array(-49.1, 0.5, -49.1, -49.1, 0.5, 49.000008, 49.000008, 0.5, 49.000008, 49.000008, 0.5, -49.1)
 polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
@@ -59,6 +93,7 @@ ssr_fade_out = 3.8637512
 ssao_power = 1.9792577
 sdfgi_cascades = 1
 sdfgi_y_scale = 0
+fog_enabled = true
 fog_light_color = Color(0.77, 0.687995, 0.22330001, 1)
 fog_sun_scatter = 0.25
 fog_sky_affect = 0.4
@@ -68,40 +103,6 @@ volumetric_fog_sky_affect = 0.566
 adjustment_enabled = true
 adjustment_brightness = 1.1
 adjustment_saturation = 1.1
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_qpfo2"]
-noise_type = 4
-fractal_type = 2
-domain_warp_type = 1
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_yb21e"]
-generate_mipmaps = false
-noise = SubResource("FastNoiseLite_qpfo2")
-seamless = true
-seamless_blend_skirt = 1.0
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_aees8"]
-frequency = 0.05
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_mie3u"]
-width = 64
-height = 64
-generate_mipmaps = false
-noise = SubResource("FastNoiseLite_aees8")
-seamless = true
-seamless_blend_skirt = 1.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_0qy5o"]
-shader = ExtResource("5_qhj8q")
-shader_parameter/noise_img_fast = SubResource("NoiseTexture2D_yb21e")
-shader_parameter/noise_img_slow = SubResource("NoiseTexture2D_mie3u")
-shader_parameter/dust_color = Color(0.8, 0.7, 0.5, 0.5)
-shader_parameter/total_opacity = 0.5
-shader_parameter/look_angle_factor = 1.0
-shader_parameter/speed_fast = Vector2(0.01, -0.01)
-shader_parameter/speed_slow = Vector2(0.02, -0.01)
-shader_parameter/density_fast = 0.5
-shader_parameter/density_slow = 1.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qpfo2"]
 size = Vector3(4.298645, 3.5697021, 2.6156006)
@@ -153,6 +154,17 @@ buffer = PackedFloat32Array(0.6, 0, 0, -17.926228, 0, 0.6, 0, 0.82407403, 0, 0, 
 [node name="Node" type="Node" unique_id=310413080]
 script = ExtResource("1_jcbmq")
 
+[node name="SandHaze" type="ColorRect" parent="." unique_id=1103963715 groups=["Effects"]]
+process_mode = 1
+show_behind_parent = true
+material = SubResource("ShaderMaterial_0qy5o")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=628531476]
 navigation_mesh = SubResource("NavigationMesh_yb21e")
 navigation_layers = 5
@@ -187,17 +199,6 @@ environment = SubResource("Environment_ys1qc")
 
 [node name="Player" parent="." unique_id=1941692924 instance=ExtResource("4_ru70h")]
 transform = Transform3D(0.8183203, 0, -0.57476246, 0, 1, 0, 0.57476246, 0, 0.8183203, -3.972, 1.2813175, -3.147)
-
-[node name="SandHaze" type="ColorRect" parent="Player" unique_id=1103963715]
-process_mode = 1
-show_behind_parent = true
-material = SubResource("ShaderMaterial_0qy5o")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
 
 [node name="Robot" parent="." unique_id=969091388 instance=ExtResource("15_xm5mx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.63, 0, -5.918)

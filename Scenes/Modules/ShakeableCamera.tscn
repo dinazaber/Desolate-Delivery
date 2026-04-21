@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://dvs50w2owu2rs"]
 
 [ext_resource type="Script" uid="uid://c7e3sbb04x4n1" path="res://Scripts/Modules/shakeable_camera.gd" id="1_dhhco"]
-[ext_resource type="Shader" uid="uid://dns3ei7cj7qfa" path="res://Shaders/PostProcess/CustomFog.gdshader" id="2_dhhco"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_fh7ym"]
 frequency = 0.05
@@ -10,23 +9,6 @@ fractal_gain = 0.8
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_w2e3y"]
 radius = 1.5
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_dhhco"]
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_wd55p"]
-noise = SubResource("FastNoiseLite_dhhco")
-seamless = true
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_bskmo"]
-render_priority = 0
-shader = ExtResource("2_dhhco")
-shader_parameter/sand_noise = SubResource("NoiseTexture2D_wd55p")
-shader_parameter/sand_color = Color(0.76, 0.6, 0.4, 1)
-shader_parameter/storm_density = 0.1
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_rgxeb"]
-material = SubResource("ShaderMaterial_bskmo")
-orientation = 2
 
 [node name="shakeable_camera" type="Area3D" unique_id=1373532385]
 script = ExtResource("1_dhhco")
@@ -37,8 +19,3 @@ shape = SubResource("SphereShape3D_w2e3y")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=696304236]
 fov = 90.0
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Camera3D" unique_id=1190222455]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.18537882)
-visible = false
-mesh = SubResource("PlaneMesh_rgxeb")
