@@ -46,6 +46,7 @@ Enemy=""
 Player=""
 ShotReactable="objects that aren't enemeis that react to being shot"
 Persist="Nodes that should be loaded from save file"
+Effects="Group of all screen effects"
 
 [importer_defaults]
 
@@ -208,12 +209,14 @@ lights_and_shadows/directional_shadow/soft_shadow_filter_quality=3
 global_illumination/gi/use_half_resolution=true
 textures/default_filters/anisotropic_filtering_level=0
 camera/depth_of_field/depth_of_field_bokeh_shape=0
+anti_aliasing/quality/use_debanding=true
 textures/decals/filter=1
 textures/light_projectors/filter=0
 lightmapping/lightmap_gi/use_bicubic_filter=false
 global_illumination/sdfgi/probe_ray_count=0
 global_illumination/sdfgi/frames_to_converge=0
 lightmapping/bake_quality/low_quality_ray_count=1
+occlusion_culling/use_occlusion_culling=true
 lights_and_shadows/positional_shadow/atlas_quadrant_2_subdiv=2
 lights_and_shadows/positional_shadow/atlas_quadrant_3_subdiv=2
 

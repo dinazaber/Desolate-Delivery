@@ -22,10 +22,8 @@ uniform float detail2_scale = 1.0;
 uniform float alpha2 = 1.0;
 
 group_uniforms Lighting_Adjustments;
-uniform float light_x = 0.5;
-uniform float light_y = 0.5;
-uniform float light_z = 0.5;
 uniform float facet_intensity = 0.5;
+global uniform vec3 sun_direction;
 
 group_uniforms Instances;
 uniform vec3 palette[15] : source_color;
@@ -74,7 +72,7 @@ vec4 get_box_projection(sampler2D p_sampler, vec3 p_normal, vec3 p_pos) {
 
 void vertex(){
     worldPos = VERTEX;
-    world_normal = NORMAL;
+    world_normal = normalize((MODEL_MATRIX * vec4(NORMAL, 0.0)).xyz);
 	
 	index = (INSTANCE_ID / i) % color_variants;
 	
@@ -82,11 +80,12 @@ void vertex(){
 	
 	// --- LIGHTING --
 	
-	vec3 n = normalize(NORMAL);
-    vec3 light_dir = normalize(vec3(light_x, light_y, light_z));
+    vec3 light_dir = normalize(-sun_direction); 
     
-    float lum = dot(n, light_dir);
+    float lum = dot(world_normal, light_dir);
+    
     final_diffuse = mix(1.0, clamp(lum, 0.0, 1.0), facet_intensity);
+	world_normal = NORMAL;
     
 }
 

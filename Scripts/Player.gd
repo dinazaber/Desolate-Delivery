@@ -8,7 +8,7 @@ var headTime = 0.0
 
 # --- NODES ---
 @onready var playerCollision = $PlayerCollision
-@export var screenEffect: ColorRect
+var screenEffect: ColorRect
 @onready var playerRay = $shakeable_camera/PlayerRay
 var grabbedObject: RigidBody3D = null
 @onready var slam_area = $GroundSlam
@@ -124,6 +124,8 @@ func updateScreenEffect(): #Function for current and future screen effects
 
 
 func _ready() -> void:
+	screenEffect = get_tree().get_first_node_in_group("Effects")
+	
 	cam_speed = SettingsManager.settings.controls.mouse_sensitivity
 	SettingsManager.player = self
 	def_gun_pos = hands.position
@@ -192,7 +194,6 @@ func _input(event):
 				
 
 func _physics_process(delta):
-	
 	if screenEffect!=null: updateScreenEffect()
 
 	#cameraDistance = clamp(cameraDistance,15, 45)

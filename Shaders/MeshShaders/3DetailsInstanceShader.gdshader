@@ -1,4 +1,4 @@
-// Use this shader on objects that use 3 detail textures
+// Use this shader on MultiMeshInstance meshes that use 3 detail textures
 
 shader_type spatial;
 render_mode unshaded, cull_disabled;
@@ -8,7 +8,7 @@ uniform sampler2D mask_palette : source_color, filter_nearest;
 
 group_uniforms Wireframe;
 uniform vec3 wire_color : source_color = vec3(0.0, 0.0, 0.0);
-uniform float wire_width : hint_range(0.0, 5) = 1; // Width in meters
+uniform float wire_width : hint_range(0.0, 5) = 2;
 uniform float wire_transparency : hint_range(0.0, 1.0) = 0.5;
 
 group_uniforms Detail1;
@@ -27,73 +27,72 @@ uniform float detail3_scale = 1.0;
 uniform float alpha3 = 1.0;
 
 group_uniforms Lighting_Adjustments;
-uniform float light_x = 0.5;
-uniform float light_y = 0.5;
-uniform float light_z = 0.5;
 uniform float facet_intensity = 0.5;
+global uniform vec3 sun_direction;
+
+group_uniforms Instances;
+uniform vec3 palette[7] : source_color;
+uniform int color_variants: hint_range(0, 15) = 1;
+uniform int i = 1;
+
+varying flat int index;
 
 varying vec3 worldPos;
 varying vec3 world_normal;
+varying vec2 uv3;
 varying float final_diffuse;
-
 
 // --- THE OPTIMIZED BOX PROJECTION FUNCTION ---
 vec4 get_box_projection(sampler2D p_sampler, vec3 p_normal, vec3 p_pos) {
     vec3 n = abs(normalize(p_normal));
     
-    // 1. Determine which axis to skip (the smallest one)
-    // We create weights that only care about the two strongest directions
-    vec3 weights = n;
-    
-    // This math "zeros out" the smallest component
-    float low_mask = min(min(weights.x, weights.y), weights.z);
-    weights -= low_mask; 
-    
-    // Normalize weights so they sum to 1.0
+    // Create a "sharpness" power. 
+    // Higher = sharper transitions (more like your if/else)
+    // Lower = smoother transitions (fixes the 45-degree smear)
+    vec3 weights = pow(n, vec3(1.0)); 
     weights /= (weights.x + weights.y + weights.z);
 
-    // 2. Sample only the two necessary planes
-    vec4 color = vec4(0.0);
-    
-    // We still write three logic blocks, but the GPU only 
-    // executes the ones where the weight is > 0
-    if (weights.x > 0.0) {
-        color += texture(p_sampler, p_pos.zy) * weights.x;
-    }
-    if (weights.y > 0.0) {
-        color += texture(p_sampler, p_pos.xz) * weights.y;
-    }
-    if (weights.z > 0.0) {
-        color += texture(p_sampler, p_pos.xy) * weights.z;
-    }
+    vec4 tex_x = texture(p_sampler, p_pos.zy);
+    vec4 tex_y = texture(p_sampler, p_pos.xz);
+    vec4 tex_z = texture(p_sampler, p_pos.xy);
 
-    return color;
+    return tex_x * weights.x + tex_y * weights.y + tex_z * weights.z;
 }
 
 void vertex(){
     worldPos = VERTEX;
-    world_normal = NORMAL;
+    world_normal = normalize((MODEL_MATRIX * vec4(NORMAL, 0.0)).xyz);
 	
-	// --- LIGHTING --
+	index = (INSTANCE_ID / i) % color_variants;
 	
-	vec3 n = normalize(NORMAL);
-    vec3 light_dir = normalize(vec3(light_x, light_y, light_z));
+	uv3 = CUSTOM0.xy;
+	
+	vec3 light_dir = normalize(-sun_direction); 
     
-    float lum = dot(n, light_dir);
-    final_diffuse = (mix(1.0, clamp(lum, 0.0, 1.0), facet_intensity));
+    float lum = dot(world_normal, light_dir);
+    
+    final_diffuse = mix(1.0, clamp(lum, 0.0, 1.0), facet_intensity);
+	world_normal = NORMAL;
+    
 }
 
 void fragment() {
 	
 	// --- DETAILS ---
+	float mask = uv3.x; // Instance mask
+	vec3 target_color = palette[index];
     vec3 base_color = COLOR.rgb;
+    
     // Identify the mask from the varying we passed (UV2)
     vec3 d_id = texture(mask_palette, UV2).rgb;
     vec3 out_color = base_color;
 	
+	out_color = mix(out_color, target_color, mask);
+	
     vec3 n = normalize(world_normal);
     
     // Sample textures using Box Projection based on Vertex Mask
+    
     if (d_id.r > 0.5) {
         vec4 tex_r = get_box_projection(detail1, n, worldPos * detail1_scale);
         out_color = mix(out_color, tex_r.rgb, tex_r.a * alpha1);
@@ -108,8 +107,6 @@ void fragment() {
         vec4 tex_b = get_box_projection(detail2, n, worldPos * detail2_scale);
         out_color = mix(out_color, tex_b.rgb, tex_b.a * alpha2);
     }
-	
-    
 	
 	// --- WIREFRAME ---
 	

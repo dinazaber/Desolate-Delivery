@@ -18,10 +18,11 @@
 [ext_resource type="ArrayMesh" uid="uid://6fnhie3k6sd7" path="res://assets/Meshes/Objects/Vehicles/Car2/Car2Chassis.mesh" id="14_qhj8q"]
 [ext_resource type="PackedScene" uid="uid://d23s0inguh17p" path="res://Scenes/RigidBody.tscn" id="15_iyf6e"]
 [ext_resource type="PackedScene" uid="uid://beqguglkai1oh" path="res://Scenes/Enemies/Robot.tscn" id="15_xm5mx"]
-[ext_resource type="ArrayMesh" uid="uid://tnqtnrxm02k4" path="res://assets/Meshes/Objects/Crate.mesh" id="16_jcbmq"]
+[ext_resource type="ArrayMesh" uid="uid://tnqtnrxm02k4" path="res://assets/Meshes/Objects/Crate1.mesh" id="16_jcbmq"]
 [ext_resource type="ArrayMesh" uid="uid://duisheavfmqh2" path="res://assets/Meshes/Objects/Vehicles/Car1/Car1Chassis.mesh" id="16_xe0hb"]
 [ext_resource type="ArrayMesh" uid="uid://bhdj6x3k5qagf" path="res://assets/Meshes/Architecture/CommandCenter.mesh" id="21_xe0hb"]
 [ext_resource type="ArrayMesh" uid="uid://bvbx2g5lkenkl" path="res://assets/Meshes/Architecture/OilTank.mesh" id="22_ijbfb"]
+[ext_resource type="ArrayMesh" uid="uid://br33wg26qu7sk" path="res://assets/Meshes/Objects/Crate2.mesh" id="23_wr8wa"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_yb21e"]
 vertices = PackedVector3Array(-49.1, 0.5, -49.1, -49.1, 0.5, 49.000008, 49.000008, 0.5, 49.000008, 49.000008, 0.5, -49.1)
@@ -96,9 +97,9 @@ shader_parameter/noise_img_fast = SubResource("NoiseTexture2D_yb21e")
 shader_parameter/noise_img_slow = SubResource("NoiseTexture2D_mie3u")
 shader_parameter/dust_color = Color(0.8, 0.7, 0.5, 0.5)
 shader_parameter/total_opacity = 0.5
+shader_parameter/look_angle_factor = 1.0
 shader_parameter/speed_fast = Vector2(0.01, -0.01)
 shader_parameter/speed_slow = Vector2(0.02, -0.01)
-shader_parameter/look_angle_factor = 1.0
 shader_parameter/density_fast = 0.5
 shader_parameter/density_slow = 1.0
 
@@ -142,6 +143,13 @@ visible_instance_count = 3
 mesh = ExtResource("22_ijbfb")
 buffer = PackedFloat32Array(1.5, 0, 0, -14.357278, 0, 1.5, 0, 2.8921862, 0, 0, 1.5, 7.3152604, 1.5, 0, 0, 5.7395964, 0, 1.5, 0, 2.8921862, 0, 0, 1.5, 7.3152604, 1.5, 0, 0, 26.780369, 0, 1.5, 0, 2.8921862, 0, 0, 1.5, 7.3152604)
 
+[sub_resource type="MultiMesh" id="MultiMesh_wr8wa"]
+transform_format = 1
+instance_count = 8
+visible_instance_count = 8
+mesh = ExtResource("23_wr8wa")
+buffer = PackedFloat32Array(0.6, 0, 0, -17.926228, 0, 0.6, 0, 0.82407403, 0, 0, 0.6, 3.0193179, 0.017182143, 0, 0.5997539, -19.231634, 0, 0.59999996, 0, 0.82407403, -0.5997539, 0, 0.017182143, 3.0193179, 0.5999978, 0, 0.0016440749, -18.549881, 0, 0.6000001, 0, 2.0253103, -0.0016440749, 0, 0.5999978, 3.0193179, 0.5999978, 0, 0.0016440749, -18.549881, 0, 0.6000001, 0, 0.81553173, -0.0016440749, 0, 0.5999978, 1.7847166, -0.31646717, 0, 0.50975347, 6.808233, 0, 0.6, 0, 0.8040292, -0.50975347, 0, -0.31646717, 3.9069939, -0.31646717, 0, 0.50975347, 22.89544, 0, 0.6, 0, 0.8040292, -0.50975347, 0, -0.31646717, 2.7962508, 0.43772516, 0, 0.41036168, 1.9845014, 0, 0.6000001, 0, 0.84521914, -0.41036168, 0, 0.43772516, 8.206118, 0.5999978, 0, 0.0016440749, 1.9845014, 0, 0.6000001, 0, 0.7954869, -0.0016440749, 0, 0.5999978, 5.2657094)
+
 [node name="Node" type="Node" unique_id=310413080]
 script = ExtResource("1_jcbmq")
 
@@ -177,9 +185,8 @@ shadow_blur = 3.0
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=493655703]
 environment = SubResource("Environment_ys1qc")
 
-[node name="Player" parent="." unique_id=1941692924 node_paths=PackedStringArray("screenEffect") instance=ExtResource("4_ru70h")]
+[node name="Player" parent="." unique_id=1941692924 instance=ExtResource("4_ru70h")]
 transform = Transform3D(0.8183203, 0, -0.57476246, 0, 1, 0, 0.57476246, 0, 0.8183203, -3.972, 1.2813175, -3.147)
-screenEffect = NodePath("SandHaze")
 
 [node name="SandHaze" type="ColorRect" parent="Player" unique_id=1103963715]
 process_mode = 1
@@ -363,6 +370,14 @@ shape = SubResource("BoxShape3D_ijbfb")
 
 [node name="Tanks" type="MultiMeshInstance3D" parent="." unique_id=1264175345]
 multimesh = SubResource("MultiMesh_ijbfb")
+script = ExtResource("3_u4tly")
+go_explode = null
+shape_type = 0
+go_make_colliders = null
+metadata/_custom_type_script = "uid://cfwmt6vc7y70h"
+
+[node name="CratesBoxes" type="MultiMeshInstance3D" parent="." unique_id=809646253]
+multimesh = SubResource("MultiMesh_wr8wa")
 script = ExtResource("3_u4tly")
 go_explode = null
 shape_type = 0
