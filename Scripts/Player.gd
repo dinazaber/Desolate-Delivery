@@ -11,6 +11,7 @@ var headTime = 0.0
 var screenEffect: ColorRect
 @onready var playerRay = $shakeable_camera/PlayerRay
 var grabbedObject: RigidBody3D = null
+@onready var hold_pos = $shakeable_camera/holdPos
 @onready var slam_area = $GroundSlam
 
 
@@ -144,7 +145,7 @@ func _input(event):
 		if grabbedObject: 
 			grabbedObject.gravity_scale = 1.0
 			grabbedObject.linear_damp = 0.0
-			#remove_collision_exception_with(grabbedObject)
+			remove_collision_exception_with(grabbedObject)
 			grabbedObject = null
 		else: 
 			if playerRay.is_colliding():
@@ -154,7 +155,7 @@ func _input(event):
 					grabbedObject = collider
 					grabbedObject.gravity_scale = 0.0
 					grabbedObject.linear_damp = 0.0
-					#add_collision_exception_with(grabbedObject)
+					add_collision_exception_with(grabbedObject)
 		
 	
 	# Weapon Switch
@@ -219,7 +220,7 @@ func _physics_process(delta):
 			grabbedObject.linear_damp = 0.0
 			var lim = 1.0 if grabbedObject.mass > 0.5 else grabbedObject.mass
 			grabbedObject.apply_central_impulse(dir * 40.0 * lim)
-			#remove_collision_exception_with(grabbedObject)
+			remove_collision_exception_with(grabbedObject)
 			grabbedObject = null
 			fireDelay = 0
 	
@@ -234,12 +235,13 @@ func _physics_process(delta):
 	
 	
 	if grabbedObject: # Grabbed Object
-		var holdPos = $shakeable_camera/throwableSpawn
+		var holdPos = hold_pos
 		var distance = grabbedObject.global_position.distance_to(holdPos.global_position)
 		var dir = holdPos.global_position - grabbedObject.global_position
 		if distance > 1.5:
 			grabbedObject.gravity_scale = 1.0
 			grabbedObject.linear_damp = 0.0
+			remove_collision_exception_with(grabbedObject)
 			grabbedObject = null
 			return
 		
@@ -397,15 +399,15 @@ func push_object():
 			
 		if collider is RigidBody3D and collider != grabbedObject:
 			var push_dir = -collision.get_normal()
-			var push_dir_vel_dif = velocity.dot(push_dir) - collider.linear_velocity.dot(push_dir)
+			var push_dir_vel_dif = (velocity.normalized()*SPEED).dot(push_dir) - collider.linear_velocity.dot(push_dir)
 			push_dir_vel_dif = max(0.0, push_dir_vel_dif)
 			
-			const PLAYER_MASS = 80.0
+			const PLAYER_MASS = 50.0
 			var mass_ratio = min(1.0, PLAYER_MASS / collider.mass)
 			
 			push_dir.y = 0.0
-			var push_force = mass_ratio * 5.0
-			collider.apply_force(push_dir * push_dir_vel_dif * push_force, collision.get_position() - collider.global_position)
+			var push_force = mass_ratio * 3.0
+			collider.apply_impulse(push_dir * push_dir_vel_dif * push_force, collision.get_position() - collider.global_position)
 
 
 func hideWeapons(): #We will add here check for left/right side later I guess
@@ -422,10 +424,10 @@ func hit(recieved_damage, type):
 func throw_grenade():
 	if grenadeCool == 100.0:
 		instance_grenade = grenade.instantiate()
-		instance_grenade.position = $shakeable_camera/throwableSpawn.global_position
+		instance_grenade.position = global_position
 		var throw_dir = -camera.global_transform.basis.z.normalized()
-		var forward_force = 10
-		var upward_force = 3.5
+		var forward_force = 10.0
+		var upward_force = 5.0
 		instance_grenade.apply_central_impulse((throw_dir * forward_force) + Vector3(0, upward_force, 0) + velocity)
 		get_parent().add_child(instance_grenade)
 		grenadeCool = -5.0

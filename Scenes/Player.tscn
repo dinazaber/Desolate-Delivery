@@ -125,8 +125,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 trauma_reduction_rate = 3.0
 noise_speed = 30.0
 
-[node name="throwableSpawn" type="Marker3D" parent="shakeable_camera" unique_id=67584433]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.426729e-09, 0, -1.4877298)
+[node name="holdPos" type="Marker3D" parent="shakeable_camera" unique_id=1190064023]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.4)
 
 [node name="PlayerRay" type="RayCast3D" parent="shakeable_camera" unique_id=1906683229]
 transform = Transform3D(-4.371139e-08, 9.232692e-19, 1, 0, 1, 9.232692e-19, -1, -4.0357378e-26, -4.371139e-08, 0, -0.0009999871, 0)

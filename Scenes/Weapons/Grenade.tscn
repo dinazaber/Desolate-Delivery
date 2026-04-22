@@ -5,6 +5,9 @@
 [ext_resource type="Shader" uid="uid://w3eyk752ljxw" path="res://Shaders/MeshShaders/ParticlesShader.gdshader" id="3_2byne"]
 [ext_resource type="PackedScene" uid="uid://b4wyneleeqxp" path="res://Scenes/Modules/TraumaCauser.tscn" id="3_5oibr"]
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_2byne"]
+bounce = 0.3
+
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_t2ec2"]
 radius = 0.15
 height = 0.4
@@ -136,9 +139,11 @@ radial_segments = 8
 rings = 4
 
 [node name="Grenade" type="RigidBody3D" unique_id=1710984480 groups=["ShotReactable"]]
-collision_layer = 6
-collision_mask = 6
+collision_layer = 38
+collision_mask = 38
 mass = 0.4
+physics_material_override = SubResource("PhysicsMaterial_2byne")
+linear_damp_mode = 1
 angular_damp = 5.0
 script = ExtResource("1_k3jl2")
 

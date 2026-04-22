@@ -201,6 +201,7 @@ G={
 3d_physics/layer_3="ground"
 3d_physics/layer_4="player"
 3d_physics/layer_5="env"
+3d_physics/layer_6="physics"
 
 [rendering]
 
