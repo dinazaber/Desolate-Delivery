@@ -3,20 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ba1rx18flr63r"
-path.bptc="res://.godot/imported/Crack1.png-8cf3f7205cba2d829e041c54d1a0b91f.bptc.ctex"
+path="res://.godot/imported/Crack1.png-8cf3f7205cba2d829e041c54d1a0b91f.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://assets/Textures/Architecture/Crack1.png"
-dest_files=["res://.godot/imported/Crack1.png-8cf3f7205cba2d829e041c54d1a0b91f.bptc.ctex"]
+dest_files=["res://.godot/imported/Crack1.png-8cf3f7205cba2d829e041c54d1a0b91f.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=true
 compress/lossy_quality=0.7
 compress/uastc_level=0

@@ -1,7 +1,7 @@
 // Use this shader on objects that use 3 detail textures
 
 shader_type spatial;
-render_mode unshaded, cull_disabled;
+render_mode cull_disabled;
 
 // Details (Still using these for the "Projected" textures)
 uniform sampler2D mask_palette : source_color, filter_nearest;

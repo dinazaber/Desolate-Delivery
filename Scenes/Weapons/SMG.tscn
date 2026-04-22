@@ -214,6 +214,7 @@ libraries/ = SubResource("AnimationLibrary_8qb6n")
 
 [node name="SMG" type="MeshInstance3D" parent="." unique_id=559022510]
 transform = Transform3D(0.07660444, -0.13268279, 0.12855753, -0.06427877, 0.111334085, 0.1532089, -0.17320508, -0.099999994, -5.6194285e-09, 1.5, -5, 1)
+cast_shadow = 0
 mesh = ExtResource("2_dxyhc")
 
 [node name="Barrel" type="Node3D" parent="SMG" unique_id=576063553]
