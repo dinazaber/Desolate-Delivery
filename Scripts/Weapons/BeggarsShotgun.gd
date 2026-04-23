@@ -15,8 +15,8 @@ var can_cool: bool = true
 var heat: float = 0.0
 
 const MAX_DEVIATION = 5 # deviation (in degrees) of the pellets from the player's sight vector
-const MIN_PELLETS = 8
-const MAX_PELLETS = 12
+const MIN_INPUTS = 8
+const MAX_INPUTS = 12
 
 @onready var anim = $AnimationPlayer
 @onready var heatBuffer = $HeatBuffer
@@ -73,7 +73,7 @@ func _on_heat_buffer_timeout() -> void:
 
 func random_deviations() -> Array:
 	var deviations = []
-	var pellets = randi_range(MIN_PELLETS, MAX_PELLETS)
-	for i in range(pellets):
+	var inputs = randi_range(MIN_INPUTS, MAX_INPUTS)
+	for i in range(inputs):
 		deviations.append(MAX_DEVIATION * randf())
 	return deviations

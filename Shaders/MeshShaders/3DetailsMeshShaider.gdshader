@@ -26,13 +26,8 @@ uniform sampler2D detail3 : source_color, filter_linear;
 uniform float detail3_scale = 1.0;
 uniform float alpha3 = 1.0;
 
-group_uniforms Lighting_Adjustments;
-uniform float facet_intensity = 0.5;
-global uniform vec3 sun_direction;
-
 varying vec3 worldPos;
 varying vec3 world_normal;
-varying float final_diffuse;
 
 
 // --- THE OPTIMIZED BOX PROJECTION FUNCTION ---
@@ -70,15 +65,6 @@ vec4 get_box_projection(sampler2D p_sampler, vec3 p_normal, vec3 p_pos) {
 
 void vertex(){
     worldPos = VERTEX;
-    world_normal = normalize((MODEL_MATRIX * vec4(NORMAL, 0.0)).xyz);
-	
-	// --- LIGHTING --
-	
-	vec3 light_dir = normalize(-sun_direction); 
-    
-    float lum = dot(world_normal, light_dir);
-    
-    final_diffuse = mix(1.0, clamp(lum, 0.0, 1.0), facet_intensity);
 	world_normal = NORMAL;
 }
 
@@ -129,7 +115,7 @@ void fragment() {
     
     float alpha_fade = distance_factor; 
 	
-	vec3 blended_wire = mix(out_color * final_diffuse, wire_color.rgb, wire_transparency);
+	vec3 blended_wire = mix(out_color, wire_color.rgb, wire_transparency);
 	
-    ALBEDO = mix(out_color * final_diffuse, blended_wire, wire_mask * alpha_fade);
+    ALBEDO = mix(out_color, blended_wire, wire_mask * alpha_fade);
 }
