@@ -143,6 +143,7 @@ func _input(event):
 	# Throwable objects
 	if Input.is_action_just_pressed("E"):
 		if grabbedObject: 
+			grabbedObject.is_held = false
 			grabbedObject.gravity_scale = 1.0
 			grabbedObject.linear_damp = 0.0
 			remove_collision_exception_with(grabbedObject)
@@ -153,6 +154,7 @@ func _input(event):
 				var distance = global_position.distance_to(collider.global_position)
 				if collider is RigidBody3D and distance < 3:
 					grabbedObject = collider
+					grabbedObject.is_held = true
 					grabbedObject.gravity_scale = 0.0
 					grabbedObject.linear_damp = 0.0
 					add_collision_exception_with(grabbedObject)
@@ -214,15 +216,15 @@ func _physics_process(delta):
 			match current_gun_R:
 				SMG: current_gun_R.shoot()
 				beggarsShotgun: current_gun_R.charge()
-		elif grabbedObject:
-			var dir = -camera.global_basis.z
-			grabbedObject.gravity_scale = 1
-			grabbedObject.linear_damp = 0.0
-			var lim = 1.0 if grabbedObject.mass > 0.5 else grabbedObject.mass
-			grabbedObject.apply_central_impulse(dir * 40.0 * lim)
-			remove_collision_exception_with(grabbedObject)
-			grabbedObject = null
-			fireDelay = 0
+		#elif grabbedObject: # now used by steamer
+		#	var dir = -camera.global_basis.z
+		#	grabbedObject.gravity_scale = 1
+		#	grabbedObject.linear_damp = 0.0
+		#	var lim = 1.0 if grabbedObject.mass > 0.5 else grabbedObject.mass
+		#	grabbedObject.apply_central_impulse(dir * 40.0 * lim)
+		#	remove_collision_exception_with(grabbedObject)
+		#	grabbedObject = null
+		#	fireDelay = 0
 	
 	if Input.is_action_just_released("LeftMouse") and !dead:
 		match current_gun_R:
@@ -238,7 +240,8 @@ func _physics_process(delta):
 		var holdPos = hold_pos
 		var distance = grabbedObject.global_position.distance_to(holdPos.global_position)
 		var dir = holdPos.global_position - grabbedObject.global_position
-		if distance > 1.5:
+		if distance > 1.5 or !grabbedObject.is_held:
+			grabbedObject.is_held = false
 			grabbedObject.gravity_scale = 1.0
 			grabbedObject.linear_damp = 0.0
 			remove_collision_exception_with(grabbedObject)

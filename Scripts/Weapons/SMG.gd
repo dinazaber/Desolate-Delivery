@@ -11,6 +11,7 @@ extends Node3D
 
 @onready var anim = $AnimationPlayer
 @onready var heatBuffer = $HeatBuffer
+@onready var tracer = $smg_tracers
 
 var can_cool: bool = true
 var heat: float = 0.0
@@ -29,6 +30,8 @@ func shoot():
 		anim.play("shoot")
 		
 		camera.add_recoil(recoil)
+		tracer.restart()
+		tracer.emitting = true
 		heatBuffer.start()
 		can_cool = false
 		heat = clamp(heat + heatPerShot, 0.0, 100.0)

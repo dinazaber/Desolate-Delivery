@@ -264,7 +264,7 @@ shadow_blur = 3.0
 environment = SubResource("Environment_ys1qc")
 
 [node name="Player" parent="." unique_id=1941692924 instance=ExtResource("4_ru70h")]
-transform = Transform3D(0.8183203, 0, -0.57476246, 0, 1, 0, 0.57476246, 0, 0.8183203, -3.972, 1.2813175, -3.147)
+transform = Transform3D(0.8183203, 0, -0.57476246, 0, 1, 0, 0.57476246, 0, 0.8183203, -3.972, 2.2440758, -3.147)
 
 [node name="Robot" parent="." unique_id=969091388 instance=ExtResource("15_xm5mx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.63, 0, -5.918)
@@ -392,18 +392,22 @@ skeleton = NodePath("../..")
 
 [node name="RigidBody" parent="." unique_id=707473027 instance=ExtResource("15_iyf6e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.1405044, 0.7930865, 2.975814)
+inertia = Vector3(8, 40, 8)
 total_scale = 0.4
 
 [node name="RigidBody2" parent="." unique_id=1651338683 instance=ExtResource("15_iyf6e")]
 transform = Transform3D(-4.2706393e-08, -0.9770084, 0.21320088, 1, -4.371139e-08, -6.344131e-16, 9.319307e-09, 0.21320088, 0.9770084, -7.188091, 0.5455829, 2.1120596)
+inertia = Vector3(8, 40, 8)
 total_scale = 0.4
 
 [node name="RigidBody3" parent="." unique_id=629633255 instance=ExtResource("15_iyf6e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.798324, 0.7930865, 3.072209)
+inertia = Vector3(8, 40, 8)
 total_scale = 0.4
 
 [node name="RigidBody4" parent="." unique_id=590815455 instance=ExtResource("15_iyf6e")]
 transform = Transform3D(-0.75855535, 0, -0.6516086, 0, 1, 0, 0.6516086, 0, -0.75855535, -8.223284, 0.7930865, 2.4221127)
+inertia = Vector3(8, 40, 8)
 total_scale = 0.4
 
 [node name="Crates" type="MultiMeshInstance3D" parent="." unique_id=1308017449]

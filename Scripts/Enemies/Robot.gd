@@ -247,6 +247,12 @@ func _on_area_3d_damage_taken(recieved_damage: float, type: String) -> void:
 	enemy_health -= recieved_damage
 	checkLifeLine()
 
+func hit(recieved_damage, type):
+	if type == "player":
+		damagedByPlayer = true
+	enemy_health -= recieved_damage
+	checkLifeLine()
+
 func get_pounded(recieved_damage):
 	enemy_health -= recieved_damage
 	# Push away
@@ -256,7 +262,6 @@ func get_pounded(recieved_damage):
 	checkLifeLine()
 
 func knockBack(direction, force, time):
-	print("DEBUG")
 	knocked = true
 	velocity += direction * force
 	await get_tree().create_timer(time).timeout

@@ -55,6 +55,7 @@ mass = 8.0
 physics_material_override = SubResource("PhysicsMaterial_3t8db")
 inertia = Vector3(8, 8, 8)
 continuous_cd = true
+angular_damp = 0.5
 script = ExtResource("1_3t8db")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1485554187]

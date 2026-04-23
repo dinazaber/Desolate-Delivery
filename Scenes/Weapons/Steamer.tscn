@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://dhtqm0ik5xqic" path="res://Scripts/Weapons/Steamer.gd" id="1_a8h82"]
 [ext_resource type="ArrayMesh" uid="uid://c1ua4nhpxyyli" path="res://assets/Meshes/Weapons/shotty.mesh" id="2_6xrp2"]
+[ext_resource type="ArrayMesh" uid="uid://dinv81fyr4qt3" path="res://assets/Meshes/Weapons/Steamer/Gun.mesh" id="3_s2mxn"]
+[ext_resource type="ArrayMesh" uid="uid://c1i7840d0uoxv" path="res://assets/Meshes/Weapons/Steamer/DialArrow.mesh" id="4_88n45"]
 
 [sub_resource type="Animation" id="Animation_u6d72"]
 resource_name = "Draw"
@@ -97,18 +99,208 @@ _data = {
 &"Shoot": SubResource("Animation_jrs8s")
 }
 
+[sub_resource type="Animation" id="Animation_s2mxn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Gun:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.113, -0.45, 0.15)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Gun:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.0471976, 0, -1.0471976)]
+}
+
+[sub_resource type="Animation" id="Animation_88n45"]
+resource_name = "draw"
+length = 0.3
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Gun:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.18, 0.24, 0.3),
+"transitions": PackedFloat32Array(0.5, 2, 0.5, 1),
+"update": 0,
+"values": [Vector3(0.113, -0.45, 0.15), Vector3(0.131, 0.09, 0), Vector3(0.15, 0.045, 0), Vector3(0.113, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Gun:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.22, 0.26, 0.3),
+"transitions": PackedFloat32Array(3, 2, 0.5, 1),
+"update": 0,
+"values": [Vector3(1.0471976, 0, -1.0471976), Vector3(-0.34906584, 1.2217305, 0), Vector3(-0.17453292, 1.3962634, 0), Vector3(0, 1.5707964, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_xgwlw"]
+resource_name = "shoot"
+length = 0.4
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Gun:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.15, 0.26, 0.33, 0.4),
+"transitions": PackedFloat32Array(0.3, 1.5, 2, 2, 0.5, 1),
+"update": 0,
+"values": [Vector3(0.113, 0, 0), Vector3(0, -0.03, 0), Vector3(0.128, 0.015, 0), Vector3(0.113, -0.012, 0), Vector3(0.113, -0.006, 0), Vector3(0.113, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Gun:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.3, 0.35, 0.4),
+"transitions": PackedFloat32Array(2, 0.5, 2, 2, 0.5, 1),
+"update": 0,
+"values": [Vector3(0, 1.5707964, 0), Vector3(-0.17453292, 1.5707964, 0), Vector3(-0.34906584, 1.5707964, 0), Vector3(0.06981317, 1.5707964, 0), Vector3(0.034906585, 1.5707964, 0), Vector3(0, 1.5707964, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qfvl1"]
+_data = {
+&"RESET": SubResource("Animation_s2mxn"),
+&"draw": SubResource("Animation_88n45"),
+&"shoot": SubResource("Animation_xgwlw")
+}
+
+[sub_resource type="Curve" id="Curve_s2mxn"]
+_data = [Vector2(0, 0.5), 0.0, 0.0, 0, 0, Vector2(0.7455197, 0.5), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_88n45"]
+curve = SubResource("Curve_s2mxn")
+
+[sub_resource type="Gradient" id="Gradient_xgwlw"]
+offsets = PackedFloat32Array(0.015810277, 1)
+colors = PackedColorArray(0.6830768, 0.6830776, 0.68307704, 1, 0.446777, 0.44677705, 0.44677705, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_qfvl1"]
+gradient = SubResource("Gradient_xgwlw")
+
+[sub_resource type="Curve" id="Curve_cuimc"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.25448027, 0), 0.0, 0.0, 0, 0, Vector2(0.75268817, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_negrn"]
+curve = SubResource("Curve_cuimc")
+
+[sub_resource type="Curve" id="Curve_6gchu"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.13978495, 1), 0.0, 0.0, 0, 0, Vector2(0.7455197, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.5), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_80fnb"]
+curve = SubResource("Curve_6gchu")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_nyeo0"]
+spread = 60.0
+flatness = 0.7
+initial_velocity_min = 50.0
+initial_velocity_max = 60.0
+gravity = Vector3(0, 2, 0)
+damping_min = 20.0
+damping_max = 30.000002
+damping_curve = SubResource("CurveTexture_negrn")
+scale_min = 0.79999995
+scale_max = 1.5
+scale_curve = SubResource("CurveTexture_80fnb")
+color_ramp = SubResource("GradientTexture1D_qfvl1")
+alpha_curve = SubResource("CurveTexture_88n45")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e18iq"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.3515629, 0.3515629, 0.35156286, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_p534w"]
+material = SubResource("StandardMaterial3D_e18iq")
+radius = 0.15
+height = 0.3
+radial_segments = 16
+rings = 8
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_s2mxn"]
+size = Vector3(160, 30, 140)
+
 [node name="Steamer" type="Node3D" unique_id=1896444700]
 script = ExtResource("1_a8h82")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1787380741]
+[node name="AnimationPlayer_OLD" type="AnimationPlayer" parent="." unique_id=1787380741]
 libraries/ = SubResource("AnimationLibrary_lekgj")
 
 [node name="Shotty" type="MeshInstance3D" parent="." unique_id=48255100]
 transform = Transform3D(34.999996, 60.621777, 121.24356, -60.621773, -105.00001, 69.99999, 121.24356, -69.99999, -3.0597969e-06, 0, -3.73, 1.5)
 rotation_order = 0
+visible = false
 cast_shadow = 0
 mesh = ExtResource("2_6xrp2")
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1533044881]
+libraries/ = SubResource("AnimationLibrary_qfvl1")
+
+[node name="Gun" type="MeshInstance3D" parent="." unique_id=521914031]
+transform = Transform3D(0.014999999, 0.025980765, 0, -0.012990381, 0.0074999994, -0.025980765, -0.0225, 0.012990382, 0.015, 0.113, -0.45, 0.15)
+mesh = ExtResource("3_s2mxn")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Gun" unique_id=389766710]
+transform = Transform3D(-2.1855693e-07, 0, -5, 0, 5, 0, 5, 0, -2.1855693e-07, -8.1958837e-07, 0, 18.75)
+emitting = false
+amount = 16
+lifetime = 0.7
+one_shot = true
+explosiveness = 1.0
+visibility_aabb = AABB(-4, -9, -30, 40, 20, 60)
+process_material = SubResource("ParticleProcessMaterial_nyeo0")
+draw_pass_1 = SubResource("SphereMesh_p534w")
+
+[node name="DialArrow" type="Marker3D" parent="Gun" unique_id=117313261]
+transform = Transform3D(-2.095567e-07, 6.2073504e-08, -5, 1.420077, 4.794099, -3.002802e-14, 4.794099, -1.420077, -2.1855695e-07, 7.6588185e-09, 0.55612123, -0.17521337)
+
+[node name="DialArrow" type="MeshInstance3D" parent="Gun/DialArrow" unique_id=500991761]
+transform = Transform3D(0.14142136, 0, 0.14142136, 0, 0.2, 0, -0.14142136, 0, 0.14142136, 0, 0.2, 0)
+mesh = ExtResource("4_88n45")
+skeleton = NodePath("../../..")
+
+[node name="Area3D" type="Area3D" parent="Gun" unique_id=63319940]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 18)
+collision_layer = 0
+collision_mask = 34
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Gun/Area3D" unique_id=1074640524]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.9790393e-13, 0, 67.56711)
+shape = SubResource("BoxShape3D_s2mxn")
+
 [node name="HeatBuffer" type="Timer" parent="." unique_id=490756705]
+
+[node name="playerPos" type="Marker3D" parent="." unique_id=733481372]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.2)
 
 [connection signal="timeout" from="HeatBuffer" to="." method="_on_heat_buffer_timeout"]

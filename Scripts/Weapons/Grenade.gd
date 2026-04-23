@@ -1,6 +1,7 @@
 extends RigidBody3D
 
 var got_shot: bool = false
+var is_held: bool = false
 var exploded: bool = false
 
 @onready var smoke: GPUParticles3D = $Smoke
@@ -41,7 +42,7 @@ func explode():
 		var bodies = current_exposion_box.get_overlapping_bodies()
 		for body in bodies:
 			body.hit(current_damage, "player")
-			body.knockBack(body.global_position - global_position, current_damage/15, 0.1)
+			body.knockBack((body.global_position - global_position).normalized(), current_damage/15, 0.1)
 	
 	if got_shot:
 		debris.emitting = true
@@ -57,10 +58,12 @@ func _on_timer_timeout() -> void:
 		explosion_box_big.visible = false
 		explode()
 
+func knockBack(direction, _a, _b): ## used by steamer only
+	is_held = false
+	var lim = 1.0 if mass > 0.5 else mass
+	apply_central_impulse(direction * 60.0 * lim)
+
 # --- Anti-Error Function Dump ---
 
 func hit(_a,_b):
-	pass
-
-func knockBack(_a, _b, _c):
 	pass

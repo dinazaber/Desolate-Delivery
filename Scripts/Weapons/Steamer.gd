@@ -2,7 +2,7 @@ extends Node3D
 signal knockBack(force: int, time: float)
 
 #gun stats
-@export var damage = 70
+@export var damage = 70.0
 @export var recoil = 10.0 # degree rotation
 @export var heatPerShot: float = 100.0
 @export var coolDown: float = 5.0 # time (s) it takes to go from 100 to 0 heat
@@ -12,6 +12,10 @@ signal knockBack(force: int, time: float)
 
 @onready var anim = $AnimationPlayer
 @onready var heatBuffer = $HeatBuffer
+@onready var dialArrow = $Gun/DialArrow/DialArrow
+@onready var blastRange = $Gun/Area3D
+@onready var steam = $Gun/GPUParticles3D
+@onready var playerPos = $playerPos #correction value of the steamer's pos in relation to the player (fliped sign of left hand x pos)
 
 var can_cool: bool = true
 var heat: float = 0.0
@@ -19,11 +23,13 @@ var heat: float = 0.0
 
 func shoot():
 	if !anim.is_playing() and heat <= 100 - heatPerShot:
-		anim.play("Draw")
+		anim.play("draw")
 		await anim.animation_finished
-		anim.play("Shoot")
+		anim.play("shoot")
 		
 		camera.add_recoil(recoil)
+		steam.restart()
+		steam.emitting = true
 		heatBuffer.start()
 		can_cool = false
 		heat = clamp(heat + heatPerShot, 0.0, 100.0)
@@ -32,14 +38,20 @@ func shoot():
 		
 		knockBack.emit(direction, 10, 0.2)
 		
-		if playerRay.is_colliding():
-			if playerRay.get_collider().is_in_group("Enemy"):
-				playerRay.get_collider().hit(damage, "player")
-			if playerRay.get_collider().is_in_group("ShotReactable"):
-				playerRay.get_collider().shot()
+		if blastRange.has_overlapping_bodies():
+			var bodies = blastRange.get_overlapping_bodies()
+			for body in bodies:
+				body.hit(damage, "player")
+				body.knockBack((body.global_position - playerPos.global_position).normalized(), damage/15, 0.1)
+		
+		#if playerRay.is_colliding():
+		#	if playerRay.get_collider().is_in_group("Enemy"):
+		#		playerRay.get_collider().hit(damage, "player")
+		#	if playerRay.get_collider().is_in_group("ShotReactable"):
+		#		playerRay.get_collider().shot()
 		
 		await anim.animation_finished
-		anim.play_backwards("Draw")
+		anim.play_backwards("draw")
 
 func get_heat() -> float:
 	return heat
@@ -50,6 +62,7 @@ func _on_restore_cool(coolOnKill: float) -> void:
 func _process(delta: float) -> void:
 	if can_cool:
 		heat = clamp(heat - (100 * delta) / coolDown, 0.0, 100.0)
+	dialArrow.rotation_degrees.y = lerp(dialArrow.rotation_degrees.y, 45.0 - 2.7*heat, delta * 7.0)
 
 func _on_heat_buffer_timeout() -> void:
 	can_cool = true
