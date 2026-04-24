@@ -4,8 +4,9 @@ shader_type spatial;
 render_mode unshaded, shadows_disabled;
 
 group_uniforms Adjustments;
-uniform vec3 color: source_color;
+uniform vec4 color: source_color;
 
 void fragment() {
-    ALBEDO = color;
+    ALBEDO = color.rgb;
+	ALPHA = color.a;
 }

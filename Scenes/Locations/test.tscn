@@ -275,7 +275,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.673558, 1.785, -11.888981
 
 [node name="Barrack" type="MeshInstance3D" parent="." unique_id=1999639744]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.35177, 1.0000209, 1.8640761)
-visible = false
 mesh = ExtResource("6_xe0hb")
 
 [node name="Jeeps" type="StaticBody3D" parent="." unique_id=1207635136]
@@ -393,22 +392,22 @@ skeleton = NodePath("../..")
 
 [node name="RigidBody" parent="." unique_id=707473027 instance=ExtResource("15_iyf6e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.1405044, 0.7930865, 2.975814)
-inertia = Vector3(4, 12, 4)
+inertia = Vector3(8, 24, 8)
 total_scale = 0.4
 
 [node name="RigidBody2" parent="." unique_id=1651338683 instance=ExtResource("15_iyf6e")]
 transform = Transform3D(-4.2706393e-08, -0.9770084, 0.21320088, 1, -4.371139e-08, -6.344131e-16, 9.319307e-09, 0.21320088, 0.9770084, -7.188091, 0.5455829, 2.1120596)
-inertia = Vector3(4, 12, 4)
+inertia = Vector3(8, 24, 8)
 total_scale = 0.4
 
 [node name="RigidBody3" parent="." unique_id=629633255 instance=ExtResource("15_iyf6e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.798324, 0.7930865, 3.072209)
-inertia = Vector3(4, 12, 4)
+inertia = Vector3(8, 24, 8)
 total_scale = 0.4
 
 [node name="RigidBody4" parent="." unique_id=590815455 instance=ExtResource("15_iyf6e")]
 transform = Transform3D(-0.75855535, 0, -0.6516086, 0, 1, 0, 0.6516086, 0, -0.75855535, -8.223284, 0.7930865, 2.4221127)
-inertia = Vector3(4, 12, 4)
+inertia = Vector3(8, 24, 8)
 total_scale = 0.4
 
 [node name="Crates" type="MultiMeshInstance3D" parent="." unique_id=1308017449]
@@ -422,6 +421,17 @@ metadata/_custom_type_script = "uid://cfwmt6vc7y70h"
 [node name="CommandCenter" type="MeshInstance3D" parent="." unique_id=1826240005]
 transform = Transform3D(-6.119594e-08, 0, -1.4, 0, 1.4, 0, 1.4, 0, -6.119594e-08, 17.929441, 3.5706801, -23.747948)
 mesh = ExtResource("21_xe0hb")
+
+[node name="Label3D" type="Label3D" parent="CommandCenter" unique_id=1904674753]
+transform = Transform3D(-0.2, 0, -3.019916e-08, 0, 0.2, 0, 3.019916e-08, 0, -0.2, -0.21512413, 0.2960782, -0.029752731)
+text = "This shit is there just to tell you
+that I want to use this door as
+teleport to some robo goblin
+vendor on this location and you
+won't stop me.
+Btw label 3d is a very cool thing
+although it is using 1 draw call
+"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1267380104]
 transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -15, 0.5, -22)

@@ -130,7 +130,7 @@ collide_with_areas = true
 [node name="Hands" type="Node3D" parent="shakeable_camera" unique_id=1293429431]
 
 [node name="RightHand" parent="shakeable_camera/Hands" unique_id=267885530 instance=ExtResource("2_kyqiw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.18, -0.137, -0.25)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.110599935, -0.137, -0.24466157)
 
 [node name="SMG" parent="shakeable_camera/Hands/RightHand" index="2" unique_id=1941681137 node_paths=PackedStringArray("camera", "playerRay")]
 camera = NodePath("../../..")
@@ -141,7 +141,7 @@ camera = NodePath("../../..")
 playerRay = NodePath("../../../PlayerRay")
 
 [node name="LeftHand" parent="shakeable_camera/Hands" unique_id=1896444700 instance=ExtResource("3_nn08x")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.2, -0.137, -0.25)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.16263099, -0.137, -0.25)
 
 [node name="Steamer" parent="shakeable_camera/Hands/LeftHand" index="0" unique_id=1493507664 node_paths=PackedStringArray("camera", "playerRay")]
 camera = NodePath("../../..")
