@@ -67,3 +67,6 @@ func knockBack(direction, _a, _b): ## used by steamer only
 
 func hit(_a,_b):
 	pass
+
+func can_let_go() -> bool:
+	return true

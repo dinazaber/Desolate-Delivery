@@ -12,8 +12,7 @@ var screenEffect: ColorRect
 @onready var playerRay = $shakeable_camera/PlayerRay
 var grabbedObject: RigidBody3D = null
 @onready var hold_pos = $shakeable_camera/holdPos
-@onready var slam_area = $GroundSlam
-
+@onready var enemyBounceCheck = $EnemyBounceCheck
 
 
 # --- WEAPONS ---
@@ -32,7 +31,6 @@ var canDash: bool = true
 var knocked: bool = false
 var crouch: bool = false
 var slide: bool = false
-var slam: bool = false
 var airborne: bool = false
 var dead: bool = false
 var canShoot: bool = true
@@ -45,7 +43,7 @@ var pitch = 0.0
 var mouse_input: Vector2
 var grenadeCool: float = 100.0
 var landVel: float = 0.0
-var fireDelay = 10 # Delay between object throwing and shooting
+var fireDelay: float = 15.0 # Delay between object throwing and shooting
 
 
 # --- PLAYER STATS ---
@@ -58,8 +56,6 @@ const PLAYER_MAX_HEALTH = 100
 @export var crouch_speed: float = 2.5
 @export var dash_speed: float = 15
 @export var jump_speed: float = 10
-@export var slam_speed: float = -30
-@export var slam_damage = 40
 
 
 # --- INSTANCES ---
@@ -142,12 +138,13 @@ func _input(event):
 	
 	# Throwable objects
 	if Input.is_action_just_pressed("E"):
-		if grabbedObject: 
-			grabbedObject.is_held = false
-			grabbedObject.gravity_scale = 1.0
-			grabbedObject.linear_damp = 0.0
-			remove_collision_exception_with(grabbedObject)
-			grabbedObject = null
+		if grabbedObject:
+			if grabbedObject.can_let_go():
+				grabbedObject.is_held = false
+				grabbedObject.gravity_scale = 1.0
+				grabbedObject.linear_damp = 0.0
+				remove_collision_exception_with(grabbedObject)
+				grabbedObject = null
 		else: 
 			if playerRay.is_colliding():
 				var collider = playerRay.get_collider()
@@ -204,27 +201,38 @@ func _physics_process(delta):
 	#neg vals are for recharge delay i.e -5 is 0.5 sec rechare delay VLAD
 	grenadeCool = clamp(grenadeCool + (100 * delta) / grenadeCoolTime, -5.0, 100.0)
 	
-	fireDelay = clamp(fireDelay + (100 * delta), 0, 10.0)
+	fireDelay = clamp(fireDelay + (100 * delta), 0, 15.0)
 	
 	if !dead:
 		rotation.y = lerp_angle(rotation.y, yaw, delta * 30.0) # left/right
 		camera.rotation.x = lerp_angle(camera.rotation.x, -pitch, delta * 30.0)
-		
+	
+	if enemyBounceCheck.has_overlapping_bodies():
+		var bodies = enemyBounceCheck.get_overlapping_bodies()
+		var enemyCount: int = 0
+		for body in bodies:
+			if body.is_in_group("Enemy"):
+				enemyCount += 1
+		if enemyCount:
+			if is_on_floor():
+				knockBack(get_floor_normal(), 12.0, 0.1)
+
 	
 	if Input.is_action_pressed("LeftMouse") and !dead:
-		if !grabbedObject and fireDelay==10:
+		if !grabbedObject and fireDelay==15.0:
 			match current_gun_R:
 				SMG: current_gun_R.shoot()
 				beggarsShotgun: current_gun_R.charge()
-		#elif grabbedObject: # now used by steamer
-		#	var dir = -camera.global_basis.z
-		#	grabbedObject.gravity_scale = 1
-		#	grabbedObject.linear_damp = 0.0
-		#	var lim = 1.0 if grabbedObject.mass > 0.5 else grabbedObject.mass
-		#	grabbedObject.apply_central_impulse(dir * 40.0 * lim)
-		#	remove_collision_exception_with(grabbedObject)
-		#	grabbedObject = null
-		#	fireDelay = 0
+		elif grabbedObject:
+			if grabbedObject.can_let_go():
+				#var dir = -camera.global_basis.z
+				grabbedObject.gravity_scale = 1
+				grabbedObject.linear_damp = 0.0
+				#var lim = 1.0 if grabbedObject.mass > 0.5 else grabbedObject.mass
+				#grabbedObject.apply_central_impulse(dir * 40.0 * lim) # now used by steamer
+				remove_collision_exception_with(grabbedObject)
+				grabbedObject = null
+				fireDelay = 0.0
 	
 	if Input.is_action_just_released("LeftMouse") and !dead:
 		match current_gun_R:
@@ -240,7 +248,7 @@ func _physics_process(delta):
 		var holdPos = hold_pos
 		var distance = grabbedObject.global_position.distance_to(holdPos.global_position)
 		var dir = holdPos.global_position - grabbedObject.global_position
-		if distance > 1.5 or !grabbedObject.is_held:
+		if (distance > 1.5 or !grabbedObject.is_held) and grabbedObject.can_let_go():
 			grabbedObject.is_held = false
 			grabbedObject.gravity_scale = 1.0
 			grabbedObject.linear_damp = 0.0
@@ -299,10 +307,6 @@ func _physics_process(delta):
 	
 	#Basic movement & dash
 	if is_on_floor(): # grounded speed
-		if slam == true:
-			slam = false
-			slam_ground()
-		
 		if airborne:
 			airborne = false
 			camera.add_trauma(clamp(0.7 * landVel/10, 0.0, 5.0))
@@ -343,11 +347,6 @@ func _physics_process(delta):
 		airborne = true
 		landVel = abs(velocity.y)
 		velocity.y -= 20 * delta # Gravity
-		
-		#if Input.is_action_just_pressed("Ctrl") and !$GroundSlamCheck.is_colliding(): # Groundslam
-		#	slam = true
-		#	velocity.y += slam_speed
-		
 		
 		velocity.x = lerp(velocity.x, direction.x * SPEED, delta * 0.5)
 		velocity.z = lerp(velocity.z, direction.z * SPEED, delta * 0.5)
@@ -446,12 +445,6 @@ func throw_grenade():
 			#instance_spear.set_velocity(playerRay.get_collision_point())
 		#else:
 			#instance_spear.set_velocity(playerRay_end.global_position)
-
-func slam_ground():
-	if slam_area.has_overlapping_bodies():
-		var bodies = slam_area.get_overlapping_bodies()
-		for body in bodies:
-			body.get_pounded(slam_damage)
 
 func knockBack(direction, force, time):
 	if is_on_floor():

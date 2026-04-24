@@ -56,7 +56,7 @@ func save():
 	return data
 
 func _ready() -> void:
-	look_target_desired = global_position
+	look_target_desired = $RayCast3D/Rayend.global_position
 	look_target = look_target_desired
 
 func _physics_process(delta):
@@ -73,17 +73,19 @@ func _physics_process(delta):
 	if !dead:
 		match current_state:
 			State.IDLE:
-				process_idle_state()
+				process_idle_state(delta)
 			State.CHASE:
 				process_chase_state(delta)
 			State.ATTACK:
 				process_attack_state(delta)
 	else:
 		process_dead_state()
+	
+	move_and_slide()
 
 # --- State Logic ---
 
-func process_idle_state():
+func process_idle_state(delta):
 	if inTransition: return
 	
 	if player.dead and awake:
@@ -97,8 +99,8 @@ func process_idle_state():
 		animation.play_section("walk", 1.7, 1.8, -1, walkAnimScale)
 		walking = false
 	
-	velocity.x = move_toward(velocity.x, 0.0, 3.0)
-	velocity.z = move_toward(velocity.z, 0.0, 3.0)
+	velocity.x = lerp(velocity.x, 0.0, delta * 7.0)
+	velocity.z = lerp(velocity.z, 0.0, delta * 7.0)
 	
 	if (can_see_player() or damagedByPlayer) and !player.dead:
 		inTransition = true
@@ -139,10 +141,10 @@ func process_chase_state(delta):
 	look_at(look_target, Vector3.UP)
 	
 	# Move toward player
-	var dir = (nextPathPos - global_position).normalized()
-	velocity.x = move_toward(velocity.x, dir.x * speed, 3.0)
-	velocity.z = move_toward(velocity.z, dir.z * speed, 3.0)
-	move_and_slide()
+	#var dir = (nextPathPos - global_position).normalized()
+	var dir = (look_target - global_position).normalized()
+	velocity.x = lerp(velocity.x, dir.x * speed, delta * 7.0)
+	velocity.z = lerp(velocity.z, dir.normalized().z * speed, delta * 7.0)
 	
 	# Check transitions
 	dist = global_position.distance_to(player.global_position)
@@ -218,7 +220,7 @@ func kick():
 		if kickRay.get_collider().is_in_group("Player"):
 			kickRay.get_collider().hit(enemy_kick_damage, "enemy")
 			var dir = player.global_position - global_position
-			kickRay.get_collider().knockBack(dir + Vector3(0,0.1,0), 15, 0.3)
+			kickRay.get_collider().knockBack(dir + Vector3(0.0,0.1 if player.is_on_floor() else 0.0,0.0), 15.0, 0.3)
 	await get_tree().create_timer(0.3).timeout
 	isInAttack = false
 
@@ -251,14 +253,6 @@ func hit(recieved_damage, type):
 	if type == "player":
 		damagedByPlayer = true
 	enemy_health -= recieved_damage
-	checkLifeLine()
-
-func get_pounded(recieved_damage):
-	enemy_health -= recieved_damage
-	# Push away
-	var push_dir = global_position - player.global_position
-	knockBack(push_dir, 15, 0.05)
-	
 	checkLifeLine()
 
 func knockBack(direction, force, time):

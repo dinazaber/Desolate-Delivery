@@ -45,8 +45,12 @@ size = Vector2(0.1, 0.1)
 orientation = 2
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_m5ibw"]
-height = 2.980957
-radius = 1.0263672
+height = 3.0
+radius = 1.0
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_3t8db"]
+height = 2.8
+radius = 0.9
 
 [node name="RigidBody" type="RigidBody3D" unique_id=707473027]
 collision_layer = 33
@@ -80,3 +84,10 @@ draw_pass_1 = SubResource("PlaneMesh_ettcv")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1527479017]
 shape = SubResource("CylinderShape3D_m5ibw")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=863210072]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=601315252]
+shape = SubResource("CylinderShape3D_3t8db")

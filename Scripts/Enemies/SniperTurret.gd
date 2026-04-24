@@ -108,10 +108,6 @@ func hit(recieved_damage, type):
 	enemy_health -= recieved_damage
 	checkLifeLine()
 
-func get_pounded(recieved_damage): # DONT REMOVE still needed so the ground pound wont cause errors
-	enemy_health -= recieved_damage
-	checkLifeLine()
-
 func checkLifeLine():
 	if enemy_health <= 0 and dead == false:
 		dead = true

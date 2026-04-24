@@ -478,7 +478,7 @@ size = Vector3(1.2919312, 4.820801, 1.2919922)
 [sub_resource type="BoxShape3D" id="BoxShape3D_a3cge"]
 size = Vector3(0.8988037, 2.0927734, 1.0786743)
 
-[node name="Robot" type="CharacterBody3D" unique_id=969091388 groups=["Persist"]]
+[node name="Robot" type="CharacterBody3D" unique_id=969091388 groups=["Enemy", "Persist"]]
 collision_layer = 40
 collision_mask = 24
 script = ExtResource("1_h872o")
@@ -794,6 +794,9 @@ shape = SubResource("BoxShape3D_a3cge")
 [node name="RayCast3D" type="RayCast3D" parent="." unique_id=1762672619]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.0914974, 0)
 target_position = Vector3(0, 0, -20)
+
+[node name="Rayend" type="Marker3D" parent="RayCast3D" unique_id=355997911]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -20)
 
 [node name="aimHand" type="Marker3D" parent="." unique_id=1413270498]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3850249, 1.778611, 0)

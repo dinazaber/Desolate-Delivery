@@ -49,7 +49,7 @@ length = 0.6
 step = 0.01
 tracks/0/type = "value"
 tracks/0/imported = false
-tracks/0/enabled = false
+tracks/0/enabled = true
 tracks/0/path = NodePath("BeggarsShotgun/Frame/Barrels:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
@@ -270,7 +270,7 @@ script = ExtResource("1_e0py8")
 libraries/ = SubResource("AnimationLibrary_8qb6n")
 
 [node name="BeggarsShotgun" type="Marker3D" parent="." unique_id=1087278608]
-transform = Transform3D(0.9848073, 0.1736481, 0, -0.04494344, 0.2548869, -0.9659258, -0.16773118, 0.9512508, 0.25881907, 0.15, -1.35, 0.15)
+transform = Transform3D(0.98480725, 0.17364809, 0, -0.044943437, 0.2548869, -0.9659258, -0.16773118, 0.95125073, 0.25881907, 0.15, -1.35, 0.15)
 
 [node name="Frame" type="MeshInstance3D" parent="BeggarsShotgun" unique_id=972063788]
 transform = Transform3D(-0.03, -9.7406916e-11, -4.529874e-09, -9.74069e-11, 0.03, -6.984924e-11, 4.529874e-09, -6.9849224e-11, -0.03, 0, -0.03, -0.58)
