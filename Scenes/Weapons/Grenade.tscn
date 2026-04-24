@@ -141,8 +141,12 @@ rings = 4
 [node name="Grenade" type="RigidBody3D" unique_id=1710984480 groups=["ShotReactable"]]
 collision_layer = 38
 collision_mask = 38
-mass = 0.4
+mass = 0.2
 physics_material_override = SubResource("PhysicsMaterial_2byne")
+inertia = Vector3(0.01, 0.01, 0.01)
+continuous_cd = true
+contact_monitor = true
+max_contacts_reported = 1
 linear_damp_mode = 1
 angular_damp = 5.0
 script = ExtResource("1_k3jl2")
@@ -156,7 +160,7 @@ mesh = ExtResource("2_2byne")
 
 [node name="ExplosionBox1" type="Area3D" parent="." unique_id=1186377403]
 collision_layer = 0
-collision_mask = 10
+collision_mask = 42
 input_ray_pickable = false
 
 [node name="ExpCol1" type="CollisionShape3D" parent="ExplosionBox1" unique_id=1737517613]
@@ -164,7 +168,7 @@ shape = SubResource("SphereShape3D_6rbch")
 
 [node name="ExplosionBox2" type="Area3D" parent="." unique_id=1138277971]
 collision_layer = 0
-collision_mask = 10
+collision_mask = 42
 input_ray_pickable = false
 
 [node name="ExpCol2" type="CollisionShape3D" parent="ExplosionBox2" unique_id=990750688]
@@ -196,6 +200,7 @@ process_material = SubResource("ParticleProcessMaterial_rgnl6")
 draw_pass_1 = SubResource("SphereMesh_lcisc")
 
 [node name="Fire" type="GPUParticles3D" parent="." unique_id=1180034811]
+cast_shadow = 0
 emitting = false
 amount = 12
 one_shot = true

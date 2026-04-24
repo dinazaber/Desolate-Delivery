@@ -87,8 +87,8 @@ size = Vector3(1, 2, 1)
 [node name="Player" type="CharacterBody3D" unique_id=1941692924 groups=["Persist", "Player"]]
 collision_layer = 25
 collision_mask = 9
-floor_constant_speed = true
-floor_snap_length = 0.25
+floor_max_angle = 0.2617994
+floor_snap_length = 0.15
 script = ExtResource("1_g8lft")
 
 [node name="cameraAnimation" type="AnimationPlayer" parent="." unique_id=1078308482]
@@ -104,8 +104,8 @@ shape = SubResource("CapsuleShape3D_yoq75")
 
 [node name="EnemyBounceCheck" type="Area3D" parent="." unique_id=326631368]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.51, 0)
-collision_layer = 8
-collision_mask = 8
+collision_layer = 40
+collision_mask = 40
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="EnemyBounceCheck" unique_id=632021629]
 shape = SubResource("SphereShape3D_yoq75")
@@ -119,7 +119,7 @@ trauma_reduction_rate = 3.0
 noise_speed = 30.0
 
 [node name="holdPos" type="Marker3D" parent="shakeable_camera" unique_id=1190064023]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, -1.4)
 
 [node name="PlayerRay" type="RayCast3D" parent="shakeable_camera" unique_id=1906683229]
 transform = Transform3D(-4.371139e-08, 9.232692e-19, 1, 0, 1, 9.232692e-19, -1, -4.0357378e-26, -4.371139e-08, 0, -0.0009999871, 0)
@@ -130,7 +130,7 @@ collide_with_areas = true
 [node name="Hands" type="Node3D" parent="shakeable_camera" unique_id=1293429431]
 
 [node name="RightHand" parent="shakeable_camera/Hands" unique_id=267885530 instance=ExtResource("2_kyqiw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.110599935, -0.137, -0.24466157)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15, -0.137, -0.25)
 
 [node name="SMG" parent="shakeable_camera/Hands/RightHand" index="2" unique_id=1941681137 node_paths=PackedStringArray("camera", "playerRay")]
 camera = NodePath("../../..")
@@ -141,7 +141,7 @@ camera = NodePath("../../..")
 playerRay = NodePath("../../../PlayerRay")
 
 [node name="LeftHand" parent="shakeable_camera/Hands" unique_id=1896444700 instance=ExtResource("3_nn08x")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.16263099, -0.137, -0.25)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.2, -0.137, -0.25)
 
 [node name="Steamer" parent="shakeable_camera/Hands/LeftHand" index="0" unique_id=1493507664 node_paths=PackedStringArray("camera", "playerRay")]
 camera = NodePath("../../..")

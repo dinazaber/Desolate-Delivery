@@ -111,7 +111,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0.113, -0.45, 0.15)]
+"values": [Vector3(0.113, -0.45, 0.1)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -140,7 +140,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.18, 0.24, 0.3),
 "transitions": PackedFloat32Array(0.5, 2, 0.5, 1),
 "update": 0,
-"values": [Vector3(0.113, -0.45, 0.15), Vector3(0.131, 0.09, 0), Vector3(0.15, 0.045, 0), Vector3(0.113, 0, 0)]
+"values": [Vector3(0.113, -0.45, 0.1), Vector3(0.18, 0.09, -0.1), Vector3(0.17, 0.045, -0.05), Vector3(0.15, 0, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -149,10 +149,10 @@ tracks/1/path = NodePath("Gun:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.22, 0.26, 0.3),
-"transitions": PackedFloat32Array(3, 2, 0.5, 1),
+"times": PackedFloat32Array(0, 0.18, 0.22, 0.26, 0.3),
+"transitions": PackedFloat32Array(3, 0.3, 2, 0.5, 1),
 "update": 0,
-"values": [Vector3(1.0471976, 0, -1.0471976), Vector3(-0.34906584, 1.2217305, 0), Vector3(-0.17453292, 1.3962634, 0), Vector3(0, 1.5707964, 0)]
+"values": [Vector3(1.2217305, 0, -1.0471976), Vector3(-0.22220683, 1.1230624, -0.08457261), Vector3(-0.34906584, 1.2217305, 0), Vector3(-0.17453292, 1.3962634, 0), Vector3(0, 1.5707964, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_xgwlw"]
@@ -169,7 +169,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.05, 0.15, 0.26, 0.33, 0.4),
 "transitions": PackedFloat32Array(0.3, 1.5, 2, 2, 0.5, 1),
 "update": 0,
-"values": [Vector3(0.113, 0, 0), Vector3(0, -0.03, 0), Vector3(0.128, 0.015, 0), Vector3(0.113, -0.012, 0), Vector3(0.113, -0.006, 0), Vector3(0.113, 0, 0)]
+"values": [Vector3(0.15, 0, 0), Vector3(0.04, -0.03, 0), Vector3(0.17, 0.015, 0), Vector3(0.15, -0.012, 0), Vector3(0.15, -0.006, 0), Vector3(0.15, 0, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -192,7 +192,7 @@ _data = {
 }
 
 [sub_resource type="Curve" id="Curve_s2mxn"]
-_data = [Vector2(0, 0.5), 0.0, 0.0, 0, 0, Vector2(0.7455197, 0.5), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 0.5), 0.0, 0.0, 0, 0, Vector2(0.65232974, 0.5), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 3
 
 [sub_resource type="CurveTexture" id="CurveTexture_88n45"]
@@ -213,14 +213,14 @@ point_count = 4
 curve = SubResource("Curve_cuimc")
 
 [sub_resource type="Curve" id="Curve_6gchu"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.13978495, 1), 0.0, 0.0, 0, 0, Vector2(0.7455197, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.5), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.13978495, 1), 0.0, 0.0, 0, 0, Vector2(0.65232974, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 4
 
 [sub_resource type="CurveTexture" id="CurveTexture_80fnb"]
 curve = SubResource("Curve_6gchu")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_nyeo0"]
-lifetime_randomness = 0.3
+lifetime_randomness = 0.4
 spread = 60.0
 flatness = 0.7
 initial_velocity_min = 50.0
@@ -268,11 +268,13 @@ mesh = ExtResource("2_6xrp2")
 libraries/ = SubResource("AnimationLibrary_qfvl1")
 
 [node name="Gun" type="MeshInstance3D" parent="." unique_id=521914031]
-transform = Transform3D(0.014999999, 0.025980767, 0, -0.012990381, 0.0075, -0.025980765, -0.0225, 0.0129903825, 0.015, 0.113, -0.45, 0.15)
+transform = Transform3D(0.014999999, 0.025980767, 0, -0.012990381, 0.0075000003, -0.025980765, -0.0225, 0.0129903825, 0.015, 0.113, -0.45, 0.1)
+cast_shadow = 0
 mesh = ExtResource("3_s2mxn")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="Gun" unique_id=389766710]
 transform = Transform3D(-2.1855693e-07, 0, -5, 0, 5, 0, 5, 0, -2.1855693e-07, -8.1958837e-07, 0, 18.75)
+cast_shadow = 0
 emitting = false
 amount = 16
 lifetime = 0.7
@@ -287,6 +289,7 @@ transform = Transform3D(-2.095567e-07, 6.2073504e-08, -5, 1.420077, 4.794099, -3
 
 [node name="DialArrow" type="MeshInstance3D" parent="Gun/DialArrow" unique_id=500991761]
 transform = Transform3D(0.14142136, 0, 0.14142136, 0, 0.2, 0, -0.14142136, 0, 0.14142136, 0, 0.2, 0)
+cast_shadow = 0
 mesh = ExtResource("4_88n45")
 skeleton = NodePath("../../..")
 
@@ -302,6 +305,6 @@ shape = SubResource("BoxShape3D_s2mxn")
 [node name="HeatBuffer" type="Timer" parent="." unique_id=490756705]
 
 [node name="playerPos" type="Marker3D" parent="." unique_id=733481372]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.113, 0.2)
 
 [connection signal="timeout" from="HeatBuffer" to="." method="_on_heat_buffer_timeout"]

@@ -15,7 +15,7 @@ signal knockBack(force: int, time: float)
 @onready var dialArrow = $Gun/DialArrow/DialArrow
 @onready var blastRange = $Gun/Area3D
 @onready var steam = $Gun/GPUParticles3D
-@onready var playerPos = $playerPos #correction value of the steamer's pos in relation to the player (fliped sign of left hand x pos)
+@onready var playerPos = $playerPos #correction value of the steamer's pos in relation to the player's hold pos
 
 var can_cool: bool = true
 var heat: float = 0.0

@@ -48,14 +48,14 @@ var fireDelay: float = 15.0 # Delay between object throwing and shooting
 
 # --- PLAYER STATS ---
 @export var DEBUG_deathBypass: bool = false
-const PLAYER_MAX_HEALTH = 100
+const PLAYER_MAX_HEALTH = 100.0
 @export var player_health: float = PLAYER_MAX_HEALTH
 @export var coolOnKill: float = 15.0
-@export var grenadeCoolTime: float = 10.0 # cooldown time
-@export var walk_speed: float = 5
+@export var grenadeCoolTime: float = 8.0 # cooldown time (s)
+@export var walk_speed: float = 5.0
 @export var crouch_speed: float = 2.5
-@export var dash_speed: float = 15
-@export var jump_speed: float = 10
+@export var dash_speed: float = 30.0
+@export var jump_speed: float = 10.0
 
 
 # --- INSTANCES ---
@@ -121,6 +121,8 @@ func updateScreenEffect(): #Function for current and future screen effects
 
 
 func _ready() -> void:
+	#platform_on_leave = CharacterBody3D.PLATFORM_ON_LEAVE_DO_NOTHING
+	
 	screenEffect = get_tree().get_first_node_in_group("Effects")
 	
 	cam_speed = SettingsManager.settings.controls.mouse_sensitivity
@@ -134,7 +136,6 @@ func _input(event):
 	if dead: return
 	
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	
 	
 	# Throwable objects
 	if Input.is_action_just_pressed("E"):
@@ -175,7 +176,7 @@ func _input(event):
 			current_gun_R.draw()
 	
 	
-	if Input.is_action_just_pressed("R"):
+	if Input.is_action_just_pressed("Wheel"):
 		throw_grenade()
 		
 			
@@ -195,7 +196,7 @@ func _input(event):
 
 func _physics_process(delta):
 	if screenEffect!=null: updateScreenEffect()
-
+	
 	#cameraDistance = clamp(cameraDistance,15, 45)
 	
 	#neg vals are for recharge delay i.e -5 is 0.5 sec rechare delay VLAD
@@ -210,12 +211,19 @@ func _physics_process(delta):
 	if enemyBounceCheck.has_overlapping_bodies():
 		var bodies = enemyBounceCheck.get_overlapping_bodies()
 		var enemyCount: int = 0
+		var physicsCount: int = 0
 		for body in bodies:
 			if body.is_in_group("Enemy"):
 				enemyCount += 1
+			if body.is_in_group("Physics"):
+				physicsCount += 1
 		if enemyCount:
 			if is_on_floor():
 				knockBack(get_floor_normal(), 12.0, 0.1)
+		if physicsCount:
+			floor_max_angle = deg_to_rad(15.0)
+		else: floor_max_angle = deg_to_rad(45.0)
+	else: floor_max_angle = deg_to_rad(45.0)
 
 	
 	if Input.is_action_pressed("LeftMouse") and !dead:
@@ -301,10 +309,6 @@ func _physics_process(delta):
 		currentInput = Vector3.ZERO
 	var direction = (transform.basis * Vector3(currentInput.x, 0, currentInput.y)).normalized()
 	
-	if direction and !knocked:
-		velocity.x = move_toward(velocity.x, direction.x * SPEED, delta * 20.0 * accel_mod)
-		velocity.z = move_toward(velocity.z, direction.z * SPEED, delta * 20.0 * accel_mod)
-	
 	#Basic movement & dash
 	if is_on_floor(): # grounded speed
 		if airborne:
@@ -323,12 +327,12 @@ func _physics_process(delta):
 		
 		if direction:
 			if Input.is_action_just_pressed("Shift") and canDash and !crouch and !dead:
-				SPEED = dash_speed
-				velocity = direction * SPEED
+				#SPEED = dash_speed
+				#velocity = direction * SPEED
+				knockBack(direction, dash_speed, 0.2)
 				canDash = false
 				$SuperTimer.set("wait_time",0.5)
 				$SuperTimer.start()
-			
 			
 			# head bob
 			if !slide:
@@ -336,20 +340,22 @@ func _physics_process(delta):
 				var pos = Vector3.ZERO
 				pos.y = camera.position.y + sin(headTime*headFreq) * headAmp
 				camera.position.y = lerp(camera.position.y, pos.y, 20 * delta)
-		
+			
+			if !knocked:
+				velocity = lerp(velocity, direction * SPEED, delta * 10.0 * accel_mod)
 		
 		else: # no input speed
 			headTime = 0.0
-			velocity.x = lerp(velocity.x, direction.x * SPEED, delta * 5.0 * accel_mod)
-			velocity.z = lerp(velocity.z, direction.z * SPEED, delta * 5.0 * accel_mod)
-			
+			velocity.x = lerp(velocity.x, 0.0, delta * 7.0 * accel_mod)
+			velocity.z = lerp(velocity.z, 0.0, delta * 7.0 * accel_mod)
+		
 	else: # airborne speed
 		airborne = true
 		landVel = abs(velocity.y)
 		velocity.y -= 20 * delta # Gravity
 		
-		velocity.x = lerp(velocity.x, direction.x * SPEED, delta * 0.5)
-		velocity.z = lerp(velocity.z, direction.z * SPEED, delta * 0.5)
+		velocity.x = lerp(velocity.x, direction.x * SPEED, delta * 1.5 * accel_mod)
+		velocity.z = lerp(velocity.z, direction.z * SPEED, delta * 1.5 * accel_mod)
 	
 	if !dead:
 		cam_gun_tilt_sway(currentInput.x,currentInput.y, delta)
@@ -401,14 +407,14 @@ func push_object():
 			
 		if collider is RigidBody3D and collider != grabbedObject:
 			var push_dir = -collision.get_normal()
-			var push_dir_vel_dif = (velocity.normalized()*SPEED).dot(push_dir) - collider.linear_velocity.dot(push_dir)
+			var push_dir_vel_dif = (get_real_velocity().normalized()).dot(push_dir) - collider.linear_velocity.dot(push_dir)
 			push_dir_vel_dif = max(0.0, push_dir_vel_dif)
 			
 			const PLAYER_MASS = 50.0
 			var mass_ratio = min(1.0, PLAYER_MASS / collider.mass)
 			
 			push_dir.y = 0.0
-			var push_force = mass_ratio * 3.0
+			var push_force = mass_ratio * 30.0
 			collider.apply_impulse(push_dir * push_dir_vel_dif * push_force, collision.get_position() - collider.global_position)
 
 
@@ -418,7 +424,7 @@ func hideWeapons(): #We will add here check for left/right side later I guess
 
 func hit(recieved_damage, type):
 	if type == "player":
-		recieved_damage /= 5
+		recieved_damage /= 3
 	player_health -= recieved_damage
 	camera.add_trauma(recieved_damage/20)
 	checkLifeLine()
@@ -431,6 +437,7 @@ func throw_grenade():
 		var forward_force = 10.0
 		var upward_force = 5.0
 		instance_grenade.apply_central_impulse((throw_dir * forward_force) + Vector3(0, upward_force, 0) + velocity)
+		instance_grenade.apply_torque_impulse(Vector3(randf(), randf(), randf()) * instance_grenade.mass)
 		get_parent().add_child(instance_grenade)
 		grenadeCool = -5.0
 
@@ -455,9 +462,7 @@ func knockBack(direction, force, time):
 	knocked = false
 
 func checkLifeLine():
-	print(player_health)
 	if player_health <= 0 and dead == false:
-		print("u ded lol")
 		if !DEBUG_deathBypass:
 			dead = true
 			current_gun_R.undraw()

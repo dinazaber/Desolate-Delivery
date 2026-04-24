@@ -221,9 +221,10 @@ skeleton = NodePath("../../..")
 
 [node name="smg_tracers" type="GPUParticles3D" parent="." unique_id=1931424156]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.69036895)
+cast_shadow = 0
 emitting = false
 amount = 1
-lifetime = 0.09999999999999999
+lifetime = 0.1
 one_shot = true
 fixed_fps = 144
 process_material = SubResource("ParticleProcessMaterial_dxyhc")

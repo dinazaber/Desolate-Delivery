@@ -99,8 +99,9 @@ func process_idle_state(delta):
 		animation.play_section("walk", 1.7, 1.8, -1, walkAnimScale)
 		walking = false
 	
-	velocity.x = lerp(velocity.x, 0.0, delta * 7.0)
-	velocity.z = lerp(velocity.z, 0.0, delta * 7.0)
+	if !knocked:
+		velocity.x = lerp(velocity.x, 0.0, delta * 7.0)
+		velocity.z = lerp(velocity.z, 0.0, delta * 7.0)
 	
 	if (can_see_player() or damagedByPlayer) and !player.dead:
 		inTransition = true
@@ -143,8 +144,9 @@ func process_chase_state(delta):
 	# Move toward player
 	#var dir = (nextPathPos - global_position).normalized()
 	var dir = (look_target - global_position).normalized()
-	velocity.x = lerp(velocity.x, dir.x * speed, delta * 7.0)
-	velocity.z = lerp(velocity.z, dir.normalized().z * speed, delta * 7.0)
+	if !knocked:
+		velocity.x = lerp(velocity.x, dir.x * speed, delta * 5.0)
+		velocity.z = lerp(velocity.z, dir.z * speed, delta * 5.0)
 	
 	# Check transitions
 	dist = global_position.distance_to(player.global_position)
@@ -167,8 +169,9 @@ func process_attack_state(delta):
 		animation.play_section("walk", 1.7, 1.8, -1, walkAnimScale)
 		walking = false
 	
-	velocity.x = move_toward(velocity.x, 0.0, 3.0)
-	velocity.z = move_toward(velocity.z, 0.0, 3.0)
+	if !knocked:
+		velocity.x = lerp(velocity.x, 0.0, delta * 5.0)
+		velocity.z = lerp(velocity.z, 0.0, delta * 5.0)
 	
 	dist = global_position.distance_to(player.global_position)
 	if dist <= kick_distance:

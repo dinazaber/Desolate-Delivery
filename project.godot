@@ -47,6 +47,7 @@ Player=""
 ShotReactable="objects that aren't enemeis that react to being shot"
 Persist="Nodes that should be loaded from save file"
 Effects="Group of all screen effects"
+Physics="(only player colliding)"
 
 [importer_defaults]
 
