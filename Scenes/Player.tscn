@@ -91,6 +91,16 @@ floor_max_angle = 0.2617994
 floor_snap_length = 0.15
 script = ExtResource("1_g8lft")
 
+[node name="StairBounds" type="Node3D" parent="." unique_id=949802035]
+
+[node name="StairsMin" type="RayCast3D" parent="StairBounds" unique_id=1629181005]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.92373216, -0.12357485)
+target_position = Vector3(0, 0, -0.4)
+
+[node name="StairsMax" type="RayCast3D" parent="StairBounds" unique_id=613395755]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5283632, -0.12357485)
+target_position = Vector3(0, 0, -0.41)
+
 [node name="cameraAnimation" type="AnimationPlayer" parent="." unique_id=1078308482]
 libraries/ = SubResource("AnimationLibrary_yoq75")
 

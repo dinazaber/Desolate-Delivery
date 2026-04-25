@@ -207,8 +207,9 @@ func _physics_process(delta):
 	if !dead:
 		rotation.y = lerp_angle(rotation.y, yaw, delta * 30.0) # left/right
 		camera.rotation.x = lerp_angle(camera.rotation.x, -pitch, delta * 30.0)
+		
 	
-	if enemyBounceCheck.has_overlapping_bodies():
+	if enemyBounceCheck.has_overlapping_bodies(): #What is this? Should be function
 		var bodies = enemyBounceCheck.get_overlapping_bodies()
 		var enemyCount: int = 0
 		var physicsCount: int = 0
@@ -252,7 +253,7 @@ func _physics_process(delta):
 		
 	
 	
-	if grabbedObject: # Grabbed Object
+	if grabbedObject: # Grabbed Object, should be function
 		var holdPos = hold_pos
 		var distance = grabbedObject.global_position.distance_to(holdPos.global_position)
 		var dir = holdPos.global_position - grabbedObject.global_position
@@ -304,9 +305,11 @@ func _physics_process(delta):
 	
 	# Get direction
 	var currentInput = Input.get_vector("A", "D", "W", "S")
-	if dead:
-		currentInput = Vector3.ZERO
+	if dead: currentInput = Vector3.ZERO
 	var direction = (transform.basis * Vector3(currentInput.x, 0, currentInput.y)).normalized()
+	if direction and $StairBounds/StairsMin.is_colliding() and !$StairBounds/StairsMax.is_colliding() and is_on_wall():
+		velocity.y = 4
+	
 	
 	# dash
 	if Input.is_action_just_pressed("Shift") and direction and dashCool == 100.0 and !crouch and !dead:

@@ -21,14 +21,13 @@
 [ext_resource type="PackedScene" uid="uid://beqguglkai1oh" path="res://Scenes/Enemies/Robot.tscn" id="15_xm5mx"]
 [ext_resource type="ArrayMesh" uid="uid://tnqtnrxm02k4" path="res://assets/Meshes/Objects/Crate1.mesh" id="16_jcbmq"]
 [ext_resource type="ArrayMesh" uid="uid://duisheavfmqh2" path="res://assets/Meshes/Objects/Vehicles/Car1/Car1Chassis.mesh" id="16_xe0hb"]
-[ext_resource type="ArrayMesh" uid="uid://bhdj6x3k5qagf" path="res://assets/Meshes/Architecture/CommandCenter.mesh" id="21_xe0hb"]
-[ext_resource type="Shader" uid="uid://bog2d5u5vhtmo" path="res://Shaders/MeshShaders/Flag.gdshader" id="22_h62tq"]
 [ext_resource type="ArrayMesh" uid="uid://bvbx2g5lkenkl" path="res://assets/Meshes/Architecture/OilTank.mesh" id="22_ijbfb"]
 [ext_resource type="ArrayMesh" uid="uid://br33wg26qu7sk" path="res://assets/Meshes/Objects/Crate2.mesh" id="23_wr8wa"]
 [ext_resource type="ArrayMesh" uid="uid://dg5v2a8wb7y1i" path="res://assets/Meshes/Architecture/FlightRoad1.mesh" id="24_8m8kg"]
 [ext_resource type="ArrayMesh" uid="uid://ctwgbcoa041dw" path="res://assets/Meshes/Architecture/FlightRoad2.mesh" id="25_a87j4"]
 [ext_resource type="ArrayMesh" uid="uid://bkr71h5a7ujcd" path="res://assets/Meshes/Architecture/FlightRoad3.mesh" id="26_d53pk"]
 [ext_resource type="ArrayMesh" uid="uid://c1vnvnx5yvnwh" path="res://assets/Meshes/Architecture/FlightRoad4.mesh" id="27_lghlv"]
+[ext_resource type="PackedScene" uid="uid://o5yldt1h3ti2" path="res://Scenes/Buildings/CommandCenter.tscn" id="29_h62tq"]
 [ext_resource type="ArrayMesh" uid="uid://duhjwdkqwqgow" path="res://assets/Meshes/Architecture/Crack.mesh" id="30_1k7mg"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_qpfo2"]
@@ -197,33 +196,6 @@ instance_count = 6
 visible_instance_count = 6
 mesh = ExtResource("16_jcbmq")
 buffer = PackedFloat32Array(-0.028902337, 0, -0.19790062, 3.547553, 0, 0.2, 0, 0.3667109, 0.19790062, 0, -0.028902337, -19.09034, -0.028902337, 0, -0.19790062, -0.24313545, 0, 0.2, 0, 0.3667109, 0.19790062, 0, -0.028902337, -19.09034, -0.028902337, 0, -0.19790062, -0.24313545, 0, 0.2, 0, 0.3667109, 0.19790062, 0, -0.028902337, -21.706053, -0.028902337, 0, -0.19790062, -0.24313545, 0, 0.2, 0, 0.3667109, 0.19790062, 0, -0.028902337, -24.222898, -0.028902337, 0, -0.19790062, 3.59828, 0, 0.2, 0, 0.3667109, 0.19790062, 0, -0.028902337, -21.706053, -0.028902337, 0, -0.19790062, 3.59828, 0, 0.2, 0, 0.3667109, 0.19790062, 0, -0.028902337, -23.976553)
-
-[sub_resource type="Gradient" id="Gradient_lw8r5"]
-offsets = PackedFloat32Array(0)
-colors = PackedColorArray(0.45064795, 0.38543478, 0.28109396, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_1k7mg"]
-gradient = SubResource("Gradient_lw8r5")
-width = 1
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_e446a"]
-render_priority = 0
-shader = ExtResource("22_h62tq")
-shader_parameter/speed = 0.8
-shader_parameter/frequency_y = 2.0
-shader_parameter/frequency_x = 1.0
-shader_parameter/frequency_z = 1.0
-shader_parameter/amplitude_y = 0.02
-shader_parameter/amplitude_x = 0.05
-shader_parameter/amplitude_z = 0.016
-shader_parameter/inclination = 0.0
-shader_parameter/color = SubResource("GradientTexture1D_1k7mg")
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_rlhbk"]
-material = SubResource("ShaderMaterial_e446a")
-size = Vector2(0.84, 0.52)
-subdivide_width = 1
-orientation = 2
 
 [sub_resource type="BoxMesh" id="BoxMesh_xe0hb"]
 
@@ -475,26 +447,6 @@ shape_type = 0
 go_make_colliders = null
 metadata/_custom_type_script = "uid://cfwmt6vc7y70h"
 
-[node name="CommandCenter" type="MeshInstance3D" parent="." unique_id=1826240005]
-transform = Transform3D(-6.119594e-08, 0, -1.4, 0, 1.4, 0, 1.4, 0, -6.119594e-08, 17.929441, 3.5706801, -23.747948)
-mesh = ExtResource("21_xe0hb")
-
-[node name="Label3D" type="Label3D" parent="CommandCenter" unique_id=1904674753]
-transform = Transform3D(-0.2, 0, -3.019916e-08, 0, 0.2, 0, 3.019916e-08, 0, -0.2, -0.21512413, 0.2960782, -0.029752731)
-text = "This shit is there just to tell you
-that I want to use this door as
-teleport to some robo goblin
-vendor on this location and you
-won't stop me.
-Btw label 3d is a very cool thing
-although it is using 1 draw call
-...
-you could have texted me"
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="CommandCenter" unique_id=383858496]
-transform = Transform3D(-4.371139e-08, 0.99999994, 0, -0.99999994, -4.371139e-08, 0, 2.1175824e-22, -7.1054274e-15, 1, 1.0303879, -0.07060671, 2.747467)
-mesh = SubResource("PlaneMesh_rlhbk")
-
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1267380104]
 transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -15, 0.5, -22)
 mesh = SubResource("BoxMesh_xe0hb")
@@ -580,3 +532,6 @@ go_explode = null
 shape_type = 0
 go_make_colliders = null
 metadata/_custom_type_script = "uid://cfwmt6vc7y70h"
+
+[node name="CommandCenter" parent="." unique_id=1461013436 instance=ExtResource("29_h62tq")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 19.70058, 4.9964066, -22.223436)
