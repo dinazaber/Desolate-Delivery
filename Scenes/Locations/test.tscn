@@ -5,11 +5,12 @@
 [ext_resource type="Script" uid="uid://cfwmt6vc7y70h" path="res://addons/MetaMultimeshInstance3D/src/MetaMultimeshInstance3D.gd" id="3_u4tly"]
 [ext_resource type="PackedScene" uid="uid://cpi1xrpot2ipt" path="res://Scenes/Player.tscn" id="4_ru70h"]
 [ext_resource type="Shader" uid="uid://no1jy7cyw0an" path="res://Shaders/PostProcess/SandStorm.gdshader" id="5_qhj8q"]
-[ext_resource type="ArrayMesh" uid="uid://bdly7xwroyu0j" path="res://assets/Meshes/Architecture/Barrack.mesh" id="6_xe0hb"]
 [ext_resource type="ArrayMesh" uid="uid://7ho7ltov0iyb" path="res://assets/Meshes/Objects/Vehicles/Jeep/Jeep.mesh" id="7_ijbfb"]
 [ext_resource type="PackedScene" uid="uid://da8xo7bpr7w37" path="res://Scenes/Enemies/SniperTurret.tscn" id="7_xe0hb"]
+[ext_resource type="ArrayMesh" uid="uid://basf6ovw4w4mr" path="res://assets/Meshes/Architecture/Ruins1.mesh" id="8_h62tq"]
 [ext_resource type="Texture2D" uid="uid://dayne5ld0pqyg" path="res://assets/Textures/Shadows/JeepShadow.png" id="8_wr8wa"]
 [ext_resource type="ArrayMesh" uid="uid://qdmyf5e4rqff" path="res://assets/Meshes/Objects/Vehicles/Plane.mesh" id="9_3haq7"]
+[ext_resource type="ArrayMesh" uid="uid://c0hwc8yrvck00" path="res://assets/Meshes/Architecture/Ruins2.mesh" id="9_iyf6e"]
 [ext_resource type="ArrayMesh" uid="uid://unogx422rgbl" path="res://assets/Meshes/Objects/Vehicles/Jeep/JeepChassis.mesh" id="9_obpdj"]
 [ext_resource type="Texture2D" uid="uid://c0bmkoyrxxxnf" path="res://assets/Textures/Shadows/PlaneShadow.png" id="10_8m8kg"]
 [ext_resource type="ArrayMesh" uid="uid://q8g0hhj850vv" path="res://assets/Meshes/Architecture/Hangar1.mesh" id="11_a87j4"]
@@ -21,6 +22,7 @@
 [ext_resource type="ArrayMesh" uid="uid://tnqtnrxm02k4" path="res://assets/Meshes/Objects/Crate1.mesh" id="16_jcbmq"]
 [ext_resource type="ArrayMesh" uid="uid://duisheavfmqh2" path="res://assets/Meshes/Objects/Vehicles/Car1/Car1Chassis.mesh" id="16_xe0hb"]
 [ext_resource type="ArrayMesh" uid="uid://bhdj6x3k5qagf" path="res://assets/Meshes/Architecture/CommandCenter.mesh" id="21_xe0hb"]
+[ext_resource type="Shader" uid="uid://bog2d5u5vhtmo" path="res://Shaders/MeshShaders/Flag.gdshader" id="22_h62tq"]
 [ext_resource type="ArrayMesh" uid="uid://bvbx2g5lkenkl" path="res://assets/Meshes/Architecture/OilTank.mesh" id="22_ijbfb"]
 [ext_resource type="ArrayMesh" uid="uid://br33wg26qu7sk" path="res://assets/Meshes/Objects/Crate2.mesh" id="23_wr8wa"]
 [ext_resource type="ArrayMesh" uid="uid://dg5v2a8wb7y1i" path="res://assets/Meshes/Architecture/FlightRoad1.mesh" id="24_8m8kg"]
@@ -150,6 +152,20 @@ adjustment_enabled = true
 adjustment_brightness = 1.1
 adjustment_saturation = 1.1
 
+[sub_resource type="MultiMesh" id="MultiMesh_iyf6e"]
+transform_format = 1
+instance_count = 2
+visible_instance_count = 2
+mesh = ExtResource("8_h62tq")
+buffer = PackedFloat32Array(-1.2163987, 0, 0.69309014, -34.428654, 0, 1.4, 0, 1.5236466, -0.69309014, 0, -1.2163987, -35.054756, 1.1453674, 0, 0.80506736, -31.694069, 0, 1.4, 0, 1.5236466, -0.80506736, 0, 1.1453674, -43.166668)
+
+[sub_resource type="MultiMesh" id="MultiMesh_lw8r5"]
+transform_format = 1
+instance_count = 2
+visible_instance_count = 2
+mesh = ExtResource("9_iyf6e")
+buffer = PackedFloat32Array(-1.2956364, 0, -0.5304022, -20.45749, 0, 1.3999999, 0, 1.5236466, 0.5304022, 0, -1.2956364, -39.192493, -0.13975282, 0, 1.3930073, -43.281433, 0, 1.4000001, 0, 1.5236464, -1.3930073, 0, -0.13975282, -32.62122)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_qpfo2"]
 size = Vector3(4.298645, 3.5697021, 2.6156006)
 
@@ -181,6 +197,33 @@ instance_count = 6
 visible_instance_count = 6
 mesh = ExtResource("16_jcbmq")
 buffer = PackedFloat32Array(-0.028902337, 0, -0.19790062, 3.547553, 0, 0.2, 0, 0.3667109, 0.19790062, 0, -0.028902337, -19.09034, -0.028902337, 0, -0.19790062, -0.24313545, 0, 0.2, 0, 0.3667109, 0.19790062, 0, -0.028902337, -19.09034, -0.028902337, 0, -0.19790062, -0.24313545, 0, 0.2, 0, 0.3667109, 0.19790062, 0, -0.028902337, -21.706053, -0.028902337, 0, -0.19790062, -0.24313545, 0, 0.2, 0, 0.3667109, 0.19790062, 0, -0.028902337, -24.222898, -0.028902337, 0, -0.19790062, 3.59828, 0, 0.2, 0, 0.3667109, 0.19790062, 0, -0.028902337, -21.706053, -0.028902337, 0, -0.19790062, 3.59828, 0, 0.2, 0, 0.3667109, 0.19790062, 0, -0.028902337, -23.976553)
+
+[sub_resource type="Gradient" id="Gradient_lw8r5"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.45064795, 0.38543478, 0.28109396, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_1k7mg"]
+gradient = SubResource("Gradient_lw8r5")
+width = 1
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_e446a"]
+render_priority = 0
+shader = ExtResource("22_h62tq")
+shader_parameter/speed = 0.8
+shader_parameter/frequency_y = 2.0
+shader_parameter/frequency_x = 1.0
+shader_parameter/frequency_z = 1.0
+shader_parameter/amplitude_y = 0.02
+shader_parameter/amplitude_x = 0.05
+shader_parameter/amplitude_z = 0.016
+shader_parameter/inclination = 0.0
+shader_parameter/color = SubResource("GradientTexture1D_1k7mg")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_rlhbk"]
+material = SubResource("ShaderMaterial_e446a")
+size = Vector2(0.84, 0.52)
+subdivide_width = 1
+orientation = 2
 
 [sub_resource type="BoxMesh" id="BoxMesh_xe0hb"]
 
@@ -273,9 +316,23 @@ detection_range = 0.0
 [node name="SniperTurret" parent="." unique_id=1830225406 instance=ExtResource("7_xe0hb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.673558, 1.785, -11.888981)
 
-[node name="Barrack" type="MeshInstance3D" parent="." unique_id=1999639744]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.35177, 1.0000209, 1.8640761)
-mesh = ExtResource("6_xe0hb")
+[node name="Ruins" type="StaticBody3D" parent="." unique_id=555013339]
+
+[node name="Ruins1" type="MultiMeshInstance3D" parent="Ruins" unique_id=2027900047]
+multimesh = SubResource("MultiMesh_iyf6e")
+script = ExtResource("3_u4tly")
+go_explode = null
+shape_type = 0
+go_make_colliders = null
+metadata/_custom_type_script = "uid://cfwmt6vc7y70h"
+
+[node name="Ruins2" type="MultiMeshInstance3D" parent="Ruins" unique_id=1397263763]
+multimesh = SubResource("MultiMesh_lw8r5")
+script = ExtResource("3_u4tly")
+go_explode = null
+shape_type = 0
+go_make_colliders = null
+metadata/_custom_type_script = "uid://cfwmt6vc7y70h"
 
 [node name="Jeeps" type="StaticBody3D" parent="." unique_id=1207635136]
 
@@ -433,6 +490,10 @@ Btw label 3d is a very cool thing
 although it is using 1 draw call
 ...
 you could have texted me"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CommandCenter" unique_id=383858496]
+transform = Transform3D(-4.371139e-08, 0.99999994, 0, -0.99999994, -4.371139e-08, 0, 2.1175824e-22, -7.1054274e-15, 1, 1.0303879, -0.07060671, 2.747467)
+mesh = SubResource("PlaneMesh_rlhbk")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1267380104]
 transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -15, 0.5, -22)

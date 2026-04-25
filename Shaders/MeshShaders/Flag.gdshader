@@ -9,7 +9,7 @@ uniform float frequency_z = 2.5;
 uniform float amplitude_y = 0.1;
 uniform float amplitude_x = 0.05;
 uniform float amplitude_z = 0.05;
-uniform float inclination = -0.04;
+uniform float inclination = -0.0;
 
 uniform sampler2D color: source_color, filter_nearest;
 

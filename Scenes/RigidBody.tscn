@@ -56,6 +56,7 @@ radius = 0.9
 [node name="RigidBody" type="RigidBody3D" unique_id=707473027 groups=["Physics"]]
 collision_layer = 33
 collision_mask = 35
+collision_priority = 0.5
 mass = 8.0
 physics_material_override = SubResource("PhysicsMaterial_3t8db")
 continuous_cd = true

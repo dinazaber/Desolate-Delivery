@@ -1,4 +1,4 @@
-// Use this shader on MultiMeshInstance meshes that use 1 detail textures
+// Use this shader on objects that use only 1 detail textures
 
 shader_type spatial;
 render_mode cull_disabled;
@@ -13,16 +13,9 @@ uniform sampler2D detail1 : source_color, filter_linear;
 uniform float detail1_scale = 1.0;
 uniform float alpha1 = 1.0;
 
-group_uniforms Instances;
-uniform vec3 palette[15] : source_color;
-uniform int color_variants: hint_range(0, 15) = 1;
-uniform int i = 1;
-
-varying flat int index;
-
 varying vec3 worldPos;
 varying vec3 world_normal;
-varying vec2 uv3;
+
 
 // --- THE OPTIMIZED BOX PROJECTION FUNCTION ---
 vec4 get_box_projection(sampler2D p_sampler, vec3 p_normal, vec3 p_pos) {
@@ -59,35 +52,24 @@ vec4 get_box_projection(sampler2D p_sampler, vec3 p_normal, vec3 p_pos) {
 
 void vertex(){
     worldPos = VERTEX;
-	
-	index = (INSTANCE_ID / i) % color_variants;
-	
-	uv3 = CUSTOM0.xy;
 	world_normal = NORMAL;
-    
 }
 
 void fragment() {
 	
 	// --- DETAILS ---
-	float mask = uv3.x; // Instance mask
-	vec3 target_color = palette[index];
     vec3 base_color = COLOR.rgb;
-    
     vec3 out_color = base_color;
-	
-	out_color = mix(out_color, target_color, mask);
 	
     vec3 n = normalize(world_normal);
     
     // Sample textures using Box Projection based on Vertex Mask
-    
-    vec4 tex = get_box_projection(detail1, n, worldPos * detail1_scale);
+	vec4 tex = get_box_projection(detail1, n, worldPos * detail1_scale);
     out_color = mix(out_color, tex.rgb, tex.a * alpha1);
 	
+    
 	
 	// --- WIREFRAME ---
-	
 	vec2 uv = UV;
     vec2 dist_to_edge = min(uv, 1.0 - uv);
     vec2 derivative = fwidth(uv);
