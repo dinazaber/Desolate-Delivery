@@ -13,7 +13,7 @@
 [ext_resource type="Script" uid="uid://cfwmt6vc7y70h" path="res://addons/MetaMultimeshInstance3D/src/MetaMultimeshInstance3D.gd" id="12_nqfut"]
 [ext_resource type="ArrayMesh" uid="uid://q8g0hhj850vv" path="res://assets/Meshes/Architecture/Hangar1.mesh" id="13_swfp1"]
 [ext_resource type="ArrayMesh" uid="uid://qdmyf5e4rqff" path="res://assets/Meshes/Objects/Vehicles/Plane.mesh" id="16_75e2l"]
-[ext_resource type="PackedScene" uid="uid://d23s0inguh17p" path="res://Scenes/RigidBody.tscn" id="16_pxegc"]
+[ext_resource type="PackedScene" uid="uid://d23s0inguh17p" path="res://Scenes/Objects/RigidBody.tscn" id="16_pxegc"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0lpba"]
 

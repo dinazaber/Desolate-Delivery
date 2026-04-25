@@ -17,7 +17,7 @@
 [ext_resource type="ArrayMesh" uid="uid://dufaqga62sfgh" path="res://assets/Meshes/Objects/Vehicles/Car2/Car2.mesh" id="13_lghlv"]
 [ext_resource type="ArrayMesh" uid="uid://dxoddmwgtq2gq" path="res://assets/Meshes/Objects/Vehicles/Car1/Car1.mesh" id="14_h62tq"]
 [ext_resource type="ArrayMesh" uid="uid://6fnhie3k6sd7" path="res://assets/Meshes/Objects/Vehicles/Car2/Car2Chassis.mesh" id="14_qhj8q"]
-[ext_resource type="PackedScene" uid="uid://d23s0inguh17p" path="res://Scenes/RigidBody.tscn" id="15_iyf6e"]
+[ext_resource type="PackedScene" uid="uid://d23s0inguh17p" path="res://Scenes/Objects/RigidBody.tscn" id="15_iyf6e"]
 [ext_resource type="PackedScene" uid="uid://beqguglkai1oh" path="res://Scenes/Enemies/Robot.tscn" id="15_xm5mx"]
 [ext_resource type="ArrayMesh" uid="uid://tnqtnrxm02k4" path="res://assets/Meshes/Objects/Crate1.mesh" id="16_jcbmq"]
 [ext_resource type="ArrayMesh" uid="uid://duisheavfmqh2" path="res://assets/Meshes/Objects/Vehicles/Car1/Car1Chassis.mesh" id="16_xe0hb"]
@@ -29,6 +29,7 @@
 [ext_resource type="ArrayMesh" uid="uid://c1vnvnx5yvnwh" path="res://assets/Meshes/Architecture/FlightRoad4.mesh" id="27_lghlv"]
 [ext_resource type="PackedScene" uid="uid://o5yldt1h3ti2" path="res://Scenes/Buildings/CommandCenter.tscn" id="29_h62tq"]
 [ext_resource type="ArrayMesh" uid="uid://duhjwdkqwqgow" path="res://assets/Meshes/Architecture/Crack.mesh" id="30_1k7mg"]
+[ext_resource type="PackedScene" uid="uid://b1g4ndkkyibs4" path="res://Scenes/Objects/HealthPack.tscn" id="30_iyf6e"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_qpfo2"]
 noise_type = 4
@@ -438,6 +439,15 @@ total_scale = 0.4
 transform = Transform3D(-0.75855535, 0, -0.6516086, 0, 1, 0, 0.6516086, 0, -0.75855535, -8.223284, 0.7930865, 2.4221127)
 inertia = Vector3(7.2, 20, 7.2)
 total_scale = 0.4
+
+[node name="HealthPack" parent="." unique_id=1895141670 instance=ExtResource("30_iyf6e")]
+transform = Transform3D(0.94335014, 0, 0.33179894, 0, 1, 0, -0.33179894, 0, 0.94335014, -9.664601, 0.6894057, 2.896666)
+
+[node name="HealthPack2" parent="." unique_id=1553106692 instance=ExtResource("30_iyf6e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.902231, 0.36929214, 2.9069724)
+
+[node name="HealthPack3" parent="." unique_id=743786613 instance=ExtResource("30_iyf6e")]
+transform = Transform3D(0.94125265, 0, -0.33770317, 0, 1, 0, 0.33770317, 0, 0.94125265, -9.532215, 0.37346733, 2.8989282)
 
 [node name="Crates" type="MultiMeshInstance3D" parent="." unique_id=1308017449]
 multimesh = SubResource("MultiMesh_obpdj")

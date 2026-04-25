@@ -209,22 +209,7 @@ func _physics_process(delta):
 		camera.rotation.x = lerp_angle(camera.rotation.x, -pitch, delta * 30.0)
 		
 	
-	if enemyBounceCheck.has_overlapping_bodies(): #What is this? Should be function
-		var bodies = enemyBounceCheck.get_overlapping_bodies()
-		var enemyCount: int = 0
-		var physicsCount: int = 0
-		for body in bodies:
-			if body.is_in_group("Enemy"):
-				enemyCount += 1
-			if body.is_in_group("Physics"):
-				physicsCount += 1
-		if enemyCount:
-			if is_on_floor():
-				knockBack(get_floor_normal(), 12.0, 0.1)
-		if physicsCount:
-			floor_max_angle = deg_to_rad(15.0)
-		else: floor_max_angle = deg_to_rad(45.0)
-	else: floor_max_angle = deg_to_rad(45.0)
+	check_player_feet()
 
 	
 	if Input.is_action_pressed("LeftMouse") and !dead:
@@ -234,6 +219,7 @@ func _physics_process(delta):
 				beggarsShotgun: current_gun_R.charge()
 		elif grabbedObject:
 			if grabbedObject.can_let_go():
+				grabbedObject.is_held = false
 				#var dir = -camera.global_basis.z
 				grabbedObject.gravity_scale = 1
 				grabbedObject.linear_damp = 0.0
@@ -252,29 +238,7 @@ func _physics_process(delta):
 		current_gun_L.shoot()
 		
 	
-	
-	if grabbedObject: # Grabbed Object, should be function
-		var holdPos = hold_pos
-		var distance = grabbedObject.global_position.distance_to(holdPos.global_position)
-		var dir = holdPos.global_position - grabbedObject.global_position
-		if (distance > 1.5 or !grabbedObject.is_held) and grabbedObject.can_let_go():
-			grabbedObject.is_held = false
-			grabbedObject.gravity_scale = 1.0
-			grabbedObject.linear_damp = 0.0
-			remove_collision_exception_with(grabbedObject)
-			grabbedObject = null
-			return
-		
-		grabbedObject.linear_damp = 16/(grabbedObject.mass**0.67)
-		
-		var force = dir * distance**0.25 * 5000/(10 + grabbedObject.mass)
-		force = clamp(force, Vector3.ZERO, dir * distance**0.25 * 357) # limit force
-		grabbedObject.apply_central_force(force)
-		grabbedObject.angular_velocity = Vector3.ZERO
-		grabbedObject.global_rotation.x = lerp_angle(grabbedObject.global_rotation.x, holdPos.global_rotation.x, delta * 100/(10 + grabbedObject.mass))
-		grabbedObject.global_rotation.y = lerp_angle(grabbedObject.global_rotation.y, holdPos.global_rotation.y, delta * 100/(10 + grabbedObject.mass))
-		grabbedObject.global_rotation.z = lerp_angle(grabbedObject.global_rotation.z, holdPos.global_rotation.z, delta * 100/(10 + grabbedObject.mass))
-	
+	handle_grabbed_object(delta)
 	
 	if Input.is_action_pressed("Ctrl") and !dead: # crouch/slide
 		crouch = true
@@ -404,6 +368,72 @@ func gun_bob(vel: float, input, delta):
 			hands.position.y = lerp(hands.position.y, def_gun_pos.y, delta * 10.0)
 			hands.position.x = lerp(hands.position.x, def_gun_pos.x, delta * 10.0)
 
+func hideWeapons(): #We will add here check for left/right side later I guess
+	for i in $shakeable_camera/Hands/RightHand.get_children():
+		if i is Node3D: i.hide()
+
+# --- PHYSICS ---
+func throw_grenade():
+	if grenadeCool == 100.0:
+		instance_grenade = grenade.instantiate()
+		instance_grenade.position = global_position
+		var throw_dir = -camera.global_transform.basis.z.normalized()
+		var forward_force = 10.0
+		var upward_force = 5.0
+		instance_grenade.apply_central_impulse((throw_dir * forward_force) + Vector3(0, upward_force, 0) + velocity)
+		instance_grenade.apply_torque_impulse(Vector3(randf(), randf(), randf()) * instance_grenade.mass)
+		get_parent().add_child(instance_grenade)
+		grenadeCool = -5.0
+
+func knockBack(direction, force, time):
+	if is_on_floor():
+		force /= 2
+	knocked = true
+	velocity += direction * force
+	await get_tree().create_timer(time).timeout
+	knocked = false
+
+func check_player_feet():
+	if enemyBounceCheck.has_overlapping_bodies():
+		var bodies = enemyBounceCheck.get_overlapping_bodies()
+		var enemyCount: int = 0
+		var physicsCount: int = 0
+		for body in bodies:
+			if body.is_in_group("Enemy"):
+				enemyCount += 1
+			if body.is_in_group("Physics"):
+				physicsCount += 1
+		if enemyCount: # bounce on enemy head
+			if is_on_floor():
+				knockBack(get_floor_normal(), 12.0, 0.1)
+		if physicsCount: # increase slide on phys objects
+			floor_max_angle = deg_to_rad(15.0)
+		else: floor_max_angle = deg_to_rad(45.0)
+	else: floor_max_angle = deg_to_rad(45.0)
+
+func handle_grabbed_object(delta):
+	if grabbedObject:
+		var holdPos = hold_pos
+		var distance = grabbedObject.global_position.distance_to(holdPos.global_position)
+		var dir = holdPos.global_position - grabbedObject.global_position
+		if (distance > 1.5 or !grabbedObject.is_held) and grabbedObject.can_let_go():
+			grabbedObject.is_held = false
+			grabbedObject.gravity_scale = 1.0
+			grabbedObject.linear_damp = 0.0
+			remove_collision_exception_with(grabbedObject)
+			grabbedObject = null
+			return
+		
+		grabbedObject.linear_damp = 16/(grabbedObject.mass**0.67)
+		
+		var force = dir * distance**0.25 * 5000/(10 + grabbedObject.mass)
+		force = clamp(force, Vector3.ZERO, dir * distance**0.25 * 357) # limit force
+		grabbedObject.apply_central_force(force)
+		grabbedObject.angular_velocity = Vector3.ZERO
+		grabbedObject.global_rotation.x = lerp_angle(grabbedObject.global_rotation.x, holdPos.global_rotation.x, delta * 100/(10 + grabbedObject.mass))
+		grabbedObject.global_rotation.y = lerp_angle(grabbedObject.global_rotation.y, holdPos.global_rotation.y, delta * 100/(10 + grabbedObject.mass))
+		grabbedObject.global_rotation.z = lerp_angle(grabbedObject.global_rotation.z, holdPos.global_rotation.z, delta * 100/(10 + grabbedObject.mass))
+
 func push_object():
 	for i in get_slide_collision_count():
 		var collision = get_slide_collision(i)
@@ -422,49 +452,7 @@ func push_object():
 			collider.apply_impulse(push_dir * push_dir_vel_dif * push_force, collision.get_position() - collider.global_position)
 
 
-func hideWeapons(): #We will add here check for left/right side later I guess
-	for i in $shakeable_camera/Hands/RightHand.get_children():
-		if i is Node3D: i.hide()
-
-func hit(recieved_damage, type):
-	if type == "player":
-		recieved_damage /= 3
-	player_health -= recieved_damage
-	camera.add_trauma(recieved_damage/20)
-	checkLifeLine()
-
-func throw_grenade():
-	if grenadeCool == 100.0:
-		instance_grenade = grenade.instantiate()
-		instance_grenade.position = global_position
-		var throw_dir = -camera.global_transform.basis.z.normalized()
-		var forward_force = 10.0
-		var upward_force = 5.0
-		instance_grenade.apply_central_impulse((throw_dir * forward_force) + Vector3(0, upward_force, 0) + velocity)
-		instance_grenade.apply_torque_impulse(Vector3(randf(), randf(), randf()) * instance_grenade.mass)
-		get_parent().add_child(instance_grenade)
-		grenadeCool = -5.0
-
-#func shoot_speargun(): ## UNUSED
-	#if !rightWeaponAnim.is_playing() and canShoot:
-		#rightWeaponAnim.play("ShootSpeargun")
-		#instance_spear = spear.instantiate()
-		#instance_spear.position = spearSpawn.global_position
-		#instance_spear.transform.basis = spearSpawn.global_transform.basis
-		#get_parent().add_child(instance_spear)
-		#if playerRay.is_colliding():
-			#instance_spear.set_velocity(playerRay.get_collision_point())
-		#else:
-			#instance_spear.set_velocity(playerRay_end.global_position)
-
-func knockBack(direction, force, time):
-	if is_on_floor():
-		force /= 2
-	knocked = true
-	velocity += direction * force
-	await get_tree().create_timer(time).timeout
-	knocked = false
-
+# --- HEALTH AND DAMAGE
 func checkLifeLine():
 	if player_health <= 0 and dead == false:
 		if !DEBUG_deathBypass:
@@ -476,10 +464,18 @@ func checkLifeLine():
 
 func enemy_killed():
 	restoreCool.emit(coolOnKill)
-	
+
+func hit(recieved_damage, type):
+	if type == "player":
+		recieved_damage /= 3
+	player_health -= recieved_damage
+	camera.add_trauma(recieved_damage/20)
+	checkLifeLine()
+
+func heal(heal_amount):
+	player_health += heal_amount
 
 # --- UI ---
-
 func handle_healthBar():
 	var health_dif = abs(healthBar.value - player_health)
 	healthBar.value = move_toward(healthBar.value, player_health, health_dif/5)
@@ -494,3 +490,17 @@ func handle_heatBars():
 	grenadeBar.value = move_toward(grenadeBar.value, grenadeCool, grenade_dif/5)
 	var dash_dif = abs(dashBar.value - dashCool)
 	dashBar.value = move_toward(dashBar.value, dashCool, dash_dif/3)
+
+
+# --- "LATER" DUMP ---
+#func shoot_speargun():
+	#if !rightWeaponAnim.is_playing() and canShoot:
+		#rightWeaponAnim.play("ShootSpeargun")
+		#instance_spear = spear.instantiate()
+		#instance_spear.position = spearSpawn.global_position
+		#instance_spear.transform.basis = spearSpawn.global_transform.basis
+		#get_parent().add_child(instance_spear)
+		#if playerRay.is_colliding():
+			#instance_spear.set_velocity(playerRay.get_collision_point())
+		#else:
+			#instance_spear.set_velocity(playerRay_end.global_position)
