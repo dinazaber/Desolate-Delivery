@@ -2,10 +2,6 @@ extends CharacterBody3D
 
 var cameraDistance = 15
 
-const headFreq = 2.4
-const headAmp = 0.04
-var headTime = 0.0
-
 # --- NODES ---
 @onready var playerCollision = $PlayerCollision
 var screenEffect: ColorRect
@@ -42,6 +38,7 @@ var yaw = 0.0
 var pitch = 0.0
 var mouse_input: Vector2
 var grenadeCool: float = 100.0
+var dashCool: float = 100.0
 var landVel: float = 0.0
 var fireDelay: float = 15.0 # Delay between object throwing and shooting
 
@@ -55,6 +52,7 @@ const PLAYER_MAX_HEALTH = 100.0
 @export var walk_speed: float = 5.0
 @export var crouch_speed: float = 2.5
 @export var dash_speed: float = 30.0
+@export var dashCoolTime: float = 2.0 # cooldown time (s)
 @export var jump_speed: float = 10.0
 
 
@@ -74,6 +72,7 @@ var instance_grenade
 @onready var crosshair = $HUD/crosshair
 @onready var healthBar = $HUD/HealthBar
 @onready var grenadeBar = $HUD/GrenadeBar
+@onready var dashBar = $HUD/DashBar
 @onready var heatBar_R = $HUD/HeatRight
 @onready var heatBar_L = $HUD/HeatLeft
 
@@ -105,7 +104,7 @@ func save():
 	return data
 
 
-
+# not used - delete ?
 func SuperTimerTimeOut() -> void:
 	if !canDash:
 		canDash = true
@@ -201,6 +200,7 @@ func _physics_process(delta):
 	
 	#neg vals are for recharge delay i.e -5 is 0.5 sec rechare delay VLAD
 	grenadeCool = clamp(grenadeCool + (100 * delta) / grenadeCoolTime, -5.0, 100.0)
+	dashCool = clamp(dashCool + (100 * delta) / dashCoolTime, -10.0, 100.0)
 	
 	fireDelay = clamp(fireDelay + (100 * delta), 0, 15.0)
 	
@@ -302,14 +302,25 @@ func _physics_process(delta):
 	else:
 		SPEED = move_toward(SPEED, walk_speed, delta * 15.0)
 	
-	
 	# Get direction
 	var currentInput = Input.get_vector("A", "D", "W", "S")
 	if dead:
 		currentInput = Vector3.ZERO
 	var direction = (transform.basis * Vector3(currentInput.x, 0, currentInput.y)).normalized()
 	
-	#Basic movement & dash
+	# dash
+	if Input.is_action_just_pressed("Shift") and direction and dashCool == 100.0 and !crouch and !dead:
+		dashCool = -10.0
+		var dashDir = direction
+		knockBack(dashDir, dash_speed, 0.2)
+		#canDash = false
+		#$SuperTimer.set("wait_time",0.5)
+		#$SuperTimer.start()
+		await get_tree().create_timer(0.2).timeout
+		if !is_on_floor() or !slide:
+			knockBack(-dashDir, 15 * Vector3(velocity.x, 0.0, velocity.z).length() / dash_speed, 0.0)
+	
+	#Basic movement
 	if is_on_floor(): # grounded speed
 		if airborne:
 			airborne = false
@@ -319,40 +330,30 @@ func _physics_process(delta):
 		if Input.is_action_just_pressed("Space") and !dead:
 			velocity.y += jump_speed * (0.75 if crouch else 1.0)
 		
-		if !dead:
-		# without this line the camera does some goofy stuff when walking into an object. keep it.
-			camera.position.y = lerp(camera.position.y, camDefHeight, delta * 10.0)
-		else:
+		if dead:
 			camera.rotation.x = lerp_angle(camera.rotation.x, 0.0, delta * 10.0)
 		
 		if direction:
-			if Input.is_action_just_pressed("Shift") and canDash and !crouch and !dead:
-				#SPEED = dash_speed
-				#velocity = direction * SPEED
-				knockBack(direction, dash_speed, 0.2)
-				canDash = false
-				$SuperTimer.set("wait_time",0.5)
-				$SuperTimer.start()
-			
 			# head bob
 			if !slide:
-				headTime += delta * velocity.length() * float(is_on_floor())
-				var pos = Vector3.ZERO
-				pos.y = camera.position.y + sin(headTime*headFreq) * headAmp
-				camera.position.y = lerp(camera.position.y, pos.y, 20 * delta)
+				var vel = velocity.length()
+				var bob_amount: float = 0.05 * clamp(vel/5, 0, 2)
+				var bob_freq: float = 0.005
+				var bob_y = sin(Time.get_ticks_msec() * 2 * bob_freq)
+				camera.position.y = lerp(camera.position.y, camDefHeight + bob_y * bob_amount, delta * 10.0)
 			
+			# walk speed
 			if !knocked:
 				velocity = lerp(velocity, direction * SPEED, delta * 10.0 * accel_mod)
 		
 		else: # no input speed
-			headTime = 0.0
 			velocity.x = lerp(velocity.x, 0.0, delta * 7.0 * accel_mod)
 			velocity.z = lerp(velocity.z, 0.0, delta * 7.0 * accel_mod)
 		
 	else: # airborne speed
 		airborne = true
 		landVel = abs(velocity.y)
-		velocity.y -= 20 * delta # Gravity
+		velocity.y -= delta * 20.0# Gravity
 		
 		velocity.x = lerp(velocity.x, direction.x * SPEED, delta * 1.5 * accel_mod)
 		velocity.z = lerp(velocity.z, direction.z * SPEED, delta * 1.5 * accel_mod)
@@ -485,5 +486,8 @@ func handle_heatBars():
 	heatBar_R.value = move_toward(heatBar_R.value, current_gun_R.get_heat(), heat_dif_R/5)
 	var heat_dif_L = abs(heatBar_L.value - current_gun_L.get_heat())
 	heatBar_L.value = move_toward(heatBar_L.value, current_gun_L.get_heat(), heat_dif_L/5)
+	
 	var grenade_dif = abs(grenadeBar.value - grenadeCool)
 	grenadeBar.value = move_toward(grenadeBar.value, grenadeCool, grenade_dif/5)
+	var dash_dif = abs(dashBar.value - dashCool)
+	dashBar.value = move_toward(dashBar.value, dashCool, dash_dif/3)
