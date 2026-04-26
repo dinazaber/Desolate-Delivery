@@ -124,10 +124,10 @@ tracks/1/path = NodePath("BeggarsShotgun:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.04, 0.12, 0.19, 0.2),
-"transitions": PackedFloat32Array(0.4, 2, 0.6, 1.5, 1),
+"times": PackedFloat32Array(0, 0.04, 0.12, 0.15, 0.18, 0.2),
+"transitions": PackedFloat32Array(0.4, 2, 2, 0.5, 1.5, 1),
 "update": 0,
-"values": [Vector3(0, 0, 0), Vector3(-0.015, 0.015, 0.09), Vector3(0, 0.023, 0.068), Vector3(0, -0.007, 0), Vector3(0, 0, 0)]
+"values": [Vector3(0, 0, 0), Vector3(-0.015, 0.01, 0.09), Vector3(0, 0.015, 0.068), Vector3(0, -0.012, 0.034), Vector3(0, -0.02, 0), Vector3(0, 0, 0)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -136,10 +136,10 @@ tracks/2/path = NodePath("BeggarsShotgun:rotation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.08, 0.14, 0.19, 0.2),
+"times": PackedFloat32Array(0, 0.08, 0.14, 0.18, 0.2),
 "transitions": PackedFloat32Array(0.5, 1.3, 2.0000007, 0.6, 1),
 "update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0.034906585, -0.017453292, -0.07853982), Vector3(0.017453292, 0, 0.09599311), Vector3(-0.02617994, 0, -0.017453292), Vector3(0, 0, 0)]
+"values": [Vector3(0, 0, 0), Vector3(0.034906585, -0.017453292, -0.07853982), Vector3(0.017453292, 0, 0.09599311), Vector3(-0.012217305, 0, -0.017453292), Vector3(0, 0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_7ud7m"]
@@ -165,10 +165,10 @@ tracks/1/path = NodePath("BeggarsShotgun:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.04, 0.16, 0.35, 0.4),
-"transitions": PackedFloat32Array(0.4, 2, 0.5, 1.2, 1),
+"times": PackedFloat32Array(0, 0.04, 0.16, 0.25, 0.35, 0.4),
+"transitions": PackedFloat32Array(0.4, 2, 2, 0.5, 1.2, 1),
 "update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0.045, 0.023, 0.12), Vector3(0, 0.03, 0.023), Vector3(0, -0.007, 0), Vector3(0, 0, 0)]
+"values": [Vector3(0, 0, 0), Vector3(0.045, 0.015, 0.12), Vector3(0, 0.025, 0.023), Vector3(0, 0.014, 0.011), Vector3(0, -0.007, 0), Vector3(0, 0, 0)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -180,7 +180,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.08, 0.35, 0.4),
 "transitions": PackedFloat32Array(0.6, 1.4, 1.5, 1),
 "update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0.12217305, 0, -0.08726646), Vector3(-0.05235988, 0, 0.05235988), Vector3(0, 0, 0)]
+"values": [Vector3(0, 0, 0), Vector3(0.06981317, 0, -0.08726646), Vector3(-0.02617994, 0, 0.05235988), Vector3(0, 0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_ktqvf"]
@@ -263,6 +263,83 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_u0iia")
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_e0py8"]
+particle_flag_align_y = true
+direction = Vector3(0, 0, -1)
+spread = 0.0
+initial_velocity_min = 70.0
+initial_velocity_max = 70.0
+gravity = Vector3(0, 0, 0)
+collision_mode = 2
+
+[sub_resource type="Gradient" id="Gradient_u4wyd"]
+offsets = PackedFloat32Array(0, 0.14785992, 0.8793774, 1)
+colors = PackedColorArray(1, 0.5882353, 0, 0, 1, 0.5882353, 0, 1, 1, 0.78431374, 0, 1, 1, 0.78431374, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ktqvf"]
+gradient = SubResource("Gradient_u4wyd")
+height = 255
+fill_from = Vector2(0.51282054, 1)
+fill_to = Vector2(0.5, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b1a7w"]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = SubResource("GradientTexture2D_ktqvf")
+
+[sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_xapv0"]
+material = SubResource("StandardMaterial3D_b1a7w")
+size = 0.015
+sections = 2
+section_length = 0.5
+section_segments = 1
+
+[sub_resource type="Curve" id="Curve_e0py8"]
+_data = [Vector2(0, 0.75), 0.0, 0.0, 0, 0, Vector2(0.7455197, 0.75), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_ktqvf"]
+curve = SubResource("Curve_e0py8")
+
+[sub_resource type="Gradient" id="Gradient_xapv0"]
+colors = PackedColorArray(1, 0.78431374, 0, 1, 1, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_mmsk8"]
+gradient = SubResource("Gradient_xapv0")
+
+[sub_resource type="Curve" id="Curve_1544g"]
+_data = [Vector2(0, 0.75), 0.0, 0.0, 0, 0, Vector2(0.7455197, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.75), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_6f1rn"]
+curve = SubResource("Curve_1544g")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_sfoia"]
+particle_flag_align_y = true
+direction = Vector3(0, 0, 1)
+spread = 30.0
+initial_velocity_min = 120.0
+initial_velocity_max = 140.0
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_6f1rn")
+color_ramp = SubResource("GradientTexture1D_mmsk8")
+alpha_curve = SubResource("CurveTexture_ktqvf")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lkl2b"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_color = Color(1, 0.78431374, 0, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_pc0kw"]
+material = SubResource("StandardMaterial3D_lkl2b")
+top_radius = 0.0
+bottom_radius = 0.45
+radial_segments = 4
+rings = 2
+
 [node name="BeggarsShotgun" type="Node3D" unique_id=267885530]
 script = ExtResource("1_e0py8")
 
@@ -270,17 +347,168 @@ script = ExtResource("1_e0py8")
 libraries/ = SubResource("AnimationLibrary_8qb6n")
 
 [node name="BeggarsShotgun" type="Marker3D" parent="." unique_id=1087278608]
-transform = Transform3D(0.98480725, 0.17364809, 0, -0.044943437, 0.2548869, -0.9659258, -0.16773118, 0.95125073, 0.25881907, 0.15, -1.35, 0.15)
+transform = Transform3D(0.98480725, 0.17364809, 0, -0.044943437, 0.25488687, -0.9659258, -0.16773118, 0.9512507, 0.25881907, 0.15, -1.35, 0.15)
 
 [node name="Frame" type="MeshInstance3D" parent="BeggarsShotgun" unique_id=972063788]
 transform = Transform3D(-0.03, -9.7406916e-11, -4.529874e-09, -9.74069e-11, 0.03, -6.984924e-11, 4.529874e-09, -6.9849224e-11, -0.03, 0, -0.03, -0.58)
 cast_shadow = 0
 mesh = SubResource("ArrayMesh_06o6c")
 
+[node name="Rays" type="Node3D" parent="BeggarsShotgun/Frame" unique_id=1144277170]
+transform = Transform3D(-33.33335, -1.0822996e-07, 5.0331932e-06, -1.08229955e-07, 33.33335, -7.761026e-08, -5.033196e-06, -7.7610316e-08, -33.333332, -1.963846e-06, 0.99999994, 12.984463)
+
+[node name="RayCast3D1" type="RayCast3D" parent="BeggarsShotgun/Frame/Rays" unique_id=1575494301]
+target_position = Vector3(0, 0, -75)
+collision_mask = 6
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="tracer" type="GPUParticles3D" parent="BeggarsShotgun/Frame/Rays/RayCast3D1" unique_id=42885782]
+cast_shadow = 0
+emitting = false
+amount = 1
+lifetime = 0.1
+one_shot = true
+fixed_fps = 144
+process_material = SubResource("ParticleProcessMaterial_e0py8")
+draw_pass_1 = SubResource("RibbonTrailMesh_xapv0")
+
+[node name="RayCast3D2" type="RayCast3D" parent="BeggarsShotgun/Frame/Rays" unique_id=959240100]
+target_position = Vector3(0, 0, -75)
+collision_mask = 6
+collide_with_areas = true
+
+[node name="tracer" type="GPUParticles3D" parent="BeggarsShotgun/Frame/Rays/RayCast3D2" unique_id=1652280004]
+cast_shadow = 0
+emitting = false
+amount = 1
+lifetime = 0.1
+one_shot = true
+fixed_fps = 144
+process_material = SubResource("ParticleProcessMaterial_e0py8")
+draw_pass_1 = SubResource("RibbonTrailMesh_xapv0")
+
+[node name="RayCast3D3" type="RayCast3D" parent="BeggarsShotgun/Frame/Rays" unique_id=1988529632]
+target_position = Vector3(0, 0, -75)
+collision_mask = 6
+collide_with_areas = true
+
+[node name="tracer" type="GPUParticles3D" parent="BeggarsShotgun/Frame/Rays/RayCast3D3" unique_id=2091121257]
+cast_shadow = 0
+emitting = false
+amount = 1
+lifetime = 0.1
+one_shot = true
+fixed_fps = 144
+process_material = SubResource("ParticleProcessMaterial_e0py8")
+draw_pass_1 = SubResource("RibbonTrailMesh_xapv0")
+
+[node name="RayCast3D4" type="RayCast3D" parent="BeggarsShotgun/Frame/Rays" unique_id=211081069]
+target_position = Vector3(0, 0, -75)
+collision_mask = 6
+collide_with_areas = true
+
+[node name="tracer" type="GPUParticles3D" parent="BeggarsShotgun/Frame/Rays/RayCast3D4" unique_id=1099612129]
+cast_shadow = 0
+emitting = false
+amount = 1
+lifetime = 0.1
+one_shot = true
+fixed_fps = 144
+process_material = SubResource("ParticleProcessMaterial_e0py8")
+draw_pass_1 = SubResource("RibbonTrailMesh_xapv0")
+
+[node name="RayCast3D5" type="RayCast3D" parent="BeggarsShotgun/Frame/Rays" unique_id=1434120727]
+target_position = Vector3(0, 0, -75)
+collision_mask = 6
+collide_with_areas = true
+
+[node name="tracer" type="GPUParticles3D" parent="BeggarsShotgun/Frame/Rays/RayCast3D5" unique_id=2085029450]
+cast_shadow = 0
+emitting = false
+amount = 1
+lifetime = 0.1
+one_shot = true
+fixed_fps = 144
+process_material = SubResource("ParticleProcessMaterial_e0py8")
+draw_pass_1 = SubResource("RibbonTrailMesh_xapv0")
+
+[node name="RayCast3D6" type="RayCast3D" parent="BeggarsShotgun/Frame/Rays" unique_id=719397651]
+target_position = Vector3(0, 0, -75)
+collision_mask = 6
+collide_with_areas = true
+
+[node name="tracer" type="GPUParticles3D" parent="BeggarsShotgun/Frame/Rays/RayCast3D6" unique_id=1155450228]
+cast_shadow = 0
+emitting = false
+amount = 1
+lifetime = 0.1
+one_shot = true
+fixed_fps = 144
+process_material = SubResource("ParticleProcessMaterial_e0py8")
+draw_pass_1 = SubResource("RibbonTrailMesh_xapv0")
+
+[node name="RayCast3D7" type="RayCast3D" parent="BeggarsShotgun/Frame/Rays" unique_id=1085518882]
+target_position = Vector3(0, 0, -75)
+collision_mask = 6
+collide_with_areas = true
+
+[node name="tracer" type="GPUParticles3D" parent="BeggarsShotgun/Frame/Rays/RayCast3D7" unique_id=652472500]
+cast_shadow = 0
+emitting = false
+amount = 1
+lifetime = 0.1
+one_shot = true
+fixed_fps = 144
+process_material = SubResource("ParticleProcessMaterial_e0py8")
+draw_pass_1 = SubResource("RibbonTrailMesh_xapv0")
+
+[node name="RayCast3D8" type="RayCast3D" parent="BeggarsShotgun/Frame/Rays" unique_id=1393808530]
+target_position = Vector3(0, 0, -75)
+collision_mask = 6
+collide_with_areas = true
+
+[node name="tracer" type="GPUParticles3D" parent="BeggarsShotgun/Frame/Rays/RayCast3D8" unique_id=518125483]
+cast_shadow = 0
+emitting = false
+amount = 1
+lifetime = 0.1
+one_shot = true
+fixed_fps = 144
+process_material = SubResource("ParticleProcessMaterial_e0py8")
+draw_pass_1 = SubResource("RibbonTrailMesh_xapv0")
+
+[node name="RayCast3D9" type="RayCast3D" parent="BeggarsShotgun/Frame/Rays" unique_id=1329260917]
+target_position = Vector3(0, 0, -75)
+collision_mask = 6
+collide_with_areas = true
+
+[node name="tracer" type="GPUParticles3D" parent="BeggarsShotgun/Frame/Rays/RayCast3D9" unique_id=1384249019]
+cast_shadow = 0
+emitting = false
+amount = 1
+lifetime = 0.1
+one_shot = true
+fixed_fps = 144
+process_material = SubResource("ParticleProcessMaterial_e0py8")
+draw_pass_1 = SubResource("RibbonTrailMesh_xapv0")
+
 [node name="Barrels" type="MeshInstance3D" parent="BeggarsShotgun/Frame" unique_id=1195580126]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
 cast_shadow = 0
 mesh = ExtResource("6_pc0kw")
+
+[node name="Flash" type="GPUParticles3D" parent="BeggarsShotgun/Frame" unique_id=673183]
+transform = Transform3D(1, -3.5156447e-16, 2.842171e-14, 9.2524585e-17, 0.9999998, 6.661338e-16, 4.2632564e-14, -1.110223e-15, 0.9999998, 0, 1, 13)
+emitting = false
+amount = 12
+lifetime = 0.08
+one_shot = true
+explosiveness = 1.0
+fixed_fps = 144
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_sfoia")
+draw_pass_1 = SubResource("CylinderMesh_pc0kw")
 
 [node name="HeatBuffer" type="Timer" parent="." unique_id=1798419140]
 one_shot = true

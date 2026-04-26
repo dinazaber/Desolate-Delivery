@@ -134,10 +134,12 @@ noise_speed = 30.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, -1.4)
 
 [node name="PlayerRay" type="RayCast3D" parent="shakeable_camera" unique_id=1906683229]
-transform = Transform3D(-4.371139e-08, 9.232692e-19, 1, 0, 1, 9.232692e-19, -1, -4.0357378e-26, -4.371139e-08, 0, -0.0009999871, 0)
-target_position = Vector3(75, 0, 0)
-collision_mask = 7
+target_position = Vector3(0, 0, -75)
+collision_mask = 38
 collide_with_areas = true
+
+[node name="PlayerRayEnd" type="Marker3D" parent="shakeable_camera/PlayerRay" unique_id=439214189]
+transform = Transform3D(1, 0, 0, 0, 1, -1.764077e-33, 0, 1.764077e-33, 1, 75, 0, 0)
 
 [node name="Hands" type="Node3D" parent="shakeable_camera" unique_id=1293429431]
 
@@ -148,9 +150,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15, -0.137, -0.25)
 camera = NodePath("../../..")
 playerRay = NodePath("../../../PlayerRay")
 
-[node name="BeggarsShotgun" parent="shakeable_camera/Hands/RightHand" index="3" unique_id=893199726 node_paths=PackedStringArray("camera", "playerRay")]
+[node name="BeggarsShotgun" parent="shakeable_camera/Hands/RightHand" index="3" unique_id=893199726 node_paths=PackedStringArray("camera", "playerRay", "playerRayEnd")]
 camera = NodePath("../../..")
 playerRay = NodePath("../../../PlayerRay")
+playerRayEnd = NodePath("../../../PlayerRay/PlayerRayEnd")
 
 [node name="LeftHand" parent="shakeable_camera/Hands" unique_id=1896444700 instance=ExtResource("3_nn08x")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.2, -0.137, -0.25)
