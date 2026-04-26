@@ -8,11 +8,9 @@
 [ext_resource type="ArrayMesh" uid="uid://7ho7ltov0iyb" path="res://assets/Meshes/Objects/Vehicles/Jeep/Jeep.mesh" id="7_ijbfb"]
 [ext_resource type="PackedScene" uid="uid://da8xo7bpr7w37" path="res://Scenes/Enemies/SniperTurret.tscn" id="7_xe0hb"]
 [ext_resource type="ArrayMesh" uid="uid://basf6ovw4w4mr" path="res://assets/Meshes/Architecture/Ruins1.mesh" id="8_h62tq"]
-[ext_resource type="Texture2D" uid="uid://dayne5ld0pqyg" path="res://assets/Textures/Shadows/JeepShadow.png" id="8_wr8wa"]
 [ext_resource type="ArrayMesh" uid="uid://qdmyf5e4rqff" path="res://assets/Meshes/Objects/Vehicles/Plane.mesh" id="9_3haq7"]
 [ext_resource type="ArrayMesh" uid="uid://c0hwc8yrvck00" path="res://assets/Meshes/Architecture/Ruins2.mesh" id="9_iyf6e"]
 [ext_resource type="ArrayMesh" uid="uid://unogx422rgbl" path="res://assets/Meshes/Objects/Vehicles/Jeep/JeepChassis.mesh" id="9_obpdj"]
-[ext_resource type="Texture2D" uid="uid://c0bmkoyrxxxnf" path="res://assets/Textures/Shadows/PlaneShadow.png" id="10_8m8kg"]
 [ext_resource type="ArrayMesh" uid="uid://q8g0hhj850vv" path="res://assets/Meshes/Architecture/Hangar1.mesh" id="11_a87j4"]
 [ext_resource type="ArrayMesh" uid="uid://dufaqga62sfgh" path="res://assets/Meshes/Objects/Vehicles/Car2/Car2.mesh" id="13_lghlv"]
 [ext_resource type="ArrayMesh" uid="uid://dxoddmwgtq2gq" path="res://assets/Meshes/Objects/Vehicles/Car1/Car1.mesh" id="14_h62tq"]
@@ -166,9 +164,6 @@ visible_instance_count = 2
 mesh = ExtResource("9_iyf6e")
 buffer = PackedFloat32Array(-1.2956364, 0, -0.5304022, -20.45749, 0, 1.3999999, 0, 1.5236466, 0.5304022, 0, -1.2956364, -39.192493, -0.13975282, 0, 1.3930073, -43.281433, 0, 1.4000001, 0, 1.5236464, -1.3930073, 0, -0.13975282, -32.62122)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_qpfo2"]
-size = Vector3(4.298645, 3.5697021, 2.6156006)
-
 [sub_resource type="MultiMesh" id="MultiMesh_7nf3m"]
 transform_format = 1
 instance_count = 3
@@ -176,20 +171,15 @@ visible_instance_count = 3
 mesh = ExtResource("11_a87j4")
 buffer = PackedFloat32Array(-3.059797e-07, 0, -7, -2.5953841, 0, 7, 0, 0.049293876, 7, 0, -3.059797e-07, 10.839995, -3.059797e-07, 0, -7, -23.358984, 0, 7, 0, 0.049293876, 7, 0, -3.059797e-07, 10.839995, -3.059797e-07, 0, -7, 18.010592, 0, 7, 0, 0.049293876, 7, 0, -3.059797e-07, 10.839995)
 
-[sub_resource type="Gradient" id="Gradient_iyf6e"]
-offsets = PackedFloat32Array(0)
-colors = PackedColorArray(0, 0, 0, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_lw8r5"]
-gradient = SubResource("Gradient_iyf6e")
-width = 1
-
 [sub_resource type="MultiMesh" id="MultiMesh_u4tly"]
 transform_format = 1
 instance_count = 4
 visible_instance_count = 4
 mesh = ExtResource("9_3haq7")
 buffer = PackedFloat32Array(-3.4969112e-08, 0, -0.79999995, -2.6077056, 0, 0.8, 0, 1.3059026, 0.8, 0, -3.496911e-08, 10.445118, -0.023719072, 0, -0.79964817, -24.079014, 0, 0.79999995, 0, 1.3059026, 0.7996482, 0, -0.02371907, 10.445118, -0.7755116, 0, 0.19642189, 6.5291667, 0, 0.79999995, 0, 1.5401601, -0.1964219, 0, -0.77551156, -12.691357, 0.08148396, 0, -0.7958393, 18.658833, 0, 0.79999995, 0, 1.3059026, 0.79583937, 0, 0.08148395, 10.445118)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_iyf6e"]
+size = Vector3(5.2387695, 0.56103516, 0.26879883)
 
 [sub_resource type="MultiMesh" id="MultiMesh_obpdj"]
 transform_format = 1
@@ -307,18 +297,7 @@ shape_type = 0
 go_make_colliders = null
 metadata/_custom_type_script = "uid://cfwmt6vc7y70h"
 
-[node name="Jeeps" type="StaticBody3D" parent="." unique_id=1207635136]
-
-[node name="Decal2" type="Decal" parent="Jeeps" unique_id=31879390]
-transform = Transform3D(1.0665085, 0, -4.7683717e-08, 0, 1.0665091, 0, 4.7683717e-08, 0, 1.066666, 0.67879343, 0.22696972, -0.117284514)
-visible = false
-size = Vector3(4.295791, 0.34991455, 5.2655067)
-texture_albedo = ExtResource("8_wr8wa")
-albedo_mix = 0.5
-normal_fade = 0.3
-upper_fade = 0.0
-lower_fade = 0.0
-cull_mask = 1048574
+[node name="Jeeps" type="Node3D" parent="." unique_id=1798731494]
 
 [node name="Jeep" type="MeshInstance3D" parent="Jeeps" unique_id=673387538]
 transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0.6187975, 0.9598346, 0)
@@ -350,22 +329,7 @@ transform = Transform3D(0.9999997, 0, 5.9604645e-08, 0, 1, 0, -5.9604645e-08, 0,
 mesh = ExtResource("9_obpdj")
 skeleton = NodePath("../../..")
 
-[node name="Hangars" type="StaticBody3D" parent="." unique_id=642156433]
-
-[node name="Decal" type="Decal" parent="Hangars" unique_id=2097765076]
-transform = Transform3D(-3.4963946e-08, 0, -0.7999996, 0, 0.7998818, 0, 0.7998818, 0, -3.496909e-08, -2.678458, 0.31989998, 10.940553)
-visible = false
-size = Vector3(10.26, 1, 10.177)
-texture_albedo = ExtResource("10_8m8kg")
-albedo_mix = 0.5
-normal_fade = 0.3
-upper_fade = 0.0
-lower_fade = 0.0
-cull_mask = 1048574
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Hangars" unique_id=1651806058]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.09384155, 1.2848511, -0.12237549)
-shape = SubResource("BoxShape3D_qpfo2")
+[node name="Hangars" type="Node3D" parent="." unique_id=2124232645]
 
 [node name="Hangars" type="MultiMeshInstance3D" parent="Hangars" unique_id=254532433]
 lod_bias = 0.3
@@ -376,14 +340,6 @@ shape_type = 0
 go_make_colliders = null
 metadata/_custom_type_script = "uid://cfwmt6vc7y70h"
 
-[node name="Decal" type="Decal" parent="Hangars/Hangars" unique_id=2060638929]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5903587, 3.9515219, 10.799305)
-visible = false
-size = Vector3(13.837891, 8.269104, 13.765869)
-texture_albedo = SubResource("GradientTexture1D_lw8r5")
-upper_fade = 1.5056412
-lower_fade = 0.26615795
-
 [node name="Planes" type="MultiMeshInstance3D" parent="Hangars" unique_id=476349040]
 multimesh = SubResource("MultiMesh_u4tly")
 script = ExtResource("3_u4tly")
@@ -391,6 +347,129 @@ go_explode = null
 shape_type = 0
 go_make_colliders = null
 metadata/_custom_type_script = "uid://cfwmt6vc7y70h"
+
+[node name="Hangar1" type="StaticBody3D" parent="Hangars" unique_id=310735806]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.125214, 0, 10.893591)
+
+[node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="Hangars/Hangar1" unique_id=670628724]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.18245697, 0, -0.038701057)
+depth = 14.5
+polygon = PackedVector2Array(-6.9904976, 0.3336401, -6.891692, 1.4743912, -6.424613, 2.9834163, -5.7958527, 4.061291, -4.9155884, 5.130184, -3.8017845, 5.992484, -2.598157, 6.630227, -1.295723, 7.0074835, 0.033655167, 7.1512, 1.506752, 6.998501, 2.7732544, 6.630227, 4.0487404, 5.9206257, 5.054756, 5.121202, 5.952984, 4.01638, 6.635639, 2.749877, 7.0218773, 1.465409, 7.147629, 0.35160494, 6.8422318, 0.34262276, 6.7344437, 1.4204977, 6.3751526, 2.695983, 5.7733383, 3.836734, 4.9110413, 4.8876624, 3.9050217, 5.696069, 2.67445, 6.3427935, 1.425909, 6.7290325, -0.0022735596, 6.854784, -1.3047066, 6.6841207, -2.4993515, 6.3158464, -3.7299252, 5.6691217, -4.789836, 4.7978396, -5.562313, 3.836734, -6.1551437, 2.7768235, -6.595277, 1.4294798, -6.730011, 0.36956954)
+
+[node name="CollisionPolygon3D2" type="CollisionPolygon3D" parent="Hangars/Hangar1" unique_id=1648706015]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.018039703, -0.018003464, -6.9527903)
+depth = 0.3
+polygon = PackedVector2Array(5.4951057, 3.8160803, 4.589857, 4.9396544, 3.6468925, 5.6857367, 2.5174065, 6.3281956, 1.1806774, 6.7323236, -0.18713951, 6.835946, -1.5445938, 6.6701503, -2.7051659, 6.224573, -4.000448, 5.6028385, -4.9537735, 4.7842207, -5.730335, 3.8063807, -2.7379055, 3.796784, -2.7466145, 5.540665, 2.511097, 5.5616865, 2.4959087, 3.8003263)
+
+[node name="CollisionPolygon3D3" type="CollisionPolygon3D" parent="Hangars/Hangar1" unique_id=975503684]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6.8558674)
+depth = 0.3
+polygon = PackedVector2Array(5.491373, 3.9034293, 4.589857, 4.9396544, 3.6468925, 5.6857367, 2.5174065, 6.3281956, 1.1806774, 6.7323236, -0.18713951, 6.835946, -1.5445938, 6.6701503, -2.7051659, 6.224573, -4.000448, 5.6028385, -4.9537735, 4.7842207, -5.7102184, 3.8930671, -2.7466145, 3.9034293, -2.7466145, 5.540665, 2.511097, 5.5616865, 2.4952965, 3.951764)
+
+[node name="CollisionPolygon3D4" type="CollisionPolygon3D" parent="Hangars/Hangar1" unique_id=1248696252]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6.946376)
+depth = 0.3
+polygon = PackedVector2Array(6.656807, 0.107732534, 6.5273247, 1.463483, 6.1007977, 2.7887669, 5.4686203, 3.8855538, 4.082405, 3.9007869, 4.067171, 0.054416418)
+
+[node name="CollisionPolygon3D5" type="CollisionPolygon3D" parent="Hangars/Hangar1" unique_id=201726447]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.23796463, 0, -6.946376)
+depth = 0.3
+polygon = PackedVector2Array(6.656807, 0.107732534, 6.5273247, 1.463483, 6.1007977, 2.7887669, 5.4686203, 3.8855538, 4.082405, 3.9007869, 4.067171, 0.054416418)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hangars/Hangar1" unique_id=642704195]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.10058594, 4.076374, -6.957324)
+shape = SubResource("BoxShape3D_iyf6e")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Hangars/Hangar1" unique_id=1550787559]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.13167763, 4.076374, 6.851486)
+shape = SubResource("BoxShape3D_iyf6e")
+
+[node name="CollisionPolygon3D6" type="CollisionPolygon3D" parent="Hangars/Hangar1" unique_id=489306431]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4392029, 6.834463)
+depth = 0.3
+polygon = PackedVector2Array(-6.899845, -1.3043615, -6.747513, 0.036155343, -6.305752, 1.3690556, -5.6659594, 2.4582257, 5.499935, 2.4582257, 6.1397285, 1.323356, 6.5281715, 0.036155343, 6.688122, -1.296745, -4.135029, -1.296745, -4.127412, 1.1024758, -5.414613, 1.1024758, -5.4297075, -1.3077028)
+
+[node name="Hangar2" type="StaticBody3D" parent="Hangars" unique_id=964484509]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.4878564, 0, 10.893591)
+
+[node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="Hangars/Hangar2" unique_id=987807006]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.18245697, 0, -0.038701057)
+depth = 14.5
+polygon = PackedVector2Array(-6.9904976, 0.3336401, -6.891692, 1.4743912, -6.424613, 2.9834163, -5.7958527, 4.061291, -4.9155884, 5.130184, -3.8017845, 5.992484, -2.598157, 6.630227, -1.295723, 7.0074835, 0.033655167, 7.1512, 1.506752, 6.998501, 2.7732544, 6.630227, 4.0487404, 5.9206257, 5.054756, 5.121202, 5.952984, 4.01638, 6.635639, 2.749877, 7.0218773, 1.465409, 7.147629, 0.35160494, 6.8422318, 0.34262276, 6.7344437, 1.4204977, 6.3751526, 2.695983, 5.7733383, 3.836734, 4.9110413, 4.8876624, 3.9050217, 5.696069, 2.67445, 6.3427935, 1.425909, 6.7290325, -0.0022735596, 6.854784, -1.3047066, 6.6841207, -2.4993515, 6.3158464, -3.7299252, 5.6691217, -4.789836, 4.7978396, -5.562313, 3.836734, -6.1551437, 2.7768235, -6.595277, 1.4294798, -6.730011, 0.36956954)
+
+[node name="CollisionPolygon3D2" type="CollisionPolygon3D" parent="Hangars/Hangar2" unique_id=2029610633]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.018039703, -0.018003464, -6.9527903)
+depth = 0.3
+polygon = PackedVector2Array(5.4951057, 3.8160803, 4.589857, 4.9396544, 3.6468925, 5.6857367, 2.5174065, 6.3281956, 1.1806774, 6.7323236, -0.18713951, 6.835946, -1.5445938, 6.6701503, -2.7051659, 6.224573, -4.000448, 5.6028385, -4.9537735, 4.7842207, -5.730335, 3.8063807, -2.7379055, 3.796784, -2.7466145, 5.540665, 2.511097, 5.5616865, 2.4959087, 3.8003263)
+
+[node name="CollisionPolygon3D3" type="CollisionPolygon3D" parent="Hangars/Hangar2" unique_id=325353607]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6.8558674)
+depth = 0.3
+polygon = PackedVector2Array(5.491373, 3.9034293, 4.589857, 4.9396544, 3.6468925, 5.6857367, 2.5174065, 6.3281956, 1.1806774, 6.7323236, -0.18713951, 6.835946, -1.5445938, 6.6701503, -2.7051659, 6.224573, -4.000448, 5.6028385, -4.9537735, 4.7842207, -5.7102184, 3.8930671, -2.7466145, 3.9034293, -2.7466145, 5.540665, 2.511097, 5.5616865, 2.4952965, 3.951764)
+
+[node name="CollisionPolygon3D4" type="CollisionPolygon3D" parent="Hangars/Hangar2" unique_id=1033870444]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6.946376)
+depth = 0.3
+polygon = PackedVector2Array(6.656807, 0.107732534, 6.5273247, 1.463483, 6.1007977, 2.7887669, 5.4686203, 3.8855538, 4.082405, 3.9007869, 4.067171, 0.054416418)
+
+[node name="CollisionPolygon3D5" type="CollisionPolygon3D" parent="Hangars/Hangar2" unique_id=489818621]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.23796463, 0, -6.946376)
+depth = 0.3
+polygon = PackedVector2Array(6.656807, 0.107732534, 6.5273247, 1.463483, 6.1007977, 2.7887669, 5.4686203, 3.8855538, 4.082405, 3.9007869, 4.067171, 0.054416418)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hangars/Hangar2" unique_id=1625290164]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.10058594, 4.076374, -6.957324)
+shape = SubResource("BoxShape3D_iyf6e")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Hangars/Hangar2" unique_id=1134801399]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.13167763, 4.076374, 6.851486)
+shape = SubResource("BoxShape3D_iyf6e")
+
+[node name="CollisionPolygon3D6" type="CollisionPolygon3D" parent="Hangars/Hangar2" unique_id=1531431610]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4392029, 6.834463)
+depth = 0.3
+polygon = PackedVector2Array(-6.899845, -1.3043615, -6.747513, 0.036155343, -6.305752, 1.3690556, -5.6659594, 2.4582257, 5.499935, 2.4582257, 6.1397285, 1.323356, 6.5281715, 0.036155343, 6.688122, -1.296745, -4.135029, -1.296745, -4.127412, 1.1024758, -5.414613, 1.1024758, -5.4297075, -1.3077028)
+
+[node name="Hangar3" type="StaticBody3D" parent="Hangars" unique_id=211665913]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.241379, 0, 10.893591)
+
+[node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="Hangars/Hangar3" unique_id=1957002748]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.18245697, 0, -0.038701057)
+depth = 14.5
+polygon = PackedVector2Array(-6.9904976, 0.3336401, -6.891692, 1.4743912, -6.424613, 2.9834163, -5.7958527, 4.061291, -4.9155884, 5.130184, -3.8017845, 5.992484, -2.598157, 6.630227, -1.295723, 7.0074835, 0.033655167, 7.1512, 1.506752, 6.998501, 2.7732544, 6.630227, 4.0487404, 5.9206257, 5.054756, 5.121202, 5.952984, 4.01638, 6.635639, 2.749877, 7.0218773, 1.465409, 7.147629, 0.35160494, 6.8422318, 0.34262276, 6.7344437, 1.4204977, 6.3751526, 2.695983, 5.7733383, 3.836734, 4.9110413, 4.8876624, 3.9050217, 5.696069, 2.67445, 6.3427935, 1.425909, 6.7290325, -0.0022735596, 6.854784, -1.3047066, 6.6841207, -2.4993515, 6.3158464, -3.7299252, 5.6691217, -4.789836, 4.7978396, -5.562313, 3.836734, -6.1551437, 2.7768235, -6.595277, 1.4294798, -6.730011, 0.36956954)
+
+[node name="CollisionPolygon3D2" type="CollisionPolygon3D" parent="Hangars/Hangar3" unique_id=2120888327]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.018039703, -0.018003464, -6.9527903)
+depth = 0.3
+polygon = PackedVector2Array(5.4951057, 3.8160803, 4.589857, 4.9396544, 3.6468925, 5.6857367, 2.5174065, 6.3281956, 1.1806774, 6.7323236, -0.18713951, 6.835946, -1.5445938, 6.6701503, -2.7051659, 6.224573, -4.000448, 5.6028385, -4.9537735, 4.7842207, -5.730335, 3.8063807, -2.7379055, 3.796784, -2.7466145, 5.540665, 2.511097, 5.5616865, 2.4959087, 3.8003263)
+
+[node name="CollisionPolygon3D3" type="CollisionPolygon3D" parent="Hangars/Hangar3" unique_id=344344874]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6.8558674)
+depth = 0.3
+polygon = PackedVector2Array(5.491373, 3.9034293, 4.589857, 4.9396544, 3.6468925, 5.6857367, 2.5174065, 6.3281956, 1.1806774, 6.7323236, -0.18713951, 6.835946, -1.5445938, 6.6701503, -2.7051659, 6.224573, -4.000448, 5.6028385, -4.9537735, 4.7842207, -5.7102184, 3.8930671, -2.7466145, 3.9034293, -2.7466145, 5.540665, 2.511097, 5.5616865, 2.4952965, 3.951764)
+
+[node name="CollisionPolygon3D4" type="CollisionPolygon3D" parent="Hangars/Hangar3" unique_id=161566316]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6.946376)
+depth = 0.3
+polygon = PackedVector2Array(6.656807, 0.107732534, 6.5273247, 1.463483, 6.1007977, 2.7887669, 5.4686203, 3.8855538, 4.082405, 3.9007869, 4.067171, 0.054416418)
+
+[node name="CollisionPolygon3D5" type="CollisionPolygon3D" parent="Hangars/Hangar3" unique_id=919985265]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.23796463, 0, -6.946376)
+depth = 0.3
+polygon = PackedVector2Array(6.656807, 0.107732534, 6.5273247, 1.463483, 6.1007977, 2.7887669, 5.4686203, 3.8855538, 4.082405, 3.9007869, 4.067171, 0.054416418)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hangars/Hangar3" unique_id=167902362]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.10058594, 4.076374, -6.957324)
+shape = SubResource("BoxShape3D_iyf6e")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Hangars/Hangar3" unique_id=1392128578]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.13167763, 4.076374, 6.851486)
+shape = SubResource("BoxShape3D_iyf6e")
+
+[node name="CollisionPolygon3D6" type="CollisionPolygon3D" parent="Hangars/Hangar3" unique_id=989936709]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4392029, 6.834463)
+depth = 0.3
+polygon = PackedVector2Array(-6.899845, -1.3043615, -6.747513, 0.036155343, -6.305752, 1.3690556, -5.6659594, 2.4582257, 5.499935, 2.4582257, 6.1397285, 1.323356, 6.5281715, 0.036155343, 6.688122, -1.296745, -4.135029, -1.296745, -4.127412, 1.1024758, -5.414613, 1.1024758, -5.4297075, -1.3077028)
 
 [node name="Car2" type="MeshInstance3D" parent="." unique_id=1601625731]
 transform = Transform3D(0.5818522, 0, -0.38916323, 0, 0.6999999, 0, 0.38916323, 0, 0.5818522, 7.349476, 0.9291978, -2.2247424)
@@ -545,3 +624,4 @@ metadata/_custom_type_script = "uid://cfwmt6vc7y70h"
 
 [node name="CommandCenter" parent="." unique_id=1461013436 instance=ExtResource("29_h62tq")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 19.70058, 4.9964066, -22.223436)
+visible = false
