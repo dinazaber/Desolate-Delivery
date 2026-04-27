@@ -38,7 +38,6 @@ var heat: float = 0.0
 @onready var tracer_8 = $BeggarsShotgun/Frame/Rays/RayCast3D8/tracer
 @onready var tracer_9 = $BeggarsShotgun/Frame/Rays/RayCast3D9/tracer
 @onready var tracers: Array = [tracer_1,tracer_2,tracer_3,tracer_4,tracer_5,tracer_6,tracer_7,tracer_8,tracer_9]
-@onready var flash = $BeggarsShotgun/Frame/Flash
 
 
 func _ready() -> void:
@@ -93,8 +92,6 @@ func scatterNshoot():
 	for tracer in tracers: # emit
 		tracer.restart()
 		tracer.emitting = true
-	flash.restart()
-	flash.emitting = true
 
 func get_heat() -> float:
 	return heat

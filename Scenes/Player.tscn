@@ -90,6 +90,7 @@ collision_mask = 9
 floor_max_angle = 0.2617994
 floor_snap_length = 0.15
 script = ExtResource("1_g8lft")
+DEBUG_deathBypass = true
 
 [node name="StairBounds" type="Node3D" parent="." unique_id=949802035]
 
@@ -116,8 +117,8 @@ shape = SubResource("CapsuleShape3D_yoq75")
 
 [node name="EnemyBounceCheck" type="Area3D" parent="." unique_id=326631368]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.51, 0)
-collision_layer = 40
-collision_mask = 40
+collision_layer = 0
+collision_mask = 25
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="EnemyBounceCheck" unique_id=632021629]
 shape = SubResource("SphereShape3D_yoq75")
@@ -150,10 +151,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15, -0.137, -0.25)
 camera = NodePath("../../..")
 playerRay = NodePath("../../../PlayerRay")
 
-[node name="BeggarsShotgun" parent="shakeable_camera/Hands/RightHand" index="3" unique_id=893199726 node_paths=PackedStringArray("camera", "playerRay", "playerRayEnd")]
+[node name="BeggarsShotgun" parent="shakeable_camera/Hands/RightHand" index="3" unique_id=893199726 node_paths=PackedStringArray("camera")]
 camera = NodePath("../../..")
-playerRay = NodePath("../../../PlayerRay")
-playerRayEnd = NodePath("../../../PlayerRay/PlayerRayEnd")
 
 [node name="LeftHand" parent="shakeable_camera/Hands" unique_id=1896444700 instance=ExtResource("3_nn08x")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.2, -0.137, -0.25)

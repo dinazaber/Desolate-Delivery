@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cfx84ipuj54ef" path="res://Scripts/Weapons/BeggarsShotgun.gd" id="1_e0py8"]
 [ext_resource type="Texture2D" uid="uid://bnvro65uaa4np" path="res://assets/Textures/Colors.png" id="3_6f1rn"]
+[ext_resource type="Texture2D" uid="uid://24usakcrqsvh" path="res://assets/Textures/Architecture/Explosion1.png" id="4_ktqvf"]
 [ext_resource type="ArrayMesh" uid="uid://eadvfmp34ewb" path="res://assets/Meshes/Weapons/beggarsShotgun/barrels.mesh" id="6_pc0kw"]
 
 [sub_resource type="Animation" id="Animation_sjkk0"]
@@ -41,6 +42,30 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector3(1.3089969, 0, -0.17453292)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("BeggarsShotgun/Frame/Sprite:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("BeggarsShotgun/Frame/Sprite:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_e0py8"]
@@ -141,6 +166,30 @@ tracks/2/keys = {
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(0.034906585, -0.017453292, -0.07853982), Vector3(0.017453292, 0, 0.09599311), Vector3(-0.012217305, 0, -0.017453292), Vector3(0, 0, 0)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("BeggarsShotgun/Frame/Sprite:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("BeggarsShotgun/Frame/Sprite:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.02, 0.1),
+"transitions": PackedFloat32Array(0.3, 2, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(3, 3, 3), Vector3(0, 0, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_7ud7m"]
 resource_name = "shootLast"
@@ -181,6 +230,30 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(0.6, 1.4, 1.5, 1),
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(0.06981317, 0, -0.08726646), Vector3(-0.02617994, 0, 0.05235988), Vector3(0, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("BeggarsShotgun/Frame/Sprite:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("BeggarsShotgun/Frame/Sprite:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.03, 0.1),
+"transitions": PackedFloat32Array(0.3, 2, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(3, 3, 3), Vector3(0, 0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_ktqvf"]
@@ -293,52 +366,24 @@ albedo_texture = SubResource("GradientTexture2D_ktqvf")
 material = SubResource("StandardMaterial3D_b1a7w")
 size = 0.015
 sections = 2
-section_length = 0.5
+section_length = 0.75
 section_segments = 1
 
-[sub_resource type="Curve" id="Curve_e0py8"]
-_data = [Vector2(0, 0.75), 0.0, 0.0, 0, 0, Vector2(0.7455197, 0.75), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 3
-
-[sub_resource type="CurveTexture" id="CurveTexture_ktqvf"]
-curve = SubResource("Curve_e0py8")
-
-[sub_resource type="Gradient" id="Gradient_xapv0"]
-colors = PackedColorArray(1, 0.78431374, 0, 1, 1, 0, 0, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_mmsk8"]
-gradient = SubResource("Gradient_xapv0")
-
-[sub_resource type="Curve" id="Curve_1544g"]
-_data = [Vector2(0, 0.75), 0.0, 0.0, 0, 0, Vector2(0.7455197, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.75), 0.0, 0.0, 0, 0]
-point_count = 3
-
-[sub_resource type="CurveTexture" id="CurveTexture_6f1rn"]
-curve = SubResource("Curve_1544g")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_sfoia"]
-particle_flag_align_y = true
-direction = Vector3(0, 0, 1)
-spread = 30.0
-initial_velocity_min = 120.0
-initial_velocity_max = 140.0
-gravity = Vector3(0, 0, 0)
-scale_curve = SubResource("CurveTexture_6f1rn")
-color_ramp = SubResource("GradientTexture1D_mmsk8")
-alpha_curve = SubResource("CurveTexture_ktqvf")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lkl2b"]
-transparency = 1
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vqio2"]
+transparency = 2
+alpha_scissor_threshold = 0.7
+alpha_antialiasing_mode = 0
 shading_mode = 0
-vertex_color_use_as_albedo = true
-albedo_color = Color(1, 0.78431374, 0, 1)
+albedo_color = Color(1.6797683, 1.6797683, 1.6797683, 1)
+albedo_texture = ExtResource("4_ktqvf")
+texture_filter = 1
+billboard_mode = 1
+billboard_keep_scale = true
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_pc0kw"]
-material = SubResource("StandardMaterial3D_lkl2b")
-top_radius = 0.0
-bottom_radius = 0.45
-radial_segments = 4
-rings = 2
+[sub_resource type="PlaneMesh" id="PlaneMesh_xapv0"]
+material = SubResource("StandardMaterial3D_vqio2")
+size = Vector2(3, 3)
+orientation = 2
 
 [node name="BeggarsShotgun" type="Node3D" unique_id=267885530]
 script = ExtResource("1_e0py8")
@@ -347,7 +392,7 @@ script = ExtResource("1_e0py8")
 libraries/ = SubResource("AnimationLibrary_8qb6n")
 
 [node name="BeggarsShotgun" type="Marker3D" parent="." unique_id=1087278608]
-transform = Transform3D(0.98480725, 0.17364809, 0, -0.044943437, 0.25488687, -0.9659258, -0.16773118, 0.9512507, 0.25881907, 0.15, -1.35, 0.15)
+transform = Transform3D(0.98480725, 0.17364807, 0, -0.044943437, 0.25488687, -0.9659258, -0.16773118, 0.9512506, 0.25881907, 0.15, -1.35, 0.15)
 
 [node name="Frame" type="MeshInstance3D" parent="BeggarsShotgun" unique_id=972063788]
 transform = Transform3D(-0.03, -9.7406916e-11, -4.529874e-09, -9.74069e-11, 0.03, -6.984924e-11, 4.529874e-09, -6.9849224e-11, -0.03, 0, -0.03, -0.58)
@@ -498,17 +543,11 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0
 cast_shadow = 0
 mesh = ExtResource("6_pc0kw")
 
-[node name="Flash" type="GPUParticles3D" parent="BeggarsShotgun/Frame" unique_id=673183]
-transform = Transform3D(1, -3.5156447e-16, 2.842171e-14, 9.2524585e-17, 0.9999998, 6.661338e-16, 4.2632564e-14, -1.110223e-15, 0.9999998, 0, 1, 13)
-emitting = false
-amount = 12
-lifetime = 0.08
-one_shot = true
-explosiveness = 1.0
-fixed_fps = 144
-local_coords = true
-process_material = SubResource("ParticleProcessMaterial_sfoia")
-draw_pass_1 = SubResource("CylinderMesh_pc0kw")
+[node name="Sprite" type="MeshInstance3D" parent="BeggarsShotgun/Frame" unique_id=2006190939]
+transform = Transform3D(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 13.5)
+visible = false
+mesh = SubResource("PlaneMesh_xapv0")
+skeleton = NodePath("../../..")
 
 [node name="HeatBuffer" type="Timer" parent="." unique_id=1798419140]
 one_shot = true

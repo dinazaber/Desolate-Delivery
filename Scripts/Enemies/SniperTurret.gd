@@ -7,6 +7,7 @@ var current_state = State.IDLE
 @export var detection_range = 50
 @export var enemy_damage = 50
 @export var enemy_health = 100
+@export var turning_rate = deg_to_rad(2.0) # degrees per second
 
 # --- Nodes ---
 @onready var eyes = $RayCast3D
@@ -93,7 +94,9 @@ func process_dead_state():
 
 
 func follow(delta):
-	look_target = lerp(look_target, player.global_position, delta * 3.5)
+	look_target.x = lerp(look_target.x, player.global_position.x, delta * 3.5)
+	look_target.y = lerp(look_target.y, player.global_position.y, delta * 3.5)
+	look_target.z = lerp(look_target.z, player.global_position.z, delta * 3.5)
 	gun.look_at(look_target, Vector3.UP, true)
 	gun.rotation.x = clamp(gun.rotation.x, deg_to_rad(-20), deg_to_rad(20))
 	
@@ -101,6 +104,14 @@ func follow(delta):
 	var mount_look_target = look_target
 	mount_look_target.y = mount.global_position.y
 	mount.look_at(mount_look_target, Vector3.UP)
+	
+	$CollisionEnv3.global_transform = $GunPivot/CollEnv3SnapPos.global_transform
+
+func _on_area_3d_damage_taken(recieved_damage: float, type: String) -> void:
+	if type == "player":
+		damagedByPlayer = true
+	enemy_health -= recieved_damage
+	checkLifeLine()
 
 func hit(recieved_damage, type):
 	if type == "player":

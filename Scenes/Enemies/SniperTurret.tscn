@@ -1,14 +1,46 @@
 [gd_scene format=3 uid="uid://da8xo7bpr7w37"]
 
 [ext_resource type="Script" uid="uid://idsgqohuto4m" path="res://Scripts/enemies/SniperTurret.gd" id="1_4yweh"]
+[ext_resource type="Script" uid="uid://dqv7818ohy4lu" path="res://Scripts/enemies/HitBox.gd" id="2_h5qh4"]
 [ext_resource type="ArrayMesh" uid="uid://brhrp1qv2wxup" path="res://assets/Meshes/Enemies/SniperTurret/Base.mesh" id="2_pd8i8"]
 [ext_resource type="ArrayMesh" uid="uid://b2angk0lxn8ng" path="res://assets/Meshes/Enemies/SniperTurret/Mount.mesh" id="3_8iha5"]
 [ext_resource type="Shader" uid="uid://w3eyk752ljxw" path="res://Shaders/MeshShaders/ParticlesShader.gdshader" id="4_8iha5"]
 [ext_resource type="ArrayMesh" uid="uid://3ys0kxbump5l" path="res://assets/Meshes/Enemies/SniperTurret/Gun.mesh" id="4_h5qh4"]
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8iha5"]
+height = 1.1102295
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_h5qh4"]
+radius = 0.25634766
+height = 1.640625
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_sm1nr"]
+radius = 0.315
+height = 3.52417
+
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_4yweh"]
 height = 0.69
 radius = 0.43
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_8iha5"]
+height = 14.0
+radius = 3.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_h5qh4"]
+size = Vector3(8.2, 1.2, 8.2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sm1nr"]
+size = Vector3(1, 8.41, 4.8)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qm7o5"]
+size = Vector3(1, 8.41, 4.8)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_owrfq"]
+height = 3.25
+radius = 0.21
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dfow3"]
+size = Vector3(0.52, 0.51964843, 0.55)
 
 [sub_resource type="Curve" id="Curve_st424"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.18803418, 1), 0.0, 0.0, 0, 0, Vector2(0.7051282, 0.85506), -0.62078655, -0.62078655, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -133,30 +165,86 @@ material = SubResource("ShaderMaterial_sm1nr")
 size = Vector3(0.02, 0.02, 500)
 
 [node name="SniperTurret" type="StaticBody3D" unique_id=1830225406 groups=["Enemy", "Persist"]]
-collision_layer = 43
-collision_mask = 9
+collision_layer = 40
+collision_mask = 24
 script = ExtResource("1_4yweh")
 
+[node name="CollisionEnv" type="CollisionShape3D" parent="." unique_id=2131971587]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.2473402, 0)
+shape = SubResource("CapsuleShape3D_8iha5")
+
+[node name="CollisionEnv2" type="CollisionShape3D" parent="." unique_id=960748363]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.38671875, 0)
+shape = SubResource("CapsuleShape3D_h5qh4")
+
+[node name="CollisionEnv3" type="CollisionShape3D" parent="." unique_id=1532194630]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0.194, 0.532)
+shape = SubResource("CapsuleShape3D_sm1nr")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=1395307662 groups=["Enemy"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.3579782, 0)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("2_h5qh4")
+
+[node name="CollisionBase" type="CollisionShape3D" parent="Area3D" unique_id=1740089601]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.06379378, 0)
+shape = SubResource("CylinderShape3D_4yweh")
+
 [node name="RayCast3D" type="RayCast3D" parent="." unique_id=1379129722]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2142391, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.194, 0)
 target_position = Vector3(0, 0, 500)
 
 [node name="BaseMesh" type="MeshInstance3D" parent="." unique_id=397604197]
 transform = Transform3D(0.065, 0, 0, 0, 0.065, 0, 0, 0, 0.065, 0, 0, 0)
 mesh = ExtResource("2_pd8i8")
 
-[node name="BaseCollision" type="CollisionShape3D" parent="." unique_id=1740089601]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.2941844, 0)
-shape = SubResource("CylinderShape3D_4yweh")
-
 [node name="MountMesh" type="MeshInstance3D" parent="." unique_id=387465361]
 transform = Transform3D(0.065, 0, 0, 0, 0.065, 0, 0, 0, 0.065, 0, 0, 0)
 mesh = ExtResource("3_8iha5")
 
+[node name="Area3D" type="Area3D" parent="MountMesh" unique_id=1675736522 groups=["Enemy"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10, 0)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("2_h5qh4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MountMesh/Area3D" unique_id=985276353]
+shape = SubResource("CylinderShape3D_8iha5")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="MountMesh/Area3D" unique_id=170407668]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.8349276, 0)
+shape = SubResource("BoxShape3D_h5qh4")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="MountMesh/Area3D" unique_id=1484438229]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5668344, 11.527792, 0)
+shape = SubResource("BoxShape3D_sm1nr")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="MountMesh/Area3D" unique_id=875369976]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.567, 11.528, 0)
+shape = SubResource("BoxShape3D_qm7o5")
+
 [node name="GunPivot" type="Marker3D" parent="." unique_id=1990229676]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.19386818, 0)
+
+[node name="CollEnv3SnapPos" type="Marker3D" parent="GunPivot" unique_id=717615836]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0.532)
+
+[node name="Area3D" type="Area3D" parent="GunPivot" unique_id=700609044 groups=["Enemy"]]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("2_h5qh4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GunPivot/Area3D" unique_id=1202006436]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0.5301384)
+shape = SubResource("CylinderShape3D_owrfq")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="GunPivot/Area3D" unique_id=1012066237]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.031468496, 0.6985717)
+shape = SubResource("BoxShape3D_dfow3")
 
 [node name="Charge" type="GPUParticles3D" parent="GunPivot" unique_id=1246534581]
-transform = Transform3D(0.4956177, 0.5043442, -0.70710677, -0.71325046, 0.70090926, 0, 0.4956177, 0.5043442, 0.70710677, 0, 0.215, 1.394414)
+transform = Transform3D(0.4956177, 0.5043442, -0.70710677, -0.71325046, 0.70090926, 0, 0.4956177, 0.5043442, 0.70710677, 0, 0, 1.394)
 layers = 2
 emitting = false
 amount = 16
@@ -167,7 +255,7 @@ process_material = SubResource("ParticleProcessMaterial_xmnhq")
 draw_pass_1 = SubResource("CylinderMesh_e4n6m")
 
 [node name="GPUParticlesAttractorSphere3D" type="GPUParticlesAttractorSphere3D" parent="GunPivot" unique_id=1809729407]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.215, 1.394414)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.394)
 layers = 2
 strength = 3.0
 attenuation = 0.05
@@ -175,7 +263,7 @@ cull_mask = 4293918722
 radius = 2.0
 
 [node name="Beam" type="GPUParticles3D" parent="GunPivot" unique_id=1953904942]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2154708, 1.9253349)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.025316298, 1.925)
 cast_shadow = 0
 emitting = false
 amount = 1
@@ -185,7 +273,7 @@ process_material = SubResource("ParticleProcessMaterial_bbe7t")
 draw_pass_1 = SubResource("BoxMesh_x0sam")
 
 [node name="Beamies" type="GPUParticles3D" parent="GunPivot" unique_id=587968733]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.215, 2.6787531)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.679)
 cast_shadow = 0
 emitting = false
 lifetime = 0.1
@@ -195,16 +283,19 @@ process_material = SubResource("ParticleProcessMaterial_4kpjt")
 draw_pass_1 = SubResource("BoxMesh_qoa7d")
 
 [node name="GunMesh" type="MeshInstance3D" parent="GunPivot" unique_id=1487560660]
-transform = Transform3D(0.065, 0, 0, 0, 0.065, 0, 0, 0, 0.065, 0, 0, 0)
+transform = Transform3D(0.065, 0, 0, 0, 0.065, 0, 0, 0, 0.065, 0, -0.18393409, 0)
 mesh = ExtResource("4_h5qh4")
 skeleton = NodePath("../..")
 
 [node name="GunRay" type="RayCast3D" parent="GunPivot/GunMesh" unique_id=897733090]
-transform = Transform3D(1.0000005, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 3.33, 0)
+transform = Transform3D(1.0000005, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 2.762179, 0)
 target_position = Vector3(0, 0, 5000)
 
 [node name="Timer" type="Timer" parent="." unique_id=1865930971]
 wait_time = 4.0
 one_shot = true
 
+[connection signal="damage_taken" from="Area3D" to="." method="_on_area_3d_damage_taken"]
+[connection signal="damage_taken" from="MountMesh/Area3D" to="." method="_on_area_3d_damage_taken"]
+[connection signal="damage_taken" from="GunPivot/Area3D" to="." method="_on_area_3d_damage_taken"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
