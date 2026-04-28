@@ -9,6 +9,7 @@ var screenEffect: ColorRect
 var grabbedObject: RigidBody3D = null
 @onready var hold_pos = $shakeable_camera/holdPos
 @onready var enemyBounceCheck = $EnemyBounceCheck
+@onready var hitBox = $PlayerHitBox
 
 
 # --- WEAPONS ---
@@ -465,10 +466,9 @@ func checkLifeLine():
 func enemy_killed():
 	restoreCool.emit(coolOnKill)
 
-func hit(recieved_damage, type):
-	if type == "player":
-		recieved_damage /= 3
+func damage_taken(recieved_damage):
 	player_health -= recieved_damage
+	print("Player Health: " + str(player_health))
 	camera.add_trauma(recieved_damage/20)
 	checkLifeLine()
 

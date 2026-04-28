@@ -38,7 +38,7 @@ func shoot():
 		
 		if playerRay.is_colliding():
 			if playerRay.get_collider().is_in_group("Enemy"):
-				playerRay.get_collider().hit(damage, "player")
+				playerRay.get_collider().hit(damage)
 			if playerRay.get_collider().is_in_group("ShotReactable"):
 				playerRay.get_collider().shot()
 

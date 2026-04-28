@@ -1,10 +1,10 @@
 extends Area3D
 
-@export var isCrit: bool = false
+@export var damage_multiplier: float = 1.0
 
-signal damage_taken(damage: float, type: String)
+func hit(damage):
+	damage *= damage_multiplier
+	owner.damage_taken(damage)
 
-func hit(damage, type):
-	if isCrit:
-		damage *= 1.5
-	damage_taken.emit(damage, type)
+func knockBack(direction, force, time):
+	if owner.has_method("KnockBack"): owner.knockBack(direction, force, time)

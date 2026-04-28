@@ -38,8 +38,8 @@ func shoot():
 		
 		knockBack.emit(direction, 10, 0.2)
 		
-		if blastRange.has_overlapping_bodies():
-			var bodies = blastRange.get_overlapping_bodies()
+		if blastRange.has_overlapping_areas():
+			var bodies = blastRange.get_overlapping_areas()
 			for body in bodies:
 				body.hit(damage, "player")
 				body.knockBack((body.global_position - playerPos.global_position).normalized(), damage/15, 0.1)

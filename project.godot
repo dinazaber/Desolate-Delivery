@@ -197,12 +197,11 @@ G={
 
 [layer_names]
 
-3d_physics/layer_1="ground and player"
-3d_physics/layer_2="enemies and shootables"
-3d_physics/layer_3="ground"
-3d_physics/layer_4="player"
-3d_physics/layer_5="env"
-3d_physics/layer_6="physics"
+3d_physics/layer_1="Physics Collsions"
+3d_physics/layer_2="Hitboxes"
+3d_physics/layer_3="Non Stairs Collisions"
+3d_physics/layer_4="No Player Ray Collsions"
+3d_physics/layer_8="Player"
 
 [rendering]
 

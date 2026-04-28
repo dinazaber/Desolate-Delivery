@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://beqguglkai1oh"]
 
 [ext_resource type="ArrayMesh" uid="uid://cwhuegir0snfi" path="res://assets/Meshes/Enemies/Robot.mesh" id="1_grc7g"]
-[ext_resource type="Script" uid="uid://dm2yl7b4griiw" path="res://Scripts/enemies/Robot.gd" id="1_h872o"]
-[ext_resource type="Script" uid="uid://dqv7818ohy4lu" path="res://Scripts/enemies/HitBox.gd" id="3_hfj1t"]
+[ext_resource type="Script" uid="uid://dm2yl7b4griiw" path="res://Scripts/Enemies/Robot.gd" id="1_h872o"]
+[ext_resource type="Script" uid="uid://dqv7818ohy4lu" path="res://Scripts/Enemies/HitBox.gd" id="3_hfj1t"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_h872o"]
 radius = 0.5307617
@@ -473,14 +473,14 @@ curve = SubResource("Curve_336do")
 size = Vector3(1.175, 4.132, 1.3)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2a8ro"]
-size = Vector3(1.2919312, 4.820801, 1.2919922)
+size = Vector3(1.2919312, 5.291382, 1.2919922)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_a3cge"]
-size = Vector3(0.8988037, 2.0927734, 1.0786743)
+[sub_resource type="BoxShape3D" id="BoxShape3D_bss3a"]
+size = Vector3(1.2919312, 5.54364, 1.2919922)
 
 [node name="Robot" type="CharacterBody3D" unique_id=969091388 groups=["Enemy", "Persist"]]
-collision_layer = 40
-collision_mask = 24
+collision_layer = 8
+collision_mask = 141
 script = ExtResource("1_h872o")
 
 [node name="CollisionEnv" type="CollisionShape3D" parent="." unique_id=177358311]
@@ -580,23 +580,23 @@ transform = Transform3D(0.829335, 0.5587506, -1.0382226e-15, -0.5587506, 0.82933
 bone_name = "Base"
 bone_idx = 0
 
-[node name="Area3D" type="Area3D" parent="Skeleton3D/Base" unique_id=457781958 groups=["Enemy"]]
+[node name="Torso" type="Area3D" parent="Skeleton3D/Base" unique_id=457781958 groups=["Enemy"]]
 transform = Transform3D(0.99999994, 0, 3.5527137e-15, 0, 0.99999994, 0, 0, 0, 1, 0, 0, 0)
 collision_layer = 2
-collision_mask = 2
+collision_mask = 0
 script = ExtResource("3_hfj1t")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Skeleton3D/Base/Area3D" unique_id=325203901]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Skeleton3D/Base/Torso" unique_id=325203901]
 transform = Transform3D(0.99999994, 0, 9.450218e-13, 0, 0.99999994, 0, 3.5527137e-15, 0, 0.99999994, 0, 2.01573, 0)
 shape = SubResource("BoxShape3D_h872o")
 
-[node name="Area3D2" type="Area3D" parent="Skeleton3D/Base" unique_id=1647641816 groups=["Enemy"]]
+[node name="Head" type="Area3D" parent="Skeleton3D/Base" unique_id=1647641816 groups=["Enemy"]]
 collision_layer = 2
-collision_mask = 2
+collision_mask = 0
 script = ExtResource("3_hfj1t")
-isCrit = true
+damage_multiplier = 1.5
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="Skeleton3D/Base/Area3D2" unique_id=1953021785]
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Skeleton3D/Base/Head" unique_id=1953021785]
 transform = Transform3D(0.99999964, 0, -1.7763568e-14, 0, 0.99999964, 0, 1.7763568e-14, 0, 0.9999998, 0, 5.9002547, 0)
 shape = SubResource("BoxShape3D_hfj1t")
 
@@ -607,7 +607,7 @@ bone_idx = 1
 
 [node name="Area3D" type="Area3D" parent="Skeleton3D/HandL" unique_id=1631081196 groups=["Enemy"]]
 collision_layer = 2
-collision_mask = 2
+collision_mask = 0
 script = ExtResource("3_hfj1t")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Skeleton3D/HandL/Area3D" unique_id=1067025609]
@@ -621,7 +621,7 @@ bone_idx = 2
 
 [node name="Area3D" type="Area3D" parent="Skeleton3D/ArmL" unique_id=43927458 groups=["Enemy"]]
 collision_layer = 2
-collision_mask = 2
+collision_mask = 0
 script = ExtResource("3_hfj1t")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Skeleton3D/ArmL/Area3D" unique_id=1796191293]
@@ -635,7 +635,7 @@ bone_idx = 3
 
 [node name="Area3D" type="Area3D" parent="Skeleton3D/HandR" unique_id=1273386074 groups=["Enemy"]]
 collision_layer = 2
-collision_mask = 2
+collision_mask = 0
 script = ExtResource("3_hfj1t")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Skeleton3D/HandR/Area3D" unique_id=857522839]
@@ -650,7 +650,7 @@ bone_idx = 4
 [node name="Area3D" type="Area3D" parent="Skeleton3D/ArmR" unique_id=1640748908 groups=["Enemy"]]
 transform = Transform3D(1.0000001, -1.1368684e-13, 0, -1.1368684e-13, 1, 3.2081407e-14, 2.842171e-14, 3.2080295e-14, 1.0000001, 0, 0, 0)
 collision_layer = 2
-collision_mask = 2
+collision_mask = 0
 script = ExtResource("3_hfj1t")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Skeleton3D/ArmR/Area3D" unique_id=74668623]
@@ -683,6 +683,8 @@ draw_pass_1 = SubResource("BoxMesh_oqbdp")
 [node name="BulletRay" type="RayCast3D" parent="Skeleton3D/ArmR" unique_id=2123343728]
 transform = Transform3D(1, -1.3969839e-09, -7.5495166e-15, 0, 1.0000001, 0, -5.3734794e-14, 0, 1, 9.536743e-07, 3.2000003, -2.3841858e-07)
 target_position = Vector3(0, 333, 0)
+collision_mask = 15
+collide_with_areas = true
 
 [node name="BulletRayEnd" type="Marker3D" parent="Skeleton3D/ArmR" unique_id=477852913]
 transform = Transform3D(1.0000001, -1.3969839e-09, -2.1982416e-14, 0, 1.0000001, 5.684342e-14, -2.5757174e-14, 5.684342e-14, 1.0000001, 0, 336.2, 0)
@@ -707,7 +709,7 @@ bone_idx = 5
 
 [node name="Area3D" type="Area3D" parent="Skeleton3D/UpperLegL" unique_id=1493009391 groups=["Enemy"]]
 collision_layer = 2
-collision_mask = 2
+collision_mask = 0
 script = ExtResource("3_hfj1t")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Skeleton3D/UpperLegL/Area3D" unique_id=77060633]
@@ -722,29 +724,16 @@ bone_idx = 6
 [node name="Area3D" type="Area3D" parent="Skeleton3D/LegL" unique_id=1539446031 groups=["Enemy"]]
 transform = Transform3D(0.99999994, -2.842171e-14, 2.842171e-14, 0, 0.99999994, 7.540992e-15, 2.842171e-14, -6.6699643e-15, 0.99999994, 0, 0, 0)
 collision_layer = 2
-collision_mask = 2
+collision_mask = 0
 script = ExtResource("3_hfj1t")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Skeleton3D/LegL/Area3D" unique_id=342648621]
-transform = Transform3D(1.0000001, 0, 7.702283e-12, 5.684342e-14, 1, 7.543011e-15, 7.702283e-12, 7.540884e-15, 1.0000001, -0.004486108, 1.9104028, -0.08271742)
+transform = Transform3D(1.0000001, -2.3283064e-10, -7.531753e-12, 2.3283064e-10, 1, 4.0745185e-14, 8.526513e-14, 1.51823e-14, 1.0000001, -0.004486112, 2.1456952, -0.0827173)
 shape = SubResource("BoxShape3D_2a8ro")
 
 [node name="kick" type="RayCast3D" parent="Skeleton3D/LegL" unique_id=58551326]
 target_position = Vector3(0, 10, 0)
-
-[node name="FootL" type="BoneAttachment3D" parent="Skeleton3D" unique_id=965913475]
-transform = Transform3D(0.35765737, 0.9338511, -1.9174672e-07, 0.9338509, -0.35765722, 1.1053778e-08, -5.7674058e-08, -1.0843141e-07, -0.9999979, 0.033382874, -13.367445, -1.3671359)
-bone_name = "Foot.L"
-bone_idx = 7
-
-[node name="Area3D" type="Area3D" parent="Skeleton3D/FootL" unique_id=247271402 groups=["Enemy"]]
-collision_layer = 2
-collision_mask = 2
-script = ExtResource("3_hfj1t")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Skeleton3D/FootL/Area3D" unique_id=883156606]
-transform = Transform3D(0.9335805, 0.35836795, 0, -0.358368, 0.9335804, 0, -1.587619e-14, -5.684342e-14, 1, 0.024278522, 0.50328183, -0.08921802)
-shape = SubResource("BoxShape3D_a3cge")
+collision_mask = 15
 
 [node name="UpperLegR" type="BoneAttachment3D" parent="Skeleton3D" unique_id=387898768]
 transform = Transform3D(4.9432188e-08, 0.0014150143, -0.9999979, -3.3304108e-08, -0.99999803, -0.0014151037, -0.99999917, 5.96046e-08, -1.19209204e-07, 0.02300262, -5.960245, 1.3876504)
@@ -753,7 +742,7 @@ bone_idx = 8
 
 [node name="Area3D" type="Area3D" parent="Skeleton3D/UpperLegR" unique_id=325617683 groups=["Enemy"]]
 collision_layer = 2
-collision_mask = 2
+collision_mask = 0
 script = ExtResource("3_hfj1t")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Skeleton3D/UpperLegR/Area3D" unique_id=408404172]
@@ -768,48 +757,22 @@ bone_idx = 9
 [node name="Area3D" type="Area3D" parent="Skeleton3D/LegR" unique_id=967304973 groups=["Enemy"]]
 transform = Transform3D(0.99999994, -2.842171e-14, 2.842171e-14, 0, 0.99999994, 7.540992e-15, 2.842171e-14, -6.6699643e-15, 0.99999994, 0, 0, 0)
 collision_layer = 2
-collision_mask = 2
+collision_mask = 0
 script = ExtResource("3_hfj1t")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Skeleton3D/LegR/Area3D" unique_id=151860166]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0040000747, 1.9099998, 0.10349119)
-shape = SubResource("BoxShape3D_2a8ro")
-
-[node name="FootR" type="BoneAttachment3D" parent="Skeleton3D" unique_id=1703988245]
-transform = Transform3D(0.35765728, 0.9338514, -2.2575648e-07, 0.9338518, -0.3576571, 1.615638e-07, 7.071645e-08, -1.9402202e-07, -0.99999803, 0.033485822, -13.367655, 1.3876489)
-bone_name = "Foot.R"
-bone_idx = 10
-
-[node name="Area3D" type="Area3D" parent="Skeleton3D/FootR" unique_id=1466126085 groups=["Enemy"]]
-collision_layer = 2
-collision_mask = 2
-script = ExtResource("3_hfj1t")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Skeleton3D/FootR/Area3D" unique_id=611613736]
-transform = Transform3D(0.9335804, 0.35836792, -1.4210855e-14, -0.35836792, 0.9335803, 0, -1.7763568e-14, -2.842171e-14, 1, 0.024000049, 0.503, 0.10232091)
-shape = SubResource("BoxShape3D_a3cge")
+transform = Transform3D(1, -1.1641532e-08, 0, 8.731149e-09, 1, 8.546497e-13, -2.842171e-12, -1.24622535e-14, 1, 0.0040000714, 2.0361278, 0.10349119)
+shape = SubResource("BoxShape3D_bss3a")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1425088459]
 
 [node name="RayCast3D" type="RayCast3D" parent="." unique_id=1762672619]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.0914974, 0)
 target_position = Vector3(0, 0, -20)
+collision_mask = 141
 
 [node name="Rayend" type="Marker3D" parent="RayCast3D" unique_id=355997911]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -20)
 
 [node name="aimHand" type="Marker3D" parent="." unique_id=1413270498]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3850249, 1.778611, 0)
-
-[connection signal="damage_taken" from="Skeleton3D/Base/Area3D" to="." method="_on_area_3d_damage_taken"]
-[connection signal="damage_taken" from="Skeleton3D/Base/Area3D2" to="." method="_on_area_3d_damage_taken"]
-[connection signal="damage_taken" from="Skeleton3D/HandL/Area3D" to="." method="_on_area_3d_damage_taken"]
-[connection signal="damage_taken" from="Skeleton3D/ArmL/Area3D" to="." method="_on_area_3d_damage_taken"]
-[connection signal="damage_taken" from="Skeleton3D/HandR/Area3D" to="." method="_on_area_3d_damage_taken"]
-[connection signal="damage_taken" from="Skeleton3D/ArmR/Area3D" to="." method="_on_area_3d_damage_taken"]
-[connection signal="damage_taken" from="Skeleton3D/UpperLegL/Area3D" to="." method="_on_area_3d_damage_taken"]
-[connection signal="damage_taken" from="Skeleton3D/LegL/Area3D" to="." method="_on_area_3d_damage_taken"]
-[connection signal="damage_taken" from="Skeleton3D/FootL/Area3D" to="." method="_on_area_3d_damage_taken"]
-[connection signal="damage_taken" from="Skeleton3D/UpperLegR/Area3D" to="." method="_on_area_3d_damage_taken"]
-[connection signal="damage_taken" from="Skeleton3D/LegR/Area3D" to="." method="_on_area_3d_damage_taken"]
-[connection signal="damage_taken" from="Skeleton3D/FootR/Area3D" to="." method="_on_area_3d_damage_taken"]

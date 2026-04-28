@@ -246,8 +246,6 @@ navigation_mesh = SubResource("NavigationMesh_yb21e")
 navigation_layers = 5
 
 [node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D" unique_id=896803781]
-collision_layer = 21
-collision_mask = 21
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D" unique_id=141115913]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
@@ -359,8 +357,6 @@ metadata/_custom_type_script = "uid://cfwmt6vc7y70h"
 
 [node name="HangarCol1" type="StaticBody3D" parent="Hangars" unique_id=310735806]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.125214, 0, 10.893591)
-collision_layer = 21
-collision_mask = 21
 
 [node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="Hangars/HangarCol1" unique_id=670628724]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.18245697, 0, -0.038701057)
@@ -402,8 +398,6 @@ polygon = PackedVector2Array(-6.899845, -1.3043615, -6.747513, 0.036155343, -6.3
 
 [node name="HangarCol2" type="StaticBody3D" parent="Hangars" unique_id=964484509]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.4878564, 0, 10.893591)
-collision_layer = 21
-collision_mask = 21
 
 [node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="Hangars/HangarCol2" unique_id=987807006]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.18245697, 0, -0.038701057)
@@ -445,8 +439,6 @@ polygon = PackedVector2Array(-6.899845, -1.3043615, -6.747513, 0.036155343, -6.3
 
 [node name="HangarCol3" type="StaticBody3D" parent="Hangars" unique_id=211665913]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.241379, 0, 10.893591)
-collision_layer = 21
-collision_mask = 21
 
 [node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="Hangars/HangarCol3" unique_id=1957002748]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.18245697, 0, -0.038701057)
@@ -644,8 +636,6 @@ metadata/_custom_type_script = "uid://cfwmt6vc7y70h"
 
 [node name="Col1" type="StaticBody3D" parent="Tanks" unique_id=498242713]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.7416472, 0, 7.257567)
-collision_layer = 21
-collision_mask = 21
 
 [node name="CollisionShape3D" type="CollisionPolygon3D" parent="Tanks/Col1" unique_id=124506442]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.8894536, 0.053100586)
@@ -686,8 +676,6 @@ shape = SubResource("BoxShape3D_lw8r5")
 
 [node name="Col2" type="StaticBody3D" parent="Tanks" unique_id=1406552803]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.352065, 0, 7.257567)
-collision_layer = 21
-collision_mask = 21
 
 [node name="CollisionShape3D" type="CollisionPolygon3D" parent="Tanks/Col2" unique_id=1793988180]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.8894536, 0.053100586)
@@ -728,8 +716,6 @@ shape = SubResource("BoxShape3D_lw8r5")
 
 [node name="Col3" type="StaticBody3D" parent="Tanks" unique_id=1534592234]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.78384, 0, 7.257567)
-collision_layer = 21
-collision_mask = 21
 
 [node name="CollisionShape3D" type="CollisionPolygon3D" parent="Tanks/Col3" unique_id=422526547]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.8894536, 0.053100586)

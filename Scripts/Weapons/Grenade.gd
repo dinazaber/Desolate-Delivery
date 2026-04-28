@@ -45,9 +45,10 @@ func explode():
 	$hitBox_shotTrigger.visible = false
 	
 	$trauma_causer.cause_trauma()
-	if current_exposion_box.has_overlapping_bodies():
-		var bodies = current_exposion_box.get_overlapping_bodies()
+	if current_exposion_box.has_overlapping_areas():
+		var bodies = current_exposion_box.get_overlapping_areas()
 		for body in bodies:
+			if body == self or !body.has_method("hit"): continue
 			var dist: float = global_position.distance_to(body.global_position)
 			var coef: float
 			
@@ -56,7 +57,9 @@ func explode():
 				coef = (0.7 * (dist - 1)) / (2 - current_explosion_radius) + 1
 			else: coef = 0.3
 			
-			body.hit(current_damage * coef, "player")
+			
+			if body.owner == owner: body.hit(current_damage * coef/3)
+			else: body.hit(current_damage * coef)
 			
 			var dir: Vector3 = (body.global_position - global_position).normalized()
 			var force: float = current_damage * coef / 8
@@ -89,11 +92,3 @@ func knockBack(direction, _a, _b):
 	var lim = 1.0 if mass > 0.5 else mass
 	apply_central_impulse(direction * 60.0 * lim)
 	apply_torque_impulse(Vector3(randf(), randf(), randf()) * mass)
-
-# --- Anti-Error Function Dump ---
-
-func hit(_a,_b):
-	pass
-
-func can_let_go() -> bool:
-	return true
