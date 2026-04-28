@@ -392,7 +392,7 @@ script = ExtResource("1_e0py8")
 libraries/ = SubResource("AnimationLibrary_8qb6n")
 
 [node name="BeggarsShotgun" type="Marker3D" parent="." unique_id=1087278608]
-transform = Transform3D(0.98480725, 0.17364807, 0, -0.044943437, 0.25488687, -0.9659258, -0.16773118, 0.9512506, 0.25881907, 0.15, -1.35, 0.15)
+transform = Transform3D(0.98480725, 0.17364806, 0, -0.044943437, 0.25488684, -0.9659258, -0.16773118, 0.9512506, 0.25881907, 0.15, -1.35, 0.15)
 
 [node name="Frame" type="MeshInstance3D" parent="BeggarsShotgun" unique_id=972063788]
 transform = Transform3D(-0.03, -9.7406916e-11, -4.529874e-09, -9.74069e-11, 0.03, -6.984924e-11, 4.529874e-09, -6.9849224e-11, -0.03, 0, -0.03, -0.58)
@@ -404,9 +404,8 @@ transform = Transform3D(-33.33335, -1.0822996e-07, 5.0331932e-06, -1.08229955e-0
 
 [node name="RayCast3D1" type="RayCast3D" parent="BeggarsShotgun/Frame/Rays" unique_id=1575494301]
 target_position = Vector3(0, 0, -75)
-collision_mask = 6
+collision_mask = 3
 collide_with_areas = true
-collide_with_bodies = false
 
 [node name="tracer" type="GPUParticles3D" parent="BeggarsShotgun/Frame/Rays/RayCast3D1" unique_id=42885782]
 cast_shadow = 0
@@ -420,7 +419,7 @@ draw_pass_1 = SubResource("RibbonTrailMesh_xapv0")
 
 [node name="RayCast3D2" type="RayCast3D" parent="BeggarsShotgun/Frame/Rays" unique_id=959240100]
 target_position = Vector3(0, 0, -75)
-collision_mask = 6
+collision_mask = 3
 collide_with_areas = true
 
 [node name="tracer" type="GPUParticles3D" parent="BeggarsShotgun/Frame/Rays/RayCast3D2" unique_id=1652280004]
@@ -435,7 +434,7 @@ draw_pass_1 = SubResource("RibbonTrailMesh_xapv0")
 
 [node name="RayCast3D3" type="RayCast3D" parent="BeggarsShotgun/Frame/Rays" unique_id=1988529632]
 target_position = Vector3(0, 0, -75)
-collision_mask = 6
+collision_mask = 3
 collide_with_areas = true
 
 [node name="tracer" type="GPUParticles3D" parent="BeggarsShotgun/Frame/Rays/RayCast3D3" unique_id=2091121257]
@@ -450,7 +449,7 @@ draw_pass_1 = SubResource("RibbonTrailMesh_xapv0")
 
 [node name="RayCast3D4" type="RayCast3D" parent="BeggarsShotgun/Frame/Rays" unique_id=211081069]
 target_position = Vector3(0, 0, -75)
-collision_mask = 6
+collision_mask = 3
 collide_with_areas = true
 
 [node name="tracer" type="GPUParticles3D" parent="BeggarsShotgun/Frame/Rays/RayCast3D4" unique_id=1099612129]
@@ -465,7 +464,7 @@ draw_pass_1 = SubResource("RibbonTrailMesh_xapv0")
 
 [node name="RayCast3D5" type="RayCast3D" parent="BeggarsShotgun/Frame/Rays" unique_id=1434120727]
 target_position = Vector3(0, 0, -75)
-collision_mask = 6
+collision_mask = 3
 collide_with_areas = true
 
 [node name="tracer" type="GPUParticles3D" parent="BeggarsShotgun/Frame/Rays/RayCast3D5" unique_id=2085029450]
@@ -480,7 +479,7 @@ draw_pass_1 = SubResource("RibbonTrailMesh_xapv0")
 
 [node name="RayCast3D6" type="RayCast3D" parent="BeggarsShotgun/Frame/Rays" unique_id=719397651]
 target_position = Vector3(0, 0, -75)
-collision_mask = 6
+collision_mask = 3
 collide_with_areas = true
 
 [node name="tracer" type="GPUParticles3D" parent="BeggarsShotgun/Frame/Rays/RayCast3D6" unique_id=1155450228]
@@ -495,7 +494,7 @@ draw_pass_1 = SubResource("RibbonTrailMesh_xapv0")
 
 [node name="RayCast3D7" type="RayCast3D" parent="BeggarsShotgun/Frame/Rays" unique_id=1085518882]
 target_position = Vector3(0, 0, -75)
-collision_mask = 6
+collision_mask = 3
 collide_with_areas = true
 
 [node name="tracer" type="GPUParticles3D" parent="BeggarsShotgun/Frame/Rays/RayCast3D7" unique_id=652472500]
@@ -510,7 +509,7 @@ draw_pass_1 = SubResource("RibbonTrailMesh_xapv0")
 
 [node name="RayCast3D8" type="RayCast3D" parent="BeggarsShotgun/Frame/Rays" unique_id=1393808530]
 target_position = Vector3(0, 0, -75)
-collision_mask = 6
+collision_mask = 3
 collide_with_areas = true
 
 [node name="tracer" type="GPUParticles3D" parent="BeggarsShotgun/Frame/Rays/RayCast3D8" unique_id=518125483]
@@ -525,7 +524,7 @@ draw_pass_1 = SubResource("RibbonTrailMesh_xapv0")
 
 [node name="RayCast3D9" type="RayCast3D" parent="BeggarsShotgun/Frame/Rays" unique_id=1329260917]
 target_position = Vector3(0, 0, -75)
-collision_mask = 6
+collision_mask = 3
 collide_with_areas = true
 
 [node name="tracer" type="GPUParticles3D" parent="BeggarsShotgun/Frame/Rays/RayCast3D9" unique_id=1384249019]

@@ -197,12 +197,11 @@ G={
 
 [layer_names]
 
-3d_physics/layer_1="ground and player"
+3d_physics/layer_1="enviorment collision - INCLUDING bullets & projectiles"
 3d_physics/layer_2="enemies and shootables"
-3d_physics/layer_3="ground"
-3d_physics/layer_4="player"
-3d_physics/layer_5="env"
-3d_physics/layer_6="physics"
+3d_physics/layer_4="player - if PHYSICS obj that CAN collide with player, needs to be in layer & mask"
+3d_physics/layer_5="enviorment collision - EXCLUDING bullets & projectiles"
+3d_physics/layer_6="physics objects [EXCLUDING player] - if enabled in mask, enable in layer too"
 
 [rendering]
 

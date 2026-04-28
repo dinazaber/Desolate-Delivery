@@ -56,11 +56,13 @@ func explode():
 				coef = (0.7 * (dist - 1)) / (2 - current_explosion_radius) + 1
 			else: coef = 0.3
 			
-			body.hit(current_damage * coef, "player")
+			if body.has_method("hit"):
+				body.hit(current_damage * coef, "player")
 			
-			var dir: Vector3 = (body.global_position - global_position).normalized()
-			var force: float = current_damage * coef / 8
-			body.knockBack(dir, force, 0.1)
+			if body.has_method("knockBack"):
+				var dir: Vector3 = (body.global_position - global_position).normalized()
+				var force: float = current_damage * coef / 8
+				body.knockBack(dir, force, 0.1)
 	
 	if got_shot:
 		debris.emitting = true

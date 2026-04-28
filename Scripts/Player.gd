@@ -473,7 +473,7 @@ func hit(recieved_damage, type):
 	checkLifeLine()
 
 func heal(heal_amount):
-	player_health += heal_amount
+	player_health = clamp(player_health + heal_amount, 0.0, PLAYER_MAX_HEALTH)
 
 # --- UI ---
 func handle_healthBar():

@@ -2,13 +2,15 @@ extends Node3D
 
 #gun stats
 @export var damage: float = 7.0 # per pellet
-@export var recoil: float = 5.0 # degree rotation
+@export var recoil: float = 4.0 # degree rotation
 @export var spread: float = 2.5 # max pellet spread (degrees)
 @export var mag: int = 4
 @export var heatPerShot: float = 22.25
 @export var coolDown: float = 5.0 # time (s) it takes to go from 100 to 0 heat
 
 @export var camera: Area3D
+@export var playerRay: RayCast3D
+@export var playerRayEnd: Marker3D
 
 var shotNum: int = 0
 var can_cool: bool = true
@@ -39,11 +41,12 @@ var heat: float = 0.0
 @onready var tracer_9 = $BeggarsShotgun/Frame/Rays/RayCast3D9/tracer
 @onready var tracers: Array = [tracer_1,tracer_2,tracer_3,tracer_4,tracer_5,tracer_6,tracer_7,tracer_8,tracer_9]
 
+@onready var rays = $BeggarsShotgun/Frame/Rays
+
 
 func _ready() -> void:
 	for pellet in pellets: # scatter
 		pellet.rotation = Vector3(randf_range(-1.0, 1.0), randf_range(-1.0, 1.0), 0.0) * deg_to_rad(spread)
-	$BeggarsShotgun/Frame/Rays.position = camera.position
 
 func draw():
 	anim.play("draw")
@@ -80,6 +83,16 @@ func shoot():
 		await anim.animation_finished
 
 func scatterNshoot():
+	var dist
+	if playerRay.is_colliding():
+		dist = rays.global_position.distance_to(playerRay.get_collision_point())
+		if dist < 0.7:
+			rays.look_at(playerRayEnd.global_position)
+		else:
+			rays.look_at(playerRay.get_collision_point())
+	else:
+		rays.look_at(playerRayEnd.global_position)
+	
 	for pellet in pellets: # scatter
 		pellet.rotation = Vector3(randf_range(-1.0, 1.0), randf_range(-1.0, 1.0), 0.0) * deg_to_rad(spread)
 		

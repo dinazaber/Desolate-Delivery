@@ -11,6 +11,8 @@
 [ext_resource type="Script" uid="uid://b1yx1tjjakl1w" path="res://Scripts/UI/HUD.gd" id="7_bhhdu"]
 [ext_resource type="PackedScene" uid="uid://bm2ti0vwyvub4" path="res://Scenes/UI/DeadScreen.tscn" id="10_yoq75"]
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_yoq75"]
+
 [sub_resource type="Animation" id="Animation_yoq75"]
 resource_name = "RESET"
 length = 0.001
@@ -80,27 +82,32 @@ shading_mode = 0
 material = SubResource("StandardMaterial3D_kyqiw")
 size = Vector3(1, 2, 1)
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_yoq75"]
-
 [sub_resource type="SphereShape3D" id="SphereShape3D_yoq75"]
 
 [node name="Player" type="CharacterBody3D" unique_id=1941692924 groups=["Persist", "Player"]]
-collision_layer = 25
-collision_mask = 9
+collision_layer = 8
+collision_mask = 25
 floor_max_angle = 0.2617994
 floor_snap_length = 0.15
 script = ExtResource("1_g8lft")
 DEBUG_deathBypass = true
+
+[node name="PlayerCollision" type="CollisionShape3D" parent="." unique_id=1015271467]
+process_priority = 1
+process_physics_priority = 1
+shape = SubResource("CapsuleShape3D_yoq75")
 
 [node name="StairBounds" type="Node3D" parent="." unique_id=949802035]
 
 [node name="StairsMin" type="RayCast3D" parent="StairBounds" unique_id=1629181005]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.92373216, -0.12357485)
 target_position = Vector3(0, 0, -0.4)
+collision_mask = 17
 
 [node name="StairsMax" type="RayCast3D" parent="StairBounds" unique_id=613395755]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5283632, -0.12357485)
 target_position = Vector3(0, 0, -0.41)
+collision_mask = 17
 
 [node name="cameraAnimation" type="AnimationPlayer" parent="." unique_id=1078308482]
 libraries/ = SubResource("AnimationLibrary_yoq75")
@@ -109,11 +116,6 @@ libraries/ = SubResource("AnimationLibrary_yoq75")
 visible = false
 cast_shadow = 0
 mesh = SubResource("BoxMesh_rpqav")
-
-[node name="PlayerCollision" type="CollisionShape3D" parent="." unique_id=1015271467]
-process_priority = 1
-process_physics_priority = 1
-shape = SubResource("CapsuleShape3D_yoq75")
 
 [node name="EnemyBounceCheck" type="Area3D" parent="." unique_id=326631368]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.51, 0)
@@ -136,23 +138,26 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, -1.4)
 
 [node name="PlayerRay" type="RayCast3D" parent="shakeable_camera" unique_id=1906683229]
 target_position = Vector3(0, 0, -75)
-collision_mask = 38
+collision_mask = 51
 collide_with_areas = true
 
 [node name="PlayerRayEnd" type="Marker3D" parent="shakeable_camera/PlayerRay" unique_id=439214189]
-transform = Transform3D(1, 0, 0, 0, 1, -1.764077e-33, 0, 1.764077e-33, 1, 75, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, -1.764077e-33, 0, 1.764077e-33, 1, 0, 0, -75)
 
 [node name="Hands" type="Node3D" parent="shakeable_camera" unique_id=1293429431]
 
 [node name="RightHand" parent="shakeable_camera/Hands" unique_id=267885530 instance=ExtResource("2_kyqiw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15, -0.137, -0.25)
 
-[node name="SMG" parent="shakeable_camera/Hands/RightHand" index="2" unique_id=1941681137 node_paths=PackedStringArray("camera", "playerRay")]
+[node name="SMG" parent="shakeable_camera/Hands/RightHand" index="2" unique_id=1941681137 node_paths=PackedStringArray("camera", "playerRay", "playerRayEnd")]
 camera = NodePath("../../..")
 playerRay = NodePath("../../../PlayerRay")
+playerRayEnd = NodePath("../../../PlayerRay/PlayerRayEnd")
 
-[node name="BeggarsShotgun" parent="shakeable_camera/Hands/RightHand" index="3" unique_id=893199726 node_paths=PackedStringArray("camera")]
+[node name="BeggarsShotgun" parent="shakeable_camera/Hands/RightHand" index="3" unique_id=893199726 node_paths=PackedStringArray("camera", "playerRay", "playerRayEnd")]
 camera = NodePath("../../..")
+playerRay = NodePath("../../../PlayerRay")
+playerRayEnd = NodePath("../../../PlayerRay/PlayerRayEnd")
 
 [node name="LeftHand" parent="shakeable_camera/Hands" unique_id=1896444700 instance=ExtResource("3_nn08x")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.2, -0.137, -0.25)

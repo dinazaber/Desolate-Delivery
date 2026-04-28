@@ -309,8 +309,8 @@ metadata/_custom_type_script = "uid://cfwmt6vc7y70h"
 
 [node name="CeilingHole" type="StaticBody3D" parent="." unique_id=308693725]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.009972215, 0)
-collision_layer = 21
-collision_mask = 21
+collision_layer = 49
+collision_mask = 0
 
 [node name="CollisionShape3D5" type="CollisionShape3D" parent="CeilingHole" unique_id=368161500]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7134271, -0.47957352, 0.8749542)
@@ -353,8 +353,8 @@ shape = SubResource("BoxShape3D_hnpkd")
 debug_color = Color(0.8, 0, 0.07999992, 1)
 
 [node name="CeilingsTower" type="StaticBody3D" parent="." unique_id=1881290974]
-collision_layer = 21
-collision_mask = 21
+collision_layer = 49
+collision_mask = 0
 
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="CeilingsTower" unique_id=1557577942]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3728569, -0.60619825, -0.33346796)
@@ -367,8 +367,8 @@ shape = SubResource("BoxShape3D_qs815")
 debug_color = Color(0, 0.5950001, 0.7, 1)
 
 [node name="Floors" type="StaticBody3D" parent="." unique_id=462675289]
-collision_layer = 21
-collision_mask = 21
+collision_layer = 49
+collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Floors" unique_id=2121338706]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6783638, -2.2522764, -0.39520264)
@@ -391,8 +391,8 @@ shape = SubResource("BoxShape3D_li4lv")
 debug_color = Color(0, 0.5950001, 0.7, 1)
 
 [node name="Stairs" type="StaticBody3D" parent="." unique_id=83194188]
-collision_layer = 21
-collision_mask = 21
+collision_layer = 49
+collision_mask = 0
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Stairs" unique_id=1353128526]
 transform = Transform3D(1, 1.6423123e-10, 3.8197345e-10, -4.157784e-10, 0.39935726, 0.9167954, -1.9775e-12, -0.9167954, 0.39935726, 1.9947767, -2.2897363, 1.853415)
@@ -407,8 +407,8 @@ transform = Transform3D(-4.1387956e-08, 0.95612586, -0.29295588, 1.4061395e-08, 
 shape = SubResource("BoxShape3D_bsu76")
 
 [node name="NoHolesWalls" type="StaticBody3D" parent="." unique_id=2056641691]
-collision_layer = 21
-collision_mask = 21
+collision_layer = 49
+collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NoHolesWalls" unique_id=828860434]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.7487297, -0.79034424, -0.32904816)
@@ -441,8 +441,8 @@ shape = SubResource("BoxShape3D_sij0l")
 debug_color = Color(1, 0.31717256, 0.5041393, 1)
 
 [node name="2WindowsWall" type="StaticBody3D" parent="." unique_id=1107601606]
-collision_layer = 21
-collision_mask = 21
+collision_layer = 49
+collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="2WindowsWall" unique_id=869139204]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.2975676, -1.4717995, -0.4667344)
@@ -480,8 +480,8 @@ shape = SubResource("BoxShape3D_6v6j6")
 debug_color = Color(0.9737951, 0, 0.39366198, 1)
 
 [node name="Stones" type="StaticBody3D" parent="." unique_id=1102724354]
-collision_layer = 21
-collision_mask = 21
+collision_layer = 49
+collision_mask = 0
 
 [node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="Stones" unique_id=1481648242]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 2.6106, -2.095776, -1.6066113)
@@ -489,8 +489,8 @@ depth = 0.2
 polygon = PackedVector2Array(-1.9012967, 1.1260196, -1.7009845, 0.33389962, -1.0765367, 0.096164584, -0.8092778, 0.37689495, -0.22162557, 0.99918115, 0.10457468, 1.6189382, -0.28287363, 1.9673252, -0.6111311, 2.1836686, -1.2616783, 2.1319032, -1.7106555, 1.7006162)
 
 [node name="UpperHoleWall" type="StaticBody3D" parent="." unique_id=2107173831]
-collision_layer = 21
-collision_mask = 21
+collision_layer = 49
+collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="UpperHoleWall" unique_id=228741754]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.059265137, 2.2250814, -0.4706323)
@@ -505,8 +505,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.059265137, 2.7396765, 0.55
 shape = SubResource("BoxShape3D_6d3qb")
 
 [node name="UpperDoorway" type="StaticBody3D" parent="." unique_id=462831801]
-collision_layer = 21
-collision_mask = 21
+collision_layer = 49
+collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="UpperDoorway" unique_id=2120427582]
 transform = Transform3D(-4.3711385e-08, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, -4.3711385e-08, -1.830203, 2.2145224, -1.1343322)
@@ -524,8 +524,8 @@ shape = SubResource("BoxShape3D_twmyr")
 debug_color = Color(0.99, 0, 0.31349993, 1)
 
 [node name="HallWall" type="StaticBody3D" parent="." unique_id=1340579189]
-collision_layer = 21
-collision_mask = 21
+collision_layer = 49
+collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HallWall" unique_id=1322437643]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4685316, -0.61273766, 1.7257168)
@@ -544,8 +544,8 @@ transform = Transform3D(0.55625206, -0.8310136, 0, 0.8310136, 0.55625206, 0, 0, 
 shape = SubResource("BoxShape3D_hpge7")
 
 [node name="Enterance" type="StaticBody3D" parent="." unique_id=2096418265]
-collision_layer = 21
-collision_mask = 21
+collision_layer = 49
+collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enterance" unique_id=969198754]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4749274, -1.313642, 1.2600999)
@@ -572,8 +572,8 @@ transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0.79
 shape = SubResource("BoxShape3D_g6bj3")
 
 [node name="Floor1Doorway" type="StaticBody3D" parent="." unique_id=1429920096]
-collision_layer = 21
-collision_mask = 21
+collision_layer = 49
+collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Floor1Doorway" unique_id=205415074]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.026184082, -1.2534413, 0.83065796)
@@ -588,8 +588,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.026184082, -0.7182851, -0.
 shape = SubResource("BoxShape3D_5iij6")
 
 [node name="RoofFence" type="StaticBody3D" parent="." unique_id=198665198]
-collision_layer = 21
-collision_mask = 21
+collision_layer = 49
+collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RoofFence" unique_id=728928578]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4058075, 0.13139343, 1.2283661)
@@ -624,8 +624,8 @@ transform = Transform3D(0.9821528, -0.18808421, 0, 0.18808421, 0.9821528, 0, 0, 
 shape = SubResource("BoxShape3D_omnoc")
 
 [node name="Details" type="StaticBody3D" parent="." unique_id=647410445]
-collision_layer = 21
-collision_mask = 21
+collision_layer = 49
+collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Details" unique_id=2050374779]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9518924, 0.23551941, -2.5508265)
@@ -656,8 +656,8 @@ transform = Transform3D(0.9868783, 0.16146609, 0, -0.16107415, 0.98448265, 0.069
 shape = SubResource("BoxShape3D_vofef")
 
 [node name="TowerFence" type="StaticBody3D" parent="." unique_id=1011672159]
-collision_layer = 21
-collision_mask = 21
+collision_layer = 49
+collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="TowerFence" unique_id=1717932900]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.114151, 3.8279843, -1.7936027)
@@ -688,8 +688,8 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.55
 shape = SubResource("BoxShape3D_cw55a")
 
 [node name="ToweRoom" type="StaticBody3D" parent="." unique_id=1033490946]
-collision_layer = 21
-collision_mask = 21
+collision_layer = 49
+collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ToweRoom" unique_id=2122841264]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.07946777, 3.9870293, 0.29589844)

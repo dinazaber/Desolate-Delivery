@@ -19,7 +19,14 @@ func knockBack(direction, _a, _b):
 	apply_torque_impulse(Vector3(randf(), randf(), randf()) * mass)
 
 func can_let_go() -> bool:
-	return !$Area3D.has_overlapping_bodies()
+	if $Area3D.has_overlapping_bodies():
+		var bodies = $Area3D.get_overlapping_bodies()
+		var is_player: bool = false
+		for body in bodies:
+			if body.is_in_group("Player"):
+				is_player = true
+		return !is_player
+	else: return true
 
 
 # --- Anti-Error Function Dump ---

@@ -8,13 +8,18 @@ extends Node3D
 
 @export var camera: Area3D
 @export var playerRay: RayCast3D
+@export var playerRayEnd: Marker3D
+@onready var lookTarget = playerRayEnd.global_position
 
 @onready var anim = $AnimationPlayer
 @onready var heatBuffer = $HeatBuffer
-@onready var tracer = $smg_tracers
+@onready var tracer = $SMG/Barrel/RayCast3D/smg_tracers
+@onready var ray = $SMG/Barrel/RayCast3D
+@onready var barrel = $SMG/Barrel
 
 var can_cool: bool = true
 var heat: float = 0.0
+
 
 func draw():
 	anim.play("draw")
@@ -29,6 +34,16 @@ func shoot():
 	if !anim.is_playing() and heat <= 100 - heatPerShot:
 		anim.play("shoot")
 		
+		var dist
+		if playerRay.is_colliding():
+			dist = barrel.global_position.distance_to(playerRay.get_collision_point())
+			if dist < 0.7:
+				barrel.look_at(playerRayEnd.global_position)
+			else:
+				barrel.look_at(playerRay.get_collision_point())
+		else:
+			barrel.look_at(playerRayEnd.global_position)
+		
 		camera.add_recoil(recoil)
 		tracer.restart()
 		tracer.emitting = true
@@ -36,11 +51,11 @@ func shoot():
 		can_cool = false
 		heat = clamp(heat + heatPerShot, 0.0, 100.0)
 		
-		if playerRay.is_colliding():
-			if playerRay.get_collider().is_in_group("Enemy"):
-				playerRay.get_collider().hit(damage, "player")
-			if playerRay.get_collider().is_in_group("ShotReactable"):
-				playerRay.get_collider().shot()
+		if ray.is_colliding():
+			if ray.get_collider().is_in_group("Enemy"):
+				ray.get_collider().hit(damage, "player")
+			if ray.get_collider().is_in_group("ShotReactable"):
+				ray.get_collider().shot()
 
 func get_heat() -> float:
 	return heat

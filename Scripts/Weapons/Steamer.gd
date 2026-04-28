@@ -41,14 +41,10 @@ func shoot():
 		if blastRange.has_overlapping_bodies():
 			var bodies = blastRange.get_overlapping_bodies()
 			for body in bodies:
-				body.hit(damage, "player")
-				body.knockBack((body.global_position - playerPos.global_position).normalized(), damage/15, 0.1)
-		
-		#if playerRay.is_colliding():
-		#	if playerRay.get_collider().is_in_group("Enemy"):
-		#		playerRay.get_collider().hit(damage, "player")
-		#	if playerRay.get_collider().is_in_group("ShotReactable"):
-		#		playerRay.get_collider().shot()
+				if body.has_method("hit"):
+					body.hit(damage, "player")
+				if body.has_method("knockBack"):
+					body.knockBack((body.global_position - playerPos.global_position).normalized(), damage/15, 0.1)
 		
 		await anim.animation_finished
 		anim.play_backwards("draw")
