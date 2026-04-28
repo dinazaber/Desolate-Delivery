@@ -6,8 +6,8 @@
 resource_local_to_scene = true
 
 [node name="trauma_causer" type="Area3D" unique_id=1675244516]
-collision_layer = 128
-collision_mask = 0
+collision_layer = 0
+collision_mask = 8
 input_ray_pickable = false
 script = ExtResource("1_f1ote")
 

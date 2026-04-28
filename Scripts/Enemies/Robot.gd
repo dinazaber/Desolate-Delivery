@@ -25,12 +25,12 @@ var current_state = State.IDLE
 @onready var bulletRayEnd = $Skeleton3D/ArmR/BulletRayEnd
 @onready var kickRay = $Skeleton3D/LegL/kick
 @onready var navAgent = $NavigationAgent3D
-@onready var player = get_tree().get_first_node_in_group("player")
+@onready var player = get_tree().get_first_node_in_group("Player")
 
 # --- Variables ---
 var inTransition: bool = false
 var isInAttack: bool = false
-var damaged: bool = false
+var damagedByPlayer: bool = false
 var awake: bool = false
 var walking: bool = false
 var dead: bool = false
@@ -103,7 +103,7 @@ func process_idle_state(delta):
 		velocity.x = lerp(velocity.x, 0.0, delta * 7.0)
 		velocity.z = lerp(velocity.z, 0.0, delta * 7.0)
 	
-	if (can_see_player() or damaged) and !player.dead:
+	if (can_see_player() or damagedByPlayer) and !player.dead:
 		inTransition = true
 		if !awake:
 			awake = true
@@ -152,7 +152,7 @@ func process_chase_state(delta):
 	dist = global_position.distance_to(player.global_position)
 	if dist <= attack_start_distance:
 		current_state = State.ATTACK
-	elif !can_see_player() and dist > detection_range and !damaged:
+	elif !can_see_player() and dist > detection_range and !damagedByPlayer:
 		inTransition = true
 		animation.play("undraw")
 		await get_tree().create_timer(0.35).timeout
@@ -186,13 +186,18 @@ func process_attack_state(delta):
 	look_at(look_target, Vector3.UP)
 	aim(delta)
 	
-	# Decide: player forever-napping or keep attaking?
+	# Decide: Player forever-napping or keep attaking?
 	if !isInAttack:
 		isInAttack = true
 		if dist <= kick_distance:
 			kick()
 		else:
 			shoot()
+	
+	
+	# Decide: Chase again or keep attacking?
+	if player.dead == true:
+		current_state = State.IDLE
 	
 	if global_position.distance_to(player.global_position) > attack_stop_distance:
 		current_state = State.CHASE
@@ -213,11 +218,10 @@ func aim(delta):
 func kick():
 	if animation.is_playing(): pass
 	animation.play("kick")
-	await animation.animation_finished
+	await get_tree().create_timer(0.21).timeout
 	if kickRay.is_colliding():
-		if kickRay.get_collider() == player.hitBox:
-			print("Player Hit")
-			kickRay.get_collider().hit(enemy_kick_damage)
+		if kickRay.get_collider().is_in_group("Player"):
+			kickRay.get_collider().hit(enemy_kick_damage, "enemy")
 			var dir = player.global_position - global_position
 			kickRay.get_collider().knockBack(dir + Vector3(0.0,0.1 if player.is_on_floor() else 0.0,0.0), 15.0, 0.3)
 	await get_tree().create_timer(0.3).timeout
@@ -237,13 +241,20 @@ func shoot():
 	else: bullet.lifetime = 0.5
 	bullet.emitting = true
 	if bulletRay.is_colliding():
-		if bulletRay.get_collider() == player.hitBox:
-			bulletRay.get_collider().hit(enemy_gun_damage)
+		if bulletRay.get_collider().is_in_group("Player"):
+			bulletRay.get_collider().hit(enemy_gun_damage, "enemy")
 	await get_tree().create_timer(1.0).timeout
 	isInAttack = false
 
-func damage_taken(recieved_damage):
-	damaged = true
+func _on_area_3d_damage_taken(recieved_damage: float, type: String) -> void:
+	if type == "player":
+		damagedByPlayer = true
+	enemy_health -= recieved_damage
+	checkLifeLine()
+
+func hit(recieved_damage, type):
+	if type == "player":
+		damagedByPlayer = true
 	enemy_health -= recieved_damage
 	checkLifeLine()
 

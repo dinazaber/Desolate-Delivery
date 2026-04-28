@@ -22,7 +22,7 @@ var current_state = State.IDLE
 # --- Variables ---
 var inTransition: bool = false
 var isInAttack: bool = false
-var damaged: bool = false
+var damagedByPlayer: bool = false
 var dead: bool = false
 var timerFlag: bool = false
 var player_hit: bool = false
@@ -66,7 +66,7 @@ func _process(delta: float) -> void:
 
 
 func process_idle_state():
-	if (can_see_player() or damaged == true) and !player.dead and !isInAttack:
+	if (can_see_player() or damagedByPlayer == true) and !player.dead and !isInAttack:
 		current_state = State.AIM
 
 func process_aim_state(delta):
@@ -81,12 +81,9 @@ func process_attack_state():
 	$GunPivot/Beam.emitting = true
 	$GunPivot/Beamies.emitting = true
 	if gunRay.is_colliding():
-		print(gunRay.get_collider().name)
-		print(gunRay.get_collider().collision_layer)
-		if gunRay.get_collider() == player.hitBox and !player_hit:
-			print("Player Hit")
+		if gunRay.get_collider().is_in_group("Player") and !player_hit:
 			player_hit = true
-			gunRay.get_collider().hit(enemy_damage)
+			gunRay.get_collider().hit(enemy_damage, "enemy")
 	await get_tree().create_timer(0.6).timeout
 	current_state = State.IDLE
 	isInAttack = false
@@ -108,13 +105,19 @@ func follow(delta):
 	mount_look_target.y = mount.global_position.y
 	mount.look_at(mount_look_target, Vector3.UP)
 	
-	$GunCollsion.global_transform = $GunPivot/CollGunSnapPos.global_transform
+	$CollisionEnv3.global_transform = $GunPivot/CollEnv3SnapPos.global_transform
 
-func damage_taken(recieved_damage):
-	damaged = true
+func _on_area_3d_damage_taken(recieved_damage: float, type: String) -> void:
+	if type == "player":
+		damagedByPlayer = true
 	enemy_health -= recieved_damage
 	checkLifeLine()
 
+func hit(recieved_damage, type):
+	if type == "player":
+		damagedByPlayer = true
+	enemy_health -= recieved_damage
+	checkLifeLine()
 
 func checkLifeLine():
 	if enemy_health <= 0 and dead == false:
@@ -139,3 +142,8 @@ func can_see_player() -> bool:
 	if eyes.is_colliding():
 		return eyes.get_collider().is_in_group("Player")
 	return false
+
+# --- Anti-Error Function Dump ---
+
+func knockBack(_a, _b, _c):
+	pass

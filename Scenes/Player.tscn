@@ -10,10 +10,6 @@
 [ext_resource type="PackedScene" uid="uid://yhfwhi177tdg" path="res://Scenes/UI/SaveMenu.tscn" id="6_52ee3"]
 [ext_resource type="Script" uid="uid://b1yx1tjjakl1w" path="res://Scripts/UI/HUD.gd" id="7_bhhdu"]
 [ext_resource type="PackedScene" uid="uid://bm2ti0vwyvub4" path="res://Scenes/UI/DeadScreen.tscn" id="10_yoq75"]
-[ext_resource type="Script" uid="uid://dqv7818ohy4lu" path="res://Scripts/Enemies/HitBox.gd" id="11_ksbbd"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_glx4g"]
-size = Vector3(1, 2, 1)
 
 [sub_resource type="Animation" id="Animation_yoq75"]
 resource_name = "RESET"
@@ -89,19 +85,12 @@ size = Vector3(1, 2, 1)
 [sub_resource type="SphereShape3D" id="SphereShape3D_yoq75"]
 
 [node name="Player" type="CharacterBody3D" unique_id=1941692924 groups=["Persist", "Player"]]
-collision_layer = 128
-collision_mask = 13
+collision_layer = 25
+collision_mask = 9
 floor_max_angle = 0.2617994
 floor_snap_length = 0.15
 script = ExtResource("1_g8lft")
-
-[node name="PlayerHitBox" type="Area3D" parent="." unique_id=1400874799]
-collision_layer = 2
-collision_mask = 0
-script = ExtResource("11_ksbbd")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerHitBox" unique_id=1981306482]
-shape = SubResource("BoxShape3D_glx4g")
+DEBUG_deathBypass = true
 
 [node name="StairBounds" type="Node3D" parent="." unique_id=949802035]
 
@@ -129,6 +118,7 @@ shape = SubResource("CapsuleShape3D_yoq75")
 [node name="EnemyBounceCheck" type="Area3D" parent="." unique_id=326631368]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.51, 0)
 collision_layer = 0
+collision_mask = 25
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="EnemyBounceCheck" unique_id=632021629]
 shape = SubResource("SphereShape3D_yoq75")
@@ -138,7 +128,6 @@ one_shot = true
 
 [node name="shakeable_camera" parent="." unique_id=1373532385 instance=ExtResource("2_megsn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-collision_layer = 0
 trauma_reduction_rate = 3.0
 noise_speed = 30.0
 
@@ -147,7 +136,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, -1.4)
 
 [node name="PlayerRay" type="RayCast3D" parent="shakeable_camera" unique_id=1906683229]
 target_position = Vector3(0, 0, -75)
-collision_mask = 7
+collision_mask = 38
 collide_with_areas = true
 
 [node name="PlayerRayEnd" type="Marker3D" parent="shakeable_camera/PlayerRay" unique_id=439214189]

@@ -85,7 +85,7 @@ func scatterNshoot():
 		
 		if pellet.is_colliding(): # shoot
 			if pellet.get_collider().is_in_group("Enemy"):
-				pellet.get_collider().hit(damage)
+				pellet.get_collider().hit(damage, "player")
 			if pellet.get_collider().is_in_group("ShotReactable"):
 				pellet.get_collider().shot()
 	
