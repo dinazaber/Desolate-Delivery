@@ -41,10 +41,10 @@ func _process(_delta: float) -> void:
 	else:
 		gravity_scale = 1.0
 
-func knockBack(direction, _a, _b):
+func throw(direction, force):
 	is_held = false
 	var lim = 1.0 if mass > 0.5 else mass
-	apply_central_impulse(direction * 5.0 * lim)
+	apply_central_impulse(direction * force / 10.0 * lim)
 	apply_torque_impulse(Vector3(randf(), randf(), randf()) * mass * 0.01)
 
 # --- Anti-Error Function Dump ---

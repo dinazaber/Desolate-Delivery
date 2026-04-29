@@ -21,13 +21,16 @@ var can_cool: bool = true
 var heat: float = 0.0
 
 
-func draw():
-	anim.play("draw")
+func draw(playSpeed):
+	anim.play("draw", -1, playSpeed)
+	await anim.animation_finished
 
-func undraw():
+func undraw(playSpeed, asap):
 	if anim.is_playing():
+		if asap: anim.speed_scale = 3.0
 		await anim.animation_finished
-	anim.play("undraw")
+		anim.speed_scale = 1.0
+	anim.play("undraw", -1, playSpeed)
 	await anim.animation_finished
 
 func shoot():
@@ -56,6 +59,7 @@ func shoot():
 				ray.get_collider().hit(damage, true)
 			if ray.get_collider().is_in_group("ShotReactable"):
 				ray.get_collider().shot()
+	await anim.animation_finished
 
 func get_heat() -> float:
 	return heat

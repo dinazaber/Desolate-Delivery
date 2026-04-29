@@ -1,7 +1,12 @@
 [gd_scene format=3 uid="uid://d3y1m515qojp2"]
 
 [ext_resource type="PackedScene" uid="uid://coe8phy1st24j" path="res://Scenes/Weapons/Steamer.tscn" id="1_sdlib"]
+[ext_resource type="PackedScene" uid="uid://c0npsk8st47v3" path="res://Scenes/Weapons/Drill.tscn" id="2_hva6k"]
 
 [node name="LeftHand" type="Node3D" unique_id=1896444700]
 
 [node name="Steamer" parent="." unique_id=1493507664 instance=ExtResource("1_sdlib")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0016258359, 2.9802322e-08, 0.0018770099)
+
+[node name="Drill" parent="." unique_id=1590022059 instance=ExtResource("2_hva6k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)

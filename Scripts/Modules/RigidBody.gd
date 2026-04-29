@@ -12,10 +12,10 @@ var is_held: bool = false
 		$Area3D.scale = Vector3(1.0, 1.0, 1.0) * total_scale
 		inertia = Vector3(0.9,2.5,0.9) * mass
 
-func knockBack(direction, _a, _b):
+func throw(direction, force):
 	is_held = false
 	var lim = 1.0 if mass > 0.5 else mass
-	apply_central_impulse(direction * 60.0 * lim)
+	apply_central_impulse(direction * force * lim)
 	apply_torque_impulse(Vector3(randf(), randf(), randf()) * mass)
 
 func can_let_go() -> bool:

@@ -1,0 +1,253 @@
+[gd_scene format=3 uid="uid://c0npsk8st47v3"]
+
+[ext_resource type="ArrayMesh" uid="uid://ckaxc1w77xgyv" path="res://assets/Meshes/Weapons/Drill/DrillBase.mesh" id="1_qp1ul"]
+[ext_resource type="Script" uid="uid://co53q7kh5rn86" path="res://Scripts/Weapons/Drill.gd" id="1_wrvfe"]
+[ext_resource type="Shader" uid="uid://cunx8274v1qyy" path="res://Shaders/MeshShaders/2DetailsMeshShaider.gdshader" id="2_44rio"]
+[ext_resource type="ArrayMesh" uid="uid://85x5htkncqsm" path="res://assets/Meshes/Weapons/Drill/DrillBit3.mesh" id="2_ghrd4"]
+[ext_resource type="ArrayMesh" uid="uid://cngyqrrmm8c7p" path="res://assets/Meshes/Weapons/Drill/DrillBit2.mesh" id="3_mtis8"]
+[ext_resource type="Texture2D" uid="uid://bu6ue5ydfh2q6" path="res://assets/Textures/Rust.png" id="3_wrvfe"]
+[ext_resource type="ArrayMesh" uid="uid://cf7wy30bu2r7k" path="res://assets/Meshes/Weapons/Drill/DrillBit1.mesh" id="4_6g03u"]
+[ext_resource type="Texture2D" uid="uid://kqnjcrk75lb3" path="res://assets/Textures/Dirt.png" id="4_l87pe"]
+[ext_resource type="Texture2D" uid="uid://6n7nft57sa5j" path="res://assets/Textures/TriplanarMask.png" id="5_l6lyj"]
+
+[sub_resource type="Animation" id="Animation_44rio"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Drill:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.8, -0.5, -0.4)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Drill:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.34906584, 0, 0.17453292)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Drill/DrillBit3:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1.5707964, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Drill/DrillBit2:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1.5707964, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Drill/DrillBit1:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1.5707964, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_wrvfe"]
+resource_name = "punch"
+length = 0.6
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Drill:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.20000002, 0.29000002, 0.42, 0.6),
+"transitions": PackedFloat32Array(2.0000005, 1, 0.5, 1.5, 1.5, 1),
+"update": 0,
+"values": [Vector3(-0.8, -0.5, -0.4), Vector3(0, 0, -0.2), Vector3(0.3, 0, 0), Vector3(0.35, 0, 0.05), Vector3(0.35, 0, 0), Vector3(0.3, -0.5, -0.3)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Drill:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.08, 0.24, 0.4, 0.56, 0.6),
+"transitions": PackedFloat32Array(1, 1.7, 0.5, 2, 1, 1),
+"update": 0,
+"values": [Vector3(-0.34906584, 0, 0.17453292), Vector3(-0.34906584, -0.34906584, 0.17453292), Vector3(-0.34906584, -1.6580628, -0.06981317), Vector3(-0.34906584, -1.8325957, -0.06981317), Vector3(-0.34906584, -1.6580628, -0.06981317), Vector3(-0.34906584, -1.7453293, -0.5235988)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Drill/DrillBit3:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.19, 0.39),
+"transitions": PackedFloat32Array(1.5, 0.6666, 1),
+"update": 0,
+"values": [Vector3(0, 1.5707964, 0), Vector3(0, 1.5707964, 4.712389), Vector3(0, 1.5707964, 6.981317)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Drill/DrillBit2:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.22, 0.41999996),
+"transitions": PackedFloat32Array(1.5, 0.6666666, 1),
+"update": 0,
+"values": [Vector3(0, 1.5707964, 0), Vector3(0, 1.5707964, -5.061455), Vector3(0, 1.5707964, -7.330383)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Drill/DrillBit1:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.45),
+"transitions": PackedFloat32Array(1.5, 0.6666667, 1),
+"update": 0,
+"values": [Vector3(0, 1.5707964, 0), Vector3(0, 1.5707964, 5.4105206), Vector3(0, 1.5707964, 7.6794486)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_l87pe"]
+_data = {
+&"RESET": SubResource("Animation_44rio"),
+&"punch": SubResource("Animation_wrvfe")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bsjtv"]
+render_priority = 0
+shader = ExtResource("2_44rio")
+shader_parameter/mask_palette = ExtResource("5_l6lyj")
+shader_parameter/wire_color = Color(0, 0, 0, 1)
+shader_parameter/wire_width = 1.0
+shader_parameter/wire_transparency = 0.5
+shader_parameter/detail1 = ExtResource("3_wrvfe")
+shader_parameter/detail1_scale = 0.55
+shader_parameter/alpha1 = 0.5
+shader_parameter/detail2 = ExtResource("4_l87pe")
+shader_parameter/detail2_scale = 0.275
+shader_parameter/alpha2 = 0.7
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u1e3m"]
+render_priority = 0
+shader = ExtResource("2_44rio")
+shader_parameter/mask_palette = ExtResource("5_l6lyj")
+shader_parameter/wire_color = Color(0, 0, 0, 1)
+shader_parameter/wire_width = 1.0
+shader_parameter/wire_transparency = 0.5
+shader_parameter/detail1 = ExtResource("3_wrvfe")
+shader_parameter/detail1_scale = 0.5
+shader_parameter/alpha1 = 0.8
+shader_parameter/detail2 = ExtResource("4_l87pe")
+shader_parameter/detail2_scale = 0.5
+shader_parameter/alpha2 = 0.75
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sgndl"]
+render_priority = 0
+shader = ExtResource("2_44rio")
+shader_parameter/mask_palette = ExtResource("5_l6lyj")
+shader_parameter/wire_color = Color(0, 0, 0, 1)
+shader_parameter/wire_width = 1.0
+shader_parameter/wire_transparency = 0.5
+shader_parameter/detail1 = ExtResource("3_wrvfe")
+shader_parameter/detail1_scale = 0.5
+shader_parameter/alpha1 = 0.8
+shader_parameter/detail2 = ExtResource("4_l87pe")
+shader_parameter/detail2_scale = 0.5
+shader_parameter/alpha2 = 0.75
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_02plv"]
+render_priority = 0
+shader = ExtResource("2_44rio")
+shader_parameter/mask_palette = ExtResource("5_l6lyj")
+shader_parameter/wire_color = Color(0, 0, 0, 1)
+shader_parameter/wire_width = 1.0
+shader_parameter/wire_transparency = 0.5
+shader_parameter/detail1 = ExtResource("3_wrvfe")
+shader_parameter/detail1_scale = 0.5
+shader_parameter/alpha1 = 0.8
+shader_parameter/detail2 = ExtResource("4_l87pe")
+shader_parameter/detail2_scale = 0.5
+shader_parameter/alpha2 = 0.75
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_44rio"]
+size = Vector3(1.2, 0.75, 0.75)
+
+[node name="Drill" type="Node3D" unique_id=1590022059]
+script = ExtResource("1_wrvfe")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=873034085]
+libraries/ = SubResource("AnimationLibrary_l87pe")
+
+[node name="Drill" type="Marker3D" parent="." unique_id=966625349]
+transform = Transform3D(0.98480767, -0.1736482, 0, 0.1631759, 0.92541665, 0.3420201, -0.059391167, -0.3368241, 0.9396925, -0.8, -0.5, -0.4)
+
+[node name="DrillBase" type="MeshInstance3D" parent="Drill" unique_id=1233721536]
+transform = Transform3D(-6.5567085e-09, 0, 0.15, 0, 0.15, 0, -0.15, 0, -6.5567085e-09, 0.6, 0, 0)
+cast_shadow = 0
+mesh = ExtResource("1_qp1ul")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("ShaderMaterial_bsjtv")
+
+[node name="DrillBit3" type="MeshInstance3D" parent="Drill" unique_id=2015017193]
+transform = Transform3D(-6.5567085e-09, 0, 0.15, 0, 0.15, 0, -0.15, 0, -6.5567085e-09, 0.6, 0, 0)
+cast_shadow = 0
+mesh = ExtResource("2_ghrd4")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("ShaderMaterial_u1e3m")
+
+[node name="DrillBit2" type="MeshInstance3D" parent="Drill" unique_id=2046704413]
+transform = Transform3D(-6.5567085e-09, 0, 0.15, 0, 0.15, 0, -0.15, 0, -6.5567085e-09, 0.6, 0, 0)
+cast_shadow = 0
+mesh = ExtResource("3_mtis8")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("ShaderMaterial_sgndl")
+
+[node name="DrillBit1" type="MeshInstance3D" parent="Drill" unique_id=478188765]
+transform = Transform3D(-6.5567085e-09, 0, 0.15, 0, 0.15, 0, -0.15, 0, -6.5567085e-09, 0.6, 0, 0)
+cast_shadow = 0
+mesh = ExtResource("4_6g03u")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("ShaderMaterial_02plv")
+
+[node name="PlayerPos" type="Marker3D" parent="." unique_id=1386238278]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.137, 0.2)
+
+[node name="PunchArea" type="Area3D" parent="." unique_id=443375364]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.363, 0.2)
+collision_layer = 0
+collision_mask = 34
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PunchArea" unique_id=1198646979]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, 0, 0)
+shape = SubResource("BoxShape3D_44rio")

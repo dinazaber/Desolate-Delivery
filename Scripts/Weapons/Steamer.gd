@@ -18,10 +18,12 @@ signal knockBack(force: int, time: float)
 @onready var playerPos = $playerPos #correction value of the steamer's pos in relation to the player's hold pos
 
 var can_cool: bool = true
+var in_action: bool = false
 var heat: float = 0.0
 
 
 func shoot():
+	in_action = true
 	if !anim.is_playing() and heat <= 100 - heatPerShot:
 		anim.play("draw")
 		await anim.animation_finished
@@ -46,9 +48,13 @@ func shoot():
 					body.damage_taken(damage, true)
 				if body.has_method("knockBack"):
 					body.knockBack((body.global_position - playerPos.global_position).normalized(), damage/15, 0.1)
+				if body.has_method("throw"):
+					body.throw((body.global_position - playerPos.global_position).normalized(), 60.0)
 		
 		await anim.animation_finished
 		anim.play_backwards("draw")
+		await anim.animation_finished
+		in_action = false
 
 func get_heat() -> float:
 	return heat

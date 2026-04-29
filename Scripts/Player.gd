@@ -15,6 +15,7 @@ var grabbedObject: RigidBody3D = null
 @onready var SMG = $shakeable_camera/Hands/RightHand/SMG
 @onready var beggarsShotgun = $shakeable_camera/Hands/RightHand/BeggarsShotgun
 @onready var steamer = $shakeable_camera/Hands/LeftHand/Steamer
+@onready var drill = $shakeable_camera/Hands/LeftHand/Drill
 @onready var current_gun_R = SMG
 @onready var current_gun_L = steamer
 
@@ -129,7 +130,7 @@ func _ready() -> void:
 	def_gun_pos = hands.position
 	
 	healthBar.max_value = PLAYER_MAX_HEALTH
-	current_gun_R.draw()
+	current_gun_R.draw(1.0)
 
 func _input(event):
 	if dead: return
@@ -155,24 +156,23 @@ func _input(event):
 					grabbedObject.gravity_scale = 0.0
 					grabbedObject.linear_damp = 0.0
 					add_collision_exception_with(grabbedObject)
-		
 	
 	# Weapon Switch
-	if Input.is_action_just_pressed("1"): # smg
+	if Input.is_action_just_pressed("1") and !drill.in_action: # smg
 		if current_gun_R != SMG:
-			await current_gun_R.undraw()
+			await current_gun_R.undraw(1.0, false)
 			hideWeapons()
 			current_gun_R = SMG
 			current_gun_R.show()
-			current_gun_R.draw()
+			current_gun_R.draw(1.0)
 	
-	elif Input.is_action_just_pressed("2"): # beggars shotgun
+	elif Input.is_action_just_pressed("2") and !drill.in_action: # beggars shotgun
 		if current_gun_R != beggarsShotgun:
-			await current_gun_R.undraw()
+			await current_gun_R.undraw(1.0, false)
 			hideWeapons()
 			current_gun_R = beggarsShotgun
 			current_gun_R.show()
-			current_gun_R.draw()
+			current_gun_R.draw(1.0)
 	
 	
 	if Input.is_action_just_pressed("Wheel"):
@@ -212,7 +212,7 @@ func _physics_process(delta):
 	check_player_feet()
 
 	
-	if Input.is_action_pressed("LeftMouse") and !dead:
+	if Input.is_action_pressed("LeftMouse") and !drill.in_action and !dead:
 		if !grabbedObject and fireDelay==15.0:
 			match current_gun_R:
 				SMG: current_gun_R.shoot()
@@ -220,23 +220,26 @@ func _physics_process(delta):
 		elif grabbedObject:
 			if grabbedObject.can_let_go():
 				grabbedObject.is_held = false
-				#var dir = -camera.global_basis.z
 				grabbedObject.gravity_scale = 1
 				grabbedObject.linear_damp = 0.0
-				#var lim = 1.0 if grabbedObject.mass > 0.5 else grabbedObject.mass
-				#grabbedObject.apply_central_impulse(dir * 40.0 * lim) # now used by steamer
 				remove_collision_exception_with(grabbedObject)
 				grabbedObject = null
 				fireDelay = 0.0
 	
-	if Input.is_action_just_released("LeftMouse") and !dead:
+	if Input.is_action_just_released("LeftMouse") and !drill.in_action and !dead:
 		match current_gun_R:
 			beggarsShotgun: current_gun_R.shoot()
 	
 	
-	if Input.is_action_just_pressed("RightMouse") and !dead:
+	if Input.is_action_just_pressed("RightMouse") and !drill.in_action and !dead:
 		current_gun_L.shoot()
-		
+	
+	if Input.is_action_just_pressed("F") and !dead:
+		if !drill.in_action:
+			current_gun_R.undraw(1.5, true)
+			await drill.punch()
+			current_gun_R.draw(1.5)
+	
 	
 	handle_grabbed_object(delta)
 	

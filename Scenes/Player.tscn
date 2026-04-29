@@ -172,6 +172,9 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.2
 camera = NodePath("../../..")
 playerRay = NodePath("../../../PlayerRay")
 
+[node name="Drill" parent="shakeable_camera/Hands/LeftHand" index="1" unique_id=1590022059 node_paths=PackedStringArray("camera")]
+camera = NodePath("../../..")
+
 [node name="PauseMenu" type="Control" parent="." unique_id=877245422 node_paths=PackedStringArray("hud")]
 process_mode = 3
 visible = false

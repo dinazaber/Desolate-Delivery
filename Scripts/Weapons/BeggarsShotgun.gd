@@ -48,14 +48,17 @@ func _ready() -> void:
 	for pellet in pellets: # scatter
 		pellet.rotation = Vector3(randf_range(-1.0, 1.0), randf_range(-1.0, 1.0), 0.0) * deg_to_rad(spread)
 
-func draw():
-	anim.play("draw")
+func draw(playSpeed):
+	anim.play("draw", -1, playSpeed)
 	shotNum = 0
+	await anim.animation_finished
 
-func undraw():
+func undraw(playSpeed, asap):
 	if anim.is_playing():
+		if asap: anim.speed_scale = 3.0
 		await anim.animation_finished
-	anim.play("undraw")
+		anim.speed_scale = 1.0
+	anim.play("undraw", -1, playSpeed)
 	shotNum = 0
 	await anim.animation_finished
 
@@ -65,7 +68,7 @@ func charge():
 			anim.play("load")
 			await anim.animation_finished
 			shotNum += 1
-					
+
 func shoot():
 	if anim.is_playing(): await anim.animation_finished
 	while shotNum > 0:

@@ -60,10 +60,12 @@ func explode():
 			if body.has_method("damage_taken"):
 				body.damage_taken(current_damage * coef, true)
 			
+			var dir: Vector3 = (body.global_position - global_position).normalized()
+			var force: float = current_damage * coef / 8
 			if body.has_method("knockBack"):
-				var dir: Vector3 = (body.global_position - global_position).normalized()
-				var force: float = current_damage * coef / 8
 				body.knockBack(dir, force, 0.1)
+			if body.has_method("throw"):
+				body.throw(dir, 40.0 * coef)
 	
 	if got_shot:
 		debris.emitting = true
@@ -86,11 +88,11 @@ func _on_timer_timeout() -> void:
 		explosion_box_big.visible = false
 		explode()
 
-func knockBack(direction, _a, _b):
+func throw(direction, force):
 	is_held = false
 	explode_on_contact = true
 	var lim = 1.0 if mass > 0.5 else mass
-	apply_central_impulse(direction * 60.0 * lim)
+	apply_central_impulse(direction * force * lim)
 	apply_torque_impulse(Vector3(randf(), randf(), randf()) * mass)
 
 # --- Anti-Error Function Dump ---
