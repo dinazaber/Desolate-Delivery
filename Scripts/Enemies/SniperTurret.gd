@@ -83,7 +83,7 @@ func process_attack_state():
 	if gunRay.is_colliding():
 		if gunRay.get_collider().is_in_group("Player") and !player_hit:
 			player_hit = true
-			gunRay.get_collider().hit(enemy_damage, "enemy")
+			gunRay.get_collider().hit(enemy_damage, false)
 	await get_tree().create_timer(0.6).timeout
 	current_state = State.IDLE
 	isInAttack = false
@@ -107,15 +107,8 @@ func follow(delta):
 	
 	$CollisionEnv3.global_transform = $GunPivot/CollEnv3SnapPos.global_transform
 
-func _on_area_3d_damage_taken(recieved_damage: float, type: String) -> void:
-	if type == "player":
-		damagedByPlayer = true
-	enemy_health -= recieved_damage
-	checkLifeLine()
-
-func hit(recieved_damage, type):
-	if type == "player":
-		damagedByPlayer = true
+func damage_taken(recieved_damage, isPlayer):
+	if isPlayer: damagedByPlayer = true
 	enemy_health -= recieved_damage
 	checkLifeLine()
 

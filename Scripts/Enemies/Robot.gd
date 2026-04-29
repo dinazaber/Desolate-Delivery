@@ -221,7 +221,7 @@ func kick():
 	await get_tree().create_timer(0.21).timeout
 	if kickRay.is_colliding():
 		if kickRay.get_collider().is_in_group("Player"):
-			kickRay.get_collider().hit(enemy_kick_damage, "enemy")
+			kickRay.get_collider().hit(enemy_kick_damage, false)
 			var dir = player.global_position - global_position
 			kickRay.get_collider().knockBack(dir + Vector3(0.0,0.1 if player.is_on_floor() else 0.0,0.0), 15.0, 0.3)
 	await get_tree().create_timer(0.3).timeout
@@ -242,19 +242,12 @@ func shoot():
 	bullet.emitting = true
 	if bulletRay.is_colliding():
 		if bulletRay.get_collider().is_in_group("Player"):
-			bulletRay.get_collider().hit(enemy_gun_damage, "enemy")
+			bulletRay.get_collider().hit(enemy_gun_damage, false)
 	await get_tree().create_timer(1.0).timeout
 	isInAttack = false
 
-func _on_area_3d_damage_taken(recieved_damage: float, type: String) -> void:
-	if type == "player":
-		damagedByPlayer = true
-	enemy_health -= recieved_damage
-	checkLifeLine()
-
-func hit(recieved_damage, type):
-	if type == "player":
-		damagedByPlayer = true
+func damage_taken(recieved_damage, isPlayer):
+	if isPlayer: damagedByPlayer = true
 	enemy_health -= recieved_damage
 	checkLifeLine()
 

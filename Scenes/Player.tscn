@@ -90,7 +90,6 @@ collision_mask = 25
 floor_max_angle = 0.2617994
 floor_snap_length = 0.15
 script = ExtResource("1_g8lft")
-DEBUG_deathBypass = true
 
 [node name="PlayerCollision" type="CollisionShape3D" parent="." unique_id=1015271467]
 process_priority = 1
