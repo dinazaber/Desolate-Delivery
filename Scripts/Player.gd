@@ -271,6 +271,7 @@ func _physics_process(delta):
 	var currentInput = Input.get_vector("A", "D", "W", "S")
 	if dead: currentInput = Vector3.ZERO
 	var direction = (transform.basis * Vector3(currentInput.x, 0, currentInput.y)).normalized()
+	if direction: $StairBounds.look_at($StairBounds.global_position + direction, Vector3.UP) #Avoids errors with look_at trying to look at the same target
 	if direction and is_on_floor() and $StairBounds/StairsMin.is_colliding() and !$StairBounds/StairsMax.is_colliding() and is_on_wall():
 		velocity.y = 4
 	

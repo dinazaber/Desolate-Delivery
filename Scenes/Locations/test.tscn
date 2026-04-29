@@ -196,13 +196,6 @@ left_to_right = -0.5
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ijbfb"]
 
-[sub_resource type="MultiMesh" id="MultiMesh_wr8wa"]
-transform_format = 1
-instance_count = 8
-visible_instance_count = 8
-mesh = ExtResource("23_wr8wa")
-buffer = PackedFloat32Array(0.6, 0, 0, -17.926228, 0, 0.6, 0, 0.82407403, 0, 0, 0.6, 3.0193179, 0.017182143, 0, 0.5997539, -19.231634, 0, 0.59999996, 0, 0.82407403, -0.5997539, 0, 0.017182143, 3.0193179, 0.5999978, 0, 0.0016440749, -18.549881, 0, 0.6000001, 0, 2.0253103, -0.0016440749, 0, 0.5999978, 3.0193179, 0.5999978, 0, 0.0016440749, -18.549881, 0, 0.6000001, 0, 0.81553173, -0.0016440749, 0, 0.5999978, 1.7847166, -0.31646717, 0, 0.50975347, 6.808233, 0, 0.6, 0, 0.8040292, -0.50975347, 0, -0.31646717, 3.9069939, -0.31646717, 0, 0.50975347, 22.89544, 0, 0.6, 0, 0.8040292, -0.50975347, 0, -0.31646717, 2.7962508, 0.43772516, 0, 0.41036168, 1.9845014, 0, 0.6000001, 0, 0.84521914, -0.41036168, 0, 0.43772516, 8.206118, 0.5999978, 0, 0.0016440749, 1.9845014, 0, 0.6000001, 0, 0.7954869, -0.0016440749, 0, 0.5999978, 5.2657094)
-
 [sub_resource type="MultiMesh" id="MultiMesh_h62tq"]
 transform_format = 1
 instance_count = 29
@@ -249,6 +242,13 @@ size = Vector3(0.2140503, 1.6451416, 0.42871094)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_lw8r5"]
 size = Vector3(0.9964447, 0.58184814, 0.42871094)
+
+[sub_resource type="MultiMesh" id="MultiMesh_wr8wa"]
+transform_format = 1
+instance_count = 8
+visible_instance_count = 8
+mesh = ExtResource("23_wr8wa")
+buffer = PackedFloat32Array(0.6, 0, 0, -17.926228, 0, 0.6, 0, 0.67414296, 0, 0, 0.6, 3.0193179, 0.017182143, 0, 0.5997539, -19.231634, 0, 0.59999996, 0, 0.67414296, -0.5997539, 0, 0.017182143, 3.0193179, 0.5999978, 0, 0.0016440749, -18.549881, 0, 0.6000001, 0, 1.8753792, -0.0016440749, 0, 0.5999978, 3.0193179, 0.5999978, 0, 0.0016440749, -18.549881, 0, 0.6000001, 0, 0.66560066, -0.0016440749, 0, 0.5999978, 1.7847166, -0.31646717, 0, 0.50975347, 6.808233, 0, 0.6, 0, 0.8040292, -0.50975347, 0, -0.31646717, 3.9069939, -0.31646717, 0, 0.50975347, 22.89544, 0, 0.6, 0, 0.8040292, -0.50975347, 0, -0.31646717, 2.7962508, 0.43772516, 0, 0.41036168, 1.9845014, 0, 0.6000001, 0, 0.84521914, -0.41036168, 0, 0.43772516, 8.206118, 0.5999978, 0, 0.0016440749, 1.9845014, 0, 0.6000001, 0, 0.7954869, -0.0016440749, 0, 0.5999978, 5.2657094)
 
 [node name="Node" type="Node" unique_id=310413080]
 script = ExtResource("1_jcbmq")
@@ -525,7 +525,7 @@ mesh = ExtResource("14_qhj8q")
 skeleton = NodePath("../..")
 
 [node name="Car1" type="MeshInstance3D" parent="." unique_id=581080434]
-transform = Transform3D(0.21683472, 0, 0.6655695, 0, 0.7, 0, -0.66556954, 0, 0.21683471, -11.039281, 0.83704984, -4.886943)
+transform = Transform3D(0.21683472, 0, 0.6655695, 0, 0.7, 0, -0.66556954, 0, 0.21683471, -11.039281, 0.83704984, -3.433268)
 mesh = ExtResource("14_h62tq")
 
 [node name="Car1Chassis" type="MeshInstance3D" parent="Car1" unique_id=688644803]
@@ -597,14 +597,6 @@ collision_mask = 21
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D2/Area3D" unique_id=42844599]
 transform = Transform3D(1.0009983, 0.6618177, -1.8543472e-12, -0.6618177, 1.0009983, 4.0358308e-10, 2.6895464e-10, -4.0275872e-10, 1, -0.8252926, -0.33310908, 0)
 shape = SubResource("BoxShape3D_ijbfb")
-
-[node name="CratesBoxes" type="MultiMeshInstance3D" parent="." unique_id=809646253]
-multimesh = SubResource("MultiMesh_wr8wa")
-script = ExtResource("3_u4tly")
-go_explode = null
-shape_type = 0
-go_make_colliders = null
-metadata/_custom_type_script = "uid://cfwmt6vc7y70h"
 
 [node name="RunWay" type="StaticBody3D" parent="." unique_id=2016956434]
 collision_layer = 49
@@ -790,3 +782,13 @@ shape = SubResource("BoxShape3D_h62tq")
 [node name="CollisionShape3D9" type="CollisionShape3D" parent="Tanks/Col3" unique_id=1869205439]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0028266907, 0.34679163, 2.5064673)
 shape = SubResource("BoxShape3D_lw8r5")
+
+[node name="BoxCrates" type="StaticBody3D" parent="." unique_id=258845485]
+
+[node name="CratesBoxes" type="MultiMeshInstance3D" parent="BoxCrates" unique_id=809646253]
+multimesh = SubResource("MultiMesh_wr8wa")
+script = ExtResource("3_u4tly")
+go_explode = null
+shape_type = 0
+go_make_colliders = null
+metadata/_custom_type_script = "uid://cfwmt6vc7y70h"
