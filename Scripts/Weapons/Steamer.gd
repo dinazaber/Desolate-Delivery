@@ -4,7 +4,7 @@ signal knockBack(force: int, time: float)
 #gun stats
 @export var damage = 70.0
 @export var recoil = 10.0 # degree rotation
-@export var heatPerShot: float = 80.0
+@export var heatPerShot: float = 90.0
 @export var coolDown: float = 5.0 # time (s) it takes to go from 100 to 0 heat
 
 @export var camera: Area3D

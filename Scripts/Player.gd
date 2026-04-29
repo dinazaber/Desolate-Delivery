@@ -255,7 +255,7 @@ func _physics_process(delta):
 			slide = false
 			floor_stop_on_slope = true
 			accel_mod = 1.0
-	else:
+	elif !$UncrouchCheck.is_colliding():
 		slide = false
 		floor_constant_speed = true
 		crouch = false
@@ -271,7 +271,7 @@ func _physics_process(delta):
 	var currentInput = Input.get_vector("A", "D", "W", "S")
 	if dead: currentInput = Vector3.ZERO
 	var direction = (transform.basis * Vector3(currentInput.x, 0, currentInput.y)).normalized()
-	if direction and $StairBounds/StairsMin.is_colliding() and !$StairBounds/StairsMax.is_colliding() and is_on_wall():
+	if direction and is_on_floor() and $StairBounds/StairsMin.is_colliding() and !$StairBounds/StairsMax.is_colliding() and is_on_wall():
 		velocity.y = 4
 	
 	

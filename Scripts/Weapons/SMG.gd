@@ -4,7 +4,7 @@ extends Node3D
 @export var damage: float = 15.0
 @export var recoil: float = 1.5 # degree rotation
 @export var heatPerShot: float = 10.0
-@export var coolDown: float = 5.0 # time (s) it takes to go from 100 to 0 heat
+@export var coolDown: float = 4.0 # time (s) it takes to go from 100 to 0 heat
 
 @export var camera: Area3D
 @export var playerRay: RayCast3D
