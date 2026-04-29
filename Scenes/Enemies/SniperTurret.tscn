@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://da8xo7bpr7w37"]
 
-[ext_resource type="Script" uid="uid://idsgqohuto4m" path="res://Scripts/enemies/SniperTurret.gd" id="1_4yweh"]
-[ext_resource type="Script" uid="uid://dqv7818ohy4lu" path="res://Scripts/enemies/HitBox.gd" id="2_h5qh4"]
+[ext_resource type="Script" uid="uid://idsgqohuto4m" path="res://Scripts/Enemies/SniperTurret.gd" id="1_4yweh"]
+[ext_resource type="Script" uid="uid://dqv7818ohy4lu" path="res://Scripts/Enemies/HitBox.gd" id="2_h5qh4"]
 [ext_resource type="ArrayMesh" uid="uid://brhrp1qv2wxup" path="res://assets/Meshes/Enemies/SniperTurret/Base.mesh" id="2_pd8i8"]
 [ext_resource type="ArrayMesh" uid="uid://b2angk0lxn8ng" path="res://assets/Meshes/Enemies/SniperTurret/Mount.mesh" id="3_8iha5"]
 [ext_resource type="Shader" uid="uid://w3eyk752ljxw" path="res://Shaders/MeshShaders/ParticlesShader.gdshader" id="4_8iha5"]
@@ -166,7 +166,7 @@ size = Vector3(0.02, 0.02, 500)
 
 [node name="SniperTurret" type="StaticBody3D" unique_id=1830225406 groups=["Enemy", "Persist"]]
 collision_layer = 48
-collision_mask = 56
+collision_mask = 184
 script = ExtResource("1_4yweh")
 
 [node name="CollisionEnv" type="CollisionShape3D" parent="." unique_id=2131971587]
@@ -194,7 +194,7 @@ shape = SubResource("CylinderShape3D_4yweh")
 [node name="RayCast3D" type="RayCast3D" parent="." unique_id=1379129722]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.194, 0)
 target_position = Vector3(0, 0, 500)
-collision_mask = 24
+collision_mask = 152
 
 [node name="BaseMesh" type="MeshInstance3D" parent="." unique_id=397604197]
 transform = Transform3D(0.065, 0, 0, 0, 0.065, 0, 0, 0, 0.065, 0, 0, 0)
@@ -291,7 +291,7 @@ skeleton = NodePath("../..")
 [node name="GunRay" type="RayCast3D" parent="GunPivot/GunMesh" unique_id=897733090]
 transform = Transform3D(1.0000005, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 2.762179, 0)
 target_position = Vector3(0, 0, 5000)
-collision_mask = 41
+collision_mask = 169
 
 [node name="Timer" type="Timer" parent="." unique_id=1865930971]
 wait_time = 4.0

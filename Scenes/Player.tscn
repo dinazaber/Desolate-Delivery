@@ -86,7 +86,7 @@ size = Vector3(1, 2, 1)
 
 [node name="Player" type="CharacterBody3D" unique_id=1941692924 groups=["Persist", "Player"]]
 collision_layer = 8
-collision_mask = 25
+collision_mask = 153
 slide_on_ceiling = false
 floor_max_angle = 0.2617994
 floor_snap_length = 0.15
@@ -144,7 +144,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, -1.4)
 
 [node name="PlayerRay" type="RayCast3D" parent="shakeable_camera" unique_id=1906683229]
 target_position = Vector3(0, 0, -75)
-collision_mask = 49
+collision_mask = 177
 collide_with_areas = true
 
 [node name="PlayerRayEnd" type="Marker3D" parent="shakeable_camera/PlayerRay" unique_id=439214189]

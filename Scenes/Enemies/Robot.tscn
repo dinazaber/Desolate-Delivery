@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://beqguglkai1oh"]
 
 [ext_resource type="ArrayMesh" uid="uid://cwhuegir0snfi" path="res://assets/Meshes/Enemies/Robot.mesh" id="1_grc7g"]
-[ext_resource type="Script" uid="uid://dm2yl7b4griiw" path="res://Scripts/enemies/Robot.gd" id="1_h872o"]
-[ext_resource type="Script" uid="uid://dqv7818ohy4lu" path="res://Scripts/enemies/HitBox.gd" id="3_hfj1t"]
+[ext_resource type="Script" uid="uid://dm2yl7b4griiw" path="res://Scripts/Enemies/Robot.gd" id="1_h872o"]
+[ext_resource type="Script" uid="uid://dqv7818ohy4lu" path="res://Scripts/Enemies/HitBox.gd" id="3_hfj1t"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_h872o"]
 radius = 0.5307617
@@ -480,7 +480,7 @@ size = Vector3(0.8988037, 2.0927734, 1.0786743)
 
 [node name="Robot" type="CharacterBody3D" unique_id=969091388 groups=["Enemy", "Persist"]]
 collision_layer = 48
-collision_mask = 56
+collision_mask = 184
 script = ExtResource("1_h872o")
 
 [node name="CollisionEnv" type="CollisionShape3D" parent="." unique_id=177358311]
@@ -683,7 +683,7 @@ draw_pass_1 = SubResource("BoxMesh_oqbdp")
 [node name="BulletRay" type="RayCast3D" parent="Skeleton3D/ArmR" unique_id=2123343728]
 transform = Transform3D(1, -1.3969839e-09, -7.5495166e-15, 0, 1.0000001, 0, -5.3734794e-14, 0, 1, 9.536743e-07, 3.2000003, -2.3841858e-07)
 target_position = Vector3(0, 333, 0)
-collision_mask = 41
+collision_mask = 169
 
 [node name="BulletRayEnd" type="Marker3D" parent="Skeleton3D/ArmR" unique_id=477852913]
 transform = Transform3D(1.0000001, -1.3969839e-09, -2.1982416e-14, 0, 1.0000001, 5.684342e-14, -2.5757174e-14, 5.684342e-14, 1.0000001, 0, 336.2, 0)
@@ -732,7 +732,7 @@ shape = SubResource("BoxShape3D_2a8ro")
 
 [node name="kick" type="RayCast3D" parent="Skeleton3D/LegL" unique_id=58551326]
 target_position = Vector3(0, 10, 0)
-collision_mask = 41
+collision_mask = 169
 
 [node name="FootL" type="BoneAttachment3D" parent="Skeleton3D" unique_id=965913475]
 transform = Transform3D(0.35765737, 0.9338511, -1.9174672e-07, 0.9338509, -0.35765722, 1.1053778e-08, -5.7674058e-08, -1.0843141e-07, -0.9999979, 0.033382874, -13.367445, -1.3671359)
@@ -796,7 +796,7 @@ shape = SubResource("BoxShape3D_a3cge")
 [node name="RayCast3D" type="RayCast3D" parent="." unique_id=1762672619]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.0914974, 0)
 target_position = Vector3(0, 0, -20)
-collision_mask = 24
+collision_mask = 152
 
 [node name="Rayend" type="Marker3D" parent="RayCast3D" unique_id=355997911]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -20)
