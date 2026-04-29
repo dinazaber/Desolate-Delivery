@@ -83,7 +83,7 @@ func process_attack_state():
 	if gunRay.is_colliding():
 		if gunRay.get_collider().is_in_group("Player") and !player_hit:
 			player_hit = true
-			gunRay.get_collider().hit(enemy_damage, false)
+			gunRay.get_collider().damage_taken(enemy_damage, false)
 	await get_tree().create_timer(0.6).timeout
 	current_state = State.IDLE
 	isInAttack = false
@@ -111,6 +111,8 @@ func damage_taken(recieved_damage, isPlayer):
 	if isPlayer: damagedByPlayer = true
 	enemy_health -= recieved_damage
 	checkLifeLine()
+
+
 
 func checkLifeLine():
 	if enemy_health <= 0 and dead == false:

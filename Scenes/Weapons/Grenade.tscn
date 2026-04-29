@@ -2,15 +2,20 @@
 
 [ext_resource type="Script" uid="uid://4i0nsk0syjsv" path="res://Scripts/Weapons/Grenade.gd" id="1_k3jl2"]
 [ext_resource type="ArrayMesh" uid="uid://bx1fs0t7d5ng3" path="res://assets/Meshes/Weapons/Genade.mesh" id="2_2byne"]
+[ext_resource type="Script" uid="uid://dqv7818ohy4lu" path="res://Scripts/enemies/HitBox.gd" id="2_5oibr"]
 [ext_resource type="Shader" uid="uid://w3eyk752ljxw" path="res://Shaders/MeshShaders/ParticlesShader.gdshader" id="3_2byne"]
 [ext_resource type="PackedScene" uid="uid://b4wyneleeqxp" path="res://Scenes/Modules/TraumaCauser.tscn" id="3_5oibr"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_2byne"]
 bounce = 0.3
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_2byne"]
+radius = 0.07
+height = 0.25
+
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_t2ec2"]
-radius = 0.15
-height = 0.4
+radius = 0.17
+height = 0.45
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_6rbch"]
 radius = 4.0
@@ -139,7 +144,7 @@ radial_segments = 8
 rings = 4
 
 [node name="Grenade" type="RigidBody3D" unique_id=1710984480 groups=["ShotReactable"]]
-collision_layer = 34
+collision_layer = 32
 collision_mask = 34
 mass = 0.2
 physics_material_override = SubResource("PhysicsMaterial_2byne")
@@ -151,7 +156,15 @@ linear_damp_mode = 1
 angular_damp = 5.0
 script = ExtResource("1_k3jl2")
 
-[node name="hitBox_shotTrigger" type="CollisionShape3D" parent="." unique_id=308750276]
+[node name="hitBox_physics" type="CollisionShape3D" parent="." unique_id=367040565]
+shape = SubResource("CapsuleShape3D_2byne")
+
+[node name="shotTrigger" type="Area3D" parent="." unique_id=650134128 groups=["ShotReactable"]]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("2_5oibr")
+
+[node name="hitBox_shotTrigger" type="CollisionShape3D" parent="shotTrigger" unique_id=308750276]
 shape = SubResource("CapsuleShape3D_t2ec2")
 
 [node name="GenadeMesh" type="MeshInstance3D" parent="." unique_id=1477165798]

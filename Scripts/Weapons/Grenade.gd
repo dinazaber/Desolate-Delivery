@@ -43,11 +43,10 @@ func explode():
 	var bodies = []
 	exploded = true
 	$GenadeMesh.visible = false
-	$hitBox_shotTrigger.visible = false
+	$hitBox_physics.visible = false
 	
 	$trauma_causer.cause_trauma()
 	if current_exposion_box.has_overlapping_bodies(): bodies += current_exposion_box.get_overlapping_bodies()
-	if current_exposion_box.has_overlapping_areas(): bodies += current_exposion_box.get_overlapping_areas()
 	if !bodies.is_empty():
 		for body in bodies:
 			var dist: float = global_position.distance_to(body.global_position)
@@ -55,11 +54,11 @@ func explode():
 			
 			if dist <= 1.0: coef = 1.0
 			elif 1.0 < dist and dist < current_explosion_radius - 1:
-				coef = (0.7 * (dist - 1)) / (2 - current_explosion_radius) + 1
-			else: coef = 0.3
+				coef = (0.5 * (dist - 1)) / (2 - current_explosion_radius) + 1
+			else: coef = 0.5
 			
-			if body.has_method("hit"):
-				body.hit(current_damage * coef, true)
+			if body.has_method("damage_taken"):
+				body.damage_taken(current_damage * coef, true)
 			
 			if body.has_method("knockBack"):
 				var dir: Vector3 = (body.global_position - global_position).normalized()

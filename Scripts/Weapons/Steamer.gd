@@ -40,11 +40,10 @@ func shoot():
 		
 		var bodies = []
 		if blastRange.has_overlapping_bodies(): bodies += blastRange.get_overlapping_bodies()
-		if blastRange.has_overlapping_areas(): bodies += blastRange.get_overlapping_areas()
 		if !bodies.is_empty():
 			for body in bodies:
-				if body.has_method("hit"):
-					body.hit(damage, true)
+				if body.has_method("damage_taken") and !body.is_in_group("Player"):
+					body.damage_taken(damage, true)
 				if body.has_method("knockBack"):
 					body.knockBack((body.global_position - playerPos.global_position).normalized(), damage/15, 0.1)
 		

@@ -803,16 +803,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -20)
 
 [node name="aimHand" type="Marker3D" parent="." unique_id=1413270498]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3850249, 1.778611, 0)
-
-[connection signal="damage_taken" from="Skeleton3D/Base/Area3D" to="." method="_on_area_3d_damage_taken"]
-[connection signal="damage_taken" from="Skeleton3D/Base/Area3D2" to="." method="_on_area_3d_damage_taken"]
-[connection signal="damage_taken" from="Skeleton3D/HandL/Area3D" to="." method="_on_area_3d_damage_taken"]
-[connection signal="damage_taken" from="Skeleton3D/ArmL/Area3D" to="." method="_on_area_3d_damage_taken"]
-[connection signal="damage_taken" from="Skeleton3D/HandR/Area3D" to="." method="_on_area_3d_damage_taken"]
-[connection signal="damage_taken" from="Skeleton3D/ArmR/Area3D" to="." method="_on_area_3d_damage_taken"]
-[connection signal="damage_taken" from="Skeleton3D/UpperLegL/Area3D" to="." method="_on_area_3d_damage_taken"]
-[connection signal="damage_taken" from="Skeleton3D/LegL/Area3D" to="." method="_on_area_3d_damage_taken"]
-[connection signal="damage_taken" from="Skeleton3D/FootL/Area3D" to="." method="_on_area_3d_damage_taken"]
-[connection signal="damage_taken" from="Skeleton3D/UpperLegR/Area3D" to="." method="_on_area_3d_damage_taken"]
-[connection signal="damage_taken" from="Skeleton3D/LegR/Area3D" to="." method="_on_area_3d_damage_taken"]
-[connection signal="damage_taken" from="Skeleton3D/FootR/Area3D" to="." method="_on_area_3d_damage_taken"]
