@@ -255,7 +255,7 @@ script = ExtResource("1_wrvfe")
 libraries/ = SubResource("AnimationLibrary_l87pe")
 
 [node name="Drill" type="Marker3D" parent="." unique_id=966625349]
-transform = Transform3D(0.98480755, -0.17364816, 0, 0.16317588, 0.92541647, 0.3420201, -0.05939116, -0.33682403, 0.9396925, -0.8, -0.5, -0.4)
+transform = Transform3D(0.9848075, -0.17364816, 0, 0.16317587, 0.9254164, 0.3420201, -0.059391156, -0.33682403, 0.9396925, -0.8, -0.5, -0.4)
 
 [node name="DrillBase" type="MeshInstance3D" parent="Drill" unique_id=1233721536]
 transform = Transform3D(-6.5567085e-09, 0, 0.15, 0, 0.15, 0, -0.15, 0, -6.5567085e-09, 0.6, 0, 0)

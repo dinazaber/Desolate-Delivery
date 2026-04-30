@@ -29,6 +29,7 @@ var knocked: bool = false
 var crouch: bool = false
 var slide: bool = false
 var is_dashing: bool = false
+var drillJump: bool = true
 var airborne: bool = false
 var dead: bool = false
 var canShoot: bool = true
@@ -183,8 +184,10 @@ func _input(event):
 	
 	if Input.is_action_just_pressed("Wheel"):
 		throw_grenade()
-		
-			
+	
+	if Input.is_action_pressed("Space"): drillJump = false
+	else: drillJump = true
+	
 	if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
 		if event is InputEventMouseMotion:
 			yaw-=event.relative.x * cam_speed
@@ -241,7 +244,7 @@ func _physics_process(delta):
 		current_gun_L.shoot()
 	
 	if Input.is_action_just_pressed("F") and !dead:
-		if !drill.in_action:
+		if !drill.in_action and !current_gun_L.in_action:
 			current_gun_R.undraw(1.5, true)
 			await drill.punch(velocity.length() if is_dashing else 0.0)
 			current_gun_R.draw(1.5)

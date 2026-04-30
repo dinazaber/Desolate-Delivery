@@ -172,8 +172,9 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.2
 camera = NodePath("../../..")
 playerRay = NodePath("../../../PlayerRay")
 
-[node name="Drill" parent="shakeable_camera/Hands/LeftHand" index="1" unique_id=1590022059 node_paths=PackedStringArray("camera")]
+[node name="Drill" parent="shakeable_camera/Hands/LeftHand" index="1" unique_id=1590022059 node_paths=PackedStringArray("camera", "player")]
 camera = NodePath("../../..")
+player = NodePath("../../../..")
 
 [node name="PauseMenu" type="Control" parent="." unique_id=877245422 node_paths=PackedStringArray("hud")]
 process_mode = 3
@@ -398,7 +399,6 @@ visible = false
 [connection signal="restoreCool" from="." to="shakeable_camera/Hands/LeftHand/Steamer" method="_on_restore_cool"]
 [connection signal="timeout" from="SuperTimer" to="." method="SuperTimerTimeOut"]
 [connection signal="knockBack" from="shakeable_camera/Hands/LeftHand/Steamer" to="." method="knockBack"]
-[connection signal="knockBack" from="shakeable_camera/Hands/LeftHand/Drill" to="." method="knockBack"]
 [connection signal="pressed" from="PauseMenu/PauseMenu/MarginContainer/VBoxContainer/Resume" to="PauseMenu" method="_on_resume_pressed"]
 [connection signal="pressed" from="PauseMenu/PauseMenu/MarginContainer/VBoxContainer/Settings" to="PauseMenu" method="_on_settings_pressed"]
 [connection signal="pressed" from="PauseMenu/PauseMenu/MarginContainer/VBoxContainer/Save Menu" to="PauseMenu" method="_on_save_menu_pressed"]

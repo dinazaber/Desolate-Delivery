@@ -1,9 +1,9 @@
 extends Node3D
-signal knockBack(force: int, time: float)
 
-@export var damage: float = 50.0
+@export var damage: float = 35.0
 
 @export var camera: Area3D
+@export var player: CharacterBody3D
 
 @onready var anim: AnimationPlayer = $AnimationPlayer
 @onready var area = $PunchArea
@@ -18,7 +18,7 @@ func punch(speed): # set speed to zero if not dashing
 		anim.play("punch")
 		if speed:
 			var direction = -camera.global_transform.basis.z.normalized()
-			knockBack.emit(direction, 5.0, 0.0)
+			player.knockBack(direction, 5.0, 0.0)
 			
 			area.scale = Vector3.ONE * 2.0
 			
@@ -38,6 +38,10 @@ func punch(speed): # set speed to zero if not dashing
 					body.knockBack((body.global_position - playerPos.global_position).normalized(), (damage + speed)/10, 0.25)
 				if body.has_method("throw"):
 					body.throw((body.global_position - playerPos.global_position).normalized(), 20.0)
+				
+				if body.is_in_group("Enemy"):
+					if !player.is_on_floor() and player.drillJump:
+						player.knockBack(Vector3.UP, speed/1.75, 0.0)
 		
 		area.scale = Vector3.ONE
 	
@@ -46,8 +50,8 @@ func punch(speed): # set speed to zero if not dashing
 	in_action = false
 
 func hitstop(bodyCount):
+	camera.add_trauma(2.5 * bodyCount)
 	if anim.is_playing():
-		camera.add_trauma(2 * bodyCount)
-		anim.speed_scale = 0.2
+		anim.speed_scale = 0.1
 		await get_tree().create_timer(0.06).timeout
 		anim.speed_scale = 1.0
