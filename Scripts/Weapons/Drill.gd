@@ -26,8 +26,6 @@ func punch(speed): # set speed to zero if not dashing
 			$Drill/LungeParticles.emitting = true
 		await get_tree().create_timer(0.15).timeout
 		
-		area.scale = Vector3.ONE
-		
 		var bodies = []
 		if area.has_overlapping_bodies():
 			bodies += area.get_overlapping_bodies()
@@ -40,6 +38,8 @@ func punch(speed): # set speed to zero if not dashing
 					body.knockBack((body.global_position - playerPos.global_position).normalized(), (damage + speed)/10, 0.25)
 				if body.has_method("throw"):
 					body.throw((body.global_position - playerPos.global_position).normalized(), 20.0)
+		
+		area.scale = Vector3.ONE
 	
 	if anim.is_playing():
 		await anim.animation_finished
