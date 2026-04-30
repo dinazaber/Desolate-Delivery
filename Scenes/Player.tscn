@@ -398,6 +398,7 @@ visible = false
 [connection signal="restoreCool" from="." to="shakeable_camera/Hands/LeftHand/Steamer" method="_on_restore_cool"]
 [connection signal="timeout" from="SuperTimer" to="." method="SuperTimerTimeOut"]
 [connection signal="knockBack" from="shakeable_camera/Hands/LeftHand/Steamer" to="." method="knockBack"]
+[connection signal="knockBack" from="shakeable_camera/Hands/LeftHand/Drill" to="." method="knockBack"]
 [connection signal="pressed" from="PauseMenu/PauseMenu/MarginContainer/VBoxContainer/Resume" to="PauseMenu" method="_on_resume_pressed"]
 [connection signal="pressed" from="PauseMenu/PauseMenu/MarginContainer/VBoxContainer/Settings" to="PauseMenu" method="_on_settings_pressed"]
 [connection signal="pressed" from="PauseMenu/PauseMenu/MarginContainer/VBoxContainer/Save Menu" to="PauseMenu" method="_on_save_menu_pressed"]

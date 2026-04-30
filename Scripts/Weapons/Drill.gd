@@ -1,4 +1,5 @@
 extends Node3D
+signal knockBack(force: int, time: float)
 
 @export var damage: float = 50.0
 
@@ -11,11 +12,21 @@ extends Node3D
 var in_action: bool = false
 
 
-func punch():
+func punch(speed): # set speed to zero if not dashing
 	in_action = true
 	if !anim.is_playing():
 		anim.play("punch")
+		if speed:
+			var direction = -camera.global_transform.basis.z.normalized()
+			knockBack.emit(direction, 5.0, 0.0)
+			
+			area.scale = Vector3.ONE * 2.0
+			
+			$Drill/LungeParticles.restart()
+			$Drill/LungeParticles.emitting = true
 		await get_tree().create_timer(0.15).timeout
+		
+		area.scale = Vector3.ONE
 		
 		var bodies = []
 		if area.has_overlapping_bodies():
@@ -24,9 +35,9 @@ func punch():
 			hitstop(len(bodies))
 			for body in bodies:
 				if body.has_method("damage_taken") and !body.is_in_group("Player"):
-					body.damage_taken(damage, true)
+					body.damage_taken(damage + speed, true)
 				if body.has_method("knockBack"):
-					body.knockBack((body.global_position - playerPos.global_position).normalized(), damage/10, 0.25)
+					body.knockBack((body.global_position - playerPos.global_position).normalized(), (damage + speed)/10, 0.25)
 				if body.has_method("throw"):
 					body.throw((body.global_position - playerPos.global_position).normalized(), 20.0)
 	

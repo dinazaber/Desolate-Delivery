@@ -28,6 +28,7 @@ var canDash: bool = true
 var knocked: bool = false
 var crouch: bool = false
 var slide: bool = false
+var is_dashing: bool = false
 var airborne: bool = false
 var dead: bool = false
 var canShoot: bool = true
@@ -45,7 +46,10 @@ var fireDelay: float = 15.0 # Delay between object throwing and shooting
 
 
 # --- PLAYER STATS ---
+@export_category("DEBUG")
 @export var DEBUG_deathBypass: bool = false
+
+@export_category("PLAYER STATS")
 const PLAYER_MAX_HEALTH = 100.0
 @export var player_health: float = PLAYER_MAX_HEALTH
 @export var coolOnKill: float = 15.0
@@ -53,7 +57,7 @@ const PLAYER_MAX_HEALTH = 100.0
 @export var walk_speed: float = 5.0
 @export var crouch_speed: float = 2.5
 @export var dash_speed: float = 30.0
-@export var dashCoolTime: float = 2.0 # cooldown time (s)
+@export var dashCoolTime: float = 1.75 # cooldown time (s)
 @export var jump_speed: float = 10.0
 
 
@@ -81,12 +85,14 @@ var instance_grenade
 @onready var camera = $shakeable_camera
 @onready var camAnim = $cameraAnimation
 @onready var camDefHeight = camera.position.y
+@export_category("CAMERA")
 @export var cam_speed: float = 0.005 #mouse sens
 @export var cam_rot_amount: float = 0.03 #camera tilt
 
 # --- Effects ---
 @onready var hands = $shakeable_camera/Hands
 var def_gun_pos: Vector3
+@export_category("GUN SWAY")
 @export var gun_sway_amount: float = 5.0
 @export var gun_rot_amount: float = 0.01
 
@@ -237,7 +243,7 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("F") and !dead:
 		if !drill.in_action:
 			current_gun_R.undraw(1.5, true)
-			await drill.punch()
+			await drill.punch(velocity.length() if is_dashing else 0.0)
 			current_gun_R.draw(1.5)
 	
 	
@@ -284,10 +290,12 @@ func _physics_process(delta):
 		dashCool = -10.0
 		var dashDir = direction
 		knockBack(dashDir, dash_speed, 0.2)
+		is_dashing = true
 		#canDash = false
 		#$SuperTimer.set("wait_time",0.5)
 		#$SuperTimer.start()
 		await get_tree().create_timer(0.2).timeout
+		is_dashing = false
 		if !is_on_floor() or !slide:
 			knockBack(-dashDir, 15 * Vector3(velocity.x, 0.0, velocity.z).length() / dash_speed, 0.0)
 	

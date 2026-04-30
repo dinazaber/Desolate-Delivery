@@ -200,8 +200,53 @@ shader_parameter/detail2 = ExtResource("4_l87pe")
 shader_parameter/detail2_scale = 0.5
 shader_parameter/alpha2 = 0.75
 
+[sub_resource type="Curve" id="Curve_wrvfe"]
+_data = [Vector2(1e-05, 0), 0.0, 0.0, 0, 0, Vector2(0.15463918, 1), 0.0, 0.0, 0, 0, Vector2(0.7457045, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_l87pe"]
+curve = SubResource("Curve_wrvfe")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_l6lyj"]
+particle_flag_align_y = true
+direction = Vector3(-1, 0, 0)
+spread = 50.0
+initial_velocity_min = 3.0
+initial_velocity_max = 6.0
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_l87pe")
+
+[sub_resource type="Curve" id="Curve_bsjtv"]
+_data = [Vector2(0, 0.50123763), 0.0, 0.0, 0, 0, Vector2(0.50154793, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.50123763), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_u1e3m"]
+offsets = PackedFloat32Array(0, 0.16728625, 0.84758365, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 0.5882353, 1, 1, 1, 0.5882353, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_sgndl"]
+gradient = SubResource("Gradient_u1e3m")
+height = 256
+fill_from = Vector2(0.50427353, 1)
+fill_to = Vector2(0.508547, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_02plv"]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = SubResource("GradientTexture2D_sgndl")
+
+[sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_rqf7y"]
+material = SubResource("StandardMaterial3D_02plv")
+size = 0.01
+sections = 2
+section_length = 0.1
+section_segments = 1
+curve = SubResource("Curve_bsjtv")
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_44rio"]
-size = Vector3(1.4, 0.75, 0.75)
+size = Vector3(1.5, 0.75, 0.75)
 
 [node name="Drill" type="Node3D" unique_id=1590022059]
 script = ExtResource("1_wrvfe")
@@ -210,7 +255,7 @@ script = ExtResource("1_wrvfe")
 libraries/ = SubResource("AnimationLibrary_l87pe")
 
 [node name="Drill" type="Marker3D" parent="." unique_id=966625349]
-transform = Transform3D(0.9848076, -0.17364818, 0, 0.1631759, 0.9254165, 0.3420201, -0.059391163, -0.33682406, 0.9396925, -0.8, -0.5, -0.4)
+transform = Transform3D(0.98480755, -0.17364816, 0, 0.16317588, 0.92541647, 0.3420201, -0.05939116, -0.33682403, 0.9396925, -0.8, -0.5, -0.4)
 
 [node name="DrillBase" type="MeshInstance3D" parent="Drill" unique_id=1233721536]
 transform = Transform3D(-6.5567085e-09, 0, 0.15, 0, 0.15, 0, -0.15, 0, -6.5567085e-09, 0.6, 0, 0)
@@ -240,6 +285,17 @@ mesh = ExtResource("4_6g03u")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("ShaderMaterial_02plv")
 
+[node name="LungeParticles" type="GPUParticles3D" parent="Drill" unique_id=1104808564]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9, 0, 0)
+emitting = false
+amount = 16
+lifetime = 0.15000000000000002
+one_shot = true
+fixed_fps = 60
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_l6lyj")
+draw_pass_1 = SubResource("RibbonTrailMesh_rqf7y")
+
 [node name="PlayerPos" type="Marker3D" parent="." unique_id=1386238278]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.137, 0.2)
 
@@ -249,5 +305,5 @@ collision_layer = 0
 collision_mask = 34
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PunchArea" unique_id=1198646979]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.75, 0, 0)
 shape = SubResource("BoxShape3D_44rio")
