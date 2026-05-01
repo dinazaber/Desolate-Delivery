@@ -84,11 +84,80 @@ size = Vector3(1, 2, 1)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_yoq75"]
 
+[sub_resource type="Curve" id="Curve_yoq75"]
+_data = [Vector2(0, 0.49789327), 0.0, 0.0, 0, 0, Vector2(0.25429553, 1), 0.0, 0.0, 0, 0, Vector2(0.49828184, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_ksbbd"]
+curve = SubResource("Curve_yoq75")
+
+[sub_resource type="Curve" id="Curve_glx4g"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.25429553, 1), 0.0, 0.0, 0, 0, Vector2(0.49828184, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="Curve" id="Curve_miouo"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_o3h8g"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.25429553, 1), 0.0, 0.0, 0, 0, Vector2(0.49828184, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_1e7my"]
+curve_x = SubResource("Curve_glx4g")
+curve_y = SubResource("Curve_miouo")
+curve_z = SubResource("Curve_o3h8g")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_yoq75"]
+particle_flag_align_y = true
+emission_shape_offset = Vector3(0, 0, -1.25)
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 0.5
+emission_ring_radius = 0.8
+emission_ring_inner_radius = 0.6
+emission_ring_cone_angle = 90.0
+direction = Vector3(0, 0, 1)
+spread = 0.0
+initial_velocity_min = 0.099999994
+initial_velocity_max = 0.19999999
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveXYZTexture_1e7my")
+alpha_curve = SubResource("CurveTexture_ksbbd")
+
+[sub_resource type="Curve" id="Curve_ksbbd"]
+_data = [Vector2(0, 0.34839112), 0.0, 0.0, 0, 0, Vector2(0.504644, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.34839112), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_glx4g"]
+offsets = PackedFloat32Array(0, 0.18587361, 0.8550186, 1)
+colors = PackedColorArray(0.9882353, 1, 0.7058824, 0, 0.9882353, 1, 0.7058824, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_miouo"]
+gradient = SubResource("Gradient_glx4g")
+height = 128
+fill_from = Vector2(0.5, 1)
+fill_to = Vector2(0.50427353, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o3h8g"]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = SubResource("GradientTexture2D_miouo")
+
+[sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_1e7my"]
+material = SubResource("StandardMaterial3D_o3h8g")
+size = 0.02
+sections = 2
+section_length = 0.4
+section_segments = 1
+curve = SubResource("Curve_ksbbd")
+
 [node name="Player" type="CharacterBody3D" unique_id=1941692924 groups=["Persist", "Player"]]
 collision_layer = 8
 collision_mask = 153
 slide_on_ceiling = false
-floor_max_angle = 0.2617994
 floor_snap_length = 0.15
 script = ExtResource("1_g8lft")
 
@@ -133,6 +202,14 @@ shape = SubResource("SphereShape3D_yoq75")
 
 [node name="SuperTimer" type="Timer" parent="." unique_id=267019974]
 one_shot = true
+
+[node name="SpeedParticles" type="GPUParticles3D" parent="." unique_id=220422398]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+amount = 36
+amount_ratio = 0.0
+lifetime = 0.4
+process_material = SubResource("ParticleProcessMaterial_yoq75")
+draw_pass_1 = SubResource("RibbonTrailMesh_1e7my")
 
 [node name="shakeable_camera" parent="." unique_id=1373532385 instance=ExtResource("2_megsn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
@@ -406,5 +483,6 @@ visible = false
 [connection signal="closed" from="PauseMenu/Settings" to="PauseMenu" method="_on_settings_closed"]
 [connection signal="closed" from="PauseMenu/SaveMenu" to="PauseMenu" method="_on_save_menu_closed"]
 
+[editable path="shakeable_camera"]
 [editable path="shakeable_camera/Hands/RightHand"]
 [editable path="shakeable_camera/Hands/LeftHand"]

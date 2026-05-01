@@ -18,7 +18,7 @@ func punch(speed): # set speed to zero if not dashing
 		anim.play("punch")
 		if speed:
 			var direction = -camera.global_transform.basis.z.normalized()
-			player.knockBack(direction, 5.0, 0.0)
+			player.knockBack(direction, 4.5, 0.0)
 			
 			area.scale = Vector3.ONE * 2.0
 			
@@ -41,7 +41,7 @@ func punch(speed): # set speed to zero if not dashing
 				
 				if body.is_in_group("Enemy"):
 					if !player.is_on_floor() and player.drillJump:
-						player.knockBack(Vector3.UP, speed/1.75, 0.0)
+						player.knockBack(Vector3.UP, speed/2.0, 0.0)
 		
 		area.scale = Vector3.ONE
 	

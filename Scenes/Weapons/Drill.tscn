@@ -84,10 +84,10 @@ tracks/0/path = NodePath("Drill:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.20000002, 0.29000002, 0.42, 0.6),
-"transitions": PackedFloat32Array(2.0000005, 1, 0.5, 1.5, 1.5, 1),
+"times": PackedFloat32Array(0, 0.1, 0.20000002, 0.29000002, 0.42, 0.59, 0.6),
+"transitions": PackedFloat32Array(2.0000005, 1, 0.5, 1.5, 1.5, 0, 1),
 "update": 0,
-"values": [Vector3(-0.8, -0.5, -0.4), Vector3(0, 0, -0.2), Vector3(0.3, 0, 0), Vector3(0.35, 0, 0.05), Vector3(0.35, 0, 0), Vector3(0.3, -0.5, -0.3)]
+"values": [Vector3(-0.8, -0.5, -0.4), Vector3(0, 0, -0.2), Vector3(0.3, 0, 0), Vector3(0.35, 0, 0.05), Vector3(0.35, 0, 0), Vector3(0.3, -0.5, -0.3), Vector3(-0.8, -0.5, -0.4)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -96,10 +96,10 @@ tracks/1/path = NodePath("Drill:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.08, 0.24, 0.4, 0.56, 0.6),
-"transitions": PackedFloat32Array(1, 1.7, 0.5, 2, 1, 1),
+"times": PackedFloat32Array(0, 0.08, 0.24, 0.4, 0.54999995, 0.59, 0.6),
+"transitions": PackedFloat32Array(1, 1.7, 0.5, 2, 1, 0, 1),
 "update": 0,
-"values": [Vector3(-0.34906584, 0, 0.17453292), Vector3(-0.34906584, -0.34906584, 0.17453292), Vector3(-0.34906584, -1.6580628, -0.06981317), Vector3(-0.34906584, -1.8325957, -0.06981317), Vector3(-0.34906584, -1.6580628, -0.06981317), Vector3(-0.34906584, -1.7453293, -0.5235988)]
+"values": [Vector3(-0.34906584, 0, 0.17453292), Vector3(-0.34906584, -0.34906584, 0.17453292), Vector3(-0.34906584, -1.6580628, -0.06981317), Vector3(-0.34906584, -1.8325957, -0.06981317), Vector3(-0.34906584, -1.6580628, -0.06981317), Vector3(-0.34906584, -1.7453293, -0.5235988), Vector3(-0.34906584, 0, 0.17453292)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -255,7 +255,7 @@ script = ExtResource("1_wrvfe")
 libraries/ = SubResource("AnimationLibrary_l87pe")
 
 [node name="Drill" type="Marker3D" parent="." unique_id=966625349]
-transform = Transform3D(0.9848075, -0.17364816, 0, 0.16317587, 0.9254164, 0.3420201, -0.059391156, -0.33682403, 0.9396925, -0.8, -0.5, -0.4)
+transform = Transform3D(0.98480743, -0.17364815, 0, 0.16317587, 0.92541635, 0.3420201, -0.059391152, -0.336824, 0.9396925, -0.8, -0.5, -0.4)
 
 [node name="DrillBase" type="MeshInstance3D" parent="Drill" unique_id=1233721536]
 transform = Transform3D(-6.5567085e-09, 0, 0.15, 0, 0.15, 0, -0.15, 0, -6.5567085e-09, 0.6, 0, 0)

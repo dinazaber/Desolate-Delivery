@@ -61,9 +61,9 @@ func explode():
 				body.damage_taken(current_damage * coef, true)
 			
 			var dir: Vector3 = (body.global_position - global_position).normalized()
-			var force: float = current_damage * coef / 8
+			var force: float = current_damage * coef / 10.0
 			if body.has_method("knockBack"):
-				body.knockBack(dir, force, 0.1)
+				body.knockBack(dir, force, 0.3)
 			if body.has_method("throw"):
 				body.throw(dir, 40.0 * coef)
 	

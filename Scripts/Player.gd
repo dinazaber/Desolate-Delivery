@@ -9,6 +9,7 @@ var screenEffect: ColorRect
 var grabbedObject: RigidBody3D = null
 @onready var hold_pos = $shakeable_camera/holdPos
 @onready var enemyBounceCheck = $EnemyBounceCheck
+@onready var speedParticles = $SpeedParticles
 
 
 # --- WEAPONS ---
@@ -59,7 +60,7 @@ const PLAYER_MAX_HEALTH = 100.0
 @export var crouch_speed: float = 2.5
 @export var dash_speed: float = 30.0
 @export var dashCoolTime: float = 1.75 # cooldown time (s)
-@export var jump_speed: float = 10.0
+@export var jump_speed: float = 8.0
 
 
 # --- INSTANCES ---
@@ -241,13 +242,17 @@ func _physics_process(delta):
 	
 	
 	if Input.is_action_just_pressed("RightMouse") and !drill.in_action and !dead:
-		current_gun_L.shoot()
+		current_gun_L.show()
+		await current_gun_L.shoot()
+		current_gun_L.hide()
 	
 	if Input.is_action_just_pressed("F") and !dead:
 		if !drill.in_action and !current_gun_L.in_action:
 			current_gun_R.undraw(1.5, true)
+			drill.show()
 			await drill.punch(velocity.length() if is_dashing else 0.0)
 			current_gun_R.draw(1.5)
+			drill.hide()
 	
 	
 	handle_grabbed_object(delta)
@@ -258,7 +263,7 @@ func _physics_process(delta):
 		if velocity.length() > crouch_speed + 0.1: # 0.1 is epsilon for numerical error
 			slide = true
 			floor_stop_on_slope = false
-			accel_mod = 0.1
+			accel_mod = 0.05
 			if is_on_floor():
 				var normal = get_floor_normal()
 				normal.y = -normal.y
@@ -335,13 +340,14 @@ func _physics_process(delta):
 	else: # airborne speed
 		airborne = true
 		landVel = abs(velocity.y)
-		velocity.y -= delta * 20.0# Gravity
+		velocity.y -= delta * 15.0 # Gravity
 		
-		velocity.x = lerp(velocity.x, direction.x * SPEED, delta * 1.5 * accel_mod)
-		velocity.z = lerp(velocity.z, direction.z * SPEED, delta * 1.5 * accel_mod)
+		if !knocked:
+			velocity.x = lerp(velocity.x, direction.x * SPEED, delta * 1.5 * accel_mod)
+			velocity.z = lerp(velocity.z, direction.z * SPEED, delta * 1.5 * accel_mod)
 	
 	if !dead:
-		cam_gun_tilt_sway(currentInput.x,currentInput.y, delta)
+		cam_gun_tilt_sway(currentInput.x, currentInput.y, delta)
 		gun_bob(velocity.length(), currentInput, delta)
 	
 	handle_healthBar()
@@ -349,6 +355,7 @@ func _physics_process(delta):
 	
 	push_object()
 	move_and_slide()
+	speed_lines()
 
 
 
@@ -382,6 +389,10 @@ func gun_bob(vel: float, input, delta):
 		else:
 			hands.position.y = lerp(hands.position.y, def_gun_pos.y, delta * 10.0)
 			hands.position.x = lerp(hands.position.x, def_gun_pos.x, delta * 10.0)
+
+func speed_lines():
+	speedParticles.amount_ratio = (velocity.length() - 15.0) / 5.0 + 0.2
+	speedParticles.look_at(global_position + velocity + Vector3(0.001, 0.0, 0.0)) # last bit is to prevent colinear warnings
 
 func hideWeapons(): #We will add here check for left/right side later I guess
 	for i in $shakeable_camera/Hands/RightHand.get_children():
@@ -420,7 +431,7 @@ func check_player_feet():
 				physicsCount += 1
 		if enemyCount: # bounce on enemy head
 			if is_on_floor():
-				knockBack(get_floor_normal(), 12.0, 0.1)
+				knockBack(get_floor_normal(), 8.0, 0.3)
 		if physicsCount: # increase slide on phys objects
 			floor_max_angle = deg_to_rad(15.0)
 		else: floor_max_angle = deg_to_rad(45.0)
@@ -472,7 +483,7 @@ func checkLifeLine():
 	if player_health <= 0 and dead == false:
 		if !DEBUG_deathBypass:
 			dead = true
-			current_gun_R.undraw()
+			current_gun_R.undraw(1.0, true)
 			await get_tree().create_timer(0.3).timeout
 			camAnim.play("death")
 			playerDead.emit()

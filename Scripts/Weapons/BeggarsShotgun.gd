@@ -3,7 +3,7 @@ extends Node3D
 #gun stats
 @export var damage: float = 7.0 # per pellet
 @export var recoil: float = 4.0 # degree rotation
-@export var spread: float = 2.5 # max pellet spread (degrees)
+@export var spread: float = 6.0 # max pellet spread (degrees) (for first shot)
 @export var mag: int = 4
 @export var heatPerShot: float = 22.25
 @export var coolDown: float = 5.0 # time (s) it takes to go from 100 to 0 heat
@@ -12,11 +12,12 @@ extends Node3D
 @export var playerRay: RayCast3D
 @export var playerRayEnd: Marker3D
 
-var shotNum: int = 0
+var shotNum: int = 1
 var can_cool: bool = true
 var heat: float = 0.0
+var last_anim: String = ""
 
-@onready var anim = $AnimationPlayer
+@onready var anim: AnimationPlayer = $AnimationPlayer
 @onready var heatBuffer = $HeatBuffer
 
 @onready var pellet_1 = $BeggarsShotgun/Frame/Rays/RayCast3D1
@@ -48,18 +49,25 @@ func _ready() -> void:
 	for pellet in pellets: # scatter
 		pellet.rotation = Vector3(randf_range(-1.0, 1.0), randf_range(-1.0, 1.0), 0.0) * deg_to_rad(spread)
 
+func _physics_process(_delta: float) -> void:
+	if !anim.is_playing() and shotNum == 0 and heat <= 100.0 - heatPerShot:
+		charge()
+	
+	if anim.is_playing(): last_anim = anim.current_animation
+
 func draw(playSpeed):
 	anim.play("draw", -1, playSpeed)
-	shotNum = 0
+	shotNum = 1
 	await anim.animation_finished
 
 func undraw(playSpeed, asap):
 	if anim.is_playing():
-		if asap: anim.speed_scale = 3.0
+		if asap or anim.current_animation == "load": anim.speed_scale = 3.0
+		shotNum = 0
 		await anim.animation_finished
 		anim.speed_scale = 1.0
 	anim.play("undraw", -1, playSpeed)
-	shotNum = 0
+	shotNum = 1
 	await anim.animation_finished
 
 func charge():
@@ -67,10 +75,11 @@ func charge():
 		if shotNum < mag and heat <= 100 - heatPerShot * (shotNum + 1):
 			anim.play("load")
 			await anim.animation_finished
-			shotNum += 1
+			if last_anim == "load":
+				shotNum += 1
 
 func shoot():
-	if anim.is_playing(): await anim.animation_finished
+	if anim.is_playing() and anim.current_animation != "load": await anim.animation_finished
 	while shotNum > 0:
 		if shotNum > 1: anim.play("shootConsecutive")
 		else: anim.play("shootLast")
@@ -97,7 +106,8 @@ func scatterNshoot():
 		rays.look_at(playerRayEnd.global_position)
 	
 	for pellet in pellets: # scatter
-		pellet.rotation = Vector3(randf_range(-1.0, 1.0), randf_range(-1.0, 1.0), 0.0) * deg_to_rad(spread)
+		pellet.rotation = Vector3(randf_range(-1.0, 1.0), randf_range(-1.0, 1.0), 0.0)
+		pellet.rotation *=  deg_to_rad(spread - shotNum)
 		
 		if pellet.is_colliding(): # shoot
 			if pellet.get_collider().is_in_group("Enemy"):
