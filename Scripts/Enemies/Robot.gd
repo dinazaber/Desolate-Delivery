@@ -223,7 +223,7 @@ func kick():
 		if kickRay.get_collider().is_in_group("Player"):
 			kickRay.get_collider().damage_taken(enemy_kick_damage, false)
 			var dir = player.global_position - global_position
-			kickRay.get_collider().knockBack(dir + Vector3(0.0,0.1 if player.is_on_floor() else 0.0,0.0), 15.0, 0.3)
+			kickRay.get_collider().knockBack(dir + Vector3(0.0,0.05 if player.is_on_floor() else 0.0,0.0), 7.0, false, 0.3)
 	await get_tree().create_timer(0.3).timeout
 	isInAttack = false
 
@@ -251,7 +251,7 @@ func damage_taken(recieved_damage, isPlayer):
 	enemy_health -= recieved_damage
 	checkLifeLine()
 
-func knockBack(direction, force, time):
+func knockBack(direction, force, _slowOnGround, time):
 	knocked = true
 	velocity += direction * force
 	await get_tree().create_timer(time).timeout

@@ -57,7 +57,7 @@ const PLAYER_MAX_HEALTH = 100.0
 @export var grenadeCoolTime: float = 8.0 # cooldown time (s)
 @export var walk_speed: float = 5.0
 @export var crouch_speed: float = 2.5
-@export var dash_speed: float = 30.0
+@export var dash_speed: float = 22.5
 @export var dashCoolTime: float = 1.75 # cooldown time (s)
 @export var jump_speed: float = 8.0
 
@@ -297,13 +297,13 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("Shift") and direction and dashCool == 100.0 and !crouch and !dead:
 		dashCool = -10.0
 		var dashDir = direction
-		knockBack(dashDir, dash_speed, 0.2)
+		knockBack(dashDir, dash_speed, false, 0.2)
 		#canDash = false
 		#$SuperTimer.set("wait_time",0.5)
 		#$SuperTimer.start()
 		await get_tree().create_timer(0.2).timeout
 		if !is_on_floor() or !slide:
-			knockBack(-dashDir, 15 * Vector3(velocity.x, 0.0, velocity.z).length() / dash_speed, 0.0)
+			knockBack(-dashDir, 15 * Vector3(velocity.x, 0.0, velocity.z).length() / dash_speed, false, 0.0)
 	
 	#Basic movement
 	if is_on_floor(): # grounded speed
@@ -409,8 +409,8 @@ func throw_grenade():
 		get_parent().add_child(instance_grenade)
 		grenadeCool = -5.0
 
-func knockBack(direction, force, time):
-	if is_on_floor():
+func knockBack(direction, force, slowOnGround, time):
+	if slowOnGround and is_on_floor():
 		force /= 2
 	knocked = true
 	velocity += direction * force
@@ -429,7 +429,7 @@ func check_player_feet():
 				physicsCount += 1
 		if enemyCount: # bounce on enemy head
 			if is_on_floor():
-				knockBack(get_floor_normal(), 8.0, 0.3)
+				knockBack(get_floor_normal(), 8.0, true, 0.3)
 		if physicsCount: # increase slide on phys objects
 			floor_max_angle = deg_to_rad(15.0)
 		else: floor_max_angle = deg_to_rad(45.0)
