@@ -4,6 +4,7 @@ extends Node3D
 @export var damage: float = 7.0 # per pellet
 @export var recoil: float = 4.0 # degree rotation
 @export var spread: float = 5.0 # max pellet spread (degrees) (for first shot)
+@export var pellets: int = 9 # number of pellets
 @export var mag: int = 4
 @export var heatPerShot: float = 22.25
 @export var coolDown: float = 5.0 # time (s) it takes to go from 100 to 0 heat
@@ -20,34 +21,14 @@ var last_anim: String = ""
 @onready var anim: AnimationPlayer = $AnimationPlayer
 @onready var heatBuffer = $HeatBuffer
 
-@onready var pellet_1 = $BeggarsShotgun/Frame/Rays/RayCast3D1
-@onready var pellet_2 = $BeggarsShotgun/Frame/Rays/RayCast3D2
-@onready var pellet_3 = $BeggarsShotgun/Frame/Rays/RayCast3D3
-@onready var pellet_4 = $BeggarsShotgun/Frame/Rays/RayCast3D4
-@onready var pellet_5 = $BeggarsShotgun/Frame/Rays/RayCast3D5
-@onready var pellet_6 = $BeggarsShotgun/Frame/Rays/RayCast3D6
-@onready var pellet_7 = $BeggarsShotgun/Frame/Rays/RayCast3D7
-@onready var pellet_8 = $BeggarsShotgun/Frame/Rays/RayCast3D8
-@onready var pellet_9 = $BeggarsShotgun/Frame/Rays/RayCast3D9
-@onready var pellets: Array = [pellet_1,pellet_2,pellet_3,pellet_4,pellet_5,pellet_6,pellet_7,pellet_8,pellet_9]
+@onready var pellet= $BeggarsShotgun/Frame/RayCast
 
-@onready var tracer_1 = $BeggarsShotgun/Frame/Rays/RayCast3D1/tracer
-@onready var tracer_2 = $BeggarsShotgun/Frame/Rays/RayCast3D2/tracer
-@onready var tracer_3 = $BeggarsShotgun/Frame/Rays/RayCast3D3/tracer
-@onready var tracer_4 = $BeggarsShotgun/Frame/Rays/RayCast3D4/tracer
-@onready var tracer_5 = $BeggarsShotgun/Frame/Rays/RayCast3D5/tracer
-@onready var tracer_6 = $BeggarsShotgun/Frame/Rays/RayCast3D6/tracer
-@onready var tracer_7 = $BeggarsShotgun/Frame/Rays/RayCast3D7/tracer
-@onready var tracer_8 = $BeggarsShotgun/Frame/Rays/RayCast3D8/tracer
-@onready var tracer_9 = $BeggarsShotgun/Frame/Rays/RayCast3D9/tracer
-@onready var tracers: Array = [tracer_1,tracer_2,tracer_3,tracer_4,tracer_5,tracer_6,tracer_7,tracer_8,tracer_9]
-
-@onready var rays = $BeggarsShotgun/Frame/Rays
+@onready var tracer = $BeggarsShotgun/Frame/RayCast/tracer
 
 
 func _ready() -> void:
-	for pellet in pellets: # scatter
-		pellet.rotation = Vector3(randf_range(-1.0, 1.0), randf_range(-1.0, 1.0), 0.0) * deg_to_rad(spread)
+	#pellet.rotation = Vector3(randf_range(-1.0, 1.0), randf_range(-1.0, 1.0), 0.0) * deg_to_rad(spread)
+	tracer.process_material.set("spread", spread)
 
 func _physics_process(_delta: float) -> void:
 	if !anim.is_playing() and shotNum == 0 and heat <= 100.0 - heatPerShot:
@@ -95,29 +76,31 @@ func shoot():
 		await anim.animation_finished
 
 func scatterNshoot():
+	tracer.restart()
+	tracer.emitting = true
 	var dist
 	if playerRay.is_colliding():
-		dist = rays.global_position.distance_to(playerRay.get_collision_point())
+		dist = pellet.global_position.distance_to(playerRay.get_collision_point())
 		if dist < 0.7:
-			rays.look_at(playerRayEnd.global_position)
+			pellet.look_at(playerRayEnd.global_position)
 		else:
-			rays.look_at(playerRay.get_collision_point())
+			pellet.look_at(playerRay.get_collision_point())
 	else:
-		rays.look_at(playerRayEnd.global_position)
+		pellet.look_at(playerRayEnd.global_position)
 	
-	for pellet in pellets: # scatter
-		pellet.rotation = Vector3(randf_range(-1.0, 1.0), randf_range(-1.0, 1.0), 0.0)
-		pellet.rotation *=  deg_to_rad(spread - shotNum*0.75)
+	for i in range(pellets):
+		pellet.rotation.x = deg_to_rad(randf_range(-spread, spread))
+		pellet.rotation.y =  deg_to_rad(randf_range(-spread, spread) + 180)
+		
+		pellet.force_raycast_update()
 		
 		if pellet.is_colliding(): # shoot
+			var hit_pos = pellet.get_collision_point()
+			await spawn_debug_cube(hit_pos)
 			if pellet.get_collider().is_in_group("Enemy"):
 				pellet.get_collider().hit(damage, true)
 			if pellet.get_collider().is_in_group("ShotReactable"):
 				pellet.get_collider().shot()
-	
-	for tracer in tracers: # emit
-		tracer.restart()
-		tracer.emitting = true
 
 func get_heat() -> float:
 	return heat
@@ -131,3 +114,25 @@ func _process(delta: float) -> void:
 
 func _on_heat_buffer_timeout() -> void:
 	can_cool = true
+	
+
+# --- SPREADAING DEBUG FUNCTION ---
+func spawn_debug_cube(pos: Vector3):
+	var mesh_instance = MeshInstance3D.new()
+	var box_mesh = BoxMesh.new()
+	
+	# Set a small size for the cube (e.g., 10cm)
+	box_mesh.size = Vector3(0.1, 0.1, 0.1)
+	mesh_instance.mesh = box_mesh
+	
+	# Create a simple red material to make it pop
+	var material = StandardMaterial3D.new()
+	material.albedo_color = Color(1, 0, 0) # Red
+	mesh_instance.material_override = material
+	
+	# Add to the scene and position it
+	get_tree().root.add_child(mesh_instance)
+	mesh_instance.global_position = pos
+	
+	# Auto-delete after 2 seconds to keep performance high
+	get_tree().create_timer(5.0).timeout.connect(mesh_instance.queue_free)

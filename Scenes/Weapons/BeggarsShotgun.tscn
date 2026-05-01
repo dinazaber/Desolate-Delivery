@@ -336,10 +336,28 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_u0iia")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vqio2"]
+transparency = 2
+alpha_scissor_threshold = 0.7
+alpha_antialiasing_mode = 0
+shading_mode = 0
+albedo_color = Color(1.6797683, 1.6797683, 1.6797683, 1)
+albedo_texture = ExtResource("4_ktqvf")
+texture_filter = 1
+billboard_mode = 1
+billboard_keep_scale = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_xapv0"]
+material = SubResource("StandardMaterial3D_vqio2")
+size = Vector2(3, 3)
+orientation = 2
+
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_e0py8"]
 particle_flag_align_y = true
+angle_min = 1.0728835e-05
+angle_max = 1.0728835e-05
 direction = Vector3(0, 0, -1)
-spread = 0.0
+spread = 10.0
 initial_velocity_min = 70.0
 initial_velocity_max = 70.0
 gravity = Vector3(0, 0, 0)
@@ -369,22 +387,6 @@ sections = 2
 section_length = 0.75
 section_segments = 1
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vqio2"]
-transparency = 2
-alpha_scissor_threshold = 0.7
-alpha_antialiasing_mode = 0
-shading_mode = 0
-albedo_color = Color(1.6797683, 1.6797683, 1.6797683, 1)
-albedo_texture = ExtResource("4_ktqvf")
-texture_filter = 1
-billboard_mode = 1
-billboard_keep_scale = true
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_xapv0"]
-material = SubResource("StandardMaterial3D_vqio2")
-size = Vector2(3, 3)
-orientation = 2
-
 [node name="BeggarsShotgun" type="Node3D" unique_id=267885530]
 script = ExtResource("1_e0py8")
 
@@ -399,144 +401,6 @@ transform = Transform3D(-0.03, -9.7406916e-11, -4.529874e-09, -9.74069e-11, 0.03
 cast_shadow = 0
 mesh = SubResource("ArrayMesh_06o6c")
 
-[node name="Rays" type="Node3D" parent="BeggarsShotgun/Frame" unique_id=1144277170]
-transform = Transform3D(-33.33335, -1.0822996e-07, 5.0331932e-06, -1.08229955e-07, 33.33335, -7.761026e-08, -5.033196e-06, -7.7610316e-08, -33.333332, -1.963846e-06, 0.99999994, 12.984463)
-
-[node name="RayCast3D1" type="RayCast3D" parent="BeggarsShotgun/Frame/Rays" unique_id=1575494301]
-target_position = Vector3(0, 0, -75)
-collision_mask = 3
-collide_with_areas = true
-
-[node name="tracer" type="GPUParticles3D" parent="BeggarsShotgun/Frame/Rays/RayCast3D1" unique_id=42885782]
-cast_shadow = 0
-emitting = false
-amount = 1
-lifetime = 0.1
-one_shot = true
-fixed_fps = 144
-process_material = SubResource("ParticleProcessMaterial_e0py8")
-draw_pass_1 = SubResource("RibbonTrailMesh_xapv0")
-
-[node name="RayCast3D2" type="RayCast3D" parent="BeggarsShotgun/Frame/Rays" unique_id=959240100]
-target_position = Vector3(0, 0, -75)
-collision_mask = 3
-collide_with_areas = true
-
-[node name="tracer" type="GPUParticles3D" parent="BeggarsShotgun/Frame/Rays/RayCast3D2" unique_id=1652280004]
-cast_shadow = 0
-emitting = false
-amount = 1
-lifetime = 0.1
-one_shot = true
-fixed_fps = 144
-process_material = SubResource("ParticleProcessMaterial_e0py8")
-draw_pass_1 = SubResource("RibbonTrailMesh_xapv0")
-
-[node name="RayCast3D3" type="RayCast3D" parent="BeggarsShotgun/Frame/Rays" unique_id=1988529632]
-target_position = Vector3(0, 0, -75)
-collision_mask = 3
-collide_with_areas = true
-
-[node name="tracer" type="GPUParticles3D" parent="BeggarsShotgun/Frame/Rays/RayCast3D3" unique_id=2091121257]
-cast_shadow = 0
-emitting = false
-amount = 1
-lifetime = 0.1
-one_shot = true
-fixed_fps = 144
-process_material = SubResource("ParticleProcessMaterial_e0py8")
-draw_pass_1 = SubResource("RibbonTrailMesh_xapv0")
-
-[node name="RayCast3D4" type="RayCast3D" parent="BeggarsShotgun/Frame/Rays" unique_id=211081069]
-target_position = Vector3(0, 0, -75)
-collision_mask = 3
-collide_with_areas = true
-
-[node name="tracer" type="GPUParticles3D" parent="BeggarsShotgun/Frame/Rays/RayCast3D4" unique_id=1099612129]
-cast_shadow = 0
-emitting = false
-amount = 1
-lifetime = 0.1
-one_shot = true
-fixed_fps = 144
-process_material = SubResource("ParticleProcessMaterial_e0py8")
-draw_pass_1 = SubResource("RibbonTrailMesh_xapv0")
-
-[node name="RayCast3D5" type="RayCast3D" parent="BeggarsShotgun/Frame/Rays" unique_id=1434120727]
-target_position = Vector3(0, 0, -75)
-collision_mask = 3
-collide_with_areas = true
-
-[node name="tracer" type="GPUParticles3D" parent="BeggarsShotgun/Frame/Rays/RayCast3D5" unique_id=2085029450]
-cast_shadow = 0
-emitting = false
-amount = 1
-lifetime = 0.1
-one_shot = true
-fixed_fps = 144
-process_material = SubResource("ParticleProcessMaterial_e0py8")
-draw_pass_1 = SubResource("RibbonTrailMesh_xapv0")
-
-[node name="RayCast3D6" type="RayCast3D" parent="BeggarsShotgun/Frame/Rays" unique_id=719397651]
-target_position = Vector3(0, 0, -75)
-collision_mask = 3
-collide_with_areas = true
-
-[node name="tracer" type="GPUParticles3D" parent="BeggarsShotgun/Frame/Rays/RayCast3D6" unique_id=1155450228]
-cast_shadow = 0
-emitting = false
-amount = 1
-lifetime = 0.1
-one_shot = true
-fixed_fps = 144
-process_material = SubResource("ParticleProcessMaterial_e0py8")
-draw_pass_1 = SubResource("RibbonTrailMesh_xapv0")
-
-[node name="RayCast3D7" type="RayCast3D" parent="BeggarsShotgun/Frame/Rays" unique_id=1085518882]
-target_position = Vector3(0, 0, -75)
-collision_mask = 3
-collide_with_areas = true
-
-[node name="tracer" type="GPUParticles3D" parent="BeggarsShotgun/Frame/Rays/RayCast3D7" unique_id=652472500]
-cast_shadow = 0
-emitting = false
-amount = 1
-lifetime = 0.1
-one_shot = true
-fixed_fps = 144
-process_material = SubResource("ParticleProcessMaterial_e0py8")
-draw_pass_1 = SubResource("RibbonTrailMesh_xapv0")
-
-[node name="RayCast3D8" type="RayCast3D" parent="BeggarsShotgun/Frame/Rays" unique_id=1393808530]
-target_position = Vector3(0, 0, -75)
-collision_mask = 3
-collide_with_areas = true
-
-[node name="tracer" type="GPUParticles3D" parent="BeggarsShotgun/Frame/Rays/RayCast3D8" unique_id=518125483]
-cast_shadow = 0
-emitting = false
-amount = 1
-lifetime = 0.1
-one_shot = true
-fixed_fps = 144
-process_material = SubResource("ParticleProcessMaterial_e0py8")
-draw_pass_1 = SubResource("RibbonTrailMesh_xapv0")
-
-[node name="RayCast3D9" type="RayCast3D" parent="BeggarsShotgun/Frame/Rays" unique_id=1329260917]
-target_position = Vector3(0, 0, -75)
-collision_mask = 3
-collide_with_areas = true
-
-[node name="tracer" type="GPUParticles3D" parent="BeggarsShotgun/Frame/Rays/RayCast3D9" unique_id=1384249019]
-cast_shadow = 0
-emitting = false
-amount = 1
-lifetime = 0.1
-one_shot = true
-fixed_fps = 144
-process_material = SubResource("ParticleProcessMaterial_e0py8")
-draw_pass_1 = SubResource("RibbonTrailMesh_xapv0")
-
 [node name="Barrels" type="MeshInstance3D" parent="BeggarsShotgun/Frame" unique_id=1195580126]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
 cast_shadow = 0
@@ -547,6 +411,23 @@ transform = Transform3D(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 13.5)
 visible = false
 mesh = SubResource("PlaneMesh_xapv0")
 skeleton = NodePath("../../..")
+
+[node name="RayCast" type="RayCast3D" parent="BeggarsShotgun/Frame" unique_id=1575494301]
+transform = Transform3D(-33.33335, 0, -2.9140924e-06, 0, 33.33335, 0, 2.914094e-06, 0, -33.333332, -2.861023e-06, 0.9999995, 12.984461)
+target_position = Vector3(0, 0, -75)
+collision_mask = 3
+collide_with_areas = true
+
+[node name="tracer" type="GPUParticles3D" parent="BeggarsShotgun/Frame/RayCast" unique_id=42885782]
+cast_shadow = 0
+emitting = false
+amount = 9
+lifetime = 0.1
+one_shot = true
+explosiveness = 1.0
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_e0py8")
+draw_pass_1 = SubResource("RibbonTrailMesh_xapv0")
 
 [node name="HeatBuffer" type="Timer" parent="." unique_id=1798419140]
 one_shot = true
