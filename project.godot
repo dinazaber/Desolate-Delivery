@@ -40,6 +40,10 @@ project/assembly_name="ProjectX"
 
 enabled=PackedStringArray("res://addons/MetaMultimeshInstance3D/plugin.cfg", "res://addons/multimesh_scatter/plugin.cfg")
 
+[filesystem]
+
+import/blender/enabled=false
+
 [global_group]
 
 Enemy=""

@@ -2,17 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c05iegxkuhyu"
-path.bptc="res://.godot/imported/lattice.png-2590f5d1399da420abed47a8f4f415dc.bptc.ctex"
+uid="uid://br8uxblpt6jsn"
+path.bptc="res://.godot/imported/Objects_TriplanarMask.png-996408102be59ca550622f5f056de6bc.bptc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={
+"md5": "7efaa56fa4deeb0cdd9f54cc7b59d022"
+}
 
 [deps]
 
-source_file="res://assets/Textures/Architecture/lattice.png"
-dest_files=["res://.godot/imported/lattice.png-2590f5d1399da420abed47a8f4f415dc.bptc.ctex"]
+source_file="res://Objects_TriplanarMask.png"
+dest_files=["res://.godot/imported/Objects_TriplanarMask.png-996408102be59ca550622f5f056de6bc.bptc.ctex"]
 
 [params]
 
@@ -24,7 +27,7 @@ compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=true
+mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
