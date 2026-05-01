@@ -28,6 +28,9 @@ func _ready() -> void:
 	current_exposion_box = explosion_box_small
 	current_damage = grenade_damage_small
 	current_explosion_radius = EXPLOSION_R_SMALL
+	$hitBox_physics.scale = Vector3.ONE * 3.0
+	await get_tree().create_timer(0.15).timeout
+	$hitBox_physics.scale = Vector3.ONE
 
 func shot():
 	got_shot = true
@@ -63,7 +66,7 @@ func explode():
 			var dir: Vector3 = (body.global_position - global_position).normalized()
 			var force: float = current_damage * coef / 10.0
 			if body.has_method("knockBack"):
-				body.knockBack(dir, force, 0.3)
+				body.knockBack(dir, force, true, 0.3)
 			if body.has_method("throw"):
 				body.throw(dir, 40.0 * coef)
 	

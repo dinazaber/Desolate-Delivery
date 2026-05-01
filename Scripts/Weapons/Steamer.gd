@@ -38,7 +38,7 @@ func shoot():
 		
 		var direction = camera.global_transform.basis.z.normalized()
 		
-		knockBack.emit(direction, 10, 0.2)
+		knockBack.emit(direction, 10, true, 0.2)
 		
 		var bodies = []
 		if blastRange.has_overlapping_bodies(): bodies += blastRange.get_overlapping_bodies()
@@ -54,7 +54,7 @@ func shoot():
 		await anim.animation_finished
 		anim.play_backwards("draw")
 		await anim.animation_finished
-		in_action = false
+	in_action = false
 
 func get_heat() -> float:
 	return heat
