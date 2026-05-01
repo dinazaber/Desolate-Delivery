@@ -3,7 +3,7 @@ extends Node3D
 #gun stats
 @export var damage: float = 7.0 # per pellet
 @export var recoil: float = 4.0 # degree rotation
-@export var spread: float = 6.0 # max pellet spread (degrees) (for first shot)
+@export var spread: float = 5.0 # max pellet spread (degrees) (for first shot)
 @export var mag: int = 4
 @export var heatPerShot: float = 22.25
 @export var coolDown: float = 5.0 # time (s) it takes to go from 100 to 0 heat
@@ -107,7 +107,7 @@ func scatterNshoot():
 	
 	for pellet in pellets: # scatter
 		pellet.rotation = Vector3(randf_range(-1.0, 1.0), randf_range(-1.0, 1.0), 0.0)
-		pellet.rotation *=  deg_to_rad(spread - shotNum)
+		pellet.rotation *=  deg_to_rad(spread - shotNum*0.75)
 		
 		if pellet.is_colliding(): # shoot
 			if pellet.get_collider().is_in_group("Enemy"):

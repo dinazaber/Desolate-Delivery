@@ -29,7 +29,6 @@ var canDash: bool = true
 var knocked: bool = false
 var crouch: bool = false
 var slide: bool = false
-var is_dashing: bool = false
 var drillJump: bool = true
 var airborne: bool = false
 var dead: bool = false
@@ -237,8 +236,9 @@ func _physics_process(delta):
 				fireDelay = 0.0
 	
 	if Input.is_action_just_released("LeftMouse") and !drill.in_action and !dead:
-		match current_gun_R:
-			beggarsShotgun: current_gun_R.shoot()
+		if !grabbedObject and fireDelay==15.0:
+			match current_gun_R:
+				beggarsShotgun: current_gun_R.shoot()
 	
 	
 	if Input.is_action_just_pressed("RightMouse") and !drill.in_action and !dead:
@@ -250,7 +250,7 @@ func _physics_process(delta):
 		if !drill.in_action and !current_gun_L.in_action:
 			current_gun_R.undraw(1.5, true)
 			drill.show()
-			await drill.punch(velocity.length() if is_dashing else 0.0)
+			await drill.punch(velocity.length() if velocity.length() >= 15.0 else 0.0)
 			current_gun_R.draw(1.5)
 			drill.hide()
 	
@@ -298,12 +298,10 @@ func _physics_process(delta):
 		dashCool = -10.0
 		var dashDir = direction
 		knockBack(dashDir, dash_speed, 0.2)
-		is_dashing = true
 		#canDash = false
 		#$SuperTimer.set("wait_time",0.5)
 		#$SuperTimer.start()
 		await get_tree().create_timer(0.2).timeout
-		is_dashing = false
 		if !is_on_floor() or !slide:
 			knockBack(-dashDir, 15 * Vector3(velocity.x, 0.0, velocity.z).length() / dash_speed, 0.0)
 	
