@@ -29,6 +29,8 @@ var last_anim: String = ""
 
 func _ready() -> void:
 	#pellet.rotation = Vector3(randf_range(-1.0, 1.0), randf_range(-1.0, 1.0), 0.0) * deg_to_rad(spread)
+	var material = tracer.process_material as ShaderMaterial
+	material.set_shader_parameter("speed", bullet_speed)
 	tracer.amount = pellets
 
 func _physics_process(_delta: float) -> void:
