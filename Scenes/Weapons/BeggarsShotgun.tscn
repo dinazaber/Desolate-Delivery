@@ -385,14 +385,6 @@ section_segments = 1
 
 [node name="BeggarsShotgun" type="Node3D" unique_id=267885530]
 script = ExtResource("1_e0py8")
-damage = null
-recoil = null
-spread = null
-pellets = null
-bullet_speed = null
-mag = null
-heatPerShot = null
-coolDown = null
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=207191350]
 libraries/ = SubResource("AnimationLibrary_8qb6n")
