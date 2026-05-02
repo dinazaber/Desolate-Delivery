@@ -238,7 +238,6 @@ playerRay = NodePath("../../../PlayerRay")
 playerRayEnd = NodePath("../../../PlayerRay/PlayerRayEnd")
 
 [node name="BeggarsShotgun" parent="shakeable_camera/Hands/RightHand" index="3" unique_id=893199726 node_paths=PackedStringArray("camera", "playerRay", "playerRayEnd")]
-pellets = 10
 camera = NodePath("../../..")
 playerRay = NodePath("../../../PlayerRay")
 playerRayEnd = NodePath("../../../PlayerRay/PlayerRayEnd")

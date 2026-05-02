@@ -400,7 +400,7 @@ mesh = ExtResource("6_27uu2")
 transform = Transform3D(-3.4969112e-08, 0, -0.8, 0, 0.8, 0, 0.8, 0, -3.4969112e-08, -84.18467, -0.36877513, -43.266422)
 mesh = ExtResource("7_4j6hl")
 
-[node name="GeneratedFence" type="MultiMeshInstance3D" parent="Fence" unique_id=291930899]
+[node name="GeneratedFence" type="MultiMeshInstance3D" parent="Fence" unique_id=216088672]
 multimesh = SubResource("MultiMesh_4j6hl")
 
 [node name="FarSandMesh" type="MeshInstance3D" parent="." unique_id=1287474185]

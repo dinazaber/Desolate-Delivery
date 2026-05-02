@@ -5,6 +5,7 @@ extends Node3D
 @export var recoil: float = 4.0 # degree rotation
 @export var spread: float = 5.0 # max pellet spread (degrees) (for first shot)
 @export var pellets: int = 9 # number of pellets
+@export var bullet_speed: float = 50.0 # Speed of particles
 @export var mag: int = 4
 @export var heatPerShot: float = 22.25
 @export var coolDown: float = 5.0 # time (s) it takes to go from 100 to 0 heat
@@ -28,7 +29,7 @@ var last_anim: String = ""
 
 func _ready() -> void:
 	#pellet.rotation = Vector3(randf_range(-1.0, 1.0), randf_range(-1.0, 1.0), 0.0) * deg_to_rad(spread)
-	tracer.process_material.set("spread", spread)
+	tracer.amount = pellets
 
 func _physics_process(_delta: float) -> void:
 	if !anim.is_playing() and shotNum == 0 and heat <= 100.0 - heatPerShot:
@@ -76,8 +77,8 @@ func shoot():
 		await anim.animation_finished
 
 func scatterNshoot():
-	tracer.restart()
-	tracer.emitting = true
+	var points = PackedVector3Array()
+	points.resize(pellets)
 	var dist
 	if playerRay.is_colliding():
 		dist = pellet.global_position.distance_to(playerRay.get_collision_point())
@@ -96,11 +97,21 @@ func scatterNshoot():
 		
 		if pellet.is_colliding(): # shoot
 			var hit_pos = pellet.get_collision_point()
-			await spawn_debug_cube(hit_pos)
+			await spawn_debug_cube(hit_pos) # Cube spawn, will be replaced by decal later
+			points[i] = hit_pos # Use collsion point as particle's target point
 			if pellet.get_collider().is_in_group("Enemy"):
 				pellet.get_collider().hit(damage, true)
 			if pellet.get_collider().is_in_group("ShotReactable"):
 				pellet.get_collider().shot()
+				
+		else: points[i] = $BeggarsShotgun/Frame/RayCast/Marker3D.global_position # Take end of weapon ray as particle's target point
+	
+	var material = tracer.process_material as ShaderMaterial
+	material.set_shader_parameter("hit_points", points) #Updating target points
+	material.set_shader_parameter("gun_barrel_pos", pellet.global_position) #Setting starting point
+	
+	tracer.restart()
+	tracer.emitting = true
 
 func get_heat() -> float:
 	return heat
@@ -135,4 +146,4 @@ func spawn_debug_cube(pos: Vector3):
 	mesh_instance.global_position = pos
 	
 	# Auto-delete after 2 seconds to keep performance high
-	get_tree().create_timer(5.0).timeout.connect(mesh_instance.queue_free)
+	get_tree().create_timer(2.0).timeout.connect(mesh_instance.queue_free)
