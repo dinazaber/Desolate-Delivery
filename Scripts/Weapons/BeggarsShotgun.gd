@@ -25,6 +25,7 @@ var last_anim: String = ""
 @onready var pellet= $BeggarsShotgun/Frame/RayCast
 
 @onready var tracer = $BeggarsShotgun/Frame/RayCast/tracer
+@onready var steam = $BeggarsShotgun/steam
 
 
 func _ready() -> void:
@@ -32,12 +33,6 @@ func _ready() -> void:
 	var material = tracer.process_material as ShaderMaterial
 	material.set_shader_parameter("speed", bullet_speed)
 	tracer.amount = pellets
-
-func _physics_process(_delta: float) -> void:
-	if !anim.is_playing() and shotNum == 0 and heat <= 100.0 - heatPerShot:
-		charge()
-	
-	if anim.is_playing(): last_anim = anim.current_animation
 
 func draw(playSpeed):
 	anim.play("draw", -1, playSpeed)
@@ -124,6 +119,13 @@ func _on_restore_cool(coolOnKill: float) -> void:
 func _process(delta: float) -> void:
 	if can_cool:
 		heat = clamp(heat - (100 * delta) / coolDown, 0.0, 100.0)
+	
+	steam.amount_ratio = heat / 100.0
+	
+	if !anim.is_playing() and shotNum == 0 and heat <= 100.0 - heatPerShot:
+		charge()
+	
+	if anim.is_playing(): last_anim = anim.current_animation
 
 func _on_heat_buffer_timeout() -> void:
 	can_cool = true
