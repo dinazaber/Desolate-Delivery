@@ -402,6 +402,7 @@ mesh = ExtResource("6_pc0kw")
 [node name="Sprite" type="MeshInstance3D" parent="BeggarsShotgun/Frame" unique_id=2006190939]
 transform = Transform3D(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 13.5)
 visible = false
+cast_shadow = 0
 mesh = SubResource("PlaneMesh_xapv0")
 skeleton = NodePath("../../..")
 
@@ -418,7 +419,7 @@ amount = 9
 lifetime = 2.0
 one_shot = true
 explosiveness = 1.0
-fixed_fps = 144
+fixed_fps = 60
 process_material = SubResource("ShaderMaterial_mmsk8")
 draw_pass_1 = SubResource("RibbonTrailMesh_xapv0")
 
@@ -427,6 +428,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -75)
 
 [node name="steam" type="GPUParticles3D" parent="BeggarsShotgun" unique_id=391177639]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.02981548, -0.05998698, -0.08985975)
+cast_shadow = 0
 amount = 6
 amount_ratio = 0.0
 visibility_aabb = AABB(-0.5, -0.5, -0.5, 1, 1, 1)

@@ -237,6 +237,7 @@ mesh = ExtResource("2_dxyhc")
 [node name="Sprite" type="MeshInstance3D" parent="SMG" unique_id=1088014816]
 transform = Transform3D(0, 0, 0, 0, 0, 0, 0, 0, 0, 22.634, 0, 0)
 visible = false
+cast_shadow = 0
 mesh = SubResource("PlaneMesh_ovc61")
 skeleton = NodePath("../..")
 

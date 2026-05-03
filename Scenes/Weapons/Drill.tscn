@@ -195,7 +195,7 @@ script = ExtResource("1_wrvfe")
 libraries/ = SubResource("AnimationLibrary_l87pe")
 
 [node name="Drill" type="Marker3D" parent="." unique_id=966625349]
-transform = Transform3D(0.9848072, -0.17364809, 0, 0.16317582, 0.9254161, 0.3420201, -0.059391137, -0.3368239, 0.9396925, -0.8, -0.5, -0.4)
+transform = Transform3D(0.98480713, -0.17364809, 0, 0.1631758, 0.92541605, 0.3420201, -0.059391133, -0.33682388, 0.9396925, -0.8, -0.5, -0.4)
 
 [node name="DrillBase" type="MeshInstance3D" parent="Drill" unique_id=1233721536]
 transform = Transform3D(-6.5567085e-09, 0, 0.15, 0, 0.15, 0, -0.15, 0, -6.5567085e-09, 0.6, 0, 0)
@@ -223,6 +223,7 @@ skeleton = NodePath("../..")
 
 [node name="LungeParticles" type="GPUParticles3D" parent="Drill" unique_id=1104808564]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9, 0, 0)
+cast_shadow = 0
 emitting = false
 amount = 16
 lifetime = 0.15000000000000002
