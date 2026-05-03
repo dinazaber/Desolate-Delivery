@@ -36,6 +36,7 @@
 [ext_resource type="PackedScene" uid="uid://o5yldt1h3ti2" path="res://Scenes/Buildings/CommandCenter.tscn" id="29_h62tq"]
 [ext_resource type="ArrayMesh" uid="uid://duhjwdkqwqgow" path="res://assets/Meshes/Architecture/Crack.mesh" id="30_1k7mg"]
 [ext_resource type="PackedScene" uid="uid://b1g4ndkkyibs4" path="res://Scenes/Objects/HealthPack.tscn" id="30_iyf6e"]
+[ext_resource type="PackedScene" uid="uid://dugekeqiinxib" path="res://Scenes/Buildings/WaterTower.tscn" id="37_ah1fd"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5wyu1"]
 sky_top_color = Color(0.65024585, 0.55192757, 0.44556934, 1)
@@ -142,7 +143,7 @@ size = Vector3(1, 20, 100)
 [sub_resource type="BoxShape3D" id="BoxShape3D_rlhbk"]
 size = Vector3(1, 20, 240)
 
-[sub_resource type="MultiMesh" id="MultiMesh_4j6hl"]
+[sub_resource type="MultiMesh" id="MultiMesh_66vu3"]
 transform_format = 1
 instance_count = 168
 mesh = ExtResource("3_lw8r5")
@@ -400,8 +401,8 @@ mesh = ExtResource("6_27uu2")
 transform = Transform3D(-3.4969112e-08, 0, -0.8, 0, 0.8, 0, 0.8, 0, -3.4969112e-08, -84.18467, -0.36877513, -43.266422)
 mesh = ExtResource("7_4j6hl")
 
-[node name="GeneratedFence" type="MultiMeshInstance3D" parent="Fence" unique_id=1513859277]
-multimesh = SubResource("MultiMesh_4j6hl")
+[node name="GeneratedFence" type="MultiMeshInstance3D" parent="Fence" unique_id=1534057717]
+multimesh = SubResource("MultiMesh_66vu3")
 
 [node name="FarSandMesh" type="MeshInstance3D" parent="." unique_id=1287474185]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7132797, 0.0030711368, 0.39562988)
@@ -951,3 +952,6 @@ metadata/_custom_type_script = "uid://cfwmt6vc7y70h"
 transform = Transform3D(-8.742278e-06, 0, 200, 0, 200, 0, -200, 0, -8.742278e-06, -0.09819794, -7.421879, -46.970585)
 cast_shadow = 0
 mesh = ExtResource("28_lghlv")
+
+[node name="Node3D" parent="." unique_id=1568087152 instance=ExtResource("37_ah1fd")]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 44.838905, 21.956835, 18.669329)
