@@ -66,6 +66,7 @@ script = ExtResource("1_3t8db")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1485554187]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.4)
 layers = 3
+visibility_range_end = 60.0
 mesh = ExtResource("1_vkgwf")
 
 [node name="Decal" type="Decal" parent="MeshInstance3D" unique_id=486826062]
@@ -78,6 +79,7 @@ cull_mask = 1048574
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="MeshInstance3D" unique_id=1464241847]
 transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0, 0, -0.394)
+visibility_range_end = 50.0
 lifetime = 4.0
 fixed_fps = 8
 process_material = SubResource("ParticleProcessMaterial_m5ibw")

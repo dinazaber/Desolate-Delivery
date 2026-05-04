@@ -132,6 +132,7 @@ shape = SubResource("BoxShape3D_hd37v")
 [node name="HealthPack" type="MeshInstance3D" parent="." unique_id=298360792]
 transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 0, 0)
 material_override = ExtResource("2_hd37v")
+visibility_range_end = 45.0
 mesh = SubResource("ArrayMesh_sr0ta")
 
 [node name="PickupRange" type="Area3D" parent="." unique_id=271044562]
@@ -151,6 +152,8 @@ shape = SubResource("SphereShape3D_hd37v")
 [node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=2021565018]
 transform = Transform3D(1, 0, 0, 0, -4.3711385e-08, -0.99999994, 0, 0.99999994, -4.3711385e-08, 0, 0, 0)
 layers = 2
+cast_shadow = 0
+visibility_range_end = 10.0
 amount = 4
 lifetime = 2.0
 process_material = SubResource("ParticleProcessMaterial_jp046")

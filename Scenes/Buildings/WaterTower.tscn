@@ -33,7 +33,7 @@ data = PackedVector3Array(-1.0535892, -0.24787597, -1.053589, -1.3627223, -0.247
 height = 0.021972656
 radius = 1.49
 
-[node name="Node3D" type="Node3D" unique_id=1568087152]
+[node name="WaterTower" type="Node3D" unique_id=1568087152]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=703735849]
 mesh = ExtResource("1_g0esv")
