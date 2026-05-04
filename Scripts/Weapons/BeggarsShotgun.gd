@@ -30,9 +30,9 @@ var last_anim: String = ""
 
 func _ready() -> void:
 	#pellet.rotation = Vector3(randf_range(-1.0, 1.0), randf_range(-1.0, 1.0), 0.0) * deg_to_rad(spread)
-	var material = tracer.process_material as ShaderMaterial
-	material.set_shader_parameter("speed", bullet_speed)
-	tracer.amount = pellets
+	var material = tracer.process_material as ShaderMaterial # Get particle material
+	material.set_shader_parameter("speed", bullet_speed) # Pellet speed
+	tracer.amount = pellets # Set amount of pellets
 
 func draw(playSpeed):
 	anim.play("draw", -1, playSpeed)
@@ -117,6 +117,10 @@ func _on_restore_cool(coolOnKill: float) -> void:
 	heat -= coolOnKill
 
 func _process(delta: float) -> void:
+	# Shader gets current shotNum value every frame.
+	var mat = $BeggarsShotgun/Frame.get_active_material(0) as ShaderMaterial #Display shader material
+	mat.set_shader_parameter("charge_amount", shotNum) #Update charge amount parameter, should be shotNum but 
+	
 	if can_cool:
 		heat = clamp(heat - (100 * delta) / coolDown, 0.0, 100.0)
 	

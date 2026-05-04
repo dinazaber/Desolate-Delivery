@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://cfx84ipuj54ef" path="res://Scripts/Weapons/BeggarsShotgun.gd" id="1_e0py8"]
 [ext_resource type="ArrayMesh" uid="uid://c6nmdg8hnoe36" path="res://assets/Meshes/Weapons/beggarsShotgun/frame.mesh" id="2_xapv0"]
 [ext_resource type="Texture2D" uid="uid://24usakcrqsvh" path="res://assets/Textures/Architecture/Explosion1.png" id="4_ktqvf"]
-[ext_resource type="Shader" uid="uid://dc5k8hk8ct5i8" path="res://Shaders/Pellets.gdshader" id="5_xapv0"]
+[ext_resource type="Shader" uid="uid://dc5k8hk8ct5i8" path="res://Shaders/Particles/Pellets.gdshader" id="5_xapv0"]
 [ext_resource type="ArrayMesh" uid="uid://eadvfmp34ewb" path="res://assets/Meshes/Weapons/beggarsShotgun/barrels.mesh" id="6_pc0kw"]
 
 [sub_resource type="Animation" id="Animation_sjkk0"]
