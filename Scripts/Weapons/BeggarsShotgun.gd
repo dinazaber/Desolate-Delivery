@@ -119,7 +119,7 @@ func _on_restore_cool(coolOnKill: float) -> void:
 func _process(delta: float) -> void:
 	# Shader gets current shotNum value every frame.
 	var mat = $BeggarsShotgun/Frame.get_active_material(0) as ShaderMaterial #Display shader material
-	mat.set_shader_parameter("charge_amount", shotNum) #Update charge amount parameter, should be shotNum but 
+	mat.set_shader_parameter("charge_amount", shotNum) #Update charge amount parameter using shotNum
 	
 	if can_cool:
 		heat = clamp(heat - (100 * delta) / coolDown, 0.0, 100.0)
