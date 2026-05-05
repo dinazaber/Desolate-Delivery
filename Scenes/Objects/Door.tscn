@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://d16pmg4f4pnf8"]
+
+[ext_resource type="Script" uid="uid://b1ovnputuxw4u" path="res://Scripts/Modules/Door.gd" id="1_eaxfl"]
+[ext_resource type="ArrayMesh" uid="uid://da13c70sswr3x" path="res://assets/Meshes/Objects/Door1.mesh" id="1_lgil6"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lgil6"]
+size = Vector3(0.5326538, 1.0679932, 0.024902344)
+
+[sub_resource type="Animation" id="Animation_lgil6"]
+resource_name = "Open"
+length = 0.4
+tracks/0/type = "rotation_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0.1, 1, 0, 0, 0, 1, 0.3, 1, 0, -0.70710677, 0, 0.70710677)
+
+[sub_resource type="Animation" id="Animation_eaxfl"]
+length = 0.001
+tracks/0/type = "rotation_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_o57tb"]
+_data = {
+&"Open": SubResource("Animation_lgil6"),
+&"RESET": SubResource("Animation_eaxfl")
+}
+
+[node name="Door" type="Node3D" unique_id=505525111]
+script = ExtResource("1_eaxfl")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1102868406]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.17, 0, -0.24)
+mesh = ExtResource("1_lgil6")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D" unique_id=119107222]
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D" unique_id=811106455]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.26541138, -0.0119018555, 0.00024412572)
+shape = SubResource("BoxShape3D_lgil6")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=295880933]
+libraries/ = SubResource("AnimationLibrary_o57tb")

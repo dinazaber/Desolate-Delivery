@@ -156,13 +156,25 @@ func _input(event):
 		else: 
 			if playerRay.is_colliding():
 				var collider = playerRay.get_collider()
-				var distance = global_position.distance_to(collider.global_position)
-				if collider is RigidBody3D and distance < 3:
-					grabbedObject = collider
-					grabbedObject.is_held = true
-					grabbedObject.gravity_scale = 0.0
-					grabbedObject.linear_damp = 0.0
-					add_collision_exception_with(grabbedObject)
+				
+				#Object that can be grabbed
+				if collider is RigidBody3D:
+					var distance = global_position.distance_to(collider.global_position)
+					if distance < 3:
+						grabbedObject = collider
+						grabbedObject.is_held = true
+						grabbedObject.gravity_scale = 0.0
+						grabbedObject.linear_damp = 0.0
+						add_collision_exception_with(grabbedObject)
+				
+				#Doors currently
+				elif collider.owner.has_method("getType"):
+					var object = collider.owner
+					
+					if object.getType() == "Door":
+						if !object.getOpenStatus(): object.open()
+						else: object.close()
+				
 	
 	# Weapon Switch
 	if Input.is_action_just_pressed("1") and !drill.in_action: # smg
