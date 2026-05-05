@@ -37,6 +37,8 @@
 [ext_resource type="ArrayMesh" uid="uid://duhjwdkqwqgow" path="res://assets/Meshes/Architecture/Crack.mesh" id="30_1k7mg"]
 [ext_resource type="PackedScene" uid="uid://b1g4ndkkyibs4" path="res://Scenes/Objects/HealthPack.tscn" id="30_iyf6e"]
 [ext_resource type="PackedScene" uid="uid://dugekeqiinxib" path="res://Scenes/Buildings/WaterTower.tscn" id="37_ah1fd"]
+[ext_resource type="ArrayMesh" uid="uid://rn8rjuep3gb1" path="res://assets/Meshes/Objects/DamagedFlag.mesh" id="38_66vu3"]
+[ext_resource type="ArrayMesh" uid="uid://83j8mstw0jra" path="res://assets/Meshes/Architecture/FlagBase.mesh" id="39_33yqv"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5wyu1"]
 sky_top_color = Color(0.65024585, 0.55192757, 0.44556934, 1)
@@ -143,7 +145,7 @@ size = Vector3(1, 20, 100)
 [sub_resource type="BoxShape3D" id="BoxShape3D_rlhbk"]
 size = Vector3(1, 20, 240)
 
-[sub_resource type="MultiMesh" id="MultiMesh_ah1fd"]
+[sub_resource type="MultiMesh" id="MultiMesh_66vu3"]
 transform_format = 1
 instance_count = 168
 mesh = ExtResource("3_lw8r5")
@@ -329,6 +331,10 @@ visible_instance_count = 8
 mesh = ExtResource("23_wr8wa")
 buffer = PackedFloat32Array(0.6, 0, 0, -17.926228, 0, 0.6, 0, 0.67414296, 0, 0, 0.6, 3.0193179, 0.017182143, 0, 0.5997539, -19.231634, 0, 0.59999996, 0, 0.67414296, -0.5997539, 0, 0.017182143, 3.0193179, 0.5999978, 0, 0.0016440749, -18.549881, 0, 0.6000001, 0, 1.8753792, -0.0016440749, 0, 0.5999978, 3.0193179, 0.5999978, 0, 0.0016440749, -18.549881, 0, 0.6000001, 0, 0.66560066, -0.0016440749, 0, 0.5999978, 1.7847166, -0.31646717, 0, 0.50975347, 6.808233, 0, 0.6, 0, 0.8040292, -0.50975347, 0, -0.31646717, 3.9069939, -0.31646717, 0, 0.50975347, 22.89544, 0, 0.6, 0, 0.8040292, -0.50975347, 0, -0.31646717, 2.7962508, 0.43772516, 0, 0.41036168, 1.9845014, 0, 0.6000001, 0, 0.84521914, -0.41036168, 0, 0.43772516, 8.206118, 0.5999978, 0, 0.0016440749, 1.9845014, 0, 0.6000001, 0, 0.7954869, -0.0016440749, 0, 0.5999978, 5.2657094)
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_7rfda"]
+height = 13.757935
+radius = 0.15
+
 [node name="Node" type="Node" unique_id=310413080]
 script = ExtResource("1_jcbmq")
 
@@ -401,8 +407,8 @@ mesh = ExtResource("6_27uu2")
 transform = Transform3D(-3.4969112e-08, 0, -0.8, 0, 0.8, 0, 0.8, 0, -3.4969112e-08, -84.18467, -0.36877513, -43.266422)
 mesh = ExtResource("7_4j6hl")
 
-[node name="GeneratedFence" type="MultiMeshInstance3D" parent="Fence" unique_id=836377645]
-multimesh = SubResource("MultiMesh_ah1fd")
+[node name="GeneratedFence" type="MultiMeshInstance3D" parent="Fence" unique_id=486791618]
+multimesh = SubResource("MultiMesh_66vu3")
 
 [node name="FarSandMesh" type="MeshInstance3D" parent="." unique_id=1287474185]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7132797, 0.0030711368, 0.39562988)
@@ -955,3 +961,18 @@ mesh = ExtResource("28_lghlv")
 
 [node name="WaterTower" parent="." unique_id=1568087152 instance=ExtResource("37_ah1fd")]
 transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 44.838905, 21.956835, 18.669329)
+
+[node name="Flag" type="StaticBody3D" parent="." unique_id=524060607]
+transform = Transform3D(0.0012740649, 0, 0.99999917, 0, 1, 0, -0.99999917, 0, 0.0012740649, 8.008439, 0, -21.145174)
+
+[node name="Flag" type="MeshInstance3D" parent="Flag" unique_id=1860459532]
+transform = Transform3D(-0.066204116, 0.9978061, 4.361549e-08, 3.821371e-15, 4.371139e-08, -1, -0.9978061, -0.066204116, -2.8938778e-09, -0.06636837, 11.481316, -1.0268984)
+mesh = ExtResource("38_66vu3")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Flag" unique_id=915999585]
+mesh = ExtResource("39_33yqv")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Flag" unique_id=111668112]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.8789673, 0)
+shape = SubResource("CylinderShape3D_7rfda")
