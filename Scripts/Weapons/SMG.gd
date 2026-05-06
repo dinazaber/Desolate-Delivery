@@ -47,6 +47,9 @@ func shoot():
 		else:
 			barrel.look_at(playerRayEnd.global_position)
 		
+		ray.rotation.x = deg_to_rad(randf_range(-0.015, 0.015) * heat)
+		ray.rotation.y = deg_to_rad(randf_range(-0.015, 0.015) * heat)
+		
 		camera.add_recoil(recoil)
 		tracer.restart()
 		tracer.emitting = true

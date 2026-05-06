@@ -18,7 +18,7 @@ func open():
 
 func close():
 	if isOpen:
-		anim.play_backwards("Open")
+		anim.play("Close")
 		await anim.animation_finished
 		isOpen = false
 

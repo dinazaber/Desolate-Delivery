@@ -8,7 +8,7 @@ var screenEffect: ColorRect
 @onready var playerRay = $shakeable_camera/PlayerRay
 var grabbedObject: RigidBody3D = null
 @onready var hold_pos = $shakeable_camera/holdPos
-@onready var enemyBounceCheck = $EnemyBounceCheck
+@onready var enemyBounceCheck = $Feet/EnemyBounceCheck
 @onready var speedParticles = $SpeedParticles
 
 
@@ -272,6 +272,7 @@ func _physics_process(delta):
 	if Input.is_action_pressed("Ctrl") and !dead: # crouch/slide
 		crouch = true
 		playerCollision.shape.height = lerp(playerCollision.shape.height, 1.0, delta * 15.0)
+		$Feet.position.y = lerp($Feet.position.y, 0.5, delta * 15.0)
 		if velocity.length() > crouch_speed + 0.1: # 0.1 is epsilon for numerical error
 			slide = true
 			floor_stop_on_slope = false
@@ -288,7 +289,8 @@ func _physics_process(delta):
 		slide = false
 		floor_constant_speed = true
 		crouch = false
-		playerCollision.shape.height = lerp(playerCollision.shape.height, 2.0, delta * 10.0)
+		playerCollision.shape.height = lerp(playerCollision.shape.height, 2.0, delta * 15.0)
+		$Feet.position.y = lerp($Feet.position.y, 0.0, delta * 15.0)
 		accel_mod = 1.0
 	
 	if crouch:
@@ -300,8 +302,8 @@ func _physics_process(delta):
 	var currentInput = Input.get_vector("A", "D", "W", "S")
 	if dead: currentInput = Vector3.ZERO
 	var direction = (transform.basis * Vector3(currentInput.x, 0, currentInput.y)).normalized()
-	if direction: $StairBounds.look_at($StairBounds.global_position + direction, Vector3.UP) #Avoids errors with look_at trying to look at the same target
-	if direction and is_on_floor() and $StairBounds/StairsMin.is_colliding() and !$StairBounds/StairsMax.is_colliding() and is_on_wall():
+	if direction: $Feet.look_at($Feet.global_position + direction, Vector3.UP) #Avoids errors with look_at trying to look at the same target
+	if direction and is_on_floor() and $Feet/StairsMin.is_colliding() and !$Feet/StairsMax.is_colliding() and is_on_wall():
 		velocity.y = 4
 	
 	
@@ -440,7 +442,7 @@ func check_player_feet():
 			if body.is_in_group("Physics"):
 				physicsCount += 1
 		if enemyCount: # bounce on enemy head
-			if is_on_floor():
+			if is_on_floor() and !knocked:
 				knockBack(get_floor_normal(), 8.0, true, 0.3)
 		if physicsCount: # increase slide on phys objects
 			floor_max_angle = deg_to_rad(15.0)

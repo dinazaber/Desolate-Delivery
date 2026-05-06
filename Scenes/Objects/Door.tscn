@@ -6,29 +6,56 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_lgil6"]
 size = Vector3(0.5326538, 1.0679932, 0.024902344)
 
+[sub_resource type="Animation" id="Animation_o57tb"]
+resource_name = "Close"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.26666668, 0.33333334, 0.4),
+"transitions": PackedFloat32Array(1.6, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, -1.5707964, 0), Vector3(0, 0, 0), Vector3(0, 0.04363323, 0), Vector3(0, 0, 0), Vector3(0, 0, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_lgil6"]
 resource_name = "Open"
 length = 0.4
-tracks/0/type = "rotation_3d"
+tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("MeshInstance3D")
+tracks/0/path = NodePath("MeshInstance3D:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/keys = PackedFloat32Array(0.1, 1, 0, 0, 0, 1, 0.3, 1, 0, -0.70710677, 0, 0.70710677)
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.26666668, 0.33333334, 0.4),
+"transitions": PackedFloat32Array(1.6, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -1.5707964, 0), Vector3(0, -1.6144296, 0), Vector3(0, -1.5707964, 0), Vector3(0, -1.5707964, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_eaxfl"]
 length = 0.001
-tracks/0/type = "rotation_3d"
+tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("MeshInstance3D")
+tracks/0/path = NodePath("MeshInstance3D:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1)
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_o57tb"]
 _data = {
+&"Close": SubResource("Animation_o57tb"),
 &"Open": SubResource("Animation_lgil6"),
 &"RESET": SubResource("Animation_eaxfl")
 }

@@ -316,7 +316,7 @@ orientation = 2
 shader = ExtResource("5_xapv0")
 shader_parameter/hit_points = PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 shader_parameter/gun_barrel_pos = Vector3(0, 0, 0)
-shader_parameter/speed = 50.0
+shader_parameter/speed = 70.0
 
 [sub_resource type="Gradient" id="Gradient_u4wyd"]
 offsets = PackedFloat32Array(0, 0.14785992, 0.8793774, 1)
@@ -343,15 +343,15 @@ section_length = 0.75
 section_segments = 1
 
 [sub_resource type="Curve" id="Curve_sfoia"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.25170067, 0.7024966), 0.0, 0.0, 0, 0, Vector2(0.75170076, 0.7024966), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.25170067, 0.7024966), 0.0, 0.0, 0, 0, Vector2(0.49659863, 0.7024966), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 4
 
 [sub_resource type="CurveTexture" id="CurveTexture_lkl2b"]
 curve = SubResource("Curve_sfoia")
 
 [sub_resource type="Curve" id="Curve_pc0kw"]
-_data = [Vector2(0, 0.33287108), 0.0, 0.0, 0, 0, Vector2(0.3265306, 1), 0.0, 0.0, 0, 0, Vector2(0.659864, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.33287108), 0.0, 0.0, 0, 0]
-point_count = 4
+_data = [Vector2(0, 0.33287108), 0.0, 0.0, 0, 0, Vector2(0.5034014, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
 
 [sub_resource type="CurveTexture" id="CurveTexture_g3uyi"]
 curve = SubResource("Curve_pc0kw")
