@@ -68,6 +68,17 @@ func _physics_process(delta):
 			player = get_tree().get_first_node_in_group("Player")
 		return
 	
+	#if is_on_wall() and is_on_floor():
+	#	var canJump: bool = true
+	#	for ray in $Feet.get_children():
+	#		if ray.is_colliding(): canJump = false
+	#	if canJump:
+	#		var walk_dir = (look_target - global_position).normalized()
+	#		var object_dir = -get_wall_normal()
+	#		var angle = walk_dir.signed_angle_to(object_dir, Vector3.UP)
+	#		print(rad_to_deg(angle))
+	#		if abs(angle) < deg_to_rad(55.0): velocity.y = 4.0
+	
 	dist = global_position.distance_to(player.global_position)
 	
 	if !dead:

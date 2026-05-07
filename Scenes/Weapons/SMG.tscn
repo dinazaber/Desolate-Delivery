@@ -247,7 +247,7 @@ transform = Transform3D(-1.4570462e-07, 0, -3.3333328, 0, 3.3333328, 0, 3.333332
 [node name="RayCast3D" type="RayCast3D" parent="SMG/Barrel" unique_id=1785846607]
 transform = Transform3D(10.000003, 0, 4.440894e-14, 0, 10.000003, 0, -4.440894e-14, 0, 10.000003, -5.5241253e-15, 0, 6.7560787)
 target_position = Vector3(0, 0, -75)
-collision_mask = 3
+collision_mask = 11
 collide_with_areas = true
 
 [node name="smg_tracers" type="GPUParticles3D" parent="SMG/Barrel/RayCast3D" unique_id=1931424156]

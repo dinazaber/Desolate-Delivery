@@ -299,8 +299,8 @@ visible_instance_count = 6
 mesh = ExtResource("25_a87j4")
 buffer = PackedFloat32Array(-2.1855695e-07, 0, -5, 5, 0, 5, 0, 0.187, 5, 0, -2.1855695e-07, -11.963, -2.1855695e-07, 0, -5, 75, 0, 5, 0, 0.187, 5, 0, -2.1855695e-07, -11.963, -2.1855695e-07, 0, -5, 95, 0, 5, 0, 0.187, 5, 0, -2.1855695e-07, -11.963, -2.1855695e-07, 0, -5, -55, 0, 5, 0, 0.187, 5, 0, -2.1855695e-07, -11.963, -2.1855695e-07, 0, -5, -25, 0, 5, 0, 0.187, 5, 0, -2.1855695e-07, -11.963, -2.1855695e-07, 0, -5, 35, 0, 5, 0, 0.187, 5, 0, -2.1855695e-07, -11.963)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_d53pk"]
-size = Vector3(200, 1, 10)
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_onari"]
+points = PackedVector3Array(99.5, 0.5, -4.5, 99.5, 0.5, 4.5, -99.5, 0.5, 4.5, -99.5, 0.5, -4.5, -100.5, 0, -5.5, -100.5, 0, 5.5, 100.5, 0, 5.5, 100.5, 0, -5.5)
 
 [sub_resource type="MultiMesh" id="MultiMesh_ijbfb"]
 transform_format = 1
@@ -402,7 +402,7 @@ mesh = ExtResource("6_27uu2")
 transform = Transform3D(-3.4969112e-08, 0, -0.8, 0, 0.8, 0, 0.8, 0, -3.4969112e-08, -84.18467, -0.36877513, -43.266422)
 mesh = ExtResource("7_4j6hl")
 
-[node name="GeneratedFence" type="MultiMeshInstance3D" parent="Fence" unique_id=287794533]
+[node name="GeneratedFence" type="MultiMeshInstance3D" parent="Fence" unique_id=1994206414]
 multimesh = SubResource("MultiMesh_7rfda")
 
 [node name="Stones" type="StaticBody3D" parent="." unique_id=1585112000]
@@ -500,10 +500,6 @@ navigation_layers = 4
 
 [node name="Player" parent="." unique_id=1941692924 instance=ExtResource("4_ru70h")]
 transform = Transform3D(0.8183203, 0, -0.57476246, 0, 1, 0, 0.57476246, 0, 0.8183203, -3.972, 2.2440758, -3.147)
-
-[node name="Robot" parent="." unique_id=969091388 instance=ExtResource("15_xm5mx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.63, 0, -5.918)
-detection_range = 0.0
 
 [node name="SniperTurret" parent="." unique_id=1830225406 instance=ExtResource("7_xe0hb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.673558, 1.785, -11.888981)
@@ -826,10 +822,9 @@ shape_type = 0
 go_make_colliders = null
 metadata/_custom_type_script = "uid://cfwmt6vc7y70h"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RunWay" unique_id=1897171781]
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="RunWay" unique_id=2041832908]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.98532, -0.09341562, -11.963)
-shape = SubResource("BoxShape3D_d53pk")
-debug_color = Color(0.37950006, 0.69, 0, 1)
+shape = SubResource("ConvexPolygonShape3D_onari")
 
 [node name="CommandCenter" parent="." unique_id=1461013436 instance=ExtResource("29_h62tq")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 19.70058, 4.9964066, -22.223436)
@@ -1005,3 +1000,6 @@ shape = SubResource("CylinderShape3D_7rfda")
 
 [node name="Drone" parent="." unique_id=290106699 instance=ExtResource("40_7rfda")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.338417, 0.8061118, -12.71439)
+
+[node name="Robot" parent="." unique_id=969091388 instance=ExtResource("15_xm5mx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.380188, 0.26802826, -5.4589863)

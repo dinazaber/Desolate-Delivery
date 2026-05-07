@@ -3,7 +3,7 @@ extends Node3D
 #gun stats
 @export var damage: float = 7.0 # per pellet
 @export var recoil: float = 4.0 # degree rotation
-@export var spread: float = 6.0 # max pellet spread (degrees) (for first shot)
+@export var spread: float = 4.5 # max pellet spread (degrees) (for first shot)
 @export var pellets: int = 9 # number of pellets
 @export var bullet_speed: float = 50.0 # Speed of particles
 @export var mag: int = 4
@@ -87,8 +87,8 @@ func scatterNshoot():
 		pellet.look_at(playerRayEnd.global_position)
 	
 	for i in range(pellets):
-		pellet.rotation.x = deg_to_rad(randf_range(-spread, spread) * (4 - shotNum*0.75)/4)
-		pellet.rotation.y = deg_to_rad(randf_range(-spread, spread) * (4 - shotNum*0.75)/4 + 180)
+		pellet.rotation.x = deg_to_rad(randf_range(-spread, spread) * (4 - shotNum*0.6)/4)
+		pellet.rotation.y = deg_to_rad(randf_range(-spread, spread) * (4 - shotNum*0.6)/4 + 180)
 		
 		pellet.force_raycast_update()
 		

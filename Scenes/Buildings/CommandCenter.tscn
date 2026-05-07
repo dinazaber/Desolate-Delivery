@@ -250,26 +250,33 @@ size = Vector3(0.07873535, 1.6611328, 1.7796135)
 [sub_resource type="BoxShape3D" id="BoxShape3D_5iij6"]
 size = Vector3(0.07873535, 0.5908203, 0.5281553)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_62qxw"]
-size = Vector3(0.7958679, 0.050567627, 0.047058105)
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3uc1p"]
+radius = 0.029
+height = 0.788
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_tikpp"]
-size = Vector3(2.0585785, 0.050567627, 0.047058105)
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ep4op"]
+radius = 0.03
+height = 2.0570312
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_wmayw"]
-size = Vector3(0.24285126, 0.050567627, 0.047058105)
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_me2ru"]
+radius = 0.026
+height = 0.295
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_odege"]
-size = Vector3(2.47698, 0.050567627, 0.047058105)
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ukbaj"]
+radius = 0.03
+height = 2.525
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_vvh0m"]
-size = Vector3(0.19784103, 0.050567627, 0.047058105)
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fum3u"]
+radius = 0.029
+height = 0.225
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_jgrtv"]
-size = Vector3(0.7551705, 0.050567627, 0.047058105)
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_nxwlb"]
+radius = 0.03
+height = 0.825
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_cpl6s"]
-size = Vector3(0.68961906, 0.050567627, 0.047058105)
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_02bst"]
+radius = 0.031
+height = 0.755
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_omnoc"]
 size = Vector3(0.84139156, 0.050567627, 0.047058105)
@@ -283,17 +290,20 @@ size = Vector3(0.040252686, 1.9027023, 0.04156494)
 [sub_resource type="BoxShape3D" id="BoxShape3D_6huga"]
 size = Vector3(0.22546387, 1.9396286, 0.2815628)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_wh1jp"]
-size = Vector3(0.063079834, 1.9527245, 0.058916092)
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_hnpkd"]
+radius = 0.034
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_7utvv"]
-size = Vector3(0.063079834, 0.53652096, 0.058916092)
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_qintq"]
+radius = 0.032
+height = 0.6
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_0gmep"]
-size = Vector3(0.063079834, 0.44765377, 0.058916092)
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_qs815"]
+radius = 0.031
+height = 0.485
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_vofef"]
-size = Vector3(0.063079834, 0.5939441, 0.058916092)
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_li4lv"]
+radius = 0.035
+height = 0.65
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_uivis"]
 size = Vector3(1.3616638, 0.038085938, 0.022827148)
@@ -565,15 +575,6 @@ transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 3.29
 shape = SubResource("BoxShape3D_6v6j6")
 debug_color = Color(0.9737951, 0, 0.39366198, 1)
 
-[node name="Stones" type="StaticBody3D" parent="Collisions" unique_id=1102724354]
-collision_layer = 49
-collision_mask = 0
-
-[node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="Collisions/Stones" unique_id=1481648242]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 2.6106, -2.095776, -1.6066113)
-depth = 0.2
-polygon = PackedVector2Array(-1.9012967, 1.1260196, -1.7009845, 0.33389962, -1.0765367, 0.096164584, -0.8092778, 0.37689495, -0.22162557, 0.99918115, 0.10457468, 1.6189382, -0.28287363, 1.9673252, -0.6111311, 2.1836686, -1.2616783, 2.1319032, -1.7106555, 1.7006162)
-
 [node name="UpperHoleWall" type="StaticBody3D" parent="Collisions" unique_id=2107173831]
 collision_layer = 49
 collision_mask = 0
@@ -678,32 +679,32 @@ collision_layer = 49
 collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Collisions/RoofFence" unique_id=728928578]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4058075, 0.13139343, 1.2283661)
-shape = SubResource("BoxShape3D_62qxw")
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0.4058075, 0.13139343, 1.2283661)
+shape = SubResource("CapsuleShape3D_3uc1p")
 
 [node name="CollisionShape3D8" type="CollisionShape3D" parent="Collisions/RoofFence" unique_id=1849439469]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0113721, 0.13139343, -2.124567)
-shape = SubResource("BoxShape3D_tikpp")
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 1.0405236, 0.13139343, -2.124567)
+shape = SubResource("CapsuleShape3D_ep4op")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Collisions/RoofFence" unique_id=90285324]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.1208427, 0.13139343, 1.2283661)
-shape = SubResource("BoxShape3D_wmayw")
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 3.1208427, 0.13139343, 1.2283661)
+shape = SubResource("CapsuleShape3D_me2ru")
 
 [node name="CollisionShape3D5" type="CollisionShape3D" parent="Collisions/RoofFence" unique_id=1983978680]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 3.2427814, 0.13139343, 0.013147712)
-shape = SubResource("BoxShape3D_odege")
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 3.2427814, 0.13139343, 0.013147712)
+shape = SubResource("CapsuleShape3D_ukbaj")
 
 [node name="CollisionShape3D6" type="CollisionShape3D" parent="Collisions/RoofFence" unique_id=403896717]
-transform = Transform3D(-0.067651264, -0.024953842, 0.99739695, -0.34606794, 0.9382094, -3.3253496e-09, -0.93576723, -0.3451671, -0.07210677, 3.2397382, 0.09920247, -1.3095299)
-shape = SubResource("BoxShape3D_vvh0m")
+transform = Transform3D(1, 0, 0, 0, 0.30735654, -0.9515944, 0, 0.95159435, 0.30735657, 3.2397382, 0.09920247, -1.3095299)
+shape = SubResource("CapsuleShape3D_fum3u")
 
 [node name="CollisionShape3D7" type="CollisionShape3D" parent="Collisions/RoofFence" unique_id=1400115300]
-transform = Transform3D(-0.12634951, -0.105869606, 0.98632014, -0.6422527, 0.7664929, -2.3844777e-08, -0.7560075, -0.6334668, -0.16484107, 3.1884851, -0.17192596, -1.6781834)
-shape = SubResource("BoxShape3D_jgrtv")
+transform = Transform3D(0.9862734, 0.13485298, 0.09528647, -0.013998694, 0.64328164, -0.7655013, -0.1645262, 0.75365984, 0.6363394, 3.1884851, -0.17192596, -1.6781834)
+shape = SubResource("CapsuleShape3D_nxwlb")
 
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="Collisions/RoofFence" unique_id=1478767754]
-transform = Transform3D(0.8280407, -0.5606679, 0, 0.5606679, 0.8280407, 0, 0, 0, 1, 2.7266695, -0.056607105, 1.2283661)
-shape = SubResource("BoxShape3D_cpl6s")
+transform = Transform3D(0.55201983, 0.8308566, 0.07036584, -0.8329212, 0.5533915, 0, -0.03893986, -0.0586092, 0.9975213, 2.7266695, -0.056607105, 1.2539005)
+shape = SubResource("CapsuleShape3D_02bst")
 
 [node name="CollisionShape3D4" type="CollisionShape3D" parent="Collisions/RoofFence" unique_id=560681921]
 transform = Transform3D(0.9821528, -0.18808421, 0, 0.18808421, 0.9821528, 0, 0, 0, 1, 2.0360894, -0.3242024, 1.2283661)
@@ -727,19 +728,19 @@ shape = SubResource("BoxShape3D_6huga")
 
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="Collisions/Details" unique_id=47155346]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.409384, -1.5954299, 1.7432661)
-shape = SubResource("BoxShape3D_wh1jp")
+shape = SubResource("CapsuleShape3D_hnpkd")
 
 [node name="CollisionShape3D4" type="CollisionShape3D" parent="Collisions/Details" unique_id=706924981]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5836704, -2.3035316, 1.7432661)
-shape = SubResource("BoxShape3D_7utvv")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5799096, -2.3035316, 1.7432661)
+shape = SubResource("CapsuleShape3D_qintq")
 
 [node name="CollisionShape3D5" type="CollisionShape3D" parent="Collisions/Details" unique_id=309032822]
 transform = Transform3D(0.91096467, -0.41248444, 0, 0.4121779, 0.9102877, 0.03854477, -0.015899118, -0.035112925, 0.99925685, 2.4939637, -1.8446434, 1.737741)
-shape = SubResource("BoxShape3D_0gmep")
+shape = SubResource("CapsuleShape3D_qs815")
 
 [node name="CollisionShape3D6" type="CollisionShape3D" parent="Collisions/Details" unique_id=612090980]
 transform = Transform3D(0.9868783, 0.16146609, 0, -0.16107415, 0.98448265, 0.069634594, 0.011243626, -0.06872087, 0.99757254, 2.4527326, -1.3558593, 1.710115)
-shape = SubResource("BoxShape3D_vofef")
+shape = SubResource("CapsuleShape3D_li4lv")
 
 [node name="TowerFence" type="StaticBody3D" parent="Collisions" unique_id=1011672159]
 collision_layer = 49

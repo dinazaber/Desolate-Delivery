@@ -409,7 +409,7 @@ skeleton = NodePath("../../..")
 [node name="RayCast" type="RayCast3D" parent="BeggarsShotgun/Frame" unique_id=1575494301]
 transform = Transform3D(-33.33335, 0, -2.9140924e-06, 0, 33.33335, 0, 2.914094e-06, 0, -33.333332, -2.861023e-06, 0.9999995, 12.984461)
 target_position = Vector3(0, 0, -75)
-collision_mask = 3
+collision_mask = 11
 collide_with_areas = true
 
 [node name="tracer" type="GPUParticles3D" parent="BeggarsShotgun/Frame/RayCast" unique_id=42885782]
