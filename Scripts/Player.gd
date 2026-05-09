@@ -15,6 +15,7 @@ var grabbedObject: RigidBody3D = null
 # --- WEAPONS ---
 @onready var SMG = $shakeable_camera/Hands/RightHand/SMG
 @onready var beggarsShotgun = $shakeable_camera/Hands/RightHand/BeggarsShotgun
+@onready var devestator = $shakeable_camera/Hands/RightHand/Devestator
 @onready var steamer = $shakeable_camera/Hands/LeftHand/Steamer
 @onready var drill = $shakeable_camera/Hands/LeftHand/Drill
 @onready var current_gun_R = SMG
@@ -193,6 +194,14 @@ func _input(event):
 			current_gun_R.show()
 			current_gun_R.draw(1.0)
 	
+	elif Input.is_action_just_pressed("3") and !drill.in_action: # beggars shotgun
+		if current_gun_R != devestator:
+			await current_gun_R.undraw(1.0, false)
+			hideWeapons()
+			current_gun_R = devestator
+			current_gun_R.show()
+			current_gun_R.draw(1.0)
+	
 	
 	if Input.is_action_just_pressed("Wheel"):
 		throw_grenade()
@@ -238,6 +247,7 @@ func _physics_process(delta):
 			match current_gun_R:
 				SMG: current_gun_R.shoot()
 				beggarsShotgun: current_gun_R.charge()
+				devestator: current_gun_R.shoot()
 		elif grabbedObject:
 			if grabbedObject.can_let_go():
 				grabbedObject.is_held = false
@@ -263,7 +273,7 @@ func _physics_process(delta):
 			current_gun_R.undraw(1.5, true)
 			drill.show()
 			await drill.punch(velocity.length() if velocity.length() >= 15.0 else 0.0)
-			current_gun_R.draw(1.5)
+			current_gun_R.draw(1.2)
 			drill.hide()
 	
 	

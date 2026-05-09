@@ -234,13 +234,18 @@ transform = Transform3D(1, 0, 0, 0, 1, -1.764077e-33, 0, 1.764077e-33, 1, 0, 0, 
 [node name="RightHand" parent="shakeable_camera/Hands" unique_id=267885530 instance=ExtResource("2_kyqiw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15, -0.137, -0.25)
 
-[node name="SMG" parent="shakeable_camera/Hands/RightHand" index="2" unique_id=1941681137 node_paths=PackedStringArray("camera", "playerRay", "playerRayEnd")]
+[node name="SMG" parent="shakeable_camera/Hands/RightHand" index="1" unique_id=1941681137 node_paths=PackedStringArray("camera", "playerRay", "playerRayEnd")]
 camera = NodePath("../../..")
 playerRay = NodePath("../../../PlayerRay")
 playerRayEnd = NodePath("../../../PlayerRay/PlayerRayEnd")
 
-[node name="BeggarsShotgun" parent="shakeable_camera/Hands/RightHand" index="3" unique_id=893199726 node_paths=PackedStringArray("camera", "playerRay", "playerRayEnd")]
+[node name="BeggarsShotgun" parent="shakeable_camera/Hands/RightHand" index="2" unique_id=893199726 node_paths=PackedStringArray("camera", "playerRay", "playerRayEnd")]
 spread = 5.0
+camera = NodePath("../../..")
+playerRay = NodePath("../../../PlayerRay")
+playerRayEnd = NodePath("../../../PlayerRay/PlayerRayEnd")
+
+[node name="Devestator" parent="shakeable_camera/Hands/RightHand" index="3" unique_id=1237437943 node_paths=PackedStringArray("camera", "playerRay", "playerRayEnd")]
 camera = NodePath("../../..")
 playerRay = NodePath("../../../PlayerRay")
 playerRayEnd = NodePath("../../../PlayerRay/PlayerRayEnd")

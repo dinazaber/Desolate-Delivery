@@ -1,0 +1,245 @@
+[gd_scene format=3 uid="uid://ckpaxttncb6rf"]
+
+[ext_resource type="ArrayMesh" uid="uid://c8o27vvvdrpnb" path="res://assets/Meshes/Weapons/Devestator/base.mesh" id="1_5gvb3"]
+[ext_resource type="Script" uid="uid://dax5umrkld21m" path="res://Scripts/Weapons/Devestator.gd" id="1_pv3de"]
+[ext_resource type="ArrayMesh" uid="uid://dm75dw7l4c35q" path="res://assets/Meshes/Weapons/Devestator/barrel.mesh" id="2_ry4q2"]
+[ext_resource type="Texture2D" uid="uid://24usakcrqsvh" path="res://assets/Textures/Architecture/Explosion1.png" id="3_ry4q2"]
+
+[sub_resource type="Animation" id="Animation_5gvb3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Marker3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.1, -0.75, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Marker3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.87266463, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Marker3D/Base/Barrel:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, -10.9)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ry4q2"]
+resource_name = "draw"
+length = 0.6
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Marker3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.21, 0.24, 0.28999996, 0.34, 0.38, 0.52000004, 0.58, 0.6),
+"transitions": PackedFloat32Array(2.0000007, 0.5, 1.5, 0.4, 0.6, 1, 2.0000005, 2.0000005, 1, 1),
+"update": 0,
+"values": [Vector3(-0.1, -0.75, 0), Vector3(-0.05, -0.355, 0), Vector3(0, 0.05, 0), Vector3(0, 0.04, 0), Vector3(0.03, 0.03, 0.07), Vector3(0, 0.04, 0), Vector3(0, 0.04, 0), Vector3(0.005, -0.02, 0), Vector3(0, 0, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Marker3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.16, 0.22, 0.24, 0.29000002, 0.36, 0.45, 0.54, 0.6),
+"transitions": PackedFloat32Array(1, 3, 0.33333334, 1, 2.0000005, 1, 2, 0.5, 0.6, 1),
+"update": 0,
+"values": [Vector3(0, 0.87266463, 0), Vector3(0, 0.87266463, 0), Vector3(0.08726646, 0.6981317, 0), Vector3(0.17453292, 0.5235988, 0), Vector3(0.17453292, 0.5235988, 0), Vector3(0.12217305, 0.4712389, 0), Vector3(0.17453292, 0.5235988, 0), Vector3(0.04363323, 0.2617994, 0), Vector3(-0.08726646, 0, -0.10471976), Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Marker3D/Base/Barrel:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.24000002, 0.29, 0.6),
+"transitions": PackedFloat32Array(1, 0.4, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, -10.9), Vector3(0, 0, -10.9), Vector3(0, 0, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_pv3de"]
+resource_name = "shoot"
+length = 0.7
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Marker3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.07, 0.14, 0.22, 0.3, 0.35000002, 0.39000002, 0.5899999, 0.67999995, 0.7),
+"transitions": PackedFloat32Array(0.4, 1.5, 1, 2, 0.4, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.05, 0.045, 0.25), Vector3(0.05, 0.05, 0.2), Vector3(0.05, 0.05, 0.2), Vector3(0.047880627, 0.02745676, 0.1915225), Vector3(0.048, -0.05, 0.25), Vector3(0.048, 0.01, 0.212), Vector3(0, -0.03, 0), Vector3(0, 0, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Marker3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.02, 0.08, 0.12000001, 0.28, 0.41, 0.60999995, 0.7),
+"transitions": PackedFloat32Array(1, 1.5, 1, 1.7, 1, 1.5, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.034906585, 0, 0), Vector3(0.5235988, -0.17453292, -0.17453292), Vector3(0.5235988, -0.17453292, -0.17453292), Vector3(0.47669986, -0.16010243, -0.16010247), Vector3(0.47669986, -0.16010243, -0.16010247), Vector3(-0.04363323, 0, 0), Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Marker3D/Base/Barrel:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.06, 0.11, 0.2, 0.3, 0.35000002, 0.7),
+"transitions": PackedFloat32Array(0.4, 0.4, 2, 1, 0.4, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, -10.9), Vector3(0, 0, -10), Vector3(0, 0, -10.9), Vector3(0, 0, -10.9), Vector3(0, 0, 0), Vector3(0, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.02, 0.06, 0.7),
+"transitions": PackedFloat32Array(0.3, 1.8025012, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.3, 0.3, 0.3), Vector3(0, 0, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_2c47f"]
+resource_name = "undraw"
+length = 0.35
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Marker3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.06, 0.09, 0.15, 0.35),
+"transitions": PackedFloat32Array(0.7, 0.5, 1, 1.8, 2.0000007),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.04, 0), Vector3(0, 0.03, 0.02), Vector3(0, 0, 0), Vector3(0.1, -0.75, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Marker3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.060000014, 0.08000001, 0.10000001, 0.13000001, 0.35),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0.017453292, 0, -0.10471976), Vector3(0, 0, -0.06981317), Vector3(0, 0, -0.06981317), Vector3(0, -0.34906584, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Marker3D/Base/Barrel:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.060000002, 0.09, 0.120000005, 0.35),
+"transitions": PackedFloat32Array(1.8, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, -10.9), Vector3(0, 0, -10.2), Vector3(0, 0, -10.9), Vector3(0, 0, -10.9)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pv3de"]
+_data = {
+&"RESET": SubResource("Animation_5gvb3"),
+&"draw": SubResource("Animation_ry4q2"),
+&"shoot": SubResource("Animation_pv3de"),
+&"undraw": SubResource("Animation_2c47f")
+}
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dxyhc"]
+transparency = 2
+alpha_scissor_threshold = 0.7
+alpha_antialiasing_mode = 0
+shading_mode = 0
+albedo_color = Color(1.6797683, 1.6797683, 1.6797683, 1)
+albedo_texture = ExtResource("3_ry4q2")
+texture_filter = 1
+billboard_mode = 1
+billboard_keep_scale = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_pv3de"]
+material = SubResource("StandardMaterial3D_dxyhc")
+size = Vector2(3, 3)
+orientation = 2
+
+[node name="Devestator" type="Node3D" unique_id=1237437943]
+script = ExtResource("1_pv3de")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=246552848]
+libraries/ = SubResource("AnimationLibrary_pv3de")
+
+[node name="Marker3D" type="Marker3D" parent="." unique_id=875693166]
+transform = Transform3D(0.64278764, 0, 0.76604444, 0, 1, 0, -0.76604444, 0, 0.64278764, -0.1, -0.75, 0)
+
+[node name="Base" type="MeshInstance3D" parent="Marker3D" unique_id=1239962213]
+transform = Transform3D(-0.03, 0, -4.529874e-09, 0, 0.03, 0, 4.529874e-09, 0, -0.03, 0, 0.03, -0.3)
+mesh = ExtResource("1_5gvb3")
+skeleton = NodePath("../..")
+
+[node name="Barrel" type="MeshInstance3D" parent="Marker3D/Base" unique_id=1545129983]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10.9)
+mesh = ExtResource("2_ry4q2")
+skeleton = NodePath("../../..")
+
+[node name="Sprite" type="MeshInstance3D" parent="." unique_id=16884627]
+transform = Transform3D(0, 0, 0, 0, 0, 0, 0, 0, 0, -5.5076345e-08, 0.03, -0.93)
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_pv3de")
+skeleton = NodePath("../Marker3D")
+
+[node name="HeatBuffer" type="Timer" parent="." unique_id=1536351958]
+
+[connection signal="timeout" from="HeatBuffer" to="." method="_on_heat_buffer_timeout"]
