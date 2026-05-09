@@ -232,6 +232,7 @@ libraries/ = SubResource("AnimationLibrary_8qb6n")
 [node name="SMG" type="MeshInstance3D" parent="." unique_id=559022510]
 transform = Transform3D(0.011490665, -0.019902417, 0.019283628, -0.009641814, 0.016700113, 0.022981333, -0.025980761, -0.014999999, -8.429142e-10, 0.225, -0.75, 0.15)
 cast_shadow = 0
+gi_mode = 2
 mesh = ExtResource("2_dxyhc")
 
 [node name="Sprite" type="MeshInstance3D" parent="SMG" unique_id=1088014816]

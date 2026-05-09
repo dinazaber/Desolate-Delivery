@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://d16pmg4f4pnf8"]
 
 [ext_resource type="Script" uid="uid://b1ovnputuxw4u" path="res://Scripts/Modules/Door.gd" id="1_eaxfl"]
-[ext_resource type="ArrayMesh" uid="uid://da13c70sswr3x" path="res://assets/Meshes/Objects/Door1.mesh" id="1_lgil6"]
+[ext_resource type="ArrayMesh" uid="uid://dpdoehh6ab6qa" path="res://assets/Meshes/RoomConstructor/Door.mesh" id="2_eaxfl"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_lgil6"]
-size = Vector3(0.5326538, 1.0679932, 0.024902344)
+size = Vector3(1.11, 2.3, 0.05)
 
 [sub_resource type="Animation" id="Animation_o57tb"]
 resource_name = "Close"
@@ -64,15 +64,16 @@ _data = {
 script = ExtResource("1_eaxfl")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1102868406]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.17, 0, -0.24)
-mesh = ExtResource("1_lgil6")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.17, 0, -0.24)
+gi_mode = 2
+mesh = ExtResource("2_eaxfl")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D" unique_id=119107222]
 collision_layer = 16
 collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D" unique_id=811106455]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.26541138, -0.0119018555, 0.00024412572)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5550995, 1.1501617, 0.00024412572)
 shape = SubResource("BoxShape3D_lgil6")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=295880933]

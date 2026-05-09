@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://b1g4ndkkyibs4"]
 
 [ext_resource type="Script" uid="uid://b83ondemls0mo" path="res://Scripts/Modules/HealthPack.gd" id="1_hd37v"]
-[ext_resource type="Shader" uid="uid://cunx8274v1qyy" path="res://Shaders/MeshShaders/2DetailsMeshShaider.gdshader" id="2_q3u71"]
+[ext_resource type="Shader" uid="uid://cunx8274v1qyy" path="res://Shaders/MeshShaders/MeshShader.gdshader" id="2_q3u71"]
 [ext_resource type="Texture2D" uid="uid://bu6ue5ydfh2q6" path="res://assets/Textures/Rust.png" id="3_l4klk"]
 [ext_resource type="Texture2D" uid="uid://kqnjcrk75lb3" path="res://assets/Textures/Dirt.png" id="4_pwhch"]
 [ext_resource type="Texture2D" uid="uid://6n7nft57sa5j" path="res://assets/Textures/TriplanarMask.png" id="5_58rdl"]

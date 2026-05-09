@@ -401,7 +401,6 @@ go_make_colliders = null
 metadata/_custom_type_script = "uid://cfwmt6vc7y70h"
 
 [node name="Collisions" type="Node3D" parent="." unique_id=409749543]
-visible = false
 
 [node name="CeilingHole" type="StaticBody3D" parent="Collisions" unique_id=308693725]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.009972215, 0)

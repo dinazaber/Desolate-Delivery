@@ -1,11 +1,11 @@
 [gd_scene format=4 uid="uid://d368u3xkt615v"]
 
-[ext_resource type="Script" uid="uid://bj8656has4pvf" path="res://Scripts/enemies/Drone.gd" id="1_ftjkk"]
-[ext_resource type="Shader" uid="uid://cunx8274v1qyy" path="res://Shaders/MeshShaders/2DetailsMeshShaider.gdshader" id="1_ouh8p"]
+[ext_resource type="Script" uid="uid://bj8656has4pvf" path="res://Scripts/Enemies/Drone.gd" id="1_ftjkk"]
+[ext_resource type="Shader" uid="uid://cunx8274v1qyy" path="res://Shaders/MeshShaders/MeshShader.gdshader" id="1_ouh8p"]
 [ext_resource type="Texture2D" uid="uid://bu6ue5ydfh2q6" path="res://assets/Textures/Rust.png" id="2_ftjkk"]
 [ext_resource type="Texture2D" uid="uid://kqnjcrk75lb3" path="res://assets/Textures/Dirt.png" id="3_q6fab"]
 [ext_resource type="Texture2D" uid="uid://6n7nft57sa5j" path="res://assets/Textures/TriplanarMask.png" id="4_84th3"]
-[ext_resource type="Script" uid="uid://dqv7818ohy4lu" path="res://Scripts/enemies/HitBox.gd" id="6_q6fab"]
+[ext_resource type="Script" uid="uid://dqv7818ohy4lu" path="res://Scripts/Enemies/HitBox.gd" id="6_q6fab"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ouh8p"]
 size = Vector3(1.25, 0.5, 1.25)
