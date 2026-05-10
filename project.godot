@@ -38,7 +38,7 @@ project/assembly_name="ProjectX"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/MeshMerger/plugin.cfg", "res://addons/MetaMultimeshInstance3D/plugin.cfg", "res://addons/meshmerge/plugin.cfg", "res://addons/multimesh_scatter/plugin.cfg")
+enabled=PackedStringArray("res://addons/MeshMerger/plugin.cfg", "res://addons/MetaMultimeshInstance3D/plugin.cfg", "res://addons/multimesh_scatter/plugin.cfg")
 
 [filesystem]
 

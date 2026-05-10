@@ -226,11 +226,13 @@ transform = Transform3D(0.64278764, 0, 0.76604444, 0, 1, 0, -0.76604444, 0, 0.64
 
 [node name="Base" type="MeshInstance3D" parent="Marker3D" unique_id=1239962213]
 transform = Transform3D(-0.03, 0, -4.529874e-09, 0, 0.03, 0, 4.529874e-09, 0, -0.03, 0, 0.03, -0.3)
+gi_mode = 2
 mesh = ExtResource("1_5gvb3")
 skeleton = NodePath("../..")
 
 [node name="Barrel" type="MeshInstance3D" parent="Marker3D/Base" unique_id=1545129983]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10.9)
+gi_mode = 2
 mesh = ExtResource("2_ry4q2")
 skeleton = NodePath("../../..")
 

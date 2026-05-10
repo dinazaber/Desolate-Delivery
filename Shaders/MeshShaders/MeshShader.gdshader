@@ -24,8 +24,9 @@ uniform float detail2_scale = 1.0;
 uniform float alpha2 = 1.0;
 
 group_uniforms Glow;
-uniform vec3 glow_color: source_color;
 uniform float glow_intensity = 1.0;
+uniform vec3 glow_color_override: source_color;
+uniform bool glow_override = true;
 
 varying vec3 worldPos;
 varying vec3 world_normal;
@@ -89,12 +90,12 @@ void fragment() {
     vec3 n = normalize(world_normal);
     
     // Sample textures using Box Projection based on Vertex Mask
-    if (UV3.x >= 0.4 && enable_detail_1 && UV3.y > 0.1) {
+    if (UV3.x >= 0.4 && enable_detail_1 && UV3.y > 0.1) { //Detail1
         vec4 tex = get_box_projection(detail1, n, worldPos * detail1_scale);
         out_color = mix(out_color, tex.rgb, tex.a * alpha1);
     }
     
-    if (UV3.x <= 0.6  && enable_detail_2 && UV3.y > 0.1) {
+    if (UV3.x <= 0.6  && enable_detail_2 && UV3.y > 0.1) { //Detail 2
         vec4 tex = get_box_projection(detail2, n, worldPos * detail2_scale);
         out_color = mix(out_color, tex.rgb, tex.a * alpha2);
     }
@@ -103,7 +104,9 @@ void fragment() {
 	EMISSION = vec3(0.0);
 	if (enable_glow){
 		if(UV4.x > 0.9){
-			EMISSION = glow_color * glow_intensity;
+			if (!glow_override){EMISSION = COLOR.rgb * glow_intensity;}
+			else {EMISSION = glow_color_override * glow_intensity;}
+			
 		}
 	}
 	

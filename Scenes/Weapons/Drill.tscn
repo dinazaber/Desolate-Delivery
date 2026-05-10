@@ -195,29 +195,33 @@ script = ExtResource("1_wrvfe")
 libraries/ = SubResource("AnimationLibrary_l87pe")
 
 [node name="Drill" type="Marker3D" parent="." unique_id=966625349]
-transform = Transform3D(0.98480713, -0.17364809, 0, 0.1631758, 0.92541605, 0.3420201, -0.059391133, -0.33682388, 0.9396925, -0.8, -0.5, -0.4)
+transform = Transform3D(0.984807, -0.17364806, 0, 0.16317579, 0.92541593, 0.3420201, -0.05939113, -0.33682385, 0.9396925, -0.8, -0.5, -0.4)
 
 [node name="DrillBase" type="MeshInstance3D" parent="Drill" unique_id=1233721536]
 transform = Transform3D(-6.5567085e-09, 0, 0.15, 0, 0.15, 0, -0.15, 0, -6.5567085e-09, 0.6, 0, 0)
 cast_shadow = 0
+gi_mode = 2
 mesh = ExtResource("1_qp1ul")
 skeleton = NodePath("../..")
 
 [node name="DrillBit3" type="MeshInstance3D" parent="Drill" unique_id=2015017193]
 transform = Transform3D(-6.5567085e-09, 0, 0.15, 0, 0.15, 0, -0.15, 0, -6.5567085e-09, 0.6, 0, 0)
 cast_shadow = 0
+gi_mode = 2
 mesh = ExtResource("2_ghrd4")
 skeleton = NodePath("../..")
 
 [node name="DrillBit2" type="MeshInstance3D" parent="Drill" unique_id=2046704413]
 transform = Transform3D(-6.5567085e-09, 0, 0.15, 0, 0.15, 0, -0.15, 0, -6.5567085e-09, 0.6, 0, 0)
 cast_shadow = 0
+gi_mode = 2
 mesh = ExtResource("3_mtis8")
 skeleton = NodePath("../..")
 
 [node name="DrillBit1" type="MeshInstance3D" parent="Drill" unique_id=478188765]
 transform = Transform3D(-6.5567085e-09, 0, 0.15, 0, 0.15, 0, -0.15, 0, -6.5567085e-09, 0.6, 0, 0)
 cast_shadow = 0
+gi_mode = 2
 mesh = ExtResource("4_6g03u")
 skeleton = NodePath("../..")
 
