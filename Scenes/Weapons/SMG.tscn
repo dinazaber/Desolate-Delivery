@@ -179,7 +179,7 @@ transparency = 2
 alpha_scissor_threshold = 0.7
 alpha_antialiasing_mode = 0
 shading_mode = 0
-albedo_color = Color(1.6797683, 1.6797683, 1.6797683, 1)
+albedo_color = Color(1.8247963, 1.8247963, 1.8247963, 1)
 albedo_texture = ExtResource("4_o3ivw")
 texture_filter = 1
 billboard_mode = 1
@@ -214,6 +214,7 @@ transparency = 1
 cull_mode = 2
 shading_mode = 0
 vertex_color_use_as_albedo = true
+albedo_color = Color(1.5720325, 1.5720325, 1.5720325, 1)
 albedo_texture = SubResource("GradientTexture2D_7loxj")
 
 [sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_hpmwm"]

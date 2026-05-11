@@ -42,3 +42,9 @@ void start() {
     TRANSFORM[1].xyz = forward;
     TRANSFORM[2].xyz = -up;
 }
+
+//void process(){
+	//if (COLLIDED) { 
+        //ACTIVE = false; 
+    //}
+//}

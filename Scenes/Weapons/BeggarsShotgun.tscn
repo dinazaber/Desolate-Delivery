@@ -301,7 +301,7 @@ transparency = 2
 alpha_scissor_threshold = 0.7
 alpha_antialiasing_mode = 0
 shading_mode = 0
-albedo_color = Color(1.6797683, 1.6797683, 1.6797683, 1)
+albedo_color = Color(1.8247963, 1.8247963, 1.8247963, 1)
 albedo_texture = ExtResource("4_ktqvf")
 texture_filter = 1
 billboard_mode = 1
@@ -329,10 +329,10 @@ fill_from = Vector2(0.51282054, 1)
 fill_to = Vector2(0.5, 0)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b1a7w"]
-transparency = 1
-cull_mode = 2
+cull_mode = 1
 shading_mode = 0
 vertex_color_use_as_albedo = true
+albedo_color = Color(1.5720325, 1.5720325, 1.5720325, 1)
 albedo_texture = SubResource("GradientTexture2D_ktqvf")
 
 [sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_xapv0"]
@@ -369,9 +369,9 @@ alpha_curve = SubResource("CurveTexture_lkl2b")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4r53k"]
 transparency = 1
-shading_mode = 0
+shading_mode = 2
 vertex_color_use_as_albedo = true
-albedo_color = Color(0.29411766, 0.29411766, 0.29411766, 1)
+albedo_color = Color(0.29, 0.29, 0.29, 0.5882353)
 
 [sub_resource type="SphereMesh" id="SphereMesh_riuam"]
 material = SubResource("StandardMaterial3D_4r53k")
@@ -414,6 +414,7 @@ collide_with_areas = true
 
 [node name="tracer" type="GPUParticles3D" parent="BeggarsShotgun/Frame/RayCast" unique_id=42885782]
 cast_shadow = 0
+gi_mode = 2
 emitting = false
 amount = 9
 lifetime = 2.0
@@ -429,6 +430,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -75)
 [node name="steam" type="GPUParticles3D" parent="BeggarsShotgun" unique_id=391177639]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.02981548, -0.05998698, -0.08985975)
 cast_shadow = 0
+gi_mode = 2
 amount = 6
 amount_ratio = 0.0
 visibility_aabb = AABB(-0.5, -0.5, -0.5, 1, 1, 1)
