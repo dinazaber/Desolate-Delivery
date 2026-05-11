@@ -165,6 +165,7 @@ libraries/ = SubResource("AnimationLibrary_qfvl1")
 [node name="Gun" type="MeshInstance3D" parent="." unique_id=521914031]
 transform = Transform3D(0.014999999, 0.025980767, 0, -0.012990381, 0.0075000003, -0.025980765, -0.0225, 0.0129903825, 0.015, 0.113, -0.45, 0.1)
 cast_shadow = 0
+gi_mode = 2
 mesh = ExtResource("3_s2mxn")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="Gun" unique_id=389766710]
@@ -185,6 +186,7 @@ transform = Transform3D(-2.095567e-07, 6.2073504e-08, -5, 1.420077, 4.794099, -3
 [node name="DialArrow" type="MeshInstance3D" parent="Gun/DialArrow" unique_id=500991761]
 transform = Transform3D(0.14142136, 0, 0.14142136, 0, 0.2, 0, -0.14142136, 0, 0.14142136, 0, 0.2, 0)
 cast_shadow = 0
+gi_mode = 2
 mesh = ExtResource("4_88n45")
 skeleton = NodePath("../../..")
 

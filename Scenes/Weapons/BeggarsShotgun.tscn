@@ -4,6 +4,7 @@
 [ext_resource type="ArrayMesh" uid="uid://c6nmdg8hnoe36" path="res://assets/Meshes/Weapons/beggarsShotgun/frame.mesh" id="2_xapv0"]
 [ext_resource type="Texture2D" uid="uid://24usakcrqsvh" path="res://assets/Textures/Architecture/Explosion1.png" id="4_ktqvf"]
 [ext_resource type="Shader" uid="uid://dc5k8hk8ct5i8" path="res://Shaders/Particles/Pellets.gdshader" id="5_xapv0"]
+[ext_resource type="Shader" uid="uid://w3eyk752ljxw" path="res://Shaders/Particles/ParticlesShader.gdshader" id="6_mmsk8"]
 [ext_resource type="ArrayMesh" uid="uid://eadvfmp34ewb" path="res://assets/Meshes/Weapons/beggarsShotgun/barrels.mesh" id="6_pc0kw"]
 
 [sub_resource type="Animation" id="Animation_sjkk0"]
@@ -318,34 +319,24 @@ shader_parameter/hit_points = PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
 shader_parameter/gun_barrel_pos = Vector3(0, 0, 0)
 shader_parameter/speed = 100.0
 
-[sub_resource type="Curve" id="Curve_xapv0"]
-_data = [Vector2(0, 0.49877608), 0.0, 0.0, 0, 0, Vector2(0.50306743, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.252142), 0.0, 0.0, 0, 0]
+[sub_resource type="Curve" id="Curve_dxyhc"]
+_data = [Vector2(0, 0.49877608), 0.0, 0.0, 0, 0, Vector2(0.49999997, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.252142), 0.0, 0.0, 0, 0]
 point_count = 3
 
-[sub_resource type="Gradient" id="Gradient_u4wyd"]
-offsets = PackedFloat32Array(0, 0.22058824, 0.81985295, 1)
-colors = PackedColorArray(1, 0.5882353, 0, 0, 1, 0.5882353, 0, 1, 1, 0.78431374, 0, 1, 1, 0.78431374, 0, 0)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u4wyd"]
+render_priority = 0
+shader = ExtResource("6_mmsk8")
+shader_parameter/color = Color(0.41527602, 0.27833572, 0, 1)
+shader_parameter/enable_glow = true
+shader_parameter/glow_intensity = 10.0
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_ktqvf"]
-gradient = SubResource("Gradient_u4wyd")
-height = 255
-fill_from = Vector2(0.51282054, 1)
-fill_to = Vector2(0.5, 0)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b1a7w"]
-cull_mode = 1
-shading_mode = 0
-vertex_color_use_as_albedo = true
-albedo_color = Color(1.5720325, 1.5720325, 1.5720325, 1)
-albedo_texture = SubResource("GradientTexture2D_ktqvf")
-
-[sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_xapv0"]
-material = SubResource("StandardMaterial3D_b1a7w")
+[sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_mmsk8"]
+material = SubResource("ShaderMaterial_u4wyd")
 size = 0.015
 sections = 2
-section_length = 0.3
+section_length = 0.75
 section_segments = 1
-curve = SubResource("Curve_xapv0")
+curve = SubResource("Curve_dxyhc")
 
 [sub_resource type="Curve" id="Curve_sfoia"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.25170067, 0.7024966), 0.0, 0.0, 0, 0, Vector2(0.49659863, 0.7024966), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -427,7 +418,7 @@ one_shot = true
 explosiveness = 1.0
 fixed_fps = 60
 process_material = SubResource("ShaderMaterial_mmsk8")
-draw_pass_1 = SubResource("RibbonTrailMesh_xapv0")
+draw_pass_1 = SubResource("RibbonTrailMesh_mmsk8")
 
 [node name="Marker3D" type="Marker3D" parent="BeggarsShotgun/Frame/RayCast" unique_id=1195608805]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -75)

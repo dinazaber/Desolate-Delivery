@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://c3aycipaifchx" path="res://Scripts/Weapons/SMG.gd" id="1_u4wyd"]
 [ext_resource type="ArrayMesh" uid="uid://d4hn03go6odvn" path="res://assets/Meshes/Weapons/SMG.mesh" id="2_dxyhc"]
 [ext_resource type="Texture2D" uid="uid://24usakcrqsvh" path="res://assets/Textures/Architecture/Explosion1.png" id="4_o3ivw"]
+[ext_resource type="Shader" uid="uid://w3eyk752ljxw" path="res://Shaders/Particles/ParticlesShader.gdshader" id="4_u4wyd"]
 
 [sub_resource type="Animation" id="Animation_sjkk0"]
 length = 0.001
@@ -203,26 +204,15 @@ collision_mode = 2
 _data = [Vector2(0, 0.49877608), 0.0, 0.0, 0, 0, Vector2(0.49999997, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.252142), 0.0, 0.0, 0, 0]
 point_count = 3
 
-[sub_resource type="Gradient" id="Gradient_u4wyd"]
-offsets = PackedFloat32Array(0, 0.22794117, 0.7977941, 1)
-colors = PackedColorArray(1, 0.5882353, 0, 0, 1, 0.5882353, 0, 1, 1, 0.78431374, 0, 1, 1, 0.78431374, 0, 0)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_7loxj"]
-gradient = SubResource("Gradient_u4wyd")
-height = 255
-fill_from = Vector2(0.51282054, 1)
-fill_to = Vector2(0.5, 0)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b1a7w"]
-transparency = 1
-cull_mode = 2
-shading_mode = 0
-vertex_color_use_as_albedo = true
-albedo_color = Color(1.5720325, 1.5720325, 1.5720325, 1)
-albedo_texture = SubResource("GradientTexture2D_7loxj")
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u4wyd"]
+render_priority = 0
+shader = ExtResource("4_u4wyd")
+shader_parameter/color = Color(0.41527602, 0.27833572, 0, 1)
+shader_parameter/enable_glow = true
+shader_parameter/glow_intensity = 10.0
 
 [sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_hpmwm"]
-material = SubResource("StandardMaterial3D_b1a7w")
+material = SubResource("ShaderMaterial_u4wyd")
 size = 0.015
 sections = 2
 section_length = 0.75
