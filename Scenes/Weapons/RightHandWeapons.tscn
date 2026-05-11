@@ -23,3 +23,4 @@ visible = false
 
 [node name="Devestator" parent="." unique_id=1237437943 instance=ExtResource("4_q2hde")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.08000371, 0.07468406)
+visible = false

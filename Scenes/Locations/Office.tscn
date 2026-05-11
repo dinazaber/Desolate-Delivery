@@ -452,7 +452,8 @@ environment = SubResource("Environment_6x81v")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.3703666, 1, 0)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1790691675]
-visible = false
+collision_layer = 49
+collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=920706368]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, -0.5, 0)
@@ -779,7 +780,8 @@ skeleton = NodePath("../..")
 
 [node name="DeskCollision1" type="StaticBody3D" parent="DesksF" unique_id=1484517339]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.70267165, 0, -3.2068455)
-collision_layer = 17
+collision_layer = 49
+collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DesksF/DeskCollision1" unique_id=1907021125]
 transform = Transform3D(0.99970955, 0, -0.024100663, 0, 1, 0, 0.024100663, 0, 0.99970955, 0.0031683445, 0.84405994, 0.010394335)
@@ -807,7 +809,8 @@ size = Vector3(0.7972412, 0.8087616, 0.5019684)
 
 [node name="DeskCollision2" type="StaticBody3D" parent="DesksF" unique_id=1972486549]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.899084, 0, -3.2068455)
-collision_layer = 17
+collision_layer = 49
+collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DesksF/DeskCollision2" unique_id=70482222]
 transform = Transform3D(0.99970955, 0, -0.024100663, 0, 1, 0, 0.024100663, 0, 0.99970955, 0.0031683445, 0.84405994, 0.010394335)
@@ -835,7 +838,8 @@ size = Vector3(0.7972412, 0.8087616, 0.5019684)
 
 [node name="DeskCollision3" type="StaticBody3D" parent="DesksF" unique_id=216880533]
 transform = Transform3D(0.980877, 0, 0.19462809, 0, 1, 0, -0.19462809, 0, 0.980877, 7.092485, 0, -3.215335)
-collision_layer = 17
+collision_layer = 49
+collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DesksF/DeskCollision3" unique_id=1925309589]
 transform = Transform3D(0.99970955, 0, -0.024100663, 0, 1, 0, 0.024100663, 0, 0.99970955, 0.0031683445, 0.84405994, 0.010394335)
@@ -863,7 +867,8 @@ size = Vector3(0.7972412, 0.8087616, 0.5019684)
 
 [node name="DeskCollision4" type="StaticBody3D" parent="DesksF" unique_id=912176620]
 transform = Transform3D(0.9999079, 0, 0.013560787, 0, 1, 0, -0.013560787, 0, 0.9999079, 9.527737, 0, -3.2105582)
-collision_layer = 17
+collision_layer = 49
+collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DesksF/DeskCollision4" unique_id=866957911]
 transform = Transform3D(0.99970955, 0, -0.024100663, 0, 1, 0, 0.024100663, 0, 0.99970955, 0.0031683445, 0.84405994, 0.010394335)
@@ -891,7 +896,8 @@ size = Vector3(0.7972412, 0.8087616, 0.5019684)
 
 [node name="DeskCollision5" type="StaticBody3D" parent="DesksF" unique_id=436956298]
 transform = Transform3D(0.9996212, 0, 0.027520362, 0, 1, 0, -0.027520362, 0, 0.9996212, 12.142995, 0, 3.8220766)
-collision_layer = 17
+collision_layer = 49
+collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DesksF/DeskCollision5" unique_id=1413334779]
 transform = Transform3D(0.99970955, 0, -0.024100663, 0, 1, 0, 0.024100663, 0, 0.99970955, 0.0031683445, 0.84405994, 0.010394335)
@@ -919,7 +925,8 @@ size = Vector3(0.7972412, 0.8087616, 0.5019684)
 
 [node name="DeskCollision6" type="StaticBody3D" parent="DesksF" unique_id=395864151]
 transform = Transform3D(0.999823, 0, 0.018813536, 0, 1, 0, -0.018813536, 0, 0.999823, 9.529155, 0, 3.8220766)
-collision_layer = 17
+collision_layer = 49
+collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DesksF/DeskCollision6" unique_id=887672568]
 transform = Transform3D(0.99970955, 0, -0.024100663, 0, 1, 0, 0.024100663, 0, 0.99970955, 0.0031683445, 0.84405994, 0.010394335)
@@ -947,7 +954,8 @@ size = Vector3(0.7972412, 0.8087616, 0.5019684)
 
 [node name="DeskCollision7" type="StaticBody3D" parent="DesksF" unique_id=942566146]
 transform = Transform3D(0.9989177, 0, 0.046513684, 0, 1, 0, -0.046513684, 0, 0.9989177, 7.1164417, 0, 3.8220766)
-collision_layer = 17
+collision_layer = 49
+collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DesksF/DeskCollision7" unique_id=1157473418]
 transform = Transform3D(0.99970955, 0, -0.024100663, 0, 1, 0, 0.024100663, 0, 0.99970955, 0.0031683445, 0.84405994, 0.010394335)
@@ -975,7 +983,8 @@ size = Vector3(0.7972412, 0.8087616, 0.5019684)
 
 [node name="DeskCollision8" type="StaticBody3D" parent="DesksF" unique_id=459304125]
 transform = Transform3D(0.9978851, 0, 0.06500255, 0, 1, 0, -0.06500255, 0, 0.9978851, 4.1585054, 0, 3.8220766)
-collision_layer = 17
+collision_layer = 49
+collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DesksF/DeskCollision8" unique_id=1655491948]
 transform = Transform3D(0.99970955, 0, -0.024100663, 0, 1, 0, 0.024100663, 0, 0.99970955, 0.0031683445, 0.84405994, 0.010394335)
@@ -1003,7 +1012,8 @@ size = Vector3(0.7972412, 0.8087616, 0.5019684)
 
 [node name="DeskCollision9" type="StaticBody3D" parent="DesksF" unique_id=1590559799]
 transform = Transform3D(0.8664091, 0, -0.4993348, 0, 1, 0, 0.4993348, 0, 0.8664091, 1.1327754, 0, 3.829593)
-collision_layer = 17
+collision_layer = 49
+collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DesksF/DeskCollision9" unique_id=2115210395]
 transform = Transform3D(0.99970955, 0, -0.024100663, 0, 1, 0, 0.024100663, 0, 0.99970955, 0.0031683445, 0.84405994, 0.010394335)

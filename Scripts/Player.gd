@@ -60,7 +60,7 @@ const PLAYER_MAX_HEALTH = 100.0
 @export var crouch_speed: float = 2.5
 @export var dash_speed: float = 22.5
 @export var dashCoolTime: float = 1.75 # cooldown time (s)
-@export var jump_speed: float = 8.0
+@export var jump_speed: float = 7.5
 
 
 # --- INSTANCES ---
@@ -269,7 +269,7 @@ func _physics_process(delta):
 		current_gun_L.hide()
 	
 	if Input.is_action_just_pressed("F") and !dead:
-		if !drill.in_action and !current_gun_L.in_action:
+		if drill.can_swing and !drill.in_action and !current_gun_L.in_action:
 			current_gun_R.undraw(1.5, true)
 			drill.show()
 			await drill.punch(velocity.length() if velocity.length() >= 15.0 else 0.0)
@@ -354,7 +354,8 @@ func _physics_process(delta):
 			
 			# walk speed
 			if !knocked:
-				velocity = lerp(velocity, direction * SPEED, delta * 10.0 * accel_mod)
+				velocity.x = lerp(velocity.x, direction.x * SPEED, delta * 10.0 * accel_mod)
+				velocity.z = lerp(velocity.z, direction.z * SPEED, delta * 10.0 * accel_mod)
 		
 		else: # no input speed
 			velocity.x = lerp(velocity.x, 0.0, delta * 7.0 * accel_mod)
@@ -363,7 +364,8 @@ func _physics_process(delta):
 	else: # airborne speed
 		airborne = true
 		landVel = abs(velocity.y)
-		velocity.y -= delta * 15.0 # Gravity
+		var down_force = clamp(15.0 - (velocity.y if velocity.y <= 0.0 else 0.0), 0.0, 30.0)
+		velocity.y = clamp(velocity.y - delta * down_force, -80.0, 80.0)  # Gravity
 		
 		if !knocked:
 			velocity.x = lerp(velocity.x, direction.x * SPEED, delta * 1.5 * accel_mod)
@@ -405,7 +407,7 @@ func gun_bob(vel: float, input, delta):
 				bob_y = sin(Time.get_ticks_msec() * 2 * bob_freq)
 				bob_x = sin(Time.get_ticks_msec() * bob_freq)
 			else:
-				bob_y = -velocity.y * 0.1
+				bob_y = clamp(-velocity.y * 0.1, -4.0, 4.0)
 				bob_x = 0
 			hands.position.y = lerp(hands.position.y, def_gun_pos.y + bob_y * bob_amount, delta * 10.0)
 			hands.position.x = lerp(hands.position.x, def_gun_pos.x + bob_x * bob_amount, delta * 10.0)

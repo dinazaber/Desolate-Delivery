@@ -194,13 +194,17 @@ orientation = 2
 particle_flag_align_y = true
 direction = Vector3(0, 0, -1)
 spread = 0.0
-initial_velocity_min = 70.0
-initial_velocity_max = 70.0
+initial_velocity_min = 100.0
+initial_velocity_max = 100.0
 gravity = Vector3(0, 0, 0)
 collision_mode = 2
 
+[sub_resource type="Curve" id="Curve_dxyhc"]
+_data = [Vector2(0, 0.49877608), 0.0, 0.0, 0, 0, Vector2(0.49999997, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.252142), 0.0, 0.0, 0, 0]
+point_count = 3
+
 [sub_resource type="Gradient" id="Gradient_u4wyd"]
-offsets = PackedFloat32Array(0, 0.14785992, 0.8793774, 1)
+offsets = PackedFloat32Array(0, 0.22794117, 0.7977941, 1)
 colors = PackedColorArray(1, 0.5882353, 0, 0, 1, 0.5882353, 0, 1, 1, 0.78431374, 0, 1, 1, 0.78431374, 0, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_7loxj"]
@@ -223,6 +227,7 @@ size = 0.015
 sections = 2
 section_length = 0.75
 section_segments = 1
+curve = SubResource("Curve_dxyhc")
 
 [node name="SMG" type="Node3D" unique_id=267885530]
 script = ExtResource("1_u4wyd")

@@ -10,10 +10,14 @@ extends Node3D
 @onready var playerPos = $PlayerPos
 
 var in_action: bool = false
+var can_swing: bool = true
 
 
 func punch(speed): # set speed to zero if not dashing
 	in_action = true
+	can_swing = false
+	$SwingTimer.start()
+	
 	if !anim.is_playing():
 		anim.play("punch")
 		if speed:
@@ -55,3 +59,6 @@ func hitstop(bodyCount):
 		anim.speed_scale = 0.1
 		await get_tree().create_timer(0.06).timeout
 		anim.speed_scale = 1.0
+
+func _on_swing_timer_timeout() -> void:
+	can_swing = true

@@ -157,7 +157,7 @@ gravity = Vector3(0, 0, 0)
 scale_curve = SubResource("CurveTexture_l87pe")
 
 [sub_resource type="Curve" id="Curve_bsjtv"]
-_data = [Vector2(0, 0.50123763), 0.0, 0.0, 0, 0, Vector2(0.50154793, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.50123763), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 0.50123763), 0.0, 0.0, 0, 0, Vector2(0.50154793, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.50058216), 0.0, 0.0, 0, 0]
 point_count = 3
 
 [sub_resource type="Gradient" id="Gradient_u1e3m"]
@@ -195,7 +195,7 @@ script = ExtResource("1_wrvfe")
 libraries/ = SubResource("AnimationLibrary_l87pe")
 
 [node name="Drill" type="Marker3D" parent="." unique_id=966625349]
-transform = Transform3D(0.984807, -0.17364806, 0, 0.16317579, 0.92541593, 0.3420201, -0.05939113, -0.33682385, 0.9396925, -0.8, -0.5, -0.4)
+transform = Transform3D(0.9848069, -0.17364804, 0, 0.16317578, 0.9254158, 0.3420201, -0.059391122, -0.3368238, 0.9396925, -0.8, -0.5, -0.4)
 
 [node name="DrillBase" type="MeshInstance3D" parent="Drill" unique_id=1233721536]
 transform = Transform3D(-6.5567085e-09, 0, 0.15, 0, 0.15, 0, -0.15, 0, -6.5567085e-09, 0.6, 0, 0)
@@ -248,3 +248,8 @@ collision_mask = 34
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PunchArea" unique_id=1198646979]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.75, 0, 0)
 shape = SubResource("BoxShape3D_44rio")
+
+[node name="SwingTimer" type="Timer" parent="." unique_id=897778433]
+one_shot = true
+
+[connection signal="timeout" from="SwingTimer" to="." method="_on_swing_timer_timeout"]

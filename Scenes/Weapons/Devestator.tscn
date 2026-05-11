@@ -221,6 +221,12 @@ script = ExtResource("1_pv3de")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=246552848]
 libraries/ = SubResource("AnimationLibrary_pv3de")
 
+[node name="Sprite" type="MeshInstance3D" parent="." unique_id=16884627]
+transform = Transform3D(0, 0, 0, 0, 0, 0, 0, 0, 0, -5.5076345e-08, 0.03, -0.93)
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_pv3de")
+skeleton = NodePath("../Marker3D")
+
 [node name="Marker3D" type="Marker3D" parent="." unique_id=875693166]
 transform = Transform3D(0.64278764, 0, 0.76604444, 0, 1, 0, -0.76604444, 0, 0.64278764, -0.1, -0.75, 0)
 
@@ -236,12 +242,8 @@ gi_mode = 2
 mesh = ExtResource("2_ry4q2")
 skeleton = NodePath("../../..")
 
-[node name="Sprite" type="MeshInstance3D" parent="." unique_id=16884627]
-transform = Transform3D(0, 0, 0, 0, 0, 0, 0, 0, 0, -5.5076345e-08, 0.03, -0.93)
-cast_shadow = 0
-mesh = SubResource("PlaneMesh_pv3de")
-skeleton = NodePath("../Marker3D")
-
 [node name="HeatBuffer" type="Timer" parent="." unique_id=1536351958]
+wait_time = 0.7
+one_shot = true
 
 [connection signal="timeout" from="HeatBuffer" to="." method="_on_heat_buffer_timeout"]
