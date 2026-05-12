@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://beqguglkai1oh"]
 
 [ext_resource type="ArrayMesh" uid="uid://cwhuegir0snfi" path="res://assets/Meshes/Enemies/Robot.mesh" id="1_grc7g"]
-[ext_resource type="Script" uid="uid://dm2yl7b4griiw" path="res://Scripts/Enemies/Robot.gd" id="1_h872o"]
-[ext_resource type="Script" uid="uid://dqv7818ohy4lu" path="res://Scripts/Enemies/HitBox.gd" id="3_hfj1t"]
+[ext_resource type="Script" uid="uid://dm2yl7b4griiw" path="res://Scripts/enemies/Robot.gd" id="1_h872o"]
+[ext_resource type="Script" uid="uid://dqv7818ohy4lu" path="res://Scripts/enemies/HitBox.gd" id="3_hfj1t"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_h872o"]
 radius = 0.5307617
@@ -488,30 +488,6 @@ attack_stop_distance = 2.0
 [node name="CollisionEnv" type="CollisionShape3D" parent="." unique_id=177358311]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1535034, 0)
 shape = SubResource("CapsuleShape3D_h872o")
-
-[node name="Feet" type="Node3D" parent="." unique_id=1244873050]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-visible = false
-
-[node name="StairsMax" type="RayCast3D" parent="Feet" unique_id=562153313]
-transform = Transform3D(0.49999997, 0, -0.86602545, 0, 1, 0, 0.86602545, 0, 0.49999997, 0, -0.5283632, 0)
-target_position = Vector3(0, 0, -0.6)
-collision_mask = 49
-
-[node name="StairsMax2" type="RayCast3D" parent="Feet" unique_id=1414085504]
-transform = Transform3D(0.93969256, 0, -0.3420201, 0, 1, 0, 0.3420201, 0, 0.93969256, 0, -0.5283632, 0)
-target_position = Vector3(0, 0, -0.6)
-collision_mask = 49
-
-[node name="StairsMax3" type="RayCast3D" parent="Feet" unique_id=1229397776]
-transform = Transform3D(0.93969256, 0, 0.3420201, 0, 1, 0, -0.3420201, 0, 0.93969256, 0, -0.5283632, 0)
-target_position = Vector3(0, 0, -0.6)
-collision_mask = 49
-
-[node name="StairsMax4" type="RayCast3D" parent="Feet" unique_id=469282044]
-transform = Transform3D(0.49999994, 0, 0.8660254, 0, 1, 0, -0.8660254, 0, 0.49999994, 0, -0.5283632, 0)
-target_position = Vector3(0, 0, -0.6)
-collision_mask = 49
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1869225451]
 root_node = NodePath("../Skeleton3D")

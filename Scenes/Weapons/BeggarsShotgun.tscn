@@ -4,7 +4,7 @@
 [ext_resource type="ArrayMesh" uid="uid://c6nmdg8hnoe36" path="res://assets/Meshes/Weapons/beggarsShotgun/frame.mesh" id="2_xapv0"]
 [ext_resource type="Texture2D" uid="uid://24usakcrqsvh" path="res://assets/Textures/Architecture/Explosion1.png" id="4_ktqvf"]
 [ext_resource type="Shader" uid="uid://dc5k8hk8ct5i8" path="res://Shaders/Particles/Pellets.gdshader" id="5_xapv0"]
-[ext_resource type="Shader" uid="uid://w3eyk752ljxw" path="res://Shaders/Particles/ParticlesShader.gdshader" id="6_mmsk8"]
+[ext_resource type="Shader" uid="uid://w3eyk752ljxw" path="res://Shaders/Particles/EffectShader.gdshader" id="6_mmsk8"]
 [ext_resource type="ArrayMesh" uid="uid://eadvfmp34ewb" path="res://assets/Meshes/Weapons/beggarsShotgun/barrels.mesh" id="6_pc0kw"]
 
 [sub_resource type="Animation" id="Animation_sjkk0"]
@@ -297,19 +297,17 @@ _data = {
 &"undraw": SubResource("Animation_ktqvf")
 }
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vqio2"]
-transparency = 2
-alpha_scissor_threshold = 0.7
-alpha_antialiasing_mode = 0
-shading_mode = 0
-albedo_color = Color(1.8247963, 1.8247963, 1.8247963, 1)
-albedo_texture = ExtResource("4_ktqvf")
-texture_filter = 1
-billboard_mode = 1
-billboard_keep_scale = true
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1544g"]
+render_priority = 0
+shader = ExtResource("6_mmsk8")
+shader_parameter/albedo = ExtResource("4_ktqvf")
+shader_parameter/enable_glow = true
+shader_parameter/glow_intensity = 2.0
+shader_parameter/billboard = false
+shader_parameter/draw_forward = true
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_xapv0"]
-material = SubResource("StandardMaterial3D_vqio2")
+material = SubResource("ShaderMaterial_1544g")
 size = Vector2(3, 3)
 orientation = 2
 
@@ -326,9 +324,10 @@ point_count = 4
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_u4wyd"]
 render_priority = 0
 shader = ExtResource("6_mmsk8")
-shader_parameter/color = Color(0.41527602, 0.27833572, 0, 1)
 shader_parameter/enable_glow = true
 shader_parameter/glow_intensity = 10.0
+shader_parameter/billboard = false
+shader_parameter/draw_forward = false
 
 [sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_mmsk8"]
 material = SubResource("ShaderMaterial_u4wyd")
@@ -383,7 +382,7 @@ script = ExtResource("1_e0py8")
 libraries/ = SubResource("AnimationLibrary_8qb6n")
 
 [node name="BeggarsShotgun" type="Marker3D" parent="." unique_id=1087278608]
-transform = Transform3D(0.9848077, 0.17364818, 0, -0.04494346, 0.254887, -0.9659258, -0.16773126, 0.9512512, 0.25881907, 0.15, -1.35, 0.15)
+transform = Transform3D(0.9848076, 0.17364816, 0, -0.044943456, 0.25488698, -0.9659258, -0.16773124, 0.9512511, 0.25881907, 0.15, -1.35, 0.15)
 
 [node name="Frame" type="MeshInstance3D" parent="BeggarsShotgun" unique_id=972063788]
 transform = Transform3D(-0.03, -9.7406916e-11, -4.529874e-09, -9.740691e-11, 0.030000001, -6.984924e-11, 4.529874e-09, -6.9849224e-11, -0.03, 0, -0.030000001, -0.58)
@@ -416,7 +415,7 @@ cast_shadow = 0
 gi_mode = 2
 emitting = false
 amount = 9
-lifetime = 0.09999999999999999
+lifetime = 0.1
 one_shot = true
 explosiveness = 1.0
 fixed_fps = 144

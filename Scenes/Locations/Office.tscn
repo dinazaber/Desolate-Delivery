@@ -18,7 +18,6 @@
 background_mode = 1
 background_color = Color(0.4849202, 0.4849202, 0.4849202, 1)
 ambient_light_source = 2
-ambient_light_color = Color(0.2585664, 0.2585664, 0.25856638, 1)
 tonemap_mode = 2
 glow_enabled = true
 glow_normalized = true
@@ -630,7 +629,6 @@ spot_attenuation = 1.5
 spot_angle = 80.0
 
 [node name="DeskLamps" type="Node3D" parent="." unique_id=271790192]
-visible = false
 
 [node name="DeskLamp" type="MeshInstance3D" parent="DeskLamps" unique_id=997849663]
 transform = Transform3D(0.09992509, 0, 0.003870175, 0, 0.1, 0, -0.003870175, 0, 0.09992509, 7.284633, 0.9345888, 4.501906)

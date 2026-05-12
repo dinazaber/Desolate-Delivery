@@ -97,6 +97,8 @@ func _on_restore_cool(coolOnKill: float) -> void:
 	heat -= coolOnKill
 
 func _process(delta: float) -> void:
+	$Marker3D/Gun/Sprite.look_at(camera.global_position, Vector3.UP)
+	
 	if can_cool:
 		heat = clamp(heat - (100 * delta) / coolDown, 0.0, 100.0)
 

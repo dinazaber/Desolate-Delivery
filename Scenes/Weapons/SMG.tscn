@@ -4,7 +4,7 @@
 [ext_resource type="ArrayMesh" uid="uid://d4hn03go6odvn" path="res://assets/Meshes/Weapons/SMG.mesh" id="2_dxyhc"]
 [ext_resource type="Shader" uid="uid://dc5k8hk8ct5i8" path="res://Shaders/Particles/Pellets.gdshader" id="4_7loxj"]
 [ext_resource type="Texture2D" uid="uid://24usakcrqsvh" path="res://assets/Textures/Architecture/Explosion1.png" id="4_o3ivw"]
-[ext_resource type="Shader" uid="uid://w3eyk752ljxw" path="res://Shaders/Particles/ParticlesShader.gdshader" id="4_u4wyd"]
+[ext_resource type="Shader" uid="uid://w3eyk752ljxw" path="res://Shaders/Particles/EffectShader.gdshader" id="4_u4wyd"]
 
 [sub_resource type="Animation" id="Animation_sjkk0"]
 length = 0.001
@@ -176,19 +176,17 @@ _data = {
 &"undraw": SubResource("Animation_7loxj")
 }
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dxyhc"]
-transparency = 2
-alpha_scissor_threshold = 0.7
-alpha_antialiasing_mode = 0
-shading_mode = 0
-albedo_color = Color(1.8247963, 1.8247963, 1.8247963, 1)
-albedo_texture = ExtResource("4_o3ivw")
-texture_filter = 1
-billboard_mode = 1
-billboard_keep_scale = true
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7loxj"]
+render_priority = 0
+shader = ExtResource("4_u4wyd")
+shader_parameter/albedo = ExtResource("4_o3ivw")
+shader_parameter/enable_glow = true
+shader_parameter/glow_intensity = 2.0
+shader_parameter/billboard = false
+shader_parameter/draw_forward = true
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_ovc61"]
-material = SubResource("StandardMaterial3D_dxyhc")
+material = SubResource("ShaderMaterial_7loxj")
 size = Vector2(3, 3)
 orientation = 2
 
@@ -205,9 +203,10 @@ point_count = 4
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_u4wyd"]
 render_priority = 0
 shader = ExtResource("4_u4wyd")
-shader_parameter/color = Color(0.41527602, 0.27833572, 0, 1)
 shader_parameter/enable_glow = true
 shader_parameter/glow_intensity = 10.0
+shader_parameter/billboard = false
+shader_parameter/draw_forward = false
 
 [sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_hpmwm"]
 material = SubResource("ShaderMaterial_u4wyd")
@@ -233,7 +232,7 @@ mesh = ExtResource("2_dxyhc")
 skeleton = NodePath("../..")
 
 [node name="Sprite" type="MeshInstance3D" parent="Marker3D/Gun" unique_id=1088014816]
-transform = Transform3D(0, 0, 0, 0, 0, 0, 0, 0, 0, 22.634, 0, 0)
+transform = Transform3D(0, 0, 0, 0, 0, 0, 0, 0, 0, 22.633999, 2.9802322e-08, 2.3283064e-10)
 visible = false
 cast_shadow = 0
 mesh = SubResource("PlaneMesh_ovc61")
