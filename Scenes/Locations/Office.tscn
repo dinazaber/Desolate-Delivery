@@ -11,6 +11,7 @@
 [ext_resource type="ArrayMesh" uid="uid://d1g71w7l6fte2" path="res://assets/Meshes/Objects/Computer.mesh" id="8_56nff"]
 [ext_resource type="ArrayMesh" uid="uid://b647ymx5hntht" path="res://assets/Meshes/Objects/CeilingLamp.mesh" id="8_dwt0u"]
 [ext_resource type="ArrayMesh" uid="uid://dv0gysb13ewec" path="res://assets/Meshes/Objects/Chair1.mesh" id="11_0vbgm"]
+[ext_resource type="ArrayMesh" uid="uid://cy528km4di6gs" path="res://assets/Meshes/Objects/CofeeMachine.mesh" id="13_5ld5i"]
 [ext_resource type="LightmapGIData" uid="uid://dldhrlpg5seym" path="res://Scenes/Office.lmbake" id="13_p7377"]
 
 [sub_resource type="Environment" id="Environment_6x81v"]
@@ -1172,3 +1173,12 @@ metadata/_edit_lock_ = true
 [node name="ComputersOffMesh" type="MeshInstance3D" parent="UnitedMeshes" unique_id=591437918]
 mesh = SubResource("ArrayMesh_m3n1v")
 skeleton = NodePath("../..")
+
+[node name="CofeeMachine" type="MeshInstance3D" parent="." unique_id=1305212294]
+transform = Transform3D(0.0016126892, 0, -0.39999676, 0, 0.4, 0, 0.39999676, 0, 0.0016126892, 12.168772, 1.3483967, -5.383838)
+mesh = ExtResource("13_5ld5i")
+
+[node name="Label3D" type="Label3D" parent="CofeeMachine" unique_id=65556673]
+transform = Transform3D(-4.33065e-08, 0, 0.99999976, 0, 1, 0, -0.99999976, 0, -4.33065e-08, -0.5921202, 1.9379916, -0.021835327)
+text = "Office kitchen somewhere here"
+font_size = 100
