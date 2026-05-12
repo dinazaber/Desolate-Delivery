@@ -5,7 +5,7 @@ extends Node3D
 @export var recoil: float = 4.0 # degree rotation
 @export var spread: float = 4.5 # max pellet spread (degrees) (for first shot)
 @export var pellets: int = 9 # number of pellets
-@export var bullet_speed: float = 50.0 # Speed of particles
+@export var bullet_speed: float = 70.0 # Speed of particles
 @export var mag: int = 4
 @export var heatPerShot: float = 22.25
 @export var coolDown: float = 5.0 # time (s) it takes to go from 100 to 0 heat
@@ -22,9 +22,9 @@ var last_anim: String = ""
 @onready var anim: AnimationPlayer = $AnimationPlayer
 @onready var heatBuffer = $HeatBuffer
 
-@onready var pellet= $BeggarsShotgun/Frame/RayCast
-
-@onready var tracer = $BeggarsShotgun/Frame/RayCast/tracer
+@onready var barrel = $BeggarsShotgun/Barrel
+@onready var pellet = $BeggarsShotgun/Barrel/RayCast
+@onready var tracer = $BeggarsShotgun/Barrel/RayCast/tracer
 @onready var steam = $BeggarsShotgun/steam
 
 
@@ -78,17 +78,17 @@ func scatterNshoot():
 	points.resize(pellets)
 	var dist
 	if playerRay.is_colliding():
-		dist = pellet.global_position.distance_to(playerRay.get_collision_point())
+		dist = barrel.global_position.distance_to(playerRay.get_collision_point())
 		if dist < 0.7:
-			pellet.look_at(playerRayEnd.global_position)
+			barrel.look_at(playerRayEnd.global_position, Vector3.UP, true)
 		else:
-			pellet.look_at(playerRay.get_collision_point())
+			barrel.look_at(playerRay.get_collision_point(), Vector3.UP, true)
 	else:
-		pellet.look_at(playerRayEnd.global_position)
+		barrel.look_at(playerRayEnd.global_position, Vector3.UP, true)
 	
 	for i in range(pellets):
-		pellet.rotation.x = deg_to_rad(randf_range(-spread, spread) * (4 - shotNum*0.6)/4)
-		pellet.rotation.y = deg_to_rad(randf_range(-spread, spread) * (4 - shotNum*0.6)/4 + 180)
+		pellet.rotation.x = deg_to_rad(randf_range(-spread, spread) * (4 - shotNum*0.7)/4)
+		pellet.rotation.y = deg_to_rad(randf_range(-spread, spread) * (4 - shotNum*0.7)/4 + 180)
 		
 		pellet.force_raycast_update()
 		
@@ -101,11 +101,11 @@ func scatterNshoot():
 			if pellet.get_collider().is_in_group("ShotReactable"):
 				pellet.get_collider().shot()
 				
-		else: points[i] = $BeggarsShotgun/Frame/RayCast/Marker3D.global_position # Take end of weapon ray as particle's target point
+		else: points[i] = $BeggarsShotgun/Barrel/RayCast/Marker3D.global_position # Take end of weapon ray as particle's target point
 	
 	var material = tracer.process_material as ShaderMaterial
 	material.set_shader_parameter("hit_points", points) #Updating target points
-	material.set_shader_parameter("gun_barrel_pos", pellet.global_position) #Setting starting point
+	material.set_shader_parameter("gun_barrel_pos", tracer.global_position) #Setting starting point
 	
 	tracer.restart()
 	tracer.emitting = true
@@ -140,9 +140,13 @@ func spawn_debug_cube(pos: Vector3):
 	var mesh_instance = MeshInstance3D.new()
 	var box_mesh = BoxMesh.new()
 	
+	var particle_collision_instance: GPUParticlesCollisionSphere3D = GPUParticlesCollisionSphere3D.new()
+	
 	# Set a small size for the cube (e.g., 10cm)
 	box_mesh.size = Vector3(0.1, 0.1, 0.1)
 	mesh_instance.mesh = box_mesh
+	
+	particle_collision_instance.radius = 0.3
 	
 	# Create a simple red material to make it pop
 	var material = StandardMaterial3D.new()
@@ -153,5 +157,9 @@ func spawn_debug_cube(pos: Vector3):
 	get_tree().root.add_child(mesh_instance)
 	mesh_instance.global_position = pos
 	
+	get_tree().root.add_child(particle_collision_instance)
+	particle_collision_instance.global_position = pos
+	
 	# Auto-delete after 2 seconds to keep performance high
 	get_tree().create_timer(2.0).timeout.connect(mesh_instance.queue_free)
+	get_tree().create_timer(0.3).timeout.connect(particle_collision_instance.queue_free)

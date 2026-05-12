@@ -43,7 +43,7 @@ func shoot():
 		#		barrel.look_at(playerRay.get_collision_point())
 		#else:
 		#	barrel.look_at(playerRayEnd.global_position)
-
+		
 		camera.add_recoil(recoil)
 		camera.add_trauma(recoil*0.7)
 		heatBuffer.start()

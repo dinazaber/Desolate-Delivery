@@ -240,7 +240,6 @@ playerRay = NodePath("../../../PlayerRay")
 playerRayEnd = NodePath("../../../PlayerRay/PlayerRayEnd")
 
 [node name="BeggarsShotgun" parent="shakeable_camera/Hands/RightHand" index="2" unique_id=893199726 node_paths=PackedStringArray("camera", "playerRay", "playerRayEnd")]
-spread = 5.0
 camera = NodePath("../../..")
 playerRay = NodePath("../../../PlayerRay")
 playerRayEnd = NodePath("../../../PlayerRay/PlayerRayEnd")
@@ -491,6 +490,5 @@ visible = false
 [connection signal="closed" from="PauseMenu/Settings" to="PauseMenu" method="_on_settings_closed"]
 [connection signal="closed" from="PauseMenu/SaveMenu" to="PauseMenu" method="_on_save_menu_closed"]
 
-[editable path="shakeable_camera"]
 [editable path="shakeable_camera/Hands/RightHand"]
 [editable path="shakeable_camera/Hands/LeftHand"]

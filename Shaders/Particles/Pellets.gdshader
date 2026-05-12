@@ -3,7 +3,7 @@ shader_type particles;
 // Array to hold our hit positions (adjust size to your pellet count)
 uniform vec3 hit_points[20]; 
 uniform vec3 gun_barrel_pos;
-uniform float speed = 100;
+uniform float speed = 70.0;
 
 void start() {
     // INDEX is the particle ID (0, 1, 2...)
@@ -40,11 +40,11 @@ void start() {
     // This sets the rotation and scaling (Basis)
     TRANSFORM[0].xyz = right;
     TRANSFORM[1].xyz = forward;
-    TRANSFORM[2].xyz = -up;
+    TRANSFORM[2].xyz = up;
 }
 
-//void process(){
-	//if (COLLIDED) { 
-        //ACTIVE = false; 
-    //}
-//}
+void process(){
+	if (COLLIDED) { 
+        ACTIVE = false; 
+    }
+}

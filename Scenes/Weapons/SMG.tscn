@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c3aycipaifchx" path="res://Scripts/Weapons/SMG.gd" id="1_u4wyd"]
 [ext_resource type="ArrayMesh" uid="uid://d4hn03go6odvn" path="res://assets/Meshes/Weapons/SMG.mesh" id="2_dxyhc"]
+[ext_resource type="Shader" uid="uid://dc5k8hk8ct5i8" path="res://Shaders/Particles/Pellets.gdshader" id="4_7loxj"]
 [ext_resource type="Texture2D" uid="uid://24usakcrqsvh" path="res://assets/Textures/Architecture/Explosion1.png" id="4_o3ivw"]
 [ext_resource type="Shader" uid="uid://w3eyk752ljxw" path="res://Shaders/Particles/ParticlesShader.gdshader" id="4_u4wyd"]
 
@@ -10,7 +11,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("SMG:position")
+tracks/0/path = NodePath("Marker3D/Gun:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -22,7 +23,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("SMG:rotation")
+tracks/1/path = NodePath("Marker3D/Gun:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -34,7 +35,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("SMG/Sprite:visible")
+tracks/2/path = NodePath("Marker3D/Gun/Sprite:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -46,7 +47,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("SMG/Sprite:scale")
+tracks/3/path = NodePath("Marker3D/Gun/Sprite:scale")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -63,7 +64,7 @@ step = 0.01
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("SMG:position")
+tracks/0/path = NodePath("Marker3D/Gun:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -75,7 +76,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("SMG:rotation")
+tracks/1/path = NodePath("Marker3D/Gun:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -92,7 +93,7 @@ step = 0.01
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("SMG:position")
+tracks/0/path = NodePath("Marker3D/Gun:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -104,7 +105,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("SMG/Sprite:visible")
+tracks/1/path = NodePath("Marker3D/Gun/Sprite:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -116,7 +117,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("SMG:rotation")
+tracks/2/path = NodePath("Marker3D/Gun:rotation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -128,7 +129,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("SMG/Sprite:scale")
+tracks/3/path = NodePath("Marker3D/Gun/Sprite:scale")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -145,7 +146,7 @@ step = 0.01
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("SMG:position")
+tracks/0/path = NodePath("Marker3D/Gun:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -157,7 +158,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("SMG:rotation")
+tracks/1/path = NodePath("Marker3D/Gun:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -191,18 +192,15 @@ material = SubResource("StandardMaterial3D_dxyhc")
 size = Vector2(3, 3)
 orientation = 2
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_dxyhc"]
-particle_flag_align_y = true
-direction = Vector3(0, 0, -1)
-spread = 0.0
-initial_velocity_min = 100.0
-initial_velocity_max = 100.0
-gravity = Vector3(0, 0, 0)
-collision_mode = 2
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_b1a7w"]
+shader = ExtResource("4_7loxj")
+shader_parameter/hit_points = PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+shader_parameter/gun_barrel_pos = Vector3(0, 0, 0)
+shader_parameter/speed = 70.0
 
 [sub_resource type="Curve" id="Curve_dxyhc"]
-_data = [Vector2(0, 0.49877608), 0.0, 0.0, 0, 0, Vector2(0.49999997, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.252142), 0.0, 0.0, 0, 0]
-point_count = 3
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.38650307, 0.6976745), 0.0, 0.0, 0, 0, Vector2(0.39570552, 0), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_u4wyd"]
 render_priority = 0
@@ -213,9 +211,9 @@ shader_parameter/glow_intensity = 10.0
 
 [sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_hpmwm"]
 material = SubResource("ShaderMaterial_u4wyd")
-size = 0.015
+size = 0.02
 sections = 2
-section_length = 0.75
+section_length = 1.5
 section_segments = 1
 curve = SubResource("Curve_dxyhc")
 
@@ -225,38 +223,44 @@ script = ExtResource("1_u4wyd")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=207191350]
 libraries/ = SubResource("AnimationLibrary_8qb6n")
 
-[node name="SMG" type="MeshInstance3D" parent="." unique_id=559022510]
+[node name="Marker3D" type="Marker3D" parent="." unique_id=1447486409]
+
+[node name="Gun" type="MeshInstance3D" parent="Marker3D" unique_id=559022510]
 transform = Transform3D(0.011490665, -0.019902417, 0.019283628, -0.009641814, 0.016700113, 0.022981333, -0.025980761, -0.014999999, -8.429142e-10, 0.225, -0.75, 0.15)
 cast_shadow = 0
 gi_mode = 2
 mesh = ExtResource("2_dxyhc")
+skeleton = NodePath("../..")
 
-[node name="Sprite" type="MeshInstance3D" parent="SMG" unique_id=1088014816]
+[node name="Sprite" type="MeshInstance3D" parent="Marker3D/Gun" unique_id=1088014816]
 transform = Transform3D(0, 0, 0, 0, 0, 0, 0, 0, 0, 22.634, 0, 0)
 visible = false
 cast_shadow = 0
 mesh = SubResource("PlaneMesh_ovc61")
-skeleton = NodePath("../..")
+skeleton = NodePath("../../..")
 
-[node name="Barrel" type="Node3D" parent="SMG" unique_id=576063553]
-transform = Transform3D(-1.4570462e-07, 0, -3.3333328, 0, 3.3333328, 0, 3.3333328, 0, -1.4570462e-07, 22.520256, 0, 9.843917e-07)
+[node name="Barrel" type="Marker3D" parent="Marker3D" unique_id=1457927656]
+transform = Transform3D(0.03, 0, 0, 0, 0.03, 0, 0, 0, 0.03, 0, 0, 0)
 
-[node name="RayCast3D" type="RayCast3D" parent="SMG/Barrel" unique_id=1785846607]
-transform = Transform3D(10.000003, 0, 4.440894e-14, 0, 10.000003, 0, -4.440894e-14, 0, 10.000003, -5.5241253e-15, 0, 6.7560787)
+[node name="RayCast3D" type="RayCast3D" parent="Marker3D/Barrel" unique_id=1785846607]
+transform = Transform3D(33.33334, 0, 0, 0, 33.33334, 0, 0, 0, 33.33334, -3.9736433e-06, 0, -1.7369347e-13)
 target_position = Vector3(0, 0, -75)
 collision_mask = 11
 collide_with_areas = true
 
-[node name="smg_tracers" type="GPUParticles3D" parent="SMG/Barrel/RayCast3D" unique_id=1931424156]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.69036895)
+[node name="smg_tracers" type="GPUParticles3D" parent="Marker3D/Barrel/RayCast3D" unique_id=1931424156]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.69)
 cast_shadow = 0
 emitting = false
 amount = 1
 lifetime = 0.1
 one_shot = true
 fixed_fps = 144
-process_material = SubResource("ParticleProcessMaterial_dxyhc")
+process_material = SubResource("ShaderMaterial_b1a7w")
 draw_pass_1 = SubResource("RibbonTrailMesh_hpmwm")
+
+[node name="Marker3D" type="Marker3D" parent="Marker3D/Barrel/RayCast3D" unique_id=1237287799]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 75, 0, 0)
 
 [node name="HeatBuffer" type="Timer" parent="." unique_id=1903202031]
 one_shot = true

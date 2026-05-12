@@ -27,7 +27,7 @@ uniform int charge_amount: hint_range(0, 4) = 0;
 varying vec3 worldPos;
 varying vec3 world_normal;
 varying vec2 uv3;
-uniform float viewmodel_fov = 90.0f;
+uniform float viewmodel_fov = 70.0f;
 
 // --- THE OPTIMIZED BOX PROJECTION FUNCTION ---
 vec4 get_box_projection(sampler2D p_sampler, vec3 p_normal, vec3 p_pos) {
@@ -66,7 +66,7 @@ void vertex(){
     worldPos = VERTEX;
 	world_normal = NORMAL;
 	uv3 = CUSTOM0.xy;
-	
+	/*
 	if (viewmodel_fov > 0.0) {
 		float onetanfov = 1.0f / tan(0.5f * (viewmodel_fov * PI / 180.0f));
 		float aspect = VIEWPORT_SIZE.x / VIEWPORT_SIZE.y;
@@ -74,7 +74,7 @@ void vertex(){
 		PROJECTION_MATRIX[1][1] = -onetanfov;
 		PROJECTION_MATRIX[0][0] = onetanfov / aspect;
 	}
-	
+	*/
 	POSITION = PROJECTION_MATRIX * VIEW_MATRIX * MODEL_MATRIX * vec4(VERTEX, 1.0);
     POSITION.z = mix(POSITION.z, POSITION.w, 0.9);
 }

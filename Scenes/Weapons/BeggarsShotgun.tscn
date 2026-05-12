@@ -317,11 +317,11 @@ orientation = 2
 shader = ExtResource("5_xapv0")
 shader_parameter/hit_points = PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 shader_parameter/gun_barrel_pos = Vector3(0, 0, 0)
-shader_parameter/speed = 100.0
+shader_parameter/speed = 70.0
 
 [sub_resource type="Curve" id="Curve_dxyhc"]
-_data = [Vector2(0, 0.49877608), 0.0, 0.0, 0, 0, Vector2(0.49999997, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.252142), 0.0, 0.0, 0, 0]
-point_count = 3
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.38957053, 0.7048895), 0.0, 0.0, 0, 0, Vector2(0.40184048, 0), 0.0, 0.0, 0, 0, Vector2(0.9815951, 0), 0.0, 0.0, 0, 0]
+point_count = 4
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_u4wyd"]
 render_priority = 0
@@ -332,9 +332,9 @@ shader_parameter/glow_intensity = 10.0
 
 [sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_mmsk8"]
 material = SubResource("ShaderMaterial_u4wyd")
-size = 0.015
+size = 0.02
 sections = 2
-section_length = 0.75
+section_length = 1.2
 section_segments = 1
 curve = SubResource("Curve_dxyhc")
 
@@ -383,10 +383,10 @@ script = ExtResource("1_e0py8")
 libraries/ = SubResource("AnimationLibrary_8qb6n")
 
 [node name="BeggarsShotgun" type="Marker3D" parent="." unique_id=1087278608]
-transform = Transform3D(0.98480725, 0.17364806, 0, -0.044943437, 0.25488684, -0.9659258, -0.16773118, 0.9512506, 0.25881907, 0.15, -1.35, 0.15)
+transform = Transform3D(0.9848077, 0.17364818, 0, -0.04494346, 0.254887, -0.9659258, -0.16773126, 0.9512512, 0.25881907, 0.15, -1.35, 0.15)
 
 [node name="Frame" type="MeshInstance3D" parent="BeggarsShotgun" unique_id=972063788]
-transform = Transform3D(-0.03, -9.7406916e-11, -4.529874e-09, -9.74069e-11, 0.03, -6.984924e-11, 4.529874e-09, -6.9849224e-11, -0.03, 0, -0.03, -0.58)
+transform = Transform3D(-0.03, -9.7406916e-11, -4.529874e-09, -9.740691e-11, 0.030000001, -6.984924e-11, 4.529874e-09, -6.9849224e-11, -0.03, 0, -0.030000001, -0.58)
 cast_shadow = 0
 mesh = ExtResource("2_xapv0")
 
@@ -402,25 +402,28 @@ cast_shadow = 0
 mesh = SubResource("PlaneMesh_xapv0")
 skeleton = NodePath("../../..")
 
-[node name="RayCast" type="RayCast3D" parent="BeggarsShotgun/Frame" unique_id=1575494301]
-transform = Transform3D(-33.33335, 0, -2.9140924e-06, 0, 33.33335, 0, 2.914094e-06, 0, -33.333332, -2.861023e-06, 0.9999995, 12.984461)
+[node name="Barrel" type="Marker3D" parent="BeggarsShotgun" unique_id=731909360]
+
+[node name="RayCast" type="RayCast3D" parent="BeggarsShotgun/Barrel" unique_id=1575494301]
+transform = Transform3D(1.000001, -3.2468996e-09, 2.3841856e-07, 3.2469005e-09, 1.0000005, 2.3283073e-09, -2.384188e-07, -2.328308e-09, 0.99999994, 0, 0, 0)
 target_position = Vector3(0, 0, -75)
 collision_mask = 11
 collide_with_areas = true
 
-[node name="tracer" type="GPUParticles3D" parent="BeggarsShotgun/Frame/RayCast" unique_id=42885782]
+[node name="tracer" type="GPUParticles3D" parent="BeggarsShotgun/Barrel/RayCast" unique_id=42885782]
+transform = Transform3D(1, -3.3306717e-16, 0, -5.5511125e-16, 0.9999998, -2.220446e-16, 0, 2.220446e-16, 0.9999998, -7.273698e-09, -7.103229e-11, -0.96949184)
 cast_shadow = 0
 gi_mode = 2
 emitting = false
 amount = 9
-lifetime = 2.0
+lifetime = 0.09999999999999999
 one_shot = true
 explosiveness = 1.0
-fixed_fps = 60
+fixed_fps = 144
 process_material = SubResource("ShaderMaterial_mmsk8")
 draw_pass_1 = SubResource("RibbonTrailMesh_mmsk8")
 
-[node name="Marker3D" type="Marker3D" parent="BeggarsShotgun/Frame/RayCast" unique_id=1195608805]
+[node name="Marker3D" type="Marker3D" parent="BeggarsShotgun/Barrel/RayCast" unique_id=1195608805]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -75)
 
 [node name="steam" type="GPUParticles3D" parent="BeggarsShotgun" unique_id=391177639]
