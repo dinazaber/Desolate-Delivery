@@ -17,8 +17,8 @@ var current_exposion_box
 @export var grenade_damage_big: float = 120.0
 var current_damage: float
 
-const EXPLOSION_R_SMALL: float = 4.0
-const EXPLOSION_R_BIG: float = 6.0
+const EXPLOSION_R_SMALL: float = 3.5
+const EXPLOSION_R_BIG: float = 5.0
 var current_explosion_radius: float
 
 # Called when the node enters the scene tree for the first time.

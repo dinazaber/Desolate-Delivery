@@ -7,7 +7,6 @@ group_uniforms Adjustments;
 uniform sampler2D albedo: source_color, filter_linear;
 uniform bool enable_glow = false;
 uniform float glow_intensity = 1.0;
-uniform bool billboard = false;
 uniform bool draw_forward = false;
 
 void fragment() {

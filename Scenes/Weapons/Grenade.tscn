@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://4i0nsk0syjsv" path="res://Scripts/Weapons/Grenade.gd" id="1_k3jl2"]
 [ext_resource type="ArrayMesh" uid="uid://bx1fs0t7d5ng3" path="res://assets/Meshes/Weapons/Genade.mesh" id="2_2byne"]
 [ext_resource type="Script" uid="uid://dqv7818ohy4lu" path="res://Scripts/enemies/HitBox.gd" id="2_5oibr"]
-[ext_resource type="Shader" uid="uid://w3eyk752ljxw" path="res://Shaders/Particles/EffectShader.gdshader" id="3_2byne"]
 [ext_resource type="PackedScene" uid="uid://b4wyneleeqxp" path="res://Scenes/Modules/TraumaCauser.tscn" id="3_5oibr"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_2byne"]
@@ -39,32 +38,24 @@ scale_min = 0.5
 scale_max = 1.1999999
 scale_curve = SubResource("CurveTexture_6rbch")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_5oibr"]
-render_priority = 0
-shader = ExtResource("3_2byne")
-shader_parameter/color = Color(1, 0.4627451, 0, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2byne"]
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_color = Color(1, 0.50980395, 0, 1)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_2jest"]
-material = SubResource("ShaderMaterial_5oibr")
+material = SubResource("StandardMaterial3D_2byne")
 top_radius = 0.1
 bottom_radius = 0.0
 radial_segments = 4
 rings = 0
 
 [sub_resource type="Curve" id="Curve_ou7vq"]
-_data = [Vector2(0, 0.011235952), 0.0, 0.0, 0, 0, Vector2(0.6034483, 0.79775286), 0.0, 0.0, 0, 0, Vector2(1, 0.011235952), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 0.011235952), 0.0, 0.0, 0, 0, Vector2(0.61224496, 0.65742034), 0.0, 0.0, 0, 0, Vector2(1, 0.011235952), 0.0, 0.0, 0, 0]
 point_count = 3
 
 [sub_resource type="CurveTexture" id="CurveTexture_rgnl6"]
 curve = SubResource("Curve_ou7vq")
-
-[sub_resource type="Curve" id="Curve_qqlsr"]
-_limits = [0.0, 2.0, 0.0, 1.0]
-_data = [Vector2(0, 2), 0.0, 0.0, 0, 0, Vector2(1, 1.0112361), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="CurveTexture" id="CurveTexture_oxblh"]
-curve = SubResource("Curve_qqlsr")
 
 [sub_resource type="Curve" id="Curve_v60of"]
 _data = [Vector2(0, 0.022471905), 0.0, 0.0, 0, 0, Vector2(0.25431034, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -85,15 +76,14 @@ scale_max = 1.5
 scale_curve = SubResource("CurveTexture_3kshd")
 color = Color(0.27450982, 0.27450982, 0.27450982, 1)
 alpha_curve = SubResource("CurveTexture_rgnl6")
-emission_curve = SubResource("CurveTexture_oxblh")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_7uf86"]
-render_priority = 0
-shader = ExtResource("3_2byne")
-shader_parameter/color = Color(0.7279856, 0.7279857, 0.7279856, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5oibr"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
 
 [sub_resource type="SphereMesh" id="SphereMesh_lcisc"]
-material = SubResource("ShaderMaterial_7uf86")
+material = SubResource("StandardMaterial3D_5oibr")
 radial_segments = 8
 rings = 4
 
@@ -133,13 +123,13 @@ color = Color(1, 0.7254902, 0, 1)
 color_ramp = SubResource("GradientTexture1D_dh2ry")
 emission_curve = SubResource("CurveTexture_mf0rl")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_jmlml"]
-render_priority = 0
-shader = ExtResource("3_2byne")
-shader_parameter/color = Color(0.9843137, 0.6627451, 0, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7uf86"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
 
 [sub_resource type="SphereMesh" id="SphereMesh_e1jli"]
-material = SubResource("ShaderMaterial_jmlml")
+material = SubResource("StandardMaterial3D_7uf86")
 radial_segments = 8
 rings = 4
 
@@ -193,6 +183,7 @@ one_shot = true
 autostart = true
 
 [node name="Debris" type="GPUParticles3D" parent="." unique_id=1122488567]
+cast_shadow = 0
 emitting = false
 amount = 24
 lifetime = 0.5
@@ -203,6 +194,7 @@ process_material = SubResource("ParticleProcessMaterial_6rbch")
 draw_pass_1 = SubResource("CylinderMesh_2jest")
 
 [node name="Smoke" type="GPUParticles3D" parent="." unique_id=253947348]
+cast_shadow = 0
 emitting = false
 amount = 12
 lifetime = 2.0

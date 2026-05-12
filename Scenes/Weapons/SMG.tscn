@@ -182,7 +182,6 @@ shader = ExtResource("4_u4wyd")
 shader_parameter/albedo = ExtResource("4_o3ivw")
 shader_parameter/enable_glow = true
 shader_parameter/glow_intensity = 2.0
-shader_parameter/billboard = false
 shader_parameter/draw_forward = true
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_ovc61"]
@@ -200,16 +199,26 @@ shader_parameter/speed = 70.0
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.38650307, 0.6976745), 0.0, 0.0, 0, 0, Vector2(0.39570552, 0), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 4
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_u4wyd"]
-render_priority = 0
-shader = ExtResource("4_u4wyd")
-shader_parameter/enable_glow = true
-shader_parameter/glow_intensity = 10.0
-shader_parameter/billboard = false
-shader_parameter/draw_forward = false
+[sub_resource type="Gradient" id="Gradient_7loxj"]
+offsets = PackedFloat32Array(0, 0.2389706, 0.8308824, 1)
+colors = PackedColorArray(1, 0.3019608, 0, 0, 1, 0.3019608, 0, 1, 1, 1, 0, 1, 1, 1, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_b1a7w"]
+gradient = SubResource("Gradient_7loxj")
+height = 256
+fill_from = Vector2(0.508547, 1)
+fill_to = Vector2(0.51282054, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hpmwm"]
+transparency = 1
+vertex_color_use_as_albedo = true
+albedo_texture = SubResource("GradientTexture2D_b1a7w")
+emission_enabled = true
+emission = Color(1, 0.62352943, 0, 1)
+emission_energy_multiplier = 6.0
 
 [sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_hpmwm"]
-material = SubResource("ShaderMaterial_u4wyd")
+material = SubResource("StandardMaterial3D_hpmwm")
 size = 0.02
 sections = 2
 section_length = 1.5

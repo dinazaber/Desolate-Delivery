@@ -10,7 +10,7 @@ void start() {
     // We grab the specific hit point for this particle
     vec3 target = hit_points[INDEX];
     
-    
+	
     // Calculate direction and distance
     vec3 dir = target - gun_barrel_pos;
 	
