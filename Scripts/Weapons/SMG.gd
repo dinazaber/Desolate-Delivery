@@ -110,9 +110,13 @@ func spawn_debug_cube(pos: Vector3):
 	var mesh_instance = MeshInstance3D.new()
 	var box_mesh = BoxMesh.new()
 	
+	var particle_collision_instance: GPUParticlesCollisionSphere3D = GPUParticlesCollisionSphere3D.new()
+	
 	# Set a small size for the cube (e.g., 10cm)
 	box_mesh.size = Vector3(0.1, 0.1, 0.1)
 	mesh_instance.mesh = box_mesh
+	
+	particle_collision_instance.radius = 0.3
 	
 	# Create a simple red material to make it pop
 	var material = StandardMaterial3D.new()
@@ -123,5 +127,9 @@ func spawn_debug_cube(pos: Vector3):
 	get_tree().root.add_child(mesh_instance)
 	mesh_instance.global_position = pos
 	
+	get_tree().root.add_child(particle_collision_instance)
+	particle_collision_instance.global_position = pos
+	
 	# Auto-delete after 2 seconds to keep performance high
 	get_tree().create_timer(2.0).timeout.connect(mesh_instance.queue_free)
+	get_tree().create_timer(0.3).timeout.connect(particle_collision_instance.queue_free)

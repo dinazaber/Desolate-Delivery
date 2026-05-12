@@ -5,8 +5,10 @@ var is_held: bool = false
 var explode_on_contact: bool = false
 var exploded: bool = false
 
+@onready var sizzel: GPUParticles3D = $Sizzel
 @onready var smoke: GPUParticles3D = $Smoke
 @onready var fire: GPUParticles3D = $Fire
+@onready var ring: GPUParticles3D = $Ring
 @onready var debris: GPUParticles3D = $Debris
 
 @onready var explosion_box_small = $ExplosionBox1
@@ -36,9 +38,11 @@ func shot():
 	got_shot = true
 	explosion_box_small.visible = false
 	explosion_box_big.visible = true
+	
 	current_exposion_box = explosion_box_big
 	current_damage = grenade_damage_big
 	current_explosion_radius = EXPLOSION_R_BIG
+	
 	if !exploded:
 		explode()
 
@@ -71,9 +75,11 @@ func explode():
 				body.throw(dir, 40.0 * coef)
 	
 	if got_shot:
-		debris.emitting = true
+		ring.emitting = true
+	sizzel.emitting = false
 	smoke.emitting = true
 	fire.emitting = true
+	debris.emitting = true
 	await get_tree().create_timer(2.0).timeout
 	
 	queue_free()

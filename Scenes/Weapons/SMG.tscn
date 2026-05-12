@@ -268,7 +268,7 @@ process_material = SubResource("ShaderMaterial_b1a7w")
 draw_pass_1 = SubResource("RibbonTrailMesh_hpmwm")
 
 [node name="Marker3D" type="Marker3D" parent="Marker3D/Barrel/RayCast3D" unique_id=1237287799]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 75, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -75)
 
 [node name="HeatBuffer" type="Timer" parent="." unique_id=1903202031]
 one_shot = true
