@@ -391,7 +391,7 @@ script = ExtResource("1_e0py8")
 libraries/ = SubResource("AnimationLibrary_8qb6n")
 
 [node name="BeggarsShotgun" type="Marker3D" parent="." unique_id=1087278608]
-transform = Transform3D(0.9848075, 0.17364813, 0, -0.04494345, 0.25488696, -0.9659258, -0.16773121, 0.951251, 0.25881907, 0.15, -1.35, 0.15)
+transform = Transform3D(0.98480743, 0.17364813, 0, -0.044943444, 0.25488693, -0.9659258, -0.16773121, 0.9512509, 0.25881907, 0.15, -1.35, 0.15)
 
 [node name="Frame" type="MeshInstance3D" parent="BeggarsShotgun" unique_id=972063788]
 transform = Transform3D(-0.03, -9.7406916e-11, -4.529874e-09, -9.740691e-11, 0.030000001, -6.984924e-11, 4.529874e-09, -6.9849224e-11, -0.03, 0, -0.030000001, -0.58)
@@ -413,7 +413,7 @@ skeleton = NodePath("../../..")
 [node name="Barrel" type="Marker3D" parent="BeggarsShotgun" unique_id=731909360]
 
 [node name="RayCast" type="RayCast3D" parent="BeggarsShotgun/Barrel" unique_id=1575494301]
-transform = Transform3D(1.000001, -3.2468996e-09, 2.3841856e-07, 3.2469005e-09, 1.0000005, 2.3283073e-09, -2.384188e-07, -2.328308e-09, 0.99999994, 0, 0, 0)
+rotation_order = 4
 target_position = Vector3(0, 0, -75)
 collision_mask = 11
 collide_with_areas = true

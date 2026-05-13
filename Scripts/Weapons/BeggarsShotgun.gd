@@ -87,8 +87,8 @@ func scatterNshoot():
 		barrel.look_at(playerRayEnd.global_position, Vector3.UP, true)
 	
 	for i in range(pellets):
-		pellet.rotation.x = deg_to_rad(randf_range(-spread, spread) * (4 - shotNum*0.7)/4)
-		pellet.rotation.y = deg_to_rad(randf_range(-spread, spread) * (4 - shotNum*0.7)/4 + 180)
+		pellet.rotation.z = deg_to_rad(randf_range(0.0, 360.0))
+		pellet.rotation.x = deg_to_rad(randf_range(0.0, spread) * (4 - shotNum*0.7)/4 + 180)
 		
 		pellet.force_raycast_update()
 		

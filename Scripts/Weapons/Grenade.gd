@@ -6,6 +6,7 @@ var explode_on_contact: bool = false
 var exploded: bool = false
 
 @onready var sizzel: GPUParticles3D = $Sizzel
+@onready var beep: GPUParticles3D = $Beep
 @onready var smoke: GPUParticles3D = $Smoke
 @onready var fire: GPUParticles3D = $Fire
 @onready var ring: GPUParticles3D = $Ring
@@ -77,6 +78,7 @@ func explode():
 	if got_shot:
 		ring.emitting = true
 	sizzel.emitting = false
+	beep.emitting = false
 	smoke.emitting = true
 	fire.emitting = true
 	debris.emitting = true
@@ -85,6 +87,8 @@ func explode():
 	queue_free()
 
 func _physics_process(_delta: float) -> void:
+	beep.speed_scale = 8.5 -  2.5 * $Timer.time_left
+	
 	if explode_on_contact and !got_shot and !exploded:
 		if get_contact_count():
 			explosion_box_small.visible = true

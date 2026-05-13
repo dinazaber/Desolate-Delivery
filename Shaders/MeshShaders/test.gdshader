@@ -32,7 +32,7 @@ varying vec3 worldPos;
 varying vec3 world_normal;
 varying vec2 UV3;
 varying vec2 UV4;
-uniform float viewmodel_fov = 70.0f;
+//uniform float viewmodel_fov = 70.0f;
 
 
 // --- THE OPTIMIZED BOX PROJECTION FUNCTION ---

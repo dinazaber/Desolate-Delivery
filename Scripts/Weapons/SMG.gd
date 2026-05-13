@@ -3,6 +3,7 @@ extends Node3D
 #gun stats
 @export var damage: float = 15.0
 @export var recoil: float = 1.5 # degree rotation
+@export var spread: float = 2.0 # max deg rotation for 100% heat
 @export var heatPerShot: float = 10.0
 @export var coolDown: float = 4.0 # time (s) it takes to go from 100 to 0 heat
 @export var pellets: int = 1 # number of pellets
@@ -58,11 +59,9 @@ func shoot():
 		else:
 			barrel.look_at(playerRayEnd.global_position)
 		
-		#barrel.rotation_degrees.y -= 90.0
-		
 		for i in range(pellets):
-			ray.rotation.x = deg_to_rad(randf_range(-0.015, 0.015) * heat)
-			ray.rotation.y = deg_to_rad(randf_range(-0.015, 0.015) * heat)
+			ray.rotation.z = deg_to_rad(randf_range(0.0, 360.0))
+			ray.rotation.x = deg_to_rad(randf_range(0.0, spread) * sqrt(heat / 100.0))
 			
 			ray.force_raycast_update()
 		

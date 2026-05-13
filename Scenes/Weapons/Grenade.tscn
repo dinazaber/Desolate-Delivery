@@ -69,8 +69,57 @@ section_length = 0.04
 section_segments = 1
 curve = SubResource("Curve_qjgt5")
 
+[sub_resource type="Curve" id="Curve_sb53g"]
+_limits = [0.0, 0.02228415, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.25255972, 0.02228415), 0.0, 0.0, 0, 0, Vector2(0.75085324, 0), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_21s6b"]
+curve = SubResource("Curve_sb53g")
+
+[sub_resource type="Curve" id="Curve_iy3nd"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.5017065, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_gtrqv"]
+curve = SubResource("Curve_iy3nd")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_p7vxm"]
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_gtrqv")
+alpha_curve = SubResource("CurveTexture_21s6b")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xxcap"]
+transparency = 1
+vertex_color_use_as_albedo = true
+albedo_color = Color(1, 0, 0, 1)
+emission_enabled = true
+emission = Color(1, 0, 0, 1)
+emission_energy_multiplier = 10.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_ut5ot"]
+material = SubResource("StandardMaterial3D_xxcap")
+radius = 0.3
+height = 0.6
+radial_segments = 16
+rings = 8
+
+[sub_resource type="Curve" id="Curve_21s6b"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_iy3nd"]
+curve = SubResource("Curve_21s6b")
+
+[sub_resource type="Curve" id="Curve_gtrqv"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.5017065, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_p7vxm"]
+curve = SubResource("Curve_gtrqv")
+
 [sub_resource type="Curve" id="Curve_t2ec2"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.75431037, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.5017065, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 3
 
 [sub_resource type="CurveTexture" id="CurveTexture_6rbch"]
@@ -81,6 +130,11 @@ particle_flag_align_y = true
 spread = 180.0
 initial_velocity_min = 14.0
 initial_velocity_max = 16.0
+gravity = Vector3(0, -5, 0)
+radial_accel_min = -20.000002
+radial_accel_max = -20.000002
+radial_accel_curve = SubResource("CurveTexture_p7vxm")
+damping_curve = SubResource("CurveTexture_iy3nd")
 scale_min = 0.5
 scale_max = 1.1999999
 scale_curve = SubResource("CurveTexture_6rbch")
@@ -178,8 +232,8 @@ emission_energy_multiplier = 3.0
 
 [sub_resource type="TorusMesh" id="TorusMesh_iy3nd"]
 material = SubResource("StandardMaterial3D_21s6b")
-inner_radius = 4.0
-outer_radius = 5.5
+inner_radius = 4.5
+outer_radius = 6.0
 rings = 16
 ring_segments = 8
 
@@ -284,11 +338,19 @@ lifetime = 0.3
 process_material = SubResource("ParticleProcessMaterial_jmlml")
 draw_pass_1 = SubResource("RibbonTrailMesh_gtrqv")
 
+[node name="Beep" type="GPUParticles3D" parent="." unique_id=788127543]
+cast_shadow = 0
+amount = 1
+visibility_aabb = AABB(-0.5, -0.5, -0.5, 1, 1, 1)
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_p7vxm")
+draw_pass_1 = SubResource("SphereMesh_ut5ot")
+
 [node name="Debris" type="GPUParticles3D" parent="." unique_id=1122488567]
 cast_shadow = 0
 emitting = false
 amount = 24
-lifetime = 0.4
+lifetime = 0.35000000000000003
 one_shot = true
 explosiveness = 1.0
 fixed_fps = 60
