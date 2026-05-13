@@ -20,6 +20,7 @@ func punch(speed): # set speed to zero if not dashing
 	
 	if !anim.is_playing():
 		anim.play("punch")
+		$Crosshair.visible = true
 		if speed:
 			var direction = -camera.global_transform.basis.z.normalized()
 			player.knockBack(direction, 2.5, false, 0.0)
@@ -52,6 +53,7 @@ func punch(speed): # set speed to zero if not dashing
 	if anim.is_playing():
 		await anim.animation_finished
 	in_action = false
+	$Crosshair.visible = false
 
 func hitstop(bodyCount):
 	camera.add_trauma(2.5 * bodyCount)

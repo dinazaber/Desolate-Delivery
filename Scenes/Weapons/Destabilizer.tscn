@@ -1,10 +1,12 @@
 [gd_scene format=3 uid="uid://b25o4c3ic6crd"]
 
-[ext_resource type="Script" uid="uid://c3aycipaifchx" path="res://Scripts/Weapons/SMG.gd" id="1_u4wyd"]
-[ext_resource type="ArrayMesh" uid="uid://d4hn03go6odvn" path="res://assets/Meshes/Weapons/SMG.mesh" id="2_dxyhc"]
-[ext_resource type="Shader" uid="uid://dc5k8hk8ct5i8" path="res://Shaders/Particles/Pellets.gdshader" id="4_7loxj"]
-[ext_resource type="Texture2D" uid="uid://24usakcrqsvh" path="res://assets/Textures/Architecture/Explosion1.png" id="4_o3ivw"]
-[ext_resource type="Shader" uid="uid://w3eyk752ljxw" path="res://Shaders/Particles/EffectShader.gdshader" id="4_u4wyd"]
+[ext_resource type="Script" uid="uid://c3aycipaifchx" path="res://Scripts/Weapons/Destabilizer.gd" id="1_dkbfe"]
+[ext_resource type="ArrayMesh" uid="uid://d4hn03go6odvn" path="res://assets/Meshes/Weapons/SMG.mesh" id="2_336cg"]
+[ext_resource type="Shader" uid="uid://w3eyk752ljxw" path="res://Shaders/Particles/EffectShader.gdshader" id="3_74bub"]
+[ext_resource type="Texture2D" uid="uid://24usakcrqsvh" path="res://assets/Textures/Architecture/Explosion1.png" id="4_547a7"]
+[ext_resource type="Shader" uid="uid://dc5k8hk8ct5i8" path="res://Shaders/Particles/Pellets.gdshader" id="5_xocnw"]
+[ext_resource type="Texture2D" uid="uid://c8vwrktuoya6v" path="res://assets/HUD/destabilizer/destabilizer_crosshair.png" id="6_chb2l"]
+[ext_resource type="Texture2D" uid="uid://c2ev8xhl4igdd" path="res://assets/HUD/destabilizer/destabilizer_mid.png" id="7_bc3ch"]
 
 [sub_resource type="Animation" id="Animation_sjkk0"]
 length = 0.001
@@ -178,8 +180,8 @@ _data = {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7loxj"]
 render_priority = 0
-shader = ExtResource("4_u4wyd")
-shader_parameter/albedo = ExtResource("4_o3ivw")
+shader = ExtResource("3_74bub")
+shader_parameter/albedo = ExtResource("4_547a7")
 shader_parameter/enable_glow = true
 shader_parameter/glow_intensity = 2.0
 shader_parameter/draw_forward = true
@@ -190,7 +192,7 @@ size = Vector2(3, 3)
 orientation = 2
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_b1a7w"]
-shader = ExtResource("4_7loxj")
+shader = ExtResource("5_xocnw")
 shader_parameter/hit_points = PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 shader_parameter/gun_barrel_pos = Vector3(0, 0, 0)
 shader_parameter/speed = 70.0
@@ -225,8 +227,8 @@ section_length = 1.5
 section_segments = 1
 curve = SubResource("Curve_dxyhc")
 
-[node name="SMG" type="Node3D" unique_id=267885530]
-script = ExtResource("1_u4wyd")
+[node name="Destabilizer" type="Node3D" unique_id=267885530]
+script = ExtResource("1_dkbfe")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=207191350]
 libraries/ = SubResource("AnimationLibrary_8qb6n")
@@ -237,7 +239,7 @@ libraries/ = SubResource("AnimationLibrary_8qb6n")
 transform = Transform3D(0.011490665, -0.019902417, 0.019283628, -0.009641814, 0.016700113, 0.022981333, -0.025980761, -0.014999999, -8.429142e-10, 0.225, -0.75, 0.15)
 cast_shadow = 0
 gi_mode = 2
-mesh = ExtResource("2_dxyhc")
+mesh = ExtResource("2_336cg")
 skeleton = NodePath("../..")
 
 [node name="Sprite" type="MeshInstance3D" parent="Marker3D/Gun" unique_id=1088014816]
@@ -252,7 +254,7 @@ transform = Transform3D(0.03, 0, 0, 0, 0.03, 0, 0, 0, 0.03, 0, 0, 0)
 
 [node name="RayCast3D" type="RayCast3D" parent="Marker3D/Barrel" unique_id=1785846607]
 transform = Transform3D(33.33334, 0, 0, 0, 33.33334, 0, 0, 0, 33.33334, -3.9736433e-06, 0, -1.7369347e-13)
-rotation_order = 5
+rotation_order = 3
 target_position = Vector3(0, 0, -75)
 collision_mask = 11
 collide_with_areas = true
@@ -273,5 +275,68 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -75)
 
 [node name="HeatBuffer" type="Timer" parent="." unique_id=1903202031]
 one_shot = true
+
+[node name="Crosshair" type="Control" parent="." unique_id=68002499]
+visible = false
+layout_direction = 4
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="handL" type="TextureRect" parent="Crosshair" unique_id=749350503]
+modulate = Color(1, 1, 1, 0.5882353)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -142.0
+offset_top = -32.0
+offset_right = -78.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("6_chb2l")
+
+[node name="handR" type="TextureRect" parent="Crosshair" unique_id=2077699997]
+modulate = Color(1, 1, 1, 0.5882353)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 78.0
+offset_top = -31.0
+offset_right = 142.0
+offset_bottom = 33.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 3.1415927
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("6_chb2l")
+
+[node name="mid" type="TextureRect" parent="Crosshair" unique_id=1110595949]
+modulate = Color(1, 1, 1, 0.5882353)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("7_bc3ch")
 
 [connection signal="timeout" from="HeatBuffer" to="." method="_on_heat_buffer_timeout"]

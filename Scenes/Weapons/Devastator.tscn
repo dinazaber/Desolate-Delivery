@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://ckpaxttncb6rf"]
 
-[ext_resource type="ArrayMesh" uid="uid://c8o27vvvdrpnb" path="res://assets/Meshes/Weapons/Devestator/base.mesh" id="1_5gvb3"]
-[ext_resource type="Script" uid="uid://dax5umrkld21m" path="res://Scripts/Weapons/Devestator.gd" id="1_pv3de"]
-[ext_resource type="Shader" uid="uid://w3eyk752ljxw" path="res://Shaders/Particles/EffectShader.gdshader" id="2_2c47f"]
-[ext_resource type="ArrayMesh" uid="uid://dm75dw7l4c35q" path="res://assets/Meshes/Weapons/Devestator/barrel.mesh" id="2_ry4q2"]
-[ext_resource type="Texture2D" uid="uid://24usakcrqsvh" path="res://assets/Textures/Architecture/Explosion1.png" id="3_ry4q2"]
+[ext_resource type="Script" uid="uid://dax5umrkld21m" path="res://Scripts/Weapons/Devastator.gd" id="1_34mgm"]
+[ext_resource type="Shader" uid="uid://w3eyk752ljxw" path="res://Shaders/Particles/EffectShader.gdshader" id="2_8atm4"]
+[ext_resource type="Texture2D" uid="uid://24usakcrqsvh" path="res://assets/Textures/Architecture/Explosion1.png" id="3_evjj5"]
+[ext_resource type="ArrayMesh" uid="uid://c8o27vvvdrpnb" path="res://assets/Meshes/Weapons/Devestator/base.mesh" id="4_ywa7r"]
+[ext_resource type="ArrayMesh" uid="uid://dm75dw7l4c35q" path="res://assets/Meshes/Weapons/Devestator/barrel.mesh" id="5_wr5gp"]
 
 [sub_resource type="Animation" id="Animation_5gvb3"]
 length = 0.001
@@ -202,8 +202,8 @@ _data = {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_387n1"]
 render_priority = 0
-shader = ExtResource("2_2c47f")
-shader_parameter/albedo = ExtResource("3_ry4q2")
+shader = ExtResource("2_8atm4")
+shader_parameter/albedo = ExtResource("3_evjj5")
 shader_parameter/enable_glow = true
 shader_parameter/glow_intensity = 2.0
 shader_parameter/draw_forward = true
@@ -213,8 +213,8 @@ material = SubResource("ShaderMaterial_387n1")
 size = Vector2(3, 3)
 orientation = 2
 
-[node name="Devestator" type="Node3D" unique_id=1237437943]
-script = ExtResource("1_pv3de")
+[node name="Devastator" type="Node3D" unique_id=1237437943]
+script = ExtResource("1_34mgm")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=246552848]
 libraries/ = SubResource("AnimationLibrary_pv3de")
@@ -231,13 +231,13 @@ transform = Transform3D(0.64278764, 0, 0.76604444, 0, 1, 0, -0.76604444, 0, 0.64
 [node name="Base" type="MeshInstance3D" parent="Marker3D" unique_id=1239962213]
 transform = Transform3D(-0.03, 0, -4.529874e-09, 0, 0.03, 0, 4.529874e-09, 0, -0.03, 0, 0.03, -0.3)
 gi_mode = 2
-mesh = ExtResource("1_5gvb3")
+mesh = ExtResource("4_ywa7r")
 skeleton = NodePath("../..")
 
 [node name="Barrel" type="MeshInstance3D" parent="Marker3D/Base" unique_id=1545129983]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10.9)
 gi_mode = 2
-mesh = ExtResource("2_ry4q2")
+mesh = ExtResource("5_wr5gp")
 skeleton = NodePath("../../..")
 
 [node name="HeatBuffer" type="Timer" parent="." unique_id=1536351958]

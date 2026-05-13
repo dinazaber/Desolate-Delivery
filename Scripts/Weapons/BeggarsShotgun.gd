@@ -8,7 +8,7 @@ extends Node3D
 @export var bullet_speed: float = 70.0 # Speed of particles
 @export var mag: int = 4
 @export var heatPerShot: float = 22.25
-@export var coolDown: float = 5.0 # time (s) it takes to go from 100 to 0 heat
+@export var coolDown: float = 4.5 # time (s) it takes to go from 100 to 0 heat
 
 @export var camera: Area3D
 @export var playerRay: RayCast3D
@@ -27,14 +27,19 @@ var last_anim: String = ""
 @onready var tracer = $BeggarsShotgun/Barrel/RayCast/tracer
 @onready var steam = $BeggarsShotgun/steam
 
+var crosshair_def_pos: Vector2
+var crosshair_move: float = 0.0
 
 func _ready() -> void:
 	#pellet.rotation = Vector3(randf_range(-1.0, 1.0), randf_range(-1.0, 1.0), 0.0) * deg_to_rad(spread)
 	var material = tracer.process_material as ShaderMaterial # Get particle material
 	material.set_shader_parameter("speed", bullet_speed) # Pellet speed
 	tracer.amount = pellets # Set amount of pellets
+	
+	crosshair_def_pos = $Crosshair/handLD.position
 
 func draw(playSpeed):
+	$Crosshair.visible = true
 	anim.play("draw", -1, playSpeed)
 	shotNum = 1
 	await anim.animation_finished
@@ -48,6 +53,7 @@ func undraw(playSpeed, asap):
 	anim.play("undraw", -1, playSpeed)
 	shotNum = 1
 	await anim.animation_finished
+	$Crosshair.visible = false
 
 func charge():
 	if !anim.is_playing():
@@ -126,6 +132,8 @@ func _process(delta: float) -> void:
 	if can_cool:
 		heat = clamp(heat - (100 * delta) / coolDown, 0.0, 100.0)
 	
+	update_crosshair()
+	
 	steam.amount_ratio = heat / 100.0
 	
 	if !anim.is_playing() and shotNum == 0 and heat <= 100.0 - heatPerShot:
@@ -135,7 +143,13 @@ func _process(delta: float) -> void:
 
 func _on_heat_buffer_timeout() -> void:
 	can_cool = true
-	
+
+func update_crosshair():
+	crosshair_move = move_toward(crosshair_move, 2 * spread * (4 - shotNum)/4, 0.5)
+	$Crosshair/handLD.position = crosshair_def_pos + Vector2(-1,1) * crosshair_move
+	$Crosshair/handLU.position = crosshair_def_pos + Vector2(-1,-1) * crosshair_move
+	$Crosshair/handRD.position = crosshair_def_pos + Vector2(1,1) * crosshair_move
+	$Crosshair/handRU.position = crosshair_def_pos + Vector2(1,-1) * crosshair_move
 
 # --- SPREADAING DEBUG FUNCTION ---
 func spawn_debug_cube(pos: Vector3):
@@ -163,5 +177,5 @@ func spawn_debug_cube(pos: Vector3):
 	particle_collision_instance.global_position = pos
 	
 	# Auto-delete after 2 seconds to keep performance high
-	get_tree().create_timer(2.0).timeout.connect(mesh_instance.queue_free)
+	get_tree().create_timer(0.5).timeout.connect(mesh_instance.queue_free)
 	get_tree().create_timer(0.3).timeout.connect(particle_collision_instance.queue_free)

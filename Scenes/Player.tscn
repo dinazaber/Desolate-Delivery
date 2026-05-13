@@ -436,6 +436,7 @@ fill_mode = 1
 show_percentage = false
 
 [node name="crosshair" type="TextureRect" parent="HUD" unique_id=1178379776]
+visible = false
 modulate = Color(18.892157, 18.892157, 18.892157, 1)
 texture_filter = 1
 layout_mode = 1

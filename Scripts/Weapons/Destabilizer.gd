@@ -1,12 +1,14 @@
 extends Node3D
 
 #gun stats
-@export var damage: float = 15.0
-@export var recoil: float = 1.5 # degree rotation
-@export var spread: float = 2.0 # max deg rotation for 100% heat
-@export var heatPerShot: float = 10.0
-@export var coolDown: float = 4.0 # time (s) it takes to go from 100 to 0 heat
-@export var pellets: int = 1 # number of pellets
+@export var damage: float = 2.0
+@export var recoil: float = 0.5 # degree rotation
+@export var spread: Vector2 = Vector2(5.0, 15.0) # max deg rotation for 100% heat
+@export var accuracyPerShot: float = 0.04
+@export var heatPerShot: float = 2.5
+@export var coolDown: float = 6.0 # time (s) it takes to go from 100 to 0 heat
+@export var destabilize: float = 3.0 # time (s) it takes to go from max to min accuracy
+@export var pellets: int = 2 # number of pellets
 @export var bullet_speed: float = 70.0 # Speed of particles
 
 @export var camera: Area3D
@@ -23,14 +25,19 @@ extends Node3D
 
 var can_cool: bool = true
 var heat: float = 0.0
+var accuracy_mod: float = 1.0
 
+var crosshair_def_pos: Vector2
 
 func _ready() -> void:
 	var material = tracer.process_material as ShaderMaterial # Get particle material
 	material.set_shader_parameter("speed", bullet_speed) # Pellet speed
 	tracer.amount = pellets # Set amount of pellets
+	
+	crosshair_def_pos = $Crosshair/mid.position
 
 func draw(playSpeed):
+	$Crosshair.visible = true
 	anim.play("draw", -1, playSpeed)
 	await anim.animation_finished
 
@@ -41,13 +48,16 @@ func undraw(playSpeed, asap):
 		anim.speed_scale = 1.0
 	anim.play("undraw", -1, playSpeed)
 	await anim.animation_finished
+	$Crosshair.visible = false
 
 func shoot():
-	if !anim.is_playing() and heat <= 100 - heatPerShot:
-		anim.play("shoot")
+	if !anim.is_playing() and heat < 100 - heatPerShot:
+		anim.play("shoot", -1, 2)
 		
 		var points = PackedVector3Array()
 		points.resize(pellets)
+		
+		accuracy_mod = clamp(accuracy_mod - accuracyPerShot, 0.2, 1.0)
 		
 		var dist
 		if playerRay.is_colliding():
@@ -60,8 +70,9 @@ func shoot():
 			barrel.look_at(playerRayEnd.global_position)
 		
 		for i in range(pellets):
+			ray.rotation.y = deg_to_rad(randf_range(-spread.y, spread.y) * accuracy_mod)
 			ray.rotation.z = deg_to_rad(randf_range(0.0, 360.0))
-			ray.rotation.x = deg_to_rad(randf_range(0.0, spread) * sqrt(heat / 100.0))
+			ray.rotation.x = deg_to_rad(randf_range(0.0, spread.x))
 			
 			ray.force_raycast_update()
 		
@@ -100,9 +111,17 @@ func _process(delta: float) -> void:
 	
 	if can_cool:
 		heat = clamp(heat - (100 * delta) / coolDown, 0.0, 100.0)
+		accuracy_mod = clamp(accuracy_mod + delta / destabilize, 0.2, 1.0)
+	
+	update_crosshair()
 
 func _on_heat_buffer_timeout() -> void:
 	can_cool = true
+
+# --- crosshair ---
+func update_crosshair():
+	$Crosshair/handL.position.x = move_toward($Crosshair/handL.position.x, crosshair_def_pos.x - 2*spread.x - accuracy_mod * 100, 1.5)
+	$Crosshair/handR.position.x = move_toward($Crosshair/handR.position.x, crosshair_def_pos.x + 2*spread.x + accuracy_mod * 100, 1.5)
 
 # --- SPREADAING DEBUG FUNCTION ---
 func spawn_debug_cube(pos: Vector3):
@@ -130,5 +149,5 @@ func spawn_debug_cube(pos: Vector3):
 	particle_collision_instance.global_position = pos
 	
 	# Auto-delete after 2 seconds to keep performance high
-	get_tree().create_timer(2.0).timeout.connect(mesh_instance.queue_free)
+	get_tree().create_timer(0.5).timeout.connect(mesh_instance.queue_free)
 	get_tree().create_timer(0.3).timeout.connect(particle_collision_instance.queue_free)
