@@ -38,7 +38,7 @@ project/assembly_name="ProjectX"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/MeshMerger/plugin.cfg", "res://addons/MetaMultimeshInstance3D/plugin.cfg", "res://addons/multimesh_scatter/plugin.cfg")
+enabled=PackedStringArray("res://addons/MeshMerger/plugin.cfg", "res://addons/MetaMultimeshInstance3D/plugin.cfg", "res://addons/multimesh_scatter/plugin.cfg", "res://addons/oidn_denoiser/plugin.cfg")
 
 [filesystem]
 
@@ -222,7 +222,6 @@ textures/light_projectors/filter=1
 occlusion_culling/occlusion_rays_per_thread=64
 global_illumination/sdfgi/probe_ray_count=0
 global_illumination/sdfgi/frames_to_converge=0
-lightmapping/denoising/denoiser=1
 lights_and_shadows/positional_shadow/atlas_quadrant_2_subdiv=2
 lights_and_shadows/positional_shadow/atlas_quadrant_3_subdiv=2
 
