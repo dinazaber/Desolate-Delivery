@@ -49,7 +49,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("BeggarsShotgun/Frame/Sprite:visible")
+tracks/3/path = NodePath("BeggarsShotgun/tracer/Sprite:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -61,7 +61,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("BeggarsShotgun/Frame/Sprite:scale")
+tracks/4/path = NodePath("BeggarsShotgun/tracer/Sprite:scale")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -172,7 +172,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("BeggarsShotgun/Frame/Sprite:visible")
+tracks/3/path = NodePath("BeggarsShotgun/tracer/Sprite:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -184,14 +184,14 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("BeggarsShotgun/Frame/Sprite:scale")
+tracks/4/path = NodePath("BeggarsShotgun/tracer/Sprite:scale")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0, 0.02, 0.1),
 "transitions": PackedFloat32Array(0.3, 2, 1),
 "update": 0,
-"values": [Vector3(0, 0, 0), Vector3(3, 3, 3), Vector3(0, 0, 0)]
+"values": [Vector3(0, 0, 0), Vector3(0.07, 0.07, 0.07), Vector3(0, 0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_7ud7m"]
@@ -237,7 +237,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("BeggarsShotgun/Frame/Sprite:visible")
+tracks/3/path = NodePath("BeggarsShotgun/tracer/Sprite:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -249,14 +249,14 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("BeggarsShotgun/Frame/Sprite:scale")
+tracks/4/path = NodePath("BeggarsShotgun/tracer/Sprite:scale")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0, 0.03, 0.1),
 "transitions": PackedFloat32Array(0.3, 2, 1),
 "update": 0,
-"values": [Vector3(0, 0, 0), Vector3(3, 3, 3), Vector3(0, 0, 0)]
+"values": [Vector3(0, 0, 0), Vector3(0.07, 0.07, 0.07), Vector3(0, 0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_ktqvf"]
@@ -298,19 +298,6 @@ _data = {
 &"undraw": SubResource("Animation_ktqvf")
 }
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_1544g"]
-render_priority = 0
-shader = ExtResource("6_mmsk8")
-shader_parameter/albedo = ExtResource("4_ktqvf")
-shader_parameter/enable_glow = true
-shader_parameter/glow_intensity = 2.0
-shader_parameter/draw_forward = true
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_xapv0"]
-material = SubResource("ShaderMaterial_1544g")
-size = Vector2(3, 3)
-orientation = 2
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mmsk8"]
 shader = ExtResource("5_xapv0")
 shader_parameter/hit_points = PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
@@ -346,6 +333,19 @@ sections = 2
 section_length = 1.2
 section_segments = 1
 curve = SubResource("Curve_dxyhc")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1544g"]
+render_priority = 0
+shader = ExtResource("6_mmsk8")
+shader_parameter/albedo = ExtResource("4_ktqvf")
+shader_parameter/enable_glow = true
+shader_parameter/glow_intensity = 2.0
+shader_parameter/draw_forward = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_xapv0"]
+material = SubResource("ShaderMaterial_1544g")
+size = Vector2(3, 3)
+orientation = 2
 
 [sub_resource type="Curve" id="Curve_sfoia"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.25170067, 0.7024966), 0.0, 0.0, 0, 0, Vector2(0.49659863, 0.7024966), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -392,7 +392,7 @@ script = ExtResource("1_e0py8")
 libraries/ = SubResource("AnimationLibrary_8qb6n")
 
 [node name="BeggarsShotgun" type="Marker3D" parent="." unique_id=1087278608]
-transform = Transform3D(0.9848074, 0.17364812, 0, -0.044943444, 0.25488693, -0.9659258, -0.1677312, 0.95125085, 0.25881907, 0.15, -1.35, 0.15)
+transform = Transform3D(0.9848073, 0.1736481, 0, -0.04494344, 0.2548869, -0.9659258, -0.16773118, 0.9512508, 0.25881907, 0.15, -1.35, 0.15)
 
 [node name="Frame" type="MeshInstance3D" parent="BeggarsShotgun" unique_id=972063788]
 transform = Transform3D(-0.03, -9.7406916e-11, -4.529874e-09, -9.740691e-11, 0.030000001, -6.984924e-11, 4.529874e-09, -6.9849224e-11, -0.03, 0, -0.030000001, -0.58)
@@ -404,14 +404,8 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0
 cast_shadow = 0
 mesh = ExtResource("6_pc0kw")
 
-[node name="Sprite" type="MeshInstance3D" parent="BeggarsShotgun/Frame" unique_id=2006190939]
-transform = Transform3D(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 13.5)
-visible = false
-cast_shadow = 0
-mesh = SubResource("PlaneMesh_xapv0")
-skeleton = NodePath("../../..")
-
 [node name="Barrel" type="Marker3D" parent="BeggarsShotgun" unique_id=731909360]
+transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="RayCast" type="RayCast3D" parent="BeggarsShotgun/Barrel" unique_id=1575494301]
 rotation_order = 4
@@ -419,8 +413,11 @@ target_position = Vector3(0, 0, -75)
 collision_mask = 11
 collide_with_areas = true
 
-[node name="tracer" type="GPUParticles3D" parent="BeggarsShotgun/Barrel/RayCast" unique_id=42885782]
-transform = Transform3D(1, -3.3306717e-16, 0, -5.5511125e-16, 0.9999998, -2.220446e-16, 0, 2.220446e-16, 0.9999998, -7.273698e-09, -7.103229e-11, -0.96949184)
+[node name="Marker3D" type="Marker3D" parent="BeggarsShotgun/Barrel/RayCast" unique_id=1195608805]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -75)
+
+[node name="tracer" type="GPUParticles3D" parent="BeggarsShotgun" unique_id=42885782]
+transform = Transform3D(0.99999994, -3.3306717e-16, 0, -5.5511125e-16, 0.99999976, -2.2204459e-16, 0, 2.220446e-16, 0.9999998, -7.2736976e-09, -7.103229e-11, -0.96949184)
 cast_shadow = 0
 gi_mode = 2
 emitting = false
@@ -432,8 +429,12 @@ fixed_fps = 144
 process_material = SubResource("ShaderMaterial_mmsk8")
 draw_pass_1 = SubResource("RibbonTrailMesh_mmsk8")
 
-[node name="Marker3D" type="Marker3D" parent="BeggarsShotgun/Barrel/RayCast" unique_id=1195608805]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -75)
+[node name="Sprite" type="MeshInstance3D" parent="BeggarsShotgun/tracer" unique_id=2006190939]
+transform = Transform3D(0, 0, 0, 0, 0, 0, 0, 0, 0, -5.397701e-08, -1.791614e-09, -0.015508175)
+visible = false
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_xapv0")
+skeleton = NodePath("../../..")
 
 [node name="steam" type="GPUParticles3D" parent="BeggarsShotgun" unique_id=391177639]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.02981548, -0.05998698, -0.08985975)

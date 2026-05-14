@@ -4,10 +4,10 @@ extends Node3D
 @export var damage: float = 2.0
 @export var recoil: float = 0.5 # degree rotation
 @export var spread: Vector2 = Vector2(5.0, 15.0) # max deg rotation for 100% heat
-@export var accuracyPerShot: float = 0.04
-@export var heatPerShot: float = 2.5
+@export var accuracyPerShot: float = 0.05
+@export var heatPerShot: float = 2.75
 @export var coolDown: float = 6.0 # time (s) it takes to go from 100 to 0 heat
-@export var destabilize: float = 3.0 # time (s) it takes to go from max to min accuracy
+@export var destabilize: float = 4.0 # time (s) it takes to go from max to min accuracy
 @export var pellets: int = 2 # number of pellets
 @export var bullet_speed: float = 70.0 # Speed of particles
 
@@ -16,16 +16,17 @@ extends Node3D
 @export var playerRayEnd: Marker3D
 @onready var lookTarget = playerRayEnd.global_position
 
-@onready var anim = $AnimationPlayer
+@onready var anim: AnimationPlayer = $AnimationPlayer
 @onready var heatBuffer = $HeatBuffer
 
-@onready var barrel = $Marker3D/Barrel
-@onready var tracer = $Marker3D/Barrel/RayCast3D/smg_tracers
-@onready var ray = $Marker3D/Barrel/RayCast3D
+@onready var barrel = $Destabilizer/Barrel
+@onready var tracer = $Destabilizer/tracer
+@onready var ray = $Destabilizer/Barrel/RayCast3D
 
 var can_cool: bool = true
 var heat: float = 0.0
 var accuracy_mod: float = 1.0
+var spin_amount: float = 0.0
 
 var crosshair_def_pos: Vector2
 
@@ -49,10 +50,18 @@ func undraw(playSpeed, asap):
 	anim.play("undraw", -1, playSpeed)
 	await anim.animation_finished
 	$Crosshair.visible = false
+	spin_amount = 0.0
+
+func spinup(up):
+	if !anim.is_playing():
+		spin_amount = clamp(spin_amount + (1.0 if up else -0.4) * 40, 0.0, 1440.0)
+	if spin_amount >= 1440.0: shoot()
 
 func shoot():
 	if !anim.is_playing() and heat < 100 - heatPerShot:
-		anim.play("shoot", -1, 2)
+		$Destabilizer/tracer/Sprite.look_at(camera.global_position, Vector3.UP)
+		$Destabilizer/tracer/Sprite.rotation.z = randf_range(-PI, PI)
+		anim.play("shoot")
 		
 		var points = PackedVector3Array()
 		points.resize(pellets)
@@ -85,7 +94,7 @@ func shoot():
 				if ray.get_collider().is_in_group("ShotReactable"):
 					ray.get_collider().shot()
 			
-			else: points[i] = $Marker3D/Barrel/RayCast3D/Marker3D.global_position # Take end of weapon ray as particle's target point
+			else: points[i] = $Destabilizer/Barrel/RayCast3D/Marker3D.global_position # Take end of weapon ray as particle's target point
 		
 		var material = tracer.process_material as ShaderMaterial
 		material.set_shader_parameter("hit_points", points) #Updating target points
@@ -107,11 +116,11 @@ func _on_restore_cool(coolOnKill: float) -> void:
 	heat -= coolOnKill
 
 func _process(delta: float) -> void:
-	$Marker3D/Gun/Sprite.look_at(camera.global_position, Vector3.UP)
-	
 	if can_cool:
 		heat = clamp(heat - (100 * delta) / coolDown, 0.0, 100.0)
 		accuracy_mod = clamp(accuracy_mod + delta / destabilize, 0.2, 1.0)
+	
+	$Destabilizer/Base/Barrels.rotation_degrees.z -= spin_amount * delta
 	
 	update_crosshair()
 
@@ -120,8 +129,8 @@ func _on_heat_buffer_timeout() -> void:
 
 # --- crosshair ---
 func update_crosshair():
-	$Crosshair/handL.position.x = move_toward($Crosshair/handL.position.x, crosshair_def_pos.x - 2*spread.x - accuracy_mod * 100, 1.5)
-	$Crosshair/handR.position.x = move_toward($Crosshair/handR.position.x, crosshair_def_pos.x + 2*spread.x + accuracy_mod * 100, 1.5)
+	$Crosshair/handL.position.x = move_toward($Crosshair/handL.position.x, crosshair_def_pos.x - spread.y - accuracy_mod * 100, 1.25)
+	$Crosshair/handR.position.x = move_toward($Crosshair/handR.position.x, crosshair_def_pos.x + spread.y + accuracy_mod * 100, 1.25)
 
 # --- SPREADAING DEBUG FUNCTION ---
 func spawn_debug_cube(pos: Vector3):

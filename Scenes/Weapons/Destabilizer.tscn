@@ -2,54 +2,57 @@
 
 [ext_resource type="Script" uid="uid://c3aycipaifchx" path="res://Scripts/Weapons/Destabilizer.gd" id="1_dkbfe"]
 [ext_resource type="ArrayMesh" uid="uid://d4hn03go6odvn" path="res://assets/Meshes/Weapons/SMG.mesh" id="2_336cg"]
+[ext_resource type="ArrayMesh" uid="uid://bcygiltny8u4j" path="res://assets/Meshes/Weapons/Destabilizer/Base.mesh" id="2_547a7"]
 [ext_resource type="Shader" uid="uid://w3eyk752ljxw" path="res://Shaders/Particles/EffectShader.gdshader" id="3_74bub"]
+[ext_resource type="ArrayMesh" uid="uid://day7l5epjx0ye" path="res://assets/Meshes/Weapons/Destabilizer/Barrels.mesh" id="3_xocnw"]
 [ext_resource type="Texture2D" uid="uid://24usakcrqsvh" path="res://assets/Textures/Architecture/Explosion1.png" id="4_547a7"]
+[ext_resource type="ArrayMesh" uid="uid://cmbcjxir27a4a" path="res://assets/Meshes/Weapons/Destabilizer/Belt.mesh" id="4_chb2l"]
 [ext_resource type="Shader" uid="uid://dc5k8hk8ct5i8" path="res://Shaders/Particles/Pellets.gdshader" id="5_xocnw"]
 [ext_resource type="Texture2D" uid="uid://c8vwrktuoya6v" path="res://assets/HUD/destabilizer/destabilizer_crosshair.png" id="6_chb2l"]
 [ext_resource type="Texture2D" uid="uid://c2ev8xhl4igdd" path="res://assets/HUD/destabilizer/destabilizer_mid.png" id="7_bc3ch"]
 
-[sub_resource type="Animation" id="Animation_sjkk0"]
+[sub_resource type="Animation" id="Animation_bc3ch"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Marker3D/Gun:position")
+tracks/0/path = NodePath("Destabilizer/tracer/Sprite:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0.225, -0.75, 0.15)]
+"update": 1,
+"values": [false]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Marker3D/Gun:rotation")
+tracks/1/path = NodePath("Destabilizer/tracer/Sprite:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(-0.87266463, 1.5707964, -0.5235988)]
+"values": [Vector3(0, 0, 0)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Marker3D/Gun/Sprite:visible")
+tracks/2/path = NodePath("Destabilizer/Base/Belt:rotation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"update": 0,
+"values": [Vector3(0, 0, 0)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Marker3D/Gun/Sprite:scale")
+tracks/3/path = NodePath("Destabilizer/Base/Barrels:rotation")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -58,138 +61,149 @@ tracks/3/keys = {
 "update": 0,
 "values": [Vector3(0, 0, 0)]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Destabilizer:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.075, -0.08, 0.379)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Destabilizer:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
 
-[sub_resource type="Animation" id="Animation_u4wyd"]
+[sub_resource type="Animation" id="Animation_bm1df"]
 resource_name = "draw"
-length = 0.4
+length = 0.6
 step = 0.01
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Marker3D/Gun:position")
+tracks/0/path = NodePath("Destabilizer:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.15, 0.3, 0.4),
-"transitions": PackedFloat32Array(0.5, 0.6, 1.5, 1),
+"times": PackedFloat32Array(0, 0.2, 0.46, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(0.225, -0.75, 0.15), Vector3(0.06, 0.03, -0.045), Vector3(0, -0.03, 0), Vector3(0, 0, 0)]
+"values": [Vector3(0.445, -0.65, 0.494), Vector3(0.445, 0, 0.494), Vector3(0.075, -0.08, 0.379), Vector3(0.075, -0.08, 0.379)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Marker3D/Gun:rotation")
+tracks/1/path = NodePath("Destabilizer:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.33, 0.4),
-"transitions": PackedFloat32Array(2, 2, 0.5, 1),
+"times": PackedFloat32Array(0, 0.2, 0.48, 0.54, 0.6),
+"transitions": PackedFloat32Array(2, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(-0.87266463, 1.5707964, -0.5235988), Vector3(-0.20943952, 1.5707964, 0.17453292), Vector3(0, 1.5707964, -0.10471976), Vector3(0, 1.5707964, 0)]
+"values": [Vector3(1.3962634, 0, 0.5235988), Vector3(1.2217305, 0, 0.5235988), Vector3(0, 0, 0), Vector3(-0.08726646, 0, 0), Vector3(0, 0, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_yltro"]
+[sub_resource type="Animation" id="Animation_h6f6u"]
 resource_name = "shoot"
-length = 0.12
+length = 0.07
 step = 0.01
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Marker3D/Gun:position")
+tracks/0/path = NodePath("Destabilizer:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.04, 0.12),
-"transitions": PackedFloat32Array(0.4, 0.5, 1),
+"times": PackedFloat32Array(0, 0.02, 0.04, 0.06, 0.07),
+"transitions": PackedFloat32Array(0.3, 2, 0.5, 1, 1),
 "update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, 0.015, 0.075), Vector3(0, 0, 0)]
+"values": [Vector3(0.075, -0.08, 0.379), Vector3(0.075, -0.08, 0.39), Vector3(0.075, -0.08, 0.38249314), Vector3(0.075, -0.08, 0.375), Vector3(0.075, -0.08, 0.379)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Marker3D/Gun/Sprite:visible")
+tracks/1/path = NodePath("Destabilizer/Base/Belt:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1),
+"times": PackedFloat32Array(0, 0.07),
 "transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0.3926991)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Marker3D/Gun:rotation")
+tracks/2/path = NodePath("Destabilizer/tracer/Sprite:scale")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.0001, 0.06, 0.12),
-"transitions": PackedFloat32Array(1.8, 1, 0.6, 1),
+"times": PackedFloat32Array(0, 0.02, 0.04, 0.07),
+"transitions": PackedFloat32Array(0.4, 2, 1, 1),
 "update": 0,
-"values": [Vector3(0, 1.5707964, 0), Vector3(0, 1.5707964, 0), Vector3(0.034906585, 1.5707964, 0.034906585), Vector3(0, 1.5707964, 0)]
+"values": [Vector3(0, 0, 0), Vector3(0.15, 0.15, 0.15), Vector3(0, 0, 0), Vector3(0, 0, 0)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Marker3D/Gun/Sprite:scale")
+tracks/3/path = NodePath("Destabilizer/tracer/Sprite:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.02, 0.1),
-"transitions": PackedFloat32Array(0.3, 2, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(1.5, 1.5, 1.5), Vector3(0, 0, 0)]
+"times": PackedFloat32Array(0, 0.07),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
 }
 
-[sub_resource type="Animation" id="Animation_7loxj"]
+[sub_resource type="Animation" id="Animation_547a7"]
 resource_name = "undraw"
-length = 0.2
+length = 0.3
 step = 0.01
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Marker3D/Gun:position")
+tracks/0/path = NodePath("Destabilizer:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1.5, 1),
+"times": PackedFloat32Array(0, 0.05, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0.3, -0.75, 0)]
+"values": [Vector3(0.075, -0.08, 0.379), Vector3(0.075, -0.08, 0.379), Vector3(0.445, -0.65, 0.494)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Marker3D/Gun:rotation")
+tracks/1/path = NodePath("Destabilizer:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.06, 0.2),
-"transitions": PackedFloat32Array(1, 0.4, 1),
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1.5, 1),
 "update": 0,
-"values": [Vector3(0, 1.5707964, 0), Vector3(0, 1.5707964, 0.13962634), Vector3(-0.61086524, 1.5707964, -0.2617994)]
+"values": [Vector3(0, 0, 0), Vector3(1.3962634, 0, 0.5235988)]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_8qb6n"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_t6o7h"]
 _data = {
-&"RESET": SubResource("Animation_sjkk0"),
-&"draw": SubResource("Animation_u4wyd"),
-&"shoot": SubResource("Animation_yltro"),
-&"undraw": SubResource("Animation_7loxj")
+&"RESET": SubResource("Animation_bc3ch"),
+&"draw": SubResource("Animation_bm1df"),
+&"shoot": SubResource("Animation_h6f6u"),
+&"undraw": SubResource("Animation_547a7")
 }
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_7loxj"]
-render_priority = 0
-shader = ExtResource("3_74bub")
-shader_parameter/albedo = ExtResource("4_547a7")
-shader_parameter/enable_glow = true
-shader_parameter/glow_intensity = 2.0
-shader_parameter/draw_forward = true
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_ovc61"]
-material = SubResource("ShaderMaterial_7loxj")
-size = Vector2(3, 3)
-orientation = 2
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_b1a7w"]
 shader = ExtResource("5_xocnw")
@@ -227,40 +241,227 @@ section_length = 1.5
 section_segments = 1
 curve = SubResource("Curve_dxyhc")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7loxj"]
+render_priority = 0
+shader = ExtResource("3_74bub")
+shader_parameter/albedo = ExtResource("4_547a7")
+shader_parameter/enable_glow = true
+shader_parameter/glow_intensity = 2.0
+shader_parameter/draw_forward = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ovc61"]
+material = SubResource("ShaderMaterial_7loxj")
+size = Vector2(3, 3)
+orientation = 2
+
+[sub_resource type="Animation" id="Animation_sjkk0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SMG [UNUSED]/Gun:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.225, -0.75, 0.15)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SMG [UNUSED]/Gun:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.87266463, 1.5707964, -0.5235988)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SMG [UNUSED]/Gun/Sprite:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SMG [UNUSED]/Gun/Sprite:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_u4wyd"]
+resource_name = "draw"
+length = 0.4
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SMG [UNUSED]/Gun:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.4),
+"transitions": PackedFloat32Array(0.5, 0.6, 1.5, 1),
+"update": 0,
+"values": [Vector3(0.225, -0.75, 0.15), Vector3(0.06, 0.03, -0.045), Vector3(0, -0.03, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SMG [UNUSED]/Gun:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.33, 0.4),
+"transitions": PackedFloat32Array(2, 2, 0.5, 1),
+"update": 0,
+"values": [Vector3(-0.87266463, 1.5707964, -0.5235988), Vector3(-0.20943952, 1.5707964, 0.17453292), Vector3(0, 1.5707964, -0.10471976), Vector3(0, 1.5707964, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_yltro"]
+resource_name = "shoot"
+length = 0.12
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SMG [UNUSED]/Gun:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.04, 0.12),
+"transitions": PackedFloat32Array(0.4, 0.5, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.015, 0.075), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SMG [UNUSED]/Gun/Sprite:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SMG [UNUSED]/Gun:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.0001, 0.06, 0.12),
+"transitions": PackedFloat32Array(1.8, 1, 0.6, 1),
+"update": 0,
+"values": [Vector3(0, 1.5707964, 0), Vector3(0, 1.5707964, 0), Vector3(0.034906585, 1.5707964, 0.034906585), Vector3(0, 1.5707964, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SMG [UNUSED]/Gun/Sprite:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.02, 0.1),
+"transitions": PackedFloat32Array(0.3, 2, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(1.5, 1.5, 1.5), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_7loxj"]
+resource_name = "undraw"
+length = 0.2
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SMG [UNUSED]/Gun:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1.5, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.3, -0.75, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SMG [UNUSED]/Gun:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.06, 0.2),
+"transitions": PackedFloat32Array(1, 0.4, 1),
+"update": 0,
+"values": [Vector3(0, 1.5707964, 0), Vector3(0, 1.5707964, 0.13962634), Vector3(-0.61086524, 1.5707964, -0.2617994)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8qb6n"]
+_data = {
+&"RESET": SubResource("Animation_sjkk0"),
+&"draw": SubResource("Animation_u4wyd"),
+&"shoot": SubResource("Animation_yltro"),
+&"undraw": SubResource("Animation_7loxj")
+}
+
 [node name="Destabilizer" type="Node3D" unique_id=267885530]
 script = ExtResource("1_dkbfe")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=207191350]
-libraries/ = SubResource("AnimationLibrary_8qb6n")
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=714653136]
+libraries/ = SubResource("AnimationLibrary_t6o7h")
 
-[node name="Marker3D" type="Marker3D" parent="." unique_id=1447486409]
+[node name="Destabilizer" type="Marker3D" parent="." unique_id=660276903]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.075, -0.08, 0.379)
 
-[node name="Gun" type="MeshInstance3D" parent="Marker3D" unique_id=559022510]
-transform = Transform3D(0.011490665, -0.019902417, 0.019283628, -0.009641814, 0.016700113, 0.022981333, -0.025980761, -0.014999999, -8.429142e-10, 0.225, -0.75, 0.15)
-cast_shadow = 0
-gi_mode = 2
-mesh = ExtResource("2_336cg")
+[node name="Base" type="MeshInstance3D" parent="Destabilizer" unique_id=1924472760]
+transform = Transform3D(-0.03, 0, -2.6226832e-09, 0, 0.03, 0, 2.6226832e-09, 0, -0.03, 0, 0.13, -0.13)
+mesh = ExtResource("2_547a7")
 skeleton = NodePath("../..")
 
-[node name="Sprite" type="MeshInstance3D" parent="Marker3D/Gun" unique_id=1088014816]
-transform = Transform3D(0, 0, 0, 0, 0, 0, 0, 0, 0, 22.633999, 2.9802322e-08, 2.3283064e-10)
-visible = false
-cast_shadow = 0
-mesh = SubResource("PlaneMesh_ovc61")
+[node name="Barrels" type="MeshInstance3D" parent="Destabilizer/Base" unique_id=867022796]
+mesh = ExtResource("3_xocnw")
 skeleton = NodePath("../../..")
 
-[node name="Barrel" type="Marker3D" parent="Marker3D" unique_id=1457927656]
-transform = Transform3D(0.03, 0, 0, 0, 0.03, 0, 0, 0, 0.03, 0, 0, 0)
+[node name="Belt" type="MeshInstance3D" parent="Destabilizer/Base" unique_id=582651122]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.15, -3.15, 14)
+mesh = ExtResource("4_chb2l")
+skeleton = NodePath("../../..")
 
-[node name="RayCast3D" type="RayCast3D" parent="Marker3D/Barrel" unique_id=1785846607]
+[node name="Barrel" type="Marker3D" parent="Destabilizer" unique_id=1457927656]
+transform = Transform3D(0.03, 0, 0, 0, 0.03, 0, 0, 0, 0.03, 0, 0.13, -0.13)
+
+[node name="RayCast3D" type="RayCast3D" parent="Destabilizer/Barrel" unique_id=1785846607]
 transform = Transform3D(33.33334, 0, 0, 0, 33.33334, 0, 0, 0, 33.33334, -3.9736433e-06, 0, -1.7369347e-13)
 rotation_order = 3
 target_position = Vector3(0, 0, -75)
 collision_mask = 11
 collide_with_areas = true
 
-[node name="smg_tracers" type="GPUParticles3D" parent="Marker3D/Barrel/RayCast3D" unique_id=1931424156]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.69)
+[node name="Marker3D" type="Marker3D" parent="Destabilizer/Barrel/RayCast3D" unique_id=1237287799]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -75)
+
+[node name="tracer" type="GPUParticles3D" parent="Destabilizer" unique_id=1931424156]
+transform = Transform3D(1.0000001, 0, 0, 0, 1.0000001, 0, 0, 0, 1.0000001, -1.1920929e-07, 0.13, -0.9842129)
 cast_shadow = 0
 emitting = false
 amount = 1
@@ -270,8 +471,12 @@ fixed_fps = 144
 process_material = SubResource("ShaderMaterial_b1a7w")
 draw_pass_1 = SubResource("RibbonTrailMesh_hpmwm")
 
-[node name="Marker3D" type="Marker3D" parent="Marker3D/Barrel/RayCast3D" unique_id=1237287799]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -75)
+[node name="Sprite" type="MeshInstance3D" parent="Destabilizer/tracer" unique_id=786696733]
+transform = Transform3D(0, 0, 0, 0, 0, 0, 0, 0, 0, 1.1920929e-07, 0, -0.09520483)
+visible = false
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_ovc61")
+skeleton = NodePath("../../../..")
 
 [node name="HeatBuffer" type="Timer" parent="." unique_id=1903202031]
 one_shot = true
@@ -338,5 +543,25 @@ grow_horizontal = 2
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
 texture = ExtResource("7_bc3ch")
+
+[node name="AnimationPlayer [SMG UNUSED]" type="AnimationPlayer" parent="." unique_id=207191350]
+libraries/ = SubResource("AnimationLibrary_8qb6n")
+
+[node name="SMG [UNUSED]" type="Marker3D" parent="." unique_id=1447486409]
+visible = false
+
+[node name="Gun" type="MeshInstance3D" parent="SMG [UNUSED]" unique_id=559022510]
+transform = Transform3D(0.011490665, -0.019902417, 0.019283628, -0.009641814, 0.016700113, 0.022981333, -0.025980761, -0.014999999, -8.429142e-10, 0.225, -0.75, 0.15)
+cast_shadow = 0
+gi_mode = 2
+mesh = ExtResource("2_336cg")
+skeleton = NodePath("../..")
+
+[node name="Sprite" type="MeshInstance3D" parent="SMG [UNUSED]/Gun" unique_id=1088014816]
+transform = Transform3D(0, 0, 0, 0, 0, 0, 0, 0, 0, 22.633999, 1.9073486e-06, -9.536743e-07)
+visible = false
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_ovc61")
+skeleton = NodePath("../../..")
 
 [connection signal="timeout" from="HeatBuffer" to="." method="_on_heat_buffer_timeout"]

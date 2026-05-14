@@ -245,7 +245,7 @@ func _physics_process(delta):
 	if Input.is_action_pressed("LeftMouse") and !drill.in_action and !dead:
 		if !grabbedObject and fireDelay==15.0:
 			match current_gun_R:
-				SMG: current_gun_R.shoot()
+				SMG: current_gun_R.spinup(true)
 				beggarsShotgun: current_gun_R.charge()
 				devestator: current_gun_R.shoot()
 		elif grabbedObject:
@@ -256,6 +256,9 @@ func _physics_process(delta):
 				remove_collision_exception_with(grabbedObject)
 				grabbedObject = null
 				fireDelay = 0.0
+	else:
+		match current_gun_R:
+			SMG: current_gun_R.spinup(false)
 	
 	if Input.is_action_just_released("LeftMouse") and !drill.in_action and !dead:
 		if !grabbedObject and fireDelay==15.0:

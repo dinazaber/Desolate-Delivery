@@ -24,7 +24,7 @@ var last_anim: String = ""
 
 @onready var barrel = $BeggarsShotgun/Barrel
 @onready var pellet = $BeggarsShotgun/Barrel/RayCast
-@onready var tracer = $BeggarsShotgun/Barrel/RayCast/tracer
+@onready var tracer = $BeggarsShotgun/tracer
 @onready var steam = $BeggarsShotgun/steam
 
 var crosshair_def_pos: Vector2
@@ -74,6 +74,7 @@ func shoot():
 		heatBuffer.start()
 		can_cool = false
 		heat = clamp(heat + heatPerShot, 0.0, 100.0)
+		crosshair_move += 5
 		camera.add_recoil(recoil)
 		shotNum -= 1
 		
@@ -123,7 +124,7 @@ func _on_restore_cool(coolOnKill: float) -> void:
 	heat -= coolOnKill
 
 func _process(delta: float) -> void:
-	$BeggarsShotgun/Frame/Sprite.look_at(camera.global_position, Vector3.UP)
+	$BeggarsShotgun/tracer/Sprite.look_at(camera.global_position, Vector3.UP)
 	
 	# Shader gets current shotNum value every frame.
 	#var mat = $BeggarsShotgun/Frame.get_active_material(0) as ShaderMaterial #Display shader material
@@ -145,7 +146,7 @@ func _on_heat_buffer_timeout() -> void:
 	can_cool = true
 
 func update_crosshair():
-	crosshair_move = move_toward(crosshair_move, 2 * spread * (4 - shotNum)/4, 0.5)
+	crosshair_move = move_toward(crosshair_move, 2 * spread * (4 - shotNum)/4, 0.3)
 	$Crosshair/handLD.position = crosshair_def_pos + Vector2(-1,1) * crosshair_move
 	$Crosshair/handLU.position = crosshair_def_pos + Vector2(-1,-1) * crosshair_move
 	$Crosshair/handRD.position = crosshair_def_pos + Vector2(1,1) * crosshair_move
