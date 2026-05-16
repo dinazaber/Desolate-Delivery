@@ -32,6 +32,9 @@ func undraw(playSpeed, asap):
 
 func shoot():
 	if !anim.is_playing() and heat <= 100 - heatPerShot:
+		$sparks.restart()
+		$sparks.emitting = true
+		
 		anim.play("shoot")
 		
 		#var dist
@@ -46,6 +49,7 @@ func shoot():
 		
 		camera.add_recoil(recoil)
 		camera.add_trauma(recoil*0.7)
+		
 		heatBuffer.start()
 		can_cool = false
 		heat = clamp(heat + heatPerShot, 0.0, 100.0)

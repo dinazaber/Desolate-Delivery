@@ -71,7 +71,7 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0.075, -0.08, 0.379)]
+"values": [Vector3(0.075, -0.08, 0.5)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -83,12 +83,12 @@ tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0, 0, 0)]
+"values": [Vector3(1.0471976, 0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_bm1df"]
 resource_name = "draw"
-length = 0.6
+length = 0.55
 step = 0.01
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -97,10 +97,10 @@ tracks/0/path = NodePath("Destabilizer:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.46, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.27999997, 0.33999997, 0.42, 0.47, 0.55),
+"transitions": PackedFloat32Array(1, 1.5, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(0.445, -0.65, 0.494), Vector3(0.445, 0, 0.494), Vector3(0.075, -0.08, 0.379), Vector3(0.075, -0.08, 0.379)]
+"values": [Vector3(0.15, -0.08, 0.5), Vector3(0.06, -0.08, 0.379), Vector3(0.075, -0.1, 0.379), Vector3(0.075, -0.1, 0.379), Vector3(0.075, -0.08, 0.379), Vector3(0.075, -0.08, 0.379)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -109,10 +109,10 @@ tracks/1/path = NodePath("Destabilizer:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.48, 0.54, 0.6),
-"transitions": PackedFloat32Array(2, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.27999997, 0.35, 0.42, 0.55),
+"transitions": PackedFloat32Array(1.5, 0.5, 1.9027315, 1, 1),
 "update": 0,
-"values": [Vector3(1.3962634, 0, 0.5235988), Vector3(1.2217305, 0, 0.5235988), Vector3(0, 0, 0), Vector3(-0.08726646, 0, 0), Vector3(0, 0, 0)]
+"values": [Vector3(1.0471976, 0, -1.0471976), Vector3(0, 0, 0), Vector3(-0.061086524, 0, 0.08726646), Vector3(0.02617994, 0, 0), Vector3(0, 0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_h6f6u"]
@@ -150,7 +150,7 @@ tracks/2/path = NodePath("Destabilizer/tracer/Sprite:scale")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.02, 0.04, 0.07),
+"times": PackedFloat32Array(0, 0.030000001, 0.06, 0.07),
 "transitions": PackedFloat32Array(0.4, 2, 1, 1),
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(0.15, 0.15, 0.15), Vector3(0, 0, 0), Vector3(0, 0, 0)]
@@ -170,7 +170,7 @@ tracks/3/keys = {
 
 [sub_resource type="Animation" id="Animation_547a7"]
 resource_name = "undraw"
-length = 0.3
+length = 0.35
 step = 0.01
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -179,10 +179,10 @@ tracks/0/path = NodePath("Destabilizer:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.22, 0.35000002),
+"transitions": PackedFloat32Array(1, 1.5, 1, 1),
 "update": 0,
-"values": [Vector3(0.075, -0.08, 0.379), Vector3(0.075, -0.08, 0.379), Vector3(0.445, -0.65, 0.494)]
+"values": [Vector3(0.075, -0.08, 0.379), Vector3(0.075, -0.13, 0.379), Vector3(0.15, -0.08, 0.5), Vector3(0.15, -0.08, 0.5)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -191,10 +191,10 @@ tracks/1/path = NodePath("Destabilizer:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1.5, 1),
+"times": PackedFloat32Array(0, 0.11000001, 0.35000002),
+"transitions": PackedFloat32Array(1.5, 1.5, 1),
 "update": 0,
-"values": [Vector3(0, 0, 0), Vector3(1.3962634, 0, 0.5235988)]
+"values": [Vector3(0, 0, 0), Vector3(0.10471976, 0, 0), Vector3(1.0471976, 0, -1.0471976)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_t6o7h"]
@@ -431,7 +431,7 @@ script = ExtResource("1_dkbfe")
 libraries/ = SubResource("AnimationLibrary_t6o7h")
 
 [node name="Destabilizer" type="Marker3D" parent="." unique_id=660276903]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.075, -0.08, 0.379)
+transform = Transform3D(1, 0, 0, 0, 0.49999997, -0.86602545, 0, 0.86602545, 0.49999997, 0.075, -0.08, 0.5)
 
 [node name="Base" type="MeshInstance3D" parent="Destabilizer" unique_id=1924472760]
 transform = Transform3D(-0.03, 0, -2.6226832e-09, 0, 0.03, 0, 2.6226832e-09, 0, -0.03, 0, 0.13, -0.13)
@@ -451,7 +451,7 @@ skeleton = NodePath("../../..")
 transform = Transform3D(0.03, 0, 0, 0, 0.03, 0, 0, 0, 0.03, 0, 0.13, -0.13)
 
 [node name="RayCast3D" type="RayCast3D" parent="Destabilizer/Barrel" unique_id=1785846607]
-transform = Transform3D(33.33334, 0, 0, 0, 33.33334, 0, 0, 0, 33.33334, -3.9736433e-06, 0, -1.7369347e-13)
+transform = Transform3D(33.33334, 0, 0, 0, 33.33334, 0, 0, 0, 33.33334, 0, 0, -7)
 rotation_order = 3
 target_position = Vector3(0, 0, -75)
 collision_mask = 11
@@ -535,10 +535,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)

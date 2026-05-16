@@ -213,6 +213,55 @@ material = SubResource("ShaderMaterial_387n1")
 size = Vector2(3, 3)
 orientation = 2
 
+[sub_resource type="Curve" id="Curve_34mgm"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.09556315, 1), 0.0, 0.0, 0, 0, Vector2(0.7542662, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_8atm4"]
+curve = SubResource("Curve_34mgm")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_evjj5"]
+particle_flag_align_y = true
+emission_shape_scale = Vector3(0.025, 0.04, 0.15)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+direction = Vector3(-1, 0, 0)
+spread = 30.0
+initial_velocity_min = 2.0
+initial_velocity_max = 4.0
+gravity = Vector3(0, -8, 0)
+scale_curve = SubResource("CurveTexture_8atm4")
+
+[sub_resource type="Curve" id="Curve_ywa7r"]
+_data = [Vector2(0, 0.5049141), 0.0, 0.0, 0, 0, Vector2(0.5046154, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.49692887), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_wr5gp"]
+offsets = PackedFloat32Array(0, 0.11439114, 0.7490775, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 0.47058824, 1, 1, 1, 0.47058824, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_3v17g"]
+gradient = SubResource("Gradient_wr5gp")
+width = 32
+height = 128
+fill_from = Vector2(0.51282054, 1)
+fill_to = Vector2(0.4957265, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ds80q"]
+transparency = 1
+cull_mode = 2
+vertex_color_use_as_albedo = true
+albedo_texture = SubResource("GradientTexture2D_3v17g")
+emission_enabled = true
+emission = Color(1, 1, 0.24313726, 1)
+emission_energy_multiplier = 3.0
+
+[sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_lins8"]
+material = SubResource("StandardMaterial3D_ds80q")
+size = 0.002
+section_length = 0.03
+curve = SubResource("Curve_ywa7r")
+
 [node name="Devastator" type="Node3D" unique_id=1237437943]
 script = ExtResource("1_34mgm")
 
@@ -225,6 +274,17 @@ cast_shadow = 0
 mesh = SubResource("PlaneMesh_pv3de")
 skeleton = NodePath("../Marker3D")
 
+[node name="sparks" type="GPUParticles3D" parent="." unique_id=14102301]
+transform = Transform3D(0.98162717, 0.190809, 0, -0.190809, 0.98162717, 0, 0, 0, 1, -0.081479326, 0.03357126, -0.35895425)
+emitting = false
+lifetime = 0.3
+one_shot = true
+explosiveness = 1.0
+visibility_aabb = AABB(-1, -1, -1, 2, 2, 2)
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_evjj5")
+draw_pass_1 = SubResource("RibbonTrailMesh_lins8")
+
 [node name="Marker3D" type="Marker3D" parent="." unique_id=875693166]
 transform = Transform3D(0.64278764, 0, 0.76604444, 0, 1, 0, -0.76604444, 0, 0.64278764, -0.1, -0.75, 0)
 
@@ -234,9 +294,8 @@ gi_mode = 2
 mesh = ExtResource("4_ywa7r")
 skeleton = NodePath("../..")
 
-[node name="Barrel" type="MeshInstance3D" parent="Marker3D/Base" unique_id=1545129983]
+[node name="Barrel" type="MeshInstance3D" parent="Marker3D/Base" unique_id=725197382]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10.9)
-gi_mode = 2
 mesh = ExtResource("5_wr5gp")
 skeleton = NodePath("../../..")
 
