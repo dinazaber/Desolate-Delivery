@@ -20,6 +20,7 @@ func _exit_tree():
 func _run_denoise_flow(paths: Array):
 	if paths.is_empty(): return
 	
+	# Run denoise for each lightmap selected
 	for path in paths:
 		if path.ends_with(".exr"):
 			_process_file(path)
@@ -27,23 +28,25 @@ func _run_denoise_flow(paths: Array):
 func _process_file(godot_path: String):
 	var start_time = Time.get_ticks_msec()
 	
-	var global_path = ProjectSettings.globalize_path(godot_path)
-	var temp_pfm = OS.get_environment("TEMP") + "\\temp_lightmap.pfm"
+	var lightmap_global_path = ProjectSettings.globalize_path(godot_path)
+	var temp_pfm = OS.get_user_data_dir().path_join("temp_lightmap_" + str(start_time) + ".pfm")
 	
 	print("------------------------------------------\n")
-	print("--- Starting Denoise for: ", godot_path, " ---\n")
+	print("--- Starting Denoise For: ", godot_path, " ---\n")
 	
 	var device = _get_device()
-	print("     Auto Detected OIDN Device Type: ", device, "\n")
+	print("     Auto Detected OIDN Device Type: ", device)
+	print("     Auto Detected OS: ",OS.get_name(), "\n")
 	
 	print("--- Converting .exr to .pfm format... ---")
 	
-	var res1 = OS.execute(MAGICK, [global_path, "-endian", "LSB", temp_pfm])
+	var res1 = OS.execute(MAGICK, [lightmap_global_path, "-endian", "LSB", temp_pfm])
 	if res1 != 0: 
-		printerr("     Convertation from .exr to .pfm failed\n")
+		printerr("     Conversion from .exr to .pfm failed\n")
+		DirAccess.remove_absolute(temp_pfm) #Delete temporary lightmap
 		print("------------------------------------------\n")
 		return
-	else: print("     Convertation from .exr to .pfm succeed!\n")
+	else: print("     Conversion from .exr to .pfm succeed!\n")
 	
 	print("--- Denoising... ---")
 		
@@ -51,22 +54,26 @@ func _process_file(godot_path: String):
 	var res2 = OS.execute(OIDN, oidnArgs)
 	if res2 != 0:
 		printerr("     OIDN denoising failed\n")
+		DirAccess.remove_absolute(temp_pfm) #Delete temporary lightmap
 		print("------------------------------------------\n")
 		return
 	else: print("     OIDN denoising succeed!\n")
 	
 	print("--- Converting .pfm to .exr format... ---")
 	
-	var res3 = OS.execute(MAGICK, [temp_pfm, global_path])
-	if res3 !=0:
-		printerr("     Convertation from .pfm to .exr failed\n")
+	var res3 = OS.execute(MAGICK, [temp_pfm, lightmap_global_path])
+	if res3 != 0:
+		printerr("     Conversion from .pfm to .exr failed\n")
+		DirAccess.remove_absolute(temp_pfm) #Delete temporary lightmap
 		print("------------------------------------------\n")
 		return
-	else: print("     Convertation from .pfm to .exr succeed!\n")
+	else: print("     Conversion from .pfm to .exr succeed!\n")
+	
+	DirAccess.remove_absolute(temp_pfm) #Delete temporary lightmap
 	
 	print("--- Compressing... ---")
 	
-	var compressArgs = [global_path, "-depth", "16", "-define", "exr:color-type=RGB", "-compress", "ZIP", global_path]
+	var compressArgs = [lightmap_global_path, "-depth", "16", "-define", "exr:color-type=RGB", "-compress", "ZIP", lightmap_global_path]
 	var res4 = OS.execute(MAGICK, compressArgs)
 	if res4 != 0:
 		printerr("     Compression failed\n")
@@ -93,6 +100,7 @@ func _get_device() -> String:
 	if "nvidia" in device: return "cuda"
 	elif "amd" in device: return "hip"
 	elif "intel" in device: return "sycl"
+	elif "apple" in device or "metal" in device: return "metal"
 	else: return "cpu"
 	
 	
