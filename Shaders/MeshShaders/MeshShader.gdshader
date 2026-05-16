@@ -3,6 +3,7 @@
 shader_type spatial;
 render_mode cull_back;
 
+uniform bool enable_wireframe = true;
 uniform bool enable_world_projection = false;
 uniform bool enable_detail_1 = true;
 uniform bool enable_detail_2 = true;
@@ -113,24 +114,27 @@ void fragment() {
     
 	
 	// --- WIREFRAME ---
-	vec2 uv = UV;
-    vec2 dist_to_edge = min(uv, 1.0 - uv);
-    vec2 derivative = fwidth(uv);
-    
-    float depth = abs(VERTEX.z);
-    
-    float distance_factor = clamp(1.0 - (depth / 20.0), 0.0, 1.0);
-    
-    float final_thickness = wire_width * pow(distance_factor, 2.0);
-    
-    vec2 pixel_dist = dist_to_edge / derivative;
-    float closest_pixel_edge = min(pixel_dist.x, pixel_dist.y);
-    
-    float wire_mask = 1.0 - smoothstep(final_thickness - 0.5, final_thickness + 0.5, closest_pixel_edge);
-    
-    float alpha_fade = distance_factor; 
-	
-	vec3 blended_wire = mix(out_color, wire_color.rgb, wire_transparency);
-	
-    ALBEDO = mix(out_color, blended_wire, wire_mask * alpha_fade);
+	if (enable_wireframe){
+		vec2 uv = UV;
+	    vec2 dist_to_edge = min(uv, 1.0 - uv);
+	    vec2 derivative = fwidth(uv);
+	    
+	    float depth = abs(VERTEX.z);
+	    
+	    float distance_factor = clamp(1.0 - (depth / 20.0), 0.0, 1.0);
+	    
+	    float final_thickness = wire_width * pow(distance_factor, 2.0);
+	    
+	    vec2 pixel_dist = dist_to_edge / derivative;
+	    float closest_pixel_edge = min(pixel_dist.x, pixel_dist.y);
+	    
+	    float wire_mask = 1.0 - smoothstep(final_thickness - 0.5, final_thickness + 0.5, closest_pixel_edge);
+	    
+	    float alpha_fade = distance_factor; 
+		
+		vec3 blended_wire = mix(out_color, wire_color.rgb, wire_transparency);
+		
+	    ALBEDO = mix(out_color, blended_wire, wire_mask * alpha_fade);
+	}
+	else{ALBEDO = out_color;}
 }
