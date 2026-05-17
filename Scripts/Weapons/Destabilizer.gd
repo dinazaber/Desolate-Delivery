@@ -90,10 +90,12 @@ func shoot():
 				var hit_pos = ray.get_collision_point()
 				await spawn_debug_cube(hit_pos) # Cube spawn, will be replaced by decal later
 				points[i] = hit_pos # Use collsion point as particle's target point
-				if ray.get_collider().is_in_group("Enemy"):
-					ray.get_collider().hit(damage, true)
-				if ray.get_collider().is_in_group("ShotReactable"):
-					ray.get_collider().shot()
+				var collider = ray.get_collider()
+				if collider.is_in_group("Enemy"):
+					if collider.has_method("hit"):
+						collider.hit(damage, true)
+				if collider.is_in_group("ShotReactable"):
+					collider.shot()
 			
 			else: points[i] = $Destabilizer/Barrel/RayCast3D/Marker3D.global_position # Take end of weapon ray as particle's target point
 		

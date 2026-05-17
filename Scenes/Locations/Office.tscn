@@ -925,6 +925,12 @@ section_length = 0.015
 section_rings = 2
 curve = SubResource("Curve_ggv2i")
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_b7u14"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_ggv2i"]
+radial_segments = 16
+rings = 8
+
 [node name="Node" type="Node" unique_id=1994272370]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1931296238]
@@ -2449,17 +2455,19 @@ skeleton = NodePath("../../..")
 
 [node name="WaterDrops" type="GPUParticles3D" parent="." unique_id=834954353]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2718518, -1.2441609)
+cast_shadow = 0
 amount = 3
 amount_ratio = 0.3333
 sub_emitter = NodePath("WaterSplash")
 lifetime = 1.5
-randomness = 0.6
+randomness = 0.5
 fixed_fps = 144
 visibility_aabb = AABB(-0.5, -4, -0.5, 1, 4, 1)
 process_material = SubResource("ParticleProcessMaterial_b7u14")
 draw_pass_1 = SubResource("TubeTrailMesh_wqwxe")
 
 [node name="WaterSplash" type="GPUParticles3D" parent="WaterDrops" unique_id=602764899]
+cast_shadow = 0
 emitting = false
 amount = 5
 lifetime = 0.3
@@ -2479,3 +2487,17 @@ transform = Transform3D(0.6087614, 0, 0.7933533, 0, 1, 0, -0.7933533, 0, 0.60876
 text = "free drip
        |
       \\/"
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1610694293 groups=["Enemy"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.13096, 0.936345, 0.9292227)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=934412356]
+shape = SubResource("SphereShape3D_b7u14")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D" unique_id=499225846]
+mesh = SubResource("SphereMesh_ggv2i")
+
+[node name="Label3D" type="Label3D" parent="StaticBody3D" unique_id=1856160487]
+transform = Transform3D(-0.25424275, 0, -0.4305353, 0, 0.5, 0, 0.4305353, 0, -0.25424275, 0, 0.730831, 0)
+text = "enemy hit detection dummy
+  (cuz shaders are broken)"

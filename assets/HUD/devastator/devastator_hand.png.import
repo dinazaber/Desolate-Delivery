@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://btni0nnrioepq"
-path.bptc="res://.godot/imported/beggars_crosshair.png-a3f39bccc155aab1d856f727d05fe5f5.bptc.ctex"
+uid="uid://dbdjbf7vooqmq"
+path.bptc="res://.godot/imported/devastator_hand.png-3cd67bd57cdc993f82b82d3e428c8202.bptc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/HUD/beggars shotgun/beggars_crosshair.png"
-dest_files=["res://.godot/imported/beggars_crosshair.png-a3f39bccc155aab1d856f727d05fe5f5.bptc.ctex"]
+source_file="res://assets/HUD/devastator/devastator_hand.png"
+dest_files=["res://.godot/imported/devastator_hand.png-3cd67bd57cdc993f82b82d3e428c8202.bptc.ctex"]
 
 [params]
 

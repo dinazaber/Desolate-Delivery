@@ -8,8 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://24usakcrqsvh" path="res://assets/Textures/Architecture/Explosion1.png" id="4_547a7"]
 [ext_resource type="ArrayMesh" uid="uid://cmbcjxir27a4a" path="res://assets/Meshes/Weapons/Destabilizer/Belt.mesh" id="4_chb2l"]
 [ext_resource type="Shader" uid="uid://dc5k8hk8ct5i8" path="res://Shaders/Particles/Pellets.gdshader" id="5_xocnw"]
-[ext_resource type="Texture2D" uid="uid://c8vwrktuoya6v" path="res://assets/HUD/destabilizer/destabilizer_crosshair.png" id="6_chb2l"]
-[ext_resource type="Texture2D" uid="uid://c2ev8xhl4igdd" path="res://assets/HUD/destabilizer/destabilizer_mid.png" id="7_bc3ch"]
+[ext_resource type="Texture2D" uid="uid://nvq060nkkc6" path="res://assets/HUD/destabilizer/destabilizer_crosshair.png" id="6_chb2l"]
+[ext_resource type="Texture2D" uid="uid://cpra4doelhji" path="res://assets/HUD/destabilizer/destabilizer_mid.png" id="7_bc3ch"]
 
 [sub_resource type="Animation" id="Animation_bc3ch"]
 length = 0.001
@@ -482,7 +482,6 @@ skeleton = NodePath("../../../..")
 one_shot = true
 
 [node name="Crosshair" type="Control" parent="." unique_id=68002499]
-visible = false
 layout_direction = 4
 layout_mode = 3
 anchors_preset = 15

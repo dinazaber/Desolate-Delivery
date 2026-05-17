@@ -522,7 +522,7 @@ func enemy_killed():
 func damage_taken(recieved_damage, isPlayer):
 	if isPlayer: recieved_damage /= 3
 	player_health -= recieved_damage
-	camera.add_trauma(recieved_damage/20)
+	camera.add_trauma(recieved_damage)
 	checkLifeLine()
 
 func heal(heal_amount):

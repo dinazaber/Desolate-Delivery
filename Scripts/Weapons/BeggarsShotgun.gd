@@ -103,10 +103,12 @@ func scatterNshoot():
 			var hit_pos = pellet.get_collision_point()
 			await spawn_debug_cube(hit_pos) # Cube spawn, will be replaced by decal later
 			points[i] = hit_pos # Use collsion point as particle's target point
-			if pellet.get_collider().is_in_group("Enemy"):
-				pellet.get_collider().hit(damage, true)
-			if pellet.get_collider().is_in_group("ShotReactable"):
-				pellet.get_collider().shot()
+			var collider = pellet.get_collider()
+			if collider.is_in_group("Enemy"):
+				if collider.has_method("hit"):
+					collider.hit(damage, true)
+			if collider.is_in_group("ShotReactable"):
+				collider.shot()
 				
 		else: points[i] = $BeggarsShotgun/Barrel/RayCast/Marker3D.global_position # Take end of weapon ray as particle's target point
 	

@@ -13,12 +13,19 @@ extends Node3D
 
 @onready var anim = $AnimationPlayer
 @onready var heatBuffer = $HeatBuffer
+@onready var ray = $Marker3D/RayCast3D
 
 var can_cool: bool = true
 var heat: float = 0.0
 
+var crosshair_def_pos: Vector2
+var crosshair_move: float = 0.0
+
+var shot_instance
+var shot = load("res://Scenes/Weapons/DevastatorShot.tscn")
 
 func draw(playSpeed):
+	$Crosshair.visible = true
 	anim.play("draw", -1, playSpeed)
 	await anim.animation_finished
 
@@ -29,6 +36,7 @@ func undraw(playSpeed, asap):
 		anim.speed_scale = 1.0
 	anim.play("undraw", -1, playSpeed)
 	await anim.animation_finished
+	$Crosshair.visible = false
 
 func shoot():
 	if !anim.is_playing() and heat <= 100 - heatPerShot:
@@ -37,15 +45,21 @@ func shoot():
 		
 		anim.play("shoot")
 		
-		#var dist
-		#if playerRay.is_colliding():
-		#	dist = barrel.global_position.distance_to(playerRay.get_collision_point())
-		#	if dist < 0.7:
-		#		barrel.look_at(playerRayEnd.global_position)
-		#	else:
-		#		barrel.look_at(playerRay.get_collision_point())
-		#else:
-		#	barrel.look_at(playerRayEnd.global_position)
+		var dist
+		if playerRay.is_colliding():
+			dist = ray.global_position.distance_to(playerRay.get_collision_point())
+			if dist < 0.7:
+				ray.look_at(playerRayEnd.global_position)
+			else:
+				ray.look_at(playerRay.get_collision_point())
+		else:
+			ray.look_at(playerRayEnd.global_position)
+		
+		shot_instance = shot.instantiate()
+		get_tree().root.add_child(shot_instance)
+		shot_instance.global_position = ray.global_position
+		shot_instance.rotation = ray.rotation
+		shot_instance.set_velocity(($Marker3D/RayCast3D/Marker3D.global_position - ray.global_position).normalized())
 		
 		camera.add_recoil(recoil)
 		camera.add_trauma(recoil*0.7)

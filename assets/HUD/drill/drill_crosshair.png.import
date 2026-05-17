@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bd2qobvq0fe7q"
-path.bptc="res://.godot/imported/drill_crosshair.png-c172e2687ee5777f6d12981f4f17f4ea.bptc.ctex"
+uid="uid://2ymmpe1gaxcb"
+path.bptc="res://.godot/imported/drill_crosshair.png-75755d240e1aa89673aa55433d298f54.bptc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/HUD/drill_crosshair.png"
-dest_files=["res://.godot/imported/drill_crosshair.png-c172e2687ee5777f6d12981f4f17f4ea.bptc.ctex"]
+source_file="res://assets/HUD/drill/drill_crosshair.png"
+dest_files=["res://.godot/imported/drill_crosshair.png-75755d240e1aa89673aa55433d298f54.bptc.ctex"]
 
 [params]
 
