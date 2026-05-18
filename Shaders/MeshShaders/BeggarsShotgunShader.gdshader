@@ -1,8 +1,10 @@
 shader_type spatial;
-render_mode cull_back;
+render_mode depth_draw_opaque, cull_back;
 
-// Details (Still using these for the "Projected" textures)
-uniform sampler2D mask_palette : source_color, filter_nearest;
+uniform bool enable_detail_1 = true;
+uniform bool enable_detail_2 = true;
+uniform bool enable_glow = false;
+uniform int charge_amount;
 
 group_uniforms Wireframe;
 uniform vec3 wire_color : source_color = vec3(0.0, 0.0, 0.0);
@@ -19,15 +21,18 @@ uniform sampler2D detail2 : source_color, filter_linear;
 uniform float detail2_scale = 1.0;
 uniform float alpha2 = 1.0;
 
-group_uniforms Display;
-uniform vec3 color_off: source_color;
+group_uniforms Glow;
+uniform float glow_intensity = 1.0;
 uniform vec3 color_on: source_color;
-uniform int charge_amount: hint_range(0, 4) = 0;
+uniform vec3 glow_color_override: source_color;
+uniform bool glow_override = true;
 
 varying vec3 worldPos;
 varying vec3 world_normal;
-varying vec2 uv3;
-uniform float viewmodel_fov = 70.0f;
+varying vec2 UV3;
+varying vec2 UV4;
+//uniform float viewmodel_fov = 70.0f;
+
 
 // --- THE OPTIMIZED BOX PROJECTION FUNCTION ---
 vec4 get_box_projection(sampler2D p_sampler, vec3 p_normal, vec3 p_pos) {
@@ -65,7 +70,6 @@ vec4 get_box_projection(sampler2D p_sampler, vec3 p_normal, vec3 p_pos) {
 void vertex(){
     worldPos = VERTEX;
 	world_normal = NORMAL;
-	uv3 = CUSTOM0.xy;
 	/*
 	if (viewmodel_fov > 0.0) {
 		float onetanfov = 1.0f / tan(0.5f * (viewmodel_fov * PI / 180.0f));
@@ -77,38 +81,50 @@ void vertex(){
 	*/
 	POSITION = PROJECTION_MATRIX * VIEW_MATRIX * MODEL_MATRIX * vec4(VERTEX, 1.0);
     POSITION.z = mix(POSITION.z, POSITION.w, 0.9);
+	
+	UV3 = CUSTOM0.xy;
+	
+	UV4 = CUSTOM0.zw;
 }
 
 void fragment() {
-	vec3 base_color = COLOR.rgb;
+	
+	// --- DETAILS ---
+    vec3 base_color = COLOR.rgb;
 	
 	// --- DISPLAY ---
-	if (uv3.x >= 0.0 && uv3.x <= 1.0){
-		int face_id = int(floor((uv3.x + 0.001) * 4.0));
+	if (UV2.x >= 0.0 && UV2.x <= 1.0){
+		int face_id = int(floor((UV2.x + 0.001) * 4.0));
 		float mask = (face_id < charge_amount+1) ? 1.0 : 0.0;
-		vec3 display_color = mix(color_off, color_on, mask);
+		vec3 display_color = mix(base_color, color_on, mask);
 		EMISSION = mix(display_color * 0.05, vec3(0.0), 1.0 - mask);
 		base_color = mix(base_color, display_color, 1.0);
 	}
 	
-	
-	// --- DETAILS ---
-    // Identify the mask from the varying we passed (UV2)
-    vec3 d_id = texture(mask_palette, UV2).rgb;
     vec3 out_color = base_color;
 	
     vec3 n = normalize(world_normal);
     
     // Sample textures using Box Projection based on Vertex Mask
-    if (d_id.r > 0.5) {
-        vec4 tex_r = get_box_projection(detail1, n, worldPos * detail1_scale);
-        out_color = mix(out_color, tex_r.rgb, tex_r.a * alpha1);
+    if (UV3.x >= 0.4 && enable_detail_1 && UV3.y < 0.9) { //Detail1
+        vec4 tex = get_box_projection(detail1, n, worldPos * detail1_scale);
+        out_color = mix(out_color, tex.rgb, tex.a * alpha1);
     }
     
-    if (d_id.g > 0.5) {
-        vec4 tex_g = get_box_projection(detail2, n, worldPos * detail2_scale);
-        out_color = mix(out_color, tex_g.rgb, tex_g.a * alpha2);
+    if (UV3.x <= 0.6  && enable_detail_2 && UV3.y < 0.9) { //Detail 2
+        vec4 tex = get_box_projection(detail2, n, worldPos * detail2_scale);
+        out_color = mix(out_color, tex.rgb, tex.a * alpha2);
     }
+	
+	// --- GLOW ---
+	EMISSION = vec3(0.0);
+	if (enable_glow){
+		if(UV4.x > 0.9){
+			if (!glow_override){EMISSION = COLOR.rgb * glow_intensity;}
+			else {EMISSION = glow_color_override * glow_intensity;}
+			
+		}
+	}
 	
     
 	

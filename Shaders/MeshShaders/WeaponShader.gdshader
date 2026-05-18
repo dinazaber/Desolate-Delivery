@@ -1,9 +1,6 @@
-// Use this shader on objects that use only 2 detail textures
-
 shader_type spatial;
 render_mode depth_draw_opaque, cull_back;
 
-uniform bool enable_world_projection = false;
 uniform bool enable_detail_1 = true;
 uniform bool enable_detail_2 = true;
 uniform bool enable_glow = false;
@@ -82,11 +79,6 @@ void vertex(){
 	*/
 	POSITION = PROJECTION_MATRIX * VIEW_MATRIX * MODEL_MATRIX * vec4(VERTEX, 1.0);
     POSITION.z = mix(POSITION.z, POSITION.w, 0.9);
-	
-	if (enable_world_projection){
-		worldPos = (MODEL_MATRIX * vec4(VERTEX, 1.0)).xyz;
-		world_normal = (MODEL_MATRIX * vec4(NORMAL, 0.0)).xyz;
-	}
 	
 	UV3 = CUSTOM0.xy;
 	
