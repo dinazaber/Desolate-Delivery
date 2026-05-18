@@ -55,7 +55,7 @@ func undraw(playSpeed, asap):
 func spinup(up):
 	if !anim.is_playing():
 		var can_spinup: bool = up and heat < 100 - heatPerShot
-		spin_amount = clamp(spin_amount + (1.0 if can_spinup else -0.33) * 60, 0.0, 1440.0)
+		spin_amount = clamp(spin_amount + (1.0 if can_spinup else -0.2) * 100, 0.0, 1440.0)
 	if spin_amount >= 1440.0: shoot()
 
 func shoot():

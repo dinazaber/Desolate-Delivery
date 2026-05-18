@@ -24,6 +24,7 @@ var crosshair_move: float = 0.0
 var shot_instance
 var shot = load("res://Scenes/Weapons/DevastatorShot.tscn")
 
+
 func draw(playSpeed):
 	$Crosshair.visible = true
 	anim.play("draw", -1, playSpeed)

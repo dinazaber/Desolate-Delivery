@@ -61,38 +61,38 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Crosshair/handL:position")
+tracks/4/path = NodePath("Crosshair/base/handL:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(544, 292)]
+"values": [Vector2(0, 0)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Crosshair/handR:position")
+tracks/5/path = NodePath("Crosshair/base/handR:position")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(544, 292)]
+"values": [Vector2(0, 0)]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("Crosshair/mid:position")
+tracks/6/path = NodePath("Crosshair/base/mid:position")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(544, 292)]
+"values": [Vector2(0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_ry4q2"]
@@ -191,38 +191,38 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Crosshair/handL:position")
+tracks/4/path = NodePath("Crosshair/base/handL:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.11, 0.15, 0.38, 0.45000002, 0.51, 0.61, 0.7),
+"times": PackedFloat32Array(0, 0.11, 0.15, 0.4, 0.51, 0.56999993, 0.66999996, 0.7),
 "transitions": PackedFloat32Array(0.3, 2, 1, 2, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(544, 292), Vector2(494, 292), Vector2(496, 292), Vector2(496, 292), Vector2(544, 292), Vector2(547, 292), Vector2(544, 292), Vector2(544, 292)]
+"values": [Vector2(0, 0), Vector2(-50, 0), Vector2(-48, 0), Vector2(-48, 0), Vector2(0, 0), Vector2(3, 0), Vector2(0, 0), Vector2(0, 0)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Crosshair/handR:position")
+tracks/5/path = NodePath("Crosshair/base/handR:position")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.10999997, 0.15, 0.37999997, 0.45000002, 0.51, 0.61, 0.7),
+"times": PackedFloat32Array(0, 0.10999997, 0.15, 0.39999998, 0.51, 0.56999993, 0.66999996, 0.7),
 "transitions": PackedFloat32Array(0.3, 2, 1, 2, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(544, 292), Vector2(594, 292), Vector2(592, 292), Vector2(592, 292), Vector2(544, 292), Vector2(541, 292), Vector2(544, 292), Vector2(544, 292)]
+"values": [Vector2(0, 0), Vector2(50, 0), Vector2(48, 0), Vector2(48, 0), Vector2(0, 0), Vector2(-3, 0), Vector2(0, 0), Vector2(0, 0)]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("Crosshair/mid:position")
+tracks/6/path = NodePath("Crosshair/base/mid:position")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
 "times": PackedFloat32Array(0, 0.060000002, 0.1, 0.14, 0.3, 0.35, 0.38, 0.7),
 "transitions": PackedFloat32Array(0.3, 2, 0.4, 1, 0.4, 1.5, 1, 1),
 "update": 0,
-"values": [Vector2(544, 292), Vector2(544, 320), Vector2(544, 318), Vector2(544, 320), Vector2(544, 320), Vector2(544, 288), Vector2(544, 292), Vector2(544, 292)]
+"values": [Vector2(0, 0), Vector2(0, 28), Vector2(0, 26), Vector2(0, 28), Vector2(0, 28), Vector2(0, -4), Vector2(0, 0), Vector2(0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_2c47f"]
@@ -396,7 +396,22 @@ grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
 
-[node name="mid" type="TextureRect" parent="Crosshair" unique_id=741108341]
+[node name="base" type="Control" parent="Crosshair" unique_id=889588264]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+
+[node name="mid" type="TextureRect" parent="Crosshair/base" unique_id=741108341]
 modulate = Color(1, 1, 1, 0.5882353)
 layout_mode = 1
 anchors_preset = 8
@@ -413,7 +428,7 @@ grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
 texture = ExtResource("6_evjj5")
 
-[node name="handL" type="TextureRect" parent="Crosshair" unique_id=1966528221]
+[node name="handL" type="TextureRect" parent="Crosshair/base" unique_id=1966528221]
 modulate = Color(1, 1, 1, 0.5882353)
 layout_mode = 1
 anchors_preset = 8
@@ -423,14 +438,14 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -32.0
 offset_top = -32.0
-offset_right = 32.005005
+offset_right = 32.0
 offset_bottom = 32.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
 texture = ExtResource("7_ywa7r")
 
-[node name="handR" type="TextureRect" parent="Crosshair" unique_id=2045217187]
+[node name="handR" type="TextureRect" parent="Crosshair/base" unique_id=2045217187]
 modulate = Color(1, 1, 1, 0.5882353)
 layout_mode = 1
 anchors_preset = 8
