@@ -2,7 +2,7 @@ extends Node3D
 
 #gun stats
 @export var damage: float = 2.0
-@export var recoil: float = 0.5 # degree rotation
+@export var recoil: float = 0.7 # degree rotation
 @export var spread: Vector2 = Vector2(5.0, 15.0) # max deg rotation for 100% heat
 @export var accuracyPerShot: float = 0.05
 @export var heatPerShot: float = 2.75

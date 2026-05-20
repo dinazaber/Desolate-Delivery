@@ -42,6 +42,36 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector3(0, 0, 0)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("shakeable_camera/Hands/RightHand:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.15, -0.137, -0.25)]
+}
+
+[sub_resource type="Animation" id="Animation_ksbbd"]
+resource_name = "breath"
+length = 3.0
+loop_mode = 1
+step = 0.025
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("shakeable_camera/Hands/RightHand:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.75, 1.5, 2.25, 3),
+"transitions": PackedFloat32Array(0.5, 2, 0.5, 2, 1),
+"update": 0,
+"values": [Vector3(0.15, -0.137, -0.25), Vector3(0.15, -0.132, -0.25), Vector3(0.15, -0.137, -0.25), Vector3(0.15, -0.142, -0.25), Vector3(0.15, -0.137, -0.25)]
+}
 
 [sub_resource type="Animation" id="Animation_megsn"]
 resource_name = "death"
@@ -74,6 +104,7 @@ tracks/1/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_yoq75"]
 _data = {
 &"RESET": SubResource("Animation_yoq75"),
+&"breath": SubResource("Animation_ksbbd"),
 &"death": SubResource("Animation_megsn")
 }
 

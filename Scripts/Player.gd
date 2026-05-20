@@ -56,8 +56,8 @@ const PLAYER_MAX_HEALTH = 100.0
 @export var player_health: float = PLAYER_MAX_HEALTH
 @export var coolOnKill: float = 15.0
 @export var grenadeCoolTime: float = 8.0 # cooldown time (s)
-@export var walk_speed: float = 5.0
-@export var crouch_speed: float = 2.5
+@export var walk_speed: float = 6.0
+@export var crouch_speed: float = 3.0
 @export var dash_speed: float = 22.5
 @export var dashCoolTime: float = 1.75 # cooldown time (s)
 @export var jump_speed: float = 7.5
@@ -133,6 +133,8 @@ func _ready() -> void:
 	
 	screenEffect = get_tree().get_first_node_in_group("Effects")
 	
+	camAnim.play("breath")
+	
 	cam_speed = SettingsManager.settings.controls.mouse_sensitivity
 	SettingsManager.player = self
 	def_gun_pos = hands.position
@@ -178,7 +180,7 @@ func _input(event):
 				
 	
 	# Weapon Switch
-	if Input.is_action_just_pressed("1") and !drill.in_action: # smg
+	if Input.is_action_just_pressed("1") and !drill.in_action: # destabilizer
 		if current_gun_R != SMG:
 			await current_gun_R.undraw(1.0, false)
 			hideWeapons()
@@ -194,7 +196,7 @@ func _input(event):
 			current_gun_R.show()
 			current_gun_R.draw(1.0)
 	
-	elif Input.is_action_just_pressed("3") and !drill.in_action: # beggars shotgun
+	elif Input.is_action_just_pressed("3") and !drill.in_action: # devastator
 		if current_gun_R != devestator:
 			await current_gun_R.undraw(1.0, false)
 			hideWeapons()
@@ -513,8 +515,11 @@ func checkLifeLine():
 			dead = true
 			current_gun_R.undraw(1.0, true)
 			await get_tree().create_timer(0.3).timeout
+			camAnim.speed_scale = 1.0
 			camAnim.play("death")
 			playerDead.emit()
+	else:
+		camAnim.speed_scale = lerp(1.0, 2.5, 1 - player_health / PLAYER_MAX_HEALTH)
 
 func enemy_killed():
 	restoreCool.emit(coolOnKill)
@@ -527,6 +532,7 @@ func damage_taken(recieved_damage, isPlayer):
 
 func heal(heal_amount):
 	player_health = clamp(player_health + heal_amount, 0.0, PLAYER_MAX_HEALTH)
+	checkLifeLine()
 
 # --- UI ---
 func handle_healthBar():
