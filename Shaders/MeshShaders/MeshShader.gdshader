@@ -91,12 +91,12 @@ void fragment() {
     vec3 n = normalize(world_normal);
     
     // Sample textures using Box Projection based on Vertex Mask
-    if (UV3.x >= 0.4 && enable_detail_1 && UV3.y > 0.1) { //Detail1
+    if (UV3.x >= 0.4 && enable_detail_1 && UV3.y < 0.9) { //Detail1
         vec4 tex = get_box_projection(detail1, n, worldPos * detail1_scale);
         out_color = mix(out_color, tex.rgb, tex.a * alpha1);
     }
     
-    if (UV3.x <= 0.6  && enable_detail_2 && UV3.y > 0.1) { //Detail 2
+    if (UV3.x <= 0.6  && enable_detail_2 && UV3.y < 0.9) { //Detail 2
         vec4 tex = get_box_projection(detail2, n, worldPos * detail2_scale);
         out_color = mix(out_color, tex.rgb, tex.a * alpha2);
     }
