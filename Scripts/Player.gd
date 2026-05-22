@@ -66,7 +66,7 @@ const PLAYER_MAX_HEALTH = 100.0
 # --- INSTANCES ---
 var spear = load("res://Scenes/Weapons/Spear.tscn")
 var instance_spear
-var grenade = load("res://Scenes/Weapons/Grenade.tscn")
+var grenade = preload("res://Scenes/Weapons/Grenade.tscn")
 var instance_grenade
 
 
@@ -269,9 +269,7 @@ func _physics_process(delta):
 	
 	
 	if Input.is_action_just_pressed("RightMouse") and !drill.in_action and !dead:
-		current_gun_L.show()
-		await current_gun_L.shoot()
-		current_gun_L.hide()
+		current_gun_L.shoot()
 	
 	if Input.is_action_just_pressed("F") and !dead:
 		if drill.can_swing and !drill.in_action and !current_gun_L.in_action:
@@ -288,14 +286,13 @@ func _physics_process(delta):
 		crouch = true
 		playerCollision.shape.height = lerp(playerCollision.shape.height, 1.0, delta * 15.0)
 		$Feet.position.y = lerp($Feet.position.y, 0.5, delta * 15.0)
-		if velocity.length() > crouch_speed + 0.1: # 0.1 is epsilon for numerical error
+		if is_on_floor() and velocity.length() > crouch_speed + 0.1: # 0.1 is epsilon for numerical error
 			slide = true
 			floor_stop_on_slope = false
 			accel_mod = 0.05
-			if is_on_floor():
-				var normal = get_floor_normal()
-				normal.y = -normal.y
-				velocity += normal * 0.3
+			var normal = get_floor_normal()
+			normal.y = -normal.y
+			velocity += normal * 0.3
 		else:
 			slide = false
 			floor_stop_on_slope = true
@@ -359,12 +356,12 @@ func _physics_process(delta):
 			
 			# walk speed
 			if !knocked:
-				velocity.x = lerp(velocity.x, direction.x * SPEED, delta * 10.0 * accel_mod)
-				velocity.z = lerp(velocity.z, direction.z * SPEED, delta * 10.0 * accel_mod)
+				velocity.x = lerp(velocity.x, direction.x * SPEED, delta * 12.5 * accel_mod)
+				velocity.z = lerp(velocity.z, direction.z * SPEED, delta * 12.5 * accel_mod)
 		
 		else: # no input speed
-			velocity.x = lerp(velocity.x, 0.0, delta * 7.0 * accel_mod)
-			velocity.z = lerp(velocity.z, 0.0, delta * 7.0 * accel_mod)
+			velocity.x = lerp(velocity.x, 0.0, delta * 8.0 * accel_mod)
+			velocity.z = lerp(velocity.z, 0.0, delta * 8.0 * accel_mod)
 		
 	else: # airborne speed
 		airborne = true
@@ -373,8 +370,9 @@ func _physics_process(delta):
 		velocity.y = clamp(velocity.y - delta * down_force, -80.0, 80.0)  # Gravity
 		
 		if !knocked:
-			velocity.x = lerp(velocity.x, direction.x * SPEED, delta * 1.5 * accel_mod)
-			velocity.z = lerp(velocity.z, direction.z * SPEED, delta * 1.5 * accel_mod)
+			var desired_speed: Vector2 = Vector2(direction.x * SPEED, direction.z * SPEED)
+			velocity.x = lerp(velocity.x, desired_speed.x, delta * (1.25 if abs(desired_speed.x) > abs(velocity.x) else 0.2) * accel_mod)
+			velocity.z = lerp(velocity.z, desired_speed.y, delta * (1.25 if abs(desired_speed.y) > abs(velocity.z) else 0.2) * accel_mod)
 	
 	if !dead:
 		cam_gun_tilt_sway(currentInput.x, currentInput.y, delta)
@@ -513,11 +511,12 @@ func checkLifeLine():
 	if player_health <= 0 and dead == false:
 		if !DEBUG_deathBypass:
 			dead = true
-			current_gun_R.undraw(1.0, true)
 			await get_tree().create_timer(0.3).timeout
 			camAnim.speed_scale = 1.0
 			camAnim.play("death")
 			playerDead.emit()
+			await current_gun_R.undraw(1.5, true)
+			hideWeapons()
 	else:
 		camAnim.speed_scale = lerp(1.0, 2.5, 1 - player_health / PLAYER_MAX_HEALTH)
 

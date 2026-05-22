@@ -10,7 +10,7 @@ signal knockBack(force: int, direction: Vector3, slowOnGround: bool, time: float
 @export var camera: Area3D
 @export var playerRay: RayCast3D
 
-@onready var anim = $AnimationPlayer
+@onready var anim: AnimationPlayer = $AnimationPlayer
 @onready var heatBuffer = $HeatBuffer
 @onready var dialArrow = $Gun/DialArrow/DialArrow
 @onready var blastRange = $Gun/Area3D
@@ -25,6 +25,7 @@ var heat: float = 0.0
 func shoot():
 	in_action = true
 	if !anim.is_playing() and heat <= 100 - heatPerShot:
+		show()
 		anim.play("draw")
 		await anim.animation_finished
 		anim.play("shoot")
@@ -54,7 +55,9 @@ func shoot():
 		await anim.animation_finished
 		anim.play_backwards("draw")
 		await anim.animation_finished
-	in_action = false
+		in_action = false
+		hide()
+
 
 func get_heat() -> float:
 	return heat

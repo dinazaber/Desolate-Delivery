@@ -13,7 +13,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("BeggarsShotgun/Frame/Barrels:rotation")
+tracks/0/path = NodePath("BeggarsShotgun/Frame/BarrelDementiaPills/Barrels:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -78,7 +78,7 @@ step = 0.01
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("BeggarsShotgun/Frame/Barrels:rotation")
+tracks/0/path = NodePath("BeggarsShotgun/Frame/BarrelDementiaPills/Barrels:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -119,7 +119,7 @@ step = 0.01
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("BeggarsShotgun/Frame/Barrels:rotation")
+tracks/0/path = NodePath("BeggarsShotgun/Frame/BarrelDementiaPills/Barrels:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -127,6 +127,34 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(0.6, 0.6, 0.6, 5, 1),
 "update": 0,
 "values": [Vector3(0, 3.1415925, 0), Vector3(0, 3.1415925, 0), Vector3(0, 3.1415927, -1.7453293), Vector3(0, 3.1415927, -1.4835298), Vector3(0, 3.1415927, -1.5707964)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BeggarsShotgun/Frame/BarrelDementiaPills")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.35),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [1.571],
+"method": &"rotate_z"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BeggarsShotgun/Frame/BarrelDementiaPills/Barrels")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.35),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [-1.571],
+"method": &"rotate_z"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_4ungy"]
@@ -136,7 +164,7 @@ step = 0.01
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("BeggarsShotgun/Frame/Barrels:rotation")
+tracks/0/path = NodePath("BeggarsShotgun/Frame/BarrelDementiaPills/Barrels:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -193,6 +221,20 @@ tracks/4/keys = {
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(0.07, 0.07, 0.07), Vector3(0, 0, 0)]
 }
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("BeggarsShotgun/Frame/BarrelDementiaPills")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [-1.571],
+"method": &"rotate_z"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_7ud7m"]
 resource_name = "shootLast"
@@ -201,14 +243,14 @@ step = 0.01
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("BeggarsShotgun/Frame/Barrels:rotation")
+tracks/0/path = NodePath("BeggarsShotgun/Frame/BarrelDementiaPills/Barrels:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.18, 0.24, 0.3, 0.4),
-"transitions": PackedFloat32Array(1, 0.4, 2, 1.6, 1),
+"times": PackedFloat32Array(0, 0.18, 0.24, 0.3, 0.39, 0.4),
+"transitions": PackedFloat32Array(1, 0.4, 2, 1.6, 1000000, 1),
 "update": 0,
-"values": [Vector3(0, 3.1415925, 0), Vector3(0, 3.1415927, 1.5707964), Vector3(0, 3.1415927, 1.9198622), Vector3(0, 3.1415927, 1.5184364), Vector3(0, 3.1415927, 1.5707964)]
+"values": [Vector3(0, 3.1415925, 0), Vector3(0, 3.1415927, 1.5707964), Vector3(0, 3.1415927, 1.9198622), Vector3(0, 3.1415927, 1.5184364), Vector3(0, 3.1415927, 1.5707964), Vector3(0, 3.1415925, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -257,6 +299,20 @@ tracks/4/keys = {
 "transitions": PackedFloat32Array(0.3, 2, 1),
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(0.07, 0.07, 0.07), Vector3(0, 0, 0)]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("BeggarsShotgun/Frame/BarrelDementiaPills")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [-1.571],
+"method": &"rotate_z"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_ktqvf"]
@@ -399,10 +455,13 @@ transform = Transform3D(-0.03, -9.7406916e-11, -4.529874e-09, -9.740691e-11, 0.0
 cast_shadow = 0
 mesh = ExtResource("2_xapv0")
 
-[node name="Barrels" type="MeshInstance3D" parent="BeggarsShotgun/Frame" unique_id=1195580126]
+[node name="BarrelDementiaPills" type="Marker3D" parent="BeggarsShotgun/Frame" unique_id=958073626]
+
+[node name="Barrels" type="MeshInstance3D" parent="BeggarsShotgun/Frame/BarrelDementiaPills" unique_id=1195580126]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
 cast_shadow = 0
 mesh = ExtResource("6_pc0kw")
+skeleton = NodePath("../..")
 
 [node name="Barrel" type="Marker3D" parent="BeggarsShotgun" unique_id=731909360]
 transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 1, 0, 0, 0)

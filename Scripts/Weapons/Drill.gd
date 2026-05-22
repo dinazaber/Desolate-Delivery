@@ -15,6 +15,7 @@ var can_swing: bool = true
 
 func punch(speed): # set speed to zero if not dashing
 	in_action = true
+	show()
 	can_swing = false
 	$SwingTimer.start()
 	
@@ -53,6 +54,7 @@ func punch(speed): # set speed to zero if not dashing
 	if anim.is_playing():
 		await anim.animation_finished
 	in_action = false
+	hide()
 	$Crosshair.visible = false
 
 func hitstop(bodyCount):

@@ -22,7 +22,7 @@ var crosshair_def_pos: Vector2
 var crosshair_move: float = 0.0
 
 var shot_instance
-var shot = load("res://Scenes/Weapons/DevastatorShot.tscn")
+var shot = preload("res://Scenes/Weapons/DevastatorShot.tscn")
 
 
 func draw(playSpeed):

@@ -42,10 +42,10 @@ tracks/0/path = NodePath("Gun:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.18, 0.24, 0.3),
-"transitions": PackedFloat32Array(0.5, 2, 0.5, 1),
+"times": PackedFloat32Array(0, 0.11999999, 0.19, 0.26, 0.28, 0.3),
+"transitions": PackedFloat32Array(0.5, 1.5, 0.6666667, 2, 0.5, 1),
 "update": 0,
-"values": [Vector3(0.113, -0.45, 0.1), Vector3(0.18, 0.09, -0.1), Vector3(0.17, 0.045, -0.05), Vector3(0.15, 0, 0)]
+"values": [Vector3(0.113, -0.45, 0.1), Vector3(0.18, 0.09, -0.1), Vector3(0.16499576, 0.037485123, -0.049985833), Vector3(0.15, -0.015, 0), Vector3(0.15, -0.007499993, 0), Vector3(0.15, 0, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -54,10 +54,10 @@ tracks/1/path = NodePath("Gun:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.18, 0.22, 0.26, 0.3),
-"transitions": PackedFloat32Array(3, 0.3, 2, 0.5, 1),
+"times": PackedFloat32Array(0, 0.1, 0.18, 0.22, 0.26, 0.28, 0.3),
+"transitions": PackedFloat32Array(2, 0.5, 2, 0.5, 1, 1, 1),
 "update": 0,
-"values": [Vector3(1.2217305, 0, -1.0471976), Vector3(-0.22220683, 1.1230624, -0.08457261), Vector3(-0.34906584, 1.2217305, 0), Vector3(-0.17453292, 1.3962634, 0), Vector3(0, 1.5707964, 0)]
+"values": [Vector3(1.2217305, 0, -1.0471976), Vector3(0.43610382, 0.611043, -0.52344644), Vector3(-0.34906584, 1.2217305, 0), Vector3(-0.17453292, 1.3962634, 0), Vector3(0, 1.5707964, 0), Vector3(0.034906585, 1.5707964, 0), Vector3(0, 1.5707964, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_xgwlw"]
@@ -97,7 +97,7 @@ _data = {
 }
 
 [sub_resource type="Curve" id="Curve_s2mxn"]
-_data = [Vector2(0, 0.5), 0.0, 0.0, 0, 0, Vector2(0.5017065, 0.5020892), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 0.40279633), 0.0, 0.0, 0, 0, Vector2(0.4965517, 0.40279633), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 3
 
 [sub_resource type="CurveTexture" id="CurveTexture_88n45"]
@@ -125,7 +125,7 @@ point_count = 4
 curve = SubResource("Curve_6gchu")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_nyeo0"]
-lifetime_randomness = 0.4
+lifetime_randomness = 0.5
 spread = 60.0
 flatness = 0.7
 initial_velocity_min = 50.0
@@ -134,7 +134,7 @@ gravity = Vector3(0, 2, 0)
 damping_min = 20.0
 damping_max = 30.000002
 damping_curve = SubResource("CurveTexture_negrn")
-scale_min = 0.79999995
+scale_min = 0.7
 scale_max = 1.5
 scale_curve = SubResource("CurveTexture_80fnb")
 color_ramp = SubResource("GradientTexture1D_qfvl1")
@@ -142,16 +142,16 @@ alpha_curve = SubResource("CurveTexture_88n45")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e18iq"]
 transparency = 1
-shading_mode = 0
+shading_mode = 2
 vertex_color_use_as_albedo = true
 albedo_color = Color(0.3515629, 0.3515629, 0.35156286, 1)
 
 [sub_resource type="SphereMesh" id="SphereMesh_p534w"]
 material = SubResource("StandardMaterial3D_e18iq")
-radius = 0.15
-height = 0.3
-radial_segments = 16
-rings = 8
+radius = 0.2
+height = 0.4
+radial_segments = 12
+rings = 6
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_s2mxn"]
 size = Vector3(160, 30, 140)
@@ -172,7 +172,7 @@ mesh = ExtResource("3_s2mxn")
 transform = Transform3D(-2.1855693e-07, 0, -5, 0, 5, 0, 5, 0, -2.1855693e-07, -8.1958837e-07, 0, 18.75)
 cast_shadow = 0
 emitting = false
-amount = 16
+amount = 26
 lifetime = 0.7
 one_shot = true
 explosiveness = 1.0
