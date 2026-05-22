@@ -5,9 +5,12 @@ func _ready() -> void:
 
 func _on_start_pressed() -> void:
 	var curSave = SaveManager.curSave
+	print(curSave)
 	if curSave: SaveManager.load_game(curSave)
 	
-	else: get_tree().change_scene_to_file("res://Scenes/Locations/test.tscn")
+	else:
+		print("ty dibil test")
+		get_tree().change_scene_to_file("res://Scenes/Locations/test.tscn")
 
 
 func _on_settings_pressed() -> void:

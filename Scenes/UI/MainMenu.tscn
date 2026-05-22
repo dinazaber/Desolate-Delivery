@@ -101,6 +101,10 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 25
 text = "Quit"
 
+[node name="level select" type="Button" parent="MainMenu/MarginContainer/VBoxContainer" unique_id=1083917615]
+layout_mode = 2
+text = "level select"
+
 [node name="Settings" parent="." unique_id=307003582 instance=ExtResource("2_853f1")]
 visible = false
 layout_mode = 1

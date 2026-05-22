@@ -8,6 +8,7 @@ var curSave: String
 func _ready() -> void:
 	# Create the folder if it doesn't exist
 	if not DirAccess.dir_exists_absolute(SAVEDIR):
+		print("test save manager")
 		DirAccess.make_dir_absolute(SAVEDIR)
 	else: curSave = get_most_recent_save()
 
@@ -100,10 +101,12 @@ func get_most_recent_save():
 			
 			if modified_time > latestTime:
 				latestTime = modified_time
-				latestFile = file.remove_chars(".bin")
+				var length = len(file)
+				latestFile = file.erase(length - 4, length)
 				
 		file = dir.get_next()
 		
 	dir.list_dir_end()
+	print("test curr save = ", latestFile)
 	return latestFile
 	
