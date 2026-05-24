@@ -6,7 +6,7 @@
 [ext_resource type="ArrayMesh" uid="uid://cc71x4p8yppbl" path="res://assets/Meshes/Architecture/Fence.mesh" id="3_lw8r5"]
 [ext_resource type="Script" uid="uid://cfwmt6vc7y70h" path="res://addons/MetaMultimeshInstance3D/src/MetaMultimeshInstance3D.gd" id="3_u4tly"]
 [ext_resource type="Texture2D" uid="uid://c05iegxkuhyu" path="res://assets/Textures/Architecture/lattice.png" id="4_lw8r5"]
-[ext_resource type="PackedScene" uid="uid://cpi1xrpot2ipt" path="res://Scenes/Player.tscn" id="4_ru70h"]
+[ext_resource type="PackedScene" uid="uid://cpi1xrpot2ipt" path="res://assets/Lightmaps/Player.tscn" id="4_ru70h"]
 [ext_resource type="Shader" uid="uid://no1jy7cyw0an" path="res://Shaders/PostProcess/SandStorm.gdshader" id="5_qhj8q"]
 [ext_resource type="ArrayMesh" uid="uid://xpw65d4k1v6" path="res://assets/Meshes/Architecture/Gates.mesh" id="6_27uu2"]
 [ext_resource type="Texture2D" uid="uid://kqnjcrk75lb3" path="res://assets/Textures/Dirt.png" id="7_1k7mg"]

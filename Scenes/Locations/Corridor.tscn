@@ -4,10 +4,11 @@
 [ext_resource type="PackedScene" uid="uid://df53p2nd7yphr" path="res://Scenes/Locations/Restroom.tscn" id="2_inv3y"]
 [ext_resource type="ArrayMesh" uid="uid://dmuu3icybpsg7" path="res://assets/Meshes/RoomConstructor/Wall.mesh" id="4_4cqb3"]
 [ext_resource type="ArrayMesh" uid="uid://d3d3tk27u03im" path="res://assets/Meshes/RoomConstructor/DoorWayFlat.mesh" id="4_7e57h"]
+[ext_resource type="PackedScene" uid="uid://bklolkvppn66" path="res://Scenes/Locations/Cabinet.tscn" id="4_thgur"]
 [ext_resource type="ArrayMesh" uid="uid://smhlox4qf5ic" path="res://assets/Meshes/RoomConstructor/Floor.mesh" id="5_7e57h"]
 [ext_resource type="ArrayMesh" uid="uid://dnncgj3eh0p7k" path="res://assets/Meshes/RoomConstructor/Ceilling.mesh" id="6_inv3y"]
-[ext_resource type="LightmapGIData" uid="uid://bksk5nls7ktt8" path="res://Scenes/Corridor.lmbake" id="7_7e57h"]
-[ext_resource type="PackedScene" uid="uid://cpi1xrpot2ipt" path="res://Scenes/Player.tscn" id="7_207sj"]
+[ext_resource type="LightmapGIData" uid="uid://bksk5nls7ktt8" path="res://assets/Lightmaps/Corridor.lmbake" id="7_7e57h"]
+[ext_resource type="PackedScene" uid="uid://cpi1xrpot2ipt" path="res://assets/Lightmaps/Player.tscn" id="7_207sj"]
 [ext_resource type="ArrayMesh" uid="uid://bp8ef7whe1aee" path="res://assets/Meshes/Objects/CeilingLampRound.mesh" id="8_4cqb3"]
 [ext_resource type="ArrayMesh" uid="uid://cah72eyskq0ma" path="res://assets/Meshes/Architecture/PipePart1Yellow.mesh" id="10_mv1vh"]
 [ext_resource type="ArrayMesh" uid="uid://bhjkryc5fxk5l" path="res://assets/Meshes/Architecture/PipePart2Yellow.mesh" id="11_ln4cm"]
@@ -18,12 +19,63 @@
 [ext_resource type="Shader" uid="uid://cunx8274v1qyy" path="res://Shaders/MeshShaders/MeshShader.gdshader" id="16_tsxpl"]
 [ext_resource type="Texture2D" uid="uid://kqnjcrk75lb3" path="res://assets/Textures/Dirt.png" id="17_thgur"]
 [ext_resource type="Texture2D" uid="uid://bu6ue5ydfh2q6" path="res://assets/Textures/Rust.png" id="18_k4nb6"]
+[ext_resource type="ArrayMesh" uid="uid://esrd0hm4jwa5" path="res://assets/Meshes/Objects/ElectricBox.mesh" id="20_k4nb6"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_thgur"]
+shading_mode = 0
+albedo_color = Color(0.24760857, 7.054163e-07, 3.970787e-07, 1)
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_klfi5"]
+_surfaces = [{
+"aabb": AABB(-2, -2, -0.06250009, 4, 4, 1e-05),
+"format": 34359783425,
+"index_count": 12,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAADAAAABAAFAAMA"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 6,
+"vertex_data": PackedByteArray("AAAAwJqZGb8EAIC9AAAAQAAAAEDp/3+9AAAAwAAAAEDp/3+9AAAAQJqZGb8EAIC9AAAAwAAAAMAMAIC9AAAAQAAAAMAMAIC9")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_thgur"]
+resource_name = "Objects_Plane_005"
+lightmap_size_hint = Vector2i(22, 22)
+_surfaces = [{
+"aabb": AABB(-2, -2, -0.06250009, 4, 4, 1e-05),
+"attribute_data": PackedByteArray("WVlZ/wAAAAAAAIA/kKckP4wuujz+/38/AAAAP1lZWf8AAIA/AAAAAIwuujyMLno//v9/PwAAAD9ZWVn/AACAPwAAgD+MLro8jC66PP7/fz8AAAA/WVlZ/wAAAAAAAAAAkKckP4wuej/+/38/AAAAPw0aC/8AAAAAAACAP4wuej+MLro8/v9/PwAAAD8NGgv/AACAPwAAAACQpyQ/jC56P/7/fz8AAAA/DRoL/wAAgD8AAIA/kKckP4wuujz+/38/AAAAPw0aC/8AAAAAAAAAAIwuej+MLno//v9/PwAAAD8="),
+"format": 34359783551,
+"index_count": 12,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUA"),
+"material": SubResource("StandardMaterial3D_thgur"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("AAAAwJqZGb8EAIC9AAAAQAAAAEDp/3+9AAAAwAAAAEDp/3+9AAAAQJqZGb8EAIC9AAAAwAAAAMAMAIC9AAAAQJqZGb8EAIC9AAAAwJqZGb8EAIC9AAAAQAAAAMAMAIC9//////9//////////3//////////f/////////9//////////3//////////f/////////9//////////3///w==")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_klfi5")
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_k4nb6"]
+resource_name = "Objects_Plane_005"
+lightmap_size_hint = Vector2i(22, 22)
+_surfaces = [{
+"aabb": AABB(-2, -2, -0.06250009, 4, 4, 1e-05),
+"attribute_data": PackedByteArray("WVlZ/wAAAAAAAIA/kKckP4wuujz+/38/AAAAP1lZWf8AAIA/AAAAAIwuujyMLno//v9/PwAAAD9ZWVn/AACAPwAAgD+MLro8jC66PP7/fz8AAAA/WVlZ/wAAAAAAAAAAkKckP4wuej/+/38/AAAAPw0aC/8AAAAAAACAP4wuej+MLro8/v9/PwAAAD8NGgv/AACAPwAAAACQpyQ/jC56P/7/fz8AAAA/DRoL/wAAgD8AAIA/kKckP4wuujz+/38/AAAAPw0aC/8AAAAAAAAAAIwuej+MLno//v9/PwAAAD8="),
+"format": 34359783551,
+"index_count": 12,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUA"),
+"material": SubResource("StandardMaterial3D_thgur"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("AAAAwJqZGb8EAIC9AAAAQAAAAEDp/3+9AAAAwAAAAEDp/3+9AAAAQJqZGb8EAIC9AAAAwAAAAMAMAIC9AAAAQJqZGb8EAIC9AAAAwJqZGb8EAIC9AAAAQAAAAMAMAIC9//////9//////////3//////////f/////////9//////////3//////////f/////////9//////////3///w==")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_klfi5")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7e57h"]
 size = Vector3(16, 0.5, 4)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_mv1vh"]
-size = Vector3(8.950073, 4.5145264, 0.1965332)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3s1m5"]
 size = Vector3(4.4601746, 4.5145264, 0.1965332)
@@ -71,42 +123,45 @@ _surfaces = [{
 
 [node name="Corridor" type="Node3D" unique_id=323185314]
 
+[node name="Rooms" type="Node3D" parent="." unique_id=1390652977]
+
+[node name="Office" parent="Rooms" unique_id=75341550 instance=ExtResource("1_75pwh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 0, 0)
+
+[node name="Restroom" parent="Rooms" unique_id=1937386699 instance=ExtResource("2_inv3y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.95, 0.001, -2.2)
+
+[node name="Cabinet" parent="Rooms" unique_id=1857668066 instance=ExtResource("4_thgur")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -8, 0, -3.2)
+
 [node name="LightmapGI" type="LightmapGI" parent="." unique_id=712787022]
 supersampling = true
 bounces = 16
 interior = true
 use_denoiser = false
-texel_scale = 10.0
 environment_mode = 0
 environment_custom_color = Color(0, 0, 0, 1)
 light_data = ExtResource("7_7e57h")
 
 [node name="CeillingLamp1" type="SpotLight3D" parent="LightmapGI" unique_id=692474601]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -5.992413, 3.62921, 0.004749775)
-light_color = Color(1, 0.994, 0.82, 1)
 light_indirect_energy = 8.0
 light_specular = 0.0
 light_bake_mode = 1
 shadow_caster_mask = 4294967293
-spot_range = 20.0
+spot_range = 10.0
 spot_attenuation = 1.5
-spot_angle = 80.0
+spot_angle = 70.0
 
 [node name="CeillingLamp2" type="SpotLight3D" parent="LightmapGI" unique_id=1383603388]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -13.036828, 3.62921, 0.004749775)
-light_color = Color(1, 0.994, 0.82, 1)
 light_indirect_energy = 8.0
 light_specular = 0.0
 light_bake_mode = 1
 shadow_caster_mask = 4294967293
-spot_range = 20.0
+spot_range = 10.0
 spot_attenuation = 1.5
-spot_angle = 80.0
-
-[node name="Office" parent="." unique_id=75341550 instance=ExtResource("1_75pwh")]
-
-[node name="Restroom" parent="." unique_id=1937386699 instance=ExtResource("2_inv3y")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.95, 0, -2.002)
+spot_angle = 70.0
 
 [node name="Room" type="Node3D" parent="." unique_id=1100238602]
 
@@ -131,19 +186,23 @@ mesh = ExtResource("6_inv3y")
 [node name="Floor" type="Node3D" parent="Room" unique_id=1612118663]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Room/Floor" unique_id=1882948818]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.8, 0, 0)
 mesh = ExtResource("5_7e57h")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="Room/Floor" unique_id=1380899115]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.8, 0, 0)
 mesh = ExtResource("5_7e57h")
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="Room/Floor" unique_id=1156871417]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.8, 0, 0)
 mesh = ExtResource("5_7e57h")
 
 [node name="MeshInstance3D4" type="MeshInstance3D" parent="Room/Floor" unique_id=849178353]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.8, 0, 0)
+mesh = ExtResource("5_7e57h")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Room/Floor" unique_id=606616837]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.8, 0, 0)
 mesh = ExtResource("5_7e57h")
 
 [node name="Walls" type="Node3D" parent="Room" unique_id=1478295452]
@@ -153,15 +212,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 2, 2)
 mesh = ExtResource("4_4cqb3")
 
 [node name="MeshInstance3D4" type="MeshInstance3D" parent="Room/Walls" unique_id=555789504]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -4, 2, -2)
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -4, 2, -1.999)
 mesh = ExtResource("4_4cqb3")
 
 [node name="MeshInstance3D5" type="MeshInstance3D" parent="Room/Walls" unique_id=1158461200]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -8, 2, -2)
-mesh = ExtResource("4_4cqb3")
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -8, 2, -1.999)
+mesh = ExtResource("4_7e57h")
 
 [node name="MeshInstance3D7" type="MeshInstance3D" parent="Room/Walls" unique_id=1839087404]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -15.9373865, 2, -2)
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -15.937, 2, -1.999)
 mesh = ExtResource("4_4cqb3")
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="Room/Walls" unique_id=706030886]
@@ -181,21 +240,21 @@ transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -18,
 mesh = ExtResource("4_4cqb3")
 
 [node name="LightBlock1 - Don\'t Delete" type="MeshInstance3D" parent="Room/Walls" unique_id=236180390]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1.9735858, 2, 0)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1.7240477, 2, 0)
 visible = false
-mesh = ExtResource("4_4cqb3")
+mesh = SubResource("ArrayMesh_thgur")
 
 [node name="LightBlock2 - Don\'t Delete" type="MeshInstance3D" parent="Room/Walls" unique_id=1525926313]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -11.964, 2, -2.01)
+transform = Transform3D(-2.395, 0, 1.509958e-07, 0, 1, 0, -3.6163493e-07, 0, -1, -11.964, 2, -2.1147242)
 visible = false
-mesh = ExtResource("4_4cqb3")
+mesh = SubResource("ArrayMesh_k4nb6")
 
 [node name="MeshInstance3D11" type="MeshInstance3D" parent="Room/Walls" unique_id=18390306]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.001, 2, 0)
 mesh = ExtResource("4_7e57h")
 
 [node name="MeshInstance3D12" type="MeshInstance3D" parent="Room/Walls" unique_id=94845158]
-transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, -11.992, 2, -2)
+transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, -11.992, 2, -1.999)
 mesh = ExtResource("4_7e57h")
 
 [node name="Player" parent="." unique_id=1941692924 instance=ExtResource("7_207sj")]
@@ -221,10 +280,6 @@ shape = SubResource("BoxShape3D_7e57h")
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D" unique_id=1842732501]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.026, 4.25, 0)
 shape = SubResource("BoxShape3D_7e57h")
-
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="StaticBody3D" unique_id=1332069277]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.4747415, 1.7572632, -2.0225303)
-shape = SubResource("BoxShape3D_mv1vh")
 
 [node name="CollisionShape3D4" type="CollisionShape3D" parent="StaticBody3D" unique_id=1134861333]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.737919, 1.7572632, -2.0225303)
@@ -377,4 +432,9 @@ mesh = ExtResource("15_k3h4h")
 skeleton = NodePath("../../PipesYellow")
 
 [node name="PipesYellow2" type="MeshInstance3D" parent="." unique_id=2116832581]
+gi_lightmap_texel_scale = 2.0
 mesh = SubResource("ArrayMesh_mo2ea")
+
+[node name="ElectricBox" type="MeshInstance3D" parent="." unique_id=375691590]
+transform = Transform3D(-0.4, 0, -6.039832e-08, 0, 0.4, 0, 6.039832e-08, 0, -0.4, -5, 1.3420002, -1.7727222)
+mesh = ExtResource("20_k4nb6")

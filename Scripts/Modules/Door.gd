@@ -1,7 +1,13 @@
 @tool #Changing door mesh in the future
 extends Node3D
 
+@export var door_mesh: Mesh:
+	set(value): 
+		door_mesh = value
+		$MeshInstance3D.mesh = door_mesh
+	
 @onready var anim: AnimationPlayer = $AnimationPlayer
+
 var isOpen: bool = false
 var type = "Door"
 

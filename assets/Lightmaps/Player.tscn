@@ -1,0 +1,527 @@
+[gd_scene format=3 uid="uid://cpi1xrpot2ipt"]
+
+[ext_resource type="Script" uid="uid://dh81y2wk5ijn" path="res://Scripts/Player.gd" id="1_g8lft"]
+[ext_resource type="PackedScene" uid="uid://4ercdvy5pe3t" path="res://Scenes/Weapons/RightHandWeapons.tscn" id="2_kyqiw"]
+[ext_resource type="PackedScene" uid="uid://dvs50w2owu2rs" path="res://Scenes/Modules/ShakeableCamera.tscn" id="2_megsn"]
+[ext_resource type="Script" uid="uid://mnanpq21gwd4" path="res://Scripts/UI/PauseMenu.gd" id="3_dewec"]
+[ext_resource type="PackedScene" uid="uid://b2hljcs3010c5" path="res://Scenes/UI/Settings.tscn" id="3_gntrk"]
+[ext_resource type="PackedScene" uid="uid://d3y1m515qojp2" path="res://Scenes/Weapons/LeftHandWeapons.tscn" id="3_nn08x"]
+[ext_resource type="Texture2D" uid="uid://b6vcboeh4uetd" path="res://assets/HUD/crosshair.png" id="5_5ixxa"]
+[ext_resource type="PackedScene" uid="uid://yhfwhi177tdg" path="res://Scenes/UI/SaveMenu.tscn" id="6_52ee3"]
+[ext_resource type="Script" uid="uid://b1yx1tjjakl1w" path="res://Scripts/UI/HUD.gd" id="7_bhhdu"]
+[ext_resource type="PackedScene" uid="uid://bm2ti0vwyvub4" path="res://Scenes/UI/DeadScreen.tscn" id="10_yoq75"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_yoq75"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_yoq75"]
+
+[sub_resource type="Animation" id="Animation_yoq75"]
+resource_name = "RESET"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("shakeable_camera:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.5, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("shakeable_camera:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("shakeable_camera/Hands/RightHand:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.15, -0.137, -0.25)]
+}
+
+[sub_resource type="Animation" id="Animation_ksbbd"]
+resource_name = "breath"
+length = 3.0
+loop_mode = 1
+step = 0.025
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("shakeable_camera/Hands/RightHand:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.75, 1.5, 2.25, 3),
+"transitions": PackedFloat32Array(0.5, 2, 0.5, 2, 1),
+"update": 0,
+"values": [Vector3(0.15, -0.137, -0.25), Vector3(0.15, -0.132, -0.25), Vector3(0.15, -0.137, -0.25), Vector3(0.15, -0.142, -0.25), Vector3(0.15, -0.137, -0.25)]
+}
+
+[sub_resource type="Animation" id="Animation_megsn"]
+resource_name = "death"
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("shakeable_camera:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.43, 0.6, 0.8),
+"transitions": PackedFloat32Array(2, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0.5, 0), Vector3(0, -0.4, 0), Vector3(0, -0.25, 0), Vector3(0, -0.25, 0), Vector3(0, -0.4, 0), Vector3(0, -0.4, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("shakeable_camera:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.43, 0.6, 0.6333333, 0.8),
+"transitions": PackedFloat32Array(0.3, 2, 2, 2, 0.2, 0.4, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.10471976, 0, 0), Vector3(-0.12217305, 0, 0), Vector3(0.017453292, 0, 0), Vector3(0, 0, -1.0471976), Vector3(-0.08726646, 0, -1.0471976), Vector3(0, 0, -1.0471976)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yoq75"]
+_data = {
+&"RESET": SubResource("Animation_yoq75"),
+&"breath": SubResource("Animation_ksbbd"),
+&"death": SubResource("Animation_megsn")
+}
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kyqiw"]
+shading_mode = 0
+
+[sub_resource type="BoxMesh" id="BoxMesh_rpqav"]
+material = SubResource("StandardMaterial3D_kyqiw")
+size = Vector3(1, 2, 1)
+
+[sub_resource type="Curve" id="Curve_yoq75"]
+_data = [Vector2(0, 0.49789327), 0.0, 0.0, 0, 0, Vector2(0.25429553, 1), 0.0, 0.0, 0, 0, Vector2(0.49828184, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_ksbbd"]
+curve = SubResource("Curve_yoq75")
+
+[sub_resource type="Curve" id="Curve_glx4g"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.25429553, 1), 0.0, 0.0, 0, 0, Vector2(0.49828184, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="Curve" id="Curve_miouo"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_o3h8g"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.25429553, 1), 0.0, 0.0, 0, 0, Vector2(0.49828184, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_1e7my"]
+curve_x = SubResource("Curve_glx4g")
+curve_y = SubResource("Curve_miouo")
+curve_z = SubResource("Curve_o3h8g")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_yoq75"]
+particle_flag_align_y = true
+emission_shape_offset = Vector3(0, 0, -1.25)
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 0.5
+emission_ring_radius = 0.8
+emission_ring_inner_radius = 0.6
+emission_ring_cone_angle = 90.0
+direction = Vector3(0, 0, 1)
+spread = 0.0
+initial_velocity_min = 0.099999994
+initial_velocity_max = 0.19999999
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveXYZTexture_1e7my")
+alpha_curve = SubResource("CurveTexture_ksbbd")
+
+[sub_resource type="Curve" id="Curve_ksbbd"]
+_data = [Vector2(0, 0.34839112), 0.0, 0.0, 0, 0, Vector2(0.504644, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.34839112), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_glx4g"]
+offsets = PackedFloat32Array(0, 0.18587361, 0.8550186, 1)
+colors = PackedColorArray(0.9882353, 1, 0.7058824, 0, 0.9882353, 1, 0.7058824, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_miouo"]
+gradient = SubResource("Gradient_glx4g")
+height = 128
+fill_from = Vector2(0.5, 1)
+fill_to = Vector2(0.50427353, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o3h8g"]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = SubResource("GradientTexture2D_miouo")
+
+[sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_1e7my"]
+material = SubResource("StandardMaterial3D_o3h8g")
+size = 0.02
+sections = 2
+section_length = 0.4
+section_segments = 1
+curve = SubResource("Curve_ksbbd")
+
+[node name="Player" type="CharacterBody3D" unique_id=1941692924 groups=["Persist", "Player"]]
+collision_layer = 8
+collision_mask = 153
+slide_on_ceiling = false
+floor_snap_length = 0.15
+script = ExtResource("1_g8lft")
+
+[node name="PlayerCollision" type="CollisionShape3D" parent="." unique_id=1015271467]
+process_priority = 1
+process_physics_priority = 1
+shape = SubResource("CapsuleShape3D_yoq75")
+
+[node name="Feet" type="Node3D" parent="." unique_id=949802035]
+
+[node name="StairsMin" type="RayCast3D" parent="Feet" unique_id=1629181005]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.92373216, -0.12357485)
+visible = false
+target_position = Vector3(0, 0, -0.4)
+collision_mask = 17
+
+[node name="StairsMax" type="RayCast3D" parent="Feet" unique_id=613395755]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5283632, -0.12357485)
+visible = false
+target_position = Vector3(0, 0, -0.41)
+collision_mask = 17
+
+[node name="EnemyBounceCheck" type="Area3D" parent="Feet" unique_id=326631368]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.51, 0)
+collision_layer = 0
+collision_mask = 25
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Feet/EnemyBounceCheck" unique_id=632021629]
+shape = SubResource("SphereShape3D_yoq75")
+
+[node name="cameraAnimation" type="AnimationPlayer" parent="." unique_id=1078308482]
+libraries/ = SubResource("AnimationLibrary_yoq75")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=620583355]
+visible = false
+cast_shadow = 0
+mesh = SubResource("BoxMesh_rpqav")
+
+[node name="UncrouchCheck" type="RayCast3D" parent="." unique_id=880420750]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+target_position = Vector3(0, 2, 0)
+collision_mask = 27
+collide_with_areas = true
+
+[node name="SuperTimer" type="Timer" parent="." unique_id=267019974]
+one_shot = true
+
+[node name="SpeedParticles" type="GPUParticles3D" parent="." unique_id=220422398]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+amount = 36
+amount_ratio = 0.0
+lifetime = 0.4
+process_material = SubResource("ParticleProcessMaterial_yoq75")
+draw_pass_1 = SubResource("RibbonTrailMesh_1e7my")
+
+[node name="shakeable_camera" parent="." unique_id=1373532385 instance=ExtResource("2_megsn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+trauma_reduction_rate = 3.0
+noise_speed = 30.0
+
+[node name="holdPos" type="Marker3D" parent="shakeable_camera" unique_id=1190064023]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, -1.4)
+
+[node name="PlayerRay" type="RayCast3D" parent="shakeable_camera" unique_id=1906683229]
+target_position = Vector3(0, 0, -75)
+collision_mask = 177
+collide_with_areas = true
+
+[node name="PlayerRayEnd" type="Marker3D" parent="shakeable_camera/PlayerRay" unique_id=439214189]
+transform = Transform3D(1, 0, 0, 0, 1, -1.764077e-33, 0, 1.764077e-33, 1, 0, 0, -75)
+
+[node name="Hands" type="Node3D" parent="shakeable_camera" unique_id=1293429431]
+
+[node name="RightHand" parent="shakeable_camera/Hands" unique_id=267885530 instance=ExtResource("2_kyqiw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15, -0.137, -0.25)
+
+[node name="SMG" parent="shakeable_camera/Hands/RightHand" index="1" unique_id=1941681137 node_paths=PackedStringArray("camera", "playerRay", "playerRayEnd")]
+camera = NodePath("../../..")
+playerRay = NodePath("../../../PlayerRay")
+playerRayEnd = NodePath("../../../PlayerRay/PlayerRayEnd")
+
+[node name="BeggarsShotgun" parent="shakeable_camera/Hands/RightHand" index="2" unique_id=893199726 node_paths=PackedStringArray("camera", "playerRay", "playerRayEnd")]
+camera = NodePath("../../..")
+playerRay = NodePath("../../../PlayerRay")
+playerRayEnd = NodePath("../../../PlayerRay/PlayerRayEnd")
+
+[node name="Devestator" parent="shakeable_camera/Hands/RightHand" index="3" unique_id=1237437943 node_paths=PackedStringArray("camera", "playerRay", "playerRayEnd")]
+camera = NodePath("../../..")
+playerRay = NodePath("../../../PlayerRay")
+playerRayEnd = NodePath("../../../PlayerRay/PlayerRayEnd")
+
+[node name="LeftHand" parent="shakeable_camera/Hands" unique_id=1896444700 instance=ExtResource("3_nn08x")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.2, -0.137, -0.25)
+
+[node name="Steamer" parent="shakeable_camera/Hands/LeftHand" index="0" unique_id=1493507664 node_paths=PackedStringArray("camera", "playerRay")]
+camera = NodePath("../../..")
+playerRay = NodePath("../../../PlayerRay")
+
+[node name="Drill" parent="shakeable_camera/Hands/LeftHand" index="1" unique_id=1590022059 node_paths=PackedStringArray("camera", "player")]
+camera = NodePath("../../..")
+player = NodePath("../../../..")
+
+[node name="PauseMenu" type="Control" parent="." unique_id=877245422 node_paths=PackedStringArray("hud")]
+process_mode = 3
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_dewec")
+hud = NodePath("../HUD")
+
+[node name="PauseMenu" type="PanelContainer" parent="PauseMenu" unique_id=718297167]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -219.75
+offset_top = -231.5
+offset_right = 219.75
+offset_bottom = 231.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PauseMenu/PauseMenu" unique_id=1108477058]
+layout_mode = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 100
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu/PauseMenu/MarginContainer" unique_id=1709221619]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="PauseMenu/PauseMenu/MarginContainer/VBoxContainer" unique_id=1913096271]
+layout_mode = 2
+theme_override_font_sizes/font_size = 45
+text = "Pause"
+horizontal_alignment = 1
+
+[node name="Resume" type="Button" parent="PauseMenu/PauseMenu/MarginContainer/VBoxContainer" unique_id=1324442104]
+layout_mode = 2
+theme_override_font_sizes/font_size = 15
+text = "Resume"
+
+[node name="Settings" type="Button" parent="PauseMenu/PauseMenu/MarginContainer/VBoxContainer" unique_id=386092316]
+layout_mode = 2
+theme_override_font_sizes/font_size = 15
+text = "Settings"
+
+[node name="Save Menu" type="Button" parent="PauseMenu/PauseMenu/MarginContainer/VBoxContainer" unique_id=1396896519]
+layout_mode = 2
+theme_override_font_sizes/font_size = 15
+text = "Save Manager"
+
+[node name="Quit" type="Button" parent="PauseMenu/PauseMenu/MarginContainer/VBoxContainer" unique_id=880679601]
+layout_mode = 2
+theme_override_font_sizes/font_size = 15
+text = "Main Menu"
+
+[node name="Settings" parent="PauseMenu" unique_id=307003582 instance=ExtResource("3_gntrk")]
+process_mode = 3
+visible = false
+layout_mode = 1
+
+[node name="SaveMenu" parent="PauseMenu" unique_id=1653560853 instance=ExtResource("6_52ee3")]
+visible = false
+layout_mode = 1
+
+[node name="HUD" type="Control" parent="." unique_id=1465815130]
+layout_direction = 4
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("7_bhhdu")
+
+[node name="HealthBar" type="ProgressBar" parent="HUD" unique_id=159323656]
+modulate = Color(0.46666667, 1, 0.5254902, 1)
+self_modulate = Color(0.46666667, 1, 0.5254902, 0.78431374)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -100.0
+offset_top = -98.0
+offset_right = 100.0
+offset_bottom = -68.0
+grow_horizontal = 2
+grow_vertical = 0
+pivot_offset_ratio = Vector2(0.5, 0.5)
+value = 100.0
+allow_greater = true
+allow_lesser = true
+show_percentage = false
+
+[node name="GrenadeBar" type="ProgressBar" parent="HUD" unique_id=1774896263]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = -63.0
+offset_right = 98.0
+offset_bottom = -58.0
+grow_horizontal = 2
+grow_vertical = 0
+pivot_offset_ratio = Vector2(0.5, 0.5)
+value = 100.0
+allow_lesser = true
+show_percentage = false
+
+[node name="DashBar" type="ProgressBar" parent="HUD" unique_id=1703619297]
+modulate = Color(0.3137255, 1, 1, 1)
+self_modulate = Color(0.3137255, 1, 1, 0.78431374)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -98.0
+offset_top = -63.0
+offset_right = -8.0
+offset_bottom = -58.0
+grow_horizontal = 2
+grow_vertical = 0
+pivot_offset_ratio = Vector2(0.5, 0.5)
+value = 100.0
+allow_lesser = true
+fill_mode = 1
+show_percentage = false
+
+[node name="HeatRight" type="ProgressBar" parent="HUD" unique_id=68039069]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -376.0
+offset_top = -148.0
+offset_right = -176.0
+offset_bottom = -128.0
+grow_horizontal = 0
+grow_vertical = 0
+rotation = -0.2617994
+pivot_offset_ratio = Vector2(0.5, 0.5)
+show_percentage = false
+
+[node name="HeatLeft" type="ProgressBar" parent="HUD" unique_id=396079448]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 176.0
+offset_top = -148.0
+offset_right = 376.0
+offset_bottom = -128.0
+grow_vertical = 0
+rotation = 0.2617994
+pivot_offset_ratio = Vector2(0.5, 0.5)
+fill_mode = 1
+show_percentage = false
+
+[node name="crosshair" type="TextureRect" parent="HUD" unique_id=1178379776]
+visible = false
+modulate = Color(18.892157, 18.892157, 18.892157, 1)
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_5ixxa")
+expand_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HUD" unique_id=1570974789]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -195.0
+offset_bottom = 198.0
+grow_horizontal = 0
+
+[node name="FPS" type="Label" parent="HUD/VBoxContainer" unique_id=1514150893]
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "FPS HERE"
+
+[node name="DrawCalls" type="Label" parent="HUD/VBoxContainer" unique_id=45565768]
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "DRAW CALLS HERE"
+
+[node name="DeadScreen" parent="." unique_id=1831384756 instance=ExtResource("10_yoq75")]
+visible = false
+
+[connection signal="playerDead" from="." to="shakeable_camera/Hands/RightHand" method="_on_player_player_dead"]
+[connection signal="playerDead" from="." to="PauseMenu" method="_on_player_player_dead"]
+[connection signal="playerDead" from="." to="DeadScreen" method="_on_player_dead"]
+[connection signal="restoreCool" from="." to="shakeable_camera/Hands/RightHand/SMG" method="_on_restore_cool"]
+[connection signal="restoreCool" from="." to="shakeable_camera/Hands/RightHand/BeggarsShotgun" method="_on_restore_cool"]
+[connection signal="restoreCool" from="." to="shakeable_camera/Hands/LeftHand/Steamer" method="_on_restore_cool"]
+[connection signal="timeout" from="SuperTimer" to="." method="SuperTimerTimeOut"]
+[connection signal="knockBack" from="shakeable_camera/Hands/LeftHand/Steamer" to="." method="knockBack"]
+[connection signal="pressed" from="PauseMenu/PauseMenu/MarginContainer/VBoxContainer/Resume" to="PauseMenu" method="_on_resume_pressed"]
+[connection signal="pressed" from="PauseMenu/PauseMenu/MarginContainer/VBoxContainer/Settings" to="PauseMenu" method="_on_settings_pressed"]
+[connection signal="pressed" from="PauseMenu/PauseMenu/MarginContainer/VBoxContainer/Save Menu" to="PauseMenu" method="_on_save_menu_pressed"]
+[connection signal="pressed" from="PauseMenu/PauseMenu/MarginContainer/VBoxContainer/Quit" to="PauseMenu" method="_on_quit_pressed"]
+[connection signal="closed" from="PauseMenu/Settings" to="PauseMenu" method="_on_settings_closed"]
+[connection signal="closed" from="PauseMenu/SaveMenu" to="PauseMenu" method="_on_save_menu_closed"]
+
+[editable path="shakeable_camera"]
+[editable path="shakeable_camera/Hands/RightHand"]
+[editable path="shakeable_camera/Hands/LeftHand"]

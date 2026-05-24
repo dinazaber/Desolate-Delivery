@@ -159,10 +159,10 @@ func _input(event):
 		else: 
 			if playerRay.is_colliding():
 				var collider = playerRay.get_collider()
+				var distance = global_position.distance_to(collider.global_position)
 				
 				#Object that can be grabbed
 				if collider is RigidBody3D:
-					var distance = global_position.distance_to(collider.global_position)
 					if distance < 3:
 						grabbedObject = collider
 						grabbedObject.is_held = true
@@ -173,9 +173,8 @@ func _input(event):
 				#Doors currently
 				elif collider.owner.has_method("getType"):
 					var object = collider.owner
-					
 					if object.getType() == "Door":
-						if !object.getOpenStatus(): object.open()
+						if !object.getOpenStatus() and distance < 3: object.open()
 						else: object.close()
 				
 	
