@@ -6,6 +6,9 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_lgil6"]
 size = Vector3(1.11, 2.3, 0.05)
 
+[sub_resource type="QuadOccluder3D" id="QuadOccluder3D_eaxfl"]
+size = Vector2(1.11, 2.3)
+
 [sub_resource type="Animation" id="Animation_o57tb"]
 resource_name = "Close"
 length = 0.4
@@ -75,6 +78,10 @@ collision_mask = 0
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D" unique_id=811106455]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5550995, 1.1501617, 0.00024412572)
 shape = SubResource("BoxShape3D_lgil6")
+
+[node name="OccluderInstance3D" type="OccluderInstance3D" parent="MeshInstance3D/StaticBody3D" unique_id=942655829]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.555, 1.15, 0)
+occluder = SubResource("QuadOccluder3D_eaxfl")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=295880933]
 libraries/ = SubResource("AnimationLibrary_o57tb")

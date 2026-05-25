@@ -217,6 +217,24 @@ _surfaces = [{
 "vertex_data": PackedByteArray("IXKfwDMzsz8EAIC9CJF7vwAAgEDp/3+9IXKfwAAAgEDp/3+9CJF7vzMzsz8EAIC9IXKfwAAAAAAMAIC9CJF7vzMzsz8EAIC9IXKfwDMzsz8EAIC9CJF7vwAAAAAMAIC91CRjwDMzsz/DEH7A1SRjwAAAgECAnvc81CRjwAAAgEDDEH7A1CRjwDMzsz+Anvc80yRjwAAAAADDEH7A1CRjwDMzsz+Anvc81CRjwDMzsz/DEH7A1CRjwAAAAACAnvc81CRjwDMzsz+ddPzA1SRjwAAAgEA66XjA1CRjwAAAgECddPzA1CRjwDMzsz866XjA0yRjwAAAAACddPzA1CRjwDMzsz866XjA1CRjwDMzsz+ddPzA1CRjwAAAAAA66XjAIsv3PzMzsz8RmYDAIsv3PwAAgECITADBI8v3PwAAgEARmYDAIcv3PzMzsz+ITADBIsv3PwAAAAARmYDAIcv3PzMzsz+ITADBIsv3PzMzsz8RmYDAIMv3PwAAAACITADBJsv3PzMzsz8AUua8Jsv3PwAAgEBS5oDAJ8v3PwAAgEAAUua8Jcv3PzMzsz9S5oDAJsv3PwAAAAAAUua8Jcv3PzMzsz9S5oDAJsv3PzMzsz8AUua8JMv3PwAAAABS5oDAUD3MPTMzsz9EqdrAFp55wAAAgEBEqdrAUD3MPQAAgEBFqdrAFp55wDMzsz9EqdrAUD3MPQAAAABEqdrAFp55wDMzsz9EqdrAUD3MPTMzsz9EqdrAFp55wAAAAABDqdrAXkz5PzMzsz9EqdrA0VkDwAAAgEBEqdrAXkz5PwAAgEBFqdrA0VkDwDMzsz9EqdrAXkz5PwAAAABEqdrA0VkDwDMzsz9EqdrAXkz5PzMzsz9EqdrA0VkDwAAAAABDqdrA//////9/AID//////38AgP//////fwCA//////9/AID//////38AgP//////fwCA//////9/AID//////38AgP///3//f/+/////f/9//7////9//3//v////3//f/+/////f/9//7////9//3//v////3//f/+/////f/9//7////9//3//v////3//f/+/////f/9//7////9//3//v////3//f/+/////f/9//7////9//3//v////3//f/+/AAD/f/9//78AAP9//3//vwAA/3//f/+/AAD/f/9//78AAP9//3//vwAA/3//f/+/AAD/f/9//78AAP9//3//vwAA/3//f/+/AAD/f/9//78AAP9//3//vwAA/3//f/+/AAD/f/9//78AAP9//3//vwAA/3//f/+/AAD/f/9//7//f/9//38AgP9//3//fwCA/3//f/9/AID/f/9//38AgP9//3//fwCA/3//f/9/AID/f/9//38AgP9//3//fwCA/3//f/9/AID/f/9//38AgP9//3//fwCA/3//f/9/AID/f/9//38AgP9//3//fwCA/3//f/9/AID/f/9//38AgA==")
 }]
 
+[sub_resource type="QuadOccluder3D" id="QuadOccluder3D_3oy6a"]
+size = Vector2(4.011612, 4.736594)
+
+[sub_resource type="QuadOccluder3D" id="QuadOccluder3D_qj0ge"]
+size = Vector2(0.797734, 4.736594)
+
+[sub_resource type="QuadOccluder3D" id="QuadOccluder3D_vd18i"]
+size = Vector2(1.7904739, 2.037652)
+
+[sub_resource type="QuadOccluder3D" id="QuadOccluder3D_to7gk"]
+size = Vector2(6.0829153, 4.736594)
+
+[sub_resource type="QuadOccluder3D" id="QuadOccluder3D_a2qka"]
+size = Vector2(7.3474965, 4.736594)
+
+[sub_resource type="QuadOccluder3D" id="QuadOccluder3D_w55f6"]
+size = Vector2(7.250118, 5.7052794)
+
 [node name="Restroom" type="Node3D" unique_id=1937386699]
 
 [node name="Prototypes" type="Node3D" parent="." unique_id=1959127582]
@@ -454,49 +472,59 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.01, 0)
 gi_lightmap_texel_scale = 6.0
 mesh = SubResource("ArrayMesh_dkk4x")
 skeleton = NodePath("../..")
+metadata/_edit_lock_ = true
 
 [node name="Floor" type="MeshInstance3D" parent="Decorations" unique_id=915233309]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.26109913)
 gi_lightmap_texel_scale = 4.0
 mesh = SubResource("ArrayMesh_wuxu7")
 skeleton = NodePath("../..")
+metadata/_edit_lock_ = true
 
 [node name="Lamp" type="MeshInstance3D" parent="Decorations" unique_id=1898636493]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -0.76429844, 3.0314193, -3.437948)
 mesh = ExtResource("8_ohusx")
 skeleton = NodePath("../../Prototypes")
+metadata/_edit_lock_ = true
 
 [node name="DoorWay" type="MeshInstance3D" parent="Decorations" unique_id=1703427973]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.958585, 2, 0)
 gi_lightmap_texel_scale = 2.0
 mesh = ExtResource("1_k74ow")
 skeleton = NodePath("../../Prototypes")
+metadata/_edit_lock_ = true
 
 [node name="Cabins" type="MeshInstance3D" parent="Decorations" unique_id=647365149]
 gi_lightmap_texel_scale = 1.5
 mesh = SubResource("ArrayMesh_ohusx")
 skeleton = NodePath("../..")
+metadata/_edit_lock_ = true
 
 [node name="Mirrors" type="MeshInstance3D" parent="Decorations" unique_id=1970184760]
 mesh = SubResource("ArrayMesh_a2qka")
 skeleton = NodePath("../..")
+metadata/_edit_lock_ = true
 
 [node name="Door" parent="Decorations" unique_id=505525111 instance=ExtResource("13_wuxu7")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0.237, 0, -0.007242441)
+metadata/_edit_lock_ = true
 
 [node name="Walls" type="MeshInstance3D" parent="Decorations" unique_id=1064459335]
 gi_lightmap_texel_scale = 4.0
 mesh = SubResource("ArrayMesh_to7gk")
 skeleton = NodePath("../..")
+metadata/_edit_lock_ = true
 
 [node name="LightSeamHider" type="MeshInstance3D" parent="Decorations" unique_id=344930984]
 transform = Transform3D(-5.2453665e-08, 0.52, -3.9995918e-08, 0, -2.2729921e-08, -0.91499996, -1.1999999, -2.2729921e-08, 1.7482772e-15, 0.96560025, -0.035153598, 0.14737865)
 gi_mode = 2
 mesh = ExtResource("13_to7gk")
+metadata/_edit_lock_ = true
 
 [node name="TrashCan" type="MeshInstance3D" parent="Decorations" unique_id=1047773398]
 transform = Transform3D(0.2146932, 0, -0.20953959, 0, 0.30000004, 0, 0.20953959, 0, 0.2146932, 1.616231, 0.30324292, -6.4889917)
 mesh = ExtResource("14_to7gk")
+metadata/_edit_lock_ = true
 
 [node name="Node3D" type="Node3D" parent="." unique_id=961334727]
 visible = false
@@ -528,3 +556,37 @@ mesh = ExtResource("1_v8p53")
 [node name="MeshInstance3D5" type="MeshInstance3D" parent="Node3D" unique_id=1124192433]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.05235696, 2, -6.8956623)
 mesh = ExtResource("1_v8p53")
+
+[node name="Occluders" type="Node3D" parent="." unique_id=1347739012]
+
+[node name="OccluderInstance3D" type="OccluderInstance3D" parent="Occluders" unique_id=359908313]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6136447, 1.8000982, 0.045643747)
+occluder = SubResource("QuadOccluder3D_3oy6a")
+
+[node name="OccluderInstance3D5" type="OccluderInstance3D" parent="Occluders" unique_id=1798542635]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9197809, 1.8000982, 0.045643747)
+occluder = SubResource("QuadOccluder3D_qj0ge")
+
+[node name="OccluderInstance3D6" type="OccluderInstance3D" parent="Occluders" unique_id=427160824]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8563751, 3.3300178, 0.045643747)
+occluder = SubResource("QuadOccluder3D_vd18i")
+
+[node name="OccluderInstance3D2" type="OccluderInstance3D" parent="Occluders" unique_id=185632604]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7005129, 1.8000982, -6.842052)
+occluder = SubResource("QuadOccluder3D_to7gk")
+
+[node name="OccluderInstance3D3" type="OccluderInstance3D" parent="Occluders" unique_id=1402971987]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1.9706961, 1.8000982, -3.4109445)
+occluder = SubResource("QuadOccluder3D_a2qka")
+
+[node name="OccluderInstance3D4" type="OccluderInstance3D" parent="Occluders" unique_id=1382875260]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -3.5700111, 1.8000982, -3.4109445)
+occluder = SubResource("QuadOccluder3D_a2qka")
+
+[node name="OccluderInstance3D7" type="OccluderInstance3D" parent="Occluders" unique_id=1110086236]
+transform = Transform3D(-4.371139e-08, 1, -4.371139e-08, 0, -4.371139e-08, -1, -1, -4.371139e-08, 1.9106855e-15, -0.79158926, -0.017193377, -3.5494876)
+occluder = SubResource("QuadOccluder3D_w55f6")
+
+[node name="OccluderInstance3D8" type="OccluderInstance3D" parent="Occluders" unique_id=94981423]
+transform = Transform3D(-4.371139e-08, 1, -4.371139e-08, 0, -4.371139e-08, -1, -1, -4.371139e-08, 1.9106855e-15, -0.79158926, 4.0044785, -3.5494876)
+occluder = SubResource("QuadOccluder3D_w55f6")

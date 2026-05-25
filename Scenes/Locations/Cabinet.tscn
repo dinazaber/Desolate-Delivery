@@ -391,6 +391,21 @@ size = Vector3(0.41967773, 0.042269707, 2.1279984)
 radius = 0.31
 height = 1.7602539
 
+[sub_resource type="QuadOccluder3D" id="QuadOccluder3D_yfio8"]
+size = Vector2(6.6756535, 6.1544204)
+
+[sub_resource type="QuadOccluder3D" id="QuadOccluder3D_kl4ou"]
+size = Vector2(2.7268276, 6.1544204)
+
+[sub_resource type="QuadOccluder3D" id="QuadOccluder3D_hcytk"]
+size = Vector2(2.3519318, 1.999018)
+
+[sub_resource type="QuadOccluder3D" id="QuadOccluder3D_lkdcv"]
+size = Vector2(5.547921, 6.1544204)
+
+[sub_resource type="QuadOccluder3D" id="QuadOccluder3D_ew1ly"]
+size = Vector2(5.547921, 6.1544204)
+
 [node name="Cabinet" type="Node3D" unique_id=1857668066]
 
 [node name="LightmapGI" type="LightmapGI" parent="." unique_id=1714560379]
@@ -516,7 +531,7 @@ mesh = ExtResource("5_7krvb")
 
 [node name="DoorWay" type="MeshInstance3D" parent="Decorations/Room" unique_id=65455332]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 2, -1)
-gi_lightmap_texel_scale = 1.5
+gi_lightmap_texel_scale = 2.0
 mesh = ExtResource("3_spu57")
 skeleton = NodePath("../../../Room/Walls")
 
@@ -532,7 +547,7 @@ mesh = SubResource("ArrayMesh_pnpor")
 skeleton = NodePath("../../..")
 
 [node name="Ceilling" type="MeshInstance3D" parent="Decorations/Room" unique_id=350630112]
-gi_lightmap_texel_scale = 4.0
+gi_lightmap_texel_scale = 5.0
 mesh = SubResource("ArrayMesh_ul504")
 skeleton = NodePath("../../..")
 
@@ -541,7 +556,7 @@ mesh = SubResource("ArrayMesh_kheae")
 skeleton = NodePath("../../..")
 
 [node name="Walls" type="MeshInstance3D" parent="Decorations/Room" unique_id=1567498549]
-gi_lightmap_texel_scale = 4.0
+gi_lightmap_texel_scale = 5.0
 mesh = SubResource("ArrayMesh_yfio8")
 skeleton = NodePath("../../..")
 
@@ -761,3 +776,37 @@ shape = SubResource("BoxShape3D_6vexw")
 [node name="CollisionShape3D6" type="CollisionShape3D" parent="Collision/Misc" unique_id=726116371]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6118346, 0.5411132, 3.5927691)
 shape = SubResource("CapsuleShape3D_wh70l")
+
+[node name="Occluders" type="Node3D" parent="." unique_id=1582308368]
+
+[node name="OccluderInstance3D" type="OccluderInstance3D" parent="Occluders" unique_id=1061617768]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5917519, 1.3317362, 3.9884052)
+occluder = SubResource("QuadOccluder3D_yfio8")
+
+[node name="OccluderInstance3D6" type="OccluderInstance3D" parent="Occluders" unique_id=1510729318]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9078205, 1.3317362, -1.1349328)
+occluder = SubResource("QuadOccluder3D_kl4ou")
+
+[node name="OccluderInstance3D7" type="OccluderInstance3D" parent="Occluders" unique_id=1634702050]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8502722, 1.3317362, -1.1349328)
+occluder = SubResource("QuadOccluder3D_kl4ou")
+
+[node name="OccluderInstance3D8" type="OccluderInstance3D" parent="Occluders" unique_id=42798558]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.07383549, 3.2672536, -1.1349328)
+occluder = SubResource("QuadOccluder3D_hcytk")
+
+[node name="OccluderInstance3D2" type="OccluderInstance3D" parent="Occluders" unique_id=1828744086]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.9666595, 1.3317362, 1.4989085)
+occluder = SubResource("QuadOccluder3D_lkdcv")
+
+[node name="OccluderInstance3D3" type="OccluderInstance3D" parent="Occluders" unique_id=1968328918]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1.9822519, 1.3317362, 1.4989085)
+occluder = SubResource("QuadOccluder3D_lkdcv")
+
+[node name="OccluderInstance3D4" type="OccluderInstance3D" parent="Occluders" unique_id=2019206769]
+transform = Transform3D(-4.371139e-08, 1, -4.371139e-08, 0, -4.371139e-08, -1, -1, -4.371139e-08, 1.9106855e-15, -0.48541188, -0.057977915, 1.4989085)
+occluder = SubResource("QuadOccluder3D_ew1ly")
+
+[node name="OccluderInstance3D5" type="OccluderInstance3D" parent="Occluders" unique_id=984386436]
+transform = Transform3D(-4.371139e-08, 1, -4.371139e-08, 0, -4.371139e-08, -1, -1, -4.371139e-08, 1.9106855e-15, -0.48541188, 4.0395565, 1.4989085)
+occluder = SubResource("QuadOccluder3D_ew1ly")
