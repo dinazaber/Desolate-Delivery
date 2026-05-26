@@ -1,8 +1,8 @@
 [gd_scene format=4 uid="uid://df53p2nd7yphr"]
 
-[ext_resource type="ArrayMesh" uid="uid://bnpbloigqbbx6" path="res://assets/Meshes/RoomConstructor/DoorWay.mesh" id="1_k74ow"]
+[ext_resource type="ArrayMesh" uid="uid://bnpbloigqbbx6" path="res://assets/Meshes/RoomConstructor/DoorWay_Grey&Green.mesh" id="1_k74ow"]
 [ext_resource type="ArrayMesh" uid="uid://dmuu3icybpsg7" path="res://assets/Meshes/RoomConstructor/Wall.mesh" id="1_v8p53"]
-[ext_resource type="ArrayMesh" uid="uid://smhlox4qf5ic" path="res://assets/Meshes/RoomConstructor/Floor.mesh" id="3_qcekh"]
+[ext_resource type="ArrayMesh" uid="uid://smhlox4qf5ic" path="res://assets/Meshes/RoomConstructor/FloorGrid.mesh" id="3_qcekh"]
 [ext_resource type="ArrayMesh" uid="uid://dnncgj3eh0p7k" path="res://assets/Meshes/RoomConstructor/Ceilling.mesh" id="4_qcekh"]
 [ext_resource type="ArrayMesh" uid="uid://bgw8gu305lpyw" path="res://assets/Meshes/Objects/ToiletCabin.mesh" id="5_7g21b"]
 [ext_resource type="ArrayMesh" uid="uid://br7t0r77ujoy2" path="res://assets/Meshes/Objects/Sink.mesh" id="5_ohusx"]
