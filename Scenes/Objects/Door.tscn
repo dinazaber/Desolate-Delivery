@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://d16pmg4f4pnf8"]
 
 [ext_resource type="Script" uid="uid://b1ovnputuxw4u" path="res://Scripts/Modules/Door.gd" id="1_eaxfl"]
-[ext_resource type="ArrayMesh" uid="uid://dpdoehh6ab6qa" path="res://assets/Meshes/RoomConstructor/Door.mesh" id="2_eaxfl"]
+[ext_resource type="ArrayMesh" uid="uid://dpdoehh6ab6qa" path="res://assets/Meshes/RoomConstructor/DoorMetalBlue.mesh" id="2_eaxfl"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_lgil6"]
 size = Vector3(1.11, 2.3, 0.05)
