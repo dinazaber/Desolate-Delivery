@@ -168,7 +168,7 @@ tracks/6/keys = {
 "times": PackedFloat32Array(0, 0.14, 0.28, 0.37, 0.46, 0.6),
 "transitions": PackedFloat32Array(2, 0.5, 1.5, 0.6666667, 1, 1),
 "update": 0,
-"values": [0.0, 8.639379797371932, 15.009831567151235, 14.835298641951802, 14.660765716752369, 14.660765716752369]
+"values": [0.0, 8.639379797371932, 15.009831567151236, 14.835298641951802, 14.660765716752367, 14.660765716752367]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
@@ -244,7 +244,7 @@ script = ExtResource("1_wrvfe")
 libraries/ = SubResource("AnimationLibrary_l87pe")
 
 [node name="Drill" type="Marker3D" parent="." unique_id=966625349]
-transform = Transform3D(0.98480654, -0.17364798, 0, 0.16317572, 0.92541546, 0.3420201, -0.0593911, -0.33682367, 0.9396925, -0.8, -0.5, -0.4)
+transform = Transform3D(0.9848065, -0.17364796, 0, 0.1631757, 0.9254154, 0.3420201, -0.059391096, -0.33682364, 0.9396925, -0.8, -0.5, -0.4)
 
 [node name="DrillBase" type="MeshInstance3D" parent="Drill" unique_id=1233721536]
 transform = Transform3D(-6.5567085e-09, 0, 0.15, 0, 0.15, 0, -0.15, 0, -6.5567085e-09, 0.6, 0, 0)

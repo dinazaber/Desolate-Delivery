@@ -76,8 +76,11 @@ var instance_grenade
 
 
 # --- UI ---
+@onready var hudAnim = $hudAnimation
 @onready var crosshair = $HUD/crosshair
 @onready var healthBar = $HUD/HealthBar
+var healthbar_def_pos
+var healthbar_def_color
 @onready var grenadeBar = $HUD/GrenadeBar
 @onready var dashBar = $HUD/DashBar
 @onready var heatBar_R = $HUD/HeatRight
@@ -134,6 +137,9 @@ func _ready() -> void:
 	screenEffect = get_tree().get_first_node_in_group("Effects")
 	
 	camAnim.play("breath")
+	
+	healthbar_def_pos = healthBar.position
+	healthbar_def_color = healthBar.self_modulate
 	
 	cam_speed = SettingsManager.settings.controls.mouse_sensitivity
 	SettingsManager.player = self
@@ -230,8 +236,9 @@ func _physics_process(delta):
 	#cameraDistance = clamp(cameraDistance,15, 45)
 	
 	#neg vals are for recharge delay i.e -5 is 0.5 sec rechare delay VLAD
-	grenadeCool = clamp(grenadeCool + (100 * delta) / grenadeCoolTime, -5.0, 100.0)
-	dashCool = clamp(dashCool + (100 * delta) / dashCoolTime, -10.0, 100.0)
+	grenadeCool = clamp(grenadeCool + (100 * delta) / grenadeCoolTime, -10.0, 100.0)
+	if !slide:
+		dashCool = clamp(dashCool + (100 * delta) / dashCoolTime, -10.0, 100.0)
 	
 	fireDelay = clamp(fireDelay + (100 * delta), 0, 15.0)
 	
@@ -505,7 +512,7 @@ func push_object():
 			collider.apply_impulse(push_dir * push_dir_vel_dif * push_force, collision.get_position() - collider.global_position)
 
 
-# --- HEALTH AND DAMAGE
+# --- HEALTH AND DAMAGE ---
 func checkLifeLine():
 	if player_health <= 0 and dead == false:
 		if !DEBUG_deathBypass:
@@ -536,6 +543,14 @@ func heal(heal_amount):
 func handle_healthBar():
 	var health_dif = abs(healthBar.value - player_health)
 	healthBar.value = move_toward(healthBar.value, player_health, health_dif/5)
+	
+	if healthBar.value < PLAYER_MAX_HEALTH / 2 and !dead:
+		var coef = PLAYER_MAX_HEALTH / (8*healthBar.value + PLAYER_MAX_HEALTH)
+		healthBar.position = healthbar_def_pos + Vector2(randf_range(-3.0, 3.0),randf_range(-3.0, 3.0)) * coef
+		healthBar.self_modulate = healthbar_def_color + Color(1.0, -0.5, 0.0, 0.0) * (70 * abs(cos(Time.get_ticks_msec() * 0.02 * coef)) / 255)
+	else:
+		healthBar.position = healthbar_def_pos
+		healthBar.self_modulate = healthbar_def_color
 
 func handle_heatBars():
 	var heat_dif_R = abs(heatBar_R.value - current_gun_R.get_heat())
@@ -545,8 +560,13 @@ func handle_heatBars():
 	
 	var grenade_dif = abs(grenadeBar.value - grenadeCool)
 	grenadeBar.value = move_toward(grenadeBar.value, grenadeCool, grenade_dif/5)
+	if grenadeCool == 100.0 and ceilf(grenadeBar.value * 10) / 10 < 100.0:
+		hudAnim.play("grenadeBeep")
+	
 	var dash_dif = abs(dashBar.value - dashCool)
 	dashBar.value = move_toward(dashBar.value, dashCool, dash_dif/3)
+	if dashCool == 100.0 and ceilf(dashBar.value * 10) / 10 < 100.0:
+		hudAnim.play("dashBeep")
 
 
 # --- "LATER" DUMP ---

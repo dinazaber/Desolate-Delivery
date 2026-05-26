@@ -458,7 +458,7 @@ mesh = ExtResource("2_xapv0")
 [node name="BarrelDementiaPills" type="Marker3D" parent="BeggarsShotgun/Frame" unique_id=958073626]
 
 [node name="Barrels" type="MeshInstance3D" parent="BeggarsShotgun/Frame/BarrelDementiaPills" unique_id=1195580126]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0.12)
 cast_shadow = 0
 mesh = ExtResource("6_pc0kw")
 skeleton = NodePath("../..")

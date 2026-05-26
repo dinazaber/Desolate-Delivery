@@ -506,7 +506,7 @@ skeleton = NodePath("../..")
 metadata/_edit_lock_ = true
 
 [node name="Door" parent="Decorations" unique_id=505525111 instance=ExtResource("13_wuxu7")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0.237, 0, -0.007242441)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.688, 0, 0.402)
 metadata/_edit_lock_ = true
 
 [node name="Walls" type="MeshInstance3D" parent="Decorations" unique_id=1064459335]

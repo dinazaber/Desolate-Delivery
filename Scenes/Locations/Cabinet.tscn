@@ -594,7 +594,7 @@ mesh = SubResource("ArrayMesh_lkdcv")
 skeleton = NodePath("../../..")
 
 [node name="Door" parent="Decorations/Room" unique_id=505525111 instance=ExtResource("6_2xpdg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.72428894, 0, -0.994133)
+transform = Transform3D(-0.99999994, 0, -8.742277e-08, 0, 1, 0, 8.742277e-08, 0, -0.99999994, -0.7256472, 0, -1.3572226)
 door_mesh = ExtResource("10_lkdcv")
 
 [node name="Kitchen" type="Node3D" parent="Decorations" unique_id=767235327]

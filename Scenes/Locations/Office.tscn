@@ -1064,10 +1064,10 @@ skeleton = NodePath("../../..")
 metadata/_edit_lock_ = true
 
 [node name="Door" parent="Decorations/RoomComponents" unique_id=505525111 instance=ExtResource("2_p7377")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1.9971058, 0, -0.721)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1.8292282, 0, -0.721)
 
 [node name="Door2" parent="Decorations/RoomComponents" unique_id=1510095568 instance=ExtResource("2_p7377")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 13.998263, 0, 0.722)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 13.862792, 0, 0.722)
 
 [node name="CeilingLampsOnMesh" type="MeshInstance3D" parent="Decorations/RoomComponents" unique_id=1538735504]
 mesh = SubResource("ArrayMesh_4loeo")

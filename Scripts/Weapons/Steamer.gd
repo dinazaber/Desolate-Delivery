@@ -68,7 +68,7 @@ func _on_restore_cool(coolOnKill: float) -> void:
 func _process(delta: float) -> void:
 	if can_cool:
 		heat = clamp(heat - (100 * delta) / coolDown, 0.0, 100.0)
-	dialArrow.rotation_degrees.y = lerp(dialArrow.rotation_degrees.y, 45.0 - 2.7*heat, delta * 7.0)
+	dialArrow.rotation_degrees.y = lerp(dialArrow.rotation_degrees.y, 45.0 - 2.7*heat, delta * 10.0)
 
 func _on_heat_buffer_timeout() -> void:
 	can_cool = true

@@ -108,6 +108,101 @@ _data = {
 &"death": SubResource("Animation_megsn")
 }
 
+[sub_resource type="Animation" id="Animation_7o5if"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HUD/DashBar:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.3137255, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HUD/GrenadeBar:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0.78431374, 0, 0.78431374)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HUD/HealthBar:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.47058824, 1, 0.39215687, 0.9019608)]
+}
+
+[sub_resource type="Animation" id="Animation_hprsg"]
+resource_name = "dashBeep"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HUD/DashBar:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.06666667, 0.13333334, 0.2, 0.26666668, 0.33333334, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(0.3137255, 0.84313726, 0.8235294, 0.78431374), Color(1.7735087, 4.415934, 4.31622, 0.78431374), Color(0.3137255, 0.84313726, 0.8235294, 0.78431374), Color(1.7735087, 4.415934, 4.31622, 0.78431374), Color(0.3137255, 0.84313726, 0.8235294, 0.78431374), Color(1.7735087, 4.415934, 4.31622, 0.78431374), Color(0.3137255, 0.84313726, 0.8235294, 0.78431374)]
+}
+
+[sub_resource type="Animation" id="Animation_acvkj"]
+resource_name = "grenadeBeep"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HUD/GrenadeBar:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.06666667, 0.13333334, 0.20000002, 0.26666668, 0.33333337, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 0.78431374, 0, 0.78431374), Color(18.892157, 18.892157, 0, 0.78431374), Color(1, 0.78431374, 0, 0.78431374), Color(18.892157, 18.892157, 0, 0.78431374), Color(1, 0.78431374, 0, 0.78431374), Color(18.892157, 18.892157, 0, 0.78431374), Color(1, 0.78431374, 0, 0.78431374)]
+}
+
+[sub_resource type="Animation" id="Animation_gokx4"]
+resource_name = "healthBeep"
+length = 0.13333668
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HUD/HealthBar:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.06666667, 0.13333334),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0.47058824, 1, 0.39215687, 0.9019608), Color(0.8814918, 1.8247963, 0.74174297, 0.9019608), Color(0.47058824, 1, 0.39215687, 0.9019608)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_acvkj"]
+_data = {
+&"RESET": SubResource("Animation_7o5if"),
+&"dashBeep": SubResource("Animation_hprsg"),
+&"grenadeBeep": SubResource("Animation_acvkj"),
+&"healthBeep": SubResource("Animation_gokx4")
+}
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kyqiw"]
 shading_mode = 0
 
@@ -221,6 +316,9 @@ shape = SubResource("SphereShape3D_yoq75")
 
 [node name="cameraAnimation" type="AnimationPlayer" parent="." unique_id=1078308482]
 libraries/ = SubResource("AnimationLibrary_yoq75")
+
+[node name="hudAnimation" type="AnimationPlayer" parent="." unique_id=1333337521]
+libraries/ = SubResource("AnimationLibrary_acvkj")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=620583355]
 visible = false
@@ -375,8 +473,7 @@ mouse_filter = 2
 script = ExtResource("7_bhhdu")
 
 [node name="HealthBar" type="ProgressBar" parent="HUD" unique_id=159323656]
-modulate = Color(0.46666667, 1, 0.5254902, 1)
-self_modulate = Color(0.46666667, 1, 0.5254902, 0.78431374)
+self_modulate = Color(0.47058824, 1, 0.39215687, 0.9019608)
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -396,6 +493,7 @@ allow_lesser = true
 show_percentage = false
 
 [node name="GrenadeBar" type="ProgressBar" parent="HUD" unique_id=1774896263]
+self_modulate = Color(1, 0.78431374, 0, 0.78431374)
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -415,7 +513,7 @@ show_percentage = false
 
 [node name="DashBar" type="ProgressBar" parent="HUD" unique_id=1703619297]
 modulate = Color(0.3137255, 1, 1, 1)
-self_modulate = Color(0.3137255, 1, 1, 0.78431374)
+self_modulate = Color(0.3137255, 0.84313726, 0.8235294, 0.78431374)
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5

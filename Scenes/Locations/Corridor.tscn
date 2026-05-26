@@ -20,6 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://kqnjcrk75lb3" path="res://assets/Textures/Dirt.png" id="17_thgur"]
 [ext_resource type="Texture2D" uid="uid://bu6ue5ydfh2q6" path="res://assets/Textures/Rust.png" id="18_k4nb6"]
 [ext_resource type="ArrayMesh" uid="uid://esrd0hm4jwa5" path="res://assets/Meshes/Objects/ElectricBox.mesh" id="20_k4nb6"]
+[ext_resource type="PackedScene" uid="uid://b1g4ndkkyibs4" path="res://Scenes/Objects/HealthPack.tscn" id="21_mo2ea"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_thgur"]
 shading_mode = 0
@@ -122,6 +123,12 @@ _surfaces = [{
 }]
 
 [node name="Corridor" type="Node3D" unique_id=323185314]
+
+[node name="HealthPack" parent="." unique_id=1895141670 instance=ExtResource("21_mo2ea")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.2712326, 1.4366136, -5.8881063)
+
+[node name="HealthPack2" parent="." unique_id=1758909137 instance=ExtResource("21_mo2ea")]
+transform = Transform3D(0.9771087, 0, 0.21274048, 0, 1, 0, -0.21274048, 0, 0.9771087, -5.3017244, 2.6426332, -4.956073)
 
 [node name="Rooms" type="Node3D" parent="." unique_id=1390652977]
 
@@ -271,7 +278,8 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -13.041237, 3.9055421, 
 mesh = ExtResource("8_4cqb3")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1521057933]
-visible = false
+collision_layer = 49
+collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=14924252]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.026045, -0.24371338, -0.00012207031)
