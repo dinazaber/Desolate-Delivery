@@ -27,6 +27,7 @@
 [ext_resource type="Texture2D" uid="uid://bu6ue5ydfh2q6" path="res://assets/Textures/Rust.png" id="22_f2esi"]
 [ext_resource type="ArrayMesh" uid="uid://b78m4abadyi60" path="res://assets/Meshes/Objects/CeillingLampSquare.mesh" id="22_h81dg"]
 [ext_resource type="ArrayMesh" uid="uid://d4kmyqiux7f2m" path="res://assets/Meshes/Objects/TrashCan.mesh" id="25_ehdvs"]
+[ext_resource type="PackedScene" uid="uid://b1g4ndkkyibs4" path="res://Scenes/Objects/HealthPack.tscn" id="29_ew1ly"]
 [ext_resource type="ArrayMesh" uid="uid://35ky5fr0fun1" path="res://assets/Meshes/Objects/Shelf.mesh" id="29_lkdcv"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tn0vo"]
@@ -134,7 +135,7 @@ _surfaces = [{
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8mq25"]
 render_priority = 0
 shader = ExtResource("17_6xqsl")
-shader_parameter/enable_wireframe = false
+shader_parameter/enable_wireframe = true
 shader_parameter/enable_world_projection = true
 shader_parameter/enable_detail_1 = true
 shader_parameter/enable_detail_2 = false
@@ -187,7 +188,9 @@ uv2_triplanar_sharpness = 1.5157177
 texture_filter = 1
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_kl4ou"]
+lightmap_size_hint = Vector2i(18, 12)
 material = SubResource("StandardMaterial3D_ew1ly")
+add_uv2 = true
 size = Vector2(3.3, 2)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kheae"]
@@ -345,6 +348,26 @@ _surfaces = [{
 "vertex_data": PackedByteArray("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")
 }]
 
+[sub_resource type="Gradient" id="Gradient_ew1ly"]
+colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_kl4ou"]
+gradient = SubResource("Gradient_ew1ly")
+fill_from = Vector2(0, 0.5726496)
+fill_to = Vector2(0, 0.0017094017)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kl4ou"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(1.8247963, 1.6751252, 0.8269897, 0.05882353)
+albedo_texture = SubResource("GradientTexture2D_kl4ou")
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ew1ly"]
+material = SubResource("StandardMaterial3D_kl4ou")
+bottom_radius = 2.0
+height = 5.0
+radial_segments = 8
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_lkdcv"]
 size = Vector3(0.29663086, 4.6193237, 5.4718933)
 
@@ -416,15 +439,6 @@ use_denoiser = false
 environment_mode = 0
 light_data = ExtResource("1_kheae")
 
-[node name="CeillingLamp" type="SpotLight3D" parent="LightmapGI" unique_id=2117249353]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -1.5, 3.95, 2)
-light_color = Color(0.9151226, 0.78603435, 0.44348556, 1)
-light_energy = 0.5
-light_indirect_energy = 3.0
-light_bake_mode = 1
-spot_range = 10.0
-spot_angle = 70.0
-
 [node name="DeskLamp" type="SpotLight3D" parent="LightmapGI" unique_id=1009815911]
 transform = Transform3D(0.9042156, 0.04987909, 0.4241537, -0.42341876, 0.23440361, 0.87508374, -0.05577477, -0.97085893, 0.23307112, -1.1904107, 1.1063823, 3.22827)
 visible = false
@@ -433,6 +447,15 @@ light_bake_mode = 1
 shadow_caster_mask = 4294967293
 spot_range = 0.5
 spot_angle = 30.0
+
+[node name="CeillingLamp" type="SpotLight3D" parent="LightmapGI" unique_id=2117249353]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -1.5, 3.95, 2)
+light_color = Color(0.9151226, 0.78603435, 0.44348556, 1)
+light_energy = 0.5
+light_indirect_energy = 3.0
+light_bake_mode = 1
+spot_range = 10.0
+spot_angle = 70.0
 
 [node name="Room" type="Node3D" parent="." unique_id=646542656]
 
@@ -566,7 +589,7 @@ mesh = ExtResource("8_f08nv")
 skeleton = NodePath("../..")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Decorations/Room/Picture" unique_id=1726931354]
-transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, -0.004, 0, 0)
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, -8.351872e-23, -1.6703743e-22, 0, 1, -0.004000187, 0, 0)
 mesh = SubResource("PlaneMesh_kl4ou")
 
 [node name="Canditioner" type="MeshInstance3D" parent="Decorations/Room" unique_id=260727164]
@@ -652,6 +675,12 @@ skeleton = NodePath("../../..")
 [node name="DeskLamp" type="MeshInstance3D" parent="Decorations/Desk" unique_id=1303597426]
 transform = Transform3D(-0.012857699, 0, -0.19958629, 0, 0.20000002, 0, 0.19958629, 0, -0.012857699, -0.933856, 1.1753787, -0.17329168)
 mesh = ExtResource("19_lykiw")
+
+[node name="Light" type="MeshInstance3D" parent="Decorations/Desk/DeskLamp" unique_id=2142994204]
+transform = Transform3D(0.592303, 0.36078528, 0.7204254, -0.023029814, 0.90135884, -0.43246144, -0.8053874, 0.2395568, 0.5421859, -1.6305838, 0.35687065, -1.709034)
+layers = 2
+gi_mode = 0
+mesh = SubResource("CylinderMesh_ew1ly")
 
 [node name="Pen" type="MeshInstance3D" parent="Decorations/Desk" unique_id=1639000256]
 transform = Transform3D(0.18545641, -0.07487278, 3.2727934e-09, 6.3108872e-30, -8.742279e-09, -0.20000002, 0.07487278, 0.18545641, -8.106557e-09, 1.0174766, 1.0882205, -0.4579916)
@@ -778,6 +807,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6118346, 0.5411132, 3.59276
 shape = SubResource("CapsuleShape3D_wh70l")
 
 [node name="Occluders" type="Node3D" parent="." unique_id=1582308368]
+visible = false
 
 [node name="OccluderInstance3D" type="OccluderInstance3D" parent="Occluders" unique_id=1061617768]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5917519, 1.3317362, 3.9884052)
@@ -810,3 +840,9 @@ occluder = SubResource("QuadOccluder3D_ew1ly")
 [node name="OccluderInstance3D5" type="OccluderInstance3D" parent="Occluders" unique_id=984386436]
 transform = Transform3D(-4.371139e-08, 1, -4.371139e-08, 0, -4.371139e-08, -1, -1, -4.371139e-08, 1.9106855e-15, -0.48541188, 4.0395565, 1.4989085)
 occluder = SubResource("QuadOccluder3D_ew1ly")
+
+[node name="HealthPack" parent="." unique_id=1895141670 instance=ExtResource("29_ew1ly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.7578723, 1.3862243, 1.8569772)
+
+[node name="HealthPack2" parent="." unique_id=793216855 instance=ExtResource("29_ew1ly")]
+transform = Transform3D(0.9771087, 0, 0.21274048, 0, 1, 0, -0.21274048, 0, 0.9771087, -2.706257, 2.6255167, 2.7890108)

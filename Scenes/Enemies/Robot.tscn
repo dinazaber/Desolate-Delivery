@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://beqguglkai1oh"]
 
 [ext_resource type="ArrayMesh" uid="uid://cwhuegir0snfi" path="res://assets/Meshes/Enemies/Robot.mesh" id="1_grc7g"]
-[ext_resource type="Script" uid="uid://dm2yl7b4griiw" path="res://Scripts/enemies/Robot.gd" id="1_h872o"]
-[ext_resource type="Script" uid="uid://dqv7818ohy4lu" path="res://Scripts/enemies/HitBox.gd" id="3_hfj1t"]
+[ext_resource type="Script" uid="uid://dm2yl7b4griiw" path="res://Scripts/Enemies/Robot.gd" id="1_h872o"]
+[ext_resource type="Script" uid="uid://dqv7818ohy4lu" path="res://Scripts/Enemies/HitBox.gd" id="3_hfj1t"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_h872o"]
 radius = 0.5307617
@@ -478,6 +478,15 @@ size = Vector3(1.2919312, 4.820801, 1.2919922)
 [sub_resource type="BoxShape3D" id="BoxShape3D_a3cge"]
 size = Vector3(0.8988037, 2.0927734, 1.0786743)
 
+[sub_resource type="Gradient" id="Gradient_bss3a"]
+offsets = PackedFloat32Array(0.45561358, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_336do"]
+gradient = SubResource("Gradient_bss3a")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
 [node name="Robot" type="CharacterBody3D" unique_id=969091388 groups=["Enemy", "Persist"]]
 collision_layer = 48
 collision_mask = 184
@@ -574,6 +583,7 @@ bones/10/rotation = Quaternion(-9.47838e-09, 4.36622e-08, -0.5661365, 0.82431155
 bones/10/scale = Vector3(1, 0.99999964, 0.9999995)
 
 [node name="Robot" type="MeshInstance3D" parent="Skeleton3D" unique_id=257881901]
+layers = 2
 mesh = ExtResource("1_grc7g")
 skin = SubResource("Skin_v6sto")
 
@@ -805,3 +815,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -20)
 
 [node name="aimHand" type="Marker3D" parent="." unique_id=1413270498]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3850249, 1.778611, 0)
+
+[node name="Decal" type="Decal" parent="." unique_id=992554835]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01452598, 0)
+size = Vector3(1.8, 0.05, 1.8)
+texture_albedo = SubResource("GradientTexture2D_336do")
+cull_mask = 1048573

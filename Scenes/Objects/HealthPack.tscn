@@ -87,6 +87,15 @@ height = 0.05
 radial_segments = 4
 rings = 2
 
+[sub_resource type="Gradient" id="Gradient_bss3a"]
+offsets = PackedFloat32Array(0.55744123, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_hd37v"]
+gradient = SubResource("Gradient_bss3a")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
 [node name="HealthPack" type="RigidBody3D" unique_id=1895141670]
 collision_layer = 32
 collision_mask = 32
@@ -100,6 +109,8 @@ shape = SubResource("BoxShape3D_hd37v")
 
 [node name="HealthPack" type="MeshInstance3D" parent="." unique_id=298360792]
 transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 0, 0)
+layers = 2
+gi_mode = 2
 visibility_range_end = 45.0
 mesh = ExtResource("2_hd37v")
 
@@ -130,3 +141,9 @@ draw_pass_1 = SubResource("CylinderMesh_div8c")
 [node name="GPUParticlesAttractorSphere3D" type="GPUParticlesAttractorSphere3D" parent="." unique_id=1963666470]
 cull_mask = 4293918722
 radius = 0.5
+
+[node name="Decal" type="Decal" parent="." unique_id=1493380910]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, -0.14591752, 0)
+size = Vector3(1.8, 0.06352539, 1.8)
+texture_albedo = SubResource("GradientTexture2D_hd37v")
+cull_mask = 1048573

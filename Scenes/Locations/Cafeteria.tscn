@@ -10,6 +10,7 @@
 [ext_resource type="ArrayMesh" uid="uid://cc71x4p8yppbl" path="res://assets/Meshes/Architecture/Fence.mesh" id="7_yxhpu"]
 [ext_resource type="PackedScene" uid="uid://d16pmg4f4pnf8" path="res://Scenes/Objects/Door.tscn" id="8_trfa7"]
 [ext_resource type="ArrayMesh" uid="uid://c7vf4vaoyw7mr" path="res://assets/Meshes/RoomConstructor/CafeteriaDoor.mesh" id="9_wleuk"]
+[ext_resource type="PackedScene" uid="uid://beqguglkai1oh" path="res://Scenes/Enemies/Robot.tscn" id="11_wleuk"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_a8w0s"]
 render_priority = 0
@@ -1052,6 +1053,8 @@ door_mesh = ExtResource("9_wleuk")
 
 [node name="Walls" type="StaticBody3D" parent="Collisions" unique_id=748570925]
 visible = false
+collision_layer = 49
+collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Collisions/Walls" unique_id=820478070]
 transform = Transform3D(0.2537579, 0, -0.96726763, 0, 1, 0, 0.96726763, 0, 0.2537579, -10.177207, 1.8848877, 2.528162)
@@ -1159,6 +1162,8 @@ shape = SubResource("BoxShape3D_solst")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Collisions" unique_id=770734555]
 visible = false
+collision_layer = 49
+collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Collisions/StaticBody3D" unique_id=1934128412]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.018463135, -0.24511719, -0.09185791)
@@ -1185,3 +1190,6 @@ mesh = SubResource("ArrayMesh_twxyb")
 [node name="MeshInstance3D5" type="MeshInstance3D" parent="Lamps" unique_id=1853626607]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 3.3389297, 3)
 mesh = SubResource("ArrayMesh_odyv4")
+
+[node name="Robot" parent="." unique_id=969091388 instance=ExtResource("11_wleuk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.67015, -0.0065115094, 2.126309)

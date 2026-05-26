@@ -222,9 +222,8 @@ textures/decals/filter=1
 textures/light_projectors/filter=1
 global_illumination/sdfgi/probe_ray_count=0
 global_illumination/sdfgi/frames_to_converge=0
+lights_and_shadows/tighter_shadow_caster_culling=false
 occlusion_culling/use_occlusion_culling=true
-lights_and_shadows/positional_shadow/atlas_quadrant_2_subdiv=2
-lights_and_shadows/positional_shadow/atlas_quadrant_3_subdiv=2
 environment/defaults/default_environment="uid://c1agyuoca70ek"
 
 [shader_globals]

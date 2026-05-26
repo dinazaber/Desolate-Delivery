@@ -21,7 +21,6 @@
 [ext_resource type="Texture2D" uid="uid://kqnjcrk75lb3" path="res://assets/Textures/Dirt.png" id="17_thgur"]
 [ext_resource type="Texture2D" uid="uid://bu6ue5ydfh2q6" path="res://assets/Textures/Rust.png" id="18_k4nb6"]
 [ext_resource type="ArrayMesh" uid="uid://esrd0hm4jwa5" path="res://assets/Meshes/Objects/ElectricBox.mesh" id="20_k4nb6"]
-[ext_resource type="PackedScene" uid="uid://b1g4ndkkyibs4" path="res://Scenes/Objects/HealthPack.tscn" id="21_mo2ea"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_thgur"]
 shading_mode = 0
@@ -76,6 +75,35 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_klfi5")
 
+[sub_resource type="Gradient" id="Gradient_mo2ea"]
+interpolation_mode = 2
+colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 0.39215687)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_pnvln"]
+gradient = SubResource("Gradient_mo2ea")
+width = 8
+height = 8
+fill_from = Vector2(0, 1)
+fill_to = Vector2(0, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2qfhh"]
+transparency = 1
+cull_mode = 1
+shading_mode = 0
+albedo_color = Color(18.892157, 18.892157, 18.892157, 0.003921569)
+albedo_texture = SubResource("GradientTexture2D_pnvln")
+texture_filter = 1
+billboard_keep_scale = true
+stencil_flags = 6
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_1smn6"]
+material = SubResource("StandardMaterial3D_2qfhh")
+top_radius = 0.8
+bottom_radius = 2.0
+height = 0.5
+radial_segments = 32
+rings = 0
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_7e57h"]
 size = Vector3(16, 0.5, 4)
 
@@ -121,12 +149,6 @@ _surfaces = [{
 }]
 
 [node name="Corridor" type="Node3D" unique_id=323185314]
-
-[node name="HealthPack" parent="." unique_id=1895141670 instance=ExtResource("21_mo2ea")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.2712326, 1.4366136, -5.8881063)
-
-[node name="HealthPack2" parent="." unique_id=1758909137 instance=ExtResource("21_mo2ea")]
-transform = Transform3D(0.9771087, 0, 0.21274048, 0, 1, 0, -0.21274048, 0, 0.9771087, -5.3017244, 2.6426332, -4.956073)
 
 [node name="Rooms" type="Node3D" parent="." unique_id=1390652977]
 
@@ -270,11 +292,24 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 1, 0)
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -5.994425, 3.9055421, 0)
 mesh = ExtResource("8_4cqb3")
 
+[node name="Light" type="MeshInstance3D" parent="Lamps/MeshInstance3D" unique_id=2111940664]
+transform = Transform3D(1.000001, 0, 0, 0, 1.0000006, 0, 0, 0, 1.0000006, 0, -0.7, 0)
+layers = 2
+gi_mode = 0
+mesh = SubResource("CylinderMesh_1smn6")
+
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="Lamps" unique_id=849100662]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -13.041237, 3.9055421, 0)
 mesh = ExtResource("8_4cqb3")
 
+[node name="Light" type="MeshInstance3D" parent="Lamps/MeshInstance3D2" unique_id=1363200883]
+transform = Transform3D(1.000001, 0, 0, 0, 1.0000006, 0, 0, 0, 1.0000006, 0, -0.7, 0)
+layers = 2
+gi_mode = 0
+mesh = SubResource("CylinderMesh_1smn6")
+
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1521057933]
+visible = false
 collision_layer = 49
 collision_mask = 0
 
