@@ -135,7 +135,7 @@ _surfaces = [{
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8mq25"]
 render_priority = 0
 shader = ExtResource("17_6xqsl")
-shader_parameter/enable_wireframe = true
+shader_parameter/enable_wireframe = false
 shader_parameter/enable_world_projection = true
 shader_parameter/enable_detail_1 = true
 shader_parameter/enable_detail_2 = false
@@ -554,7 +554,7 @@ mesh = ExtResource("5_7krvb")
 
 [node name="DoorWay" type="MeshInstance3D" parent="Decorations/Room" unique_id=65455332]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 2, -1)
-gi_lightmap_texel_scale = 2.0
+gi_lightmap_texel_scale = 6.0
 mesh = ExtResource("3_spu57")
 skeleton = NodePath("../../../Room/Walls")
 
@@ -570,7 +570,7 @@ mesh = SubResource("ArrayMesh_pnpor")
 skeleton = NodePath("../../..")
 
 [node name="Ceilling" type="MeshInstance3D" parent="Decorations/Room" unique_id=350630112]
-gi_lightmap_texel_scale = 5.0
+gi_lightmap_texel_scale = 6.0
 mesh = SubResource("ArrayMesh_ul504")
 skeleton = NodePath("../../..")
 
@@ -579,7 +579,7 @@ mesh = SubResource("ArrayMesh_kheae")
 skeleton = NodePath("../../..")
 
 [node name="Walls" type="MeshInstance3D" parent="Decorations/Room" unique_id=1567498549]
-gi_lightmap_texel_scale = 5.0
+gi_lightmap_texel_scale = 6.0
 mesh = SubResource("ArrayMesh_yfio8")
 skeleton = NodePath("../../..")
 

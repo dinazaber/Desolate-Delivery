@@ -76,21 +76,21 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_klfi5")
 
 [sub_resource type="Gradient" id="Gradient_mo2ea"]
-interpolation_mode = 2
-colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 0.39215687)
+colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_pnvln"]
 gradient = SubResource("Gradient_mo2ea")
 width = 8
 height = 8
-fill_from = Vector2(0, 1)
+use_hdr = true
+fill_from = Vector2(0, 0.21367522)
 fill_to = Vector2(0, 0)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2qfhh"]
 transparency = 1
 cull_mode = 1
 shading_mode = 0
-albedo_color = Color(18.892157, 18.892157, 18.892157, 0.003921569)
+albedo_color = Color(17.349758, 17.349758, 17.349758, 0.039215688)
 albedo_texture = SubResource("GradientTexture2D_pnvln")
 texture_filter = 1
 billboard_keep_scale = true
@@ -99,10 +99,20 @@ stencil_flags = 6
 [sub_resource type="CylinderMesh" id="CylinderMesh_1smn6"]
 material = SubResource("StandardMaterial3D_2qfhh")
 top_radius = 0.8
-bottom_radius = 2.0
+bottom_radius = 1.5
 height = 0.5
 radial_segments = 32
 rings = 0
+cap_bottom = false
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_nhmma"]
+material = SubResource("StandardMaterial3D_2qfhh")
+top_radius = 0.8
+bottom_radius = 1.5
+height = 0.5
+radial_segments = 32
+rings = 0
+cap_bottom = false
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7e57h"]
 size = Vector3(16, 0.5, 4)
@@ -175,22 +185,20 @@ light_data = ExtResource("7_7e57h")
 
 [node name="CeillingLamp1" type="SpotLight3D" parent="LightmapGI" unique_id=692474601]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -5.992413, 3.62921, 0.004749775)
-light_indirect_energy = 8.0
+light_indirect_energy = 2.0
 light_specular = 0.0
 light_bake_mode = 1
 shadow_caster_mask = 4294967293
 spot_range = 10.0
-spot_attenuation = 1.5
 spot_angle = 70.0
 
 [node name="CeillingLamp2" type="SpotLight3D" parent="LightmapGI" unique_id=1383603388]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -13.036828, 3.62921, 0.004749775)
-light_indirect_energy = 8.0
+light_indirect_energy = 2.0
 light_specular = 0.0
 light_bake_mode = 1
 shadow_caster_mask = 4294967293
 spot_range = 10.0
-spot_attenuation = 1.5
 spot_angle = 70.0
 
 [node name="Room" type="Node3D" parent="." unique_id=1100238602]
@@ -306,7 +314,7 @@ mesh = ExtResource("8_4cqb3")
 transform = Transform3D(1.000001, 0, 0, 0, 1.0000006, 0, 0, 0, 1.0000006, 0, -0.7, 0)
 layers = 2
 gi_mode = 0
-mesh = SubResource("CylinderMesh_1smn6")
+mesh = SubResource("CylinderMesh_nhmma")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1521057933]
 visible = false
@@ -421,49 +429,50 @@ transform = Transform3D(-0.52, 0, -1.694375e-07, 0, 0.52, 0, 1.694375e-07, 0, -0
 mesh = ExtResource("12_b6vrq")
 
 [node name="PipesRed" type="Node3D" parent="." unique_id=141101818]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.627541, 0, 0)
 
 [node name="MeshInstance3D23" type="MeshInstance3D" parent="PipesRed" unique_id=622567312]
-transform = Transform3D(5.1036576e-08, 0, -0.67599994, 0, 0.67599994, 0, 0.67599994, 0, 5.1036576e-08, -15.442511, 3.8790138, 0.9417168)
+transform = Transform3D(5.1036576e-08, 0, -0.67599994, 0, 0.67599994, 0, 0.67599994, 0, 5.1036576e-08, -0.68849754, 3.8790138, 0.9417168)
 mesh = ExtResource("13_c3ths")
 skeleton = NodePath("../../PipesYellow")
 
 [node name="MeshInstance3D24" type="MeshInstance3D" parent="PipesRed" unique_id=421533190]
-transform = Transform3D(-0.6759999, 0, -1.0207315e-07, 0, 0.67599994, 0, 1.02073145e-07, 0, -0.67599994, -14.774173, 3.8790138, 0.26820958)
+transform = Transform3D(-0.6759999, 0, -1.0207315e-07, 0, 0.67599994, 0, 1.02073145e-07, 0, -0.67599994, -0.020159721, 3.8790138, 0.26820958)
 mesh = ExtResource("13_c3ths")
 skeleton = NodePath("../../PipesYellow")
 
 [node name="MeshInstance3D29" type="MeshInstance3D" parent="PipesRed" unique_id=964086438]
-transform = Transform3D(-0.6759999, 0, -1.0207315e-07, 0, 0.67599994, 0, 1.02073145e-07, 0, -0.67599994, -14.774173, 3.8790138, -0.4071967)
+transform = Transform3D(-0.6759999, 0, -1.0207315e-07, 0, 0.67599994, 0, 1.02073145e-07, 0, -0.67599994, -0.020159721, 3.8790138, -0.4071967)
 mesh = ExtResource("14_xqsaj")
 skeleton = NodePath("../../PipesYellow")
 
 [node name="MeshInstance3D30" type="MeshInstance3D" parent="PipesRed" unique_id=355981282]
-transform = Transform3D(-0.6759999, 0, -1.0207315e-07, 0, 0.67599994, 0, 1.02073145e-07, 0, -0.67599994, -14.774173, 3.8790138, -1.0823299)
+transform = Transform3D(-0.6759999, 0, -1.0207315e-07, 0, 0.67599994, 0, 1.02073145e-07, 0, -0.67599994, -0.020159721, 3.8790138, -1.0823299)
 mesh = ExtResource("14_xqsaj")
 skeleton = NodePath("../../PipesYellow")
 
 [node name="MeshInstance3D31" type="MeshInstance3D" parent="PipesRed" unique_id=1095376885]
-transform = Transform3D(-0.6759999, 0, -1.0207315e-07, 0, 0.67599994, 0, 1.02073145e-07, 0, -0.67599994, -14.774173, 3.8790138, -1.751058)
+transform = Transform3D(-0.6759999, 0, -1.0207315e-07, 0, 0.67599994, 0, 1.02073145e-07, 0, -0.67599994, -0.020159721, 3.8790138, -1.751058)
 mesh = ExtResource("14_xqsaj")
 skeleton = NodePath("../../PipesYellow")
 
 [node name="MeshInstance3D25" type="MeshInstance3D" parent="PipesRed" unique_id=343641832]
-transform = Transform3D(0.6759999, 0, 1.6117096e-07, 0, 0.67599994, 0, -1.6117093e-07, 0, 0.676, -14.88846, 3.8793526, 0.8268453)
+transform = Transform3D(0.6759999, 0, 1.6117096e-07, 0, 0.67599994, 0, -1.6117093e-07, 0, 0.676, -0.1344471, 3.8793526, 0.8268453)
 mesh = ExtResource("15_k3h4h")
 skeleton = NodePath("../../PipesYellow")
 
 [node name="MeshInstance3D26" type="MeshInstance3D" parent="PipesRed" unique_id=1391428332]
-transform = Transform3D(-1.1013437e-07, 0, 0.67599994, 0, 0.67599994, 0, -0.6759999, 0, -1.1013438e-07, -16.11548, 3.8790138, 0.93998325)
+transform = Transform3D(-1.1013437e-07, 0, 0.67599994, 0, 0.67599994, 0, -0.6759999, 0, -1.1013438e-07, -1.3614674, 3.8790138, 0.93998325)
 mesh = ExtResource("13_c3ths")
 skeleton = NodePath("../../PipesYellow")
 
 [node name="MeshInstance3D27" type="MeshInstance3D" parent="PipesRed" unique_id=574124219]
-transform = Transform3D(0.6759999, 0, 1.1819559e-07, 0, 0.67599994, 0, -1.1819558e-07, 0, 0.67599994, -16.783815, 3.8790138, 1.6179613)
+transform = Transform3D(0.6759999, 0, 1.1819559e-07, 0, 0.67599994, 0, -1.1819558e-07, 0, 0.67599994, -2.0298023, 3.8790138, 1.6179613)
 mesh = ExtResource("13_c3ths")
 skeleton = NodePath("../../PipesYellow")
 
 [node name="MeshInstance3D28" type="MeshInstance3D" parent="PipesRed" unique_id=648745534]
-transform = Transform3D(-0.6759999, 0, -2.6324412e-07, 0, 0.67599994, 0, 2.6324406e-07, 0, -0.676, -16.669529, 3.8793526, 1.0548548)
+transform = Transform3D(-0.6759999, 0, -2.6324412e-07, 0, 0.67599994, 0, 2.6324406e-07, 0, -0.676, -1.9155159, 3.8793526, 1.0548548)
 mesh = ExtResource("15_k3h4h")
 skeleton = NodePath("../../PipesYellow")
 

@@ -10,7 +10,6 @@
 [ext_resource type="ArrayMesh" uid="uid://cc71x4p8yppbl" path="res://assets/Meshes/Architecture/Fence.mesh" id="7_yxhpu"]
 [ext_resource type="PackedScene" uid="uid://d16pmg4f4pnf8" path="res://Scenes/Objects/Door.tscn" id="8_trfa7"]
 [ext_resource type="ArrayMesh" uid="uid://c7vf4vaoyw7mr" path="res://assets/Meshes/RoomConstructor/CafeteriaDoor.mesh" id="9_wleuk"]
-[ext_resource type="PackedScene" uid="uid://beqguglkai1oh" path="res://Scenes/Enemies/Robot.tscn" id="11_wleuk"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_a8w0s"]
 render_priority = 0
@@ -201,6 +200,36 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_klfi5")
 
+[sub_resource type="Gradient" id="Gradient_trfa7"]
+colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_wleuk"]
+gradient = SubResource("Gradient_trfa7")
+width = 8
+height = 8
+use_hdr = true
+fill_from = Vector2(0.022222223, 0.32991454)
+fill_to = Vector2(0, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_twxyb"]
+transparency = 1
+cull_mode = 1
+shading_mode = 0
+albedo_color = Color(1, 0.9865, 0.73, 0.29803923)
+albedo_texture = SubResource("GradientTexture2D_wleuk")
+texture_filter = 1
+billboard_keep_scale = true
+stencil_flags = 6
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_odyv4"]
+material = SubResource("StandardMaterial3D_twxyb")
+top_radius = 0.8
+bottom_radius = 2.0
+height = 0.5
+radial_segments = 32
+rings = 0
+cap_bottom = false
+
 [sub_resource type="ArrayMesh" id="ArrayMesh_twxyb"]
 resource_name = "Objects_Cylinder_024"
 lightmap_size_hint = Vector2i(42, 50)
@@ -252,34 +281,28 @@ light_data = ExtResource("1_ia4ft")
 [node name="CeillingLamp1" type="SpotLight3D" parent="LightmapGI" unique_id=1463434386]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -4.992413, 2.7427776, 3.0047498)
 light_color = Color(0.9346051, 0.9071397, 0.80400956, 1)
-light_indirect_energy = 8.0
-light_specular = 0.0
 light_bake_mode = 1
 shadow_caster_mask = 4294967293
-spot_range = 10.0
-spot_attenuation = 1.5
+spot_range = 40.0
+spot_attenuation = 0.6
 spot_angle = 89.0
 
 [node name="CeillingLamp2" type="SpotLight3D" parent="LightmapGI" unique_id=526630794]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 5.007587, 2.7427776, -2.9952502)
 light_color = Color(0.9346051, 0.9071397, 0.80400956, 1)
-light_indirect_energy = 8.0
-light_specular = 0.0
 light_bake_mode = 1
 shadow_caster_mask = 4294967293
-spot_range = 10.0
-spot_attenuation = 1.5
+spot_range = 40.0
+spot_attenuation = 0.6
 spot_angle = 89.0
 
 [node name="CeillingLamp3" type="SpotLight3D" parent="LightmapGI" unique_id=2063895456]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 5.007587, 2.7427776, 3.0047498)
 light_color = Color(0.9346051, 0.9071397, 0.80400956, 1)
-light_indirect_energy = 8.0
-light_specular = 0.0
 light_bake_mode = 1
 shadow_caster_mask = 4294967293
-spot_range = 10.0
-spot_attenuation = 1.5
+spot_range = 40.0
+spot_attenuation = 0.6
 spot_angle = 89.0
 
 [node name="Room" type="Node3D" parent="." unique_id=2098822760]
@@ -1046,7 +1069,7 @@ gi_mode = 2
 mesh = ExtResource("7_yxhpu")
 
 [node name="Door" parent="Room" unique_id=505525111 instance=ExtResource("8_trfa7")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 10.776821, 0, -0.8909191)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 10.655548, 0, -0.8909191)
 door_mesh = ExtResource("9_wleuk")
 
 [node name="Collisions" type="Node3D" parent="." unique_id=1943356623]
@@ -1183,13 +1206,28 @@ mesh = SubResource("ArrayMesh_yxhpu")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 3.3389297, -3)
 mesh = SubResource("ArrayMesh_wleuk")
 
+[node name="Light" type="MeshInstance3D" parent="Lamps/MeshInstance3D3" unique_id=738230776]
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, -0.42087102, 0)
+layers = 2
+gi_mode = 0
+mesh = SubResource("CylinderMesh_odyv4")
+
 [node name="MeshInstance3D4" type="MeshInstance3D" parent="Lamps" unique_id=181090060]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 3.3389297, 3)
 mesh = SubResource("ArrayMesh_twxyb")
+
+[node name="Light" type="MeshInstance3D" parent="Lamps/MeshInstance3D4" unique_id=1189341572]
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, -0.42087102, 0)
+layers = 2
+gi_mode = 0
+mesh = SubResource("CylinderMesh_odyv4")
 
 [node name="MeshInstance3D5" type="MeshInstance3D" parent="Lamps" unique_id=1853626607]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 3.3389297, 3)
 mesh = SubResource("ArrayMesh_odyv4")
 
-[node name="Robot" parent="." unique_id=969091388 instance=ExtResource("11_wleuk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.67015, -0.0065115094, 2.126309)
+[node name="Light" type="MeshInstance3D" parent="Lamps/MeshInstance3D5" unique_id=603483354]
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, -0.42087102, 0)
+layers = 2
+gi_mode = 0
+mesh = SubResource("CylinderMesh_odyv4")
