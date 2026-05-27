@@ -9,7 +9,7 @@
 [ext_resource type="ArrayMesh" uid="uid://smhlox4qf5ic" path="res://assets/Meshes/RoomConstructor/FloorGrid.mesh" id="5_7e57h"]
 [ext_resource type="ArrayMesh" uid="uid://dnncgj3eh0p7k" path="res://assets/Meshes/RoomConstructor/Ceilling.mesh" id="6_inv3y"]
 [ext_resource type="LightmapGIData" uid="uid://bksk5nls7ktt8" path="res://assets/Lightmaps/Corridor.lmbake" id="7_7e57h"]
-[ext_resource type="PackedScene" uid="uid://cpi1xrpot2ipt" path="res://assets/Lightmaps/Player.tscn" id="7_207sj"]
+[ext_resource type="PackedScene" uid="uid://cpi1xrpot2ipt" path="res://Scenes/Player.tscn" id="7_207sj"]
 [ext_resource type="ArrayMesh" uid="uid://bp8ef7whe1aee" path="res://assets/Meshes/Objects/CeilingLampRound.mesh" id="8_4cqb3"]
 [ext_resource type="ArrayMesh" uid="uid://cah72eyskq0ma" path="res://assets/Meshes/Architecture/PipePart1Yellow.mesh" id="10_mv1vh"]
 [ext_resource type="ArrayMesh" uid="uid://bhjkryc5fxk5l" path="res://assets/Meshes/Architecture/PipePart2Yellow.mesh" id="11_ln4cm"]

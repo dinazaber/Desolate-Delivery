@@ -915,6 +915,7 @@ size = Vector2(12.32626, 16.774233)
 [node name="LightmapGI" type="LightmapGI" parent="." unique_id=1294919039]
 supersampling = true
 bounces = 16
+bounce_indirect_energy = 2.0
 interior = true
 use_denoiser = false
 texel_scale = 2.0
@@ -951,42 +952,34 @@ spot_angle = 30.0
 
 [node name="CeillingLamp1" type="SpotLight3D" parent="LightmapGI" unique_id=1560226475]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 1.4988213, 2.8834984, -3.0187967)
-light_indirect_energy = 8.0
-light_specular = 0.0
+light_indirect_energy = 2.0
 light_bake_mode = 1
 shadow_caster_mask = 4294967293
-spot_range = 20.0
-spot_attenuation = 1.5
+spot_range = 40.0
 spot_angle = 80.0
 
 [node name="CeillingLamp2" type="SpotLight3D" parent="LightmapGI" unique_id=653339202]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 6.028451, 2.8834984, -3.0187967)
-light_indirect_energy = 8.0
-light_specular = 0.0
+light_indirect_energy = 2.0
 light_bake_mode = 1
 shadow_caster_mask = 4294967293
-spot_range = 20.0
-spot_attenuation = 1.5
+spot_range = 40.0
 spot_angle = 80.0
 
 [node name="CeillingLamp3" type="SpotLight3D" parent="LightmapGI" unique_id=174712973]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 6.028451, 2.8834984, 4.003706)
-light_indirect_energy = 8.0
-light_specular = 0.0
+light_indirect_energy = 2.0
 light_bake_mode = 1
 shadow_caster_mask = 4294967293
-spot_range = 20.0
-spot_attenuation = 1.5
+spot_range = 40.0
 spot_angle = 80.0
 
 [node name="CeillingLamp4" type="SpotLight3D" parent="LightmapGI" unique_id=1702766744]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 10.514571, 2.8834984, 4.003706)
-light_indirect_energy = 8.0
-light_specular = 0.0
+light_indirect_energy = 2.0
 light_bake_mode = 1
 shadow_caster_mask = 4294967293
-spot_range = 20.0
-spot_attenuation = 1.5
+spot_range = 40.0
 spot_angle = 80.0
 
 [node name="Decorations" type="Node3D" parent="." unique_id=1030134323]
