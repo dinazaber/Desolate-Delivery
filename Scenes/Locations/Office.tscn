@@ -1150,6 +1150,7 @@ skeleton = NodePath("../../..")
 metadata/_edit_lock_ = true
 
 [node name="LightSeamHider" type="MeshInstance3D" parent="Decorations/RoomComponents" unique_id=981477766]
+gi_mode = 2
 mesh = SubResource("ArrayMesh_p7377")
 skeleton = NodePath("../../..")
 

@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://df53p2nd7yphr" path="res://Scenes/Locations/Restroom.tscn" id="2_inv3y"]
 [ext_resource type="ArrayMesh" uid="uid://dmuu3icybpsg7" path="res://assets/Meshes/RoomConstructor/Wall.mesh" id="4_4cqb3"]
 [ext_resource type="ArrayMesh" uid="uid://d3d3tk27u03im" path="res://assets/Meshes/RoomConstructor/DoorWayFlat_Grey&Green.mesh" id="4_7e57h"]
-[ext_resource type="PackedScene" uid="uid://cs848so2f77c7" path="res://Scenes/Locations/Cafeteria.tscn" id="4_mo2ea"]
+[ext_resource type="PackedScene" uid="uid://cs848so2f77c7" path="res://Scenes/Locations/Lobby.tscn" id="4_mo2ea"]
 [ext_resource type="PackedScene" uid="uid://bklolkvppn66" path="res://Scenes/Locations/Cabinet.tscn" id="4_thgur"]
 [ext_resource type="ArrayMesh" uid="uid://smhlox4qf5ic" path="res://assets/Meshes/RoomConstructor/FloorGrid.mesh" id="5_7e57h"]
 [ext_resource type="ArrayMesh" uid="uid://dnncgj3eh0p7k" path="res://assets/Meshes/RoomConstructor/Ceilling.mesh" id="6_inv3y"]
@@ -166,7 +166,7 @@ _surfaces = [{
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 0, 0)
 
 [node name="Restroom" parent="Rooms" unique_id=1937386699 instance=ExtResource("2_inv3y")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.95, 0.001, -2.2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.95, -0.002, -2.2)
 
 [node name="Cabinet" parent="Rooms" unique_id=1857668066 instance=ExtResource("4_thgur")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -8, 0, -3.2)
