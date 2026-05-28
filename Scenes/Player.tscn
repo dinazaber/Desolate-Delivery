@@ -12,8 +12,10 @@
 [ext_resource type="PackedScene" uid="uid://bm2ti0vwyvub4" path="res://Scenes/UI/DeadScreen.tscn" id="10_yoq75"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_yoq75"]
+radius = 0.35
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_yoq75"]
+radius = 0.35
 
 [sub_resource type="Animation" id="Animation_yoq75"]
 resource_name = "RESET"
@@ -312,6 +314,7 @@ collision_layer = 0
 collision_mask = 25
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Feet/EnemyBounceCheck" unique_id=632021629]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.15, 0)
 shape = SubResource("SphereShape3D_yoq75")
 
 [node name="cameraAnimation" type="AnimationPlayer" parent="." unique_id=1078308482]

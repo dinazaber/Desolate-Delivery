@@ -40,6 +40,7 @@ var currentRoof = null
 
 var yaw = 0.0
 var pitch = 0.0
+var direction: Vector3 = Vector3.ZERO
 var mouse_input: Vector2
 var grenadeCool: float = 100.0
 var dashCool: float = 100.0
@@ -61,6 +62,9 @@ const PLAYER_MAX_HEALTH = 100.0
 @export var dash_speed: float = 22.5
 @export var dashCoolTime: float = 1.75 # cooldown time (s)
 @export var jump_speed: float = 7.5
+
+@export_category("PLAYER MODIFIERS") # maybe an upgrade system in the future?
+@export_range(1.0, 1.5, 0.1) var weapon_draw_mod: float = 1.0
 
 
 # --- INSTANCES ---
@@ -180,34 +184,40 @@ func _input(event):
 				elif collider.owner.has_method("getType"):
 					var object = collider.owner
 					if object.getType() == "Door":
-						if !object.getOpenStatus() and distance < 3: object.open()
-						else: object.close()
+						if !object.getOpenStatus() and distance < 3: object.open(-1)
+						else: object.close(1.0)
 				
 	
 	# Weapon Switch
 	if Input.is_action_just_pressed("1") and !drill.in_action: # destabilizer
 		if current_gun_R != SMG:
-			await current_gun_R.undraw(1.0, false)
+			if current_gun_R.anim.is_playing():
+				await current_gun_R.anim.animation_finished
+			await current_gun_R.undraw(1.0 * weapon_draw_mod, false)
 			hideWeapons()
 			current_gun_R = SMG
 			current_gun_R.show()
-			current_gun_R.draw(1.0)
+			current_gun_R.draw(1.0 * weapon_draw_mod)
 	
 	elif Input.is_action_just_pressed("2") and !drill.in_action: # beggars shotgun
 		if current_gun_R != beggarsShotgun:
-			await current_gun_R.undraw(1.0, false)
+			if current_gun_R.anim.is_playing():
+				await current_gun_R.anim.animation_finished
+			await current_gun_R.undraw(1.0 * weapon_draw_mod, false)
 			hideWeapons()
 			current_gun_R = beggarsShotgun
 			current_gun_R.show()
-			current_gun_R.draw(1.0)
+			current_gun_R.draw(1.0 * weapon_draw_mod)
 	
 	elif Input.is_action_just_pressed("3") and !drill.in_action: # devastator
 		if current_gun_R != devestator:
-			await current_gun_R.undraw(1.0, false)
+			if current_gun_R.anim.is_playing():
+				await current_gun_R.anim.animation_finished
+			await current_gun_R.undraw(1.0 * weapon_draw_mod, false)
 			hideWeapons()
 			current_gun_R = devestator
 			current_gun_R.show()
-			current_gun_R.draw(1.0)
+			current_gun_R.draw(1.0 * weapon_draw_mod)
 	
 	
 	if Input.is_action_just_pressed("Wheel"):
@@ -319,7 +329,7 @@ func _physics_process(delta):
 	# Get direction
 	var currentInput = Input.get_vector("A", "D", "W", "S")
 	if dead: currentInput = Vector3.ZERO
-	var direction = (transform.basis * Vector3(currentInput.x, 0, currentInput.y)).normalized()
+	direction = (transform.basis * Vector3(currentInput.x, 0, currentInput.y)).normalized()
 	
 	#if direction: $Feet.look_at($Feet.global_position + direction, Vector3.UP) #Avoids errors with look_at trying to look at the same target
 	#if direction and is_on_floor() and $Feet/StairsMin.is_colliding() and !$Feet/StairsMax.is_colliding() and is_on_wall():
@@ -445,11 +455,11 @@ func throw_grenade():
 		get_parent().add_child(instance_grenade)
 		grenadeCool = -5.0
 
-func knockBack(direction, force, slowOnGround, time):
+func knockBack(dir, force, slowOnGround, time):
 	if slowOnGround and is_on_floor():
 		force /= 2
 	knocked = true
-	velocity += direction * force
+	velocity += dir * force
 	await get_tree().create_timer(time).timeout
 	knocked = false
 

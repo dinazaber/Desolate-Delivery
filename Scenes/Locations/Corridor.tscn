@@ -160,6 +160,9 @@ _surfaces = [{
 
 [node name="Corridor" type="Node3D" unique_id=323185314]
 
+[node name="Player" parent="." unique_id=1941692924 instance=ExtResource("7_207sj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 1, 0)
+
 [node name="Rooms" type="Node3D" parent="." unique_id=1390652977]
 
 [node name="Office" parent="Rooms" unique_id=75341550 instance=ExtResource("1_75pwh")]
@@ -290,9 +293,6 @@ mesh = ExtResource("4_7e57h")
 [node name="MeshInstance3D12" type="MeshInstance3D" parent="Room/Walls" unique_id=94845158]
 transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, -11.992, 2, -1.999)
 mesh = ExtResource("4_7e57h")
-
-[node name="Player" parent="." unique_id=1941692924 instance=ExtResource("7_207sj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 1, 0)
 
 [node name="Lamps" type="Node3D" parent="." unique_id=1826758576]
 

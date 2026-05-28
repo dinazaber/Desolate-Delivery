@@ -39,8 +39,8 @@ func _ready() -> void:
 	crosshair_def_pos = $Crosshair/handLD.position
 
 func draw(playSpeed):
-	$Crosshair.visible = true
 	anim.play("draw", -1, playSpeed)
+	$Crosshair.visible = true
 	shotNum = 1
 	await anim.animation_finished
 

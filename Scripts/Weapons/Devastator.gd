@@ -26,8 +26,8 @@ var shot = preload("res://Scenes/Weapons/DevastatorShot.tscn")
 
 
 func draw(playSpeed):
-	$Crosshair.visible = true
 	anim.play("draw", -1, playSpeed)
+	$Crosshair.visible = true
 	await anim.animation_finished
 
 func undraw(playSpeed, asap):
