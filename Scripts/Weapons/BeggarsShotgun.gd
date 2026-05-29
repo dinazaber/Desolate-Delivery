@@ -5,7 +5,7 @@ extends Node3D
 @export var recoil: float = 4.0 # degree rotation
 @export var spread: float = 4.5 # max pellet spread (degrees) (for first shot)
 @export var pellets: int = 9 # number of pellets
-@export var bullet_speed: float = 70.0 # Speed of particles
+@export var bullet_speed: float = 85.0 # Speed of particles
 @export var mag: int = 4
 @export var heatPerShot: float = 22.25
 @export var coolDown: float = 4.5 # time (s) it takes to go from 100 to 0 heat

@@ -9,7 +9,7 @@ extends Node3D
 @export var coolDown: float = 6.0 # time (s) it takes to go from 100 to 0 heat
 @export var destabilize: float = 4.0 # time (s) it takes to go from max to min accuracy
 @export var pellets: int = 2 # number of pellets
-@export var bullet_speed: float = 70.0 # Speed of particles
+@export var bullet_speed: float = 85.0 # Speed of particles
 
 @export var camera: Area3D
 @export var playerRay: RayCast3D

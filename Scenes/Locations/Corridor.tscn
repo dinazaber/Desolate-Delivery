@@ -123,6 +123,9 @@ size = Vector3(4.4601746, 4.5145264, 0.1965332)
 [sub_resource type="BoxShape3D" id="BoxShape3D_ln4cm"]
 size = Vector3(15.938015, 4.5145264, 0.1965332)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_mo2ea"]
+size = Vector3(4.0512543, 4.5145264, 0.1965332)
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_oo5si"]
 render_priority = 0
 shader = ExtResource("16_tsxpl")
@@ -336,6 +339,10 @@ shape = SubResource("BoxShape3D_3s1m5")
 [node name="CollisionShape3D5" type="CollisionShape3D" parent="StaticBody3D" unique_id=1583214379]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.998999, 1.7572632, 2.0202215)
 shape = SubResource("BoxShape3D_ln4cm")
+
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="StaticBody3D" unique_id=727819868]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.9755177, 1.7572632, -2.0225303)
+shape = SubResource("BoxShape3D_mo2ea")
 
 [node name="PipesYellow" type="Node3D" parent="." unique_id=863995187]
 visible = false

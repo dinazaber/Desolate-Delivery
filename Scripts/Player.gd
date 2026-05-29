@@ -98,12 +98,17 @@ var healthbar_def_color
 @export var cam_speed: float = 0.005 #mouse sens
 @export var cam_rot_amount: float = 0.03 #camera tilt
 
-# --- Effects ---
+# --- EFFECTS ---
 @onready var hands = $shakeable_camera/Hands
 var def_gun_pos: Vector3
 @export_category("GUN SWAY")
 @export var gun_sway_amount: float = 5.0
 @export var gun_rot_amount: float = 0.01
+
+# --- GAMEPLAY SETTINGS ---
+@export_category("GAMEPLAY")
+var autoOpenDoors: bool = true
+var autoCloseDoors: bool = true
 
 # --- SIGNALS ---
 signal playerDead
@@ -146,7 +151,10 @@ func _ready() -> void:
 	healthbar_def_color = healthBar.self_modulate
 	
 	cam_speed = SettingsManager.settings.controls.mouse_sensitivity
+	autoOpenDoors = SettingsManager.settings.game.auto_open_doors
+	autoCloseDoors = SettingsManager.settings.game.auto_close_doors
 	SettingsManager.player = self
+	
 	def_gun_pos = hands.position
 	
 	healthBar.max_value = PLAYER_MAX_HEALTH
@@ -186,7 +194,7 @@ func _input(event):
 					if object.getType() == "Door":
 						collider = collider as StaticBody3D
 						var metadata = collider.get_meta("Dir")
-						if object.getOpenStatus() < 0 and distance < 3: object.open(metadata)
+						if object.getOpenStatus() < 0 and distance < 2: object.open(metadata)
 						else: object.close(1.0)
 				
 	

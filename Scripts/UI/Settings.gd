@@ -9,9 +9,11 @@ signal closed
 @onready var resolution = $ScrollContainer/VBoxContainer/Resolution
 @onready var fps = $ScrollContainer/VBoxContainer/Fps/MaxFpsEdit
 @onready var windowBtn = $ScrollContainer/VBoxContainer/Window/CheckButton
-@onready var vsyncBtn = $ScrollContainer/VBoxContainer/Vsync/CheckNutton
+@onready var vsyncBtn = $ScrollContainer/VBoxContainer/Vsync/CheckButton
 @onready var brightBar = $ScrollContainer/VBoxContainer/Brighness/HSlider
 @onready var mousSensBar = $ScrollContainer/VBoxContainer/MouseSens/HSlider
+@onready var autoOpenDoorBtn = $ScrollContainer/VBoxContainer/AutoOpenCloseDoors/CheckButton
+@onready var autoCloseDoorBtn = $ScrollContainer/VBoxContainer/AutoOpenCloseDoors/CheckButton2
 
 var settings
 
@@ -23,7 +25,6 @@ func _ready() -> void:
 	get_tree().root.size_changed.connect(func(): on_window_size_changed())
 	
 
-		
 
 func setSelected(node, val) -> void:
 	if node is OptionButton:
@@ -39,6 +40,8 @@ func buildSettings() -> void:
 	settings.video.windowed = windowBtn.button_pressed
 	settings.video.vsync = vsyncBtn.button_pressed
 	settings.video.anti_aliasing_enabled = antAliBtn.button_pressed
+	settings.game.auto_open_doors = autoOpenDoorBtn.button_pressed
+	settings.game.auto_close_doors = autoCloseDoorBtn.button_pressed
 	if fps.text.is_valid_int():
 		if fps.text.to_int() >= 0: settings.video.max_fps = fps.text.to_int()
 	
@@ -78,6 +81,8 @@ func uiRefresh():
 	windowBtn.button_pressed = SettingsManager.settings.video.windowed
 	vsyncBtn.button_pressed = SettingsManager.settings.video.vsync
 	antAliBtn.button_pressed = SettingsManager.settings.video.anti_aliasing_enabled
+	autoOpenDoorBtn.button_pressed = SettingsManager.settings.game.auto_open_doors
+	autoCloseDoorBtn.button_pressed = SettingsManager.settings.game.auto_close_doors
 	
 	# Set width/height values to appear inside input lines of resolution settings when game launches 
 	width.text = str(SettingsManager.settings.video.image_size.x)

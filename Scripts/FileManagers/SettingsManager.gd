@@ -19,7 +19,11 @@ var settings = {
 		"master_volume": 1.0
 	},
 	"controls": {
-		"mouse_sensitivity": 50
+		"mouse_sensitivity": 0.005
+	},
+	"game": {
+		"auto_open_doors": true,
+		"auto_close_doors": true
 	}
 }
 
@@ -112,7 +116,7 @@ func apply_settings():
 		get_viewport().screen_space_aa = Viewport.SCREEN_SPACE_AA_DISABLED
 		get_viewport().msaa_3d = Viewport.MSAA_DISABLED
 	
-	if player: player.cam_speed = settings.controls.mouse_sensitivity
-	
-	
-	
+	if player:
+		player.cam_speed = settings.controls.mouse_sensitivity
+		player.autoOpenDoors = settings.game.auto_open_doors
+		player.autoCloseDoors = settings.game.auto_close_doors

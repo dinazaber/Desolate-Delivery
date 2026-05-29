@@ -92,13 +92,10 @@ _data = {
 }
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_eaxfl"]
-size = Vector3(1.11, 2.3, 1)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_o57tb"]
-size = Vector3(1.11, 2.3, 1)
+size = Vector3(4, 2.3, 2)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_lgil6"]
-size = Vector3(1.11, 2.3, 0.024023438)
+size = Vector3(1.11, 2.3, 0.05)
 
 [sub_resource type="QuadOccluder3D" id="QuadOccluder3D_eaxfl"]
 size = Vector2(1.11, 2.3)
@@ -117,7 +114,7 @@ collision_layer = 0
 collision_mask = 8
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Areas/OpenAreaFront" unique_id=2056484419]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.555, 1.15, -0.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.555, 1.15, -1)
 shape = SubResource("BoxShape3D_eaxfl")
 
 [node name="OpenAreaBack" type="Area3D" parent="Areas" unique_id=509158889]
@@ -126,11 +123,11 @@ collision_layer = 0
 collision_mask = 8
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Areas/OpenAreaBack" unique_id=2119027867]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.555, 1.15, 0.5)
-shape = SubResource("BoxShape3D_o57tb")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.555, 1.15, 1)
+shape = SubResource("BoxShape3D_eaxfl")
 
 [node name="Marker3D" type="Marker3D" parent="." unique_id=555279680]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.725, 1.15, -1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.725, 1.15, -2)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1102868406]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.17, 0, -0.24)
@@ -143,7 +140,7 @@ collision_mask = 0
 metadata/Dir = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/ColliderFront" unique_id=811106455]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5550995, 1.1501617, -0.012744144)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.555, 1.15, -0.025)
 shape = SubResource("BoxShape3D_lgil6")
 
 [node name="ColliderBack" type="StaticBody3D" parent="MeshInstance3D" unique_id=1731706579]
@@ -152,7 +149,7 @@ collision_mask = 0
 metadata/Dir = 1
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/ColliderBack" unique_id=820755077]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5550995, 1.1501617, 0.012322545)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.555, 1.15, 0.025)
 shape = SubResource("BoxShape3D_lgil6")
 
 [node name="OccluderInstance3D" type="OccluderInstance3D" parent="MeshInstance3D" unique_id=942655829]
@@ -160,7 +157,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.555, 1.15, 0)
 occluder = SubResource("QuadOccluder3D_eaxfl")
 
 [node name="Timer" type="Timer" parent="." unique_id=79805213]
-wait_time = 3.0
+wait_time = 0.15
 one_shot = true
 
 [connection signal="body_entered" from="Areas/OpenAreaFront" to="." method="_on_open_area_front_body_entered"]

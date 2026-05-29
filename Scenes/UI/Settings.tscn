@@ -24,7 +24,7 @@ offset_right = 211.0
 offset_bottom = 176.5
 grow_horizontal = 2
 grow_vertical = 2
-scroll_vertical = 38
+scroll_vertical = 119
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer" unique_id=732182932]
 layout_mode = 2
@@ -118,7 +118,7 @@ layout_mode = 2
 layout_mode = 2
 text = "Vsync"
 
-[node name="CheckNutton" type="CheckBox" parent="ScrollContainer/VBoxContainer/Vsync" unique_id=1278256868]
+[node name="CheckButton" type="CheckBox" parent="ScrollContainer/VBoxContainer/Vsync" unique_id=1278256868]
 layout_mode = 2
 action_mode = 0
 
@@ -165,6 +165,7 @@ min_value = 0.3
 max_value = 1.2
 step = 0.05
 value = 0.3
+scrollable = false
 
 [node name="Label2" type="Label" parent="ScrollContainer/VBoxContainer/Brighness" unique_id=929891435]
 layout_mode = 2
@@ -192,11 +193,35 @@ layout_mode = 2
 min_value = 10.0
 step = 10.0
 value = 10.0
+scrollable = false
 
 [node name="Label2" type="Label" parent="ScrollContainer/VBoxContainer/MouseSens" unique_id=1172161025]
 layout_mode = 2
 text = "0.001
 "
+
+[node name="GameLabel" type="Label" parent="ScrollContainer/VBoxContainer" unique_id=537872200]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Game"
+horizontal_alignment = 1
+
+[node name="AutoOpenCloseDoors" type="HBoxContainer" parent="ScrollContainer/VBoxContainer" unique_id=1365913208]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/AutoOpenCloseDoors" unique_id=2044316075]
+layout_mode = 2
+text = "Automatically [Open | Close] Doors     "
+
+[node name="CheckButton" type="CheckBox" parent="ScrollContainer/VBoxContainer/AutoOpenCloseDoors" unique_id=813728973]
+layout_mode = 2
+action_mode = 0
+text = "  |"
+
+[node name="CheckButton2" type="CheckBox" parent="ScrollContainer/VBoxContainer/AutoOpenCloseDoors" unique_id=1415686838]
+layout_mode = 2
+action_mode = 0
 
 [node name="ApplySettings" type="Button" parent="." unique_id=1566765507]
 layout_mode = 1
