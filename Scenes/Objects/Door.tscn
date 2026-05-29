@@ -98,7 +98,7 @@ size = Vector3(1.11, 2.3, 1)
 size = Vector3(1.11, 2.3, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_lgil6"]
-size = Vector3(1.11, 2.3, 0.05)
+size = Vector3(1.11, 2.3, 0.024023438)
 
 [sub_resource type="QuadOccluder3D" id="QuadOccluder3D_eaxfl"]
 size = Vector2(1.11, 2.3)
@@ -137,20 +137,32 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.17, 0, -0.24)
 gi_mode = 2
 mesh = ExtResource("2_eaxfl")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D" unique_id=119107222]
+[node name="ColliderFront" type="StaticBody3D" parent="MeshInstance3D" unique_id=119107222]
 collision_layer = 49
 collision_mask = 0
+metadata/Dir = 0
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D" unique_id=811106455]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5550995, 1.1501617, 0.00024412572)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/ColliderFront" unique_id=811106455]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5550995, 1.1501617, -0.012744144)
 shape = SubResource("BoxShape3D_lgil6")
 
-[node name="OccluderInstance3D" type="OccluderInstance3D" parent="MeshInstance3D/StaticBody3D" unique_id=942655829]
+[node name="ColliderBack" type="StaticBody3D" parent="MeshInstance3D" unique_id=1731706579]
+collision_layer = 49
+collision_mask = 0
+metadata/Dir = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/ColliderBack" unique_id=820755077]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5550995, 1.1501617, 0.012322545)
+shape = SubResource("BoxShape3D_lgil6")
+
+[node name="OccluderInstance3D" type="OccluderInstance3D" parent="MeshInstance3D" unique_id=942655829]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.555, 1.15, 0)
 occluder = SubResource("QuadOccluder3D_eaxfl")
 
 [node name="Timer" type="Timer" parent="." unique_id=79805213]
-wait_time = 10.0
+wait_time = 3.0
 one_shot = true
 
+[connection signal="body_entered" from="Areas/OpenAreaFront" to="." method="_on_open_area_front_body_entered"]
+[connection signal="body_entered" from="Areas/OpenAreaBack" to="." method="_on_open_area_back_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -11,47 +11,57 @@ extends Node3D
 @onready var areas = $Areas.get_children()
 
 
-var isOpen: int = 0
+var openType: int = -1
 var type = "Door"
 
 func _ready() -> void:
 	anim.play("RESET")
-	isOpen = 0
+	openType = -1
 
-func _process(_delta: float) -> void:
-	for i in range(0, 2): # 0 front; 1 back
-		var player: CharacterBody3D = null
-		if areas[i].has_overlapping_bodies():
-			var bodies = []
-			bodies += areas[i].get_overlapping_bodies()
-			for body in bodies: if body.is_in_group("Player"): player = body
-		
-		if player:
-			closeTimer.start()
-			var dotVal = (player.velocity + player.direction).dot(($Marker3D.global_position - $Areas/OpenAreaFront/CollisionShape3D.global_position) * (1 if i else -1))
-			if dotVal > 0.1: open(i)
+#func _process(_delta: float) -> void:
+	#for i in range(0, 2): # 0 front; 1 back
+		#var player: CharacterBody3D = null
+		#if areas[i].has_overlapping_bodies():
+			#var bodies = []
+			#bodies += areas[i].get_overlapping_bodies()
+			#for body in bodies: if body.is_in_group("Player"): player = body
+		#
+		#if player:
+			#closeTimer.start()
+			#var dotVal = (player.velocity + player.direction).dot(($Marker3D.global_position - $Areas/OpenAreaFront/CollisionShape3D.global_position) * (1 if i else -1))
+			#if dotVal > 0.1: open(i)
 
 
 func open(i):
-	if !isOpen and !anim.is_playing():
+	if openType < 0 and !anim.is_playing():
 		closeTimer.start()
-		
-		if i == -1: i = randi_range(0, 1)
 		
 		anim.play("Open" + str(i))
 		await anim.animation_finished
-		isOpen = i + 1
+		openType = i
 	
 
 func close(playSpeed):
-	if isOpen and !anim.is_playing():
-		anim.play("Close" + str(isOpen - 1), -1, playSpeed)
+	if openType >= 0 and !anim.is_playing():
+		anim.play("Close" + str(openType), -1, playSpeed)
 		await anim.animation_finished
-		isOpen = 0
+		openType = -1
 
-func getOpenStatus(): return isOpen
+func getOpenStatus(): return openType
 
 func getType(): return type
 
 func _on_timer_timeout() -> void:
 	close(0.4)
+
+
+func _on_open_area_front_body_entered(body: Node3D) -> void:
+	if body.is_in_group("Player"):
+		closeTimer.start()
+		open(0) #Open Front
+
+
+func _on_open_area_back_body_entered(body: Node3D) -> void:
+	if body.is_in_group("Player"):
+		closeTimer.start()
+		open(1) #Open Back

@@ -1048,11 +1048,13 @@ skeleton = NodePath("../../..")
 metadata/_edit_lock_ = true
 
 [node name="ComputersOffMesh" type="MeshInstance3D" parent="Decorations/WorkingPlaces" unique_id=591437918]
+gi_lightmap_texel_scale = 2.0
 mesh = SubResource("ArrayMesh_m3n1v")
 skeleton = NodePath("../../..")
 metadata/_edit_lock_ = true
 
 [node name="Cups" type="MeshInstance3D" parent="Decorations/WorkingPlaces" unique_id=313427426]
+gi_lightmap_texel_scale = 1.5
 mesh = SubResource("ArrayMesh_3f41f")
 skeleton = NodePath("../../..")
 metadata/_edit_lock_ = true
