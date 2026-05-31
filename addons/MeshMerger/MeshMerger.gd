@@ -61,6 +61,7 @@ func _merge_selected():
 		for v in src_verts:
 			final_verts.append(xform * v)
 		
+		
 		for uv in src_uv2s:
 			final_uvs2.append((uv * uv2_scale) + uv2_offset)
 			

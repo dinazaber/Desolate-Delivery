@@ -9,8 +9,7 @@ func _on_start_pressed() -> void:
 	if curSave: SaveManager.load_game(curSave)
 	
 	else:
-		print("ty dibil test")
-		get_tree().change_scene_to_file("res://Scenes/Locations/test.tscn")
+		get_tree().change_scene_to_file("res://Scenes/Locations/Corridor.tscn")
 
 
 func _on_settings_pressed() -> void:

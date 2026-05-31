@@ -557,31 +557,37 @@ transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 2
 gi_lightmap_texel_scale = 6.0
 mesh = ExtResource("3_spu57")
 skeleton = NodePath("../../../Room/Walls")
+metadata/_edit_lock_ = true
 
 [node name="LightSeamHider" type="MeshInstance3D" parent="Decorations/Room/DoorWay" unique_id=999493163]
 transform = Transform3D(1.57361e-07, -0.52, 3.999592e-08, 0, -2.2729921e-08, -0.915, 1.2, 6.818976e-08, -5.244832e-15, 0.09592555, -2.0351534, 0.11477089)
 gi_mode = 2
 mesh = ExtResource("19_6xqsl")
 skeleton = NodePath("../../..")
+metadata/_edit_lock_ = true
 
 [node name="Floor" type="MeshInstance3D" parent="Decorations/Room" unique_id=1213361353]
 gi_lightmap_texel_scale = 4.0
 mesh = SubResource("ArrayMesh_pnpor")
 skeleton = NodePath("../../..")
+metadata/_edit_lock_ = true
 
 [node name="Ceilling" type="MeshInstance3D" parent="Decorations/Room" unique_id=350630112]
 gi_lightmap_texel_scale = 6.0
 mesh = SubResource("ArrayMesh_ul504")
 skeleton = NodePath("../../..")
+metadata/_edit_lock_ = true
 
 [node name="WoodWalls" type="MeshInstance3D" parent="Decorations/Room" unique_id=1875910922]
 mesh = SubResource("ArrayMesh_kheae")
 skeleton = NodePath("../../..")
+metadata/_edit_lock_ = true
 
 [node name="Walls" type="MeshInstance3D" parent="Decorations/Room" unique_id=1567498549]
 gi_lightmap_texel_scale = 6.0
 mesh = SubResource("ArrayMesh_yfio8")
 skeleton = NodePath("../../..")
+metadata/_edit_lock_ = true
 
 [node name="Picture" type="MeshInstance3D" parent="Decorations/Room" unique_id=1747017995]
 transform = Transform3D(-2.1855694e-08, -0.5, 2.1855694e-08, 0, -2.1855694e-08, -0.5, 0.5, -2.1855694e-08, 9.553427e-16, -1.616661, 2.4109874, 3.926205)
@@ -647,7 +653,7 @@ mesh = ExtResource("7_xyki8")
 skeleton = NodePath("../../..")
 
 [node name="Mirror" type="MeshInstance3D" parent="Decorations" unique_id=51643088]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 1.9021199, 1.2496349, 0.85092795)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 1.921164, 1.2496349, 0.85092795)
 mesh = ExtResource("8_f08nv")
 
 [node name="Phone" type="MeshInstance3D" parent="Decorations" unique_id=1068127307]

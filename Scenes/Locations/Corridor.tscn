@@ -1,6 +1,7 @@
 [gd_scene format=4 uid="uid://bn1lv0il0pgq3"]
 
 [ext_resource type="PackedScene" uid="uid://ds8hiut7cj5b0" path="res://Scenes/Locations/Office.tscn" id="1_75pwh"]
+[ext_resource type="Script" uid="uid://bcfml5hf5f0wl" path="res://Scripts/FileManagers/HandleSaveFile.gd" id="1_pnvln"]
 [ext_resource type="PackedScene" uid="uid://df53p2nd7yphr" path="res://Scenes/Locations/Restroom.tscn" id="2_inv3y"]
 [ext_resource type="ArrayMesh" uid="uid://dmuu3icybpsg7" path="res://assets/Meshes/RoomConstructor/Wall.mesh" id="4_4cqb3"]
 [ext_resource type="ArrayMesh" uid="uid://d3d3tk27u03im" path="res://assets/Meshes/RoomConstructor/DoorWayFlat_Grey&Green.mesh" id="4_7e57h"]
@@ -162,9 +163,11 @@ _surfaces = [{
 }]
 
 [node name="Corridor" type="Node3D" unique_id=323185314]
+script = ExtResource("1_pnvln")
 
 [node name="Player" parent="." unique_id=1941692924 instance=ExtResource("7_207sj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 1, 0)
+visible = false
 
 [node name="Rooms" type="Node3D" parent="." unique_id=1390652977]
 
