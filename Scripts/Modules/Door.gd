@@ -18,13 +18,16 @@ func _ready() -> void:
 	anim.play("RESET")
 	openType = -1
 
-func _process(_delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	for i in range(0, 2): # 0 front; 1 back
 		var player: CharacterBody3D = null
+		var enemy: CharacterBody3D = null
 		if areas[i].has_overlapping_bodies():
 			var bodies = []
 			bodies += areas[i].get_overlapping_bodies()
-			for body in bodies: if body.is_in_group("Player"): player = body
+			for body in bodies:
+				if body.is_in_group("Player"): player = body
+				elif body.is_in_group("Enemy"): enemy = body
 		
 		if player:
 			if player.autoOpenDoors:
@@ -32,6 +35,11 @@ func _process(_delta: float) -> void:
 				if dotVal > 0.1: open(i)
 			if player.autoCloseDoors:
 				closeTimer.start()
+		
+		if enemy:
+			var dotVal = (enemy.velocity).dot(($Marker3D.global_position - $Areas/OpenAreaFront/CollisionShape3D.global_position) * (1 if i else -1))
+			if dotVal > 0.1: open(i)
+			closeTimer.start()
 
 
 func open(i):

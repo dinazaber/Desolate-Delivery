@@ -189,6 +189,7 @@ func _input(event):
 						add_collision_exception_with(grabbedObject)
 				
 				#Doors currently
+				
 				elif collider.owner.has_method("getType"):
 					var object = collider.owner
 					if object.getType() == "Door":
@@ -250,7 +251,10 @@ func _input(event):
 				#cameraDistance-=1.5
 				
 
-func _physics_process(delta):
+func _process(delta: float) -> void: # adaptive fps
+	gun_rot_amount = 0.6/(delta*14400)
+
+func _physics_process(delta) -> void: # fixed 60 fps
 	if screenEffect!=null: updateScreenEffect()
 	
 	#cameraDistance = clamp(cameraDistance,15, 45)
@@ -347,14 +351,20 @@ func _physics_process(delta):
 	
 	
 	# dash
-	if Input.is_action_just_pressed("Shift") and direction and dashCool == 100.0 and !crouch and !dead:
+	if Input.is_action_just_pressed("Shift") and dashCool == 100.0 and !crouch and !dead:
+		dash = true
 		dashCool = -10.0
-		var dashDir = direction
+		var dashDir: Vector3 = Vector3.ZERO
+		if direction: dashDir = direction
+		else:
+			dashDir = -global_transform.basis.z.normalized()
+			dashDir.y = 0.0
 		knockBack(dashDir, dash_speed, false, 0.2)
 		#canDash = false
 		#$SuperTimer.set("wait_time",0.5)
 		#$SuperTimer.start()
 		await get_tree().create_timer(0.2).timeout
+		dash = false
 		if !is_on_floor() or !slide:
 			knockBack(-dashDir, 15 * Vector3(velocity.x, 0.0, velocity.z).length() / dash_speed, false, 0.0)
 	
@@ -386,13 +396,18 @@ func _physics_process(delta):
 				velocity.z = lerp(velocity.z, direction.z * SPEED, delta * 12.5 * accel_mod)
 		
 		else: # no input speed
-			velocity.x = lerp(velocity.x, 0.0, delta * 8.0 * accel_mod)
-			velocity.z = lerp(velocity.z, 0.0, delta * 8.0 * accel_mod)
+			if !knocked:
+				velocity.x = lerp(velocity.x, 0.0, delta * 8.0 * accel_mod)
+				velocity.z = lerp(velocity.z, 0.0, delta * 8.0 * accel_mod)
 		
 	else: # airborne speed
 		airborne = true
 		landVel = abs(velocity.y)
-		var down_force = clamp(15.0 - (velocity.y if velocity.y <= 0.0 else 0.0), 0.0, 30.0)
+		
+		var down_force: float = clamp(15.0 - (velocity.y if velocity.y <= 0.0 else 0.0), 0.0, 25.0)
+		if dash and velocity.y < 0:
+			down_force = 0.0
+			velocity.y = 0.0
 		velocity.y = clamp(velocity.y - delta * down_force, -80.0, 80.0)  # Gravity
 		
 		if !knocked:
@@ -422,8 +437,8 @@ func cam_gun_tilt_sway(input_x, input_y, delta):
 		hands.rotation.x = lerp(hands.rotation.x, input_y * gun_rot_amount * 20, delta * 1.5)
 		
 	mouse_input = lerp(mouse_input, Vector2.ZERO, delta * 10.0)
-	hands.rotation.x = lerp(hands.rotation.x, mouse_input.y * gun_rot_amount, delta * 15.0)
-	hands.rotation.y = lerp(hands.rotation.y, mouse_input.x * gun_rot_amount, delta * 15.0)
+	hands.rotation.x = clamp(lerp(hands.rotation.x, mouse_input.y * gun_rot_amount, delta * 15.0), deg_to_rad(-15), deg_to_rad(15))
+	hands.rotation.y = clamp(lerp(hands.rotation.y, mouse_input.x * gun_rot_amount, delta * 15.0), deg_to_rad(-30), deg_to_rad(30))
 
 func gun_bob(vel: float, input, delta):
 	if hands:

@@ -111,7 +111,7 @@ libraries/ = SubResource("AnimationLibrary_o57tb")
 [node name="OpenAreaFront" type="Area3D" parent="Areas" unique_id=2020469098]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.17, 0, -0.24)
 collision_layer = 0
-collision_mask = 8
+collision_mask = 24
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Areas/OpenAreaFront" unique_id=2056484419]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.555, 1.15, -1)
@@ -120,7 +120,7 @@ shape = SubResource("BoxShape3D_eaxfl")
 [node name="OpenAreaBack" type="Area3D" parent="Areas" unique_id=509158889]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.17, 0, -0.24)
 collision_layer = 0
-collision_mask = 8
+collision_mask = 24
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Areas/OpenAreaBack" unique_id=2119027867]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.555, 1.15, 1)

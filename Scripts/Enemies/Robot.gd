@@ -161,7 +161,7 @@ func process_chase_state(delta):
 	
 	# Check transitions
 	dist = global_position.distance_to(player.global_position)
-	if dist <= attack_start_distance:
+	if dist <= attack_start_distance and can_see_player():
 		current_state = State.ATTACK
 	elif !can_see_player() and dist > detection_range and !damagedByPlayer:
 		inTransition = true
@@ -210,7 +210,7 @@ func process_attack_state(delta):
 	if player.dead == true:
 		current_state = State.IDLE
 	
-	if global_position.distance_to(player.global_position) > attack_stop_distance:
+	if global_position.distance_to(player.global_position) > attack_stop_distance or !can_see_player():
 		current_state = State.CHASE
 
 

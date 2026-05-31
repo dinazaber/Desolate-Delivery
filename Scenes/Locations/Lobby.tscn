@@ -198,6 +198,10 @@ _surfaces = [{
 "vertex_data": PackedByteArray("/28AAJkZ/7//b///AAD/v/9v//+ZGf+//28AAAAA/7//jwAAAAD///+P//+ZGf///4///wAA////jwAAmRn///9vAAAAAP///4///wAA////b///AAD///+PAAAAAP//xX8AAN4Y//90cDw13hj//3RwAADeGP//xX88Nd4Y////jwAAmRn/v/9v//+ZGf+//4///5kZ/7//bwAAmRn/v4qPAAC6AP+/io88Nd4Y/7+KjwAA3hj/v4qPPDW6AP+//48AAAAA//+KjwAA3hj///+PAACZGf//OYAAAN4Y//+KjwAAugD//zmAAAC6AP///28AAJkZ///FfwAA3hj//8V/AAC6AP//dHAAAN4Y//90cAAAugD///9vAAAAAP//OYA8NboA//+Kjzw13hj//4qPPDW6AP//OYA8Nd4Y//90cDw1ugD//8V/PDXeGP//xX88NboA//90cDw13hj//zmAAAC6AP6/io88NboA/r+KjwAAugD+vzmAPDW6AP6/dHAAAN4Y//90cDw1ugD//3RwAAC6AP//dHA8Nd4Y//+KjwAA3hj//zmAPDXeGP//OYAAAN4Y//+Kjzw13hj//zmAAADeGP//OYA8NboA//85gAAAugD//zmAPDXeGP//xX8AALoA/7/Ffzw13hj/v8V/AADeGP+/xX88NboA/790cAAAugD+v8V/PDW6AP6/xX8AALoA/r90cDw1ugD+v//fAACZGf+//9///wAA/7//3///mRn/v//fAAAAAP+///8AAAAA////////mRn///////8AAP////8AAJkZ////3wAAAAD///////8AAP///9///wAA/////wAAAAD//8TvAADeGP//c+A8Nd4Y//9z4AAA3hj//8TvPDXeGP////8AAJkZ/7//3///mRn/v/////+ZGf+//98AAJkZ/7+K/wAAugD/v4r/PDXeGP+/iv8AAN4Y/7+K/zw1ugD/v///AAAAAP//iv8AAN4Y/////wAAmRn//znwAADeGP//iv8AALoA//858AAAugD////fAACZGf//xO8AAN4Y///E7wAAugD//3PgAADeGP//c+AAALoA////3wAAAAD//znwPDW6AP//iv88Nd4Y//+K/zw1ugD//znwPDXeGP//c+A8NboA///E7zw13hj//8TvPDW6AP//c+A8Nd4Y//858AAAugD+v4r/PDW6AP6/iv8AALoA/r858Dw1ugD+v3PgAADeGP//c+A8NboA//9z4AAAugD//3PgPDXeGP//iv8AAN4Y//858Dw13hj//znwAADeGP//iv88Nd4Y//858AAA3hj//znwPDW6AP//OfAAALoA//858Dw13hj//8TvAAC6AP+/xO88Nd4Y/7/E7wAA3hj/v8TvPDW6AP+/c+AAALoA/r/E7zw1ugD+v8TvAAC6AP6/c+A8NboA/r//3wAAZmb/v//f///MTP+//9///2Zm/7//3wAAzEz/v///AADMTP///////2Zm////////zEz/////AABmZv///98AAMxM////////zEz////f///MTP////8AAMxM///E7wAAq2X//3PgPDWrZf//c+AAAKtl///E7zw1q2X/////AABmZv+//9///2Zm/7//////Zmb/v//fAABmZv+/iv8AAIdN/7+K/zw1q2X/v4r/AACrZf+/iv88NYdN/7///wAAzEz//4r/AACrZf////8AAGZm//858AAAq2X//4r/AACHTf//OfAAAIdN////3wAAZmb//8TvAACrZf//xO8AAIdN//9z4AAAq2X//3PgAACHTf///98AAMxM//858Dw1h03//4r/PDWrZf//iv88NYdN//858Dw1q2X//3PgPDWHTf//xO88Natl///E7zw1h03//3PgPDWrZf//OfAAAIdN/r+K/zw1h03+v4r/AACHTf6/OfA8NYdN/r9z4AAAq2X//3PgPDWHTf//c+AAAIdN//9z4Dw1q2X//4r/AACrZf//OfA8Natl//858AAAq2X//4r/PDWrZf//OfAAAKtl//858Dw1h03//znwAACHTf//OfA8Natl///E7wAAh03/v8TvPDWrZf+/xO8AAKtl/7/E7zw1h03/v3PgAACHTf6/xO88NYdN/r/E7wAAh03+v3PgPDWHTf6//98AAP///7//3///Zeb/v//f//////+//98AAGXm/7///wAAZeb//////////////////2Xm/////wAA///////fAABl5v///////2Xm////3///Zeb/////AABl5v//xO8AAET///9z4Dw1RP///3PgAABE////xO88NUT//////wAA////v//f//////+//////////7//3wAA////v4r/AAAg5/+/iv88NUT//7+K/wAARP//v4r/PDUg5/+///8AAGXm//+K/wAARP//////AAD/////OfAAAET///+K/wAAIOf//znwAAAg5////98AAP/////E7wAARP///8TvAAAg5///c+AAAET///9z4AAAIOf////fAABl5v//OfA8NSDn//+K/zw1RP///4r/PDUg5///OfA8NUT///9z4Dw1IOf//8TvPDVE////xO88NSDn//9z4Dw1RP///znwAAAg5/6/iv88NSDn/r+K/wAAIOf+vznwPDUg5/6/c+AAAET///9z4Dw1IOf//3PgAAAg5///c+A8NUT///+K/wAARP///znwPDVE////OfAAAET///+K/zw1RP///znwAABE////OfA8NSDn//858AAAIOf//znwPDVE////xO8AACDn/7/E7zw1RP//v8TvAABE//+/xO88NSDn/79z4AAAIOf+v8TvPDUg5/6/xO8AACDn/r9z4Dw1IOf+vwAAAAAys/+/AAD//5mZ/78AAP//MrP/vwAAAACZmf+//x8AAJmZ////H///MrP///8f//+Zmf///x8AADKz//8AAAAAmZn///8f//+Zmf//AAD//5mZ////HwAAmZn//8UPAAB3sv//dAA8NXey//90AAAAd7L//8UPPDV3sv///x8AADKz/78AAP//MrP/v/8f//8ys/+/AAAAADKz/7+LHwAAU5r/v4sfPDV3sv+/ix8AAHey/7+LHzw1U5r/v/8fAACZmf//ix8AAHey////HwAAMrP//zoQAAB3sv//ix8AAFOa//86EAAAU5r//wAAAAAys///xQ8AAHey///FDwAAU5r//3QAAAB3sv//dAAAAFOa//8AAAAAmZn//zoQPDVTmv//ix88NXey//+LHzw1U5r//zoQPDV3sv//dAA8NVOa///FDzw1d7L//8UPPDVTmv//dAA8NXey//86EAAAU5r+v4sfPDVTmv6/ix8AAFOa/r86EDw1U5r+v3QAAAB3sv//dAA8NVOa//90AAAAU5r//3QAPDV3sv//ix8AAHey//86EDw1d7L//zoQAAB3sv//ix88NXey//86EAAAd7L//zoQPDVTmv//OhAAAFOa//86EDw1d7L//8UPAABTmv+/xQ88NXey/7/FDwAAd7L/v8UPPDVTmv+/dAAAAFOa/r/FDzw1U5r+v8UPAABTmv6/dAA8NVOa/r8AAAAA////vwAA//9l5v+/AAD//////78AAAAAZeb/v/8fAABl5v///x//////////H///Zeb///8fAAD/////AAAAAGXm////H///Zeb//wAA//9l5v///x8AAGXm///FDwAARP///3QAPDVE////dAAAAET////FDzw1RP////8fAAD///+/AAD//////7//H///////vwAAAAD///+/ix8AACDn/7+LHzw1RP//v4sfAABE//+/ix88NSDn/7//HwAAZeb//4sfAABE/////x8AAP////86EAAARP///4sfAAAg5///OhAAACDn//8AAAAA/////8UPAABE////xQ8AACDn//90AAAARP///3QAAAAg5///AAAAAGXm//86EDw1IOf//4sfPDVE////ix88NSDn//86EDw1RP///3QAPDUg5///xQ88NUT////FDzw1IOf//3QAPDVE////OhAAACDn/r+LHzw1IOf+v4sfAAAg5/6/OhA8NSDn/r90AAAARP///3QAPDUg5///dAAAACDn//90ADw1RP///4sfAABE////OhA8NUT///86EAAARP///4sfPDVE////OhAAAET///86EDw1IOf//zoQAAAg5///OhA8NUT////FDwAAIOf/v8UPPDVE//+/xQ8AAET//7/FDzw1IOf/v3QAAAAg5/6/xQ88NSDn/r/FDwAAIOf+v3QAPDUg5/6//3/8//9//P//f/z//3/8//6//3/+v/9//r//f/6//3//vwBA/78AQP+/AED/vwBA/z//v/8//7//P/+//z//v/9//3//f/9//3//f/9//3//f////3////9/////f////3//P/9//z//f/8//3//P/9//z//f/8//3//P/9//z//f/8//3//P/9//z//f/8//3//P/9//z//f/8//3//P/9//z//f/8//3//P/9//z/+fwCA/n8AgP5/AID+fwCA/r//f/6//3/+v/9//r//f/8//7//P/+//z//v/8//7/+v/9//r//f/6//3/+v/9//3////9/////f////3////5/AID+fwCA/n8AgP5/AID/f/z//3/8//9//P//f/z//r//f/6//3/+v/9//r//f/+/AED/vwBA/78AQP+/AED/P/+//z//v/8//7//P/+//3//f/9//3//f/9//3//f/9/////f////3////9/////f/8//3//P/9//z//f/8//3//P/9//z//f/8//3//P/9//z//f/8//3//P/9//z//f/8//3//P/9//z//f/8//3//P/9//z//f/8//3//P/5/AID+fwCA/n8AgP5/AID+v/9//r//f/6//3/+v/9//z//v/8//7//P/+//z//v/6//3/+v/9//r//f/6//3//f////3////9/////f////n8AgP5/AID+fwCA/n8AgP9//P//f/z//3/8//9//P/+v/9//r//f/6//3/+v/9//78AQP+/AED/vwBA/78AQP8//7//P/+//z//v/8//7//f/9//3//f/9//3//f/9//3////9/////f////3////9//z//f/8//3//P/9//z//f/8//3//P/9//z//f/8//3//P/9//z//f/8//3//P/9//z//f/8//3//P/9//z//f/8//3//P/9//z//f/8//n8AgP5/AID+fwCA/n8AgP6//3/+v/9//r//f/6//3//P/+//z//v/8//7//P/+//r//f/6//3/+v/9//r//f/9/////f////3////9////+fwCA/n8AgP5/AID+fwCA/3/8//9//P//f/z//3/8//6//3/+v/9//r//f/6//3//vwBA/78AQP+/AED/vwBA/z//v/8//7//P/+//z//v/9//3//f/9//3//f/9//3//f////3////9/////f////3//P/9//z//f/8//3//P/9//z//f/8//3//P/9//z//f/8//3//P/9//z//f/8//3//P/9//z//f/8//3//P/9//z//f/8//3//P/9//z/+fwCA/n8AgP5/AID+fwCA/r//f/6//3/+v/9//r//f/8//7//P/+//z//v/8//7/+v/9//r//f/6//3/+v/9//3////9/////f////3////5/AID+fwCA/n8AgP5/AID/f/z//3/8//9//P//f/z//r//f/6//3/+v/9//r//f/+/AED/vwBA/78AQP+/AED/P/+//z//v/8//7//P/+//3//f/9//3//f/9//3//f/9/////f////3////9/////f/8//3//P/9//z//f/8//3//P/9//z//f/8//3//P/9//z//f/8//3//P/9//z//f/8//3//P/9//z//f/8//3//P/9//z//f/8//3//P/5/AID+fwCA/n8AgP5/AID+v/9//r//f/6//3/+v/9//z//v/8//7//P/+//z//v/6//3/+v/9//r//f/6//3//f////3////9/////f////n8AgP5/AID+fwCA/n8AgP9//P//f/z//3/8//9//P/+v/9//r//f/6//3/+v/9//78AQP+/AED/vwBA/78AQP8//7//P/+//z//v/8//7//f/9//3//f/9//3//f/9//3////9/////f////3////9//z//f/8//3//P/9//z//f/8//3//P/9//z//f/8//3//P/9//z//f/8//3//P/9//z//f/8//3//P/9//z//f/8//3//P/9//z//f/8//n8AgP5/AID+fwCA/n8AgP6//3/+v/9//r//f/6//3//P/+//z//v/8//7//P/+//r//f/6//3/+v/9//r//f/9/////f////3////9////+fwCA/n8AgP5/AID+fwCA")
 }]
 
+[sub_resource type="NavigationMesh" id="NavigationMesh_xy444"]
+vertices = PackedVector3Array(-10.204163, 0.5, -5.8378906, -10.204163, 0.5, -4.8378906, -9.454163, 0.5, -5.5878906, -10.204163, 5, -5.8378906, -10.204163, 5, 5.6621094, 10.295837, 5, 5.6621094, 10.295837, 5, -5.8378906, 9.295837, 0.5, -5.8378906, 10.295837, 0.5, -4.8378906, 10.295837, 0.5, -5.8378906, 9.045837, 0.5, -3.5878906, 7.7958374, 0.5, -4.8378906, 6.2958374, 0.5, -5.3378906, 9.795837, 0.5, -0.087890625, 7.5458374, 0.5, 4.6621094, 9.295837, 0.5, 2.9121094, -7.2041626, 0.5, -5.0878906, -9.204163, 0.5, -3.3378906, -9.954163, 0.5, -0.33789063, -9.454163, 0.5, 2.4121094, -7.4541626, 0.5, 4.6621094, -0.2041626, 0.5, 5.1621094, 9.045837, 0.5, 5.4121094, 10.295837, 0.5, 5.6621094, 10.295837, 0.5, 4.4121094, -10.204163, 0.5, 4.6621094, -10.204163, 0.5, 5.6621094, -9.204163, 0.5, 5.6621094)
+polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(6, 5, 3), PackedInt32Array(3, 5, 4), PackedInt32Array(9, 8, 7), PackedInt32Array(11, 10, 12), PackedInt32Array(12, 10, 13), PackedInt32Array(14, 13, 15), PackedInt32Array(17, 16, 18), PackedInt32Array(18, 16, 19), PackedInt32Array(19, 16, 20), PackedInt32Array(13, 14, 12), PackedInt32Array(12, 14, 21), PackedInt32Array(12, 21, 20), PackedInt32Array(12, 20, 16), PackedInt32Array(24, 23, 22), PackedInt32Array(27, 26, 25)]
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_hocd3"]
 size = Vector3(1.3554688, 4.7697754, 0.33898926)
 
@@ -1001,126 +1005,126 @@ mesh = ExtResource("15_aq7im")
 transform = Transform3D(0.70000005, 0, 0, 0, 0.70000005, 0, 0, 0, 0.70000005, -5.166317, 0.8787817, -4.7852035)
 mesh = ExtResource("16_xy444")
 
-[node name="Collisions" type="Node3D" parent="." unique_id=1943356623]
-visible = false
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=1871926413]
+navigation_mesh = SubResource("NavigationMesh_xy444")
 
-[node name="Walls" type="StaticBody3D" parent="Collisions" unique_id=748570925]
+[node name="Walls" type="StaticBody3D" parent="NavigationRegion3D" unique_id=748570925]
 collision_layer = 49
 collision_mask = 0
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Collisions/Walls" unique_id=820478070]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Walls" unique_id=820478070]
 transform = Transform3D(0.2537579, 0, -0.96726763, 0, 1, 0, 0.96726763, 0, 0.2537579, -10.177207, 1.8848877, 2.528162)
 shape = SubResource("BoxShape3D_hocd3")
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="Collisions/Walls" unique_id=605501944]
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="NavigationRegion3D/Walls" unique_id=605501944]
 transform = Transform3D(0.60042024, 0, -0.79968464, 0, 1, 0, 0.79968464, 0, 0.60042024, -9.529052, 1.8848877, 3.8361516)
 shape = SubResource("BoxShape3D_gdjtj")
 
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="Collisions/Walls" unique_id=1759187737]
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="NavigationRegion3D/Walls" unique_id=1759187737]
 transform = Transform3D(0.819152, 0, -0.5735764, 0, 1, 0, 0.5735764, 0, 0.819152, -8.435136, 1.8848877, 4.8997593)
 shape = SubResource("BoxShape3D_1m2ns")
 
-[node name="CollisionShape3D4" type="CollisionShape3D" parent="Collisions/Walls" unique_id=551155093]
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="NavigationRegion3D/Walls" unique_id=551155093]
 transform = Transform3D(0.97029567, 0, -0.24192189, 0, 1, 0, 0.24192189, 0, 0.97029567, -7.109523, 1.8848877, 5.5189075)
 shape = SubResource("BoxShape3D_48f2t")
 
-[node name="CollisionShape3D5" type="CollisionShape3D" parent="Collisions/Walls" unique_id=289154242]
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="NavigationRegion3D/Walls" unique_id=289154242]
 transform = Transform3D(-0.97377783, 0, -0.22750123, 0, 1, 0, 0.22750123, 0, -0.97377783, -7.1168985, 1.8848877, -5.856559)
 shape = SubResource("BoxShape3D_hocd3")
 
-[node name="CollisionShape3D6" type="CollisionShape3D" parent="Collisions/Walls" unique_id=574124761]
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="NavigationRegion3D/Walls" unique_id=574124761]
 transform = Transform3D(-0.81563306, 0, -0.57856977, 0, 1, 0, 0.57856977, 0, -0.81563306, -8.441942, 1.8848877, -5.2440214)
 shape = SubResource("BoxShape3D_gdjtj")
 
-[node name="CollisionShape3D7" type="CollisionShape3D" parent="Collisions/Walls" unique_id=717688625]
+[node name="CollisionShape3D7" type="CollisionShape3D" parent="NavigationRegion3D/Walls" unique_id=717688625]
 transform = Transform3D(-0.5955241, 0, -0.80333745, 0, 1, 0, 0.80333745, 0, -0.5955241, -9.53475, 1.8848877, -4.1792755)
 shape = SubResource("BoxShape3D_1m2ns")
 
-[node name="CollisionShape3D8" type="CollisionShape3D" parent="Collisions/Walls" unique_id=552784568]
+[node name="CollisionShape3D8" type="CollisionShape3D" parent="NavigationRegion3D/Walls" unique_id=552784568]
 transform = Transform3D(-0.26807913, 0, -0.96339685, 0, 1, 0, 0.96339685, 0, -0.26807913, -10.189529, 1.8848877, -2.870895)
 shape = SubResource("BoxShape3D_48f2t")
 
-[node name="CollisionShape3D9" type="CollisionShape3D" parent="Collisions/Walls" unique_id=860594284]
+[node name="CollisionShape3D9" type="CollisionShape3D" parent="NavigationRegion3D/Walls" unique_id=860594284]
 transform = Transform3D(-0.21407051, 0, 0.97681844, 0, 1, 0, -0.97681844, 0, -0.21407051, 10.230725, 1.8848877, -2.7283173)
 shape = SubResource("BoxShape3D_hocd3")
 
-[node name="CollisionShape3D10" type="CollisionShape3D" parent="Collisions/Walls" unique_id=2500296]
+[node name="CollisionShape3D10" type="CollisionShape3D" parent="NavigationRegion3D/Walls" unique_id=2500296]
 transform = Transform3D(-0.5672835, 0, 0.8235227, 0, 1, 0, -0.8235227, 0, -0.5672835, 9.636493, 1.8848877, -4.061669)
 shape = SubResource("BoxShape3D_gdjtj")
 
-[node name="CollisionShape3D11" type="CollisionShape3D" parent="Collisions/Walls" unique_id=1613202885]
+[node name="CollisionShape3D11" type="CollisionShape3D" parent="NavigationRegion3D/Walls" unique_id=1613202885]
 transform = Transform3D(-0.7950608, 0, 0.6065298, 0, 1, 0, -0.6065298, 0, -0.7950608, 8.586895, 1.8848877, -5.1690354)
 shape = SubResource("BoxShape3D_1m2ns")
 
-[node name="CollisionShape3D12" type="CollisionShape3D" parent="Collisions/Walls" unique_id=1945556738]
+[node name="CollisionShape3D12" type="CollisionShape3D" parent="NavigationRegion3D/Walls" unique_id=1945556738]
 transform = Transform3D(-0.9596141, 0, 0.28131992, 0, 1, 0, -0.28131992, 0, -0.9596141, 7.287655, 1.8848877, -5.8417697)
 shape = SubResource("BoxShape3D_48f2t")
 
-[node name="CollisionShape3D13" type="CollisionShape3D" parent="Collisions/Walls" unique_id=1100585471]
+[node name="CollisionShape3D13" type="CollisionShape3D" parent="NavigationRegion3D/Walls" unique_id=1100585471]
 transform = Transform3D(0.9615978, 0, 0.27446264, 0, 1, 0, -0.27446264, 0, 0.9615978, 7.2618656, 1.8848877, 5.5609217)
 shape = SubResource("BoxShape3D_hocd3")
 
-[node name="CollisionShape3D14" type="CollisionShape3D" parent="Collisions/Walls" unique_id=1751732857]
+[node name="CollisionShape3D14" type="CollisionShape3D" parent="NavigationRegion3D/Walls" unique_id=1751732857]
 transform = Transform3D(0.78661186, 0, 0.617448, 0, 1, 0, -0.617448, 0, 0.78661186, 8.55564, 1.8848877, 4.88484)
 shape = SubResource("BoxShape3D_gdjtj")
 
-[node name="CollisionShape3D15" type="CollisionShape3D" parent="Collisions/Walls" unique_id=741011504]
+[node name="CollisionShape3D15" type="CollisionShape3D" parent="NavigationRegion3D/Walls" unique_id=741011504]
 transform = Transform3D(0.55586046, 0, 0.83127546, 0, 1, 0, -0.83127546, 0, 0.55586046, 9.595521, 1.8848877, 3.7683434)
 shape = SubResource("BoxShape3D_1m2ns")
 
-[node name="CollisionShape3D16" type="CollisionShape3D" parent="Collisions/Walls" unique_id=1312373637]
+[node name="CollisionShape3D16" type="CollisionShape3D" parent="NavigationRegion3D/Walls" unique_id=1312373637]
 transform = Transform3D(0.22103786, 0, 0.97526526, 0, 1, 0, -0.97526526, 0, 0.22103786, 10.186071, 1.8848877, 2.4297452)
 shape = SubResource("BoxShape3D_48f2t")
 
-[node name="CollisionShape3D17" type="CollisionShape3D" parent="Collisions/Walls" unique_id=1963451952]
+[node name="CollisionShape3D17" type="CollisionShape3D" parent="NavigationRegion3D/Walls" unique_id=1963451952]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.6430244, 1.8848877, 5.741347)
 shape = SubResource("BoxShape3D_ia4ft")
 
-[node name="CollisionShape3D20" type="CollisionShape3D" parent="Collisions/Walls" unique_id=196804720]
+[node name="CollisionShape3D20" type="CollisionShape3D" parent="NavigationRegion3D/Walls" unique_id=196804720]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.052914143, 1.8848877, -6.0417123)
 shape = SubResource("BoxShape3D_yxhpu")
 
-[node name="CollisionShape3D18" type="CollisionShape3D" parent="Collisions/Walls" unique_id=1362761658]
+[node name="CollisionShape3D18" type="CollisionShape3D" parent="NavigationRegion3D/Walls" unique_id=1362761658]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.4477456, 1.8848877, 5.741347)
 shape = SubResource("BoxShape3D_ia4ft")
 
-[node name="CollisionShape3D19" type="CollisionShape3D" parent="Collisions/Walls" unique_id=1005233314]
+[node name="CollisionShape3D19" type="CollisionShape3D" parent="NavigationRegion3D/Walls" unique_id=1005233314]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.12659681, 3.2871552, 5.741347)
 shape = SubResource("BoxShape3D_solst")
 
-[node name="CollisionShape3D21" type="CollisionShape3D" parent="Collisions/Walls" unique_id=1614720593]
+[node name="CollisionShape3D21" type="CollisionShape3D" parent="NavigationRegion3D/Walls" unique_id=1614720593]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -10.404824, 1.8848877, 1.1989095)
 shape = SubResource("BoxShape3D_trfa7")
 
-[node name="CollisionShape3D22" type="CollisionShape3D" parent="Collisions/Walls" unique_id=758763062]
+[node name="CollisionShape3D22" type="CollisionShape3D" parent="NavigationRegion3D/Walls" unique_id=758763062]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -10.404824, 1.8848877, -1.4364531)
 shape = SubResource("BoxShape3D_wleuk")
 
-[node name="CollisionShape3D23" type="CollisionShape3D" parent="Collisions/Walls" unique_id=937085896]
+[node name="CollisionShape3D23" type="CollisionShape3D" parent="NavigationRegion3D/Walls" unique_id=937085896]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -10.404824, 3.2871552, -0.124192774)
 shape = SubResource("BoxShape3D_solst")
 
-[node name="CollisionShape3D24" type="CollisionShape3D" parent="Collisions/Walls" unique_id=1295632549]
+[node name="CollisionShape3D24" type="CollisionShape3D" parent="NavigationRegion3D/Walls" unique_id=1295632549]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 10.402474, 1.8848877, 1.1989095)
 shape = SubResource("BoxShape3D_trfa7")
 
-[node name="CollisionShape3D25" type="CollisionShape3D" parent="Collisions/Walls" unique_id=579869147]
+[node name="CollisionShape3D25" type="CollisionShape3D" parent="NavigationRegion3D/Walls" unique_id=579869147]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 10.402474, 1.8848877, -1.4364531)
 shape = SubResource("BoxShape3D_wleuk")
 
-[node name="CollisionShape3D26" type="CollisionShape3D" parent="Collisions/Walls" unique_id=270535452]
+[node name="CollisionShape3D26" type="CollisionShape3D" parent="NavigationRegion3D/Walls" unique_id=270535452]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 10.402474, 3.2871552, -0.124192774)
 shape = SubResource("BoxShape3D_solst")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Collisions" unique_id=770734555]
+[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D" unique_id=770734555]
 collision_layer = 49
 collision_mask = 0
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Collisions/StaticBody3D" unique_id=1934128412]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D" unique_id=1934128412]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.018463135, -0.24511719, -0.09185791)
 shape = SubResource("BoxShape3D_twxyb")
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="Collisions/StaticBody3D" unique_id=153569517]
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D" unique_id=153569517]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.018463135, 4.2453375, -0.09185791)
 shape = SubResource("BoxShape3D_twxyb")
 

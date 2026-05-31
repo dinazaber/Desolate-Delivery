@@ -1,12 +1,12 @@
 [gd_scene format=3 uid="uid://beqguglkai1oh"]
 
 [ext_resource type="ArrayMesh" uid="uid://cwhuegir0snfi" path="res://assets/Meshes/Enemies/Robot.mesh" id="1_grc7g"]
-[ext_resource type="Script" uid="uid://dm2yl7b4griiw" path="res://Scripts/Enemies/Robot.gd" id="1_h872o"]
-[ext_resource type="Script" uid="uid://dqv7818ohy4lu" path="res://Scripts/Enemies/HitBox.gd" id="3_hfj1t"]
+[ext_resource type="Script" uid="uid://dm2yl7b4griiw" path="res://Scripts/enemies/Robot.gd" id="1_h872o"]
+[ext_resource type="Script" uid="uid://dqv7818ohy4lu" path="res://Scripts/enemies/HitBox.gd" id="3_hfj1t"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_h872o"]
-radius = 0.5307617
-height = 2.3052979
+radius = 0.45
+height = 2.0974731
 
 [sub_resource type="Animation" id="Animation_d13cv"]
 length = 0.001
@@ -491,11 +491,9 @@ fill_from = Vector2(0.5, 0.5)
 collision_layer = 48
 collision_mask = 184
 script = ExtResource("1_h872o")
-attack_start_distance = 2.0
-attack_stop_distance = 2.0
 
 [node name="CollisionEnv" type="CollisionShape3D" parent="." unique_id=177358311]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1535034, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0495911, 0)
 shape = SubResource("CapsuleShape3D_h872o")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1869225451]
@@ -804,6 +802,7 @@ transform = Transform3D(0.9335804, 0.35836792, -1.4210855e-14, -0.35836792, 0.93
 shape = SubResource("BoxShape3D_a3cge")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1425088459]
+avoidance_enabled = true
 
 [node name="RayCast3D" type="RayCast3D" parent="." unique_id=1762672619]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.0914974, 0)
