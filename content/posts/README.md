@@ -5,8 +5,6 @@ title: Description
 
 A high-performance, low-poly combat retro shooter built in **Godot 4**.
 
-![](</media/Screenshot 2026-05-31 105302.png>)
-
 ## 💡 The Vision
 
 Our project is inspired by various shooters games.  
@@ -29,6 +27,18 @@ Also, you are free to use every part of this project as you wish as it is under 
 - Advanced AI compared to classic shooters
 - Different playable weapons, from cold weapons to launchers
 - Modern technologies(physical simulation and more)
+
+---
+
+![](</media/Screenshot 2026-05-31 105302.png>)
+
+---
+
+![](</media/Screenshot 2026-06-01 094011.png>)
+
+---
+
+
 
 ---
 
