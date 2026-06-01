@@ -1,6 +1,3 @@
----
-title: Description
----
 # Desolate Delivery
 
 A high-performance, low-poly combat retro shooter built in **Godot 4**.
