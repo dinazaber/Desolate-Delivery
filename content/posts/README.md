@@ -7,16 +7,16 @@ A high-performance, low-poly combat retro shooter built in **Godot 4**.
 
 ## 💡 The Vision
 
-Our project is inspired by various shooters games.  
-The setting is alternative reality inspired by 1940's - 1960's retro futurism.  
+Our project is inspired by various shooter games.  
+The setting in an alternate reality inspired by 1940's - 1960's retro futurism.  
 Humans discovered mysterious orange energy material that came with a meteor.  
-This material triggered a massive technological boom but its overusage led to apocalypse on the whole planet.  
-Only people in bunkers survived and the surface belongs to autonomious robots that scavenge the land to find anything that will help their bunker survive.  
+This material triggered a massive technological boom but its overuse led to a global apocalypse.  
+Only people in bunkers survived and the surface belongs to autonomous robots that scavenge the land to find anything that will help their bunker survive.  
 The player is one of those robots but more advanced military version.  
-The game is devided into unique levels that represent unique locations.  
+The game is divided into unique levels that represent unique locations.  
 You will encounter enemies(melee and ranged) on each level.  
-Each level will contain secret locations inside that the player can try to discover(it may be supply stashes or easter eggs).  
-This project focuses on optimization, targeting high frame rate on low-end mobile and PC devices.  
+Each level will contain hidden secrets for the player to discover.  
+This project focuses on optimization, targeting a high frame rate on low-end mobile and PC devices.  
 Absolutely free for everyone and made for educational purposes.  
 Also, you are free to use every part of this project as you wish as it is under MIT LICENSE.
 
@@ -25,7 +25,7 @@ Also, you are free to use every part of this project as you wish as it is under 
 - Interesting locations that the player would like to discover
 - Combat system that requires movement
 - Advanced AI compared to classic shooters
-- Different playable weapons, from cold weapons to launchers
+- Different playable weapons, from melee weapons to launchers
 - Modern technologies(physical simulation and more)
 
 ---
@@ -46,7 +46,7 @@ Also, you are free to use every part of this project as you wish as it is under 
 
 - **Engine:** Godot 4.x (Mobile Renderer)
 - **Art Style:** Low-Poly, Flat-Shaded, Wireframe, Realistic Lighting
-- **Performance Target:** Low draw calls rate, low VRAM usage, 60+ FPS on low-end hardware
+- **Performance Target:** Low draw call rate, low VRAM usage, 60+ FPS on low-end hardware
 - **Optimization Tech:**
   - Mobile renderer instead of Forward+
   - Merging identical objects into one
@@ -86,10 +86,10 @@ Also, you are free to use every part of this project as you wish as it is under 
 
 ## 🧱 Godot Plugins Used In This Project
 
-- **[MultiMesh Scatter](- - [https://github.com/arcaneenergy/godot-multimesh-scatter](https://github.com/arcaneenergy/godot-multimesh-scatter))**
+- **MultiMesh Scatter**
   - GitHub Link: [https://github.com/arcaneenergy/godot-multimesh-scatter](https://github.com/arcaneenergy/godot-multimesh-scatter)
-- **[MetaMultimeshInstance3D](- - [https://godotengine.org/asset-library/asset/2043](https://godotengine.org/asset-library/asset/2043))**
+- **MetaMultimeshInstance3D**
   - Godot Asset Library Link: [https://godotengine.org/asset-library/asset/2043](https://godotengine.org/asset-library/asset/2043)
-- **[Godot-GPU-OIDN-Denoiser](- - [https://github.com/dinazaber/Godot-GPU-OIDN-Denoiser](https://github.com/dinazaber/Godot-GPU-OIDN-Denoiser))**
+- **Godot-GPU-OIDN-Denoiser**
   - GitHub Link: [https://github.com/dinazaber/Godot-GPU-OIDN-Denoiser](https://github.com/dinazaber/Godot-GPU-OIDN-Denoiser)
 
