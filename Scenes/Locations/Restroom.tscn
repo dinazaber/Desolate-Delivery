@@ -528,6 +528,7 @@ mesh = ExtResource("8_vd18i")
 skeleton = NodePath("../../PipesYellow")
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=389432474]
+visible = false
 navigation_mesh = SubResource("NavigationMesh_qj0ge")
 
 [node name="Collisions" type="StaticBody3D" parent="NavigationRegion3D" unique_id=851965900]

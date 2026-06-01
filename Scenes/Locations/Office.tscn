@@ -917,12 +917,12 @@ size = Vector2(12.32626, 16.774233)
 [node name="Office" type="Node3D" unique_id=75341550]
 
 [node name="LightmapGI" type="LightmapGI" parent="." unique_id=1294919039]
+quality = 2
 supersampling = true
 bounces = 16
 bounce_indirect_energy = 2.0
 interior = true
 use_denoiser = false
-texel_scale = 2.0
 environment_mode = 0
 generate_probes_subdiv = 3
 light_data = ExtResource("13_p7377")
@@ -987,6 +987,7 @@ spot_range = 40.0
 spot_angle = 80.0
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=206882113]
+visible = false
 navigation_mesh = SubResource("NavigationMesh_56nff")
 
 [node name="RoomCollision" type="StaticBody3D" parent="NavigationRegion3D" unique_id=1790691675]
@@ -1436,24 +1437,25 @@ skeleton = NodePath("../../..")
 metadata/_edit_lock_ = true
 
 [node name="DesksMesh" type="MeshInstance3D" parent="Decorations/WorkingPlaces" unique_id=1378471669]
-gi_lightmap_texel_scale = 3.0
+gi_lightmap_texel_scale = 10.0
 mesh = SubResource("ArrayMesh_jnnce")
 skeleton = NodePath("../../..")
 metadata/_edit_lock_ = true
 
 [node name="ChairsMesh" type="MeshInstance3D" parent="Decorations/WorkingPlaces" unique_id=796931690]
+gi_lightmap_texel_scale = 4.0
 mesh = SubResource("ArrayMesh_dwt0u")
 skeleton = NodePath("../../..")
 metadata/_edit_lock_ = true
 
 [node name="ComputersOffMesh" type="MeshInstance3D" parent="Decorations/WorkingPlaces" unique_id=591437918]
-gi_lightmap_texel_scale = 2.0
+gi_lightmap_texel_scale = 4.0
 mesh = SubResource("ArrayMesh_m3n1v")
 skeleton = NodePath("../../..")
 metadata/_edit_lock_ = true
 
 [node name="Cups" type="MeshInstance3D" parent="Decorations/WorkingPlaces" unique_id=313427426]
-gi_lightmap_texel_scale = 1.5
+gi_lightmap_texel_scale = 6.0
 mesh = SubResource("ArrayMesh_3f41f")
 skeleton = NodePath("../../..")
 metadata/_edit_lock_ = true
@@ -1463,7 +1465,7 @@ mesh = SubResource("ArrayMesh_mcl5i")
 skeleton = NodePath("../../..")
 
 [node name="Papers" type="MeshInstance3D" parent="Decorations/WorkingPlaces" unique_id=920922691]
-gi_lightmap_texel_scale = 2.0
+gi_lightmap_texel_scale = 8.0
 mesh = SubResource("ArrayMesh_n7q0h")
 skeleton = NodePath("../../..")
 
@@ -1515,7 +1517,6 @@ metadata/_edit_lock_ = true
 
 [node name="Telephone" type="MeshInstance3D" parent="Decorations/RoomComponents" unique_id=320442399]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 13.816779, 1.2205338, -2.4981098)
-gi_lightmap_texel_scale = 0.5
 mesh = ExtResource("6_p7377")
 skeleton = NodePath("../../..")
 
@@ -1526,26 +1527,25 @@ skeleton = NodePath("../../..")
 metadata/_edit_lock_ = true
 
 [node name="Pipes" type="MeshInstance3D" parent="Decorations/RoomComponents" unique_id=646443407]
-gi_lightmap_texel_scale = 2.0
+gi_lightmap_texel_scale = 4.0
 mesh = SubResource("ArrayMesh_nhhnc")
 skeleton = NodePath("../../..")
 metadata/_edit_lock_ = true
 
 [node name="Conditioner" type="MeshInstance3D" parent="Decorations/RoomComponents" unique_id=2053785677]
 transform = Transform3D(-0.5, 0, -4.371139e-08, 0, 0.5, 0, 4.371139e-08, 0, -0.5, -1.7921573, 3.1454473, -0.02447027)
-gi_lightmap_texel_scale = 0.5
 mesh = ExtResource("38_pw8x7")
 skeleton = NodePath("")
 metadata/_edit_lock_ = true
 
 [node name="Walls" type="MeshInstance3D" parent="Decorations/RoomComponents" unique_id=980317311]
-gi_lightmap_texel_scale = 3.0
+gi_lightmap_texel_scale = 4.0
 mesh = SubResource("ArrayMesh_y31um")
 skeleton = NodePath("../../..")
 metadata/_edit_lock_ = true
 
 [node name="DoorWays" type="MeshInstance3D" parent="Decorations/RoomComponents" unique_id=890335253]
-gi_lightmap_texel_scale = 1.5
+gi_lightmap_texel_scale = 2.0
 mesh = SubResource("ArrayMesh_56nff")
 skeleton = NodePath("../../..")
 metadata/_edit_lock_ = true
