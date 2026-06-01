@@ -38,7 +38,7 @@ Also, you are free to use every part of this project as you wish as it is under 
 
 ---
 
-
+![](</media/Screenshot 2026-06-01 135158.png>)
 
 ---
 
@@ -73,13 +73,14 @@ Also, you are free to use every part of this project as you wish as it is under 
 
 ## 📅 Roadmap For The Next Few Months
 
-- Basic Player Controller
-- Art Style
-- Main Shaders
-- AI Enemy Path Finding
+- Mecha Spider Enemy
+- New Weapons
+- ~~Art Style~~
+- ~~Main Shaders~~
+- ~~AI Enemy Path Finding~~
 - Complete AI Enemy logic
 - First Level Design & Implementation
-- Basic Interface & Main Menu
+- ~~Basic Interface & Main Menu~~
 
 ## 🧱 Godot Plugins Used In This Project
 
