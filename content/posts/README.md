@@ -45,7 +45,7 @@ Also, you are free to use every part of this project as you wish as it is under 
 ## 🛠️ Technical Specifications
 
 - **Engine:** Godot 4.x (Mobile Renderer)
-- **Art Style:** Low-Poly, Flat-Shaded, Wireframe, Good Lighting
+- **Art Style:** Low-Poly, Flat-Shaded, Wireframe, Realistic Lighting
 - **Performance Target:** Low draw calls rate, low VRAM usage, 60+ FPS on low-end hardware
 - **Optimization Tech:**
   - Mobile renderer instead of Forward+
@@ -79,8 +79,10 @@ Also, you are free to use every part of this project as you wish as it is under 
 - ~~Main Shaders~~
 - ~~AI Enemy Path Finding~~
 - Complete AI Enemy logic
-- First Level Design & Implementation
+- First Level(Prologue)
 - ~~Basic Interface & Main Menu~~
+- Better Main Menu & Main Menu Song
+- Stylized Interface
 
 ## 🧱 Godot Plugins Used In This Project
 
