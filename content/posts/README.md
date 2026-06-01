@@ -1,21 +1,29 @@
-# Godot-4-Optimized-Arena-Demo
+---
+title: Description
+---
+# Desolate Delivery
 
-# Moral Scarcity
 A high-performance, low-poly combat retro shooter built in **Godot 4**.
 
-![Moral Scarcity Demo](media/ProjectGif.gif)
+![](</media/Screenshot 2026-05-31 105302.png>)
 
 ## 💡 The Vision
-Our project is inspired by classic shooters(especially Doom and Duke Nukem 3D).
-The game is devided into unique levels that represent unique locations.
-Like in classic shooters, you will encounter enemies(melee and ranged) on each level.
-Each level will contain secret locations inside that the player can try to discover(it may be supply stashes or easter eggs).
-We want to combine the retro style of classic shooters with the abilities of modern hardware by adding features those games lacked.
-This project focuses on extreme optimization, targeting very high frame rate on low-end mobile and PC devices.
-Absolutely free for everyone and made for educational purposes. 
-Also, you are free to use every part of this project as you wish as it is under **MIT LICENSE**.
+
+Our project is inspired by various shooters games.
+The setting is alternative reality inspired by 1940's - 1960's retro futurism.
+Humans discovered mysterious orange energy material that came with a meteor.
+This material triggered a massive technological boom but its overusage led to apocalypse on the whole planet.
+Only people in bunkers survived and the surface belongs to autonomious robots that scavenge the land to find anything that will help their bunker survive.
+The player is one of those robots.  
+The game is devided into unique levels that represent unique locations.  
+You will encounter enemies(melee and ranged) on each level.  
+Each level will contain secret locations inside that the player can try to discover(it may be supply stashes or easter eggs).  
+This project focuses on optimization, targeting high frame rate on low-end mobile and PC devices.  
+Absolutely free for everyone and made for educational purposes.  
+Also, you are free to use every part of this project as you wish as it is under MIT LICENSE.
 
 **What we are planning to add:**
+
 - Interesting Locations that the player would like to discover
 - Advanced AI compared to classic shooters
 - Different playable weapons, from cold to launchers
@@ -24,43 +32,47 @@ Also, you are free to use every part of this project as you wish as it is under 
 ---
 
 ## 🛠️ Technical Specifications
+
 - **Engine:** Godot 4.x (Mobile Renderer)
-- **Art Style:** Low-Poly, Flat-Shaded, Pixelated Textures
+- **Art Style:** Low-Poly, Flat-Shaded, Wireframe, Good Lighting
 - **Performance Target:** Less than 50 draw calls per frame, very low VRAM usage, 60+ FPS on low-end hardware
 - **Optimization Tech:**
   - Mobile renderer instead of Forward+
   - MultiMeshInstance3D for identical objects
   - Low resolution textures
-  - Low-poly meshes
-  - No real-time shadows
-  - No real-time lighting
+  - Baked lighting and shadows
+  - Low-poly models
   - Optimized algorithms
 
 ---
 
 ## 👥 The Team
+
+
 | Member | Role | GitHub |
-| :--- | :--- | :--- |
+| -------------- | --------------------------------------------- | ------------------------------------------------------ |
 | **Vlad** | Project Lead / Lead Dev / Assets Creator | [@dinazaber](https://github.com/dinazaber) |
 | **Yuli** | Dev 2 / Marketing Lead | N/A |
-| **Konstantin** | Dev 3 / Algorithms Developer / Assets Creator  | [@noicemann](https://github.com/noicemann) |
-| **Shimon** | Dev 4 / Algorithms Developer  | [@ShimonBeglyarov](https://github.com/ShimonBeglyarov) |
+| **Konstantin** | Dev 3 / Algorithms Developer / Assets Creator | [@noicemann](https://github.com/noicemann) |
+| **Shimon** | Dev 4 / Algorithms Developer | [@ShimonBeglyarov](https://github.com/ShimonBeglyarov) |
+
 
 ---
 
 ## 📅 Roadmap For The Next Few Months
-- [x] Basic Player Controller
-- [x] Art Style
-- [x] Main Shaders
-- [x] AI Enemy Path Finding
-- [ ] Complete AI Enemy logic
-- [ ] First Level Design & Implementation
-- [ ] Basic Interface & Main Menu
 
----
+- Basic Player Controller
+- Art Style
+- Main Shaders
+- AI Enemy Path Finding
+- Complete AI Enemy logic
+- First Level Design & Implementation
+- Basic Interface & Main Menu
 
 ## 🧱 Godot Plugins Used In This Project
+
 - **MultiMesh Scatter**
-  - GitHub Link: https://github.com/arcaneenergy/godot-multimesh-scatter
+  - GitHub Link: [https://github.com/arcaneenergy/godot-multimesh-scatter](https://github.com/arcaneenergy/godot-multimesh-scatter)
 - **MetaMultimeshInstance3D**
-  - Godot Asset Library Link: https://godotengine.org/asset-library/asset/2043
+  - Godot Asset Library Link: [https://godotengine.org/asset-library/asset/2043](https://godotengine.org/asset-library/asset/2043)
+
