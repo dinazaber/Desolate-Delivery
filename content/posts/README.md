@@ -14,7 +14,7 @@ The setting is alternative reality inspired by 1940's - 1960's retro futurism.
 Humans discovered mysterious orange energy material that came with a meteor.
 This material triggered a massive technological boom but its overusage led to apocalypse on the whole planet.
 Only people in bunkers survived and the surface belongs to autonomious robots that scavenge the land to find anything that will help their bunker survive.
-The player is one of those robots.  
+The player is one of those robots but more advanced military.  
 The game is devided into unique levels that represent unique locations.  
 You will encounter enemies(melee and ranged) on each level.  
 Each level will contain secret locations inside that the player can try to discover(it may be supply stashes or easter eggs).  
