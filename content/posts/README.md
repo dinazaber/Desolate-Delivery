@@ -27,7 +27,7 @@ Also, you are free to use every part of this project as you wish as it is under 
 - Interesting locations that the player would like to discover
 - Combat system that requires movement
 - Advanced AI compared to classic shooters
-- Different playable weapons, from cold to launchers
+- Different playable weapons, from cold weapons to launchers
 - Modern technologies(physical simulation and more)
 
 ---
@@ -39,10 +39,11 @@ Also, you are free to use every part of this project as you wish as it is under 
 - **Performance Target:** Low draw calls rate, low VRAM usage, 60+ FPS on low-end hardware
 - **Optimization Tech:**
   - Mobile renderer instead of Forward+
-  - MultiMeshInstance3D for identical objects
+  - Merging identical objects into one
   - Low resolution textures
   - Baked lighting and shadows
   - Low-poly models
+  - Single material models
   - Optimized algorithms
 
 ---
@@ -76,5 +77,6 @@ Also, you are free to use every part of this project as you wish as it is under 
   - GitHub Link: [https://github.com/arcaneenergy/godot-multimesh-scatter](https://github.com/arcaneenergy/godot-multimesh-scatter)
 - **MetaMultimeshInstance3D**
   - Godot Asset Library Link: [https://godotengine.org/asset-library/asset/2043](https://godotengine.org/asset-library/asset/2043)
-- O
+- **Godot-GPU-OIDN-Denoiser**
+  - GitHub Link: [https://github.com/dinazaber/Godot-GPU-OIDN-Denoiser](https://github.com/dinazaber/Godot-GPU-OIDN-Denoiser)
 
