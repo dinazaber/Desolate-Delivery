@@ -10,9 +10,9 @@ extends Node3D
 @export var heatPerShot: float = 22.25
 @export var coolDown: float = 4.5 # time (s) it takes to go from 100 to 0 heat
 
-@export var camera: Area3D
-@export var playerRay: RayCast3D
-@export var playerRayEnd: Marker3D
+var camera: Area3D
+var playerRay: RayCast3D
+var playerRayEnd: Marker3D
 
 var shotNum: int = 1
 var can_cool: bool = true

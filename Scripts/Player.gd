@@ -13,12 +13,12 @@ var grabbedObject: RigidBody3D = null
 
 
 # --- WEAPONS ---
-@onready var SMG = $shakeable_camera/Hands/RightHand/SMG
+@onready var Destabilizer = $shakeable_camera/Hands/RightHand/Destabilizer
 @onready var beggarsShotgun = $shakeable_camera/Hands/RightHand/BeggarsShotgun
 @onready var devestator = $shakeable_camera/Hands/RightHand/Devestator
 @onready var steamer = $shakeable_camera/Hands/LeftHand/Steamer
 @onready var drill = $shakeable_camera/Hands/LeftHand/Drill
-@onready var current_gun_R = SMG
+@onready var current_gun_R = Destabilizer
 @onready var current_gun_L = steamer
 
 
@@ -75,10 +75,6 @@ var instance_grenade
 
 
 
-
-@onready var spearSpawn = $shakeable_camera/Hands/RightHand/SpeargunPlaceholder/Barrel #What to do with this???
-
-
 # --- UI ---
 @onready var hudAnim = $hudAnimation
 @onready var crosshair = $HUD/crosshair
@@ -123,20 +119,6 @@ func save():
 		"player_health": player_health
 	}
 	return data
-
-
-# not used - delete ?
-func SuperTimerTimeOut() -> void:
-	if !canDash:
-		canDash = true
-
-
-func updateScreenEffect(): #Function for current and future screen effects
-	var forward = -camera.global_transform.basis.z
-	var horizontal_forward = Vector3(forward.x, 0, forward.z).normalized()
-	var dot = forward.dot(horizontal_forward)
-	var factor = clamp(dot, 0.0, 1.0)
-	screenEffect.material.set("shader_parameter/look_angle_factor", factor)
 	
 
 
@@ -150,10 +132,10 @@ func _ready() -> void:
 	healthbar_def_pos = healthBar.position
 	healthbar_def_color = healthBar.self_modulate
 	
-	cam_speed = SettingsManager.settings.controls.mouse_sensitivity
-	autoOpenDoors = SettingsManager.settings.game.auto_open_doors
-	autoCloseDoors = SettingsManager.settings.game.auto_close_doors
+	weapons_set_up()
+	
 	SettingsManager.player = self
+	SettingsManager.apply_settings()
 	
 	def_gun_pos = hands.position
 	
@@ -167,97 +149,40 @@ func _input(event):
 	
 	# Throwable objects
 	if Input.is_action_just_pressed("E"):
-		if grabbedObject:
-			if grabbedObject.can_let_go():
-				grabbedObject.is_held = false
-				grabbedObject.gravity_scale = 1.0
-				grabbedObject.linear_damp = 0.0
-				remove_collision_exception_with(grabbedObject)
-				grabbedObject = null
+		if grabbedObject: leave_grabbed_object()
+		
 		else: 
 			if playerRay.is_colliding():
 				var collider = playerRay.get_collider()
 				var distance = global_position.distance_to(collider.global_position) #Distance to interactionable object from the player
 				
 				#Object that can be grabbed
-				if collider is RigidBody3D:
-					if distance < 3:
-						grabbedObject = collider
-						grabbedObject.is_held = true
-						grabbedObject.gravity_scale = 0.0
-						grabbedObject.linear_damp = 0.0
-						add_collision_exception_with(grabbedObject)
+				if collider is RigidBody3D and distance < 3: grab_object(collider)
 				
-				#Doors currently
-				
-				elif collider.owner.has_method("getType"):
-					var object = collider.owner
-					if object.getType() == "Door":
-						collider = collider as StaticBody3D
-						var metadata = collider.get_meta("Dir")
-						if object.getOpenStatus() < 0 and distance < 2: object.open(metadata)
-						else: object.close(1.0)
+				#Other interactionable objects(doors currently)
+				elif collider.owner:
+					if collider.owner.has_method("getType"):
+						var object = collider.owner
+						match object.getType():
+							"Door": door_interaction(collider, distance)
 				
 	
 	# Weapon Switch
-	if Input.is_action_just_pressed("1") and !drill.in_action: # destabilizer
-		if current_gun_R != SMG:
-			if current_gun_R.anim.is_playing():
-				await current_gun_R.anim.animation_finished
-			await current_gun_R.undraw(1.0 * weapon_draw_mod, false)
-			hideWeapons()
-			current_gun_R = SMG
-			current_gun_R.show()
-			current_gun_R.draw(1.0 * weapon_draw_mod)
-	
-	elif Input.is_action_just_pressed("2") and !drill.in_action: # beggars shotgun
-		if current_gun_R != beggarsShotgun:
-			if current_gun_R.anim.is_playing():
-				await current_gun_R.anim.animation_finished
-			await current_gun_R.undraw(1.0 * weapon_draw_mod, false)
-			hideWeapons()
-			current_gun_R = beggarsShotgun
-			current_gun_R.show()
-			current_gun_R.draw(1.0 * weapon_draw_mod)
-	
-	elif Input.is_action_just_pressed("3") and !drill.in_action: # devastator
-		if current_gun_R != devestator:
-			if current_gun_R.anim.is_playing():
-				await current_gun_R.anim.animation_finished
-			await current_gun_R.undraw(1.0 * weapon_draw_mod, false)
-			hideWeapons()
-			current_gun_R = devestator
-			current_gun_R.show()
-			current_gun_R.draw(1.0 * weapon_draw_mod)
+	handle_weapon_switch()
 	
 	
-	if Input.is_action_just_pressed("Wheel"):
-		throw_grenade()
+	if Input.is_action_just_pressed("Wheel"): throw_grenade()
 	
-	if Input.is_action_pressed("Space"): drillJump = false
-	else: drillJump = true
+	drillJump = Input.is_action_pressed("Space")
 	
-	if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
-		if event is InputEventMouseMotion:
-			yaw-=event.relative.x * cam_speed
-			pitch+=event.relative.y * cam_speed
-			pitch = clamp(pitch, deg_to_rad(-90), deg_to_rad(90))
-			mouse_input = event.relative
-			
-		#if event is InputEventMouseButton: #UNUSED
-			#if event.button_index == MOUSE_BUTTON_WHEEL_UP:
-				#cameraDistance+=1.5
-			#elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
-				#cameraDistance-=1.5
+	handle_camera_rotations(event)
 				
 
 func _process(delta: float) -> void: # adaptive fps
 	gun_rot_amount = 0.6/(delta*14400)
 
 func _physics_process(delta) -> void: # fixed 60 fps
-	if screenEffect!=null: updateScreenEffect()
-	
-	#cameraDistance = clamp(cameraDistance,15, 45)
+	updateScreenEffect()
 	
 	#neg vals are for recharge delay i.e -5 is 0.5 sec rechare delay VLAD
 	grenadeCool = clamp(grenadeCool + (100 * delta) / grenadeCoolTime, -10.0, 100.0)
@@ -269,76 +194,9 @@ func _physics_process(delta) -> void: # fixed 60 fps
 	if !dead:
 		rotation.y = lerp_angle(rotation.y, yaw, delta * 30.0) # left/right
 		camera.rotation.x = lerp_angle(camera.rotation.x, -pitch, delta * 30.0)
-		
 	
-	check_player_feet()
-
-	
-	if Input.is_action_pressed("LeftMouse") and !drill.in_action and !dead:
-		if !grabbedObject and fireDelay==15.0:
-			match current_gun_R:
-				SMG: current_gun_R.spinup(true)
-				beggarsShotgun: current_gun_R.charge()
-				devestator: current_gun_R.shoot()
-		elif grabbedObject:
-			if grabbedObject.can_let_go():
-				grabbedObject.is_held = false
-				grabbedObject.gravity_scale = 1
-				grabbedObject.linear_damp = 0.0
-				remove_collision_exception_with(grabbedObject)
-				grabbedObject = null
-				fireDelay = 0.0
-	else:
-		match current_gun_R:
-			SMG: current_gun_R.spinup(false)
-	
-	if Input.is_action_just_released("LeftMouse") and !drill.in_action and !dead:
-		if !grabbedObject and fireDelay==15.0:
-			match current_gun_R:
-				beggarsShotgun: current_gun_R.shoot()
-	
-	
-	if Input.is_action_just_pressed("RightMouse") and !drill.in_action and !dead:
-		current_gun_L.shoot()
-	
-	if Input.is_action_just_pressed("F") and !dead:
-		if drill.can_swing and !drill.in_action and !current_gun_L.in_action:
-			current_gun_R.undraw(1.5, true)
-			drill.show()
-			await drill.punch(velocity.length() if velocity.length() >= 15.0 else 0.0)
-			current_gun_R.draw(1.2)
-			drill.hide()
-	
-	
-	handle_grabbed_object(delta)
-	
-	if Input.is_action_pressed("Ctrl") and !dead: # crouch/slide
-		crouch = true
-		playerCollision.shape.height = lerp(playerCollision.shape.height, 1.0, delta * 15.0)
-		$Feet.position.y = lerp($Feet.position.y, 0.5, delta * 15.0)
-		if is_on_floor() and velocity.length() > crouch_speed + 0.1: # 0.1 is epsilon for numerical error
-			slide = true
-			floor_stop_on_slope = false
-			accel_mod = 0.05
-			var normal = get_floor_normal()
-			normal.y = -normal.y
-			velocity += normal * 0.3
-		else:
-			slide = false
-			floor_stop_on_slope = true
-			accel_mod = 1.0
-	elif !$UncrouchCheck.is_colliding():
-		slide = false
-		floor_constant_speed = true
-		crouch = false
-		playerCollision.shape.height = lerp(playerCollision.shape.height, 2.0, delta * 15.0)
-		$Feet.position.y = lerp($Feet.position.y, 0.0, delta * 15.0)
-		accel_mod = 1.0
-	
-	if crouch:
-		SPEED = move_toward(SPEED, crouch_speed, delta * 15.0)
-	else:
-		SPEED = move_toward(SPEED, walk_speed, delta * 15.0)
+	var speed = crouch_speed if crouch else walk_speed
+	SPEED = move_toward(SPEED, speed, delta * 15.0)
 	
 	# Get direction
 	var currentInput = Input.get_vector("A", "D", "W", "S")
@@ -351,69 +209,23 @@ func _physics_process(delta) -> void: # fixed 60 fps
 	
 	
 	# dash
-	if Input.is_action_just_pressed("Shift") and dashCool == 100.0 and !crouch and !dead:
-		dash = true
-		dashCool = -10.0
-		var dashDir: Vector3 = Vector3.ZERO
-		if direction: dashDir = direction
-		else:
-			dashDir = -global_transform.basis.z.normalized()
-			dashDir.y = 0.0
-		knockBack(dashDir, dash_speed, false, 0.2)
-		#canDash = false
-		#$SuperTimer.set("wait_time",0.5)
-		#$SuperTimer.start()
-		await get_tree().create_timer(0.2).timeout
-		dash = false
-		if !is_on_floor() or !slide:
-			knockBack(-dashDir, 15 * Vector3(velocity.x, 0.0, velocity.z).length() / dash_speed, false, 0.0)
+	if Input.is_action_just_pressed("Shift"): handle_dash()
 	
 	#Basic movement
-	if is_on_floor(): # grounded speed
+	if is_on_floor(): # Grounded speed
 		if airborne:
 			airborne = false
 			camera.add_trauma(clamp(0.7 * landVel/10, 0.0, 5.0))
 			landVel = 0.0
 		
-		if Input.is_action_just_pressed("Space") and !dead:
-			velocity.y += jump_speed * (0.75 if crouch else 1.0)
+		# Jumping
+		if Input.is_action_just_pressed("Space") and !dead: velocity.y += jump_speed * (0.75 if crouch else 1.0)
 		
-		if dead:
-			camera.rotation.x = lerp_angle(camera.rotation.x, 0.0, delta * 10.0)
+		if dead: camera.rotation.x = lerp_angle(camera.rotation.x, 0.0, delta * 10.0)
 		
-		if direction:
-			# head bob
-			if !slide:
-				var vel = velocity.length()
-				var bob_amount: float = 0.05 * clamp(vel/5, 0, 2)
-				var bob_freq: float = 0.005
-				var bob_y = sin(Time.get_ticks_msec() * 2 * bob_freq)
-				camera.position.y = lerp(camera.position.y, camDefHeight + bob_y * bob_amount, delta * 10.0)
-			
-			# walk speed
-			if !knocked:
-				velocity.x = lerp(velocity.x, direction.x * SPEED, delta * 12.5 * accel_mod)
-				velocity.z = lerp(velocity.z, direction.z * SPEED, delta * 12.5 * accel_mod)
+		ground_movement(delta)
 		
-		else: # no input speed
-			if !knocked:
-				velocity.x = lerp(velocity.x, 0.0, delta * 8.0 * accel_mod)
-				velocity.z = lerp(velocity.z, 0.0, delta * 8.0 * accel_mod)
-		
-	else: # airborne speed
-		airborne = true
-		landVel = abs(velocity.y)
-		
-		var down_force: float = clamp(15.0 - (velocity.y if velocity.y <= 0.0 else 0.0), 0.0, 25.0)
-		if dash and velocity.y < 0:
-			down_force = 0.0
-			velocity.y = 0.0
-		velocity.y = clamp(velocity.y - delta * down_force, -80.0, 80.0)  # Gravity
-		
-		if !knocked:
-			var desired_speed: Vector2 = Vector2(direction.x * SPEED, direction.z * SPEED)
-			velocity.x = lerp(velocity.x, desired_speed.x, delta * (1.25 if abs(desired_speed.x) > abs(velocity.x) else 0.2) * accel_mod)
-			velocity.z = lerp(velocity.z, desired_speed.y, delta * (1.25 if abs(desired_speed.y) > abs(velocity.z) else 0.2) * accel_mod)
+	else: air_movement(delta) # Airborne speed
 	
 	if !dead:
 		cam_gun_tilt_sway(currentInput.x, currentInput.y, delta)
@@ -422,13 +234,54 @@ func _physics_process(delta) -> void: # fixed 60 fps
 	handle_healthBar()
 	handle_heatBars()
 	
+	handle_firing()
+	
+	check_player_feet()
 	push_object()
+	handle_grabbed_object(delta)
+	handle_crouch(delta)
 	move_and_slide()
 	speed_lines()
+	
 
+# --- NO CATEGORY
 
+func weapons_set_up():
+	var weaponList = $shakeable_camera/Hands/RightHand.get_children() + $shakeable_camera/Hands/LeftHand.get_children()
+	for child in weaponList:
+		if "camera" in child: child.camera = $shakeable_camera
+		if "playerRay" in child: child.playerRay = $shakeable_camera/PlayerRay
+		if "playerRayEnd" in child: child.playerRayEnd = $shakeable_camera/PlayerRay/PlayerRayEnd
 
+func handle_camera_rotations(event):
+	if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
+		if event is InputEventMouseMotion:
+			yaw-=event.relative.x * cam_speed
+			pitch+=event.relative.y * cam_speed
+			pitch = clamp(pitch, deg_to_rad(-90), deg_to_rad(90))
+			mouse_input = event.relative
+
+func handle_weapon_switch():
+	if Input.is_action_pressed("1"): switch_weapon(Destabilizer)
+	elif Input.is_action_pressed("2"): switch_weapon(beggarsShotgun)
+	elif Input.is_action_pressed("3"): switch_weapon(devestator)
+	
+	
+func switch_weapon(weapon):
+	if current_gun_R != weapon and !drill.in_action:
+		if current_gun_R.anim.is_playing(): await current_gun_R.anim.animation_finished
+		await current_gun_R.undraw(1.0 * weapon_draw_mod, false)
+		hideWeapons()
+		current_gun_R = weapon
+		current_gun_R.show()
+		current_gun_R.draw(1.0 * weapon_draw_mod)
+		
+func hideWeapons(): #We will add here check for left/right side later I guess
+	for i in $shakeable_camera/Hands/RightHand.get_children():
+		if i is Node3D: i.visible = false		
+		
 # --- EFFECTS ---
+
 func cam_gun_tilt_sway(input_x, input_y, delta):
 	if camera:
 		camera.rotation.z = lerp(camera.rotation.z, -input_x * cam_rot_amount, delta * 5.0)
@@ -463,11 +316,23 @@ func speed_lines():
 	speedParticles.amount_ratio = (velocity.length() - 15.0) / 5.0 + 0.2
 	speedParticles.look_at(global_position + velocity + Vector3(0.001, 0.0, 0.0)) # last bit is to prevent colinear warnings
 
-func hideWeapons(): #We will add here check for left/right side later I guess
-	for i in $shakeable_camera/Hands/RightHand.get_children():
-		if i is Node3D: i.hide()
+func head_bob(delta):
+	var vel = velocity.length()
+	var bob_amount: float = 0.05 * clamp(vel/5, 0, 2)
+	var bob_freq: float = 0.005
+	var bob_y = sin(Time.get_ticks_msec() * 2 * bob_freq)
+	camera.position.y = lerp(camera.position.y, camDefHeight + bob_y * bob_amount, delta * 10.0)
+
+func updateScreenEffect(): #Function for current and future screen effects
+	if screenEffect!=null: 
+		var forward = -camera.global_transform.basis.z
+		var horizontal_forward = Vector3(forward.x, 0, forward.z).normalized()
+		var dot = forward.dot(horizontal_forward)
+		var factor = clamp(dot, 0.0, 1.0)
+		screenEffect.material.set("shader_parameter/look_angle_factor", factor)
 
 # --- PHYSICS ---
+
 func throw_grenade():
 	if grenadeCool == 100.0:
 		instance_grenade = grenade.instantiate()
@@ -487,6 +352,74 @@ func knockBack(dir, force, slowOnGround, time):
 	velocity += dir * force
 	await get_tree().create_timer(time).timeout
 	knocked = false
+
+func ground_movement(delta):
+	if direction:
+		# Head bob
+		if !slide: head_bob(delta)
+			
+		# Walk speed
+		if !knocked:
+			velocity.x = lerp(velocity.x, direction.x * SPEED, delta * 12.5 * accel_mod)
+			velocity.z = lerp(velocity.z, direction.z * SPEED, delta * 12.5 * accel_mod)
+		
+	else: # No input speed
+		if !knocked:
+			velocity.x = lerp(velocity.x, 0.0, delta * 8.0 * accel_mod)
+			velocity.z = lerp(velocity.z, 0.0, delta * 8.0 * accel_mod)
+
+func air_movement(delta):
+	airborne = true
+	landVel = abs(velocity.y)
+	
+	var down_force: float = clamp(15.0 - (velocity.y if velocity.y <= 0.0 else 0.0), 0.0, 25.0)
+	if dash and velocity.y < 0:
+		down_force = 0.0
+		velocity.y = 0.0
+	velocity.y = clamp(velocity.y - delta * down_force, -80.0, 80.0)  # Gravity
+	
+	if !knocked:
+		var desired_speed: Vector2 = Vector2(direction.x * SPEED, direction.z * SPEED)
+		velocity.x = lerp(velocity.x, desired_speed.x, delta * (1.25 if abs(desired_speed.x) > abs(velocity.x) else 0.2) * accel_mod)
+		velocity.z = lerp(velocity.z, desired_speed.y, delta * (1.25 if abs(desired_speed.y) > abs(velocity.z) else 0.2) * accel_mod)
+
+func handle_dash():
+	if dashCool == 100.0 and !crouch and !dead:
+		dash = true
+		dashCool = -10.0
+		var dashDir: Vector3 = Vector3.ZERO
+		if direction: dashDir = direction
+		else:
+			dashDir = -global_transform.basis.z.normalized()
+			dashDir.y = 0.0
+		knockBack(dashDir, dash_speed, false, 0.2)
+		await get_tree().create_timer(0.2).timeout
+		dash = false
+		if !is_on_floor() or !slide: knockBack(-dashDir, 15 * Vector3(velocity.x, 0.0, velocity.z).length() / dash_speed, false, 0.0)
+
+func handle_crouch(delta):
+	if Input.is_action_pressed("Ctrl") and !dead: # crouch/slide
+		crouch = true
+		playerCollision.shape.height = lerp(playerCollision.shape.height, 1.0, delta * 15.0)
+		$Feet.position.y = lerp($Feet.position.y, 0.5, delta * 15.0)
+		if is_on_floor() and velocity.length() > crouch_speed + 0.1: # 0.1 is epsilon for numerical error
+			slide = true
+			floor_stop_on_slope = false
+			accel_mod = 0.05
+			var normal = get_floor_normal()
+			normal.y = -normal.y
+			velocity += normal * 0.3
+		else:
+			slide = false
+			floor_stop_on_slope = true
+			accel_mod = 1.0
+	elif !$UncrouchCheck.is_colliding():
+		slide = false
+		floor_constant_speed = true
+		crouch = false
+		playerCollision.shape.height = lerp(playerCollision.shape.height, 2.0, delta * 15.0)
+		$Feet.position.y = lerp($Feet.position.y, 0.0, delta * 15.0)
+		accel_mod = 1.0
 
 func check_player_feet():
 	if enemyBounceCheck.has_overlapping_bodies():
@@ -546,7 +479,37 @@ func push_object():
 			var push_force = mass_ratio * 30.0
 			collider.apply_impulse(push_dir * push_dir_vel_dif * push_force, collision.get_position() - collider.global_position)
 
+func throw_grabbed_object():
+	if grabbedObject.can_let_go():
+		grabbedObject.is_held = false
+		grabbedObject.gravity_scale = 1
+		grabbedObject.linear_damp = 0.0
+		remove_collision_exception_with(grabbedObject)
+		grabbedObject = null
+		fireDelay = 0.0
 
+func leave_grabbed_object():
+	if grabbedObject.can_let_go():
+		grabbedObject.is_held = false
+		grabbedObject.gravity_scale = 1.0
+		grabbedObject.linear_damp = 0.0
+		remove_collision_exception_with(grabbedObject)
+		grabbedObject = null
+		
+func grab_object(collider):
+	grabbedObject = collider
+	grabbedObject.is_held = true
+	grabbedObject.gravity_scale = 0.0
+	grabbedObject.linear_damp = 0.0
+	add_collision_exception_with(grabbedObject)
+
+func door_interaction(collider, distance):
+	var object = collider.owner
+	collider = collider as StaticBody3D
+	var metadata = collider.get_meta("Dir")
+	if object.getOpenStatus() < 0 and distance < 2: object.open(metadata)
+	else: object.close(1.0)
+	
 # --- HEALTH AND DAMAGE ---
 func checkLifeLine():
 	if player_health <= 0 and dead == false:
@@ -574,6 +537,35 @@ func heal(heal_amount):
 	player_health = clamp(player_health + heal_amount, 0.0, PLAYER_MAX_HEALTH)
 	checkLifeLine()
 
+func handle_firing():
+	if Input.is_action_pressed("LeftMouse") and !drill.in_action and !dead:
+		if !grabbedObject and fireDelay==15.0:
+			match current_gun_R:
+				Destabilizer: current_gun_R.spinup(true)
+				beggarsShotgun: current_gun_R.charge()
+				devestator: current_gun_R.shoot()
+		elif grabbedObject: throw_grabbed_object()
+	else:
+		match current_gun_R:
+			Destabilizer: current_gun_R.spinup(false)
+	
+	if Input.is_action_just_released("LeftMouse") and !drill.in_action and !dead:
+		if !grabbedObject and fireDelay==15.0:
+			match current_gun_R:
+				beggarsShotgun: current_gun_R.shoot()
+	
+	
+	if Input.is_action_just_pressed("RightMouse") and !drill.in_action and !dead:
+		current_gun_L.shoot()
+	
+	if Input.is_action_just_pressed("F") and !dead:
+		if drill.can_swing and !drill.in_action and !current_gun_L.in_action:
+			current_gun_R.undraw(1.5, true)
+			drill.show()
+			await drill.punch(velocity.length() if velocity.length() >= 15.0 else 0.0)
+			current_gun_R.draw(1.2)
+			drill.hide()
+			
 # --- UI ---
 func handle_healthBar():
 	var health_dif = abs(healthBar.value - player_health)

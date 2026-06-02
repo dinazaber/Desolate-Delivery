@@ -11,10 +11,9 @@ extends Node3D
 @export var pellets: int = 2 # number of pellets
 @export var bullet_speed: float = 85.0 # Speed of particles
 
-@export var camera: Area3D
-@export var playerRay: RayCast3D
-@export var playerRayEnd: Marker3D
-@onready var lookTarget = playerRayEnd.global_position
+var camera: Area3D
+var playerRay: RayCast3D
+var playerRayEnd: Marker3D
 
 @onready var anim: AnimationPlayer = $AnimationPlayer
 @onready var heatBuffer = $HeatBuffer

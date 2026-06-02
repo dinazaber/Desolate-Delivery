@@ -453,6 +453,7 @@ transform = Transform3D(0.98480725, 0.17364806, 0, -0.044943437, 0.25488684, -0.
 [node name="Frame" type="MeshInstance3D" parent="BeggarsShotgun" unique_id=972063788]
 transform = Transform3D(-0.03, -9.7406916e-11, -4.529874e-09, -9.740691e-11, 0.030000001, -6.984924e-11, 4.529874e-09, -6.9849224e-11, -0.03, 0, -0.030000001, -0.58)
 cast_shadow = 0
+gi_mode = 2
 mesh = ExtResource("2_xapv0")
 
 [node name="BarrelDementiaPills" type="Marker3D" parent="BeggarsShotgun/Frame" unique_id=958073626]
@@ -460,6 +461,7 @@ mesh = ExtResource("2_xapv0")
 [node name="Barrels" type="MeshInstance3D" parent="BeggarsShotgun/Frame/BarrelDementiaPills" unique_id=1195580126]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0.12)
 cast_shadow = 0
+gi_mode = 2
 mesh = ExtResource("6_pc0kw")
 skeleton = NodePath("../..")
 
@@ -478,7 +480,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -75)
 [node name="tracer" type="GPUParticles3D" parent="BeggarsShotgun" unique_id=42885782]
 transform = Transform3D(0.99999994, -3.3306717e-16, 0, -5.5511125e-16, 0.99999976, -2.2204459e-16, 0, 2.220446e-16, 0.9999998, -7.2736976e-09, -7.103229e-11, -0.96949184)
 cast_shadow = 0
-gi_mode = 2
 emitting = false
 amount = 9
 lifetime = 0.1
@@ -498,7 +499,6 @@ skeleton = NodePath("../../..")
 [node name="steam" type="GPUParticles3D" parent="BeggarsShotgun" unique_id=391177639]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.02981548, -0.05998698, -0.08985975)
 cast_shadow = 0
-gi_mode = 2
 amount = 6
 amount_ratio = 0.0
 visibility_aabb = AABB(-0.5, -0.5, -0.5, 1, 1, 1)

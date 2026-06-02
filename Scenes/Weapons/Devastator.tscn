@@ -345,11 +345,13 @@ libraries/ = SubResource("AnimationLibrary_pv3de")
 [node name="Sprite" type="MeshInstance3D" parent="." unique_id=16884627]
 transform = Transform3D(0, 0, 0, 0, 0, 0, 0, 0, 0, -5.507635e-08, 0.03, -0.93)
 cast_shadow = 0
+gi_mode = 2
 mesh = SubResource("PlaneMesh_pv3de")
 skeleton = NodePath("../Marker3D")
 
 [node name="sparks" type="GPUParticles3D" parent="." unique_id=14102301]
 transform = Transform3D(0.98162717, 0.190809, 0, -0.190809, 0.98162717, 0, 0, 0, 1, -0.081479326, 0.03357126, -0.35895425)
+gi_mode = 2
 emitting = false
 lifetime = 0.3
 one_shot = true
@@ -379,6 +381,7 @@ skeleton = NodePath("../..")
 [node name="Barrel" type="MeshInstance3D" parent="Marker3D/Base" unique_id=725197382]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10.9)
 cast_shadow = 0
+gi_mode = 2
 mesh = ExtResource("5_wr5gp")
 skeleton = NodePath("../../..")
 

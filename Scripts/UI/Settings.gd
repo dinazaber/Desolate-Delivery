@@ -21,6 +21,7 @@ func _ready() -> void:
 	
 	settings = SettingsManager.settings.duplicate(true)
 	uiRefresh()
+	SettingsManager.apply_settings()
 	
 	get_tree().root.size_changed.connect(func(): on_window_size_changed())
 	
@@ -72,7 +73,6 @@ func copyToConfig() -> void:
 			SettingsManager.settings[section][key] = settings[section][key]
 			
 	SettingsManager.save_settings()
-	SettingsManager.apply_settings()
 			
 
 func uiRefresh():
@@ -104,6 +104,8 @@ func uiRefresh():
 	setSelected.call_deferred(mousSensBar, SettingsManager.settings.controls.mouse_sensitivity*10000)
 	$ScrollContainer/VBoxContainer/Brighness/Label2.text = str(SettingsManager.settings.video.brightness)
 	$ScrollContainer/VBoxContainer/MouseSens/Label2.text = str(SettingsManager.settings.controls.mouse_sensitivity)
+		
+		
 			
 		
 
@@ -140,6 +142,7 @@ func _on_anti_aliasing_item_selected(index: int) -> void:
 func _on_apply_settings_pressed() -> void:
 	buildSettings()
 	copyToConfig()
+	SettingsManager.apply_settings()
 	uiRefresh()
 	
 	

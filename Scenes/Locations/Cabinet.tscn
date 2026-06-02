@@ -458,6 +458,7 @@ light_color = Color(0.9151226, 0.78603435, 0.44348556, 1)
 light_energy = 0.5
 light_indirect_energy = 3.0
 light_bake_mode = 1
+distance_fade_enabled = true
 spot_range = 10.0
 spot_angle = 70.0
 
@@ -713,6 +714,7 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.7
 mesh = ExtResource("29_lkdcv")
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=752141760]
+visible = false
 navigation_mesh = SubResource("NavigationMesh_lkdcv")
 
 [node name="Room" type="StaticBody3D" parent="NavigationRegion3D" unique_id=872184391]

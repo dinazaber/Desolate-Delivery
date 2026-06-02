@@ -183,7 +183,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_gokx4"]
 resource_name = "healthBeep"
-length = 0.13333668
+length = 0.33333334
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -204,13 +204,6 @@ _data = {
 &"grenadeBeep": SubResource("Animation_acvkj"),
 &"healthBeep": SubResource("Animation_gokx4")
 }
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kyqiw"]
-shading_mode = 0
-
-[sub_resource type="BoxMesh" id="BoxMesh_rpqav"]
-material = SubResource("StandardMaterial3D_kyqiw")
-size = Vector3(1, 2, 1)
 
 [sub_resource type="Curve" id="Curve_yoq75"]
 _data = [Vector2(0, 0.49789327), 0.0, 0.0, 0, 0, Vector2(0.25429553, 1), 0.0, 0.0, 0, 0, Vector2(0.49828184, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -323,22 +316,15 @@ libraries/ = SubResource("AnimationLibrary_yoq75")
 [node name="hudAnimation" type="AnimationPlayer" parent="." unique_id=1333337521]
 libraries/ = SubResource("AnimationLibrary_acvkj")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=620583355]
-visible = false
-cast_shadow = 0
-mesh = SubResource("BoxMesh_rpqav")
-
 [node name="UncrouchCheck" type="RayCast3D" parent="." unique_id=880420750]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 target_position = Vector3(0, 2, 0)
 collision_mask = 27
 collide_with_areas = true
 
-[node name="SuperTimer" type="Timer" parent="." unique_id=267019974]
-one_shot = true
-
 [node name="SpeedParticles" type="GPUParticles3D" parent="." unique_id=220422398]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+gi_mode = 0
 amount = 36
 amount_ratio = 0.0
 lifetime = 0.4
@@ -366,31 +352,8 @@ transform = Transform3D(1, 0, 0, 0, 1, -1.764077e-33, 0, 1.764077e-33, 1, 0, 0, 
 [node name="RightHand" parent="shakeable_camera/Hands" unique_id=267885530 instance=ExtResource("2_kyqiw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15, -0.137, -0.25)
 
-[node name="SMG" parent="shakeable_camera/Hands/RightHand" index="1" unique_id=1941681137 node_paths=PackedStringArray("camera", "playerRay", "playerRayEnd")]
-camera = NodePath("../../..")
-playerRay = NodePath("../../../PlayerRay")
-playerRayEnd = NodePath("../../../PlayerRay/PlayerRayEnd")
-
-[node name="BeggarsShotgun" parent="shakeable_camera/Hands/RightHand" index="2" unique_id=893199726 node_paths=PackedStringArray("camera", "playerRay", "playerRayEnd")]
-camera = NodePath("../../..")
-playerRay = NodePath("../../../PlayerRay")
-playerRayEnd = NodePath("../../../PlayerRay/PlayerRayEnd")
-
-[node name="Devestator" parent="shakeable_camera/Hands/RightHand" index="3" unique_id=1237437943 node_paths=PackedStringArray("camera", "playerRay", "playerRayEnd")]
-camera = NodePath("../../..")
-playerRay = NodePath("../../../PlayerRay")
-playerRayEnd = NodePath("../../../PlayerRay/PlayerRayEnd")
-
 [node name="LeftHand" parent="shakeable_camera/Hands" unique_id=1896444700 instance=ExtResource("3_nn08x")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.2, -0.137, -0.25)
-
-[node name="Steamer" parent="shakeable_camera/Hands/LeftHand" index="0" unique_id=1493507664 node_paths=PackedStringArray("camera", "playerRay")]
-camera = NodePath("../../..")
-playerRay = NodePath("../../../PlayerRay")
-
-[node name="Drill" parent="shakeable_camera/Hands/LeftHand" index="1" unique_id=1590022059 node_paths=PackedStringArray("camera", "player")]
-camera = NodePath("../../..")
-player = NodePath("../../../..")
 
 [node name="PauseMenu" type="Control" parent="." unique_id=877245422 node_paths=PackedStringArray("hud")]
 process_mode = 3
@@ -516,7 +479,7 @@ show_percentage = false
 
 [node name="DashBar" type="ProgressBar" parent="HUD" unique_id=1703619297]
 modulate = Color(0.3137255, 1, 1, 1)
-self_modulate = Color(0.3137255, 0.84313726, 0.8235294, 0.78431374)
+self_modulate = Color(1.1166062, 2.8081753, 2.744509, 0.78431374)
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -611,18 +574,12 @@ visible = false
 [connection signal="playerDead" from="." to="shakeable_camera/Hands/RightHand" method="_on_player_player_dead"]
 [connection signal="playerDead" from="." to="PauseMenu" method="_on_player_player_dead"]
 [connection signal="playerDead" from="." to="DeadScreen" method="_on_player_dead"]
-[connection signal="restoreCool" from="." to="shakeable_camera/Hands/RightHand/SMG" method="_on_restore_cool"]
+[connection signal="restoreCool" from="." to="shakeable_camera/Hands/RightHand/Destabilizer" method="_on_restore_cool"]
 [connection signal="restoreCool" from="." to="shakeable_camera/Hands/RightHand/BeggarsShotgun" method="_on_restore_cool"]
 [connection signal="restoreCool" from="." to="shakeable_camera/Hands/LeftHand/Steamer" method="_on_restore_cool"]
-[connection signal="timeout" from="SuperTimer" to="." method="SuperTimerTimeOut"]
-[connection signal="knockBack" from="shakeable_camera/Hands/LeftHand/Steamer" to="." method="knockBack"]
 [connection signal="pressed" from="PauseMenu/PauseMenu/MarginContainer/VBoxContainer/Resume" to="PauseMenu" method="_on_resume_pressed"]
 [connection signal="pressed" from="PauseMenu/PauseMenu/MarginContainer/VBoxContainer/Settings" to="PauseMenu" method="_on_settings_pressed"]
 [connection signal="pressed" from="PauseMenu/PauseMenu/MarginContainer/VBoxContainer/Save Menu" to="PauseMenu" method="_on_save_menu_pressed"]
 [connection signal="pressed" from="PauseMenu/PauseMenu/MarginContainer/VBoxContainer/Quit" to="PauseMenu" method="_on_quit_pressed"]
 [connection signal="closed" from="PauseMenu/Settings" to="PauseMenu" method="_on_settings_closed"]
 [connection signal="closed" from="PauseMenu/SaveMenu" to="PauseMenu" method="_on_save_menu_closed"]
-
-[editable path="shakeable_camera"]
-[editable path="shakeable_camera/Hands/RightHand"]
-[editable path="shakeable_camera/Hands/LeftHand"]

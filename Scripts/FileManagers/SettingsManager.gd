@@ -2,7 +2,7 @@ extends Node
 
 const SAVE_PATH = "user://settings.cfg"
 var config = ConfigFile.new()
-var player: CharacterBody3D
+var player
 
 var settings = {
 	"video": {
@@ -69,7 +69,6 @@ func load_settings():
 		for key in settings[section].keys():
 			settings[section][key] = config.get_value(section, key, settings[section])
 	
-	apply_settings()
 	
 func apply_settings():
 	
@@ -117,6 +116,7 @@ func apply_settings():
 		get_viewport().msaa_3d = Viewport.MSAA_DISABLED
 	
 	if player:
-		player.cam_speed = settings.controls.mouse_sensitivity
-		player.autoOpenDoors = settings.game.auto_open_doors
-		player.autoCloseDoors = settings.game.auto_close_doors
+		player.cam_speed = SettingsManager.settings.controls.mouse_sensitivity
+		player.autoOpenDoors = SettingsManager.settings.game.auto_open_doors
+		player.autoCloseDoors = SettingsManager.settings.game.auto_close_doors
+	

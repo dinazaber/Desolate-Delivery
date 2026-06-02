@@ -423,15 +423,18 @@ transform = Transform3D(1, 0, 0, 0, 0.49999997, -0.86602545, 0, 0.86602545, 0.49
 
 [node name="Base" type="MeshInstance3D" parent="Destabilizer" unique_id=1924472760]
 transform = Transform3D(-0.03, 0, -2.6226832e-09, 0, 0.03, 0, 2.6226832e-09, 0, -0.03, 0, 0.13, -0.13)
+gi_mode = 2
 mesh = ExtResource("2_547a7")
 skeleton = NodePath("../..")
 
 [node name="Barrels" type="MeshInstance3D" parent="Destabilizer/Base" unique_id=867022796]
+gi_mode = 2
 mesh = ExtResource("3_xocnw")
 skeleton = NodePath("../../..")
 
 [node name="Belt" type="MeshInstance3D" parent="Destabilizer/Base" unique_id=582651122]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.15, -3.15, 14)
+gi_mode = 2
 mesh = ExtResource("4_chb2l")
 skeleton = NodePath("../../..")
 
@@ -451,6 +454,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -75)
 [node name="tracer" type="GPUParticles3D" parent="Destabilizer" unique_id=1931424156]
 transform = Transform3D(1.0000001, 0, 0, 0, 1.0000001, 0, 0, 0, 1.0000001, -1.1920929e-07, 0.13, -0.9842129)
 cast_shadow = 0
+gi_mode = 2
 emitting = false
 amount = 1
 lifetime = 0.1
@@ -463,6 +467,7 @@ draw_pass_1 = SubResource("RibbonTrailMesh_hpmwm")
 transform = Transform3D(0, 0, 0, 0, 0, 0, 0, 0, 0, 1.1920929e-07, 0, -0.09520483)
 visible = false
 cast_shadow = 0
+gi_mode = 2
 mesh = SubResource("PlaneMesh_ovc61")
 skeleton = NodePath("../../../..")
 
