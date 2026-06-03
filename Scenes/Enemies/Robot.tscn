@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://beqguglkai1oh"]
 
 [ext_resource type="ArrayMesh" uid="uid://cwhuegir0snfi" path="res://assets/Meshes/Enemies/Robot.mesh" id="1_grc7g"]
-[ext_resource type="Script" uid="uid://dm2yl7b4griiw" path="res://Scripts/Enemies/Robot.gd" id="1_h872o"]
-[ext_resource type="Script" uid="uid://dqv7818ohy4lu" path="res://Scripts/Enemies/HitBox.gd" id="3_hfj1t"]
+[ext_resource type="Script" uid="uid://dm2yl7b4griiw" path="res://Scripts/enemies/Robot.gd" id="1_h872o"]
+[ext_resource type="Script" uid="uid://dqv7818ohy4lu" path="res://Scripts/enemies/HitBox.gd" id="3_hfj1t"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_h872o"]
 radius = 0.45
@@ -487,7 +487,7 @@ gradient = SubResource("Gradient_bss3a")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 
-[node name="Robot" type="CharacterBody3D" unique_id=969091388 groups=["Enemy", "Persist"]]
+[node name="Robot" type="CharacterBody3D" unique_id=969091388 groups=["Enemy", "Persist", "Pull"]]
 collision_layer = 48
 collision_mask = 184
 script = ExtResource("1_h872o")
@@ -692,15 +692,12 @@ process_material = SubResource("ParticleProcessMaterial_uv04q")
 draw_pass_1 = SubResource("BoxMesh_oqbdp")
 
 [node name="BulletRay" type="RayCast3D" parent="Skeleton3D/ArmR" unique_id=2123343728]
-transform = Transform3D(1, -1.3969839e-09, -7.5495166e-15, 0, 1.0000001, 0, -5.3734794e-14, 0, 1, 9.536743e-07, 3.2000003, -2.3841858e-07)
+transform = Transform3D(1, 0, 0, 0, 1.0000002, 0, 0, 0, 1.0000002, 2.861023e-06, 3.2000005, -2.3841858e-07)
 target_position = Vector3(0, 333, 0)
 collision_mask = 169
 
-[node name="BulletRayEnd" type="Marker3D" parent="Skeleton3D/ArmR" unique_id=477852913]
-transform = Transform3D(1.0000001, -1.3969839e-09, -2.1982416e-14, 0, 1.0000001, 5.684342e-14, -2.5757174e-14, 5.684342e-14, 1.0000001, 0, 336.2, 0)
-
-[node name="Bullet" type="GPUParticles3D" parent="Skeleton3D/ArmR" unique_id=111125711]
-transform = Transform3D(1.0000002, 9.313226e-10, -2.1982416e-14, -4.656613e-10, 1, 5.684342e-14, 4.574119e-14, 1.1368684e-13, 1.0000001, -0.019000053, 3.2, 0)
+[node name="Bullet" type="GPUParticles3D" parent="Skeleton3D/ArmR/BulletRay" unique_id=111125711]
+transform = Transform3D(1.0000004, 9.313226e-10, -6.37268e-14, -9.313226e-10, 0.9999999, -5.684342e-14, 4.5963233e-14, 5.684342e-14, 0.9999999, 0, 0, 0)
 emitting = false
 amount = 1
 lifetime = 0.5
@@ -711,6 +708,9 @@ trail_enabled = true
 trail_lifetime = 0.5
 process_material = SubResource("ParticleProcessMaterial_h872o")
 draw_pass_1 = SubResource("TubeTrailMesh_o787m")
+
+[node name="BulletRayEnd" type="Marker3D" parent="Skeleton3D/ArmR/BulletRay" unique_id=477852913]
+transform = Transform3D(1.0000002, -1.3969839e-09, -3.619327e-14, -4.656613e-10, 1, 5.684342e-14, -1.15463195e-14, 0, 0.9999999, -2.861023e-06, 332.99994, 0)
 
 [node name="UpperLegL" type="BoneAttachment3D" parent="Skeleton3D" unique_id=494477415]
 transform = Transform3D(4.9432213e-08, 0.0014149547, -0.99999744, -3.3304126e-08, -0.9999979, -0.0014150441, -0.9999997, 5.960459e-08, -1.1920914e-07, 0.022902718, -5.960394, -1.3671364)

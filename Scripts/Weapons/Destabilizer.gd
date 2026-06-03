@@ -1,10 +1,10 @@
 extends Node3D
 
 #gun stats
-@export var damage: float = 2.0
+@export var damage: float = 8.0
 @export var recoil: float = 0.7 # degree rotation
 @export var spread: Vector2 = Vector2(5.0, 15.0) # max deg rotation for 100% heat
-@export var accuracyPerShot: float = 0.05
+@export var accuracyPerShot: float = 0.08
 @export var heatPerShot: float = 2.75
 @export var coolDown: float = 6.0 # time (s) it takes to go from 100 to 0 heat
 @export var destabilize: float = 4.0 # time (s) it takes to go from max to min accuracy
@@ -117,7 +117,7 @@ func get_heat() -> float:
 func _on_restore_cool(coolOnKill: float) -> void:
 	heat -= coolOnKill
 
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	if can_cool:
 		heat = clamp(heat - (100 * delta) / coolDown, 0.0, 100.0)
 		accuracy_mod = clamp(accuracy_mod + delta / destabilize, 0.2, 1.0)
@@ -131,8 +131,8 @@ func _on_heat_buffer_timeout() -> void:
 
 # --- crosshair ---
 func update_crosshair():
-	$Crosshair/handL.position.x = move_toward($Crosshair/handL.position.x, crosshair_def_pos.x - spread.y - accuracy_mod * 100, 1.25)
-	$Crosshair/handR.position.x = move_toward($Crosshair/handR.position.x, crosshair_def_pos.x + spread.y + accuracy_mod * 100, 1.25)
+	$Crosshair/handL.position.x = move_toward($Crosshair/handL.position.x, crosshair_def_pos.x - spread.y - accuracy_mod * 100, 1.4)
+	$Crosshair/handR.position.x = move_toward($Crosshair/handR.position.x, crosshair_def_pos.x + spread.y + accuracy_mod * 100, 1.4)
 
 # --- SPREADAING DEBUG FUNCTION ---
 func spawn_debug_cube(pos: Vector3):

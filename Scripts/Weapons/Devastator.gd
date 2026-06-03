@@ -24,6 +24,10 @@ var shot_instance
 var shot = preload("res://Scenes/Weapons/DevastatorShot.tscn")
 
 
+func _ready() -> void:
+	shot_instance = shot.instantiate()
+	shot_instance.queue_free()
+
 func draw(playSpeed):
 	anim.play("draw", -1, playSpeed)
 	$Crosshair.visible = true
@@ -75,7 +79,7 @@ func get_heat() -> float:
 func _on_restore_cool(coolOnKill: float) -> void:
 	heat -= coolOnKill
 
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	$Sprite.look_at(camera.global_position, Vector3.UP)
 	
 	if can_cool:

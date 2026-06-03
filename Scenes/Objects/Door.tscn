@@ -144,7 +144,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.555, 1.15, -0.025)
 shape = SubResource("BoxShape3D_lgil6")
 
 [node name="ColliderBack" type="StaticBody3D" parent="MeshInstance3D" unique_id=1731706579]
-collision_layer = 49
+collision_layer = 32
 collision_mask = 0
 metadata/Dir = 1
 

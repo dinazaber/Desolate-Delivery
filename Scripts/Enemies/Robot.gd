@@ -16,13 +16,13 @@ var current_state = State.IDLE
 # --- Nodes ---
 @onready var chargeBall = $Skeleton3D/ArmR/chargeBall
 @onready var chargeBalls = $Skeleton3D/ArmR/chargeBalls
-@onready var bullet = $Skeleton3D/ArmR/Bullet
+@onready var bullet = $Skeleton3D/ArmR/BulletRay/Bullet
 @onready var animation = $AnimationPlayer
 @onready var skeleton = $Skeleton3D
 @onready var aimHand = $aimHand
 @onready var eyes = $RayCast3D
 @onready var bulletRay = $Skeleton3D/ArmR/BulletRay
-@onready var bulletRayEnd = $Skeleton3D/ArmR/BulletRayEnd
+@onready var bulletRayEnd = $Skeleton3D/ArmR/BulletRay/BulletRayEnd
 @onready var kickRay = $Skeleton3D/LegL/kick
 @onready var navAgent = $NavigationAgent3D
 @onready var player = get_tree().get_first_node_in_group("Player")
@@ -243,17 +243,24 @@ func shoot():
 	chargeBall.emitting = true
 	chargeBalls.restart()
 	chargeBalls.emitting = true
+	
 	await get_tree().create_timer(1.25).timeout
 	if dist <= kick_distance: 
 		kick()
 		return
+	
+	var corrective_rotation = atan2(0.4, dist - 0.7) if dist > 1.0 else 0.0
+	bulletRay.rotation.x = corrective_rotation
+	
+	bullet.emitting = true
+	
 	if bulletRay.is_colliding():
 		bullet.lifetime = bulletRay.global_position.distance_to(bulletRay.get_collision_point()) / bulletRay.global_position.distance_to(bulletRayEnd.global_position)
-	else: bullet.lifetime = 0.5
-	bullet.emitting = true
-	if bulletRay.is_colliding():
+		
 		if bulletRay.get_collider().is_in_group("Player"):
 			bulletRay.get_collider().damage_taken(enemy_gun_damage, false)
+	else: bullet.lifetime = 0.5
+	
 	await get_tree().create_timer(1.0).timeout
 	isInAttack = false
 

@@ -276,8 +276,9 @@ point_count = 2
 curve = SubResource("Curve_kru5m")
 
 [sub_resource type="Curve" id="Curve_ipho8"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.39590445, 0.74651814), 1.290409, 1.290409, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
-point_count = 3
+_limits = [0.0, 2.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.198, 0.747), 1.290409, 1.290409, 0, 0, Vector2(0.5, 1), 0.0, 0.47058803, 0, 0, Vector2(1, 1.235294), 0.45746306, 0.0, 0, 0]
+point_count = 4
 
 [sub_resource type="CurveTexture" id="CurveTexture_4hb8h"]
 curve = SubResource("Curve_ipho8")
@@ -293,6 +294,7 @@ emission_curve = SubResource("CurveTexture_2awmy")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_re4ky"]
 transparency = 1
+cull_mode = 2
 vertex_color_use_as_albedo = true
 emission_enabled = true
 emission = Color(1, 1, 0.3137255, 1)
@@ -356,7 +358,7 @@ draw_pass_1 = SubResource("SphereMesh_re4ky")
 [node name="explosion" type="GPUParticles3D" parent="." unique_id=2033420079]
 emitting = false
 amount = 1
-lifetime = 0.3
+lifetime = 0.4
 one_shot = true
 fixed_fps = 60
 process_material = SubResource("ParticleProcessMaterial_n83u3")

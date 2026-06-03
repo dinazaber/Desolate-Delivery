@@ -13,7 +13,7 @@ var in_action: bool = false
 var can_swing: bool = true
 
 
-func punch(speed): # set speed to zero if not dashing
+func punch(speed):
 	in_action = true
 	show()
 	can_swing = false

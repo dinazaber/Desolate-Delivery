@@ -83,7 +83,9 @@ alpha_curve = SubResource("CurveTexture_bbe7t")
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8iha5"]
 render_priority = 0
 shader = ExtResource("4_8iha5")
-shader_parameter/color = Color(0.90588236, 0.91764706, 0.18039216, 1)
+shader_parameter/enable_glow = false
+shader_parameter/glow_intensity = 1.0
+shader_parameter/draw_forward = false
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_e4n6m"]
 material = SubResource("ShaderMaterial_8iha5")
@@ -119,7 +121,9 @@ scale_curve = SubResource("CurveXYZTexture_st424")
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_h5qh4"]
 render_priority = 0
 shader = ExtResource("4_8iha5")
-shader_parameter/color = Color(0.988905, 0.57607186, 0, 1)
+shader_parameter/enable_glow = false
+shader_parameter/glow_intensity = 1.0
+shader_parameter/draw_forward = false
 
 [sub_resource type="BoxMesh" id="BoxMesh_x0sam"]
 material = SubResource("ShaderMaterial_h5qh4")
@@ -158,7 +162,9 @@ scale_curve = SubResource("CurveXYZTexture_xmnhq")
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sm1nr"]
 render_priority = 0
 shader = ExtResource("4_8iha5")
-shader_parameter/color = Color(0.988905, 0.57607186, 0, 1)
+shader_parameter/enable_glow = false
+shader_parameter/glow_intensity = 1.0
+shader_parameter/draw_forward = false
 
 [sub_resource type="BoxMesh" id="BoxMesh_qoa7d"]
 material = SubResource("ShaderMaterial_sm1nr")
@@ -231,7 +237,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.19386818, 0)
 [node name="CollEnv3SnapPos" type="Marker3D" parent="GunPivot" unique_id=717615836]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0.532)
 
-[node name="Area3D" type="Area3D" parent="GunPivot" unique_id=700609044 groups=["Enemy"]]
+[node name="Area3D" type="Area3D" parent="GunPivot" unique_id=700609044 groups=["Enemy", "Persist", "Pull"]]
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("2_h5qh4")

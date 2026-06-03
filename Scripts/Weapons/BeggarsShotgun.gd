@@ -16,6 +16,7 @@ var playerRayEnd: Marker3D
 
 var shotNum: int = 1
 var can_cool: bool = true
+var shooting: bool = false
 var heat: float = 0.0
 var last_anim: String = ""
 
@@ -65,7 +66,11 @@ func charge():
 
 func shoot():
 	if anim.is_playing() and anim.current_animation != "load": await anim.animation_finished
+	if shooting: return
+	
 	while shotNum > 0:
+		shooting = true
+		
 		if shotNum > 1: anim.play("shootConsecutive")
 		else: anim.play("shootLast")
 		
@@ -79,6 +84,8 @@ func shoot():
 		shotNum -= 1
 		
 		await anim.animation_finished
+	
+	shooting = false
 
 func scatterNshoot():
 	var points = PackedVector3Array()
@@ -125,7 +132,7 @@ func get_heat() -> float:
 func _on_restore_cool(coolOnKill: float) -> void:
 	heat -= coolOnKill
 
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	$BeggarsShotgun/tracer/Sprite.look_at(camera.global_position, Vector3.UP)
 	
 	# Shader gets current shotNum value every frame.
@@ -148,7 +155,7 @@ func _on_heat_buffer_timeout() -> void:
 	can_cool = true
 
 func update_crosshair():
-	crosshair_move = move_toward(crosshair_move, 2 * spread * (4 - shotNum)/4, 0.3)
+	crosshair_move = move_toward(crosshair_move, 2 * spread * (4 - shotNum)/4, 0.4)
 	$Crosshair/handLD.position = crosshair_def_pos + Vector2(-1,1) * crosshair_move
 	$Crosshair/handLU.position = crosshair_def_pos + Vector2(-1,-1) * crosshair_move
 	$Crosshair/handRD.position = crosshair_def_pos + Vector2(1,1) * crosshair_move
