@@ -309,6 +309,7 @@ shape = SubResource("CapsuleShape3D_t2ec2")
 
 [node name="GenadeMesh" type="MeshInstance3D" parent="." unique_id=1477165798]
 transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 0.02, 0)
+layers = 2
 mesh = ExtResource("2_2byne")
 
 [node name="ExplosionBox1" type="Area3D" parent="." unique_id=1186377403]

@@ -322,11 +322,13 @@ libraries/ = SubResource("AnimationLibrary_obboe")
 [node name="Main" type="Node3D" parent="." unique_id=173597035]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Main" unique_id=712815149]
+layers = 2
 cast_shadow = 0
 mesh = SubResource("SphereMesh_fxcsm")
 skeleton = NodePath("../..")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="Main" unique_id=1301286084]
+layers = 2
 cast_shadow = 0
 mesh = SubResource("SphereMesh_aw7ay")
 skeleton = NodePath("../..")

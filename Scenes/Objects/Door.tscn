@@ -131,6 +131,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.725, 1.15, -2)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1102868406]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.17, 0, -0.24)
+layers = 2
 gi_mode = 2
 mesh = ExtResource("2_eaxfl")
 
@@ -154,6 +155,7 @@ shape = SubResource("BoxShape3D_lgil6")
 
 [node name="OccluderInstance3D" type="OccluderInstance3D" parent="MeshInstance3D" unique_id=942655829]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.555, 1.15, 0)
+layers = 2
 occluder = SubResource("QuadOccluder3D_eaxfl")
 
 [node name="Timer" type="Timer" parent="." unique_id=79805213]

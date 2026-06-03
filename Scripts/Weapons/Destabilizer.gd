@@ -122,9 +122,10 @@ func _physics_process(delta: float) -> void:
 		heat = clamp(heat - (100 * delta) / coolDown, 0.0, 100.0)
 		accuracy_mod = clamp(accuracy_mod + delta / destabilize, 0.2, 1.0)
 	
-	$Destabilizer/Base/Barrels.rotation_degrees.z -= spin_amount * delta
-	
 	update_crosshair()
+
+func _process(delta: float) -> void:
+	$Destabilizer/Base/Barrels.rotation_degrees.z -= spin_amount * delta
 
 func _on_heat_buffer_timeout() -> void:
 	can_cool = true

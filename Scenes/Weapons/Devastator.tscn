@@ -373,6 +373,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -75)
 
 [node name="Base" type="MeshInstance3D" parent="Marker3D" unique_id=1239962213]
 transform = Transform3D(-0.03, 0, -4.529874e-09, 0, 0.03, 0, 4.529874e-09, 0, -0.03, 0, 0.03, -0.3)
+layers = 2
 cast_shadow = 0
 gi_mode = 2
 mesh = ExtResource("4_ywa7r")
@@ -380,6 +381,7 @@ skeleton = NodePath("../..")
 
 [node name="Barrel" type="MeshInstance3D" parent="Marker3D/Base" unique_id=725197382]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10.9)
+layers = 2
 cast_shadow = 0
 gi_mode = 2
 mesh = ExtResource("5_wr5gp")

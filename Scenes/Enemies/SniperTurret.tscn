@@ -204,10 +204,12 @@ collision_mask = 152
 
 [node name="BaseMesh" type="MeshInstance3D" parent="." unique_id=397604197]
 transform = Transform3D(0.065, 0, 0, 0, 0.065, 0, 0, 0, 0.065, 0, 0, 0)
+layers = 2
 mesh = ExtResource("2_pd8i8")
 
 [node name="MountMesh" type="MeshInstance3D" parent="." unique_id=387465361]
 transform = Transform3D(0.065, 0, 0, 0, 0.065, 0, 0, 0, 0.065, 0, 0, 0)
+layers = 2
 mesh = ExtResource("3_8iha5")
 
 [node name="Area3D" type="Area3D" parent="MountMesh" unique_id=1675736522 groups=["Enemy"]]
@@ -292,6 +294,7 @@ draw_pass_1 = SubResource("BoxMesh_qoa7d")
 
 [node name="GunMesh" type="MeshInstance3D" parent="GunPivot" unique_id=1487560660]
 transform = Transform3D(0.065, 0, 0, 0, 0.065, 0, 0, 0, 0.065, 0, -0.18393409, 0)
+layers = 2
 mesh = ExtResource("4_h5qh4")
 skeleton = NodePath("../..")
 

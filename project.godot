@@ -212,6 +212,8 @@ SideUpMouse={
 
 [layer_names]
 
+3d_render/layer_1="occlude"
+3d_render/layer_2="no occlude"
 3d_physics/layer_1="enviorment collision - INCLUDING bullets & projectiles"
 3d_physics/layer_2="enemies and shootables"
 3d_physics/layer_4="player - if PHYSICS obj that CAN collide with player, needs to be in layer & mask"

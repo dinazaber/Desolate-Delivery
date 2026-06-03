@@ -1,11 +1,10 @@
 [gd_scene format=4 uid="uid://d368u3xkt615v"]
 
-[ext_resource type="Script" uid="uid://bj8656has4pvf" path="res://Scripts/Enemies/Drone.gd" id="1_ftjkk"]
+[ext_resource type="Script" uid="uid://bj8656has4pvf" path="res://Scripts/enemies/Drone.gd" id="1_ftjkk"]
 [ext_resource type="Shader" uid="uid://cunx8274v1qyy" path="res://Shaders/MeshShaders/MeshShader.gdshader" id="1_ouh8p"]
 [ext_resource type="Texture2D" uid="uid://bu6ue5ydfh2q6" path="res://assets/Textures/Rust.png" id="2_ftjkk"]
 [ext_resource type="Texture2D" uid="uid://kqnjcrk75lb3" path="res://assets/Textures/Dirt.png" id="3_q6fab"]
-[ext_resource type="Texture2D" uid="uid://6n7nft57sa5j" path="res://assets/Textures/TriplanarMask.png" id="4_84th3"]
-[ext_resource type="Script" uid="uid://dqv7818ohy4lu" path="res://Scripts/Enemies/HitBox.gd" id="6_q6fab"]
+[ext_resource type="Script" uid="uid://dqv7818ohy4lu" path="res://Scripts/enemies/HitBox.gd" id="6_q6fab"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ouh8p"]
 size = Vector3(1.25, 0.5, 1.25)
@@ -13,7 +12,11 @@ size = Vector3(1.25, 0.5, 1.25)
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_elu52"]
 render_priority = 0
 shader = ExtResource("1_ouh8p")
-shader_parameter/mask_palette = ExtResource("4_84th3")
+shader_parameter/enable_wireframe = true
+shader_parameter/enable_world_projection = false
+shader_parameter/enable_detail_1 = true
+shader_parameter/enable_detail_2 = true
+shader_parameter/enable_glow = false
 shader_parameter/wire_color = Color(0, 0, 0, 1)
 shader_parameter/wire_width = 0.70000003325
 shader_parameter/wire_transparency = 0.5
@@ -23,6 +26,9 @@ shader_parameter/alpha1 = 0.5
 shader_parameter/detail2 = ExtResource("3_q6fab")
 shader_parameter/detail2_scale = 0.35
 shader_parameter/alpha2 = 0.7
+shader_parameter/glow_intensity = 1.0
+shader_parameter/glow_color_override = Color(0, 0, 0, 1)
+shader_parameter/glow_override = true
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_umdrg"]
 resource_name = "drone_Cube_006"
@@ -206,6 +212,7 @@ bones/5/rotation = Quaternion(-0.5000142, 0.49998587, 0.4999859, 0.50001407)
 bones/5/scale = Vector3(1, 1, 1)
 
 [node name="DroneMesh" type="MeshInstance3D" parent="Skeleton3D" unique_id=30951121]
+layers = 2
 mesh = SubResource("ArrayMesh_umdrg")
 skin = SubResource("Skin_t8k6d")
 

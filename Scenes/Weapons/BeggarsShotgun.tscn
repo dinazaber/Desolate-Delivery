@@ -452,6 +452,7 @@ transform = Transform3D(0.98480725, 0.17364806, 0, -0.044943437, 0.25488684, -0.
 
 [node name="Frame" type="MeshInstance3D" parent="BeggarsShotgun" unique_id=972063788]
 transform = Transform3D(-0.03, -9.7406916e-11, -4.529874e-09, -9.740691e-11, 0.030000001, -6.984924e-11, 4.529874e-09, -6.9849224e-11, -0.03, 0, -0.030000001, -0.58)
+layers = 2
 cast_shadow = 0
 gi_mode = 2
 mesh = ExtResource("2_xapv0")
@@ -460,6 +461,7 @@ mesh = ExtResource("2_xapv0")
 
 [node name="Barrels" type="MeshInstance3D" parent="BeggarsShotgun/Frame/BarrelDementiaPills" unique_id=1195580126]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0.12)
+layers = 2
 cast_shadow = 0
 gi_mode = 2
 mesh = ExtResource("6_pc0kw")

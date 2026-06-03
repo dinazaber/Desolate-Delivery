@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://fc4kl2kt0web"]
 
-[ext_resource type="Script" uid="uid://bcfml5hf5f0wl" path="res://Scripts/FileManagers/HandleSaveFile.gd" id="1_jcbmq"]
+[ext_resource type="Script" uid="uid://bcfml5hf5f0wl" path="res://Scripts/FileManagers/LocationSetup.gd" id="1_jcbmq"]
 [ext_resource type="Script" uid="uid://pywjj3cl8g6s" path="res://Scripts/FenceBuilder.gd" id="2_h62tq"]
 [ext_resource type="Shader" uid="uid://b5qxk2hnep8ku" path="res://Shaders/MeshShaders/GroundShader.gdshader" id="3_iyf6e"]
 [ext_resource type="ArrayMesh" uid="uid://cc71x4p8yppbl" path="res://assets/Meshes/Architecture/Fence.mesh" id="3_lw8r5"]
