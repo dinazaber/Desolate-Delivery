@@ -6,14 +6,12 @@
 [ext_resource type="ArrayMesh" uid="uid://d3plby63c33fb" path="res://assets/Meshes/RoomConstructor/FloorWood.mesh" id="3_7lyui"]
 [ext_resource type="ArrayMesh" uid="uid://bbjmrlxksj4cj" path="res://assets/Meshes/RoomConstructor/DoorWay_White&Blue.mesh" id="3_spu57"]
 [ext_resource type="ArrayMesh" uid="uid://dnncgj3eh0p7k" path="res://assets/Meshes/RoomConstructor/Ceilling.mesh" id="5_7krvb"]
-[ext_resource type="PackedScene" uid="uid://d16pmg4f4pnf8" path="res://Scenes/Objects/Door.tscn" id="6_2xpdg"]
 [ext_resource type="ArrayMesh" uid="uid://cv8cjmypnt11j" path="res://assets/Meshes/Objects/Cabinet.mesh" id="6_70k0b"]
 [ext_resource type="ArrayMesh" uid="uid://c3itox14sik7u" path="res://assets/Meshes/Objects/WallCabinet.mesh" id="7_xyki8"]
 [ext_resource type="ArrayMesh" uid="uid://cy528km4di6gs" path="res://assets/Meshes/Objects/CofeeMachine.mesh" id="8_7lyl0"]
 [ext_resource type="ArrayMesh" uid="uid://c3gfw3snnk8rb" path="res://assets/Meshes/Objects/Mirror.mesh" id="8_f08nv"]
 [ext_resource type="ArrayMesh" uid="uid://b60a8m4x3qttq" path="res://assets/Meshes/Objects/Cup.mesh" id="9_7lyl0"]
 [ext_resource type="ArrayMesh" uid="uid://26vpoiis02em" path="res://assets/Meshes/RoomConstructor/Telephone.mesh" id="10_5xmsf"]
-[ext_resource type="ArrayMesh" uid="uid://dagmpo0xauxm7" path="res://assets/Meshes/RoomConstructor/WoodDoor.mesh" id="10_lkdcv"]
 [ext_resource type="ArrayMesh" uid="uid://ccas7mfw668oa" path="res://assets/Meshes/Objects/MicroWave.mesh" id="10_rtq80"]
 [ext_resource type="ArrayMesh" uid="uid://c6835dgenylwb" path="res://assets/Meshes/Objects/DeskGrey.mesh" id="14_6xqsl"]
 [ext_resource type="ArrayMesh" uid="uid://bviob7qk5nxgl" path="res://assets/Meshes/Objects/Box.mesh" id="15_m5tnt"]
@@ -418,21 +416,6 @@ size = Vector3(0.41967773, 0.042269707, 2.1279984)
 radius = 0.31
 height = 1.7602539
 
-[sub_resource type="QuadOccluder3D" id="QuadOccluder3D_yfio8"]
-size = Vector2(6.6756535, 6.1544204)
-
-[sub_resource type="QuadOccluder3D" id="QuadOccluder3D_kl4ou"]
-size = Vector2(2.7268276, 6.1544204)
-
-[sub_resource type="QuadOccluder3D" id="QuadOccluder3D_hcytk"]
-size = Vector2(2.3519318, 1.999018)
-
-[sub_resource type="QuadOccluder3D" id="QuadOccluder3D_lkdcv"]
-size = Vector2(5.547921, 6.1544204)
-
-[sub_resource type="QuadOccluder3D" id="QuadOccluder3D_ew1ly"]
-size = Vector2(5.547921, 6.1544204)
-
 [node name="Cabinet" type="Node3D" unique_id=1857668066]
 
 [node name="LightmapGI" type="LightmapGI" parent="." unique_id=1714560379]
@@ -627,10 +610,6 @@ skeleton = NodePath("../..")
 mesh = SubResource("ArrayMesh_lkdcv")
 skeleton = NodePath("../../..")
 
-[node name="Door" parent="Decorations/Room" unique_id=505525111 instance=ExtResource("6_2xpdg")]
-transform = Transform3D(-0.99999994, 0, -8.742277e-08, 0, 1, 0, 8.742277e-08, 0, -0.99999994, -0.7256472, 0, -1.3572226)
-door_mesh = ExtResource("10_lkdcv")
-
 [node name="Kitchen" type="Node3D" parent="Decorations" unique_id=767235327]
 
 [node name="Cabinet" type="MeshInstance3D" parent="Decorations/Kitchen" unique_id=1839217287]
@@ -817,41 +796,6 @@ shape = SubResource("BoxShape3D_6vexw")
 [node name="CollisionShape3D6" type="CollisionShape3D" parent="NavigationRegion3D/Misc" unique_id=726116371]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6118346, 0.5411132, 3.5927691)
 shape = SubResource("CapsuleShape3D_wh70l")
-
-[node name="Occluders" type="Node3D" parent="." unique_id=1582308368]
-visible = false
-
-[node name="OccluderInstance3D" type="OccluderInstance3D" parent="Occluders" unique_id=1061617768]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5917519, 1.3317362, 3.9884052)
-occluder = SubResource("QuadOccluder3D_yfio8")
-
-[node name="OccluderInstance3D6" type="OccluderInstance3D" parent="Occluders" unique_id=1510729318]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9078205, 1.3317362, -1.1349328)
-occluder = SubResource("QuadOccluder3D_kl4ou")
-
-[node name="OccluderInstance3D7" type="OccluderInstance3D" parent="Occluders" unique_id=1634702050]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8502722, 1.3317362, -1.1349328)
-occluder = SubResource("QuadOccluder3D_kl4ou")
-
-[node name="OccluderInstance3D8" type="OccluderInstance3D" parent="Occluders" unique_id=42798558]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.07383549, 3.2672536, -1.1349328)
-occluder = SubResource("QuadOccluder3D_hcytk")
-
-[node name="OccluderInstance3D2" type="OccluderInstance3D" parent="Occluders" unique_id=1828744086]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.9666595, 1.3317362, 1.4989085)
-occluder = SubResource("QuadOccluder3D_lkdcv")
-
-[node name="OccluderInstance3D3" type="OccluderInstance3D" parent="Occluders" unique_id=1968328918]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1.9822519, 1.3317362, 1.4989085)
-occluder = SubResource("QuadOccluder3D_lkdcv")
-
-[node name="OccluderInstance3D4" type="OccluderInstance3D" parent="Occluders" unique_id=2019206769]
-transform = Transform3D(-4.371139e-08, 1, -4.371139e-08, 0, -4.371139e-08, -1, -1, -4.371139e-08, 1.9106855e-15, -0.48541188, -0.057977915, 1.4989085)
-occluder = SubResource("QuadOccluder3D_ew1ly")
-
-[node name="OccluderInstance3D5" type="OccluderInstance3D" parent="Occluders" unique_id=984386436]
-transform = Transform3D(-4.371139e-08, 1, -4.371139e-08, 0, -4.371139e-08, -1, -1, -4.371139e-08, 1.9106855e-15, -0.48541188, 4.0395565, 1.4989085)
-occluder = SubResource("QuadOccluder3D_ew1ly")
 
 [node name="HealthPack" parent="." unique_id=1895141670 instance=ExtResource("29_ew1ly")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.7578723, 1.3862243, 1.8569772)

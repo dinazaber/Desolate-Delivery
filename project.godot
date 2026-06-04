@@ -235,7 +235,6 @@ textures/light_projectors/filter=1
 global_illumination/sdfgi/probe_ray_count=0
 global_illumination/sdfgi/frames_to_converge=0
 lights_and_shadows/tighter_shadow_caster_culling=false
-occlusion_culling/use_occlusion_culling=true
 environment/defaults/default_environment="uid://c1agyuoca70ek"
 
 [shader_globals]

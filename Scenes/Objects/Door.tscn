@@ -94,6 +94,9 @@ _data = {
 [sub_resource type="BoxShape3D" id="BoxShape3D_eaxfl"]
 size = Vector3(4, 2.3, 2)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_o57tb"]
+size = Vector3(4, 2.3, 2)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_lgil6"]
 size = Vector3(1.11, 2.3, 0.05)
 
@@ -116,6 +119,7 @@ collision_mask = 24
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Areas/OpenAreaFront" unique_id=2056484419]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.555, 1.15, -1)
 shape = SubResource("BoxShape3D_eaxfl")
+debug_color = Color(4.9574674e-06, 0.6060145, 0.33169317, 0.41960785)
 
 [node name="OpenAreaBack" type="Area3D" parent="Areas" unique_id=509158889]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.17, 0, -0.24)
@@ -124,7 +128,8 @@ collision_mask = 24
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Areas/OpenAreaBack" unique_id=2119027867]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.555, 1.15, 1)
-shape = SubResource("BoxShape3D_eaxfl")
+shape = SubResource("BoxShape3D_o57tb")
+debug_color = Color(0.95, 0, 0.015833091, 0.41960785)
 
 [node name="Marker3D" type="Marker3D" parent="." unique_id=555279680]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.725, 1.15, -2)
@@ -162,6 +167,7 @@ occluder = SubResource("QuadOccluder3D_eaxfl")
 wait_time = 0.15
 one_shot = true
 
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="body_entered" from="Areas/OpenAreaFront" to="." method="_on_open_area_front_body_entered"]
 [connection signal="body_entered" from="Areas/OpenAreaBack" to="." method="_on_open_area_back_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

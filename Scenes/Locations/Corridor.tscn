@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://cpi1xrpot2ipt" path="res://Scenes/Player.tscn" id="7_207sj"]
 [ext_resource type="ArrayMesh" uid="uid://d176a3e6pu3c5" path="res://assets/Meshes/Objects/VendingMachine_Yellow.mesh" id="13_b6vrq"]
 [ext_resource type="PackedScene" uid="uid://beqguglkai1oh" path="res://Scenes/Enemies/Robot.tscn" id="13_gsqdh"]
+[ext_resource type="PackedScene" uid="uid://d16pmg4f4pnf8" path="res://Scenes/Objects/Door.tscn" id="14_gsqdh"]
 [ext_resource type="Shader" uid="uid://cunx8274v1qyy" path="res://Shaders/MeshShaders/MeshShader.gdshader" id="16_tsxpl"]
 [ext_resource type="Texture2D" uid="uid://kqnjcrk75lb3" path="res://assets/Textures/Dirt.png" id="17_thgur"]
 [ext_resource type="Texture2D" uid="uid://bu6ue5ydfh2q6" path="res://assets/Textures/Rust.png" id="18_k4nb6"]
@@ -358,6 +359,7 @@ bake_mask = 4293918721
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=1890827846]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.749267, 0, 0)
+visible = false
 navigation_mesh = SubResource("NavigationMesh_pnvln")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D" unique_id=1521057933]
@@ -503,3 +505,8 @@ skeleton = NodePath("../..")
 
 [node name="Robot" parent="." unique_id=969091388 instance=ExtResource("13_gsqdh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0, 0)
+
+[node name="Door" parent="." unique_id=505525111 node_paths=PackedStringArray("front_room", "back_room") instance=ExtResource("14_gsqdh")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1.7819571, 0, -0.39187068)
+front_room = NodePath("../Decorations")
+back_room = NodePath("../Rooms/Office")
