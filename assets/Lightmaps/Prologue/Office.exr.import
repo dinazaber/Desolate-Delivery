@@ -3,7 +3,7 @@
 importer="2d_array_texture"
 type="CompressedTexture2DArray"
 uid="uid://rkh37lbldy"
-path.bptc="res://.godot/imported/Office.exr-6db51b89c5dccdc289fb7390690fb0f0.bptc.ctexarray"
+path.bptc="res://.godot/imported/Office.exr-338270c63354ccb061fb14518e5f7acc.bptc.ctexarray"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/Lightmaps/Office.exr"
-dest_files=["res://.godot/imported/Office.exr-6db51b89c5dccdc289fb7390690fb0f0.bptc.ctexarray"]
+source_file="res://assets/Lightmaps/Prologue/Office.exr"
+dest_files=["res://.godot/imported/Office.exr-338270c63354ccb061fb14518e5f7acc.bptc.ctexarray"]
 
 [params]
 

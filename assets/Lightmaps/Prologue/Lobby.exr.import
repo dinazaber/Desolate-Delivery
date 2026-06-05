@@ -3,7 +3,7 @@
 importer="2d_array_texture"
 type="CompressedTexture2DArray"
 uid="uid://c4c6wwsxfe7mb"
-path.bptc="res://.godot/imported/Lobby.exr-45bdeaf72c5f44de752d8b64d77cac5d.bptc.ctexarray"
+path.bptc="res://.godot/imported/Lobby.exr-7773db4930f8d0580668777ef633632a.bptc.ctexarray"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/Lightmaps/Lobby.exr"
-dest_files=["res://.godot/imported/Lobby.exr-45bdeaf72c5f44de752d8b64d77cac5d.bptc.ctexarray"]
+source_file="res://assets/Lightmaps/Prologue/Lobby.exr"
+dest_files=["res://.godot/imported/Lobby.exr-7773db4930f8d0580668777ef633632a.bptc.ctexarray"]
 
 [params]
 

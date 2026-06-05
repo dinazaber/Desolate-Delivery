@@ -1,12 +1,13 @@
 [gd_scene format=4 uid="uid://ds8hiut7cj5b0"]
 
+[ext_resource type="Script" uid="uid://dxl5apw4vluqh" path="res://Scripts/Modules/GameRoom.gd" id="1_56nff"]
 [ext_resource type="Shader" uid="uid://cunx8274v1qyy" path="res://Shaders/MeshShaders/MeshShader.gdshader" id="3_5ld5i"]
 [ext_resource type="Texture2D" uid="uid://bu6ue5ydfh2q6" path="res://assets/Textures/Rust.png" id="4_y31um"]
 [ext_resource type="Texture2D" uid="uid://kqnjcrk75lb3" path="res://assets/Textures/Dirt.png" id="5_d76q0"]
 [ext_resource type="ArrayMesh" uid="uid://26vpoiis02em" path="res://assets/Meshes/RoomConstructor/Telephone.mesh" id="6_p7377"]
 [ext_resource type="ArrayMesh" uid="uid://d1g71w7l6fte2" path="res://assets/Meshes/Objects/Computer.mesh" id="8_56nff"]
 [ext_resource type="ArrayMesh" uid="uid://cy528km4di6gs" path="res://assets/Meshes/Objects/CofeeMachine.mesh" id="13_5ld5i"]
-[ext_resource type="LightmapGIData" uid="uid://dldhrlpg5seym" path="res://assets/Lightmaps/Office.lmbake" id="13_p7377"]
+[ext_resource type="LightmapGIData" uid="uid://dldhrlpg5seym" path="res://assets/Lightmaps/Prologue/Office.lmbake" id="13_p7377"]
 [ext_resource type="ArrayMesh" uid="uid://c3itox14sik7u" path="res://assets/Meshes/Objects/WallCabinet.mesh" id="14_y31um"]
 [ext_resource type="ArrayMesh" uid="uid://cv8cjmypnt11j" path="res://assets/Meshes/Objects/Cabinet.mesh" id="15_d76q0"]
 [ext_resource type="ArrayMesh" uid="uid://c2g88n0gh4cfm" path="res://assets/Meshes/Objects/Refrigerator.mesh" id="29_b7u14"]
@@ -901,7 +902,11 @@ section_length = 0.015
 section_rings = 2
 curve = SubResource("Curve_ggv2i")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_m3n1v"]
+size = Vector3(16.11621, 1, 12)
+
 [node name="Office" type="Node3D" unique_id=75341550]
+script = ExtResource("1_56nff")
 
 [node name="LightmapGI" type="LightmapGI" parent="." unique_id=1294919039]
 quality = 2
@@ -947,7 +952,7 @@ light_indirect_energy = 2.0
 light_bake_mode = 1
 shadow_caster_mask = 4294967293
 distance_fade_enabled = true
-distance_fade_begin = 10.0
+distance_fade_begin = 5.0
 spot_range = 10.0
 spot_angle = 80.0
 
@@ -957,7 +962,7 @@ light_indirect_energy = 2.0
 light_bake_mode = 1
 shadow_caster_mask = 4294967293
 distance_fade_enabled = true
-distance_fade_begin = 10.0
+distance_fade_begin = 5.0
 spot_range = 10.0
 spot_angle = 80.0
 
@@ -967,7 +972,7 @@ light_indirect_energy = 2.0
 light_bake_mode = 1
 shadow_caster_mask = 4294967293
 distance_fade_enabled = true
-distance_fade_begin = 10.0
+distance_fade_begin = 5.0
 spot_range = 10.0
 spot_angle = 80.0
 
@@ -977,7 +982,7 @@ light_indirect_energy = 2.0
 light_bake_mode = 1
 shadow_caster_mask = 4294967293
 distance_fade_enabled = true
-distance_fade_begin = 10.0
+distance_fade_begin = 5.0
 spot_range = 10.0
 spot_angle = 80.0
 
@@ -1679,3 +1684,13 @@ draw_pass_1 = SubResource("TubeTrailMesh_bwtx1")
 [node name="GPUParticlesCollisionBox3D" type="GPUParticlesCollisionBox3D" parent="Decorations/Particles/WaterDrops4" unique_id=825551510]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.5450392, 0)
 size = Vector3(0.35, 0.05, 0.35)
+
+[node name="PlayerDetectionArea" type="Area3D" parent="." unique_id=2080256249]
+visible = false
+collision_layer = 0
+collision_mask = 24
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerDetectionArea" unique_id=1642698309]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.074707, 0, 0.03715515)
+shape = SubResource("BoxShape3D_m3n1v")
+debug_color = Color(0.96663874, 0.8439937, 2.3102762e-06, 1)

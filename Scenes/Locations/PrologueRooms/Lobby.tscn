@@ -1,6 +1,7 @@
 [gd_scene format=4 uid="uid://cs848so2f77c7"]
 
-[ext_resource type="LightmapGIData" uid="uid://dy4obcgimyvnv" path="res://assets/Lightmaps/Lobby.lmbake" id="1_ia4ft"]
+[ext_resource type="LightmapGIData" uid="uid://dy4obcgimyvnv" path="res://assets/Lightmaps/Prologue/Lobby.lmbake" id="1_ia4ft"]
+[ext_resource type="Script" uid="uid://dxl5apw4vluqh" path="res://Scripts/Modules/GameRoom.gd" id="1_j7mb7"]
 [ext_resource type="ArrayMesh" uid="uid://b6dhihmks0rku" path="res://assets/Meshes/RoomConstructor/RoundRoom_White&Brown.mesh" id="2_ebdj8"]
 [ext_resource type="ArrayMesh" uid="uid://cvgg61twv3xnn" path="res://assets/Meshes/Architecture/RuinsPile.mesh" id="3_insln"]
 [ext_resource type="Shader" uid="uid://cunx8274v1qyy" path="res://Shaders/MeshShaders/MeshShader.gdshader" id="4_48f2t"]
@@ -8,8 +9,6 @@
 [ext_resource type="Texture2D" uid="uid://kqnjcrk75lb3" path="res://assets/Textures/Dirt.png" id="5_ia4ft"]
 [ext_resource type="Texture2D" uid="uid://bu6ue5ydfh2q6" path="res://assets/Textures/Rust.png" id="6_48f2t"]
 [ext_resource type="ArrayMesh" uid="uid://cc71x4p8yppbl" path="res://assets/Meshes/Architecture/Fence.mesh" id="7_yxhpu"]
-[ext_resource type="PackedScene" uid="uid://d16pmg4f4pnf8" path="res://Scenes/Objects/Door.tscn" id="8_trfa7"]
-[ext_resource type="ArrayMesh" uid="uid://dagmpo0xauxm7" path="res://assets/Meshes/RoomConstructor/WoodDoor.mesh" id="10_egsmy"]
 [ext_resource type="ArrayMesh" uid="uid://c3gfw3snnk8rb" path="res://assets/Meshes/Objects/Mirror.mesh" id="10_h3uod"]
 [ext_resource type="Texture2D" uid="uid://bhd2wf153tne" path="res://assets/Textures/Picture2.png" id="11_h3uod"]
 [ext_resource type="ArrayMesh" uid="uid://dq56i2u43egkp" path="res://assets/Meshes/Objects/Sofa.mesh" id="12_ebdj8"]
@@ -316,9 +315,14 @@ _surfaces = [{
 "vertex_data": PackedByteArray("UuMDwaeaZz8PxPE/BIQKwSO/Zz/ipwhAgAYEwWmbZz+LgwlA1mAKwWG+Zz++DPA/P+MDwUsZaz8PxPE/8IMKwcY9az/ipwhAw2AKwQU9az++DPA/bQYEwQwaaz+LgwlAUuMDwaeaZz8PxPE/w2AKwQU9az++DPA/1mAKwWG+Zz++DPA/P+MDwUsZaz8PxPE/gAYEwWmbZz+LgwlAP+MDwUsZaz8PxPE/UuMDwaeaZz8PxPE/bQYEwQwaaz+LgwlABIQKwSO/Zz/ipwhAbQYEwQwaaz+LgwlAgAYEwWmbZz+LgwlA8IMKwcY9az/ipwhA1mAKwWG+Zz++DPA/8IMKwcY9az/ipwhABIQKwSO/Zz/ipwhAw2AKwQU9az++DPA/veEDwcchaz9s2PE/c4UKwVRGaz+0nQhAEF8Kwf/yaz9E+e8/GwgEwZsiaz9IjQlAPeMDwb5Taz8NxPE/74MKwTp4az/hpwhAawYEwYBUaz+KgwlAwWAKwXh3az+8DPA/KuMDwWLSbj8NxPE/24MKwd32bj/hpwhArmAKwRz2bj+8DPA/WAYEwSPTbj+KgwlAPeMDwb5Taz8NxPE/rmAKwRz2bj+8DPA/wWAKwXh3az+8DPA/KuMDwWLSbj8NxPE/awYEwYBUaz+KgwlAKuMDwWLSbj8NxPE/PeMDwb5Taz8NxPE/WAYEwSPTbj+KgwlA74MKwTp4az/hpwhAWAYEwSPTbj+KgwlAawYEwYBUaz+KgwlA24MKwd32bj/hpwhAwWAKwXh3az+8DPA/24MKwd32bj/hpwhA74MKwTp4az/hpwhArmAKwRz2bj+8DPA/qOEDwd7abj9q2PE/XoUKwWv/bj+znQhA+14KwRasbz9C+e8/BggEwbLbbj9HjQlA038sACsAFcDTfywAKwAVwNN/LAArABXA038sACsAFcArgNL/LAAVwCuA0v8sABXAK4DS/ywAFcArgNL/LAAVwP3/GAQXhB2C/f8YBBeEHYL9/xgEF4Qdgv3/GAQXhB2CvPvUf+l72L+8+9R/6XvYv7z71H/pe9i/vPvUf+l72L/newCAFoQdgud7AIAWhB2C53sAgBaEHYLnewCAFoQdgioAQITpe9i/KgBAhOl72L8qAECE6XvYvyoAQITpe9i/jYDH/jcBRcCNgMf+NwFFwI2Ax/43AUXAjYDH/jcBRcDTfywAKwAVwNN/LAArABXA038sACsAFcDTfywAKwAVwCuA0v8sABXAK4DS/ywAFcArgNL/LAAVwCuA0v8sABXA/f8YBBeEHYL9/xgEF4Qdgv3/GAQXhB2C/f8YBBeEHYK8+9R/6XvYv7z71H/pe9i/vPvUf+l72L+8+9R/6XvYv+d7AIAWhB2C53sAgBaEHYLnewCAFoQdgud7AIAWhB2CKgBAhOl72L8qAECE6XvYvyoAQITpe9i/KgBAhOl72L+NgMf+NwFFwI2Ax/43AUXAjYDH/jcBRcCNgMf+NwFFwA==")
 }]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_j7mb7"]
+size = Vector3(20.5177, 1, 11.945194)
+
 [node name="Lobby" type="Node3D" unique_id=1634252626]
+script = ExtResource("1_j7mb7")
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=1871926413]
+visible = false
 navigation_mesh = SubResource("NavigationMesh_xy444")
 
 [node name="Walls" type="StaticBody3D" parent="NavigationRegion3D" unique_id=748570925]
@@ -563,12 +567,8 @@ transform = Transform3D(1.1999999, 0, 0, 0, -2.2729921e-08, -0.91499996, 0, 0.52
 gi_mode = 2
 mesh = ExtResource("7_yxhpu")
 
-[node name="Door" parent="Room" unique_id=505525111 instance=ExtResource("8_trfa7")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 10.655548, 0, -0.8909191)
-door_mesh = ExtResource("10_egsmy")
-
 [node name="Picture" type="MeshInstance3D" parent="Room" unique_id=2136195311]
-transform = Transform3D(-4.371139e-08, 1, -4.371139e-08, 0, -4.371139e-08, -1, -1, -4.371139e-08, 1.9106855e-15, -0.0067242384, 2.7624, -5.8705254)
+transform = Transform3D(-4.371139e-08, 1, -4.371139e-08, 0, -4.371139e-08, -1, -1, -4.371139e-08, 1.9106855e-15, 1.7623812, 2.7624, -5.8705254)
 gi_lightmap_texel_scale = 0.5
 mesh = ExtResource("10_h3uod")
 skeleton = NodePath("../..")
@@ -712,3 +712,13 @@ skeleton = NodePath("../..")
 visible = false
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D" unique_id=961928560]
+
+[node name="PlayerDetectionArea" type="Area3D" parent="." unique_id=472968530]
+visible = false
+collision_layer = 0
+collision_mask = 24
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerDetectionArea" unique_id=1863280779]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.12618852, -0.07692194, -0.06717205)
+shape = SubResource("BoxShape3D_j7mb7")
+debug_color = Color(0.96663874, 0.8439937, 2.3102762e-06, 1)

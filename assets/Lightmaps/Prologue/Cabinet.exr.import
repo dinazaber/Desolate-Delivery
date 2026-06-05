@@ -2,8 +2,8 @@
 
 importer="2d_array_texture"
 type="CompressedTexture2DArray"
-uid="uid://0y2beseve6k"
-path.bptc="res://.godot/imported/Corridor.exr-082513de62a1066dbc2bea6de290b169.bptc.ctexarray"
+uid="uid://c8gceia2abrk"
+path.bptc="res://.godot/imported/Cabinet.exr-8bb23ecd07db74d81f7c1d2590bccf88.bptc.ctexarray"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/Lightmaps/Corridor.exr"
-dest_files=["res://.godot/imported/Corridor.exr-082513de62a1066dbc2bea6de290b169.bptc.ctexarray"]
+source_file="res://assets/Lightmaps/Prologue/Cabinet.exr"
+dest_files=["res://.godot/imported/Cabinet.exr-8bb23ecd07db74d81f7c1d2590bccf88.bptc.ctexarray"]
 
 [params]
 
@@ -26,4 +26,4 @@ compress/channel_pack=1
 mipmaps/generate=false
 mipmaps/limit=-1
 slices/horizontal=1
-slices/vertical=2
+slices/vertical=1

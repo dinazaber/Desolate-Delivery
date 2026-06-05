@@ -3,7 +3,7 @@
 importer="2d_array_texture"
 type="CompressedTexture2DArray"
 uid="uid://bgxbimeafy5sv"
-path.bptc="res://.godot/imported/Restroom.exr-9e2df4ab6935d8e8010c2134ba5a6dfd.bptc.ctexarray"
+path.bptc="res://.godot/imported/Restroom.exr-c1272fb617de4f7e48fdaa7a77f9b904.bptc.ctexarray"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/Lightmaps/Restroom.exr"
-dest_files=["res://.godot/imported/Restroom.exr-9e2df4ab6935d8e8010c2134ba5a6dfd.bptc.ctexarray"]
+source_file="res://assets/Lightmaps/Prologue/Restroom.exr"
+dest_files=["res://.godot/imported/Restroom.exr-c1272fb617de4f7e48fdaa7a77f9b904.bptc.ctexarray"]
 
 [params]
 
