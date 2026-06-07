@@ -58,6 +58,7 @@ func load_game(slotName: String):
 		get_tree().change_scene_to_file(targetLevel)
 		return
 	
+	
 	while save_file.get_position() < save_file.get_length():
 
 		# Get the data
@@ -73,7 +74,7 @@ func load_game(slotName: String):
 			if key in ["filename", "parent", "transform"]:
 				continue
 			new_object.set(key, node_data[key])
-			
+	
 	save_file.close()
 	
 			

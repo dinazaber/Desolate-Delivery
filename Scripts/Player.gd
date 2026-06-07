@@ -12,6 +12,7 @@ var grabbedObject: RigidBody3D = null
 @onready var enemyBounceCheck = $Feet/EnemyBounceCheck
 @onready var speedParticles = $SpeedParticles
 @onready var wallrun_timer: Timer = $WallrunTimer
+var current_room = null
 
 
 # --- WEAPONS ---
@@ -121,7 +122,8 @@ func save():
 		"filename": get_scene_file_path(),
 		"parent": get_parent().get_path(),
 		"transform": global_transform,
-		"player_health": player_health
+		"player_health": player_health,
+		"current_room": current_room
 	}
 	return data
 	

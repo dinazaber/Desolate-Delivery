@@ -1,12 +1,8 @@
 [gd_scene format=4 uid="uid://bklolkvppn66"]
 
-[ext_resource type="ArrayMesh" uid="uid://2emv52eb57d1" path="res://assets/Meshes/RoomConstructor/WallWood.mesh" id="1_7lyui"]
 [ext_resource type="LightmapGIData" uid="uid://cxyuyqfnhdnns" path="res://assets/Lightmaps/Prologue/Cabinet.lmbake" id="1_kheae"]
-[ext_resource type="ArrayMesh" uid="uid://dt1rmg8pf0ufn" path="res://assets/Meshes/RoomConstructor/Wall_White&Blue.mesh" id="1_spu57"]
 [ext_resource type="Script" uid="uid://dxl5apw4vluqh" path="res://Scripts/Modules/GameRoom.gd" id="1_yfio8"]
-[ext_resource type="ArrayMesh" uid="uid://d3plby63c33fb" path="res://assets/Meshes/RoomConstructor/FloorWood.mesh" id="3_7lyui"]
 [ext_resource type="ArrayMesh" uid="uid://bbjmrlxksj4cj" path="res://assets/Meshes/RoomConstructor/DoorWay_White&Blue.mesh" id="3_spu57"]
-[ext_resource type="ArrayMesh" uid="uid://dnncgj3eh0p7k" path="res://assets/Meshes/RoomConstructor/Ceilling.mesh" id="5_7krvb"]
 [ext_resource type="ArrayMesh" uid="uid://cv8cjmypnt11j" path="res://assets/Meshes/Objects/Cabinet.mesh" id="6_70k0b"]
 [ext_resource type="ArrayMesh" uid="uid://c3itox14sik7u" path="res://assets/Meshes/Objects/WallCabinet.mesh" id="7_xyki8"]
 [ext_resource type="ArrayMesh" uid="uid://cy528km4di6gs" path="res://assets/Meshes/Objects/CofeeMachine.mesh" id="8_7lyl0"]
@@ -27,7 +23,56 @@
 [ext_resource type="ArrayMesh" uid="uid://b78m4abadyi60" path="res://assets/Meshes/Objects/CeillingLampSquare.mesh" id="22_h81dg"]
 [ext_resource type="ArrayMesh" uid="uid://d4kmyqiux7f2m" path="res://assets/Meshes/Objects/TrashCan.mesh" id="25_ehdvs"]
 [ext_resource type="PackedScene" uid="uid://b1g4ndkkyibs4" path="res://Scenes/Objects/HealthPack.tscn" id="29_ew1ly"]
-[ext_resource type="ArrayMesh" uid="uid://35ky5fr0fun1" path="res://assets/Meshes/Objects/Shelf.mesh" id="29_lkdcv"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_lkdcv"]
+vertices = PackedVector3Array(-2.726983, 5.2620697, -0.75561523, -2.726983, 5.2620697, 3.7443848, 1.5230169, 5.2620697, 3.7443848, 1.5230169, 5.2620697, -0.75561523, -0.47698307, 0.5120696, 0.49438477, -2.226983, 0.5120696, 0.49438477, -1.9769831, 0.5120696, 1.2443848, -0.22698307, 0.5120696, 1.2443848, -0.22698307, 0.5120696, -0.50561523, 0.5230169, 0.5120696, 3.2443848, 1.2730169, 0.5120696, 2.7443848, 1.2730169, 0.5120696, -0.0056152344)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1), PackedInt32Array(7, 6, 4), PackedInt32Array(4, 6, 5), PackedInt32Array(4, 8, 7), PackedInt32Array(7, 8, 11), PackedInt32Array(7, 11, 10), PackedInt32Array(7, 10, 9)]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lkdcv"]
+size = Vector3(0.29663086, 4.6193237, 5.4718933)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ew1ly"]
+size = Vector3(0.3713379, 4.6193237, 5.119316)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kl4ou"]
+size = Vector3(0.3239746, 4.6193237, 2.4817333)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hcytk"]
+size = Vector3(0.3239746, 4.6193237, 1.5776422)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xvh8r"]
+size = Vector3(0.3239746, 1.8169403, 1.8868423)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7fo0n"]
+size = Vector3(5.097412, 1, 5.4958496)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dq0iy"]
+size = Vector3(1.9657364, 1.501831, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_o67lr"]
+size = Vector3(1.9657364, 0.53526306, 0.68444824)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0vbgm"]
+size = Vector3(0.9345703, 0.08081055, 1.9464111)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_56nff"]
+size = Vector3(0.8054199, 0.7994385, 0.50979614)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ybo3f"]
+size = Vector3(0.40403748, 0.10290527, 0.4038086)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rckyb"]
+size = Vector3(0.33129883, 0.81689453, 1.2326622)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_idgc0"]
+size = Vector3(0.41015625, 0.62415695, 0.31713867)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6vexw"]
+size = Vector3(0.41967773, 0.042269707, 2.1279984)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wh70l"]
+radius = 0.31
+height = 1.7602539
 
 [sub_resource type="Gradient" id="Gradient_lkdcv"]
 offsets = PackedFloat32Array(0.009641874)
@@ -56,7 +101,7 @@ material = SubResource("StandardMaterial3D_ew1ly")
 add_uv2 = true
 size = Vector2(3.3, 2)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_kheae"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yye3p"]
 render_priority = 0
 shader = ExtResource("17_6xqsl")
 shader_parameter/enable_wireframe = true
@@ -74,38 +119,39 @@ shader_parameter/detail2 = ExtResource("22_f2esi")
 shader_parameter/detail2_scale = 2.0
 shader_parameter/alpha2 = 1.0
 shader_parameter/glow_intensity = 3.5
-shader_parameter/glow_color_override = Color(0, 0, 0, 1)
-shader_parameter/glow_override = false
+shader_parameter/glow_color_override = Color(0.53, 0.36675996, 0.063599996, 1)
+shader_parameter/glow_override = true
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_klfi5"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_g2lfs"]
 _surfaces = [{
 "aabb": AABB(-1, -0.05017793, -0.5, 2, 0.024041733, 1),
-"format": 34896670721,
-"index_count": 126,
-"index_data": PackedByteArray("AAABAAIAAAADAAEAAwAEAAEAAwAFAAQABQAGAAQABwACAAYABQAHAAYABwAAAAIACAAFAAMAAAAIAAMACQAAAAcABQAKAAcACQAHAAoABQALAAoACgAMAAkABQANAAsACgAOAAwACwAOAAoACwAPAA4ADQAPAAsAEAAMAA4AEAAOAA8ACQAMABAADQAQAA8ACQAQAA0ADQARAAkACQARAAAAEgANAAUADQASABEAEgAFAAgAAAARABMAAAATAAgAEQAUABMACAAVABIAEgAWABEAEQAWABQAEgAVABYAEwAUABcAEwAXAAgAFwAUABYACAAXABUAFwAWABUA"),
+"format": 34359799809,
+"index_count": 132,
+"index_data": PackedByteArray("AAABAAIAAgABAAMAAgADAAQABQADAAEAAAAFAAEABgAEAAMABQAGAAMABwACAAQABgAHAAQABwAAAAIACAAGAAUAAAAIAAUACQAAAAcABgAKAAcACQAHAAoABgALAAoACgAMAAkABgANAAsACgAOAAwACwAOAAoACwAPAA4ADQAPAAsAEAAMAA4AEAAOAA8ACQAMABAADQAQAA8ACQAQAA0ADQARAAkACQARAAAAEgANAAYADQASABEAEgAGAAgAAAARABMAAAATAAgAEQAUABMACAAVABIAEgAWABEAEQAWABQAEgAVABYAEwAUABcAEwAXAAgAFwAUABYACAAXABUAFwAWABUA"),
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
 "vertex_count": 24,
-"vertex_data": PackedByteArray("AAAAAP//AAAAAP//AAAAAAAA/////wAAAAAAAAAAAAD/////AAAAAP//AAAAAAAA////////AAD//wAA//8AAKYDAABNBwAA0oEAALH4AABY/AAAsfgAAFj8AABNBwAA0oE9NbH4AADSgQAATQcAAFj8PTWx+AAAWPw9NU0HAADSgT01TQcAACx+AACx+AAALH4AAE0HAACmAwAAsfgAAKYDPTWx+AAALH49NU0HAAAsfj01sfgAAKYDPTVNBwAA")
+"vertex_data": PackedByteArray("AACAv2CHTb0AAAA/AACAv5Ub1rwAAAC/AACAv5Ub1rwAAAA/AACAP5Ub1rwAAAC/AACAP5Ub1rwAAAA/AACAv2CHTb0AAAC/AACAP2CHTb0AAAC/AACAP2CHTb0AAAA/wLJ4v2CHTb1/ZfG+DqhpPGCHTb1/ZfE+wLJ4P2CHTb1/ZfE+wLJ4P2CHTb1/ZfG+DqhpPH8MOb1/ZfE+DqhpPGCHTb1/ZfG+wLJ4P38MOb1/ZfE+wLJ4P38MOb1/ZfG+DqhpPH8MOb1/ZfG+DqhpvGCHTb1/ZfE+DqhpvGCHTb1/ZfG+wLJ4v2CHTb1/ZfE+wLJ4v38MOb1/ZfE+DqhpvH8MOb1/ZfG+DqhpvH8MOb1/ZfE+wLJ4v38MOb1/ZfG+")
 }]
 blend_shape_mode = 0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_ehdvs"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_5461e"]
 resource_name = "Objects_Cube_002"
+lightmap_size_hint = Vector2i(30, 30)
 _surfaces = [{
 "aabb": AABB(-1, -0.05017793, -0.5, 2, 0.024041733, 1),
-"attribute_data": PackedByteArray("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"),
-"format": 34896670847,
-"index_count": 126,
-"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUAGAAZABoAGwAaABkAGAAcABkAGAAdABwAGwAeABoAHQAfABsAGwAfAB4AHQAgAB8AIAAdABgAHgAfACEAIAAYACIAHgAhACIAIgAYACMAHgAiACMAJAAlACYAJAAnACUAKAApACoAKAArACkALAAtAC4ALAAvAC0AMAAxADIAMAAzADEANAA1ADYANAA3ADUAOAA5ADoAOAA7ADkAPAA9AD4APAA/AD0AQABBAEIAQABDAEEA"),
-"material": SubResource("ShaderMaterial_kheae"),
+"attribute_data": PackedByteArray("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"),
+"format": 34359799935,
+"index_count": 132,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUAGAAZABoAGwAaABkAGAAcABkAGAAdABwAGwAeABoAHQAfABsAGwAfAB4AHQAgAB8AIAAdABgAHgAfACEAIAAYACIAHgAhACIAIgAYACMAHgAiACMAJAAlACYAJAAnACUAKAApACoAKAArACkALAAtAC4ALAAvAC0AMAAxADIAMAAzADEANAA1ADYANAA3ADUAOAA5ADoAOAA7ADkAPAA9AD4APAA/AD0AQABBAEIAQABDAEEARABFAEYARABHAEUA"),
+"material": SubResource("ShaderMaterial_yye3p"),
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
-"vertex_count": 68,
-"vertex_data": PackedByteArray("AAAAAP//VNUAAP//AABU1QAA/////1TVAAAAAAAAVNX//wAAAABU1f///////1TV/////wAAVNX//wAA//9U1QAAAAAAAP///////wAA//8AAP//AAD/////AAAAAP//LH4AALH4//+mAz01sfj//6YDAACx+P//LH49NbH4/////wAA////vwAA//////+//////////78AAAAA////v1j8AABNB/+/WPw9NbH4/79Y/AAAsfj/v1j8PTVNB/+///8AAAAA/79Y/AAAsfj/v///AAD///+/0oEAALH4/79Y/AAATQf/v9KBAABNB/+/AAAAAP///78sfgAAsfj/vyx+AABNB/+/pgMAALH4/7+mAwAATQf/vwAAAAAAAP+/0oE9NU0H/79Y/D01sfj/v1j8PTVNB/+/0oE9NbH4/7+mAz01TQf/vyx+PTWx+P+/LH49NU0H/7+mAz01sfj/v9KBAABNBwCAWPw9NU0HAIBY/AAATQcAgNKBPTVNBwCApgMAALH4/7+mAz01TQf/v6YDAABNB/+/pgM9NbH4/79Y/AAAsfj//9KBPTWx+P//0oEAALH4//9Y/D01sfj//9KBAACx+P+/0oE9NU0H/7/SgQAATQf/v9KBPTWx+P+/LH4AAE0H/78sfj01sfj/vyx+AACx+P+/LH49NU0H/7+mAwAATQcAgCx+PTVNBwCALH4AAE0HAICmAz01TQcAgFTVVNVU1VTVVNVU1VTVVNWqKqoqqiqqKqoqqiqqKqoq/7//v/+//7//v/+//7//v/9/////f////3////9//////////////////////////3////9/////f////3///wAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9//3////9/////f////3////9/AAD/fwAA/38AAP9/AAD/f////3////9/////f////38AAP9/AAD/fwAA/38AAP9/////f////3////9/////f////3////9/////f///")
+"vertex_count": 72,
+"vertex_data": PackedByteArray("AACAv2CHTb0AAAA/AACAv5Ub1rwAAAC/AACAv5Ub1rwAAAA/AACAv2CHTb0AAAC/AACAP2CHTb0AAAC/AACAP5Ub1rwAAAA/AACAP5Ub1rwAAAC/AACAP2CHTb0AAAA/AACAv2CHTb0AAAC/AACAP5Ub1rwAAAC/AACAv5Ub1rwAAAC/AACAP2CHTb0AAAC/DqhpvGCHTb1/ZfE+wLJ4v38MOb1/ZfE+wLJ4v2CHTb1/ZfE+DqhpvH8MOb1/ZfE+AACAP2CHTb0AAAA/AACAv5Ub1rwAAAA/AACAP5Ub1rwAAAA/AACAv2CHTb0AAAA/wLJ4P2CHTb1/ZfG+wLJ4P38MOb1/ZfE+wLJ4P2CHTb1/ZfE+wLJ4P38MOb1/ZfG+AACAP2CHTb0AAAC/wLJ4P2CHTb1/ZfE+AACAP2CHTb0AAAA/DqhpPGCHTb1/ZfE+wLJ4P2CHTb1/ZfG+DqhpPGCHTb1/ZfG+AACAv2CHTb0AAAA/DqhpvGCHTb1/ZfE+DqhpvGCHTb1/ZfG+wLJ4v2CHTb1/ZfE+wLJ4v2CHTb1/ZfG+AACAv2CHTb0AAAC/DqhpPH8MOb1/ZfG+wLJ4P38MOb1/ZfE+wLJ4P38MOb1/ZfG+DqhpPH8MOb1/ZfE+wLJ4v38MOb1/ZfG+DqhpvH8MOb1/ZfE+DqhpvH8MOb1/ZfG+wLJ4v38MOb1/ZfE+DqhpPGCHTb1/ZfG+wLJ4P38MOb1/ZfG+wLJ4P2CHTb1/ZfG+DqhpPH8MOb1/ZfG+wLJ4v2CHTb1/ZfE+wLJ4v38MOb1/ZfG+wLJ4v2CHTb1/ZfG+wLJ4v38MOb1/ZfE+wLJ4P2CHTb1/ZfE+DqhpPH8MOb1/ZfE+DqhpPGCHTb1/ZfE+wLJ4P38MOb1/ZfE+DqhpPGCHTb1/ZfE+DqhpPH8MOb1/ZfG+DqhpPGCHTb1/ZfG+DqhpPH8MOb1/ZfE+DqhpvGCHTb1/ZfG+DqhpvH8MOb1/ZfE+DqhpvGCHTb1/ZfE+DqhpvH8MOb1/ZfG+wLJ4v2CHTb1/ZfG+DqhpvH8MOb1/ZfG+DqhpvGCHTb1/ZfG+wLJ4v38MOb1/ZfG+AACAv5Ub1rwAAAA/AACAP5Ub1rwAAAC/AACAP5Ub1rwAAAA/AACAv5Ub1rwAAAC/AAD/f/9///8AAP9//3///wAA/3//f///AAD/f/9///////9//3///////3//f///////f/9///////9//3//////////f/////////9//////////3//////////f////////wAA/7//////AAD/v/////8AAP+//////wAA/7//f/9//3////9//3//f////3//f/9/////f/9//3///wAA/3//f/+/AAD/f/9//78AAP9//3//vwAA/3//f/+//38AAP7//7//fwAA////v/9/AAD///+//38AAP///7//fwAA/v//v/9/AAD///+//38AAP7//7//fwAA////v/9/AAD///+//38AAP7//7//fwAA////v/9/AAD///+//38AAP///7//fwAA////v/9/AAD///+//38AAP///7//fwAA////v/9/AAD///+//38AAP///7//fwAA////v/9//3////+//3//f////7//f/9/////v/9//3////+/////f/////////9//////////3//////////f///////////AAD/v/////8AAP+//////wAA/7//////AAD/v////3//////////f/////////9//////////3//////AAD/f/9//78AAP9//3//vwAA/3//f/+/AAD/f/9//7//f/9/////v/9//3////+//3//f////7//f/9/////v/9///////+//3///////7//f///////v/9///////+/")
 }]
 blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_klfi5")
+shadow_mesh = SubResource("ArrayMesh_g2lfs")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2b5cd"]
 render_priority = 0
@@ -367,56 +413,6 @@ bottom_radius = 2.0
 height = 5.0
 radial_segments = 8
 
-[sub_resource type="NavigationMesh" id="NavigationMesh_lkdcv"]
-vertices = PackedVector3Array(-2.726983, 5.2620697, -0.75561523, -2.726983, 5.2620697, 3.7443848, 1.5230169, 5.2620697, 3.7443848, 1.5230169, 5.2620697, -0.75561523, -0.47698307, 0.5120696, 0.49438477, -2.226983, 0.5120696, 0.49438477, -1.9769831, 0.5120696, 1.2443848, -0.22698307, 0.5120696, 1.2443848, -0.22698307, 0.5120696, -0.50561523, 0.5230169, 0.5120696, 3.2443848, 1.2730169, 0.5120696, 2.7443848, 1.2730169, 0.5120696, -0.0056152344)
-polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1), PackedInt32Array(7, 6, 4), PackedInt32Array(4, 6, 5), PackedInt32Array(4, 8, 7), PackedInt32Array(7, 8, 11), PackedInt32Array(7, 11, 10), PackedInt32Array(7, 10, 9)]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_lkdcv"]
-size = Vector3(0.29663086, 4.6193237, 5.4718933)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_ew1ly"]
-size = Vector3(0.3713379, 4.6193237, 5.119316)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_kl4ou"]
-size = Vector3(0.3239746, 4.6193237, 2.4817333)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_hcytk"]
-size = Vector3(0.3239746, 4.6193237, 1.5776422)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_xvh8r"]
-size = Vector3(0.3239746, 1.8169403, 1.8868423)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_7fo0n"]
-size = Vector3(5.097412, 1, 5.4958496)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_dq0iy"]
-size = Vector3(1.9657364, 1.501831, 1)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_o67lr"]
-size = Vector3(1.9657364, 0.53526306, 0.68444824)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_0vbgm"]
-size = Vector3(0.9345703, 0.08081055, 1.9464111)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_56nff"]
-size = Vector3(0.8054199, 0.7994385, 0.50979614)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_ybo3f"]
-size = Vector3(0.40403748, 0.10290527, 0.4038086)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_rckyb"]
-size = Vector3(0.33129883, 0.81689453, 1.2326622)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_idgc0"]
-size = Vector3(0.41015625, 0.62415695, 0.31713867)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_6vexw"]
-size = Vector3(0.41967773, 0.042269707, 2.1279984)
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wh70l"]
-radius = 0.31
-height = 1.7602539
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_yfio8"]
 size = Vector3(4.9176025, 1, 5.1317177)
 
@@ -442,7 +438,7 @@ spot_range = 0.5
 spot_angle = 30.0
 
 [node name="CeillingLamp" type="SpotLight3D" parent="LightmapGI" unique_id=2117249353]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -1.5, 3.95, 2)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -1.5, 3.8730824, 2)
 light_color = Color(0.9151226, 0.78603435, 0.44348556, 1)
 light_energy = 0.5
 light_indirect_energy = 3.0
@@ -450,255 +446,6 @@ light_bake_mode = 1
 distance_fade_enabled = true
 spot_range = 10.0
 spot_angle = 70.0
-
-[node name="Room" type="Node3D" parent="." unique_id=646542656]
-
-[node name="Walls" type="Node3D" parent="Room" unique_id=1222431672]
-visible = false
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Room/Walls" unique_id=943914275]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 4)
-mesh = ExtResource("1_spu57")
-
-[node name="MeshInstance3D7" type="MeshInstance3D" parent="Room/Walls" unique_id=1183865452]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -3, 2, 5)
-mesh = ExtResource("1_7lyui")
-
-[node name="MeshInstance3D8" type="MeshInstance3D" parent="Room/Walls" unique_id=1878451298]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -3, 2, 1)
-mesh = ExtResource("1_7lyui")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Room/Walls" unique_id=921673517]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 2, 4)
-mesh = ExtResource("1_spu57")
-
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="Room/Walls" unique_id=2113191134]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 2, 2, 1)
-mesh = ExtResource("1_spu57")
-
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="Room/Walls" unique_id=1712503901]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 2, 2, 5)
-mesh = ExtResource("1_spu57")
-
-[node name="MeshInstance3D5" type="MeshInstance3D" parent="Room/Walls" unique_id=1112500198]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -4, 2, -1)
-mesh = ExtResource("1_spu57")
-
-[node name="Floor" type="Node3D" parent="Room" unique_id=1347749408]
-visible = false
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Room/Floor" unique_id=1842025524]
-transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0, 0.94)
-mesh = ExtResource("3_7lyui")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Room/Floor" unique_id=368896789]
-transform = Transform3D(0.9999999, 0, -1.03316026e-07, 0, 1, 0, 1.03316026e-07, 0, 0.9999999, 0, 0, 4.94)
-mesh = ExtResource("3_7lyui")
-
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="Room/Floor" unique_id=1284504147]
-transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, -4, 0, 0.94)
-mesh = ExtResource("3_7lyui")
-
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="Room/Floor" unique_id=108952919]
-transform = Transform3D(0.9999999, 0, -1.03316026e-07, 0, 1, 0, 1.03316026e-07, 0, 0.9999999, -4, 0, 4.94)
-mesh = ExtResource("3_7lyui")
-
-[node name="Ceilling" type="Node3D" parent="Room" unique_id=1464919883]
-visible = false
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Room/Ceilling" unique_id=129021221]
-transform = Transform3D(0.5, 0, 0, 0, -1, -7.54979e-08, 0, 1.509958e-07, -0.5, -3, 4, 0)
-mesh = ExtResource("5_7krvb")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Room/Ceilling" unique_id=1361922406]
-transform = Transform3D(0.5, 0, 0, 0, -1, -7.54979e-08, 0, 1.509958e-07, -0.5, -3, 4, 2)
-mesh = ExtResource("5_7krvb")
-
-[node name="MeshInstance3D5" type="MeshInstance3D" parent="Room/Ceilling" unique_id=1900111827]
-transform = Transform3D(0.5, 0, 0, 0, -1, -7.54979e-08, 0, 1.509958e-07, -0.5, 1, 4, 0)
-mesh = ExtResource("5_7krvb")
-
-[node name="MeshInstance3D6" type="MeshInstance3D" parent="Room/Ceilling" unique_id=314948511]
-transform = Transform3D(0.5, 0, 0, 0, -1, -7.54979e-08, 0, 1.509958e-07, -0.5, 1, 4, 2)
-mesh = ExtResource("5_7krvb")
-
-[node name="MeshInstance3D7" type="MeshInstance3D" parent="Room/Ceilling" unique_id=932113606]
-transform = Transform3D(0.5, 0, 0, 0, -1, -7.54979e-08, 0, 1.509958e-07, -0.5, -1, 4, 0)
-mesh = ExtResource("5_7krvb")
-
-[node name="MeshInstance3D8" type="MeshInstance3D" parent="Room/Ceilling" unique_id=1185668304]
-transform = Transform3D(0.5, 0, 0, 0, -1, -7.54979e-08, 0, 1.509958e-07, -0.5, -1, 4, 2)
-mesh = ExtResource("5_7krvb")
-
-[node name="MeshInstance3D9" type="MeshInstance3D" parent="Room/Ceilling" unique_id=1734602740]
-transform = Transform3D(0.5, 0, 0, 0, -1, -7.54979e-08, 0, 1.509958e-07, -0.5, -3, 4, 4)
-mesh = ExtResource("5_7krvb")
-
-[node name="MeshInstance3D11" type="MeshInstance3D" parent="Room/Ceilling" unique_id=1883449683]
-transform = Transform3D(0.5, 0, 0, 0, -1, -7.54979e-08, 0, 1.509958e-07, -0.5, 1, 4, 4)
-mesh = ExtResource("5_7krvb")
-
-[node name="MeshInstance3D12" type="MeshInstance3D" parent="Room/Ceilling" unique_id=406035928]
-transform = Transform3D(0.5, 0, 0, 0, -1, -7.54979e-08, 0, 1.509958e-07, -0.5, -1, 4, 4)
-mesh = ExtResource("5_7krvb")
-
-[node name="Decorations" type="Node3D" parent="." unique_id=474716213]
-
-[node name="Room" type="Node3D" parent="Decorations" unique_id=1921488375]
-
-[node name="LightSeamHider" type="MeshInstance3D" parent="Decorations/Room" unique_id=999493163]
-transform = Transform3D(-5.2453665e-08, 0.52, -3.999592e-08, 0, -2.2729921e-08, -0.915, -1.2, -2.2729921e-08, 1.7482773e-15, -0.09592554, -0.03515339, -1.1147709)
-gi_mode = 2
-mesh = ExtResource("19_6xqsl")
-skeleton = NodePath("../..")
-metadata/_edit_lock_ = true
-
-[node name="Picture" type="MeshInstance3D" parent="Decorations/Room" unique_id=1747017995]
-transform = Transform3D(-2.1855694e-08, -0.5, 2.1855694e-08, 0, -2.1855694e-08, -0.5, 0.5, -2.1855694e-08, 9.553427e-16, -1.616661, 2.4109874, 3.926205)
-mesh = ExtResource("8_f08nv")
-skeleton = NodePath("../..")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Decorations/Room/Picture" unique_id=1726931354]
-transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, -8.351872e-23, -1.6703743e-22, 0, 1, -0.004000187, 0, 0)
-mesh = SubResource("PlaneMesh_kl4ou")
-
-[node name="Canditioner" type="MeshInstance3D" parent="Decorations/Room" unique_id=260727164]
-transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 1.8004713, 3.1469684, 2.8478594)
-mesh = ExtResource("17_r4ii4")
-skeleton = NodePath("../..")
-
-[node name="Lamps" type="Node3D" parent="Decorations/Room" unique_id=2041264963]
-
-[node name="LampOff" type="MeshInstance3D" parent="Decorations/Room/Lamps" unique_id=875615527]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.5, 4.019, 2)
-mesh = SubResource("ArrayMesh_ehdvs")
-
-[node name="LampOn" type="MeshInstance3D" parent="Decorations/Room/Lamps" unique_id=1139715298]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1.5, 4.019, 2)
-mesh = ExtResource("22_h81dg")
-
-[node name="TrashCan" type="MeshInstance3D" parent="Decorations/Room" unique_id=2042462716]
-transform = Transform3D(-0.16546758, 0, -0.25024086, 0, 0.3, 0, 0.25024086, 0, -0.16546758, 1.6069506, 0.30324292, 3.596272)
-mesh = ExtResource("25_ehdvs")
-skeleton = NodePath("../..")
-
-[node name="Shelves" type="MeshInstance3D" parent="Decorations/Room" unique_id=678253630]
-mesh = SubResource("ArrayMesh_lkdcv")
-skeleton = NodePath("../../..")
-
-[node name="Floor" type="MeshInstance3D" parent="Decorations/Room" unique_id=1172045976]
-gi_lightmap_texel_scale = 4.0
-mesh = SubResource("ArrayMesh_ul504")
-skeleton = NodePath("../../..")
-metadata/_edit_lock_ = true
-
-[node name="Ceilling" type="MeshInstance3D" parent="Decorations/Room" unique_id=475025329]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.015, 0)
-gi_lightmap_texel_scale = 3.0
-mesh = SubResource("ArrayMesh_kl4ou")
-skeleton = NodePath("../../..")
-metadata/_edit_lock_ = true
-
-[node name="DoorWay" type="MeshInstance3D" parent="Decorations/Room" unique_id=574726416]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 2, -1)
-gi_lightmap_texel_scale = 3.0
-mesh = ExtResource("3_spu57")
-skeleton = NodePath("../../../Room/Walls")
-metadata/_edit_lock_ = true
-
-[node name="WallWood" type="MeshInstance3D" parent="Decorations/Room" unique_id=521827132]
-gi_lightmap_texel_scale = 4.0
-mesh = SubResource("ArrayMesh_yfio8")
-skeleton = NodePath("../../..")
-metadata/_edit_lock_ = true
-
-[node name="Walls" type="MeshInstance3D" parent="Decorations/Room" unique_id=1746837767]
-gi_lightmap_texel_scale = 5.0
-mesh = SubResource("ArrayMesh_hcytk")
-skeleton = NodePath("../../..")
-metadata/_edit_lock_ = true
-
-[node name="Kitchen" type="Node3D" parent="Decorations" unique_id=767235327]
-
-[node name="Cabinet" type="MeshInstance3D" parent="Decorations/Kitchen" unique_id=1839217287]
-transform = Transform3D(-2.1855694e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.1855694e-08, -1.9318701, 0.5001066, -0.55546826)
-mesh = ExtResource("6_70k0b")
-skeleton = NodePath("../..")
-
-[node name="CoffeMachine" type="MeshInstance3D" parent="Decorations/Kitchen/Cabinet" unique_id=439014535]
-transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -0.21349144, 1.6028473, -1.167947)
-mesh = ExtResource("8_7lyl0")
-skeleton = NodePath("../../..")
-
-[node name="Cup" type="MeshInstance3D" parent="Decorations/Kitchen/Cabinet/CoffeMachine" unique_id=1742418480]
-transform = Transform3D(0.19999996, 0, 8.881784e-16, 0, 0.19999996, 0, -8.881784e-16, 0, 0.19999996, 0.30767083, -0.5969143, -0.86420393)
-mesh = ExtResource("9_7lyl0")
-
-[node name="MicroWave" type="MeshInstance3D" parent="Decorations/Kitchen/Cabinet" unique_id=109499786]
-transform = Transform3D(7.86805e-08, 0, -0.6, 0, 0.6, 0, 0.6, 0, 7.86805e-08, -0.21349108, 1.6620514, 0.81062937)
-mesh = ExtResource("10_rtq80")
-skeleton = NodePath("../../..")
-
-[node name="WallCabinet" type="MeshInstance3D" parent="Decorations/Kitchen/Cabinet" unique_id=368844083]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.41570818, 3.1601367, 0)
-mesh = ExtResource("7_xyki8")
-skeleton = NodePath("../../..")
-
-[node name="Mirror" type="MeshInstance3D" parent="Decorations" unique_id=51643088]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 1.921164, 1.2496349, 0.85092795)
-mesh = ExtResource("8_f08nv")
-
-[node name="Phone" type="MeshInstance3D" parent="Decorations" unique_id=1068127307]
-transform = Transform3D(-1.7484556e-08, 0, 0.4, 0, 0.4, 0, -0.4, 0, -1.7484556e-08, 1.2727759, 1.2315414, -0.8409715)
-mesh = ExtResource("10_5xmsf")
-
-[node name="Desk" type="MeshInstance3D" parent="Decorations" unique_id=1829618471]
-transform = Transform3D(-1.7484556e-08, 0, 0.4, 0, 0.4, 0, -0.4, 0, -1.7484556e-08, -1.05671, 0.46070093, 2.9576945)
-mesh = ExtResource("14_6xqsl")
-
-[node name="Chairs" type="MeshInstance3D" parent="Decorations/Desk" unique_id=128084852]
-transform = Transform3D(-1.0927847e-07, 0, -2.5, 0, 2.5, 0, 2.5, 0, -1.0927847e-07, 7.3942366, -1.1517524, 2.6417754)
-mesh = SubResource("ArrayMesh_ew1ly")
-skeleton = NodePath("../../..")
-
-[node name="Box" type="MeshInstance3D" parent="Decorations/Desk" unique_id=1085856269]
-transform = Transform3D(0.39972338, 0, -0.014873756, 0, 0.40000004, 0, 0.014873756, 0, 0.39972338, -1.7445383, 1.4641277, -4.7683716e-07)
-mesh = ExtResource("15_m5tnt")
-
-[node name="Papers" type="MeshInstance3D" parent="Decorations/Desk" unique_id=2118324598]
-transform = Transform3D(-1.0927847e-07, 0, -2.5, 0, 2.5, 0, 2.5, 0, -1.0927847e-07, 7.3942366, -1.4342004, 2.6417754)
-mesh = SubResource("ArrayMesh_h81dg")
-skeleton = NodePath("../../..")
-
-[node name="DeskLamp" type="MeshInstance3D" parent="Decorations/Desk" unique_id=1303597426]
-transform = Transform3D(-0.012857699, 0, -0.19958629, 0, 0.20000002, 0, 0.19958629, 0, -0.012857699, -0.933856, 1.1753787, -0.17329168)
-mesh = ExtResource("19_lykiw")
-
-[node name="Light" type="MeshInstance3D" parent="Decorations/Desk/DeskLamp" unique_id=2142994204]
-transform = Transform3D(0.592303, 0.36078528, 0.7204254, -0.023029814, 0.90135884, -0.43246144, -0.8053874, 0.2395568, 0.5421859, -1.6305838, 0.35687065, -1.709034)
-layers = 2
-gi_mode = 0
-mesh = SubResource("CylinderMesh_ew1ly")
-
-[node name="Pen" type="MeshInstance3D" parent="Decorations/Desk" unique_id=1639000256]
-transform = Transform3D(0.18545641, -0.07487278, 3.2727934e-09, 6.3108872e-30, -8.742279e-09, -0.20000002, 0.07487278, 0.18545641, -8.106557e-09, 1.0174766, 1.0882205, -0.4579916)
-mesh = ExtResource("21_pnpor")
-
-[node name="Node3D" type="Node3D" parent="." unique_id=18659994]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.21969199)
-visible = false
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D" unique_id=839043495]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.7086453, 1.8713157, 2.1194668)
-mesh = ExtResource("29_lkdcv")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Node3D" unique_id=1982966521]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.7086453, 2.464167, 2.1194668)
-mesh = ExtResource("29_lkdcv")
-
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="Node3D" unique_id=373530150]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.7086453, 1.2255274, 2.1194668)
-mesh = ExtResource("29_lkdcv")
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=752141760]
 visible = false
@@ -805,6 +552,148 @@ shape = SubResource("BoxShape3D_6vexw")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6118346, 0.5411132, 3.5927691)
 shape = SubResource("CapsuleShape3D_wh70l")
 
+[node name="Decorations" type="Node3D" parent="." unique_id=474716213]
+
+[node name="Room" type="Node3D" parent="Decorations" unique_id=1921488375]
+
+[node name="LightSeamHider" type="MeshInstance3D" parent="Decorations/Room" unique_id=999493163]
+transform = Transform3D(-5.2453665e-08, 0.52, -3.999592e-08, 0, -2.2729921e-08, -0.915, -1.2, -2.2729921e-08, 1.7482773e-15, -0.09592554, -0.03515339, -1.1147709)
+gi_mode = 2
+mesh = ExtResource("19_6xqsl")
+skeleton = NodePath("../..")
+metadata/_edit_lock_ = true
+
+[node name="Picture" type="MeshInstance3D" parent="Decorations/Room" unique_id=1747017995]
+transform = Transform3D(-2.1855694e-08, -0.5, 2.1855694e-08, 0, -2.1855694e-08, -0.5, 0.5, -2.1855694e-08, 9.553427e-16, -1.616661, 2.4109874, 3.926205)
+mesh = ExtResource("8_f08nv")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Decorations/Room/Picture" unique_id=1726931354]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, -8.351872e-23, -1.6703743e-22, 0, 1, -0.004000187, 0, 0)
+mesh = SubResource("PlaneMesh_kl4ou")
+
+[node name="Canditioner" type="MeshInstance3D" parent="Decorations/Room" unique_id=260727164]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 1.8004713, 3.1469684, 2.8478594)
+mesh = ExtResource("17_r4ii4")
+skeleton = NodePath("../..")
+
+[node name="Lamps" type="Node3D" parent="Decorations/Room" unique_id=2041264963]
+
+[node name="LampOff" type="MeshInstance3D" parent="Decorations/Room/Lamps" unique_id=875615527]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.5, 4.01, 2)
+mesh = SubResource("ArrayMesh_5461e")
+
+[node name="LampOn" type="MeshInstance3D" parent="Decorations/Room/Lamps" unique_id=1139715298]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1.5, 4.01, 2)
+mesh = ExtResource("22_h81dg")
+
+[node name="TrashCan" type="MeshInstance3D" parent="Decorations/Room" unique_id=2042462716]
+transform = Transform3D(-0.16546758, 0, -0.25024086, 0, 0.3, 0, 0.25024086, 0, -0.16546758, 1.6069506, 0.30324292, 3.596272)
+mesh = ExtResource("25_ehdvs")
+skeleton = NodePath("../..")
+
+[node name="Shelves" type="MeshInstance3D" parent="Decorations/Room" unique_id=678253630]
+mesh = SubResource("ArrayMesh_lkdcv")
+skeleton = NodePath("../../..")
+
+[node name="Floor" type="MeshInstance3D" parent="Decorations/Room" unique_id=1172045976]
+gi_lightmap_texel_scale = 4.0
+mesh = SubResource("ArrayMesh_ul504")
+skeleton = NodePath("../../..")
+metadata/_edit_lock_ = true
+
+[node name="Ceilling" type="MeshInstance3D" parent="Decorations/Room" unique_id=475025329]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.015, 0)
+gi_lightmap_texel_scale = 3.0
+mesh = SubResource("ArrayMesh_kl4ou")
+skeleton = NodePath("../../..")
+metadata/_edit_lock_ = true
+
+[node name="DoorWay" type="MeshInstance3D" parent="Decorations/Room" unique_id=574726416]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 2, -1)
+gi_lightmap_texel_scale = 2.0
+mesh = ExtResource("3_spu57")
+skeleton = NodePath("")
+metadata/_edit_lock_ = true
+
+[node name="WallWood" type="MeshInstance3D" parent="Decorations/Room" unique_id=521827132]
+gi_lightmap_texel_scale = 2.0
+mesh = SubResource("ArrayMesh_yfio8")
+skeleton = NodePath("../../..")
+metadata/_edit_lock_ = true
+
+[node name="Walls" type="MeshInstance3D" parent="Decorations/Room" unique_id=1746837767]
+gi_lightmap_texel_scale = 4.0
+mesh = SubResource("ArrayMesh_hcytk")
+skeleton = NodePath("../../..")
+metadata/_edit_lock_ = true
+
+[node name="Kitchen" type="Node3D" parent="Decorations" unique_id=767235327]
+
+[node name="Cabinet" type="MeshInstance3D" parent="Decorations/Kitchen" unique_id=1839217287]
+transform = Transform3D(-2.1855694e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.1855694e-08, -1.9318701, 0.5001066, -0.55546826)
+mesh = ExtResource("6_70k0b")
+skeleton = NodePath("../..")
+
+[node name="CoffeMachine" type="MeshInstance3D" parent="Decorations/Kitchen/Cabinet" unique_id=439014535]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -0.21349144, 1.6028473, -1.167947)
+mesh = ExtResource("8_7lyl0")
+skeleton = NodePath("../../..")
+
+[node name="Cup" type="MeshInstance3D" parent="Decorations/Kitchen/Cabinet/CoffeMachine" unique_id=1742418480]
+transform = Transform3D(0.19999996, 0, 8.881784e-16, 0, 0.19999996, 0, -8.881784e-16, 0, 0.19999996, 0.30767083, -0.5969143, -0.86420393)
+mesh = ExtResource("9_7lyl0")
+
+[node name="MicroWave" type="MeshInstance3D" parent="Decorations/Kitchen/Cabinet" unique_id=109499786]
+transform = Transform3D(7.86805e-08, 0, -0.6, 0, 0.6, 0, 0.6, 0, 7.86805e-08, -0.21349108, 1.6620514, 0.81062937)
+mesh = ExtResource("10_rtq80")
+skeleton = NodePath("../../..")
+
+[node name="WallCabinet" type="MeshInstance3D" parent="Decorations/Kitchen/Cabinet" unique_id=368844083]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.41570818, 3.1601367, 0)
+mesh = ExtResource("7_xyki8")
+skeleton = NodePath("../../..")
+
+[node name="Mirror" type="MeshInstance3D" parent="Decorations" unique_id=51643088]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 1.921164, 1.2496349, 0.85092795)
+mesh = ExtResource("8_f08nv")
+
+[node name="Phone" type="MeshInstance3D" parent="Decorations" unique_id=1068127307]
+transform = Transform3D(-1.7484556e-08, 0, 0.4, 0, 0.4, 0, -0.4, 0, -1.7484556e-08, 1.2727759, 1.2315414, -0.8409715)
+mesh = ExtResource("10_5xmsf")
+
+[node name="Desk" type="MeshInstance3D" parent="Decorations" unique_id=1829618471]
+transform = Transform3D(-1.7484556e-08, 0, 0.4, 0, 0.4, 0, -0.4, 0, -1.7484556e-08, -1.05671, 0.46070093, 2.9576945)
+mesh = ExtResource("14_6xqsl")
+
+[node name="Chairs" type="MeshInstance3D" parent="Decorations/Desk" unique_id=128084852]
+transform = Transform3D(-1.0927847e-07, 0, -2.5, 0, 2.5, 0, 2.5, 0, -1.0927847e-07, 7.3942366, -1.1517524, 2.6417754)
+mesh = SubResource("ArrayMesh_ew1ly")
+skeleton = NodePath("../../..")
+
+[node name="Box" type="MeshInstance3D" parent="Decorations/Desk" unique_id=1085856269]
+transform = Transform3D(0.39972338, 0, -0.014873756, 0, 0.40000004, 0, 0.014873756, 0, 0.39972338, -1.7445383, 1.4641277, -4.7683716e-07)
+mesh = ExtResource("15_m5tnt")
+
+[node name="Papers" type="MeshInstance3D" parent="Decorations/Desk" unique_id=2118324598]
+transform = Transform3D(-1.0927847e-07, 0, -2.5, 0, 2.5, 0, 2.5, 0, -1.0927847e-07, 7.3942366, -1.4342004, 2.6417754)
+mesh = SubResource("ArrayMesh_h81dg")
+skeleton = NodePath("../../..")
+
+[node name="DeskLamp" type="MeshInstance3D" parent="Decorations/Desk" unique_id=1303597426]
+transform = Transform3D(-0.012857699, 0, -0.19958629, 0, 0.20000002, 0, 0.19958629, 0, -0.012857699, -0.933856, 1.1753787, -0.17329168)
+mesh = ExtResource("19_lykiw")
+
+[node name="Light" type="MeshInstance3D" parent="Decorations/Desk/DeskLamp" unique_id=2142994204]
+transform = Transform3D(0.592303, 0.36078528, 0.7204254, -0.023029814, 0.90135884, -0.43246144, -0.8053874, 0.2395568, 0.5421859, -1.6305838, 0.35687065, -1.709034)
+layers = 2
+gi_mode = 0
+mesh = SubResource("CylinderMesh_ew1ly")
+
+[node name="Pen" type="MeshInstance3D" parent="Decorations/Desk" unique_id=1639000256]
+transform = Transform3D(0.18545641, -0.07487278, 3.2727934e-09, 6.3108872e-30, -8.742279e-09, -0.20000002, 0.07487278, 0.18545641, -8.106557e-09, 1.0174766, 1.0882205, -0.4579916)
+mesh = ExtResource("21_pnpor")
+
 [node name="HealthPack" parent="." unique_id=1895141670 instance=ExtResource("29_ew1ly")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.7578723, 1.3862243, 1.8569772)
 
@@ -813,6 +702,7 @@ transform = Transform3D(0.9771087, 0, 0.21274048, 0, 1, 0, -0.21274048, 0, 0.977
 
 [node name="PlayerDetectionArea" type="Area3D" parent="." unique_id=636165802]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.147127)
+visible = false
 collision_layer = 0
 collision_mask = 24
 

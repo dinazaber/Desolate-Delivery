@@ -275,7 +275,7 @@ size = Vector3(15.8480835, 1, 4.198612)
 script = ExtResource("1_6qwpu")
 
 [node name="LightmapGI" type="LightmapGI" parent="." unique_id=1471095607]
-quality = 2
+quality = 3
 supersampling = true
 bounces = 16
 bounce_indirect_energy = 2.0
@@ -381,7 +381,7 @@ mesh = SubResource("ArrayMesh_nhmma")
 skeleton = NodePath("../..")
 
 [node name="Lamps" type="MeshInstance3D" parent="." unique_id=1365222640]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.028875828, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.028564453, 0)
 gi_lightmap_texel_scale = 0.5
 mesh = SubResource("ArrayMesh_ygnga")
 skeleton = NodePath("../..")
@@ -401,7 +401,6 @@ mesh = SubResource("ArrayMesh_xqsaj")
 skeleton = NodePath("../..")
 
 [node name="PlayerDetectionArea" type="Area3D" parent="." unique_id=272891492]
-visible = false
 collision_layer = 0
 collision_mask = 24
 

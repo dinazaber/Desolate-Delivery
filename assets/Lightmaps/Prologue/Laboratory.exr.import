@@ -2,8 +2,8 @@
 
 importer="2d_array_texture"
 type="CompressedTexture2DArray"
-uid="uid://c8gceia2abrk"
-path.bptc="res://.godot/imported/Cabinet.exr-8bb23ecd07db74d81f7c1d2590bccf88.bptc.ctexarray"
+uid="uid://5feumhj10at0"
+path.bptc="res://.godot/imported/Laboratory.exr-795e93ee4a76a3b137fdf29387ec133c.bptc.ctexarray"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/Lightmaps/Prologue/Cabinet.exr"
-dest_files=["res://.godot/imported/Cabinet.exr-8bb23ecd07db74d81f7c1d2590bccf88.bptc.ctexarray"]
+source_file="res://assets/Lightmaps/Prologue/Laboratory.exr"
+dest_files=["res://.godot/imported/Laboratory.exr-795e93ee4a76a3b137fdf29387ec133c.bptc.ctexarray"]
 
 [params]
 
