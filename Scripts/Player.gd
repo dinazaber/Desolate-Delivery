@@ -210,7 +210,7 @@ func _physics_process(delta) -> void: # fixed 60 fps
 		rotation.y = lerp_angle(rotation.y, yaw, delta * 30.0) # left/right
 		camera.rotation.x = lerp_angle(camera.rotation.x, -pitch, delta * 30.0)
 	
-	if !is_on_wall(): wallrun_timer.stop()
+	if !is_on_wall_only(): wallrun_timer.stop()
 	
 	check_player_feet()
 	
@@ -473,7 +473,9 @@ func handle_dash():
 func handle_crouch(delta):
 	if Input.is_action_pressed("Ctrl") and !dead: # crouch/slide
 		crouch = true
-		playerCollision.shape.height = lerp(playerCollision.shape.height, 1.0, delta * 15.0)
+		camDefHeight = 0.275
+		playerCollision.shape.height = lerp(playerCollision.shape.height, 1.25, delta * 15.0)
+		camera.position.y = lerp(camera.position.y, camDefHeight, delta * 15.0)
 		$Feet.position.y = lerp($Feet.position.y, 0.5, delta * 15.0)
 		if is_on_floor() and velocity.length() > crouch_speed + 0.1: # 0.1 is epsilon for numerical error
 			slide = true
@@ -490,7 +492,9 @@ func handle_crouch(delta):
 		slide = false
 		floor_constant_speed = true
 		crouch = false
+		camDefHeight = 0.5
 		playerCollision.shape.height = lerp(playerCollision.shape.height, 2.0, delta * 15.0)
+		camera.position.y = lerp(camera.position.y, camDefHeight, delta * 15.0)
 		$Feet.position.y = lerp($Feet.position.y, 0.0, delta * 15.0)
 		accel_mod = 1.0
 

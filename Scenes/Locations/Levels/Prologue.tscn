@@ -37,6 +37,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.343, -0.001, 0.16)
 
 [node name="Robot" parent="." unique_id=969091388 instance=ExtResource("14_vrjo2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0, 0)
+attack_start_distance = 0.01
 
 [node name="Doors" type="Node3D" parent="." unique_id=1941516266]
 

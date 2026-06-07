@@ -16,6 +16,7 @@ script = ExtResource("1_dhhco")
 noise = SubResource("FastNoiseLite_fh7ym")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=42415818]
+visible = false
 shape = SubResource("SphereShape3D_w2e3y")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=696304236]

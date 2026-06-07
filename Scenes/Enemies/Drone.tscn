@@ -213,6 +213,7 @@ bones/5/scale = Vector3(1, 1, 1)
 
 [node name="DroneMesh" type="MeshInstance3D" parent="Skeleton3D" unique_id=30951121]
 layers = 2
+gi_mode = 2
 mesh = SubResource("ArrayMesh_umdrg")
 skin = SubResource("Skin_t8k6d")
 

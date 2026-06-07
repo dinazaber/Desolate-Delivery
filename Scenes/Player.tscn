@@ -328,7 +328,7 @@ libraries/ = SubResource("AnimationLibrary_yoq75")
 libraries/ = SubResource("AnimationLibrary_acvkj")
 
 [node name="UncrouchCheck" type="RayCast3D" parent="." unique_id=880420750]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.625, 0)
 target_position = Vector3(0, 2, 0)
 collision_mask = 27
 collide_with_areas = true
