@@ -100,9 +100,6 @@ size = Vector3(4, 2.3, 2)
 [sub_resource type="BoxShape3D" id="BoxShape3D_lgil6"]
 size = Vector3(1.11, 2.3, 0.05)
 
-[sub_resource type="QuadOccluder3D" id="QuadOccluder3D_eaxfl"]
-size = Vector2(1.11, 2.3)
-
 [node name="Door" type="Node3D" unique_id=505525111]
 script = ExtResource("1_eaxfl")
 
@@ -160,11 +157,6 @@ metadata/Dir = 1
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/ColliderBack" unique_id=820755077]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.555, 1.15, 0.025)
 shape = SubResource("BoxShape3D_lgil6")
-
-[node name="OccluderInstance3D" type="OccluderInstance3D" parent="MeshInstance3D" unique_id=942655829]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.555, 1.15, 0)
-layers = 2
-occluder = SubResource("QuadOccluder3D_eaxfl")
 
 [node name="Timer" type="Timer" parent="." unique_id=79805213]
 wait_time = 0.15
