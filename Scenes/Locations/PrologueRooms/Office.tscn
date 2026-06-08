@@ -909,7 +909,7 @@ size = Vector3(16.11621, 1, 12)
 script = ExtResource("1_56nff")
 
 [node name="LightmapGI" type="LightmapGI" parent="." unique_id=1294919039]
-quality = 2
+quality = 3
 supersampling = true
 bounces = 16
 bounce_indirect_energy = 2.0

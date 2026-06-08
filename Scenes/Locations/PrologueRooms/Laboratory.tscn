@@ -10,7 +10,9 @@
 [ext_resource type="Texture2D" uid="uid://kqnjcrk75lb3" path="res://assets/Textures/Dirt.png" id="10_b2s5t"]
 [ext_resource type="ArrayMesh" uid="uid://b7igpn6c8ib5q" path="res://assets/Meshes/Objects/RobotStation.mesh" id="12_b2s5t"]
 [ext_resource type="ArrayMesh" uid="uid://vq6o17leqlm8" path="res://assets/Meshes/RoomConstructor/RandomRoom1.mesh" id="12_e8llv"]
+[ext_resource type="ArrayMesh" uid="uid://bqp22lc1tk21e" path="res://assets/Meshes/Objects/Shelves.mesh" id="13_iglbh"]
 [ext_resource type="ArrayMesh" uid="uid://c8kbvjycbnjcm" path="res://assets/Meshes/Objects/ToolBoxLarge.mesh" id="13_tsg2d"]
+[ext_resource type="ArrayMesh" uid="uid://ccas7mfw668oa" path="res://assets/Meshes/Objects/MicroWave.mesh" id="14_e8llv"]
 [ext_resource type="ArrayMesh" uid="uid://cj5185ormimar" path="res://assets/Meshes/Objects/WorkBench.mesh" id="14_iglbh"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_iglbh"]
@@ -808,3 +810,11 @@ transform = Transform3D(-0.65, 0, -5.6824803e-08, 0, 0.65, 0, 5.6824803e-08, 0, 
 mesh = ExtResource("14_iglbh")
 
 [node name="Walls2" type="StaticBody3D" parent="." unique_id=1421037736]
+
+[node name="Shelves" type="MeshInstance3D" parent="." unique_id=580064330]
+transform = Transform3D(-1.7484556e-08, 0, 0.4, 0, 0.4, 0, -0.4, 0, -1.7484556e-08, -1.4472313, 1.1290041, -3.07787)
+mesh = ExtResource("13_iglbh")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Shelves" unique_id=1178025080]
+transform = Transform3D(-2.6226834e-08, 0, 0.6, 0, 0.6, 0, -0.6, 0, -2.6226834e-08, -0.23535347, 0.6182227, -0.69675136)
+mesh = ExtResource("14_e8llv")
