@@ -378,6 +378,7 @@ func gun_bob(vel: float, input, delta):
 			if is_on_floor() and input and !slide:
 				bob_y = sin(Time.get_ticks_msec() * 2 * bob_freq)
 				bob_x = sin(Time.get_ticks_msec() * bob_freq)
+				if (bob_y < -0.99 or bob_y > 0.99) and !$AudioPlayerStep.playing: play_sfx($AudioPlayerStep)
 			else:
 				bob_y = clamp(-velocity.y * 0.1, -4.0, 4.0)
 				bob_x = 0
@@ -406,6 +407,9 @@ func updateScreenEffect(): #Function for current and future screen effects
 		var factor = clamp(dot, 0.0, 1.0)
 		screenEffect.material.set("shader_parameter/look_angle_factor", factor)
 
+func play_sfx(audio_player: AudioStreamPlayer2D): #Potentially, we will have audio player that will have multiple audio files(for example shooting sounds)
+	audio_player.play()
+	
 # --- MOVEMENT ---
 
 func ground_movement(delta):
