@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dax5umrkld21m" path="res://Scripts/Weapons/Devastator.gd" id="1_34mgm"]
 [ext_resource type="Shader" uid="uid://w3eyk752ljxw" path="res://Shaders/Particles/EffectShader.gdshader" id="2_8atm4"]
+[ext_resource type="AudioStream" uid="uid://dpf6ax3r0whts" path="res://assets/Audio/DevastatorClicks.wav" id="2_wr5gp"]
 [ext_resource type="Texture2D" uid="uid://24usakcrqsvh" path="res://assets/Textures/Architecture/Explosion1.png" id="3_evjj5"]
 [ext_resource type="ArrayMesh" uid="uid://c8o27vvvdrpnb" path="res://assets/Meshes/Weapons/Devestator/base.mesh" id="4_ywa7r"]
 [ext_resource type="ArrayMesh" uid="uid://dm75dw7l4c35q" path="res://assets/Meshes/Weapons/Devestator/barrel.mesh" id="5_wr5gp"]
@@ -136,6 +137,21 @@ tracks/2/keys = {
 "update": 0,
 "values": [Vector3(0, 0, -10.9), Vector3(0, 0, -10.9), Vector3(0, 0, 0), Vector3(0, 0, 0)]
 }
+tracks/3/type = "audio"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Effects")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"clips": [{
+"end_offset": 0.14999992,
+"start_offset": 0.4100001,
+"stream": ExtResource("2_wr5gp")
+}],
+"times": PackedFloat32Array(0.2)
+}
+tracks/3/use_blend = true
 
 [sub_resource type="Animation" id="Animation_pv3de"]
 resource_name = "shoot"
@@ -239,6 +255,21 @@ tracks/7/keys = {
 "method": &"play"
 }]
 }
+tracks/8/type = "audio"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Effects")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"clips": [{
+"end_offset": 0.58,
+"start_offset": 0.0,
+"stream": ExtResource("2_wr5gp")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/8/use_blend = true
 
 [sub_resource type="Animation" id="Animation_2c47f"]
 resource_name = "undraw"
@@ -280,6 +311,21 @@ tracks/2/keys = {
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(0, 0, -10.9), Vector3(0, 0, -10.2), Vector3(0, 0, -10.9), Vector3(0, 0, -10.9)]
 }
+tracks/3/type = "audio"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Effects")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"clips": [{
+"end_offset": 0.5985858,
+"start_offset": 0.037245326,
+"stream": ExtResource("2_wr5gp")
+}],
+"times": PackedFloat32Array(0.0120188575)
+}
+tracks/3/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_pv3de"]
 _data = {
@@ -489,6 +535,11 @@ texture = ExtResource("7_ywa7r")
 [node name="Shot" type="AudioStreamPlayer" parent="." unique_id=1318865874]
 stream = ExtResource("8_ywa7r")
 volume_db = -22.0
+bus = &"Effects"
+
+[node name="Effects" type="AudioStreamPlayer" parent="." unique_id=211406801]
+volume_db = -20.0
+pitch_scale = 2.0
 bus = &"Effects"
 
 [connection signal="timeout" from="HeatBuffer" to="." method="_on_heat_buffer_timeout"]

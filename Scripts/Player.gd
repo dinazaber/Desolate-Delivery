@@ -254,6 +254,7 @@ func _physics_process(delta) -> void: # fixed 60 fps
 			airborne = false
 			vaulting = false
 			camera.add_trauma(clamp(0.7 * landVel/10, 0.0, 5.0))
+			$StepSound.play()
 			landVel = 0.0
 		
 		# Jumping
@@ -378,7 +379,7 @@ func gun_bob(vel: float, input, delta):
 			if is_on_floor() and input and !slide:
 				bob_y = sin(Time.get_ticks_msec() * 2 * bob_freq)
 				bob_x = sin(Time.get_ticks_msec() * bob_freq)
-				if (bob_y < -0.99 or bob_y > 0.99) and !$AudioPlayerStep.playing: play_sfx($AudioPlayerStep)
+				if (bob_y < -0.99 or bob_y > 0.99) and !$StepSound.playing: $StepSound.play()
 			else:
 				bob_y = clamp(-velocity.y * 0.1, -4.0, 4.0)
 				bob_x = 0
@@ -406,9 +407,6 @@ func updateScreenEffect(): #Function for current and future screen effects
 		var dot = forward.dot(horizontal_forward)
 		var factor = clamp(dot, 0.0, 1.0)
 		screenEffect.material.set("shader_parameter/look_angle_factor", factor)
-
-func play_sfx(audio_player): #Potentially, we will have audio player that will have multiple audio files(for example shooting sounds)
-	audio_player.play()
 	
 # --- MOVEMENT ---
 
@@ -462,6 +460,7 @@ func air_movement(delta):
 func handle_dash():
 	if dashCool == 100.0 and !crouch and !dead:
 		dash = true
+		$DashSound.play()
 		dashCool = -10.0
 		var dashDir: Vector3 = Vector3.ZERO
 		if direction: dashDir = direction

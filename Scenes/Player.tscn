@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://b1yx1tjjakl1w" path="res://Scripts/UI/HUD.gd" id="7_bhhdu"]
 [ext_resource type="PackedScene" uid="uid://bm2ti0vwyvub4" path="res://Scenes/UI/DeadScreen.tscn" id="10_yoq75"]
 [ext_resource type="AudioStream" uid="uid://cyya5nkw21kks" path="res://assets/Audio/RobotStep2.wav" id="11_ksbbd"]
+[ext_resource type="AudioStream" uid="uid://cqnjchd7d3eib" path="res://assets/Audio/Dash.wav" id="12_glx4g"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_yoq75"]
 radius = 0.35
@@ -614,9 +615,14 @@ text = "DRAW CALLS HERE"
 [node name="DeadScreen" parent="." unique_id=1831384756 instance=ExtResource("10_yoq75")]
 visible = false
 
-[node name="AudioPlayerStep" type="AudioStreamPlayer" parent="." unique_id=931925847]
+[node name="StepSound" type="AudioStreamPlayer" parent="." unique_id=931925847]
 stream = ExtResource("11_ksbbd")
 volume_db = -22.0
+bus = &"Effects"
+
+[node name="DashSound" type="AudioStreamPlayer" parent="." unique_id=2145948242]
+stream = ExtResource("12_glx4g")
+volume_db = -6.0
 bus = &"Effects"
 
 [connection signal="playerDead" from="." to="shakeable_camera/Hands/RightHand" method="_on_player_player_dead"]

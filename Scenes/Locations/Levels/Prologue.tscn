@@ -68,6 +68,6 @@ back_room = NodePath("../../Rooms/Corridor1")
 [node name="Ambient" type="AudioStreamPlayer" parent="." unique_id=619284339]
 process_mode = 3
 stream = ExtResource("12_8jmkq")
-volume_db = -30.0
+volume_db = -20.0
 autoplay = true
 bus = &"Music"
