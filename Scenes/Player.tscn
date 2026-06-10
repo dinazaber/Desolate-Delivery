@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://yhfwhi177tdg" path="res://Scenes/UI/SaveMenu.tscn" id="6_52ee3"]
 [ext_resource type="Script" uid="uid://b1yx1tjjakl1w" path="res://Scripts/UI/HUD.gd" id="7_bhhdu"]
 [ext_resource type="PackedScene" uid="uid://bm2ti0vwyvub4" path="res://Scenes/UI/DeadScreen.tscn" id="10_yoq75"]
-[ext_resource type="AudioStream" uid="uid://dg36bj32nv4xa" path="res://assets/Audio/RobotStep1.wav" id="11_ksbbd"]
+[ext_resource type="AudioStream" uid="uid://cyya5nkw21kks" path="res://assets/Audio/RobotStep2.wav" id="11_ksbbd"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_yoq75"]
 radius = 0.35
@@ -618,8 +618,10 @@ visible = false
 wait_time = 0.1
 one_shot = true
 
-[node name="AudioPlayerStep" type="AudioStreamPlayer2D" parent="." unique_id=1937431303]
+[node name="AudioPlayerStep" type="AudioStreamPlayer" parent="." unique_id=931925847]
 stream = ExtResource("11_ksbbd")
+volume_db = -22.0
+bus = &"Effects"
 
 [connection signal="playerDead" from="." to="shakeable_camera/Hands/RightHand" method="_on_player_player_dead"]
 [connection signal="playerDead" from="." to="PauseMenu" method="_on_player_player_dead"]

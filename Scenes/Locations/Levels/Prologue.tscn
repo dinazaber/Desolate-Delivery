@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://ctpyouk5n8jhc" path="res://Scenes/Locations/PrologueRooms/Corridor1.tscn" id="7_tqvuk"]
 [ext_resource type="ArrayMesh" uid="uid://dagmpo0xauxm7" path="res://assets/Meshes/RoomConstructor/WoodDoor.mesh" id="10_neqxg"]
 [ext_resource type="ArrayMesh" uid="uid://dpdoehh6ab6qa" path="res://assets/Meshes/RoomConstructor/DoorMetalBlue.mesh" id="11_niqb0"]
+[ext_resource type="AudioStream" uid="uid://r260cgbpxdje" path="res://assets/Audio/ChillAmbient.wav" id="12_8jmkq"]
 [ext_resource type="PackedScene" uid="uid://beqguglkai1oh" path="res://Scenes/Enemies/Robot.tscn" id="14_vrjo2"]
 [ext_resource type="PackedScene" uid="uid://d16pmg4f4pnf8" path="res://Scenes/Objects/Door.tscn" id="15_yfh15"]
 
@@ -63,3 +64,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.2742453, 0, -1.7173991)
 door_mesh = ExtResource("10_neqxg")
 front_room = NodePath("../../Rooms/Cabinet")
 back_room = NodePath("../../Rooms/Corridor1")
+
+[node name="Ambient" type="AudioStreamPlayer" parent="." unique_id=619284339]
+process_mode = 3
+stream = ExtResource("12_8jmkq")
+volume_db = -30.0
+autoplay = true
+bus = &"Music"

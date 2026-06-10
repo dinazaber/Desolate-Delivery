@@ -1,12 +1,14 @@
 [gd_scene format=3 uid="uid://bt5hphta86l3o"]
 
 [ext_resource type="Script" uid="uid://cfx84ipuj54ef" path="res://Scripts/Weapons/BeggarsShotgun.gd" id="1_e0py8"]
+[ext_resource type="AudioStream" uid="uid://cladlpa0pu2o2" path="res://assets/Audio/Beggar.wav" id="2_6f1rn"]
 [ext_resource type="ArrayMesh" uid="uid://c6nmdg8hnoe36" path="res://assets/Meshes/Weapons/beggarsShotgun/frame.mesh" id="2_xapv0"]
 [ext_resource type="Texture2D" uid="uid://24usakcrqsvh" path="res://assets/Textures/Architecture/Explosion1.png" id="4_ktqvf"]
 [ext_resource type="Shader" uid="uid://dc5k8hk8ct5i8" path="res://Shaders/Particles/Pellets.gdshader" id="5_xapv0"]
 [ext_resource type="Shader" uid="uid://w3eyk752ljxw" path="res://Shaders/Particles/EffectShader.gdshader" id="6_mmsk8"]
 [ext_resource type="ArrayMesh" uid="uid://eadvfmp34ewb" path="res://assets/Meshes/Weapons/beggarsShotgun/barrels.mesh" id="6_pc0kw"]
 [ext_resource type="Texture2D" uid="uid://btni0nnrioepq" path="res://assets/HUD/beggars shotgun/beggars_crosshair.png" id="7_1544g"]
+[ext_resource type="AudioStream" uid="uid://cjtm0m35ec7p0" path="res://assets/Audio/BeggarClick.wav" id="9_sfoia"]
 
 [sub_resource type="Animation" id="Animation_sjkk0"]
 length = 0.001
@@ -156,6 +158,20 @@ tracks/2/keys = {
 "method": &"rotate_z"
 }]
 }
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Click")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.27),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_4ungy"]
 resource_name = "shootConsecutive"
@@ -235,6 +251,20 @@ tracks/5/keys = {
 "method": &"rotate_z"
 }]
 }
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Shot")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_7ud7m"]
 resource_name = "shootLast"
@@ -312,6 +342,20 @@ tracks/5/keys = {
 "values": [{
 "args": [-1.571],
 "method": &"rotate_z"
+}]
+}
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Shot")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play"
 }]
 }
 
@@ -593,5 +637,14 @@ grow_vertical = 2
 rotation = 3.1415927
 pivot_offset_ratio = Vector2(0.5, 0.5)
 texture = ExtResource("7_1544g")
+
+[node name="Shot" type="AudioStreamPlayer" parent="." unique_id=1840920215]
+stream = ExtResource("2_6f1rn")
+volume_db = -22.0
+bus = &"Effects"
+
+[node name="Click" type="AudioStreamPlayer" parent="." unique_id=239384573]
+stream = ExtResource("9_sfoia")
+volume_db = -22.0
 
 [connection signal="timeout" from="HeatBuffer" to="." method="_on_heat_buffer_timeout"]

@@ -407,7 +407,7 @@ func updateScreenEffect(): #Function for current and future screen effects
 		var factor = clamp(dot, 0.0, 1.0)
 		screenEffect.material.set("shader_parameter/look_angle_factor", factor)
 
-func play_sfx(audio_player: AudioStreamPlayer2D): #Potentially, we will have audio player that will have multiple audio files(for example shooting sounds)
+func play_sfx(audio_player): #Potentially, we will have audio player that will have multiple audio files(for example shooting sounds)
 	audio_player.play()
 	
 # --- MOVEMENT ---

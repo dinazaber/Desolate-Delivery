@@ -10,6 +10,7 @@
 [ext_resource type="Shader" uid="uid://dc5k8hk8ct5i8" path="res://Shaders/Particles/Pellets.gdshader" id="5_xocnw"]
 [ext_resource type="Texture2D" uid="uid://nvq060nkkc6" path="res://assets/HUD/destabilizer/destabilizer_crosshair.png" id="6_chb2l"]
 [ext_resource type="Texture2D" uid="uid://cpra4doelhji" path="res://assets/HUD/destabilizer/destabilizer_mid.png" id="7_bc3ch"]
+[ext_resource type="AudioStream" uid="uid://ctv7mb1sxbgpa" path="res://assets/Audio/Minigun.wav" id="11_xocnw"]
 
 [sub_resource type="Animation" id="Animation_bc3ch"]
 length = 0.001
@@ -154,6 +155,20 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Shot")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_547a7"]
@@ -558,5 +573,10 @@ visible = false
 cast_shadow = 0
 mesh = SubResource("PlaneMesh_ovc61")
 skeleton = NodePath("../../..")
+
+[node name="Shot" type="AudioStreamPlayer" parent="." unique_id=263121111]
+stream = ExtResource("11_xocnw")
+volume_db = -16.0
+bus = &"Effects"
 
 [connection signal="timeout" from="HeatBuffer" to="." method="_on_heat_buffer_timeout"]
