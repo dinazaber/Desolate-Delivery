@@ -614,10 +614,6 @@ text = "DRAW CALLS HERE"
 [node name="DeadScreen" parent="." unique_id=1831384756 instance=ExtResource("10_yoq75")]
 visible = false
 
-[node name="FootstepTimer" type="Timer" parent="." unique_id=1776371331]
-wait_time = 0.1
-one_shot = true
-
 [node name="AudioPlayerStep" type="AudioStreamPlayer" parent="." unique_id=931925847]
 stream = ExtResource("11_ksbbd")
 volume_db = -22.0
