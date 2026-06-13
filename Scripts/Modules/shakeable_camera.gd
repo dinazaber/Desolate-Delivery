@@ -24,6 +24,7 @@ func _process(delta: float) -> void:
 	camera.rotation_degrees.x = initial_rotation.x + recoil_rotation.x + max_x * get_shake_intencity() * get_noise_from_seed(0)
 	camera.rotation_degrees.y = initial_rotation.y + recoil_rotation.y + max_y * get_shake_intencity() * get_noise_from_seed(1)
 	camera.rotation_degrees.z = initial_rotation.z + max_z * get_shake_intencity() * get_noise_from_seed(2)
+	
 
 
 func add_recoil(recoil_amount: float): # y,x cuz godot is goofy

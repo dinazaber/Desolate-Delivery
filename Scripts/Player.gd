@@ -12,7 +12,6 @@ var grabbedObject: RigidBody3D = null
 @onready var enemyBounceCheck = $Feet/EnemyBounceCheck
 @onready var speedParticles = $SpeedParticles
 @onready var wallrun_timer: Timer = $WallrunTimer
-var current_room = null
 
 
 # --- WEAPONS ---
@@ -122,8 +121,7 @@ func save():
 		"filename": get_scene_file_path(),
 		"parent": get_parent().get_path(),
 		"transform": global_transform,
-		"player_health": player_health,
-		"current_room": current_room
+		"player_health": player_health
 	}
 	return data
 	
@@ -198,6 +196,8 @@ func _process(delta: float) -> void: # adaptive fps
 
 func _physics_process(delta) -> void: # fixed 60 fps
 	updateScreenEffect()
+	
+	RenderingServer.global_shader_parameter_set("player_global_position", self.global_position)
 	
 	#neg vals are for recharge delay i.e -5 is 0.5 sec rechare delay VLAD
 	grenadeCool = clamp(grenadeCool + (100 * delta) / grenadeCoolTime, -10.0, 100.0)

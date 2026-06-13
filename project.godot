@@ -243,3 +243,7 @@ sun_direction={
 "type": "vec3",
 "value": Vector3(0.5, 0.5, 0.5)
 }
+player_global_position={
+"type": "vec3",
+"value": Vector3(0, 0, 0)
+}

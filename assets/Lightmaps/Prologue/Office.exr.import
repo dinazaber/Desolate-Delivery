@@ -18,9 +18,9 @@ dest_files=["res://.godot/imported/Office.exr-338270c63354ccb061fb14518e5f7acc.b
 
 compress/mode=2
 compress/high_quality=false
-compress/lossy_quality=0.7
+compress/lossy_quality=0.0
 compress/uastc_level=0
-compress/rdo_quality_loss=0.0
+compress/rdo_quality_loss=7.649
 compress/hdr_compression=1
 compress/channel_pack=1
 mipmaps/generate=false

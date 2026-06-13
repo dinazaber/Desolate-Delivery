@@ -438,7 +438,7 @@ transform = Transform3D(1, 0, 0, 0, 0.49999997, -0.86602545, 0, 0.86602545, 0.49
 
 [node name="Base" type="MeshInstance3D" parent="Destabilizer" unique_id=1924472760]
 transform = Transform3D(-0.03, 0, -2.6226832e-09, 0, 0.03, 0, 2.6226832e-09, 0, -0.03, 0, 0.13, -0.13)
-layers = 2
+layers = 18
 gi_mode = 2
 mesh = ExtResource("2_547a7")
 skeleton = NodePath("../..")

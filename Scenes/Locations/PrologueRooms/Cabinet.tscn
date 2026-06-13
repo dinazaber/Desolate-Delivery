@@ -1,7 +1,6 @@
 [gd_scene format=4 uid="uid://bklolkvppn66"]
 
 [ext_resource type="LightmapGIData" uid="uid://cxyuyqfnhdnns" path="res://assets/Lightmaps/Prologue/Cabinet.lmbake" id="1_kheae"]
-[ext_resource type="Script" uid="uid://dxl5apw4vluqh" path="res://Scripts/Modules/GameRoom.gd" id="1_yfio8"]
 [ext_resource type="ArrayMesh" uid="uid://bbjmrlxksj4cj" path="res://assets/Meshes/RoomConstructor/DoorWay_White&Blue.mesh" id="3_spu57"]
 [ext_resource type="ArrayMesh" uid="uid://cv8cjmypnt11j" path="res://assets/Meshes/Objects/Cabinet.mesh" id="6_70k0b"]
 [ext_resource type="ArrayMesh" uid="uid://c3itox14sik7u" path="res://assets/Meshes/Objects/WallCabinet.mesh" id="7_xyki8"]
@@ -106,6 +105,7 @@ render_priority = 0
 shader = ExtResource("17_6xqsl")
 shader_parameter/enable_wireframe = true
 shader_parameter/enable_world_projection = true
+shader_parameter/has_rig = false
 shader_parameter/enable_detail_1 = true
 shader_parameter/enable_detail_2 = true
 shader_parameter/enable_glow = false
@@ -158,6 +158,7 @@ render_priority = 0
 shader = ExtResource("17_6xqsl")
 shader_parameter/enable_wireframe = true
 shader_parameter/enable_world_projection = true
+shader_parameter/has_rig = false
 shader_parameter/enable_detail_1 = true
 shader_parameter/enable_detail_2 = true
 shader_parameter/enable_glow = false
@@ -193,6 +194,7 @@ render_priority = 0
 shader = ExtResource("17_6xqsl")
 shader_parameter/enable_wireframe = true
 shader_parameter/enable_world_projection = true
+shader_parameter/has_rig = false
 shader_parameter/enable_detail_1 = true
 shader_parameter/enable_detail_2 = false
 shader_parameter/enable_glow = false
@@ -227,6 +229,7 @@ render_priority = 0
 shader = ExtResource("17_6xqsl")
 shader_parameter/enable_wireframe = true
 shader_parameter/enable_world_projection = true
+shader_parameter/has_rig = false
 shader_parameter/enable_detail_1 = true
 shader_parameter/enable_detail_2 = false
 shader_parameter/enable_glow = false
@@ -261,6 +264,7 @@ render_priority = 0
 shader = ExtResource("17_6xqsl")
 shader_parameter/enable_wireframe = true
 shader_parameter/enable_world_projection = true
+shader_parameter/has_rig = false
 shader_parameter/enable_detail_1 = true
 shader_parameter/enable_detail_2 = false
 shader_parameter/enable_glow = false
@@ -295,6 +299,7 @@ render_priority = 0
 shader = ExtResource("17_6xqsl")
 shader_parameter/enable_wireframe = false
 shader_parameter/enable_world_projection = true
+shader_parameter/has_rig = false
 shader_parameter/enable_detail_1 = true
 shader_parameter/enable_detail_2 = false
 shader_parameter/enable_glow = false
@@ -329,6 +334,7 @@ render_priority = 0
 shader = ExtResource("17_6xqsl")
 shader_parameter/enable_wireframe = true
 shader_parameter/enable_world_projection = true
+shader_parameter/has_rig = false
 shader_parameter/enable_detail_1 = true
 shader_parameter/enable_detail_2 = true
 shader_parameter/enable_glow = false
@@ -364,6 +370,7 @@ render_priority = 0
 shader = ExtResource("17_6xqsl")
 shader_parameter/enable_wireframe = false
 shader_parameter/enable_world_projection = true
+shader_parameter/has_rig = false
 shader_parameter/enable_detail_1 = true
 shader_parameter/enable_detail_2 = false
 shader_parameter/enable_glow = false
@@ -417,7 +424,6 @@ radial_segments = 8
 size = Vector3(4.9176025, 1, 5.1317177)
 
 [node name="Cabinet" type="Node3D" unique_id=1857668066]
-script = ExtResource("1_yfio8")
 
 [node name="LightmapGI" type="LightmapGI" parent="." unique_id=1714560379]
 quality = 3

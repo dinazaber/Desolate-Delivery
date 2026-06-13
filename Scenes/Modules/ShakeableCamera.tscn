@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dvs50w2owu2rs"]
 
 [ext_resource type="Script" uid="uid://c7e3sbb04x4n1" path="res://Scripts/Modules/shakeable_camera.gd" id="1_dhhco"]
-[ext_resource type="Environment" uid="uid://c1agyuoca70ek" path="res://assets/Enviroment.tres" id="2_dhhco"]
+[ext_resource type="Shader" uid="uid://laarosdu7ldk" path="res://Shaders/ShakeableCamera.gdshader" id="3_wd55p"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_fh7ym"]
 frequency = 0.05
@@ -11,6 +11,10 @@ fractal_gain = 0.8
 [sub_resource type="SphereShape3D" id="SphereShape3D_w2e3y"]
 radius = 1.5
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jett6"]
+shader = ExtResource("3_wd55p")
+shader_parameter/levels = 20.0
+
 [node name="shakeable_camera" type="Area3D" unique_id=1373532385]
 script = ExtResource("1_dhhco")
 noise = SubResource("FastNoiseLite_fh7ym")
@@ -19,7 +23,15 @@ noise = SubResource("FastNoiseLite_fh7ym")
 visible = false
 shape = SubResource("SphereShape3D_w2e3y")
 
-[node name="Camera3D" type="Camera3D" parent="." unique_id=696304236]
-environment = ExtResource("2_dhhco")
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1505172573]
+visible = false
+material = SubResource("ShaderMaterial_jett6")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1912599160]
 fov = 90.0
 near = 0.03

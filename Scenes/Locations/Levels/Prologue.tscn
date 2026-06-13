@@ -13,9 +13,9 @@
 [ext_resource type="PackedScene" uid="uid://beqguglkai1oh" path="res://Scenes/Enemies/Robot.tscn" id="14_vrjo2"]
 [ext_resource type="PackedScene" uid="uid://d16pmg4f4pnf8" path="res://Scenes/Objects/Door.tscn" id="15_yfh15"]
 
-[node name="Prologue" type="Node" unique_id=1806327558 node_paths=PackedStringArray("first_room")]
+[node name="Prologue" type="Node" unique_id=1806327558 node_paths=PackedStringArray("check_point_room")]
 script = ExtResource("1_5ljsb")
-first_room = NodePath("Rooms/Office")
+check_point_room = NodePath("Rooms/Office")
 
 [node name="Player" parent="." unique_id=1941692924 instance=ExtResource("2_8uakf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 1, 0)

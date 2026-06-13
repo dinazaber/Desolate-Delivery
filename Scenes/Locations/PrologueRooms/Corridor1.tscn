@@ -1,6 +1,5 @@
 [gd_scene format=4 uid="uid://ctpyouk5n8jhc"]
 
-[ext_resource type="Script" uid="uid://dxl5apw4vluqh" path="res://Scripts/Modules/GameRoom.gd" id="1_6qwpu"]
 [ext_resource type="LightmapGIData" uid="uid://bksk5nls7ktt8" path="res://assets/Lightmaps/Prologue/Corridor1.lmbake" id="2_5rlci"]
 [ext_resource type="Shader" uid="uid://cunx8274v1qyy" path="res://Shaders/MeshShaders/MeshShader.gdshader" id="3_eh8t6"]
 [ext_resource type="Texture2D" uid="uid://kqnjcrk75lb3" path="res://assets/Textures/Dirt.png" id="4_ufigb"]
@@ -32,6 +31,7 @@ render_priority = 0
 shader = ExtResource("3_eh8t6")
 shader_parameter/enable_wireframe = true
 shader_parameter/enable_world_projection = true
+shader_parameter/has_rig = false
 shader_parameter/enable_detail_1 = true
 shader_parameter/enable_detail_2 = true
 shader_parameter/enable_glow = false
@@ -67,6 +67,7 @@ render_priority = 0
 shader = ExtResource("3_eh8t6")
 shader_parameter/enable_wireframe = true
 shader_parameter/enable_world_projection = true
+shader_parameter/has_rig = false
 shader_parameter/enable_detail_1 = true
 shader_parameter/enable_detail_2 = true
 shader_parameter/enable_glow = false
@@ -102,6 +103,7 @@ render_priority = 0
 shader = ExtResource("3_eh8t6")
 shader_parameter/enable_wireframe = false
 shader_parameter/enable_world_projection = true
+shader_parameter/has_rig = false
 shader_parameter/enable_detail_1 = true
 shader_parameter/enable_detail_2 = false
 shader_parameter/enable_glow = false
@@ -136,6 +138,7 @@ render_priority = 0
 shader = ExtResource("3_eh8t6")
 shader_parameter/enable_wireframe = false
 shader_parameter/enable_world_projection = true
+shader_parameter/has_rig = false
 shader_parameter/enable_detail_1 = true
 shader_parameter/enable_detail_2 = false
 shader_parameter/enable_glow = false
@@ -170,6 +173,7 @@ render_priority = 0
 shader = ExtResource("3_eh8t6")
 shader_parameter/enable_wireframe = true
 shader_parameter/enable_world_projection = false
+shader_parameter/has_rig = false
 shader_parameter/enable_detail_1 = true
 shader_parameter/enable_detail_2 = true
 shader_parameter/enable_glow = true
@@ -205,6 +209,7 @@ render_priority = 0
 shader = ExtResource("3_eh8t6")
 shader_parameter/enable_wireframe = true
 shader_parameter/enable_world_projection = true
+shader_parameter/has_rig = false
 shader_parameter/enable_detail_1 = true
 shader_parameter/enable_detail_2 = false
 shader_parameter/enable_glow = false
@@ -239,6 +244,7 @@ render_priority = 0
 shader = ExtResource("3_eh8t6")
 shader_parameter/enable_wireframe = true
 shader_parameter/enable_world_projection = true
+shader_parameter/has_rig = false
 shader_parameter/enable_detail_1 = true
 shader_parameter/enable_detail_2 = false
 shader_parameter/enable_glow = false
@@ -272,7 +278,6 @@ _surfaces = [{
 size = Vector3(15.8480835, 1, 4.198612)
 
 [node name="Corridor1" type="Node3D" unique_id=2126095865]
-script = ExtResource("1_6qwpu")
 
 [node name="LightmapGI" type="LightmapGI" parent="." unique_id=1471095607]
 quality = 3
