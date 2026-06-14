@@ -2,13 +2,13 @@
 
 [ext_resource type="Script" uid="uid://cfx84ipuj54ef" path="res://Scripts/Weapons/BeggarsShotgun.gd" id="1_e0py8"]
 [ext_resource type="AudioStream" uid="uid://cladlpa0pu2o2" path="res://assets/Audio/Beggar.wav" id="2_6f1rn"]
+[ext_resource type="AudioStream" uid="uid://bma54gxmvfunn" path="res://assets/Audio/WeaponPick2.wav" id="2_sfoia"]
 [ext_resource type="ArrayMesh" uid="uid://c6nmdg8hnoe36" path="res://assets/Meshes/Weapons/beggarsShotgun/frame.mesh" id="2_xapv0"]
 [ext_resource type="Texture2D" uid="uid://24usakcrqsvh" path="res://assets/Textures/Architecture/Explosion1.png" id="4_ktqvf"]
 [ext_resource type="Shader" uid="uid://dc5k8hk8ct5i8" path="res://Shaders/Particles/Pellets.gdshader" id="5_xapv0"]
 [ext_resource type="Shader" uid="uid://w3eyk752ljxw" path="res://Shaders/Particles/EffectShader.gdshader" id="6_mmsk8"]
 [ext_resource type="ArrayMesh" uid="uid://eadvfmp34ewb" path="res://assets/Meshes/Weapons/beggarsShotgun/barrels.mesh" id="6_pc0kw"]
 [ext_resource type="Texture2D" uid="uid://btni0nnrioepq" path="res://assets/HUD/beggars shotgun/beggars_crosshair.png" id="7_1544g"]
-[ext_resource type="AudioStream" uid="uid://cjtm0m35ec7p0" path="res://assets/Audio/BeggarClick.wav" id="9_sfoia"]
 
 [sub_resource type="Animation" id="Animation_sjkk0"]
 length = 0.001
@@ -113,6 +113,21 @@ tracks/2/keys = {
 "update": 0,
 "values": [Vector3(1.3089969, 0, -0.17453292), Vector3(0.2617994, 0, -0.12217305), Vector3(-0.17453292, 0, 0), Vector3(0.017453292, 0, 0), Vector3(0, 0, 0)]
 }
+tracks/3/type = "audio"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Click")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"clips": [{
+"end_offset": 0.3400001,
+"start_offset": 0.15,
+"stream": ExtResource("2_sfoia")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/3/use_blend = true
 
 [sub_resource type="Animation" id="Animation_l5ase"]
 resource_name = "load"
@@ -387,6 +402,21 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(0.32637656, 0, 0.43633232), Vector3(1.3089969, 0, 0.17453292)]
 }
+tracks/2/type = "audio"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Click")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": [{
+"end_offset": 0.37,
+"start_offset": 0.24000001,
+"stream": ExtResource("2_sfoia")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/2/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8qb6n"]
 _data = {
@@ -496,7 +526,7 @@ transform = Transform3D(0.98480725, 0.17364806, 0, -0.044943437, 0.25488684, -0.
 
 [node name="Frame" type="MeshInstance3D" parent="BeggarsShotgun" unique_id=972063788]
 transform = Transform3D(-0.03, -9.7406916e-11, -4.529874e-09, -9.740691e-11, 0.030000001, -6.984924e-11, 4.529874e-09, -6.9849224e-11, -0.03, 0, -0.030000001, -0.58)
-layers = 2
+layers = 18
 cast_shadow = 0
 gi_mode = 2
 mesh = ExtResource("2_xapv0")
@@ -505,7 +535,7 @@ mesh = ExtResource("2_xapv0")
 
 [node name="Barrels" type="MeshInstance3D" parent="BeggarsShotgun/Frame/BarrelDementiaPills" unique_id=1195580126]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0.12)
-layers = 2
+layers = 18
 cast_shadow = 0
 gi_mode = 2
 mesh = ExtResource("6_pc0kw")
@@ -644,7 +674,6 @@ volume_db = -22.0
 bus = &"Effects"
 
 [node name="Click" type="AudioStreamPlayer" parent="." unique_id=239384573]
-stream = ExtResource("9_sfoia")
 volume_db = -22.0
 
 [connection signal="timeout" from="HeatBuffer" to="." method="_on_heat_buffer_timeout"]

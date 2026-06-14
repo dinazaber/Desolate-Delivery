@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://da8xo7bpr7w37"]
 
-[ext_resource type="Script" uid="uid://idsgqohuto4m" path="res://Scripts/enemies/SniperTurret.gd" id="1_4yweh"]
-[ext_resource type="Script" uid="uid://dqv7818ohy4lu" path="res://Scripts/enemies/HitBox.gd" id="2_h5qh4"]
+[ext_resource type="Script" uid="uid://idsgqohuto4m" path="res://Scripts/Enemies/SniperTurret.gd" id="1_4yweh"]
+[ext_resource type="Script" uid="uid://dqv7818ohy4lu" path="res://Scripts/Enemies/HitBox.gd" id="2_h5qh4"]
 [ext_resource type="ArrayMesh" uid="uid://brhrp1qv2wxup" path="res://assets/Meshes/Enemies/SniperTurret/Base.mesh" id="2_pd8i8"]
 [ext_resource type="ArrayMesh" uid="uid://b2angk0lxn8ng" path="res://assets/Meshes/Enemies/SniperTurret/Mount.mesh" id="3_8iha5"]
 [ext_resource type="Shader" uid="uid://w3eyk752ljxw" path="res://Shaders/Particles/EffectShader.gdshader" id="4_8iha5"]

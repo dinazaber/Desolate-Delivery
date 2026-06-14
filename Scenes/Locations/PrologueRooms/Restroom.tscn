@@ -1,7 +1,6 @@
 [gd_scene format=4 uid="uid://df53p2nd7yphr"]
 
 [ext_resource type="ArrayMesh" uid="uid://bnpbloigqbbx6" path="res://assets/Meshes/RoomConstructor/DoorWay_Grey&Green.mesh" id="1_k74ow"]
-[ext_resource type="Script" uid="uid://dxl5apw4vluqh" path="res://Scripts/Modules/GameRoom.gd" id="1_qj0ge"]
 [ext_resource type="ArrayMesh" uid="uid://dmuu3icybpsg7" path="res://assets/Meshes/RoomConstructor/Wall.mesh" id="1_v8p53"]
 [ext_resource type="ArrayMesh" uid="uid://smhlox4qf5ic" path="res://assets/Meshes/RoomConstructor/FloorGrid.mesh" id="3_qcekh"]
 [ext_resource type="ArrayMesh" uid="uid://dnncgj3eh0p7k" path="res://assets/Meshes/RoomConstructor/Ceilling.mesh" id="4_qcekh"]
@@ -305,7 +304,6 @@ _surfaces = [{
 size = Vector3(5.9624023, 1, 7.178238)
 
 [node name="Restroom" type="Node3D" unique_id=1937386699]
-script = ExtResource("1_qj0ge")
 
 [node name="Prototypes" type="Node3D" parent="." unique_id=1959127582]
 visible = false

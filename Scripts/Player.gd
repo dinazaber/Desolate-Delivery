@@ -12,7 +12,6 @@ var grabbedObject: RigidBody3D = null
 @onready var enemyBounceCheck = $Feet/EnemyBounceCheck
 @onready var speedParticles = $SpeedParticles
 @onready var wallrun_timer: Timer = $WallrunTimer
-var current_room = null
 
 
 # --- WEAPONS ---
@@ -122,8 +121,7 @@ func save():
 		"filename": get_scene_file_path(),
 		"parent": get_parent().get_path(),
 		"transform": global_transform,
-		"player_health": player_health,
-		"current_room": current_room
+		"player_health": player_health
 	}
 	return data
 	
@@ -195,12 +193,11 @@ func _input(event):
 
 func _process(delta: float) -> void: # adaptive fps
 	gun_rot_amount = 0.6/(delta*14400)
+	grenadeCool = clamp(grenadeCool + (100 * delta) / grenadeCoolTime, -10.0, 100.0)
 
 func _physics_process(delta) -> void: # fixed 60 fps
-	updateScreenEffect()
 	
 	#neg vals are for recharge delay i.e -5 is 0.5 sec rechare delay VLAD
-	grenadeCool = clamp(grenadeCool + (100 * delta) / grenadeCoolTime, -10.0, 100.0)
 	if !slide:
 		dashCool = clamp(dashCool + (100 * delta) / dashCoolTime, -10.0, 100.0)
 	
@@ -212,7 +209,6 @@ func _physics_process(delta) -> void: # fixed 60 fps
 	
 	if !is_on_wall_only(): wallrun_timer.stop()
 	
-	check_player_feet()
 	
 	# ******* a mockup, dont bother shoving it into a function, will finish later with it's own model & scene
 	if Input.is_action_just_pressed("SideUpMouse") and !dead:
@@ -230,8 +226,6 @@ func _physics_process(delta) -> void: # fixed 60 fps
 			knockBack(dir, 40 * delta, false, 0.0)
 	else: pullTarget = null
 	# *******
-	
-	handle_grabbed_object(delta)
 	
 	var speed = crouch_speed if crouch else walk_speed
 	SPEED = move_toward(SPEED, speed, delta * 15.0)

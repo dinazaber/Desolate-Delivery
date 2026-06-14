@@ -1,7 +1,6 @@
 [gd_scene format=4 uid="uid://cs848so2f77c7"]
 
 [ext_resource type="LightmapGIData" uid="uid://dy4obcgimyvnv" path="res://assets/Lightmaps/Prologue/Lobby.lmbake" id="1_ia4ft"]
-[ext_resource type="Script" uid="uid://dxl5apw4vluqh" path="res://Scripts/Modules/GameRoom.gd" id="1_j7mb7"]
 [ext_resource type="ArrayMesh" uid="uid://b6dhihmks0rku" path="res://assets/Meshes/RoomConstructor/RoundRoom_White&Brown.mesh" id="2_ebdj8"]
 [ext_resource type="ArrayMesh" uid="uid://cvgg61twv3xnn" path="res://assets/Meshes/Architecture/RuinsPile.mesh" id="3_insln"]
 [ext_resource type="Shader" uid="uid://cunx8274v1qyy" path="res://Shaders/MeshShaders/MeshShader.gdshader" id="4_48f2t"]
@@ -67,6 +66,7 @@ render_priority = 0
 shader = ExtResource("4_48f2t")
 shader_parameter/enable_wireframe = true
 shader_parameter/enable_world_projection = true
+shader_parameter/has_rig = false
 shader_parameter/enable_detail_1 = true
 shader_parameter/enable_detail_2 = false
 shader_parameter/enable_glow = false
@@ -101,6 +101,7 @@ render_priority = 0
 shader = ExtResource("4_48f2t")
 shader_parameter/enable_wireframe = true
 shader_parameter/enable_world_projection = true
+shader_parameter/has_rig = false
 shader_parameter/enable_detail_1 = true
 shader_parameter/enable_detail_2 = false
 shader_parameter/enable_glow = false
@@ -162,6 +163,7 @@ render_priority = 0
 shader = ExtResource("4_48f2t")
 shader_parameter/enable_wireframe = true
 shader_parameter/enable_world_projection = false
+shader_parameter/has_rig = false
 shader_parameter/enable_detail_1 = true
 shader_parameter/enable_detail_2 = true
 shader_parameter/enable_glow = false
@@ -197,6 +199,7 @@ render_priority = 0
 shader = ExtResource("4_48f2t")
 shader_parameter/enable_wireframe = true
 shader_parameter/enable_world_projection = false
+shader_parameter/has_rig = false
 shader_parameter/enable_detail_1 = true
 shader_parameter/enable_detail_2 = true
 shader_parameter/enable_glow = true
@@ -232,6 +235,7 @@ render_priority = 0
 shader = ExtResource("4_48f2t")
 shader_parameter/enable_wireframe = true
 shader_parameter/enable_world_projection = false
+shader_parameter/has_rig = false
 shader_parameter/enable_detail_1 = true
 shader_parameter/enable_detail_2 = true
 shader_parameter/enable_glow = false
@@ -286,6 +290,7 @@ render_priority = 0
 shader = ExtResource("4_48f2t")
 shader_parameter/enable_wireframe = false
 shader_parameter/enable_world_projection = false
+shader_parameter/has_rig = false
 shader_parameter/enable_detail_1 = true
 shader_parameter/enable_detail_2 = false
 shader_parameter/enable_glow = false
@@ -319,7 +324,6 @@ _surfaces = [{
 size = Vector3(20.5177, 1, 11.945194)
 
 [node name="Lobby" type="Node3D" unique_id=1634252626]
-script = ExtResource("1_j7mb7")
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=1871926413]
 visible = false

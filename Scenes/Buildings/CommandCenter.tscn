@@ -345,6 +345,7 @@ size = Vector3(0.12133789, 1.803894, 0.8256378)
 size = Vector3(0.12133789, 0.5171814, 0.5148697)
 
 [node name="CommandCenter" type="Node3D" unique_id=1747516275]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 
 [node name="CommandCenter" type="MeshInstance3D" parent="." unique_id=544174171]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 0)
@@ -401,6 +402,7 @@ go_make_colliders = null
 metadata/_custom_type_script = "uid://cfwmt6vc7y70h"
 
 [node name="Collisions" type="Node3D" parent="." unique_id=409749543]
+visible = false
 
 [node name="CeilingHole" type="StaticBody3D" parent="Collisions" unique_id=308693725]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.009972215, 0)
@@ -802,4 +804,4 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1.6
 shape = SubResource("BoxShape3D_jqjrm")
 
 [node name="Door" parent="." unique_id=505525111 instance=ExtResource("6_3uc1p")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.2091684, -1.5327747, -0.4178953)
+transform = Transform3D(-2.0981465e-08, 0, 0.48, 0, 0.48, 0, -0.48, 0, -2.0981465e-08, 0.087791085, -2.0868096, -0.67208564)
