@@ -76,7 +76,7 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 
 
 func hide_room(side):
-	if last_exited_area != side: rooms[side].hide()
+	if last_exited_area != side and rooms[side]: rooms[side].hide()
 	elif rooms[1 - last_exited_area]: rooms[1 - last_exited_area].hide()
 	
 func _on_area_body_exited(body, i):
