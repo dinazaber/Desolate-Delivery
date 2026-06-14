@@ -66,7 +66,7 @@ func shoot():
 		shot_instance.set_velocity(($Marker3D/RayCast3D/Marker3D.global_position - ray.global_position).normalized())
 		
 		camera.add_recoil(recoil)
-		camera.add_trauma(recoil*0.7)
+		camera.add_trauma(recoil*0.08)
 		
 		heatBuffer.start()
 		can_cool = false

@@ -389,7 +389,7 @@ process_material = SubResource("ParticleProcessMaterial_ij7c0")
 draw_pass_1 = SubResource("SphereMesh_e1jli")
 
 [node name="trauma_causer" parent="." unique_id=1675244516 instance=ExtResource("3_5oibr")]
-trauma_amount = 30.0
+trauma_amount = 50.0
 sphere_radius = 10.0
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -3,8 +3,8 @@ extends Area3D
 @export var trauma_reduction_rate = 1.0
 @export var noise: FastNoiseLite
 @export var noise_speed = 50.0
-@export var max_x = 10.0
-@export var max_y = 10.0
+@export var max_x = 12.5
+@export var max_y = 12.5
 @export var max_z = 5.0
 
 var trauma = 0.0

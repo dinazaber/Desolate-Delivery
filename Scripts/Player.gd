@@ -63,7 +63,7 @@ const PLAYER_MAX_HEALTH = 100.0
 @export var player_health: float = PLAYER_MAX_HEALTH
 @export var coolOnKill: float = 15.0
 @export var grenadeCoolTime: float = 8.0 # cooldown time (s)
-@export var walk_speed: float = 6.0
+@export var walk_speed: float = 6.5
 @export var crouch_speed: float = 3.0
 @export var dash_speed: float = 22.5
 @export var dashCoolTime: float = 1.5 # cooldown time (s)
@@ -253,7 +253,7 @@ func _physics_process(delta) -> void: # fixed 60 fps
 		if airborne:
 			airborne = false
 			vaulting = false
-			camera.add_trauma(clamp(0.7 * landVel/10, 0.0, 5.0))
+			camera.add_trauma(clamp(0.3 * landVel/10, 0.0, 5.0))
 			$StepSound.play()
 			landVel = 0.0
 		
@@ -346,7 +346,7 @@ func switch_weapon(weapon):
 
 func hideWeapons(): #We will add here check for left/right side later I guess
 	for i in $shakeable_camera/Hands/RightHand.get_children():
-		if i is Node3D: i.visible = false		
+		if i is Node3D: i.visible = false
 
 # --- EFFECTS ---
 
@@ -373,13 +373,17 @@ func gun_bob(vel: float, input, delta):
 	if hands:
 		if vel > 0.5:
 			var bob_amount: float = 0.01 * clamp(vel/5, 0, 2)
-			var bob_freq: float = 0.005
+			var bob_freq: float = 0.006
 			var bob_y
 			var bob_x
 			if is_on_floor() and input and !slide:
 				bob_y = sin(Time.get_ticks_msec() * 2 * bob_freq)
 				bob_x = sin(Time.get_ticks_msec() * bob_freq)
-				if (bob_y < -0.99 or bob_y > 0.99) and !$StepSound.playing: $StepSound.play()
+				
+				if (bob_y < -0.99 or bob_y > 0.99) and !$StepSound.playing:
+					$StepSound.pitch_scale = randf_range(0.9, 1.1)
+					$StepSound.play()
+			
 			else:
 				bob_y = clamp(-velocity.y * 0.1, -4.0, 4.0)
 				bob_x = 0
@@ -643,7 +647,7 @@ func enemy_killed():
 func damage_taken(recieved_damage, isPlayer):
 	if isPlayer: recieved_damage /= 3
 	player_health -= recieved_damage
-	camera.add_trauma(recieved_damage)
+	camera.add_trauma(recieved_damage / 50)
 	checkLifeLine()
 
 func heal(heal_amount):
