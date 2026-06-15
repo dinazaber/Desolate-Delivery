@@ -1,10 +1,9 @@
 [gd_scene format=3 uid="uid://da8xo7bpr7w37"]
 
-[ext_resource type="Script" uid="uid://idsgqohuto4m" path="res://Scripts/Enemies/SniperTurret.gd" id="1_4yweh"]
-[ext_resource type="Script" uid="uid://dqv7818ohy4lu" path="res://Scripts/Enemies/HitBox.gd" id="2_h5qh4"]
+[ext_resource type="Script" uid="uid://idsgqohuto4m" path="res://Scripts/enemies/SniperTurret.gd" id="1_4yweh"]
+[ext_resource type="Script" uid="uid://dqv7818ohy4lu" path="res://Scripts/enemies/HitBox.gd" id="2_h5qh4"]
 [ext_resource type="ArrayMesh" uid="uid://brhrp1qv2wxup" path="res://assets/Meshes/Enemies/SniperTurret/Base.mesh" id="2_pd8i8"]
 [ext_resource type="ArrayMesh" uid="uid://b2angk0lxn8ng" path="res://assets/Meshes/Enemies/SniperTurret/Mount.mesh" id="3_8iha5"]
-[ext_resource type="Shader" uid="uid://w3eyk752ljxw" path="res://Shaders/Particles/EffectShader.gdshader" id="4_8iha5"]
 [ext_resource type="ArrayMesh" uid="uid://3ys0kxbump5l" path="res://assets/Meshes/Enemies/SniperTurret/Gun.mesh" id="4_h5qh4"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8iha5"]
@@ -80,15 +79,15 @@ gravity = Vector3(0, 0, 0)
 scale_curve = SubResource("CurveTexture_g0gsv")
 alpha_curve = SubResource("CurveTexture_bbe7t")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_8iha5"]
-render_priority = 0
-shader = ExtResource("4_8iha5")
-shader_parameter/enable_glow = false
-shader_parameter/glow_intensity = 1.0
-shader_parameter/draw_forward = false
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8iha5"]
+vertex_color_use_as_albedo = true
+albedo_color = Color(1, 0.50980395, 0, 1)
+emission_enabled = true
+emission = Color(1, 0.50980395, 0, 1)
+emission_energy_multiplier = 3.0
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_e4n6m"]
-material = SubResource("ShaderMaterial_8iha5")
+material = SubResource("StandardMaterial3D_8iha5")
 top_radius = 0.0
 bottom_radius = 0.01
 height = 0.115
@@ -118,15 +117,15 @@ spread = 0.0
 gravity = Vector3(0, 0, 0)
 scale_curve = SubResource("CurveXYZTexture_st424")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_h5qh4"]
-render_priority = 0
-shader = ExtResource("4_8iha5")
-shader_parameter/enable_glow = false
-shader_parameter/glow_intensity = 1.0
-shader_parameter/draw_forward = false
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h5qh4"]
+vertex_color_use_as_albedo = true
+albedo_color = Color(1, 0.50980395, 0, 1)
+emission_enabled = true
+emission = Color(1, 0.50980395, 0, 1)
+emission_energy_multiplier = 3.0
 
 [sub_resource type="BoxMesh" id="BoxMesh_x0sam"]
-material = SubResource("ShaderMaterial_h5qh4")
+material = SubResource("StandardMaterial3D_h5qh4")
 size = Vector3(0.2, 0.2, 500)
 
 [sub_resource type="Curve" id="Curve_bbe7t"]
@@ -159,15 +158,15 @@ spread = 0.0
 gravity = Vector3(0, 0, 0)
 scale_curve = SubResource("CurveXYZTexture_xmnhq")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_sm1nr"]
-render_priority = 0
-shader = ExtResource("4_8iha5")
-shader_parameter/enable_glow = false
-shader_parameter/glow_intensity = 1.0
-shader_parameter/draw_forward = false
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sm1nr"]
+vertex_color_use_as_albedo = true
+albedo_color = Color(1, 0.50980395, 0, 1)
+emission_enabled = true
+emission = Color(1, 0.50980395, 0, 1)
+emission_energy_multiplier = 3.0
 
 [sub_resource type="BoxMesh" id="BoxMesh_qoa7d"]
-material = SubResource("ShaderMaterial_sm1nr")
+material = SubResource("StandardMaterial3D_sm1nr")
 size = Vector3(0.02, 0.02, 500)
 
 [node name="SniperTurret" type="StaticBody3D" unique_id=1830225406 groups=["Enemy", "Persist"]]

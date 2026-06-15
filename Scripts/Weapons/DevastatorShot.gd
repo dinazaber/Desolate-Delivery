@@ -10,6 +10,9 @@ var exploded: bool = false
 @onready var exp_area: Area3D = $ExplosionArea
 @onready var anim: AnimationPlayer = $AnimationPlayer
 
+var damage_number = load("res://Scenes/UI/DamageNumber.tscn")
+var damage_number_instance
+
 
 func _ready() -> void:
 	anim.play("fizzle", -1, -6, true)
@@ -41,6 +44,7 @@ func explode(collided):
 					
 					if body.has_method("damage_taken"):
 						body.damage_taken(damage, true)
+						handle_damage_number(damage, body.global_position)
 					if body.has_method("knockBack"):
 						body.knockBack(dir, damage/10, true, 0.3)
 					if body.has_method("throw"):
@@ -55,6 +59,11 @@ func explode(collided):
 func _on_timer_timeout() -> void:
 	explode(false)
 
+func handle_damage_number(dmg, pos): # aoe must use body pose
+	damage_number_instance = damage_number.instantiate()
+	damage_number_instance.position = pos
+	get_tree().root.add_child(damage_number_instance)
+	damage_number_instance.spawn(dmg)
 
 # --- Anti-Error Function Dump ---
 

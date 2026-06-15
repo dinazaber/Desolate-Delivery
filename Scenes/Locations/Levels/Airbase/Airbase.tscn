@@ -145,8 +145,7 @@ vertices = PackedVector3Array(-79.5, 0.6, -69.5, -79.5, 0.6, 29.5, 159.5, 0.6, 2
 polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
 geometry_parsed_geometry_type = 1
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_ys1qc"]
-size = Vector3(275, 0, 110)
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_66qxi"]
 
 [sub_resource type="MultiMesh" id="MultiMesh_iyf6e"]
 transform_format = 1
@@ -330,7 +329,7 @@ collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D" unique_id=141115913]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.5, 0.25, -15)
-shape = SubResource("BoxShape3D_ys1qc")
+shape = SubResource("WorldBoundaryShape3D_66qxi")
 debug_color = Color(0.6236343, 0.98457175, 0, 1)
 
 [node name="Player" parent="." unique_id=1941692924 instance=ExtResource("9_myywe")]

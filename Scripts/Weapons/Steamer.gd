@@ -21,6 +21,9 @@ var can_cool: bool = true
 var in_action: bool = false
 var heat: float = 0.0
 
+var damage_number = load("res://Scenes/UI/DamageNumber.tscn")
+var damage_number_instance
+
 
 func shoot():
 	in_action = true
@@ -47,6 +50,7 @@ func shoot():
 			for body in bodies:
 				if body.has_method("damage_taken") and !body.is_in_group("Player"):
 					body.damage_taken(damage, true)
+					handle_damage_number(damage, body.global_position)
 				if body.has_method("knockBack"):
 					body.knockBack((body.global_position - playerPos.global_position).normalized(), damage/25.0, null, 0.2)
 				if body.has_method("throw"):
@@ -72,3 +76,9 @@ func _process(delta: float) -> void:
 
 func _on_heat_buffer_timeout() -> void:
 	can_cool = true
+
+func handle_damage_number(dmg, pos): # aoe must use body pose
+	damage_number_instance = damage_number.instantiate()
+	damage_number_instance.position = pos
+	get_tree().root.add_child(damage_number_instance)
+	damage_number_instance.spawn(dmg)

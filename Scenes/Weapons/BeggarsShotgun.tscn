@@ -597,7 +597,22 @@ grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
 
-[node name="handLD" type="TextureRect" parent="Crosshair" unique_id=1897735839]
+[node name="base" type="Control" parent="Crosshair" unique_id=189990376]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+
+[node name="handLD" type="TextureRect" parent="Crosshair/base" unique_id=1897735839]
 modulate = Color(1, 1, 1, 0.5882353)
 layout_mode = 1
 anchors_preset = 8
@@ -605,16 +620,16 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
 texture = ExtResource("7_1544g")
 
-[node name="handLU" type="TextureRect" parent="Crosshair" unique_id=1583843728]
+[node name="handLU" type="TextureRect" parent="Crosshair/base" unique_id=1583843728]
 modulate = Color(1, 1, 1, 0.5882353)
 layout_mode = 1
 anchors_preset = 8
@@ -622,17 +637,17 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
 grow_horizontal = 2
 grow_vertical = 2
 rotation = 1.5707964
 pivot_offset_ratio = Vector2(0.5, 0.5)
 texture = ExtResource("7_1544g")
 
-[node name="handRD" type="TextureRect" parent="Crosshair" unique_id=583681354]
+[node name="handRD" type="TextureRect" parent="Crosshair/base" unique_id=583681354]
 modulate = Color(1, 1, 1, 0.5882353)
 layout_mode = 1
 anchors_preset = 8
@@ -640,17 +655,17 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
 grow_horizontal = 2
 grow_vertical = 2
 rotation = -1.5707964
 pivot_offset_ratio = Vector2(0.5, 0.5)
 texture = ExtResource("7_1544g")
 
-[node name="handRU" type="TextureRect" parent="Crosshair" unique_id=907575571]
+[node name="handRU" type="TextureRect" parent="Crosshair/base" unique_id=907575571]
 modulate = Color(1, 1, 1, 0.5882353)
 layout_mode = 1
 anchors_preset = 8
@@ -658,10 +673,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
 grow_horizontal = 2
 grow_vertical = 2
 rotation = 3.1415927

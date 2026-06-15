@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://ctltw73h244p8"]
+
+[ext_resource type="Script" uid="uid://dboixxt5atehs" path="res://Scripts/UI/DamageNumber.gd" id="1_ksswl"]
+
+[sub_resource type="Animation" id="Animation_rhsbb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label3D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_qleln"]
+resource_name = "scale"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label3D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.26666668, 0.43333334, 0.6),
+"transitions": PackedFloat32Array(0.4, 2, 2, 0.5, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(1, 1, 1), Vector3(1, 1, 1), Vector3(0.5, 0.5, 0.5), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kelqw"]
+_data = {
+&"RESET": SubResource("Animation_rhsbb"),
+&"scale": SubResource("Animation_qleln")
+}
+
+[node name="DamageNumber" type="Node3D" unique_id=682688772]
+top_level = true
+script = ExtResource("1_ksswl")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1076880139]
+libraries/ = SubResource("AnimationLibrary_kelqw")
+
+[node name="Label3D" type="Label3D" parent="." unique_id=880359572]
+transform = Transform3D(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+gi_lightmap_texel_scale = 0.01
+pixel_size = 0.003
+billboard = 1
+double_sided = false
+no_depth_test = true
+fixed_size = true
+modulate = Color(1, 0.84313726, 0.3137255, 0.7058824)
+outline_modulate = Color(0.039215688, 0.039215688, 0.039215688, 0.9019608)
+text = "DMG"
+font_size = 16
+outline_size = 4

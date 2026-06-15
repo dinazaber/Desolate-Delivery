@@ -319,10 +319,8 @@ func handle_firing():
 	if Input.is_action_just_pressed("F") and !dead:
 		if drill.can_swing and !drill.in_action and !current_gun_L.in_action:
 			current_gun_R.undraw(1.5, true)
-			drill.show()
 			await drill.punch(velocity.length() if velocity.length() >= 15.0 else 0.0)
 			current_gun_R.draw(1.2)
-			drill.hide()
 
 func handle_weapon_switch():
 	if Input.is_action_just_pressed("1"): switch_weapon(destabilizer)
@@ -475,9 +473,11 @@ func handle_crouch(delta):
 	if Input.is_action_pressed("Ctrl") and !dead: # crouch/slide
 		crouch = true
 		camDefHeight = 0.275
+		
 		playerCollision.shape.height = lerp(playerCollision.shape.height, 1.25, delta * 15.0)
 		camera.position.y = lerp(camera.position.y, camDefHeight, delta * 15.0)
 		$Feet.position.y = lerp($Feet.position.y, 0.5, delta * 15.0)
+		
 		if is_on_floor() and velocity.length() > crouch_speed + 0.1: # 0.1 is epsilon for numerical error
 			slide = true
 			floor_stop_on_slope = false
@@ -489,14 +489,17 @@ func handle_crouch(delta):
 			slide = false
 			floor_stop_on_slope = true
 			accel_mod = 1.0
+	
 	elif !$UncrouchCheck.is_colliding():
 		slide = false
 		floor_constant_speed = true
 		crouch = false
 		camDefHeight = 0.5
+		
 		playerCollision.shape.height = lerp(playerCollision.shape.height, 2.0, delta * 15.0)
 		camera.position.y = lerp(camera.position.y, camDefHeight, delta * 15.0)
 		$Feet.position.y = lerp($Feet.position.y, 0.0, delta * 15.0)
+		
 		accel_mod = 1.0
 
 #func vault():

@@ -24,7 +24,10 @@ const EXPLOSION_R_SMALL: float = 3.5
 const EXPLOSION_R_BIG: float = 5.0
 var current_explosion_radius: float
 
-# Called when the node enters the scene tree for the first time.
+var damage_number = load("res://Scenes/UI/DamageNumber.tscn")
+var damage_number_instance
+
+
 func _ready() -> void:
 	explosion_box_small.visible = false
 	explosion_box_big.visible = false
@@ -67,6 +70,7 @@ func explode():
 			
 			if body.has_method("damage_taken"):
 				body.damage_taken(current_damage * coef, true)
+				handle_damage_number(current_damage * coef, body.global_position)
 			
 			var dir: Vector3 = (body.global_position - global_position).normalized()
 			var force: float = current_damage * coef / 10.0
@@ -107,6 +111,12 @@ func throw(direction, force):
 	var lim = 1.0 if mass > 0.5 else mass
 	apply_central_impulse(direction * force * lim)
 	apply_torque_impulse(Vector3(randf(), randf(), randf()) * mass)
+
+func handle_damage_number(dmg, pos): # aoe must use body pose
+	damage_number_instance = damage_number.instantiate()
+	damage_number_instance.position = pos
+	get_tree().root.add_child(damage_number_instance)
+	damage_number_instance.spawn(dmg)
 
 # --- Anti-Error Function Dump ---
 

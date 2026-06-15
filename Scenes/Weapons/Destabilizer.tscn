@@ -496,6 +496,7 @@ skeleton = NodePath("../../../..")
 one_shot = true
 
 [node name="Crosshair" type="Control" parent="." unique_id=68002499]
+visible = false
 layout_direction = 4
 layout_mode = 3
 anchors_preset = 15
@@ -505,7 +506,22 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="handL" type="TextureRect" parent="Crosshair" unique_id=749350503]
+[node name="base" type="Control" parent="Crosshair" unique_id=831277136]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+
+[node name="handL" type="TextureRect" parent="Crosshair/base" unique_id=749350503]
 modulate = Color(1, 1, 1, 0.5882353)
 layout_mode = 1
 anchors_preset = 8
@@ -522,7 +538,7 @@ grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
 texture = ExtResource("6_chb2l")
 
-[node name="handR" type="TextureRect" parent="Crosshair" unique_id=2077699997]
+[node name="handR" type="TextureRect" parent="Crosshair/base" unique_id=2077699997]
 modulate = Color(1, 1, 1, 0.5882353)
 layout_mode = 1
 anchors_preset = 8
@@ -540,7 +556,7 @@ rotation = 3.1415927
 pivot_offset_ratio = Vector2(0.5, 0.5)
 texture = ExtResource("6_chb2l")
 
-[node name="mid" type="TextureRect" parent="Crosshair" unique_id=1110595949]
+[node name="mid" type="TextureRect" parent="Crosshair/base" unique_id=1110595949]
 modulate = Color(1, 1, 1, 0.5882353)
 layout_mode = 1
 anchors_preset = 8

@@ -1,7 +1,7 @@
 extends Node3D
 
 #gun stats
-@export var damage: float = 7.0 # per pellet
+@export var damage: float = 6.0 # per pellet
 @export var recoil: float = 4.0 # degree rotation
 @export var spread: float = 4.5 # max pellet spread (degrees) (for first shot)
 @export var pellets: int = 9 # number of pellets
@@ -28,7 +28,9 @@ var last_anim: String = ""
 @onready var tracer = $BeggarsShotgun/tracer
 @onready var steam = $BeggarsShotgun/steam
 
-var crosshair_def_pos: Vector2
+var damage_number = load("res://Scenes/UI/DamageNumber.tscn")
+var damage_number_instance
+
 var crosshair_move: float = 0.0
 
 func _ready() -> void:
@@ -36,8 +38,6 @@ func _ready() -> void:
 	var material = tracer.process_material as ShaderMaterial # Get particle material
 	material.set_shader_parameter("speed", bullet_speed) # Pellet speed
 	tracer.amount = pellets # Set amount of pellets
-	
-	crosshair_def_pos = $Crosshair/handLD.position
 
 func draw(playSpeed):
 	anim.play("draw", -1, playSpeed)
@@ -114,6 +114,7 @@ func scatterNshoot():
 			if collider.is_in_group("Enemy"):
 				if collider.has_method("hit"):
 					collider.hit(damage, true)
+					handle_damage_number(damage, pellet.get_collision_point())
 			if collider.is_in_group("ShotReactable"):
 				collider.shot()
 				
@@ -154,12 +155,18 @@ func _physics_process(delta: float) -> void:
 func _on_heat_buffer_timeout() -> void:
 	can_cool = true
 
+func handle_damage_number(dmg, pos):
+	damage_number_instance = damage_number.instantiate()
+	damage_number_instance.position = pos
+	get_tree().root.add_child(damage_number_instance)
+	damage_number_instance.spawn(dmg)
+
 func update_crosshair():
 	crosshair_move = move_toward(crosshair_move, 2 * spread * (4 - shotNum)/4, 0.4)
-	$Crosshair/handLD.position = crosshair_def_pos + Vector2(-1,1) * crosshair_move
-	$Crosshair/handLU.position = crosshair_def_pos + Vector2(-1,-1) * crosshair_move
-	$Crosshair/handRD.position = crosshair_def_pos + Vector2(1,1) * crosshair_move
-	$Crosshair/handRU.position = crosshair_def_pos + Vector2(1,-1) * crosshair_move
+	$Crosshair/base/handLD.position = Vector2(-1,1) * crosshair_move
+	$Crosshair/base/handLU.position = Vector2(-1,-1) * crosshair_move
+	$Crosshair/base/handRD.position = Vector2(1,1) * crosshair_move
+	$Crosshair/base/handRU.position = Vector2(1,-1) * crosshair_move
 
 # --- SPREADAING DEBUG FUNCTION ---
 func spawn_debug_cube(pos: Vector3):

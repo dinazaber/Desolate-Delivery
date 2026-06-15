@@ -22,19 +22,18 @@ var playerRayEnd: Marker3D
 @onready var tracer = $Destabilizer/tracer
 @onready var ray = $Destabilizer/Barrel/RayCast3D
 
+var damage_number = load("res://Scenes/UI/DamageNumber.tscn")
+var damage_number_instance
+
 var can_cool: bool = true
 var heat: float = 0.0
 var accuracy_mod: float = 1.0
 var spin_amount: float = 0.0
 
-var crosshair_def_pos: Vector2
-
 func _ready() -> void:
 	var material = tracer.process_material as ShaderMaterial # Get particle material
 	material.set_shader_parameter("speed", bullet_speed) # Pellet speed
 	tracer.amount = pellets # Set amount of pellets
-	
-	crosshair_def_pos = $Crosshair/mid.position
 
 func draw(playSpeed):
 	anim.play("draw", -1, playSpeed)
@@ -93,6 +92,7 @@ func shoot():
 				if collider.is_in_group("Enemy"):
 					if collider.has_method("hit"):
 						collider.hit(damage, true)
+						handle_damage_number(damage, ray.get_collision_point())
 				if collider.is_in_group("ShotReactable"):
 					collider.shot()
 			
@@ -130,10 +130,16 @@ func _process(delta: float) -> void:
 func _on_heat_buffer_timeout() -> void:
 	can_cool = true
 
+func handle_damage_number(dmg, pos):
+	damage_number_instance = damage_number.instantiate()
+	damage_number_instance.position = pos
+	get_tree().root.add_child(damage_number_instance)
+	damage_number_instance.spawn(dmg)
+
 # --- crosshair ---
 func update_crosshair():
-	$Crosshair/handL.position.x = move_toward($Crosshair/handL.position.x, crosshair_def_pos.x - spread.y - accuracy_mod * 100, 1.4)
-	$Crosshair/handR.position.x = move_toward($Crosshair/handR.position.x, crosshair_def_pos.x + spread.y + accuracy_mod * 100, 1.4)
+	$Crosshair/base/handL.position.x = move_toward($Crosshair/base/handL.position.x,  - spread.y - accuracy_mod * 100, 1.4)
+	$Crosshair/base/handR.position.x = move_toward($Crosshair/base/handR.position.x,  + spread.y + accuracy_mod * 100, 1.4)
 
 # --- SPREADAING DEBUG FUNCTION ---
 func spawn_debug_cube(pos: Vector3):
