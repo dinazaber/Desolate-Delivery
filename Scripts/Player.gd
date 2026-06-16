@@ -6,6 +6,7 @@ var cameraDistance = 15
 @onready var playerCollision = $PlayerCollision
 var screenEffect: ColorRect
 @onready var playerRay = $shakeable_camera/PlayerRay
+@onready var playerRayEnd = $shakeable_camera/PlayerRay/PlayerRayEnd
 var grabbedObject: RigidBody3D = null
 @onready var hold_pos = $shakeable_camera/holdPos
 @onready var vaultCheck: ShapeCast3D = $VaultCheck
@@ -269,6 +270,8 @@ func _physics_process(delta) -> void: # fixed 60 fps
 	if !dead:
 		cam_gun_tilt_sway(currentInput.x, currentInput.y, delta)
 		gun_bob(velocity.length(), currentInput, delta)
+		
+		handle_crouch(delta)
 	
 	handle_healthBar()
 	handle_heatBars()
@@ -278,10 +281,9 @@ func _physics_process(delta) -> void: # fixed 60 fps
 	check_player_feet()
 	push_object()
 	handle_grabbed_object(delta)
-	handle_crouch(delta)
 	move_and_slide()
 	speed_lines()
-	
+
 
 # --- WEAPONS ---
 
@@ -467,10 +469,12 @@ func handle_dash():
 		await get_tree().create_timer(0.2).timeout
 		dash = false
 		if !is_on_floor() or !slide:
-			knockBack(-dashDir, 15 * Vector3(velocity.x, 0.0, velocity.z).length() / dash_speed, false, 0.0)
+			velocity.x /= 2
+			velocity.z /= 2
+			#knockBack(-dashDir, 15 * Vector3(velocity.x, 0.0, velocity.z).length() / dash_speed, false, 0.0)
 
 func handle_crouch(delta):
-	if Input.is_action_pressed("Ctrl") and !dead: # crouch/slide
+	if Input.is_action_pressed("Ctrl"): # crouch/slide
 		crouch = true
 		camDefHeight = 0.275
 		
@@ -641,7 +645,7 @@ func checkLifeLine():
 func enemy_killed():
 	restoreCool.emit(coolOnKill)
 
-func damage_taken(recieved_damage, isPlayer):
+func damage_taken(recieved_damage, isPlayer, _type, _pos):
 	if isPlayer: recieved_damage /= 3
 	player_health -= recieved_damage
 	camera.add_trauma(recieved_damage / 50)

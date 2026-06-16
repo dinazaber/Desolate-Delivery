@@ -28,9 +28,6 @@ var last_anim: String = ""
 @onready var tracer = $BeggarsShotgun/tracer
 @onready var steam = $BeggarsShotgun/steam
 
-var damage_number = load("res://Scenes/UI/DamageNumber.tscn")
-var damage_number_instance
-
 var crosshair_move: float = 0.0
 
 func _ready() -> void:
@@ -113,8 +110,7 @@ func scatterNshoot():
 			var collider = pellet.get_collider()
 			if collider.is_in_group("Enemy"):
 				if collider.has_method("hit"):
-					collider.hit(damage, true)
-					handle_damage_number(damage, pellet.get_collision_point())
+					collider.hit(damage, true, "bullet", pellet.get_collision_point())
 			if collider.is_in_group("ShotReactable"):
 				collider.shot()
 				
@@ -154,12 +150,6 @@ func _physics_process(delta: float) -> void:
 
 func _on_heat_buffer_timeout() -> void:
 	can_cool = true
-
-func handle_damage_number(dmg, pos):
-	damage_number_instance = damage_number.instantiate()
-	damage_number_instance.position = pos
-	get_tree().root.add_child(damage_number_instance)
-	damage_number_instance.spawn(dmg)
 
 func update_crosshair():
 	crosshair_move = move_toward(crosshair_move, 2 * spread * (4 - shotNum)/4, 0.4)

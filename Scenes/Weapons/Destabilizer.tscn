@@ -234,7 +234,7 @@ vertex_color_use_as_albedo = true
 albedo_texture = SubResource("GradientTexture2D_b1a7w")
 emission_enabled = true
 emission = Color(1, 0.62352943, 0, 1)
-emission_energy_multiplier = 6.0
+emission_energy_multiplier = 8.0
 
 [sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_hpmwm"]
 material = SubResource("StandardMaterial3D_hpmwm")

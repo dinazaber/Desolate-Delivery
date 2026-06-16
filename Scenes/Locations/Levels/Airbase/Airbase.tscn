@@ -47,10 +47,9 @@ ambient_light_source = 2
 ambient_light_color = Color(0.64, 0.49919996, 0.288, 1)
 reflected_light_source = 2
 tonemap_mode = 2
-tonemap_exposure = 0.95
-tonemap_white = 1.1
+tonemap_exposure = 0.85
 ssao_enabled = true
-ssao_power = 4.0
+ssao_power = 3.0
 sdfgi_min_cell_size = 1.0
 sdfgi_y_scale = 0
 glow_enabled = true
@@ -65,6 +64,8 @@ volumetric_fog_enabled = true
 volumetric_fog_density = 0.03
 volumetric_fog_albedo = Color(0.85, 0.71683335, 0.45049998, 1)
 volumetric_fog_emission = Color(0.8370007, 0.6644195, 0.37070605, 1)
+volumetric_fog_emission_energy = 0.5
+volumetric_fog_sky_affect = 0.9
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_qpfo2"]
 noise_type = 4
@@ -191,7 +192,7 @@ shadow_bias = 0.05
 shadow_normal_bias = 10.0
 shadow_opacity = 0.8
 directional_shadow_blend_splits = true
-directional_shadow_max_distance = 30.0
+directional_shadow_max_distance = 40.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1699263254]
 environment = SubResource("Environment_7rfda")

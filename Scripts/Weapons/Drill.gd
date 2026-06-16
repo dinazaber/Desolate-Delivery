@@ -12,9 +12,6 @@ extends Node3D
 var in_action: bool = false
 var can_swing: bool = true
 
-var damage_number = load("res://Scenes/UI/DamageNumber.tscn")
-var damage_number_instance
-
 
 func punch(speed):
 	in_action = true
@@ -42,8 +39,7 @@ func punch(speed):
 			hitstop(len(bodies))
 			for body in bodies:
 				if body.has_method("damage_taken") and !body.is_in_group("Player"):
-					body.damage_taken(damage + speed, true)
-					handle_damage_number(damage + speed, body.global_position)
+					body.damage_taken(damage + speed, true, "melee", body.global_position)
 				if body.has_method("knockBack"):
 					body.knockBack((body.global_position - playerPos.global_position).normalized(), (damage + speed)/10, true, 0.25)
 				if body.has_method("throw"):
@@ -62,7 +58,7 @@ func punch(speed):
 	$Crosshair.visible = false
 
 func hitstop(bodyCount):
-	camera.add_trauma(2.5 * bodyCount)
+	camera.add_trauma(0.7 * bodyCount)
 	if anim.is_playing():
 		anim.speed_scale = 0.1
 		await get_tree().create_timer(0.06).timeout
@@ -70,9 +66,3 @@ func hitstop(bodyCount):
 
 func _on_swing_timer_timeout() -> void:
 	can_swing = true
-
-func handle_damage_number(dmg, pos): # aoe must use body pose
-	damage_number_instance = damage_number.instantiate()
-	damage_number_instance.position = pos
-	get_tree().root.add_child(damage_number_instance)
-	damage_number_instance.spawn(dmg)

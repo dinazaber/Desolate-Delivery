@@ -18,6 +18,10 @@ var current_state = State.IDLE
 @onready var navAgent = $NavigationAgent3D
 @onready var player: CharacterBody3D = get_tree().get_first_node_in_group("Player")
 
+# --- Load ---
+var damage_number = load("res://Scenes/UI/DamageNumber.tscn")
+var damage_number_instance
+
 # --- Variables ---
 var inTransition: bool = false
 var isInAttack: bool = false
@@ -251,20 +255,29 @@ func shoot():
 	await get_tree().create_timer(1.0).timeout
 	isInAttack = false
 
-func damage_taken(recieved_damage, isPlayer):
+func damage_taken(recieved_damage, isPlayer, _type, pos):
 	if isPlayer: damagedByPlayer = true
 	enemy_health -= recieved_damage
-	checkLifeLine()
+	
+	if recieved_damage > 0:
+		handle_damage_number(recieved_damage, pos)
+		checkLifeLine()
+
+func handle_damage_number(dmg, pos):
+	damage_number_instance = damage_number.instantiate()
+	damage_number_instance.position = pos
+	get_tree().root.add_child(damage_number_instance)
+	damage_number_instance.spawn(dmg)
+
+func checkLifeLine():
+	if enemy_health <= 0 and dead == false:
+		dead = true
 
 func knockBack(direction, force, _slowOnGround, time):
 	knocked = true
 	velocity += direction * force
 	await get_tree().create_timer(time).timeout
 	knocked = false
-
-func checkLifeLine():
-	if enemy_health <= 0 and dead == false:
-		dead = true
 
 
 # --- Helpers ---

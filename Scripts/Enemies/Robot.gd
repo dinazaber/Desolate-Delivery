@@ -27,6 +27,10 @@ var current_state = State.IDLE
 @onready var navAgent = $NavigationAgent3D
 @onready var player = get_tree().get_first_node_in_group("Player")
 
+# --- Load ---
+var damage_number = load("res://Scenes/UI/DamageNumber.tscn")
+var damage_number_instance
+
 # --- Variables ---
 var inTransition: bool = false
 var isInAttack: bool = false
@@ -232,7 +236,7 @@ func kick():
 	await get_tree().create_timer(0.21).timeout
 	if kickRay.is_colliding():
 		if kickRay.get_collider().is_in_group("Player"):
-			kickRay.get_collider().damage_taken(enemy_kick_damage, false)
+			kickRay.get_collider().damage_taken(enemy_kick_damage, false, "melee", null)
 			var dir = player.global_position - global_position
 			kickRay.get_collider().knockBack(dir + Vector3(0.0,0.05 if player.is_on_floor() else 0.0,0.0), 7.0, false, 0.3)
 	await get_tree().create_timer(0.3).timeout
@@ -258,22 +262,31 @@ func shoot():
 		bullet.lifetime = bulletRay.global_position.distance_to(bulletRay.get_collision_point()) / bulletRay.global_position.distance_to(bulletRayEnd.global_position)
 		
 		if bulletRay.get_collider().is_in_group("Player"):
-			bulletRay.get_collider().damage_taken(enemy_gun_damage, false)
+			bulletRay.get_collider().damage_taken(enemy_gun_damage, false, "bullet", null)
 	else: bullet.lifetime = 0.5
 	
 	await get_tree().create_timer(1.0).timeout
 	isInAttack = false
-
-func damage_taken(recieved_damage, isPlayer):
-	if isPlayer: damagedByPlayer = true
-	enemy_health -= recieved_damage
-	checkLifeLine()
 
 func knockBack(direction, force, _slowOnGround, time):
 	knocked = true
 	velocity += direction * force
 	await get_tree().create_timer(time).timeout
 	knocked = false
+
+func damage_taken(recieved_damage, isPlayer, _type, pos):
+	if isPlayer: damagedByPlayer = true
+	enemy_health -= recieved_damage
+	
+	if recieved_damage > 0:
+		handle_damage_number(recieved_damage, pos)
+		checkLifeLine()
+
+func handle_damage_number(dmg, pos):
+	damage_number_instance = damage_number.instantiate()
+	damage_number_instance.position = pos
+	get_tree().root.add_child(damage_number_instance)
+	damage_number_instance.spawn(dmg)
 
 func checkLifeLine():
 	if enemy_health <= 0 and dead == false:

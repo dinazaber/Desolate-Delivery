@@ -22,9 +22,6 @@ var playerRayEnd: Marker3D
 @onready var tracer = $Destabilizer/tracer
 @onready var ray = $Destabilizer/Barrel/RayCast3D
 
-var damage_number = load("res://Scenes/UI/DamageNumber.tscn")
-var damage_number_instance
-
 var can_cool: bool = true
 var heat: float = 0.0
 var accuracy_mod: float = 1.0
@@ -91,8 +88,7 @@ func shoot():
 				var collider = ray.get_collider()
 				if collider.is_in_group("Enemy"):
 					if collider.has_method("hit"):
-						collider.hit(damage, true)
-						handle_damage_number(damage, ray.get_collision_point())
+						collider.hit(damage, true, "bullet", ray.get_collision_point())
 				if collider.is_in_group("ShotReactable"):
 					collider.shot()
 			
@@ -129,12 +125,6 @@ func _process(delta: float) -> void:
 
 func _on_heat_buffer_timeout() -> void:
 	can_cool = true
-
-func handle_damage_number(dmg, pos):
-	damage_number_instance = damage_number.instantiate()
-	damage_number_instance.position = pos
-	get_tree().root.add_child(damage_number_instance)
-	damage_number_instance.spawn(dmg)
 
 # --- crosshair ---
 func update_crosshair():

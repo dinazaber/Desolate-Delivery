@@ -79,17 +79,30 @@ gravity = Vector3(0, 0, 0)
 scale_curve = SubResource("CurveTexture_g0gsv")
 alpha_curve = SubResource("CurveTexture_bbe7t")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8iha5"]
+[sub_resource type="Gradient" id="Gradient_h5qh4"]
+offsets = PackedFloat32Array(0, 0.19838056, 0.82186234, 1)
+colors = PackedColorArray(1, 0.50980395, 0, 0, 1, 0.50980395, 0, 1, 1, 0.50980395, 0, 1, 1, 0.50980395, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_sm1nr"]
+gradient = SubResource("Gradient_h5qh4")
+width = 32
+height = 128
+fill_from = Vector2(0.517094, 1)
+fill_to = Vector2(0.51282054, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dfow3"]
+transparency = 1
+cull_mode = 2
 vertex_color_use_as_albedo = true
-albedo_color = Color(1, 0.50980395, 0, 1)
+albedo_texture = SubResource("GradientTexture2D_sm1nr")
 emission_enabled = true
 emission = Color(1, 0.50980395, 0, 1)
-emission_energy_multiplier = 3.0
+emission_energy_multiplier = 4.0
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_e4n6m"]
-material = SubResource("StandardMaterial3D_8iha5")
-top_radius = 0.0
-bottom_radius = 0.01
+material = SubResource("StandardMaterial3D_dfow3")
+top_radius = 0.01
+bottom_radius = 0.0
 height = 0.115
 radial_segments = 4
 
@@ -169,6 +182,100 @@ emission_energy_multiplier = 3.0
 material = SubResource("StandardMaterial3D_sm1nr")
 size = Vector3(0.02, 0.02, 500)
 
+[sub_resource type="Curve" id="Curve_8iha5"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.64684016, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_h5qh4"]
+curve = SubResource("Curve_8iha5")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_sm1nr"]
+particle_flag_align_y = true
+direction = Vector3(0, 1, 0)
+spread = 100.0
+initial_velocity_min = 4.0
+initial_velocity_max = 8.0
+gravity = Vector3(0, -7, 0)
+scale_curve = SubResource("CurveTexture_h5qh4")
+
+[sub_resource type="Curve" id="Curve_h5qh4"]
+_data = [Vector2(0, 0.7021564), 0.0, 0.0, 0, 0, Vector2(0.24916944, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.40431273), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_8iha5"]
+offsets = PackedFloat32Array(0, 0.19838056, 0.82186234, 1)
+colors = PackedColorArray(0, 0.5882353, 0.5882353, 0, 0, 0.5882353, 0.5882353, 1, 0, 0.5882353, 0.5882353, 1, 0, 0.5882353, 0.5882353, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_8iha5"]
+gradient = SubResource("Gradient_8iha5")
+width = 32
+height = 128
+fill_from = Vector2(0.517094, 1)
+fill_to = Vector2(0.51282054, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qm7o5"]
+transparency = 1
+cull_mode = 2
+vertex_color_use_as_albedo = true
+albedo_texture = SubResource("GradientTexture2D_8iha5")
+emission_enabled = true
+emission = Color(5.2943824e-06, 0.7433952, 0.7433951, 1)
+emission_energy_multiplier = 8.0
+
+[sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_qm7o5"]
+material = SubResource("StandardMaterial3D_qm7o5")
+size = 0.02
+sections = 3
+section_segments = 2
+curve = SubResource("Curve_h5qh4")
+
+[sub_resource type="Curve" id="Curve_sm1nr"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.24907064, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_qm7o5"]
+curve = SubResource("Curve_sm1nr")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_owrfq"]
+particle_flag_align_y = true
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 0.4
+emission_ring_radius = 1.0
+emission_ring_inner_radius = 0.7
+emission_ring_cone_angle = 90.0
+radial_velocity_min = -3.5000222
+radial_velocity_max = -3.0000222
+gravity = Vector3(0, 0, 0)
+alpha_curve = SubResource("CurveTexture_qm7o5")
+
+[sub_resource type="Curve" id="Curve_dfow3"]
+_data = [Vector2(0, 0.7021564), 0.0, 0.0, 0, 0, Vector2(0.24916944, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.40431273), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_h5qh4"]
+gradient = SubResource("Gradient_8iha5")
+width = 32
+height = 128
+fill_from = Vector2(0.517094, 1)
+fill_to = Vector2(0.51282054, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_owrfq"]
+transparency = 1
+cull_mode = 2
+vertex_color_use_as_albedo = true
+albedo_texture = SubResource("GradientTexture2D_h5qh4")
+emission_enabled = true
+emission = Color(1, 0.50980395, 0, 1)
+emission_energy_multiplier = 4.0
+
+[sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_6smmu"]
+material = SubResource("StandardMaterial3D_owrfq")
+size = 0.025
+sections = 2
+section_segments = 2
+curve = SubResource("Curve_dfow3")
+
 [node name="SniperTurret" type="StaticBody3D" unique_id=1830225406 groups=["Enemy", "Persist"]]
 collision_layer = 48
 collision_mask = 184
@@ -199,7 +306,7 @@ shape = SubResource("CylinderShape3D_4yweh")
 [node name="RayCast3D" type="RayCast3D" parent="." unique_id=1379129722]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.194, 0)
 target_position = Vector3(0, 0, 500)
-collision_mask = 152
+collision_mask = 43
 
 [node name="BaseMesh" type="MeshInstance3D" parent="." unique_id=397604197]
 transform = Transform3D(0.065, 0, 0, 0, 0.065, 0, 0, 0, 0.065, 0, 0, 0)
@@ -291,6 +398,24 @@ visibility_aabb = AABB(-1, -1, -1, 2, 2, 502)
 process_material = SubResource("ParticleProcessMaterial_4kpjt")
 draw_pass_1 = SubResource("BoxMesh_qoa7d")
 
+[node name="Captured" type="GPUParticles3D" parent="GunPivot" unique_id=886385925]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.3004103, 0)
+emitting = false
+amount = 16
+lifetime = 0.4
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_sm1nr")
+draw_pass_1 = SubResource("RibbonTrailMesh_qm7o5")
+
+[node name="CapturedCharge" type="GPUParticles3D" parent="GunPivot" unique_id=1360352324]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.394)
+amount = 12
+amount_ratio = 0.0
+lifetime = 0.2
+process_material = SubResource("ParticleProcessMaterial_owrfq")
+draw_pass_1 = SubResource("RibbonTrailMesh_6smmu")
+
 [node name="GunMesh" type="MeshInstance3D" parent="GunPivot" unique_id=1487560660]
 transform = Transform3D(0.065, 0, 0, 0, 0.065, 0, 0, 0, 0.065, 0, -0.18393409, 0)
 layers = 2
@@ -300,10 +425,15 @@ skeleton = NodePath("../..")
 [node name="GunRay" type="RayCast3D" parent="GunPivot/GunMesh" unique_id=897733090]
 transform = Transform3D(1.0000005, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 2.762179, 0)
 target_position = Vector3(0, 0, 5000)
-collision_mask = 169
+collision_mask = 43
 
 [node name="Timer" type="Timer" parent="." unique_id=1865930971]
 wait_time = 4.0
 one_shot = true
 
+[node name="CapturedTimer" type="Timer" parent="." unique_id=677355349]
+wait_time = 2.0
+one_shot = true
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="CapturedTimer" to="." method="_on_captured_timer_timeout"]
