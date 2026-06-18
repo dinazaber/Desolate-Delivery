@@ -12,6 +12,7 @@ var current_state = State.IDLE
 @export var enemy_gun_damage: float = 30.0
 @export var enemy_kick_damage: float = 50.0
 @export var enemy_health: float = 100.0
+@export var health_orb_reward: int = 2
 
 # --- Nodes ---
 @onready var chargeBall = $Skeleton3D/ArmR/chargeBall
@@ -219,7 +220,7 @@ func process_attack_state(delta):
 
 
 func process_dead_state(): # gotta make death anim   Zzzzz
-	player.enemy_killed()
+	player.enemy_killed(global_position, health_orb_reward)
 	queue_free()
 
 func aim(delta):

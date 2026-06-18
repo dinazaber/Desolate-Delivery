@@ -140,9 +140,11 @@ scale_max = 1.1999999
 scale_curve = SubResource("CurveTexture_6rbch")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2byne"]
-shading_mode = 0
 vertex_color_use_as_albedo = true
 albedo_color = Color(1, 0.50980395, 0, 1)
+emission_enabled = true
+emission = Color(1, 0.39215687, 0, 1)
+emission_energy_multiplier = 6.0
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_2jest"]
 material = SubResource("StandardMaterial3D_2byne")
@@ -180,7 +182,6 @@ alpha_curve = SubResource("CurveTexture_rgnl6")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5oibr"]
 transparency = 1
-shading_mode = 0
 vertex_color_use_as_albedo = true
 
 [sub_resource type="SphereMesh" id="SphereMesh_lcisc"]
@@ -228,7 +229,7 @@ vertex_color_use_as_albedo = true
 albedo_color = Color(1, 0.47058824, 0, 1)
 emission_enabled = true
 emission = Color(1, 0.47058824, 0, 1)
-emission_energy_multiplier = 3.0
+emission_energy_multiplier = 6.0
 
 [sub_resource type="TorusMesh" id="TorusMesh_iy3nd"]
 material = SubResource("StandardMaterial3D_21s6b")

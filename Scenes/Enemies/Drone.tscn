@@ -13,7 +13,8 @@ size = Vector3(1.25, 0.5, 1.25)
 render_priority = 0
 shader = ExtResource("1_ouh8p")
 shader_parameter/enable_wireframe = true
-shader_parameter/enable_world_projection = false
+shader_parameter/enable_world_projection = true
+shader_parameter/has_rig = true
 shader_parameter/enable_detail_1 = true
 shader_parameter/enable_detail_2 = true
 shader_parameter/enable_glow = false
@@ -154,7 +155,7 @@ radius = 0.07
 [sub_resource type="BoxShape3D" id="BoxShape3D_lm6hr"]
 size = Vector3(0.33, 0.54, 0.239)
 
-[node name="Drone" type="CharacterBody3D" unique_id=290106699 groups=["Enemy"]]
+[node name="Drone" type="CharacterBody3D" unique_id=290106699 groups=["Enemy", "Pull"]]
 collision_layer = 48
 collision_mask = 184
 motion_mode = 1

@@ -276,7 +276,7 @@ sections = 2
 section_segments = 2
 curve = SubResource("Curve_dfow3")
 
-[node name="SniperTurret" type="StaticBody3D" unique_id=1830225406 groups=["Enemy", "Persist"]]
+[node name="SniperTurret" type="StaticBody3D" unique_id=1830225406 groups=["Enemy", "Persist", "Pull"]]
 collision_layer = 48
 collision_mask = 184
 script = ExtResource("1_4yweh")
@@ -392,7 +392,8 @@ draw_pass_1 = SubResource("BoxMesh_x0sam")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.679)
 cast_shadow = 0
 emitting = false
-lifetime = 0.1
+amount = 16
+lifetime = 0.3
 one_shot = true
 visibility_aabb = AABB(-1, -1, -1, 2, 2, 502)
 process_material = SubResource("ParticleProcessMaterial_4kpjt")

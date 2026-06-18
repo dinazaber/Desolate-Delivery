@@ -7,10 +7,13 @@ var current_state = State.IDLE
 @export var detection_range = 50
 @export var enemy_damage = 50
 @export var enemy_health = 100
+@export var health_orb_reward: int = 2
 
 # --- Nodes ---
 @onready var eyes = $RayCast3D
 @onready var gunRay = $GunPivot/GunMesh/GunRay
+@onready var beam: GPUParticles3D = $GunPivot/Beam
+@onready var beamies: GPUParticles3D = $GunPivot/Beamies
 @onready var captured_timer: Timer = $CapturedTimer
 @onready var player = get_tree().get_first_node_in_group("Player")
 
@@ -87,23 +90,24 @@ func process_captured_state(delta):
 	var target: Vector3 = player.playerRayEnd.global_position
 	if player.playerRay.is_colliding(): target = player.playerRay.get_collision_point()
 	
-	follow(target, 2.5, delta)
+	follow(target, 3.0, delta)
 
 func process_attack_state():
 	if isInAttack: return
 	isInAttack = true
 	
-	$GunPivot/Beam.emitting = true
-	$GunPivot/Beamies.emitting = true
 	if gunRay.is_colliding():
 		if gunRay.get_collider().has_method("damage_taken"):
 			gunRay.get_collider().damage_taken(enemy_damage, isCaptured, "bullet", gunRay.get_collision_point())
+		adjust_beam((gunRay.get_collision_point() - beam.global_position).length() + 0.2)
+	else: adjust_beam(500.0)
+	
 	await get_tree().create_timer(1.5).timeout
 	current_state = State.IDLE if !isCaptured else State.CAPTURED
 	isInAttack = false
 
 func process_dead_state():
-	player.enemy_killed()
+	player.enemy_killed(global_position, health_orb_reward)
 	queue_free()
 
 
@@ -151,6 +155,15 @@ func handle_damage_number(dmg, pos):
 func checkLifeLine():
 	if enemy_health <= 0 and dead == false:
 		dead = true
+
+func adjust_beam(length):
+	beam.draw_pass_1.size = Vector3(0.2,0.2,length)
+	beam.process_material.emission_shape_offset = Vector3(0.0,0.0,length/2)
+	beamies.draw_pass_1.size = Vector3(0.02,0.02,length)
+	beamies.process_material.emission_shape_offset = Vector3(0.0,0.0,length/2)
+	
+	beam.emitting = true
+	beamies.emitting = true
 
 func _on_timer_timeout() -> void:
 	timerFlag = false

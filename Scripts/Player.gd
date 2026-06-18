@@ -34,6 +34,7 @@ var knocked: bool = false
 var crouch: bool = false
 var slide: bool = false
 var drillJump: bool = true
+var wallrun: bool = true
 var vaulting: bool = false
 var airborne: bool = false
 var dead: bool = false
@@ -68,6 +69,7 @@ const PLAYER_MAX_HEALTH = 100.0
 @export var dash_speed: float = 22.5
 @export var dashCoolTime: float = 1.5 # cooldown time (s)
 @export var jump_speed: float = 7.0
+@export var wallrun_speed: float = walk_speed * 1.2
 
 @export_category("PLAYER MODIFIERS") # maybe an upgrade system in the future?
 @export_range(1.0, 1.5, 0.1) var weapon_draw_mod: float = 1.0
@@ -78,7 +80,8 @@ var spear = load("res://Scenes/Weapons/Spear.tscn")
 var instance_spear
 var grenade = preload("res://Scenes/Weapons/Grenade.tscn")
 var instance_grenade
-
+var orb = load("res://Scenes/Objects/HealthOrb.tscn")
+var orb_instance
 
 
 # --- UI ---
@@ -208,7 +211,9 @@ func _physics_process(delta) -> void: # fixed 60 fps
 		rotation.y = lerp_angle(rotation.y, yaw, delta * 30.0) # left/right
 		camera.rotation.x = lerp_angle(camera.rotation.x, -pitch, delta * 30.0)
 	
-	if !is_on_wall_only(): wallrun_timer.stop()
+	if !is_on_wall() or is_on_floor():
+		wallrun_timer.stop()
+		wallrun = false
 	
 	
 	# ******* a mockup, dont bother shoving it into a function, will finish later with it's own model & scene
@@ -424,11 +429,13 @@ func ground_movement(delta):
 			velocity.z = lerp(velocity.z, 0.0, delta * 8.0 * accel_mod)
 
 func wall_movement(delta):
-	if wallrun_timer.is_stopped(): 
+	if !wallrun and wallrun_timer.is_stopped():
+		wallrun = true
 		wallrun_timer.start()
 	
 	var pull = -20 * ((wallrun_timer.wait_time - wallrun_timer.time_left) / wallrun_timer.wait_time)**2.5
-	velocity.y = lerp(velocity.y, pull , delta * 4.0)
+	var vel_mod = max(1.0, (2.0 - velocity.length() / wallrun_speed) * 2.0)
+	velocity.y = lerp(velocity.y, pull * vel_mod, delta * 4.0)
 		
 	if Input.is_action_just_pressed("Space") and !dead:
 		velocity.y = 0.0
@@ -436,7 +443,7 @@ func wall_movement(delta):
 		$VaultBuffer.start()
 		
 	if !knocked:
-		var desired_speed: Vector2 = Vector2(direction.x - get_wall_normal().x, direction.z - get_wall_normal().z) * SPEED * 1.2
+		var desired_speed: Vector2 = Vector2(direction.x - get_wall_normal().x, direction.z - get_wall_normal().z) * wallrun_speed
 		velocity.x = lerp(velocity.x, desired_speed.x, delta * (4.0 if abs(desired_speed.x) > abs(velocity.x) * sign(desired_speed.x * velocity.x) else 0.3) * accel_mod)
 		velocity.z = lerp(velocity.z, desired_speed.y, delta * (4.0 if abs(desired_speed.y) > abs(velocity.z) * sign(desired_speed.y * velocity.z) else 0.3) * accel_mod)
 
@@ -642,7 +649,9 @@ func checkLifeLine():
 	else:
 		camAnim.speed_scale = lerp(1.0, 2.5, 1 - player_health / PLAYER_MAX_HEALTH)
 
-func enemy_killed():
+func enemy_killed(pos, orb_count):
+	spawn_health_orbs(pos, orb_count)
+	
 	restoreCool.emit(coolOnKill)
 
 func damage_taken(recieved_damage, isPlayer, _type, _pos):
@@ -654,6 +663,14 @@ func damage_taken(recieved_damage, isPlayer, _type, _pos):
 func heal(heal_amount):
 	player_health = clamp(player_health + heal_amount, 0.0, PLAYER_MAX_HEALTH)
 	checkLifeLine()
+
+func spawn_health_orbs(pos, orb_count):
+	for i in range(orb_count):
+		orb_instance = orb.instantiate()
+		get_tree().root.add_child(orb_instance)
+		orb_instance.global_position = pos
+		
+		orb_instance.apply_central_impulse(Vector3(randf_range(-0.5, 0.5), 1.0, randf_range(-0.5, 0.5)).normalized() * randf_range(5.0, 10.0))
 
 # --- UI ---
 func handle_healthBar():

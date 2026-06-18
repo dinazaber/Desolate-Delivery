@@ -6,14 +6,131 @@
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_hd37v"]
 bounce = 0.3
 
+[sub_resource type="Animation" id="Animation_hd37v"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CollisionShape3D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("consume:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HealthPack:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CollisionShape3D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_sr0ta"]
+resource_name = "destroy&update"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CollisionShape3D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.03333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(0.001, 0.001, 0.001)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("consume:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("HealthPack:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CollisionShape3D:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.033333335),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5h1ts"]
+_data = {
+&"RESET": SubResource("Animation_hd37v"),
+&"destroy&update": SubResource("Animation_sr0ta")
+}
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_hd37v"]
 size = Vector3(0.305, 0.305, 0.305)
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_tsd06"]
-radius = 0.2
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_hd37v"]
-radius = 2.5
 
 [sub_resource type="Curve" id="Curve_sr0ta"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.15053764, 1), 0.0, 0.0, 0, 0, Vector2(0.8458781, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -76,8 +193,8 @@ transparency = 1
 vertex_color_use_as_albedo = true
 albedo_color = Color(1, 0.78431374, 0, 1)
 emission_enabled = true
-emission = Color(1, 0.78431374, 0, 1)
-emission_energy_multiplier = 2.0
+emission = Color(1, 0.47058824, 0, 1)
+emission_energy_multiplier = 16.0
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_div8c"]
 material = SubResource("StandardMaterial3D_nxf3c")
@@ -87,22 +204,56 @@ height = 0.05
 radial_segments = 4
 rings = 2
 
-[sub_resource type="Gradient" id="Gradient_bss3a"]
-offsets = PackedFloat32Array(0.55744123, 1)
-colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0)
+[sub_resource type="Curve" id="Curve_l4klk"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.5017065, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_hd37v"]
-gradient = SubResource("Gradient_bss3a")
-fill = 1
-fill_from = Vector2(0.5, 0.5)
+[sub_resource type="CurveTexture" id="CurveTexture_pwhch"]
+curve = SubResource("Curve_l4klk")
 
-[node name="HealthPack" type="RigidBody3D" unique_id=1895141670]
-collision_layer = 32
+[sub_resource type="Curve" id="Curve_58rdl"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.2527881, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_kwbo8"]
+curve = SubResource("Curve_58rdl")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_737tx"]
+particle_flag_align_y = true
+spread = 180.0
+initial_velocity_min = 3.0
+initial_velocity_max = 4.0
+gravity = Vector3(0, 0, 0)
+radial_accel_curve = SubResource("CurveTexture_pwhch")
+scale_min = 0.5
+scale_max = 1.1999999
+scale_curve = SubResource("CurveTexture_kwbo8")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jp046"]
+vertex_color_use_as_albedo = true
+albedo_color = Color(1, 0.50980395, 0, 1)
+emission_enabled = true
+emission = Color(1, 0.39215687, 0, 1)
+emission_energy_multiplier = 4.0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_nxf3c"]
+material = SubResource("StandardMaterial3D_jp046")
+top_radius = 0.05
+bottom_radius = 0.0
+height = 0.4
+radial_segments = 4
+rings = 0
+
+[node name="HealthPack" type="RigidBody3D" unique_id=1895141670 groups=["Enemy"]]
+collision_layer = 34
 collision_mask = 32
 mass = 0.7
 physics_material_override = SubResource("PhysicsMaterial_hd37v")
 inertia = Vector3(0.01, 0.01, 0.01)
 script = ExtResource("1_hd37v")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=468783865]
+libraries/ = SubResource("AnimationLibrary_5h1ts")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1208648822]
 shape = SubResource("BoxShape3D_hd37v")
@@ -114,21 +265,7 @@ gi_mode = 2
 visibility_range_end = 45.0
 mesh = ExtResource("2_hd37v")
 
-[node name="PickupRange" type="Area3D" parent="." unique_id=271044562]
-collision_layer = 0
-collision_mask = 8
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="PickupRange" unique_id=1566283019]
-shape = SubResource("SphereShape3D_tsd06")
-
-[node name="GravitateRange" type="Area3D" parent="." unique_id=829540609]
-collision_layer = 0
-collision_mask = 8
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="GravitateRange" unique_id=1031444438]
-shape = SubResource("SphereShape3D_hd37v")
-
-[node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=2021565018]
+[node name="energy" type="GPUParticles3D" parent="." unique_id=2021565018]
 transform = Transform3D(1, 0, 0, 0, -4.3711385e-08, -0.99999994, 0, 0.99999994, -4.3711385e-08, 0, 0, 0)
 layers = 2
 cast_shadow = 0
@@ -142,8 +279,12 @@ draw_pass_1 = SubResource("CylinderMesh_div8c")
 cull_mask = 4293918722
 radius = 0.5
 
-[node name="Decal" type="Decal" parent="." unique_id=1493380910]
-transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, -0.14591752, 0)
-size = Vector3(1.8, 0.06352539, 1.8)
-texture_albedo = SubResource("GradientTexture2D_hd37v")
-cull_mask = 1048573
+[node name="consume" type="GPUParticles3D" parent="." unique_id=1702731240]
+cast_shadow = 0
+emitting = false
+lifetime = 0.3
+one_shot = true
+explosiveness = 1.0
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_737tx")
+draw_pass_1 = SubResource("CylinderMesh_nxf3c")

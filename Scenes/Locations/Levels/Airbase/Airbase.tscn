@@ -338,9 +338,6 @@ debug_color = Color(0.6236343, 0.98457175, 0, 1)
 [node name="Player" parent="." unique_id=1941692924 instance=ExtResource("9_myywe")]
 transform = Transform3D(0.8183203, 0, -0.57476246, 0, 1, 0, 0.57476246, 0, 0.8183203, -3.972, 2.2440758, -3.147)
 
-[node name="SniperTurret" parent="." unique_id=1830225406 instance=ExtResource("10_fq6ak")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.673558, 1.785, -11.888981)
-
 [node name="Ruins" type="StaticBody3D" parent="." unique_id=555013339]
 
 [node name="Ruins1" type="MultiMeshInstance3D" parent="Ruins" unique_id=2027900047]
@@ -861,3 +858,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.380188, 0.26802826, -5.458
 
 [node name="CommandCenter" parent="." unique_id=1747516275 instance=ExtResource("35_cuh82")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 23.349, 4.808791, -29.685)
+
+[node name="SniperTurret" parent="." unique_id=1830225406 instance=ExtResource("10_fq6ak")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.508708, 2.0115821, -13.574843)

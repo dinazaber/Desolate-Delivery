@@ -1,0 +1,113 @@
+[gd_scene format=3 uid="uid://d2gygjx5cmc2h"]
+
+[ext_resource type="Script" uid="uid://vtw3sm4g1b32" path="res://Scripts/Modules/HealthOrb.gd" id="1_w4o6i"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_upvrm"]
+radius = 0.05
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_khf3v"]
+vertex_color_use_as_albedo = true
+albedo_color = Color(1, 0.5882353, 0, 1)
+emission_enabled = true
+emission = Color(1, 0.39215687, 0, 1)
+emission_energy_multiplier = 30.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_w4o6i"]
+material = SubResource("StandardMaterial3D_khf3v")
+radius = 0.05
+height = 0.1
+radial_segments = 8
+rings = 4
+
+[sub_resource type="Curve" id="Curve_w4o6i"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.24535316, 1), 0.0, -1.3199952, 0, 0, Vector2(1, 0), -1.3316832, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_upvrm"]
+curve = SubResource("Curve_w4o6i")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_45jo6"]
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_upvrm")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3u3ng"]
+vertex_color_use_as_albedo = true
+albedo_color = Color(1, 0.5882353, 0, 1)
+emission_enabled = true
+emission = Color(1, 0.50980395, 0, 1)
+emission_energy_multiplier = 30.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_45jo6"]
+material = SubResource("StandardMaterial3D_3u3ng")
+radius = 0.05
+height = 0.1
+radial_segments = 8
+rings = 4
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_w4o6i"]
+emission_shape = 2
+emission_sphere_radius = 0.05
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_upvrm")
+
+[sub_resource type="SphereMesh" id="SphereMesh_upvrm"]
+material = SubResource("StandardMaterial3D_3u3ng")
+radius = 0.03
+height = 0.06
+radial_segments = 4
+rings = 2
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_w4o6i"]
+radius = 0.2
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_45jo6"]
+radius = 3.5
+
+[node name="HealthOrb" type="RigidBody3D" unique_id=1091044645]
+collision_layer = 0
+collision_mask = 0
+mass = 0.2
+gravity_scale = 0.0
+linear_damp = 10.0
+script = ExtResource("1_w4o6i")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=860962691]
+shape = SubResource("SphereShape3D_upvrm")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=128434985]
+cast_shadow = 0
+mesh = SubResource("SphereMesh_w4o6i")
+
+[node name="trail" type="GPUParticles3D" parent="." unique_id=251732504]
+cast_shadow = 0
+amount = 12
+lifetime = 0.3
+process_material = SubResource("ParticleProcessMaterial_45jo6")
+draw_pass_1 = SubResource("SphereMesh_45jo6")
+
+[node name="bulges" type="GPUParticles3D" parent="." unique_id=750795847]
+cast_shadow = 0
+amount = 2
+lifetime = 0.3
+explosiveness = 0.4
+randomness = 0.2
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_w4o6i")
+draw_pass_1 = SubResource("SphereMesh_upvrm")
+
+[node name="PickupRange" type="Area3D" parent="." unique_id=1283329828]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PickupRange" unique_id=877683082]
+shape = SubResource("SphereShape3D_w4o6i")
+
+[node name="GravitateRange" type="Area3D" parent="." unique_id=1498437361]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GravitateRange" unique_id=1189009892]
+shape = SubResource("SphereShape3D_45jo6")
+
+[connection signal="body_entered" from="PickupRange" to="." method="_on_pickup_range_body_entered"]
+[connection signal="body_entered" from="GravitateRange" to="." method="_on_gravitate_range_body_entered"]

@@ -10,6 +10,7 @@ var current_state = State.IDLE
 @export var detection_range: float = 25.0
 @export var enemy_gun_damage: float = 15.0
 @export var enemy_health: float = 50.0
+@export var health_orb_reward: int = 1
 
 # --- Nodes ---
 @onready var animation = $AnimationPlayer
@@ -232,7 +233,7 @@ func process_attack_state(delta):
 
 
 func process_dead_state(): # gotta make death anim   Zzzzz
-	player.enemy_killed()
+	player.enemy_killed(global_position, health_orb_reward)
 	queue_free()
 
 func aim(_delta):
