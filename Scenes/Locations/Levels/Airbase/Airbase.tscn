@@ -198,7 +198,7 @@ directional_shadow_max_distance = 40.0
 environment = SubResource("Environment_7rfda")
 
 [node name="Player" parent="." unique_id=1941692924 instance=ExtResource("9_myywe")]
-transform = Transform3D(0.8183203, 0, -0.57476246, 0, 1, 0, 0.57476246, 0, 0.8183203, -3.972, 2.2440758, -3.147)
+transform = Transform3D(0.8183203, 0, -0.57476246, 0, 1, 0, 0.57476246, 0, 0.8183203, -3.972, 1.4951919, -3.147)
 
 [node name="SandHaze" type="ColorRect" parent="." unique_id=1103963715 groups=["Effects"]]
 process_mode = 1
