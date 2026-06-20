@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://b2hljcs3010c5" path="res://Scenes/UI/Settings.tscn" id="3_gntrk"]
 [ext_resource type="PackedScene" uid="uid://d3y1m515qojp2" path="res://Scenes/Weapons/LeftHandWeapons.tscn" id="3_nn08x"]
 [ext_resource type="Texture2D" uid="uid://b6vcboeh4uetd" path="res://assets/HUD/crosshair.png" id="5_5ixxa"]
-[ext_resource type="PackedScene" uid="uid://yhfwhi177tdg" path="res://Scenes/UI/SaveMenu.tscn" id="6_52ee3"]
 [ext_resource type="Script" uid="uid://b1yx1tjjakl1w" path="res://Scripts/UI/HUD.gd" id="7_bhhdu"]
 [ext_resource type="PackedScene" uid="uid://bm2ti0vwyvub4" path="res://Scenes/UI/DeadScreen.tscn" id="10_yoq75"]
 [ext_resource type="AudioStream" uid="uid://cyya5nkw21kks" path="res://assets/Audio/RobotStep2.wav" id="11_ksbbd"]
@@ -453,24 +452,16 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 15
 text = "Settings"
 
-[node name="Save Menu" type="Button" parent="PauseMenu/PauseMenu/MarginContainer/VBoxContainer" unique_id=1396896519]
-layout_mode = 2
-theme_override_font_sizes/font_size = 15
-text = "Save Manager"
-
 [node name="Quit" type="Button" parent="PauseMenu/PauseMenu/MarginContainer/VBoxContainer" unique_id=880679601]
 layout_mode = 2
 theme_override_font_sizes/font_size = 15
 text = "Main Menu"
 
-[node name="Settings" parent="PauseMenu" unique_id=307003582 instance=ExtResource("3_gntrk")]
+[node name="Settings" parent="PauseMenu" unique_id=307003582 node_paths=PackedStringArray("parent_menu") instance=ExtResource("3_gntrk")]
 process_mode = 3
 visible = false
 layout_mode = 1
-
-[node name="SaveMenu" parent="PauseMenu" unique_id=1653560853 instance=ExtResource("6_52ee3")]
-visible = false
-layout_mode = 1
+parent_menu = NodePath("../PauseMenu")
 
 [node name="HUD" type="Control" parent="." unique_id=1465815130]
 layout_direction = 4
@@ -613,6 +604,11 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 10
 text = "DRAW CALLS HERE"
 
+[node name="VRAM" type="Label" parent="HUD/VBoxContainer" unique_id=2044280608]
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "VRAM HERE"
+
 [node name="DeadScreen" parent="." unique_id=1831384756 instance=ExtResource("10_yoq75")]
 visible = false
 
@@ -634,7 +630,4 @@ bus = &"Effects"
 [connection signal="restoreCool" from="." to="shakeable_camera/Hands/LeftHand/Steamer" method="_on_restore_cool"]
 [connection signal="pressed" from="PauseMenu/PauseMenu/MarginContainer/VBoxContainer/Resume" to="PauseMenu" method="_on_resume_pressed"]
 [connection signal="pressed" from="PauseMenu/PauseMenu/MarginContainer/VBoxContainer/Settings" to="PauseMenu" method="_on_settings_pressed"]
-[connection signal="pressed" from="PauseMenu/PauseMenu/MarginContainer/VBoxContainer/Save Menu" to="PauseMenu" method="_on_save_menu_pressed"]
 [connection signal="pressed" from="PauseMenu/PauseMenu/MarginContainer/VBoxContainer/Quit" to="PauseMenu" method="_on_quit_pressed"]
-[connection signal="closed" from="PauseMenu/Settings" to="PauseMenu" method="_on_settings_closed"]
-[connection signal="closed" from="PauseMenu/SaveMenu" to="PauseMenu" method="_on_save_menu_closed"]

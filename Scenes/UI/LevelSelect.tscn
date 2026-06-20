@@ -1,0 +1,86 @@
+[gd_scene format=3 uid="uid://dtrupg8u7agye"]
+
+[ext_resource type="Script" uid="uid://dlv17ya3kvfeu" path="res://Scripts/UI/LevelSelect.gd" id="1_syujh"]
+[ext_resource type="Texture2D" uid="uid://ceu5d8tidbpsl" path="res://assets/Textures/Airbase.png" id="2_kxjdg"]
+[ext_resource type="Texture2D" uid="uid://b3ytf5fj272qa" path="res://assets/Textures/Prologue.png" id="2_pakyl"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2fe05"]
+bg_color = Color(0.31135654, 0.31135657, 0.31135646, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+
+[node name="LevelSelect" type="Control" unique_id=1411598961]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_syujh")
+
+[node name="Container" type="GridContainer" parent="." unique_id=1085762030]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 15
+columns = 3
+
+[node name="Prologue" type="Button" parent="Container" unique_id=78512478]
+custom_minimum_size = Vector2(297, 180)
+layout_mode = 2
+theme_override_constants/h_separation = 4
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_2fe05")
+icon = ExtResource("2_pakyl")
+icon_alignment = 1
+expand_icon = true
+metadata/level_path = &"res://Scenes/Locations/Levels/Prologue.tscn"
+
+[node name="Label" type="Label" parent="Container/Prologue" unique_id=147513494]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -23.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 24
+text = "Prologue"
+
+[node name="Airbase" type="Button" parent="Container" unique_id=2099071798]
+custom_minimum_size = Vector2(297, 180)
+layout_mode = 2
+theme_override_constants/h_separation = 4
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_2fe05")
+icon = ExtResource("2_kxjdg")
+icon_alignment = 1
+expand_icon = true
+metadata/level_path = &"res://Scenes/Locations/Levels/Airbase/Airbase.tscn"
+
+[node name="Label" type="Label" parent="Container/Airbase" unique_id=1631181847]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -23.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 24
+text = "Airbase"
+
+[connection signal="pressed" from="Container/Prologue" to="." method="_on_level_button_pressed" binds= [NodePath("Container/Prologue")]]
+[connection signal="pressed" from="Container/Airbase" to="." method="_on_level_button_pressed" binds= [NodePath("Container/Airbase")]]

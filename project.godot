@@ -20,6 +20,10 @@ config/features=PackedStringArray("4.6", "Mobile")
 run/max_fps=180
 config/icon="res://icon.svg"
 
+[audio]
+
+buses/default_bus_layout="uid://d33nadyull47x"
+
 [autoload]
 
 SaveManager="*uid://dbihyb2ex78ls"

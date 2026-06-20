@@ -1,5 +1,4 @@
 extends Control
-signal closed
 
 @onready var sclOpt = $ScrollContainer/VBoxContainer/Scale/ScaleOption
 @onready var antAliOpt = $ScrollContainer/VBoxContainer/AntiAliasing/AntAliOp
@@ -14,6 +13,8 @@ signal closed
 @onready var mousSensBar = $ScrollContainer/VBoxContainer/MouseSens/HSlider
 @onready var autoOpenDoorBtn = $ScrollContainer/VBoxContainer/AutoOpenCloseDoors/CheckButton
 @onready var autoCloseDoorBtn = $ScrollContainer/VBoxContainer/AutoOpenCloseDoors/CheckButton2
+
+@export var parent_menu: Control
 
 var settings
 
@@ -162,7 +163,7 @@ func _on_discard_pressed() -> void:
 		$Panel.hide()
 		uiRefresh()
 		hide()
-		closed.emit()
+		parent_menu.show()
 
 
 func _on_back_pressed() -> void:

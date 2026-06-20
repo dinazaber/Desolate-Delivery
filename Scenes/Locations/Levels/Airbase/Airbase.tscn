@@ -65,7 +65,7 @@ volumetric_fog_density = 0.03
 volumetric_fog_albedo = Color(0.85, 0.71683335, 0.45049998, 1)
 volumetric_fog_emission = Color(0.8370007, 0.6644195, 0.37070605, 1)
 volumetric_fog_emission_energy = 0.5
-volumetric_fog_sky_affect = 0.9
+volumetric_fog_length = 128.0
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_qpfo2"]
 noise_type = 4
@@ -196,6 +196,9 @@ directional_shadow_max_distance = 40.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1699263254]
 environment = SubResource("Environment_7rfda")
+
+[node name="Player" parent="." unique_id=1941692924 instance=ExtResource("9_myywe")]
+transform = Transform3D(0.8183203, 0, -0.57476246, 0, 1, 0, 0.57476246, 0, 0.8183203, -3.972, 2.2440758, -3.147)
 
 [node name="SandHaze" type="ColorRect" parent="." unique_id=1103963715 groups=["Effects"]]
 process_mode = 1
@@ -334,9 +337,6 @@ collision_mask = 0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.5, 0.25, -15)
 shape = SubResource("WorldBoundaryShape3D_66qxi")
 debug_color = Color(0.6236343, 0.98457175, 0, 1)
-
-[node name="Player" parent="." unique_id=1941692924 instance=ExtResource("9_myywe")]
-transform = Transform3D(0.8183203, 0, -0.57476246, 0, 1, 0, 0.57476246, 0, 0.8183203, -3.972, 2.2440758, -3.147)
 
 [node name="Ruins" type="StaticBody3D" parent="." unique_id=555013339]
 
