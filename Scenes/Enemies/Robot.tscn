@@ -6,7 +6,7 @@
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_h872o"]
 radius = 0.45
-height = 2.0974731
+height = 2.1371155
 
 [sub_resource type="Animation" id="Animation_d13cv"]
 length = 0.001
@@ -484,7 +484,7 @@ collision_mask = 184
 script = ExtResource("1_h872o")
 
 [node name="CollisionEnv" type="CollisionShape3D" parent="." unique_id=177358311]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0495911, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.019821167, 0)
 shape = SubResource("CapsuleShape3D_h872o")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1869225451]
@@ -492,12 +492,12 @@ root_node = NodePath("../Skeleton3D")
 libraries/ = SubResource("AnimationLibrary_anr4p")
 
 [node name="Skeleton3D" type="Skeleton3D" parent="." unique_id=1654080903]
-transform = Transform3D(-6.556708e-09, 0, 0.14999999, 0, 0.14999999, 0, -0.14999999, 0, -6.556708e-09, 0, 2.0961425, 0)
+transform = Transform3D(-6.556708e-09, 0, 0.14999999, 0, 0.14999999, 0, -0.14999999, 0, -6.556708e-09, 0, 1, 0)
 bones/0/name = "Base"
 bones/0/parent = -1
 bones/0/rest = Transform3D(1, -1.1073507e-15, 1.2441222e-07, -2.6340133e-14, 1, 2.2061725e-07, -1.2441222e-07, -2.2061725e-07, 1, 0, -5.994387, 0)
 bones/0/enabled = true
-bones/0/position = Vector3(0, -5.994387, 0)
+bones/0/position = Vector3(0, -6.045452, 0)
 bones/0/rotation = Quaternion(1.7770675e-15, 0, -0.29211685, 0.9563826)
 bones/0/scale = Vector3(1, 1, 1)
 bones/1/name = "Hand.L"
@@ -578,7 +578,7 @@ mesh = ExtResource("1_grc7g")
 skin = SubResource("Skin_v6sto")
 
 [node name="Base" type="BoneAttachment3D" parent="Skeleton3D" unique_id=538913996]
-transform = Transform3D(0.82933545, 0.558751, -1.0382228e-15, -0.558751, 0.82933545, -3.3991131e-15, -1.0382228e-15, 3.3991131e-15, 1, 0, -5.994387, 0)
+transform = Transform3D(0.82933545, 0.558751, -1.0382228e-15, -0.558751, 0.82933545, -3.3991131e-15, -1.0382228e-15, 3.3991131e-15, 1, 0, -6.045452, 0)
 bone_name = "Base"
 bone_idx = 0
 
@@ -603,7 +603,7 @@ transform = Transform3D(0.99999964, 0, -1.7763568e-14, 0, 0.99999964, 0, 1.77635
 shape = SubResource("BoxShape3D_hfj1t")
 
 [node name="HandL" type="BoneAttachment3D" parent="Skeleton3D" unique_id=854443320]
-transform = Transform3D(4.9432245e-08, 0.0014149845, -0.99999905, -3.330415e-08, -0.9999991, -0.0014150441, -1, -3.3976412e-15, -1.1920929e-07, 2.13555, -2.8246622, -2.5773292)
+transform = Transform3D(4.9432245e-08, 0.0014149845, -0.99999905, -3.330415e-08, -0.9999991, -0.0014150441, -1, -3.3976412e-15, -1.1920929e-07, 2.13555, -2.8757272, -2.5773292)
 bone_name = "Hand.L"
 bone_idx = 1
 
@@ -617,7 +617,7 @@ transform = Transform3D(1, 6.3369596e-21, -3.5527137e-15, 6.3369467e-21, 0.99999
 shape = SubResource("BoxShape3D_hq11t")
 
 [node name="ArmL" type="BoneAttachment3D" parent="Skeleton3D" unique_id=1178983022]
-transform = Transform3D(0.9999989, 0.001413913, -3.0954112e-07, 0.0014139726, -0.99999905, 9.173688e-07, -2.3841856e-07, -9.5117986e-07, -0.9999997, 2.1381454, -4.6589117, -2.577331)
+transform = Transform3D(0.9999989, 0.001413913, -3.0954112e-07, 0.0014139726, -0.99999905, 9.173688e-07, -2.3841856e-07, -9.5117986e-07, -0.9999997, 2.1381454, -4.709977, -2.577331)
 bone_name = "Arm.L"
 bone_idx = 2
 
@@ -631,7 +631,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0043031992, 1.2047453, -0.0
 shape = SubResource("BoxShape3D_o787m")
 
 [node name="HandR" type="BoneAttachment3D" parent="Skeleton3D" unique_id=110097354]
-transform = Transform3D(4.9432245e-08, 0.0014149845, -0.99999905, -3.330415e-08, -0.9999991, -0.0014150441, -1, -3.3976412e-15, -1.1920929e-07, 2.1355476, -2.8246644, 2.558996)
+transform = Transform3D(4.9432245e-08, 0.0014149845, -0.99999905, -3.330415e-08, -0.9999991, -0.0014150441, -1, -3.3976412e-15, -1.1920929e-07, 2.1355476, -2.8757293, 2.558996)
 bone_name = "Hand.R"
 bone_idx = 3
 
@@ -645,7 +645,7 @@ transform = Transform3D(1, 4.3298882e-21, 7.1054274e-15, 7.718102e-21, 0.9999999
 shape = SubResource("BoxShape3D_hq11t")
 
 [node name="ArmR" type="BoneAttachment3D" parent="Skeleton3D" unique_id=172844002]
-transform = Transform3D(0.9999989, 0.001413913, -3.0954115e-07, 0.0014139726, -0.99999905, 9.1736973e-07, -2.3841856e-07, -9.511807e-07, -0.99999976, 2.1381443, -4.6589117, 2.558993)
+transform = Transform3D(0.9999989, 0.001413913, -3.0954115e-07, 0.0014139726, -0.99999905, 9.1736973e-07, -2.3841856e-07, -9.511807e-07, -0.99999976, 2.1381443, -4.7099767, 2.558993)
 bone_name = "Arm.R"
 bone_idx = 4
 
@@ -704,7 +704,7 @@ draw_pass_1 = SubResource("TubeTrailMesh_o787m")
 transform = Transform3D(1.0000002, -1.3969839e-09, -3.619327e-14, -4.656613e-10, 1, 5.684342e-14, -1.15463195e-14, 0, 0.9999999, -2.861023e-06, 332.99994, 0)
 
 [node name="UpperLegL" type="BoneAttachment3D" parent="Skeleton3D" unique_id=494477415]
-transform = Transform3D(4.943224e-08, 0.0014149249, -0.999998, -3.3304147e-08, -0.99999857, -0.0014149845, -0.99999994, 5.9604606e-08, -1.1920917e-07, 0.022902733, -5.960394, -1.3671367)
+transform = Transform3D(4.943224e-08, 0.0014149249, -0.999998, -3.3304147e-08, -0.99999857, -0.0014149845, -0.99999994, 5.9604606e-08, -1.1920917e-07, 0.022902733, -6.011459, -1.3671367)
 bone_name = "UpperLeg.L"
 bone_idx = 5
 
@@ -718,7 +718,7 @@ transform = Transform3D(1, -2.1017949e-21, 6.785683e-13, 1.3003534e-19, 1, 0, -5
 shape = SubResource("BoxShape3D_tykr4")
 
 [node name="LegL" type="BoneAttachment3D" parent="Skeleton3D" unique_id=1221228802]
-transform = Transform3D(0.9999982, 0.0014151887, -3.08423e-07, 0.0014152493, -0.9999981, 1.2762892e-07, -2.3841878e-07, -1.0183486e-07, -0.99999887, 0.027434573, -9.163924, -1.3671362)
+transform = Transform3D(0.9999982, 0.0014151887, -3.08423e-07, 0.0014152493, -0.9999981, 1.2762892e-07, -2.3841878e-07, -1.0183486e-07, -0.99999887, 0.027434573, -9.214989, -1.3671362)
 bone_name = "Leg.L"
 bone_idx = 6
 
@@ -737,7 +737,7 @@ target_position = Vector3(0, 10, 0)
 collision_mask = 169
 
 [node name="FootL" type="BoneAttachment3D" parent="Skeleton3D" unique_id=965913475]
-transform = Transform3D(0.35765758, 0.9338516, -1.917468e-07, 0.9338515, -0.3576575, 1.1053821e-08, -5.767408e-08, -1.0843142e-07, -0.99999815, 0.033382665, -13.367451, -1.3671362)
+transform = Transform3D(0.35765758, 0.9338516, -1.917468e-07, 0.9338515, -0.3576575, 1.1053821e-08, -5.767408e-08, -1.0843142e-07, -0.99999815, 0.033382665, -13.418516, -1.3671362)
 bone_name = "Foot.L"
 bone_idx = 7
 
@@ -751,7 +751,7 @@ transform = Transform3D(0.9335805, 0.35836795, 0, -0.358368, 0.9335804, 0, -1.58
 shape = SubResource("BoxShape3D_a3cge")
 
 [node name="UpperLegR" type="BoneAttachment3D" parent="Skeleton3D" unique_id=387898768]
-transform = Transform3D(4.9432217e-08, 0.0014149845, -0.99999857, -3.330413e-08, -0.9999987, -0.0014150739, -0.9999994, 5.9604613e-08, -1.1920923e-07, 0.023002636, -5.960245, 1.3876507)
+transform = Transform3D(4.9432217e-08, 0.0014149845, -0.99999857, -3.330413e-08, -0.9999987, -0.0014150739, -0.9999994, 5.9604613e-08, -1.1920923e-07, 0.023002636, -6.01131, 1.3876507)
 bone_name = "UpperLeg.R"
 bone_idx = 8
 
@@ -765,7 +765,7 @@ transform = Transform3D(1, -2.1017949e-21, 6.785683e-13, 1.3003534e-19, 1, 0, -5
 shape = SubResource("BoxShape3D_tykr4")
 
 [node name="LegR" type="BoneAttachment3D" parent="Skeleton3D" unique_id=1690061008]
-transform = Transform3D(0.99999857, 0.0014152488, -3.0842338e-07, 0.0014153384, -0.99999857, 1.2763573e-07, -2.384185e-07, -1.0184155e-07, -0.99999875, 0.027536605, -9.163954, 1.38765)
+transform = Transform3D(0.99999857, 0.0014152488, -3.0842338e-07, 0.0014153384, -0.99999857, 1.2763573e-07, -2.384185e-07, -1.0184155e-07, -0.99999875, 0.027536605, -9.215019, 1.38765)
 bone_name = "Leg.R"
 bone_idx = 9
 
@@ -780,7 +780,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0040000747, 1.9099998, 0.10
 shape = SubResource("BoxShape3D_2a8ro")
 
 [node name="FootR" type="BoneAttachment3D" parent="Skeleton3D" unique_id=1703988245]
-transform = Transform3D(0.35765755, 0.9338521, -2.2575662e-07, 0.93385243, -0.35765737, 1.6156393e-07, 7.071646e-08, -1.9402204e-07, -0.9999983, 0.033485614, -13.36766, 1.3876493)
+transform = Transform3D(0.35765755, 0.9338521, -2.2575662e-07, 0.93385243, -0.35765737, 1.6156393e-07, 7.071646e-08, -1.9402204e-07, -0.9999983, 0.033485614, -13.418725, 1.3876493)
 bone_name = "Foot.R"
 bone_idx = 10
 
@@ -797,7 +797,7 @@ shape = SubResource("BoxShape3D_a3cge")
 avoidance_enabled = true
 
 [node name="RayCast3D" type="RayCast3D" parent="." unique_id=1762672619]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.0914974, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.995, 0)
 target_position = Vector3(0, 0, -20)
 collision_mask = 152
 
@@ -805,4 +805,4 @@ collision_mask = 152
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -20)
 
 [node name="aimHand" type="Marker3D" parent="." unique_id=1413270498]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3850249, 1.778611, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.385, 0.683, 0)

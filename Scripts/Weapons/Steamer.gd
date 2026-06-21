@@ -50,7 +50,6 @@ func shoot():
 			for body in bodies:
 				if body.has_method("damage_taken") and !body.is_in_group("Player"):
 					body.damage_taken(damage, true, "explosion", body.global_position)
-					handle_damage_number(damage, body.global_position)
 				if body.has_method("knockBack"):
 					body.knockBack((body.global_position - playerPos.global_position).normalized(), damage/25.0, null, 0.2)
 				if body.has_method("throw"):

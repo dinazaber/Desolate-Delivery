@@ -459,8 +459,8 @@ func air_movement(delta):
 	
 	if !knocked:
 		var desired_speed: Vector2 = Vector2(direction.x * SPEED, direction.z * SPEED)
-		velocity.x = lerp(velocity.x, desired_speed.x, delta * (1.25 if abs(desired_speed.x) > abs(velocity.x) else 0.2) * accel_mod)
-		velocity.z = lerp(velocity.z, desired_speed.y, delta * (1.25 if abs(desired_speed.y) > abs(velocity.z) else 0.2) * accel_mod)
+		velocity.x = lerp(velocity.x, desired_speed.x, delta * (1.5 if abs(desired_speed.x) > abs(velocity.x) else 0.2) * accel_mod)
+		velocity.z = lerp(velocity.z, desired_speed.y, delta * (1.5 if abs(desired_speed.y) > abs(velocity.z) else 0.2) * accel_mod)
 
 func handle_dash():
 	if dashCool == 100.0 and !crouch and !dead:

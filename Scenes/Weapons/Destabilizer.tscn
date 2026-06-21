@@ -249,7 +249,7 @@ render_priority = 0
 shader = ExtResource("3_74bub")
 shader_parameter/albedo = ExtResource("4_547a7")
 shader_parameter/enable_glow = true
-shader_parameter/glow_intensity = 2.0
+shader_parameter/glow_intensity = 10.0
 shader_parameter/draw_forward = true
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_ovc61"]

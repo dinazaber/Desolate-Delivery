@@ -91,6 +91,8 @@ func process_captured_state(delta):
 	if player.playerRay.is_colliding(): target = player.playerRay.get_collision_point()
 	
 	follow(target, 3.0, delta)
+	
+	handle_controlBar()
 
 func process_attack_state():
 	if isInAttack: return
@@ -100,7 +102,8 @@ func process_attack_state():
 		if gunRay.get_collider().has_method("damage_taken"):
 			gunRay.get_collider().damage_taken(enemy_damage, isCaptured, "bullet", gunRay.get_collision_point())
 		adjust_beam((gunRay.get_collision_point() - beam.global_position).length() + 0.2)
-	else: adjust_beam(500.0)
+	else:
+		adjust_beam(500.0)
 	
 	await get_tree().create_timer(1.5).timeout
 	current_state = State.IDLE if !isCaptured else State.CAPTURED
@@ -138,6 +141,8 @@ func damage_taken(recieved_damage, isPlayer, type, pos):
 		$GunPivot/Captured.emitting = true
 		captured_timer.start()
 		$Timer.stop()
+		$HUD/ControlBar.visible = true
+		$HUD/hudanim.play("load")
 	
 	if isPlayer: damagedByPlayer = true
 	enemy_health -= recieved_damage
@@ -171,9 +176,15 @@ func _on_timer_timeout() -> void:
 
 func _on_captured_timer_timeout() -> void:
 	$GunPivot/CapturedCharge.emitting = false
+	$HUD/hudanim.play_backwards("load")
 	current_state = State.ATTACK
 	await get_tree().create_timer(1.5).timeout
+	$HUD/ControlBar.visible = false
 	dead = true
+
+func handle_controlBar():
+	var to = (1 - (captured_timer.wait_time - captured_timer.time_left) / captured_timer.wait_time) * 100
+	$HUD/ControlBar.value = move_toward($HUD/ControlBar.value, to, 3)
 
 # --- Helpers ---
 

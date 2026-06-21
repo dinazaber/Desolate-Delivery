@@ -240,4 +240,5 @@ environment/glow/upscale_mode=0
 environment/volumetric_fog/volume_size=32
 environment/volumetric_fog/volume_depth=32
 environment/volumetric_fog/use_filter=0
+occlusion_culling/use_occlusion_culling=true
 environment/defaults/default_environment="uid://c1agyuoca70ek"

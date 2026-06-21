@@ -21,8 +21,8 @@ var settings
 func _ready() -> void:
 	
 	settings = SettingsManager.settings.duplicate(true)
-	uiRefresh()
 	SettingsManager.apply_settings()
+	uiRefresh()
 	
 	get_tree().root.size_changed.connect(func(): on_window_size_changed())
 	

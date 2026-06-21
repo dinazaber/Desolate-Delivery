@@ -16,11 +16,11 @@ emission_energy_multiplier = 30.0
 material = SubResource("StandardMaterial3D_khf3v")
 radius = 0.05
 height = 0.1
-radial_segments = 8
-rings = 4
+radial_segments = 6
+rings = 3
 
 [sub_resource type="Curve" id="Curve_w4o6i"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.24535316, 1), 0.0, -1.3199952, 0, 0, Vector2(1, 0), -1.3316832, 0.0, 0, 0]
+_data = [Vector2(0, 1), 2.9773223, 0.0, 0, 0, Vector2(0.24907064, 1), 0.0, -1.3131306, 0, 0, Vector2(1, 0), -1.3517895, 0.0, 0, 0]
 point_count = 3
 
 [sub_resource type="CurveTexture" id="CurveTexture_upvrm"]
@@ -57,6 +57,34 @@ height = 0.06
 radial_segments = 4
 rings = 2
 
+[sub_resource type="Curve" id="Curve_upvrm"]
+_data = [Vector2(0, 0), 0.0, 3.0568178, 0, 0, Vector2(0.330855, 1), 2.9773223, 0.0, 0, 0, Vector2(0.66171, 1), 0.0, -3.007396, 0, 0, Vector2(1, 0), -2.921577, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_45jo6"]
+curve = SubResource("Curve_upvrm")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_m8a3k"]
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 0.05
+emission_ring_radius = 0.2
+emission_ring_inner_radius = 0.1
+emission_ring_cone_angle = 90.0
+direction = Vector3(0, 0, -1)
+spread = 0.0
+initial_velocity_min = 0.099999994
+initial_velocity_max = 0.19999999
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_45jo6")
+
+[sub_resource type="SphereMesh" id="SphereMesh_3u3ng"]
+material = SubResource("StandardMaterial3D_3u3ng")
+radius = 0.015
+height = 0.03
+radial_segments = 4
+rings = 1
+
 [sub_resource type="SphereShape3D" id="SphereShape3D_w4o6i"]
 radius = 0.2
 
@@ -78,22 +106,30 @@ shape = SubResource("SphereShape3D_upvrm")
 cast_shadow = 0
 mesh = SubResource("SphereMesh_w4o6i")
 
-[node name="trail" type="GPUParticles3D" parent="." unique_id=251732504]
+[node name="trail" type="GPUParticles3D" parent="MeshInstance3D" unique_id=251732504]
 cast_shadow = 0
 amount = 12
 lifetime = 0.3
 process_material = SubResource("ParticleProcessMaterial_45jo6")
 draw_pass_1 = SubResource("SphereMesh_45jo6")
 
-[node name="bulges" type="GPUParticles3D" parent="." unique_id=750795847]
+[node name="bulges" type="GPUParticles3D" parent="MeshInstance3D" unique_id=750795847]
 cast_shadow = 0
 amount = 2
-lifetime = 0.3
+lifetime = 0.4
 explosiveness = 0.4
 randomness = 0.2
 local_coords = true
 process_material = SubResource("ParticleProcessMaterial_w4o6i")
 draw_pass_1 = SubResource("SphereMesh_upvrm")
+
+[node name="energy" type="GPUParticles3D" parent="MeshInstance3D" unique_id=745280757]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, -0.07, 0)
+cast_shadow = 0
+amount = 4
+lifetime = 0.7
+process_material = SubResource("ParticleProcessMaterial_m8a3k")
+draw_pass_1 = SubResource("SphereMesh_3u3ng")
 
 [node name="PickupRange" type="Area3D" parent="." unique_id=1283329828]
 collision_layer = 0
@@ -108,6 +144,10 @@ collision_mask = 8
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="GravitateRange" unique_id=1189009892]
 shape = SubResource("SphereShape3D_45jo6")
+
+[node name="FallCheck" type="RayCast3D" parent="." unique_id=90298642]
+target_position = Vector3(0, -3, 0)
+collision_mask = 33
 
 [connection signal="body_entered" from="PickupRange" to="." method="_on_pickup_range_body_entered"]
 [connection signal="body_entered" from="GravitateRange" to="." method="_on_gravitate_range_body_entered"]

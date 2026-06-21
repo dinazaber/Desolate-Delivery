@@ -1,6 +1,7 @@
 [gd_scene format=4 uid="uid://fc4kl2kt0web"]
 
 [ext_resource type="Script" uid="uid://bcfml5hf5f0wl" path="res://Scripts/FileManagers/LocationSetup.gd" id="1_ted34"]
+[ext_resource type="ArrayOccluder3D" uid="uid://cqjdfu2321i13" path="res://assets/Occluders/Airbase.occ" id="2_5sbex"]
 [ext_resource type="Shader" uid="uid://no1jy7cyw0an" path="res://Shaders/PostProcess/SandStorm.gdshader" id="3_x6j5x"]
 [ext_resource type="ArrayMesh" uid="uid://gu1mgkoyr7tf" path="res://assets/Meshes/Nature/AirBaseLandscape.mesh" id="4_4xpm0"]
 [ext_resource type="Shader" uid="uid://b5qxk2hnep8ku" path="res://Shaders/MeshShaders/GroundShader.gdshader" id="4_5sbex"]
@@ -197,8 +198,22 @@ directional_shadow_max_distance = 40.0
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1699263254]
 environment = SubResource("Environment_7rfda")
 
+[node name="OccluderInstance3D" type="OccluderInstance3D" parent="." unique_id=949174072]
+visible = false
+occluder = ExtResource("2_5sbex")
+bake_mask = 4293918721
+
 [node name="Player" parent="." unique_id=1941692924 instance=ExtResource("9_myywe")]
 transform = Transform3D(0.8183203, 0, -0.57476246, 0, 1, 0, 0.57476246, 0, 0.8183203, -3.972, 1.4951919, -3.147)
+
+[node name="SniperTurret" parent="." unique_id=1830225406 instance=ExtResource("10_fq6ak")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.508708, 2.0115821, -13.574843)
+
+[node name="Drone" parent="." unique_id=290106699 instance=ExtResource("33_aortb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.338417, 0.8061118, -12.71439)
+
+[node name="Robot" parent="." unique_id=969091388 instance=ExtResource("34_50pvf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.380188, 1.533283, -5.4589863)
 
 [node name="SandHaze" type="ColorRect" parent="." unique_id=1103963715 groups=["Effects"]]
 process_mode = 1
@@ -850,14 +865,5 @@ mesh = ExtResource("32_2xd57")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.8789673, 0)
 shape = SubResource("CylinderShape3D_7rfda")
 
-[node name="Drone" parent="." unique_id=290106699 instance=ExtResource("33_aortb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.338417, 0.8061118, -12.71439)
-
-[node name="Robot" parent="." unique_id=969091388 instance=ExtResource("34_50pvf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.380188, 0.26802826, -5.4589863)
-
 [node name="CommandCenter" parent="." unique_id=1747516275 instance=ExtResource("35_cuh82")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 23.349, 4.808791, -29.685)
-
-[node name="SniperTurret" parent="." unique_id=1830225406 instance=ExtResource("10_fq6ak")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.508708, 2.0115821, -13.574843)
