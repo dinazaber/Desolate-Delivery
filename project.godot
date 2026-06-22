@@ -224,10 +224,6 @@ SideUpMouse={
 3d_physics/layer_5="enviorment collision - EXCLUDING bullets & projectiles"
 3d_physics/layer_6="physics objects [EXCLUDING player] - if enabled in mask, enable in layer too"
 
-[physics]
-
-3d/physics_engine="Jolt Physics"
-
 [rendering]
 
 lights_and_shadows/directional_shadow/soft_shadow_filter_quality=3
