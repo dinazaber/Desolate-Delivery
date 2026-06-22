@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://d23s0inguh17p"]
 
-[ext_resource type="Script" uid="uid://dg8y87gh5eurk" path="res://Scripts/Modules/RigidBody.gd" id="1_3t8db"]
+[ext_resource type="Script" uid="uid://dg8y87gh5eurk" path="res://Scripts/Modules/Barrel.gd" id="1_3t8db"]
 [ext_resource type="ArrayMesh" uid="uid://c38lj2xgan0m6" path="res://assets/Meshes/Objects/Barrel.mesh" id="1_vkgwf"]
 [ext_resource type="Texture2D" uid="uid://cwhfnmqmj2nse" path="res://assets/Textures/Architecture/ExplosionHazard.png" id="2_m5ibw"]
 

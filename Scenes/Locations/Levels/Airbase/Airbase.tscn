@@ -20,13 +20,12 @@
 [ext_resource type="ArrayMesh" uid="uid://6fnhie3k6sd7" path="res://assets/Meshes/Objects/Vehicles/Car2/Car2Chassis.mesh" id="18_a38ko"]
 [ext_resource type="ArrayMesh" uid="uid://dxoddmwgtq2gq" path="res://assets/Meshes/Objects/Vehicles/Car1/Car1.mesh" id="19_soiyy"]
 [ext_resource type="ArrayMesh" uid="uid://duisheavfmqh2" path="res://assets/Meshes/Objects/Vehicles/Car1/Car1Chassis.mesh" id="20_80otf"]
-[ext_resource type="PackedScene" uid="uid://d23s0inguh17p" path="res://Scenes/Objects/RigidBody.tscn" id="21_eopy5"]
+[ext_resource type="PackedScene" uid="uid://d23s0inguh17p" path="res://Scenes/Objects/Barrel.tscn" id="21_eopy5"]
 [ext_resource type="PackedScene" uid="uid://b1g4ndkkyibs4" path="res://Scenes/Objects/HealthPack.tscn" id="22_vh3lb"]
 [ext_resource type="ArrayMesh" uid="uid://bvbx2g5lkenkl" path="res://assets/Meshes/Architecture/OilTank.mesh" id="27_u2i14"]
 [ext_resource type="ArrayMesh" uid="uid://br33wg26qu7sk" path="res://assets/Meshes/Objects/Crate2.mesh" id="28_wh1nc"]
 [ext_resource type="PackedScene" uid="uid://dugekeqiinxib" path="res://Scenes/Buildings/WaterTower.tscn" id="30_tvlj7"]
 [ext_resource type="ArrayMesh" uid="uid://rn8rjuep3gb1" path="res://assets/Meshes/Objects/DamagedFlag.mesh" id="31_1rnsm"]
-[ext_resource type="PackedScene" uid="uid://mnqxus7cbuw" path="res://Scenes/Enemies/BallRobot.tscn" id="31_ftvms"]
 [ext_resource type="ArrayMesh" uid="uid://83j8mstw0jra" path="res://assets/Meshes/Architecture/FlagBase.mesh" id="32_2xd57"]
 [ext_resource type="PackedScene" uid="uid://d368u3xkt615v" path="res://Scenes/Enemies/Drone.tscn" id="33_aortb"]
 [ext_resource type="PackedScene" uid="uid://beqguglkai1oh" path="res://Scenes/Enemies/Robot.tscn" id="34_50pvf"]
@@ -869,6 +868,3 @@ shape = SubResource("CylinderShape3D_7rfda")
 
 [node name="CommandCenter" parent="." unique_id=1747516275 instance=ExtResource("35_cuh82")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 23.349, 4.808791, -29.685)
-
-[node name="BallRobot" parent="." unique_id=2098246889 instance=ExtResource("31_ftvms")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5030475, 0.8625998, -1.2564096)

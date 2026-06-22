@@ -15,16 +15,16 @@ var current_state = State.IDLE
 @export var health_orb_reward: int = 2
 
 # --- Nodes ---
-@onready var chargeBall = $Skeleton3D/ArmR/chargeBall
-@onready var chargeBalls = $Skeleton3D/ArmR/chargeBalls
-@onready var bullet = $Skeleton3D/ArmR/BulletRay/Bullet
+@onready var chargeBall = $Skeleton3D/Base/HandR/ArmR/chargeBall
+@onready var chargeBalls = $Skeleton3D/Base/HandR/ArmR/chargeBalls
+@onready var bullet = $Skeleton3D/Base/HandR/ArmR/BulletRay/Bullet
 @onready var animation = $AnimationPlayer
 @onready var skeleton = $Skeleton3D
 @onready var aimHand = $aimHand
 @onready var eyes = $RayCast3D
-@onready var bulletRay = $Skeleton3D/ArmR/BulletRay
-@onready var bulletRayEnd = $Skeleton3D/ArmR/BulletRay/BulletRayEnd
-@onready var kickRay = $Skeleton3D/LegL/kick
+@onready var bulletRay = $Skeleton3D/Base/HandR/ArmR/BulletRay
+@onready var bulletRayEnd = $Skeleton3D/Base/HandR/ArmR/BulletRay/BulletRayEnd
+@onready var kickRay = $Skeleton3D/Base/UpperLegL/LegL/kick
 @onready var navAgent = $NavigationAgent3D
 @onready var player = get_tree().get_first_node_in_group("Player")
 
@@ -46,6 +46,7 @@ var look_target_desired
 var look_target
 var aim_target = 0.0
 var dist = 9999.0
+var bones = []
 
 
 func save():
@@ -63,6 +64,10 @@ func save():
 func _ready() -> void:
 	look_target_desired = $RayCast3D/Rayend.global_position
 	look_target = look_target_desired
+	
+	# get bone attachments
+	var children = skeleton.get_children(true)
+	for child in children: if child is BoneAttachment3D: bones.append(child)
 
 func _physics_process(delta):
 	if !is_on_floor():
@@ -221,7 +226,12 @@ func process_attack_state(delta):
 
 func process_dead_state(): # gotta make death anim   Zzzzz
 	player.enemy_killed(global_position, health_orb_reward)
-	queue_free()
+	
+	for bone in bones:
+		if bone.has_method("ragdoll"): bone.ragdoll()
+	
+	set_physics_process(false)
+	#queue_free()
 
 func aim(delta):
 	var hand_bone = skeleton.find_bone("Hand.R")
