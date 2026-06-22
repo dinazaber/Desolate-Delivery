@@ -56,16 +56,11 @@ func buildSettings() -> void:
 	settings.video.brightness = brightBar.value
 	settings.controls.mouse_sensitivity = mousSensBar.value/10000
 	
-	print("Duplicate: " + str(settings))
-	print("Config: " + str(SettingsManager.settings))
-	
 
 func isEqualToConfig() -> bool:
 	for section in settings.keys():
 		for key in settings[section].keys():
-			if settings[section][key] != SettingsManager.settings[section][key]:
-				print("aaaa")
-				return false
+			if settings[section][key] != SettingsManager.settings[section][key]: return false
 	return true
 
 func copyToConfig() -> void:

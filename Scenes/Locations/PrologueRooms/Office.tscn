@@ -870,7 +870,7 @@ _surfaces = [{
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.15017065, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 3
 
-[sub_resource type="CurveTexture" id="CurveTexture_wqwxe"]
+[sub_resource type="CurveTexture" id="CurveTexture_4ayvh"]
 curve = SubResource("Curve_xhqc6")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_b7u14"]
@@ -878,31 +878,32 @@ particle_flag_align_y = true
 emission_shape_scale = Vector3(0.07, 0, 0.07)
 emission_shape = 1
 emission_sphere_radius = 1.0
-scale_curve = SubResource("CurveTexture_wqwxe")
+scale_curve = SubResource("CurveTexture_4ayvh")
 collision_mode = 2
 sub_emitter_mode = 3
 sub_emitter_amount_at_collision = 5
 
-[sub_resource type="Curve" id="Curve_ggv2i"]
+[sub_resource type="Curve" id="Curve_jpsfy"]
 _data = [Vector2(0, 0), 0.0, 17.83375, 0, 0, Vector2(0.14153847, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 3
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xhqc6"]
-transparency = 1
-albedo_color = Color(0.5019608, 0.6627451, 1, 0.39215687)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_peafr"]
+shading_mode = 0
+albedo_color = Color(0.272, 0.29013333, 0.34, 1)
 
 [sub_resource type="TubeTrailMesh" id="TubeTrailMesh_wqwxe"]
-material = SubResource("StandardMaterial3D_xhqc6")
+material = SubResource("StandardMaterial3D_peafr")
 radius = 0.015
-radial_steps = 6
-section_length = 0.015
-curve = SubResource("Curve_ggv2i")
+radial_steps = 3
+sections = 2
+section_length = 0.03
+curve = SubResource("Curve_jpsfy")
 
 [sub_resource type="Curve" id="Curve_b7u14"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.25255972, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 3
 
-[sub_resource type="CurveTexture" id="CurveTexture_ggv2i"]
+[sub_resource type="CurveTexture" id="CurveTexture_vx08i"]
 curve = SubResource("Curve_b7u14")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_jjkof"]
@@ -912,19 +913,20 @@ spread = 60.0
 initial_velocity_min = 0.59999996
 initial_velocity_max = 0.79999995
 gravity = Vector3(0, -2, 0)
-scale_curve = SubResource("CurveTexture_ggv2i")
+scale_curve = SubResource("CurveTexture_vx08i")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4ayvh"]
+shading_mode = 0
+albedo_color = Color(0.272, 0.29013333, 0.34, 1)
 
 [sub_resource type="TubeTrailMesh" id="TubeTrailMesh_bwtx1"]
-material = SubResource("StandardMaterial3D_xhqc6")
+material = SubResource("StandardMaterial3D_4ayvh")
 radius = 0.01
 radial_steps = 3
 sections = 2
 section_length = 0.015
 section_rings = 2
-curve = SubResource("Curve_ggv2i")
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_m3n1v"]
-size = Vector3(16.11621, 1, 12)
+curve = SubResource("Curve_jpsfy")
 
 [node name="Office" type="Node3D" unique_id=75341550]
 
@@ -1706,13 +1708,3 @@ draw_pass_1 = SubResource("TubeTrailMesh_bwtx1")
 [node name="GPUParticlesCollisionBox3D" type="GPUParticlesCollisionBox3D" parent="Decorations/Particles/WaterDrops4" unique_id=825551510]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.5450392, 0)
 size = Vector3(0.35, 0.05, 0.35)
-
-[node name="PlayerDetectionArea" type="Area3D" parent="." unique_id=2080256249]
-visible = false
-collision_layer = 0
-collision_mask = 24
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerDetectionArea" unique_id=1642698309]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.074707, 0, 0.03715515)
-shape = SubResource("BoxShape3D_m3n1v")
-debug_color = Color(0.96663874, 0.8439937, 2.3102762e-06, 1)

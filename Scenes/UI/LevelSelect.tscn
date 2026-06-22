@@ -10,6 +10,14 @@ border_width_left = 2
 border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pakyl"]
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.25988755, 0.9314679, 0, 1)
 
 [node name="LevelSelect" type="Control" unique_id=1411598961]
 layout_mode = 3
@@ -22,13 +30,20 @@ script = ExtResource("1_syujh")
 
 [node name="Container" type="GridContainer" parent="." unique_id=1085762030]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -560.0
+offset_top = -284.0
+offset_right = 149.5
+offset_bottom = 286.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/h_separation = 15
-columns = 3
+theme_override_constants/v_separation = 15
+columns = 2
 
 [node name="Prologue" type="Button" parent="Container" unique_id=78512478]
 custom_minimum_size = Vector2(297, 180)
@@ -36,6 +51,7 @@ layout_mode = 2
 theme_override_constants/h_separation = 4
 theme_override_font_sizes/font_size = 24
 theme_override_styles/normal = SubResource("StyleBoxFlat_2fe05")
+theme_override_styles/hover = SubResource("StyleBoxFlat_pakyl")
 icon = ExtResource("2_pakyl")
 icon_alignment = 1
 expand_icon = true
@@ -62,6 +78,7 @@ layout_mode = 2
 theme_override_constants/h_separation = 4
 theme_override_font_sizes/font_size = 24
 theme_override_styles/normal = SubResource("StyleBoxFlat_2fe05")
+theme_override_styles/hover = SubResource("StyleBoxFlat_pakyl")
 icon = ExtResource("2_kxjdg")
 icon_alignment = 1
 expand_icon = true
@@ -82,5 +99,117 @@ grow_vertical = 0
 theme_override_font_sizes/font_size = 24
 text = "Airbase"
 
+[node name="Loc1" type="Button" parent="Container" unique_id=1543819337]
+custom_minimum_size = Vector2(297, 180)
+layout_mode = 2
+theme_override_constants/h_separation = 4
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_2fe05")
+theme_override_styles/hover = SubResource("StyleBoxFlat_pakyl")
+disabled = true
+icon_alignment = 1
+expand_icon = true
+metadata/level_path = &"res://Scenes/Locations/Levels/Airbase/Airbase.tscn"
+
+[node name="Label" type="Label" parent="Container/Loc1" unique_id=601515123]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -23.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 24
+text = "Placeholder"
+
+[node name="Loc2" type="Button" parent="Container" unique_id=128916502]
+custom_minimum_size = Vector2(297, 180)
+layout_mode = 2
+theme_override_constants/h_separation = 4
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_2fe05")
+theme_override_styles/hover = SubResource("StyleBoxFlat_pakyl")
+disabled = true
+icon_alignment = 1
+expand_icon = true
+metadata/level_path = &"res://Scenes/Locations/Levels/Airbase/Airbase.tscn"
+
+[node name="Label" type="Label" parent="Container/Loc2" unique_id=1181803322]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -23.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 24
+text = "Placeholder"
+
+[node name="Loc3" type="Button" parent="Container" unique_id=1706834773]
+custom_minimum_size = Vector2(297, 180)
+layout_mode = 2
+theme_override_constants/h_separation = 4
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_2fe05")
+theme_override_styles/hover = SubResource("StyleBoxFlat_pakyl")
+disabled = true
+icon_alignment = 1
+expand_icon = true
+metadata/level_path = &"res://Scenes/Locations/Levels/Airbase/Airbase.tscn"
+
+[node name="Label" type="Label" parent="Container/Loc3" unique_id=1561278220]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -23.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 24
+text = "Placeholder"
+
+[node name="Loc4" type="Button" parent="Container" unique_id=1950094101]
+custom_minimum_size = Vector2(297, 180)
+layout_mode = 2
+theme_override_constants/h_separation = 4
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_2fe05")
+theme_override_styles/hover = SubResource("StyleBoxFlat_pakyl")
+disabled = true
+icon_alignment = 1
+expand_icon = true
+metadata/level_path = &"res://Scenes/Locations/Levels/Airbase/Airbase.tscn"
+
+[node name="Label" type="Label" parent="Container/Loc4" unique_id=952027840]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -23.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 24
+text = "Placeholder"
+
 [connection signal="pressed" from="Container/Prologue" to="." method="_on_level_button_pressed" binds= [NodePath("Container/Prologue")]]
 [connection signal="pressed" from="Container/Airbase" to="." method="_on_level_button_pressed" binds= [NodePath("Container/Airbase")]]
+[connection signal="pressed" from="Container/Loc1" to="." method="_on_level_button_pressed" binds= [NodePath("Container/Airbase")]]
+[connection signal="pressed" from="Container/Loc2" to="." method="_on_level_button_pressed" binds= [NodePath("Container/Airbase")]]
+[connection signal="pressed" from="Container/Loc3" to="." method="_on_level_button_pressed" binds= [NodePath("Container/Airbase")]]
+[connection signal="pressed" from="Container/Loc4" to="." method="_on_level_button_pressed" binds= [NodePath("Container/Airbase")]]

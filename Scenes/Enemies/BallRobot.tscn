@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://mnqxus7cbuw"]
+
+[ext_resource type="Script" uid="uid://cqnhxouadgkpo" path="res://Scripts/Enemies/BallRobot.gd" id="1_voted"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_wmli3"]
+radial_segments = 8
+rings = 4
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_voted"]
+
+[node name="BallRobot" type="CharacterBody3D" unique_id=2098246889 groups=["Enemy"]]
+script = ExtResource("1_voted")
+
+[node name="BallMesh" type="MeshInstance3D" parent="." unique_id=92011064]
+mesh = SubResource("SphereMesh_wmli3")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=697486634]
+shape = SubResource("SphereShape3D_voted")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=813993432]
+avoidance_enabled = true
+
+[node name="RayCast3D" type="RayCast3D" parent="." unique_id=154794618]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.995, 0)
+target_position = Vector3(0, 0, -20)
+collision_mask = 152
+
+[node name="Rayend" type="Marker3D" parent="RayCast3D" unique_id=151940750]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -20)

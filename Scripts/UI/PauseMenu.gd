@@ -17,6 +17,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _on_resume_pressed() -> void:
 	hide()
+	await get_tree().create_timer(0.05).timeout #Prevents click event to be handeled by player script
 	get_tree().paused = false
 	hud.show()
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED

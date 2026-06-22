@@ -420,9 +420,6 @@ bottom_radius = 2.0
 height = 5.0
 radial_segments = 8
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_yfio8"]
-size = Vector3(4.9176025, 1, 5.1317177)
-
 [node name="Cabinet" type="Node3D" unique_id=1857668066]
 
 [node name="LightmapGI" type="LightmapGI" parent="." unique_id=1714560379]
@@ -705,14 +702,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.7578723, 1.3862243, 1.8569
 
 [node name="HealthPack2" parent="." unique_id=793216855 instance=ExtResource("29_ew1ly")]
 transform = Transform3D(0.9771087, 0, 0.21274048, 0, 1, 0, -0.21274048, 0, 0.9771087, -2.706257, 2.6255167, 2.7890108)
-
-[node name="PlayerDetectionArea" type="Area3D" parent="." unique_id=636165802]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.147127)
-visible = false
-collision_layer = 0
-collision_mask = 24
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerDetectionArea" unique_id=325569348]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.49279046, 0.0127568245, -2.7491298)
-shape = SubResource("BoxShape3D_yfio8")
-debug_color = Color(0.96663874, 0.8439937, 2.3102762e-06, 1)

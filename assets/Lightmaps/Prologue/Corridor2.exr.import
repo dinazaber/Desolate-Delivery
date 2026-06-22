@@ -2,8 +2,8 @@
 
 importer="2d_array_texture"
 type="CompressedTexture2DArray"
-uid="uid://5feumhj10at0"
-path.bptc="res://.godot/imported/Laboratory.exr-795e93ee4a76a3b137fdf29387ec133c.bptc.ctexarray"
+uid="uid://d0jykiv81wu4o"
+path.bptc="res://.godot/imported/Corridor2.exr-a25634c920ad541cf9b9fac4e127aa7b.bptc.ctexarray"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/Lightmaps/Prologue/Laboratory.exr"
-dest_files=["res://.godot/imported/Laboratory.exr-795e93ee4a76a3b137fdf29387ec133c.bptc.ctexarray"]
+source_file="res://assets/Lightmaps/Prologue/Corridor2.exr"
+dest_files=["res://.godot/imported/Corridor2.exr-a25634c920ad541cf9b9fac4e127aa7b.bptc.ctexarray"]
 
 [params]
 
@@ -26,4 +26,4 @@ compress/channel_pack=1
 mipmaps/generate=false
 mipmaps/limit=-1
 slices/horizontal=1
-slices/vertical=3
+slices/vertical=1

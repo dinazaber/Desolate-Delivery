@@ -1,17 +1,9 @@
 [gd_scene format=4 uid="uid://df53p2nd7yphr"]
 
 [ext_resource type="ArrayMesh" uid="uid://bnpbloigqbbx6" path="res://assets/Meshes/RoomConstructor/DoorWay_Grey&Green.mesh" id="1_k74ow"]
-[ext_resource type="ArrayMesh" uid="uid://dmuu3icybpsg7" path="res://assets/Meshes/RoomConstructor/Wall.mesh" id="1_v8p53"]
-[ext_resource type="ArrayMesh" uid="uid://smhlox4qf5ic" path="res://assets/Meshes/RoomConstructor/FloorGrid.mesh" id="3_qcekh"]
-[ext_resource type="ArrayMesh" uid="uid://dnncgj3eh0p7k" path="res://assets/Meshes/RoomConstructor/Ceilling.mesh" id="4_qcekh"]
-[ext_resource type="ArrayMesh" uid="uid://bgw8gu305lpyw" path="res://assets/Meshes/Objects/ToiletCabin.mesh" id="5_7g21b"]
-[ext_resource type="ArrayMesh" uid="uid://br7t0r77ujoy2" path="res://assets/Meshes/Objects/Sink.mesh" id="5_ohusx"]
-[ext_resource type="ArrayMesh" uid="uid://c7ij45pvq0hdw" path="res://assets/Meshes/Architecture/PipePart1Red.mesh" id="6_a2qka"]
 [ext_resource type="Shader" uid="uid://cunx8274v1qyy" path="res://Shaders/MeshShaders/MeshShader.gdshader" id="6_ef7wb"]
 [ext_resource type="Texture2D" uid="uid://kqnjcrk75lb3" path="res://assets/Textures/Dirt.png" id="7_f71oj"]
-[ext_resource type="ArrayMesh" uid="uid://dcliu0gqtyc3w" path="res://assets/Meshes/Architecture/PipePart2Red.mesh" id="7_qj0ge"]
 [ext_resource type="ArrayMesh" uid="uid://b647ymx5hntht" path="res://assets/Meshes/Objects/CeilingLamp.mesh" id="8_ohusx"]
-[ext_resource type="ArrayMesh" uid="uid://d3uuv5acjf506" path="res://assets/Meshes/Architecture/PipeConnectorRed.mesh" id="8_vd18i"]
 [ext_resource type="LightmapGIData" uid="uid://guklx67wfjia" path="res://assets/Lightmaps/Prologue/Restroom.lmbake" id="10_f71oj"]
 [ext_resource type="Texture2D" uid="uid://bu6ue5ydfh2q6" path="res://assets/Textures/Rust.png" id="12_dkk4x"]
 [ext_resource type="ArrayMesh" uid="uid://cc71x4p8yppbl" path="res://assets/Meshes/Architecture/Fence.mesh" id="13_to7gk"]
@@ -300,259 +292,7 @@ _surfaces = [{
 "vertex_data": PackedByteArray("AACgwDMzsz8EAIC9AACAvwAAgEDp/3+9AACgwAAAgEDp/3+9AACAvzMzsz8EAIC9AACgwAAAAAAMAIC9AACAvzMzsz8EAIC9AACgwDMzsz8EAIC9AACAvwAAAAAMAIC9AACgwDMzsz9GCle9AACAvwAAgEAmCle9AACAvzMzsz9GCle9AACgwAAAgEAmCle9AACgwAAAAABWCle9AACAvzMzsz9GCle9AACAvwAAAABWCle9AACgwDMzsz9GCle9AACAvwAAAAAMAIC9AACgwAAAAABWCle9AACAvwAAAABWCle9AACgwAAAAAAMAIC9AACgwDMzsz8EAIC9AACgwAAAgEAmCle9AACgwDMzsz9GCle9AACgwAAAgEDp/3+9AACAvwAAgEDp/3+9AACAvzMzsz9GCle9AACAvwAAgEAmCle9AACAvzMzsz8EAIC9AACgwAAAAAAMAIC9AACgwDMzsz9GCle9AACgwAAAAABWCle9AACgwDMzsz8EAIC9AACAvzMzsz8EAIC9AACAvwAAAABWCle9AACAvzMzsz9GCle9AACAvwAAAAAMAIC9AACgwAAAgEDp/3+9AACAvwAAgEAmCle9AACgwAAAgEAmCle9AACAvwAAgEDp/3+9AAD4PzMzsz8AAAAAAAD4PwAAgEAAAIDAAQD4PwAAgEAAAAAA///3PzMzsz8AAIDAAAD4PwAAAAAAAAAA///3PzMzsz8AAIDAAAD4PzMzsz8AAAAA/v/3PwAAAAAAAIDAr0f5PzMzsz8AAAAArkf5PwAAgEAAAIDArUf5PzMzsz8AAIDAsEf5PwAAgEAAAAAArkf5PwAAAAAAAAAArUf5PzMzsz8AAIDArUf5PwAAAAAAAIDAr0f5PzMzsz8AAAAA/v/3PwAAAAAAAIDArkf5PwAAAAAAAAAArUf5PwAAAAAAAIDAAAD4PwAAAAAAAAAAAAD4PzMzsz8AAAAAsEf5PwAAgEAAAAAAr0f5PzMzsz8AAAAAAQD4PwAAgEAAAAAAAAD4PwAAgEAAAIDArUf5PzMzsz8AAIDArkf5PwAAgEAAAIDA///3PzMzsz8AAIDAAAD4PwAAAAAAAAAAr0f5PzMzsz8AAAAArkf5PwAAAAAAAAAAAAD4PzMzsz8AAAAA///3PzMzsz8AAIDArUf5PwAAAAAAAIDArUf5PzMzsz8AAIDA/v/3PwAAAAAAAIDAAQD4PwAAgEAAAAAArkf5PwAAgEAAAIDAsEf5PwAAgEAAAAAAAAD4PwAAgEAAAIDAAAD4PzMzsz8AAEDAAAD4PwAAgEAAAODAAQD4PwAAgEAAAEDA///3PzMzsz8AAODAAAD4PwAAAAAAAEDA///3PzMzsz8AAODAAAD4PzMzsz8AAEDA/v/3PwAAAAAAAODAr0f5PzMzsz8AAEDArkf5PwAAgEAAAODArUf5PzMzsz8AAODAsEf5PwAAgEAAAEDArkf5PwAAAAAAAEDArUf5PzMzsz8AAODArUf5PwAAAAAAAODAr0f5PzMzsz8AAEDA/v/3PwAAAAAAAODArkf5PwAAAAAAAEDArUf5PwAAAAAAAODAAAD4PwAAAAAAAEDAAAD4PzMzsz8AAEDAsEf5PwAAgEAAAEDAr0f5PzMzsz8AAEDAAQD4PwAAgEAAAEDAAAD4PwAAgEAAAODArUf5PzMzsz8AAODArkf5PwAAgEAAAODA///3PzMzsz8AAODAAAD4PwAAAAAAAEDAr0f5PzMzsz8AAEDArkf5PwAAAAAAAEDAAAD4PzMzsz8AAEDA///3PzMzsz8AAODArUf5PwAAAAAAAODArUf5PzMzsz8AAODA/v/3PwAAAAAAAODAAQD4PwAAgEAAAEDArkf5PwAAgEAAAODAsEf5PwAAgEAAAEDAAAD4PwAAgEAAAODA0CdjwDMzsz8AAIDA0SdjwAAAgEAAAAAA0CdjwAAAgEAAAIDA0CdjwDMzsz8AAAAAzydjwAAAAAAAAIDA0CdjwDMzsz8AAAAA0CdjwDMzsz8AAIDA0CdjwAAAAAAAAAAAp8tjwDMzsz8AAIDAqMtjwAAAgEAAAAAAp8tjwDMzsz8AAAAAp8tjwAAAgEAAAIDApstjwAAAAAAAAIDAp8tjwDMzsz8AAAAAp8tjwAAAAAAAAAAAp8tjwDMzsz8AAIDA0CdjwAAAAAAAAAAApstjwAAAAAAAAIDAp8tjwAAAAAAAAAAAzydjwAAAAAAAAIDA0CdjwDMzsz8AAIDAp8tjwAAAgEAAAIDAp8tjwDMzsz8AAIDA0CdjwAAAgEAAAIDA0SdjwAAAgEAAAAAAp8tjwDMzsz8AAAAAqMtjwAAAgEAAAAAA0CdjwDMzsz8AAAAAzydjwAAAAAAAAIDAp8tjwDMzsz8AAIDApstjwAAAAAAAAIDA0CdjwDMzsz8AAIDA0CdjwDMzsz8AAAAAp8tjwAAAAAAAAAAAp8tjwDMzsz8AAAAA0CdjwAAAAAAAAAAA0CdjwAAAgEAAAIDAqMtjwAAAgEAAAAAAp8tjwAAAgEAAAIDA0SdjwAAAgEAAAAAAAitjwDMzsz8AAADBAytjwAAAgEAAAIDAAitjwAAAgEAAAADBAitjwDMzsz8AAIDAAStjwAAAAAAAAADBAitjwDMzsz8AAIDAAitjwDMzsz8AAADBAitjwAAAAAAAAIDA2c5jwDMzsz8AAADB2s5jwAAAgEAAAIDA2c5jwDMzsz8AAIDA2c5jwAAAgEAAAADB2M5jwAAAAAAAAADB2c5jwDMzsz8AAIDA2c5jwAAAAAAAAIDA2c5jwDMzsz8AAADBAitjwAAAAAAAAIDA2M5jwAAAAAAAAADB2c5jwAAAAAAAAIDAAStjwAAAAAAAAADBAitjwDMzsz8AAADB2c5jwAAAgEAAAADB2c5jwDMzsz8AAADBAitjwAAAgEAAAADBAytjwAAAgEAAAIDA2c5jwDMzsz8AAIDA2s5jwAAAgEAAAIDAAitjwDMzsz8AAIDAAStjwAAAAAAAAADB2c5jwDMzsz8AAADB2M5jwAAAAAAAAADBAitjwDMzsz8AAADBAitjwDMzsz8AAIDA2c5jwAAAAAAAAIDA2c5jwDMzsz8AAIDAAitjwAAAAAAAAIDAAitjwAAAgEAAAADB2s5jwAAAgEAAAIDA2c5jwAAAgEAAAADBAytjwAAAgEAAAIDAAACAvzMzsz/NzNrAAACgwAAAgEDOzNrAAACAvwAAgEDNzNrAAACgwDMzsz/NzNrAAACAvwAAAADMzNrAAACgwDMzsz/NzNrAAACAvzMzsz/NzNrAAACgwAAAAADNzNrAAACAvzMzsz+4HtvAAACgwAAAgEC5HtvAAACgwDMzsz+5HtvAAACAvwAAgEC4HtvAAACAvwAAAAC4HtvAAACgwDMzsz+5HtvAAACgwAAAAAC5HtvAAACAvzMzsz+4HtvAAACgwAAAAADNzNrAAACAvwAAAAC4HtvAAACgwAAAAAC5HtvAAACAvwAAAADMzNrAAACAvzMzsz/NzNrAAACAvwAAgEC4HtvAAACAvzMzsz+4HtvAAACAvwAAgEDNzNrAAACgwAAAgEDOzNrAAACgwDMzsz+5HtvAAACgwAAAgEC5HtvAAACgwDMzsz/NzNrAAACAvwAAAADMzNrAAACAvzMzsz+4HtvAAACAvwAAAAC4HtvAAACAvzMzsz/NzNrAAACgwDMzsz/NzNrAAACgwAAAAAC5HtvAAACgwDMzsz+5HtvAAACgwAAAAADNzNrAAACAvwAAgEDNzNrAAACgwAAAgEC5HtvAAACAvwAAgEC4HtvAAACgwAAAgEDOzNrAAABAQDMzsz/NzNrAAACAvwAAgEDOzNrAAABAQAAAgEDNzNrAAACAvzMzsz/NzNrAAABAQAAAAADMzNrAAACAvzMzsz/NzNrAAABAQDMzsz/NzNrAAACAvwAAAADNzNrAAABAQDMzsz+4HtvAAACAvwAAgEC5HtvAAACAvzMzsz+5HtvAAABAQAAAgEC4HtvAAABAQAAAAAC4HtvAAACAvzMzsz+5HtvAAACAvwAAAAC5HtvAAABAQDMzsz+4HtvAAACAvwAAAADNzNrAAABAQAAAAAC4HtvAAACAvwAAAAC5HtvAAABAQAAAAADMzNrAAABAQDMzsz/NzNrAAABAQAAAgEC4HtvAAABAQDMzsz+4HtvAAABAQAAAgEDNzNrAAACAvwAAgEDOzNrAAACAvzMzsz+5HtvAAACAvwAAgEC5HtvAAACAvzMzsz/NzNrAAABAQAAAAADMzNrAAABAQDMzsz+4HtvAAABAQAAAAAC4HtvAAABAQDMzsz/NzNrAAACAvzMzsz/NzNrAAACAvwAAAAC5HtvAAACAvzMzsz+5HtvAAACAvwAAAADNzNrAAABAQAAAgEDNzNrAAACAvwAAgEC5HtvAAABAQAAAgEC4HtvAAACAvwAAgEDOzNrA//////9/AID//////38AgP//////fwCA//////9/AID//////38AgP//////fwCA//////9/AID//////38AgP9//38AgACA/3//fwCAAID/f/9/AIAAgP9//38AgACA/3//fwCAAID/f/9/AIAAgP9//38AgACA/3//fwCAAIAAgAAAAAD/vwCAAAAAAP+/AIAAAAAA/78AgAAAAAD/vwAAAID/f/+/AAAAgP9//78AAACA/3//vwAAAID/f/+///8AgACA/7///wCAAID/v///AIAAgP+///8AgACA/78AAACA/3//vwAAAID/f/+/AAAAgP9//78AAACA/3//v///AIAAgP+///8AgACA/7///wCAAID/v///AIAAgP+/AID//wAA/78AgP//AAD/vwCA//8AAP+/AID//wAA/78AAP9//3//vwAA/3//f/+/AAD/f/9//78AAP9//3//vwAA/3//f/+/AAD/f/9//78AAP9//3//vwAA/3//f/+//v//f/9//7/+//9//3//v/7//3//f/+//v//f/9//7/+//9//3//v/7//3//f/+//v//f/9//7/+//9//3//v/9/AAAAAP+//38AAAAA/7//fwAAAAD/v/9/AAAAAP+//3//fwCAAID/f/9/AIAAgP9//38AgACA/3//fwCAAIAAAP7//n8AgAAA/v/+fwCAAAD+//5/AIAAAP7//n8AgP9//38AgACA/3//fwCAAID/f/9/AIAAgP9//38AgACAAAD+//5/AIAAAP7//n8AgAAA/v/+fwCAAAD+//5/AID/f/7/AAD/v/9//v8AAP+//3/+/wAA/7//f/7/AAD/vwAA/3//f/+/AAD/f/9//78AAP9//3//vwAA/3//f/+/AAD/f/9//78AAP9//3//vwAA/3//f/+/AAD/f/9//7/+//9//3//v/7//3//f/+//v//f/9//7/+//9//3//v/7//3//f/+//v//f/9//7/+//9//3//v/7//3//f/+//38AAAAA/7//fwAAAAD/v/9/AAAAAP+//38AAAAA/7//f/9/AIAAgP9//38AgACA/3//fwCAAID/f/9/AIAAgAAA/v/+fwCAAAD+//5/AIAAAP7//n8AgAAA/v/+fwCA/3//fwCAAID/f/9/AIAAgP9//38AgACA/3//fwCAAIAAAP7//n8AgAAA/v/+fwCAAAD+//5/AIAAAP7//n8AgP9//v8AAP+//3/+/wAA/7//f/7/AAD/v/9//v8AAP+/////f/9//7////9//3//v////3//f/+/////f/9//7////9//3//v////3//f/+/////f/9//7////9//3//vwAA/n/+f/+/AAD+f/5//78AAP5//n//vwAA/n/+f/+/AAD+f/5//78AAP5//n//vwAA/n/+f/+/AAD+f/5//78AgAAAAAD/vwCAAAAAAP+/AIAAAAAA/78AgAAAAAD/v////v8AgACA///+/wCAAID///7/AIAAgP///v8AgACAAID/f/9/AIAAgP9//38AgACA/3//fwCAAID/f/9/AID///7/AIAAgP///v8AgACA///+/wCAAID///7/AIAAgACA/3//fwCAAID/f/9/AIAAgP9//38AgACA/3//fwCAAID+/wAA/78AgP7/AAD/vwCA/v8AAP+/AID+/wAA/7////9//3//v////3//f/+/////f/9//7////9//3//v////3//f/+/////f/9//7////9//3//v////3//f/+/AAD+f/5//78AAP5//n//vwAA/n/+f/+/AAD+f/5//78AAP5//n//vwAA/n/+f/+/AAD+f/5//78AAP5//n//vwCAAAAAAP+/AIAAAAAA/78AgAAAAAD/vwCAAAAAAP+////+/wCAAID///7/AIAAgP///v8AgACA///+/wCAAIAAgP9//38AgACA/3//fwCAAID/f/9/AIAAgP9//38AgP///v8AgACA///+/wCAAID///7/AIAAgP///v8AgACAAID/f/9/AIAAgP9//38AgACA/3//fwCAAID/f/9/AIAAgP7/AAD/vwCA/v8AAP+/AID+/wAA/78AgP7/AAD/v/9//3//fwCA/3//f/9/AID/f/9//38AgP9//3//fwCA/3//f/9/AID/f/9//38AgP9//3//fwCA/3//f/9/AID+/wAAAIAAgP7/AAAAgACA/v8AAACAAID+/wAAAIAAgP7/AAAAgACA/v8AAACAAID+/wAAAIAAgP7/AAAAgACA/38AAAAA/7//fwAAAAD/v/9/AAAAAP+//38AAAAA/7/+//9//n//v/7//3/+f/+//v//f/5//7/+//9//n//vwAA/3//f/+/AAD/f/9//78AAP9//3//vwAA/3//f/+//v//f/5//7/+//9//n//v/7//3/+f/+//v//f/5//78AAP9//3//vwAA/3//f/+/AAD/f/9//78AAP9//3//v/9//v8AAP+//3/+/wAA/7//f/7/AAD/v/9//v8AAP+//3//f/9/AID/f/9//38AgP9//3//fwCA/3//f/9/AID/f/9//38AgP9//3//fwCA/3//f/9/AID/f/9//38AgP7/AAAAgACA/v8AAACAAID+/wAAAIAAgP7/AAAAgACA/v8AAACAAID+/wAAAIAAgP7/AAAAgACA/v8AAACAAID/fwAAAAD/v/9/AAAAAP+//38AAAAA/7//fwAAAAD/v/7//3/+f/+//v//f/5//7/+//9//n//v/7//3/+f/+/AAD/f/9//78AAP9//3//vwAA/3//f/+/AAD/f/9//7/+//9//n//v/7//3/+f/+//v//f/5//7/+//9//n//vwAA/3//f/+/AAD/f/9//78AAP9//3//vwAA/3//f/+//3/+/wAA/7//f/7/AAD/v/9//v8AAP+//3/+/wAA/78=")
 }]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_vd18i"]
-size = Vector3(5.9624023, 1, 7.178238)
-
 [node name="Restroom" type="Node3D" unique_id=1937386699]
-
-[node name="Prototypes" type="Node3D" parent="." unique_id=1959127582]
-visible = false
-
-[node name="RoomComponents" type="Node3D" parent="Prototypes" unique_id=912189722]
-
-[node name="Walls" type="Node3D" parent="Prototypes/RoomComponents" unique_id=357826964]
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Prototypes/RoomComponents/Walls" unique_id=1352695068]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 2, 0)
-mesh = ExtResource("1_v8p53")
-skeleton = NodePath("../../..")
-
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="Prototypes/RoomComponents/Walls" unique_id=1082807082]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 2, 2, -2)
-mesh = ExtResource("1_v8p53")
-skeleton = NodePath("../../..")
-
-[node name="MeshInstance3D6" type="MeshInstance3D" parent="Prototypes/RoomComponents/Walls" unique_id=251433349]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 2, 2, -5)
-mesh = ExtResource("1_v8p53")
-skeleton = NodePath("../../..")
-
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="Prototypes/RoomComponents/Walls" unique_id=1927278726]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -3.611805, 2, -2)
-mesh = ExtResource("1_v8p53")
-skeleton = NodePath("../../..")
-
-[node name="MeshInstance3D5" type="MeshInstance3D" parent="Prototypes/RoomComponents/Walls" unique_id=1650430404]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -3.612, 2, -6)
-mesh = ExtResource("1_v8p53")
-skeleton = NodePath("../../..")
-
-[node name="MeshInstance3D7" type="MeshInstance3D" parent="Prototypes/RoomComponents/Walls" unique_id=1513838843]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -3, 2, -6.9)
-mesh = ExtResource("1_v8p53")
-skeleton = NodePath("../../..")
-
-[node name="MeshInstance3D8" type="MeshInstance3D" parent="Prototypes/RoomComponents/Walls" unique_id=2090255965]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 1, 2, -6.9)
-mesh = ExtResource("1_v8p53")
-skeleton = NodePath("../../..")
-
-[node name="Floor" type="Node3D" parent="Prototypes/RoomComponents" unique_id=2139288673]
-visible = false
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Prototypes/RoomComponents/Floor" unique_id=58942217]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
-mesh = ExtResource("3_qcekh")
-skeleton = NodePath("../..")
-
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="Prototypes/RoomComponents/Floor" unique_id=1530675321]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -2)
-mesh = ExtResource("3_qcekh")
-skeleton = NodePath("../..")
-
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="Prototypes/RoomComponents/Floor" unique_id=2106837839]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -6)
-mesh = ExtResource("3_qcekh")
-skeleton = NodePath("../..")
-
-[node name="MeshInstance3D5" type="MeshInstance3D" parent="Prototypes/RoomComponents/Floor" unique_id=135061341]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6)
-mesh = ExtResource("3_qcekh")
-skeleton = NodePath("../..")
-
-[node name="Ceilling" type="Node3D" parent="Prototypes/RoomComponents" unique_id=121016914]
-visible = false
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Prototypes/RoomComponents/Ceilling" unique_id=1185162581]
-transform = Transform3D(0.5, 0, 0, 0, -0.5, -4.371139e-08, 0, 4.371139e-08, -0.5, 1, 3.9999998, -7)
-mesh = ExtResource("4_qcekh")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Prototypes/RoomComponents/Ceilling" unique_id=831070789]
-transform = Transform3D(0.5, 0, 0, 0, -0.5, -4.371139e-08, 0, 4.371139e-08, -0.5, -1, 3.9999998, -7)
-mesh = ExtResource("4_qcekh")
-
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="Prototypes/RoomComponents/Ceilling" unique_id=27305470]
-transform = Transform3D(0.5, 0, 0, 0, -0.5, -4.371139e-08, 0, 4.371139e-08, -0.5, -3, 3.9999998, -7)
-mesh = ExtResource("4_qcekh")
-
-[node name="MeshInstance3D5" type="MeshInstance3D" parent="Prototypes/RoomComponents/Ceilling" unique_id=1196459926]
-transform = Transform3D(0.5, 0, 0, 0, -0.5, -4.371139e-08, 0, 4.371139e-08, -0.5, 1, 4, -5)
-mesh = ExtResource("4_qcekh")
-
-[node name="MeshInstance3D6" type="MeshInstance3D" parent="Prototypes/RoomComponents/Ceilling" unique_id=23112844]
-transform = Transform3D(0.5, 0, 0, 0, -0.5, -4.371139e-08, 0, 4.371139e-08, -0.5, -1, 4, -5)
-mesh = ExtResource("4_qcekh")
-
-[node name="MeshInstance3D7" type="MeshInstance3D" parent="Prototypes/RoomComponents/Ceilling" unique_id=2109373476]
-transform = Transform3D(0.5, 0, 0, 0, -0.5, -4.371139e-08, 0, 4.371139e-08, -0.5, -3, 4, -5)
-mesh = ExtResource("4_qcekh")
-
-[node name="MeshInstance3D9" type="MeshInstance3D" parent="Prototypes/RoomComponents/Ceilling" unique_id=462844697]
-transform = Transform3D(0.5, 0, 0, 0, -0.5, -4.371139e-08, 0, 4.371139e-08, -0.5, 1, 4, -3)
-mesh = ExtResource("4_qcekh")
-
-[node name="MeshInstance3D10" type="MeshInstance3D" parent="Prototypes/RoomComponents/Ceilling" unique_id=930359320]
-transform = Transform3D(0.5, 0, 0, 0, -0.5, -4.371139e-08, 0, 4.371139e-08, -0.5, -1, 4, -3)
-mesh = ExtResource("4_qcekh")
-
-[node name="MeshInstance3D11" type="MeshInstance3D" parent="Prototypes/RoomComponents/Ceilling" unique_id=361686603]
-transform = Transform3D(0.5, 0, 0, 0, -0.5, -4.371139e-08, 0, 4.371139e-08, -0.5, -3, 4, -3)
-mesh = ExtResource("4_qcekh")
-
-[node name="MeshInstance3D13" type="MeshInstance3D" parent="Prototypes/RoomComponents/Ceilling" unique_id=1957075707]
-transform = Transform3D(0.5, 0, 0, 0, -0.5, -4.371139e-08, 0, 4.371139e-08, -0.5, 1, 4.0000005, -1)
-mesh = ExtResource("4_qcekh")
-
-[node name="MeshInstance3D14" type="MeshInstance3D" parent="Prototypes/RoomComponents/Ceilling" unique_id=1382146390]
-transform = Transform3D(0.5, 0, 0, 0, -0.5, -4.371139e-08, 0, 4.371139e-08, -0.5, -1, 4.0000005, -1)
-mesh = ExtResource("4_qcekh")
-
-[node name="MeshInstance3D15" type="MeshInstance3D" parent="Prototypes/RoomComponents/Ceilling" unique_id=105637355]
-transform = Transform3D(0.5, 0, 0, 0, -0.5, -4.371139e-08, 0, 4.371139e-08, -0.5, -3, 4.0000005, -1)
-mesh = ExtResource("4_qcekh")
-
-[node name="Cabins" type="Node3D" parent="Prototypes" unique_id=881504369]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9532249, 0, 0)
-visible = false
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Prototypes/Cabins" unique_id=1137790842]
-transform = Transform3D(-5.6824803e-08, 0, 1.3, 0, 1.3, 0, -1.3, 0, -5.6824803e-08, -3.8217037, 1.3, -0.7)
-mesh = ExtResource("5_7g21b")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Prototypes/Cabins" unique_id=529995967]
-transform = Transform3D(-5.6824803e-08, 0, 1.3, 0, 1.3, 0, -1.3, 0, -5.6824803e-08, -3.8217037, 1.3, -2.05)
-mesh = ExtResource("5_7g21b")
-
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="Prototypes/Cabins" unique_id=1419449807]
-transform = Transform3D(-5.6824803e-08, 0, 1.3, 0, 1.3, 0, -1.3, 0, -5.6824803e-08, -3.8217037, 1.3, -3.4)
-mesh = ExtResource("5_7g21b")
-
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="Prototypes/Cabins" unique_id=1493423270]
-transform = Transform3D(-5.6824803e-08, 0, 1.3, 0, 1.3, 0, -1.3, 0, -5.6824803e-08, -3.8217037, 1.3, -4.745)
-mesh = ExtResource("5_7g21b")
-
-[node name="MeshInstance3D5" type="MeshInstance3D" parent="Prototypes/Cabins" unique_id=1347948339]
-transform = Transform3D(-5.6824803e-08, 0, 1.3, 0, 1.3, 0, -1.3, 0, -5.6824803e-08, -3.8217037, 1.3, -6.095)
-mesh = ExtResource("5_7g21b")
-
-[node name="Sinks" type="Node3D" parent="Prototypes" unique_id=290923341]
-visible = false
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Prototypes/Sinks" unique_id=932862666]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 1.6101198, 0.5805589, -2.098219)
-mesh = ExtResource("5_ohusx")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Prototypes/Sinks" unique_id=176629869]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 1.6101198, 0.5805589, -3.9263203)
-mesh = ExtResource("5_ohusx")
-
-[node name="Pipe" type="Node3D" parent="Prototypes" unique_id=1805314536]
-visible = false
-
-[node name="MeshInstance3D31" type="MeshInstance3D" parent="Prototypes/Pipe" unique_id=48500349]
-transform = Transform3D(-0.6759999, 0, -1.0207315e-07, 0, 0.67599994, 0, 1.02073145e-07, 0, -0.67599994, -2.6846917, 3.8790138, -0.37720025)
-mesh = ExtResource("6_a2qka")
-skeleton = NodePath("../../PipesYellow")
-
-[node name="MeshInstance3D32" type="MeshInstance3D" parent="Prototypes/Pipe" unique_id=195671731]
-transform = Transform3D(-0.6759999, 0, -1.0207315e-07, 0, 0.67599994, 0, 1.02073145e-07, 0, -0.67599994, -2.6846917, 3.8790138, -1.0514505)
-mesh = ExtResource("6_a2qka")
-skeleton = NodePath("../../PipesYellow")
-
-[node name="MeshInstance3D33" type="MeshInstance3D" parent="Prototypes/Pipe" unique_id=237585892]
-transform = Transform3D(-0.6759999, 0, -1.0207315e-07, 0, 0.67599994, 0, 1.02073145e-07, 0, -0.67599994, -2.6846917, 3.8790138, -1.722278)
-mesh = ExtResource("6_a2qka")
-skeleton = NodePath("../../PipesYellow")
-
-[node name="MeshInstance3D34" type="MeshInstance3D" parent="Prototypes/Pipe" unique_id=133546949]
-transform = Transform3D(-0.6759999, 0, -1.0207315e-07, 0, 0.67599994, 0, 1.02073145e-07, 0, -0.67599994, -2.6846917, 3.8790138, -2.3965282)
-mesh = ExtResource("6_a2qka")
-skeleton = NodePath("../../PipesYellow")
-
-[node name="MeshInstance3D35" type="MeshInstance3D" parent="Prototypes/Pipe" unique_id=1785482811]
-transform = Transform3D(0.6759999, 0, 0, 0, 0.67599994, 0, 0, 0, 0.67599994, -2.6846917, 3.8790138, -3.0674832)
-mesh = ExtResource("7_qj0ge")
-skeleton = NodePath("../../PipesYellow")
-
-[node name="MeshInstance3D37" type="MeshInstance3D" parent="Prototypes/Pipe" unique_id=1431018805]
-transform = Transform3D(-2.9548893e-08, 0, 0.67599994, 0, 0.67599994, 0, -0.6759999, 0, -2.9548897e-08, -2.0144835, 3.8790138, -3.7383914)
-mesh = ExtResource("7_qj0ge")
-skeleton = NodePath("../../PipesYellow")
-
-[node name="MeshInstance3D38" type="MeshInstance3D" parent="Prototypes/Pipe" unique_id=918196141]
-transform = Transform3D(-2.9548893e-08, 0, 0.67599994, 0, 0.67599994, 0, -0.6759999, 0, -2.9548897e-08, -1.339011, 3.8790138, -3.7383914)
-mesh = ExtResource("6_a2qka")
-skeleton = NodePath("../../PipesYellow")
-
-[node name="MeshInstance3D39" type="MeshInstance3D" parent="Prototypes/Pipe" unique_id=764321883]
-transform = Transform3D(-2.9548893e-08, 0, 0.67599994, 0, 0.67599994, 0, -0.6759999, 0, -2.9548897e-08, -0.664614, 3.8790138, -3.7380135)
-mesh = ExtResource("6_a2qka")
-skeleton = NodePath("../../PipesYellow")
-
-[node name="MeshInstance3D36" type="MeshInstance3D" parent="Prototypes/Pipe" unique_id=1420247211]
-transform = Transform3D(-0.6759999, 0, -5.9097793e-08, 0, 0.67599994, 0, 5.9097786e-08, 0, -0.67599994, -2.569956, 3.8790138, -3.6247842)
-mesh = ExtResource("8_vd18i")
-skeleton = NodePath("../../PipesYellow")
-
-[node name="MeshInstance3D40" type="MeshInstance3D" parent="Prototypes/Pipe" unique_id=717759634]
-transform = Transform3D(-0.6759999, 0, -5.9097793e-08, 0, 0.67599994, 0, 5.9097786e-08, 0, -0.67599994, 0.67491686, 3.8790138, -4.4088)
-mesh = ExtResource("7_qj0ge")
-skeleton = NodePath("../../PipesYellow")
-
-[node name="MeshInstance3D43" type="MeshInstance3D" parent="Prototypes/Pipe" unique_id=1476920370]
-transform = Transform3D(-0.6759999, 0, -5.9097793e-08, 0, 0.67599994, 0, 5.9097786e-08, 0, -0.67599994, 0.67491686, 3.8790138, -5.0821037)
-mesh = ExtResource("6_a2qka")
-skeleton = NodePath("../../PipesYellow")
-
-[node name="MeshInstance3D44" type="MeshInstance3D" parent="Prototypes/Pipe" unique_id=110275646]
-transform = Transform3D(-0.6759999, 0, -5.9097793e-08, 0, 0.67599994, 0, 5.9097786e-08, 0, -0.67599994, 0.67491686, 3.8790138, -5.756635)
-mesh = ExtResource("6_a2qka")
-skeleton = NodePath("../../PipesYellow")
-
-[node name="MeshInstance3D46" type="MeshInstance3D" parent="Prototypes/Pipe" unique_id=483044690]
-transform = Transform3D(0.6759999, 0, 0, 0, 0.67599994, 0, 0, 0, 0.67599994, 0.67491686, 3.8790138, -6.0071964)
-mesh = ExtResource("7_qj0ge")
-skeleton = NodePath("../../PipesYellow")
-
-[node name="MeshInstance3D47" type="MeshInstance3D" parent="Prototypes/Pipe" unique_id=1307672179]
-transform = Transform3D(0.6759999, 0, 0, 0, -2.9548893e-08, -0.6759999, 0, 0.6759999, -2.9548893e-08, 0.67491686, 3.2092733, -6.679215)
-mesh = ExtResource("7_qj0ge")
-skeleton = NodePath("../../PipesYellow")
-
-[node name="MeshInstance3D45" type="MeshInstance3D" parent="Prototypes/Pipe" unique_id=1622902010]
-transform = Transform3D(2.9548884e-08, -0.67599994, 2.9548909e-08, -1.18195565e-07, 2.9548897e-08, 0.67599994, -0.67599976, -2.9548897e-08, -1.1819554e-07, 0.67491686, 3.7617013, -6.564214)
-mesh = ExtResource("8_vd18i")
-skeleton = NodePath("../../PipesYellow")
-
-[node name="MeshInstance3D49" type="MeshInstance3D" parent="Prototypes/Pipe" unique_id=269439833]
-transform = Transform3D(0.6759999, 0, 0, 0, -2.9548893e-08, 0.6759999, 0, -0.6759999, -2.9548893e-08, 0.67491686, 2.5346086, -6.6801853)
-mesh = ExtResource("7_qj0ge")
-skeleton = NodePath("../../PipesYellow")
-
-[node name="MeshInstance3D50" type="MeshInstance3D" parent="Prototypes/Pipe" unique_id=1734735696]
-transform = Transform3D(2.954888e-08, -0.6759999, 2.9548907e-08, 1.7729333e-07, -2.9548893e-08, -0.6759999, 0.6759997, 2.9548891e-08, 1.7729332e-07, 0.67491686, 1.9821806, -6.795186)
-mesh = ExtResource("8_vd18i")
-skeleton = NodePath("../../PipesYellow")
-
-[node name="MeshInstance3D41" type="MeshInstance3D" parent="Prototypes/Pipe" unique_id=1506099943]
-transform = Transform3D(8.864668e-08, 0, -0.67599994, 0, 0.67599994, 0, 0.6759998, 0, 8.864668e-08, 0.0047086477, 3.8790138, -3.7378922)
-mesh = ExtResource("7_qj0ge")
-skeleton = NodePath("../../PipesYellow")
-
-[node name="MeshInstance3D42" type="MeshInstance3D" parent="Prototypes/Pipe" unique_id=1683345394]
-transform = Transform3D(0.6759999, 0, 1.1819559e-07, 0, 0.67599994, 0, -1.1819557e-07, 0, 0.67599994, 0.56018126, 3.8790138, -3.8514993)
-mesh = ExtResource("8_vd18i")
-skeleton = NodePath("../../PipesYellow")
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=389432474]
 visible = false
@@ -620,7 +360,7 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.95
 shape = SubResource("BoxShape3D_a2qka")
 
 [node name="LightmapGI" type="LightmapGI" parent="." unique_id=1204812572]
-quality = 3
+quality = 2
 supersampling = true
 bounces = 16
 bounce_indirect_energy = 2.0
@@ -643,14 +383,14 @@ spot_angle = 80.0
 [node name="Lamp" type="MeshInstance3D" parent="Decorations" unique_id=1898636493]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -0.76429844, 3.0314193, -3.437948)
 mesh = ExtResource("8_ohusx")
-skeleton = NodePath("../../Prototypes")
+skeleton = NodePath("")
 metadata/_edit_lock_ = true
 
 [node name="DoorWay" type="MeshInstance3D" parent="Decorations" unique_id=1703427973]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2, 0)
 gi_lightmap_texel_scale = 2.0
 mesh = ExtResource("1_k74ow")
-skeleton = NodePath("../../Prototypes")
+skeleton = NodePath("")
 metadata/_edit_lock_ = true
 
 [node name="Cabins" type="MeshInstance3D" parent="Decorations" unique_id=647365149]
@@ -685,11 +425,10 @@ mesh = SubResource("ArrayMesh_x1vmm")
 skeleton = NodePath("../..")
 
 [node name="Floor" type="MeshInstance3D" parent="Decorations" unique_id=1654294284]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.001, 0)
 gi_lightmap_texel_scale = 2.0
 mesh = SubResource("ArrayMesh_plguh")
 skeleton = NodePath("../..")
-metadata/_edit_lock_ = true
 
 [node name="Ceilling" type="MeshInstance3D" parent="Decorations" unique_id=413398103]
 gi_lightmap_texel_scale = 2.0
@@ -702,13 +441,3 @@ gi_lightmap_texel_scale = 4.0
 mesh = SubResource("ArrayMesh_dc252")
 skeleton = NodePath("../..")
 metadata/_edit_lock_ = true
-
-[node name="PlayerDetectionArea" type="Area3D" parent="." unique_id=819226680]
-visible = false
-collision_layer = 0
-collision_mask = 24
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerDetectionArea" unique_id=760808280]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8483887, 0, -3.373726)
-shape = SubResource("BoxShape3D_vd18i")
-debug_color = Color(0.96663874, 0.8439937, 2.3102762e-06, 1)

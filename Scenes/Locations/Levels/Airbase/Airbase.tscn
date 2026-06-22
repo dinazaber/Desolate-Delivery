@@ -26,6 +26,7 @@
 [ext_resource type="ArrayMesh" uid="uid://br33wg26qu7sk" path="res://assets/Meshes/Objects/Crate2.mesh" id="28_wh1nc"]
 [ext_resource type="PackedScene" uid="uid://dugekeqiinxib" path="res://Scenes/Buildings/WaterTower.tscn" id="30_tvlj7"]
 [ext_resource type="ArrayMesh" uid="uid://rn8rjuep3gb1" path="res://assets/Meshes/Objects/DamagedFlag.mesh" id="31_1rnsm"]
+[ext_resource type="PackedScene" uid="uid://mnqxus7cbuw" path="res://Scenes/Enemies/BallRobot.tscn" id="31_ftvms"]
 [ext_resource type="ArrayMesh" uid="uid://83j8mstw0jra" path="res://assets/Meshes/Architecture/FlagBase.mesh" id="32_2xd57"]
 [ext_resource type="PackedScene" uid="uid://d368u3xkt615v" path="res://Scenes/Enemies/Drone.tscn" id="33_aortb"]
 [ext_resource type="PackedScene" uid="uid://beqguglkai1oh" path="res://Scenes/Enemies/Robot.tscn" id="34_50pvf"]
@@ -409,30 +410,31 @@ skeleton = NodePath("../../..")
 
 [node name="Hangar1" type="MeshInstance3D" parent="Hangars/Hangars" unique_id=523835557]
 transform = Transform3D(-3.059797e-07, 0, -7, 0, 7, 0, 7, 0, -3.059797e-07, -2.5953841, 0.049293876, 10.839995)
+visibility_range_end = 130.0
 mesh = ExtResource("15_hvu3u")
 skeleton = NodePath("")
 
 [node name="Hangar2" type="MeshInstance3D" parent="Hangars/Hangars" unique_id=900968201]
 transform = Transform3D(-3.059797e-07, 0, -7, 0, 7, 0, 7, 0, -3.059797e-07, -23.358984, 0.049293876, 10.839995)
-visibility_range_end = 100.0
+visibility_range_end = 130.0
 mesh = ExtResource("15_hvu3u")
 skeleton = NodePath("")
 
 [node name="Hangar4" type="MeshInstance3D" parent="Hangars/Hangars" unique_id=333622223]
 transform = Transform3D(-7, 0, -6.119594e-07, 0, 7, 0, 6.119594e-07, 0, -7, -89.55267, 0.049293876, 2.9523144)
-visibility_range_end = 100.0
+visibility_range_end = 130.0
 mesh = ExtResource("15_hvu3u")
 skeleton = NodePath("")
 
 [node name="Hangar5" type="MeshInstance3D" parent="Hangars/Hangars" unique_id=1391859766]
 transform = Transform3D(-7, 0, -6.119594e-07, 0, 7, 0, 6.119594e-07, 0, -7, -89.55267, 0.049293876, -26.164207)
-visibility_range_end = 100.0
+visibility_range_end = 130.0
 mesh = ExtResource("15_hvu3u")
 skeleton = NodePath("")
 
 [node name="Hangar3" type="MeshInstance3D" parent="Hangars/Hangars" unique_id=208317141]
 transform = Transform3D(-3.059797e-07, 0, -7, 0, 7, 0, 7, 0, -3.059797e-07, 18.010592, 0.049293876, 10.839995)
-visibility_range_end = 100.0
+visibility_range_end = 130.0
 mesh = ExtResource("15_hvu3u")
 skeleton = NodePath("")
 
@@ -867,3 +869,6 @@ shape = SubResource("CylinderShape3D_7rfda")
 
 [node name="CommandCenter" parent="." unique_id=1747516275 instance=ExtResource("35_cuh82")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 23.349, 4.808791, -29.685)
+
+[node name="BallRobot" parent="." unique_id=2098246889 instance=ExtResource("31_ftvms")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5030475, 0.8625998, -1.2564096)
