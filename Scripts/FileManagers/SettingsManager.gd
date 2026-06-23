@@ -9,10 +9,11 @@ var settings = {
 		"max_fps": 60,
 		"vsync": false,
 		"render_scale": 1.0,
-		"image_size": DisplayServer.screen_get_size(),
+		"image_size_width": 1152,
+		"image_size_height": 648,
 		"windowed": false,
-		"anti_aliasing_type": "FXAA",
-		"anti_aliasing_enabled": false,
+		"anti_aliasing_type": "None",
+		"scaling_3d_mode": "Bilinear",
 		"brightness": 1.0
 	},
 	"audio": {
@@ -22,8 +23,6 @@ var settings = {
 		"mouse_sensitivity": 0.005
 	},
 	"game": {
-		"auto_open_doors": true,
-		"auto_close_doors": true
 	}
 }
 
@@ -79,20 +78,27 @@ func apply_settings():
 	var vsync = DisplayServer.VSYNC_ENABLED if settings.video.vsync else DisplayServer.VSYNC_DISABLED
 	DisplayServer.window_set_vsync_mode(vsync)
 	
-	# Render Scale
+	# Render Scale(3D)
 	var viewport = get_tree().root
-	viewport.scaling_3d_mode = Viewport.SCALING_3D_MODE_BILINEAR 
 	viewport.scaling_3d_scale = settings.video.render_scale
+	
+	var string = settings.video.scaling_3d_mode
+	match string:
+		"Nearest": get_viewport().scaling_3d_mode = Viewport.SCALING_3D_MODE_NEAREST
+		"Bilinear": get_viewport().scaling_3d_mode = Viewport.SCALING_3D_MODE_BILINEAR
+		"FSR 1.0": get_viewport().scaling_3d_mode = Viewport.SCALING_3D_MODE_FSR
+		"FSR 2.0": get_viewport().scaling_3d_mode = Viewport.SCALING_3D_MODE_FSR2
 	
 	# Fullscreen/Windowed
 	if settings.video.windowed:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
-		DisplayServer.window_set_size(settings.video.image_size)
+		var size = Vector2(settings.video.image_size_width, settings.video.image_size_height)
+		DisplayServer.window_set_size(size)
 	else: DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 	
 	# Anti Aliasing
-	var string = settings.video.anti_aliasing_type
-	if settings.video.anti_aliasing_enabled:
+	string = settings.video.anti_aliasing_type
+	if string != "None":
 		if "MSAA" in string:
 			get_viewport().screen_space_aa = Viewport.SCREEN_SPACE_AA_DISABLED
 			var n = string[string.length() - 2].to_int()
@@ -110,6 +116,8 @@ func apply_settings():
 			get_viewport().screen_space_aa = Viewport.SCREEN_SPACE_AA_DISABLED
 			get_viewport().screen_space_aa = Viewport.SCREEN_SPACE_AA_SMAA
 			get_viewport().msaa_3d = Viewport.MSAA_DISABLED
+		
+			
 	
 	else:
 		get_viewport().screen_space_aa = Viewport.SCREEN_SPACE_AA_DISABLED
@@ -117,6 +125,4 @@ func apply_settings():
 	
 	if player:
 		player.cam_speed = SettingsManager.settings.controls.mouse_sensitivity
-		player.autoOpenDoors = SettingsManager.settings.game.auto_open_doors
-		player.autoCloseDoors = SettingsManager.settings.game.auto_close_doors
 	

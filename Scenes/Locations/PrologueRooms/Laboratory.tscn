@@ -7,6 +7,7 @@
 [ext_resource type="ArrayMesh" uid="uid://cc71x4p8yppbl" path="res://assets/Meshes/Architecture/Fence.mesh" id="8_e8llv"]
 [ext_resource type="Shader" uid="uid://cunx8274v1qyy" path="res://Shaders/MeshShaders/MeshShader.gdshader" id="9_cmr6e"]
 [ext_resource type="Texture2D" uid="uid://kqnjcrk75lb3" path="res://assets/Textures/Dirt.png" id="10_b2s5t"]
+[ext_resource type="PackedScene" uid="uid://bmm256oikf8f" path="res://Scenes/Objects/Radio.tscn" id="11_pt5wm"]
 [ext_resource type="ArrayMesh" uid="uid://b7igpn6c8ib5q" path="res://assets/Meshes/Objects/RobotStation.mesh" id="12_b2s5t"]
 [ext_resource type="ArrayMesh" uid="uid://vq6o17leqlm8" path="res://assets/Meshes/RoomConstructor/RandomRoom1.mesh" id="12_e8llv"]
 [ext_resource type="ArrayMesh" uid="uid://bqp22lc1tk21e" path="res://assets/Meshes/Objects/Shelves.mesh" id="13_iglbh"]
@@ -491,6 +492,14 @@ light_energy = 0.5
 light_bake_mode = 1
 omni_range = 2.0
 
+[node name="OmniLight3D5" type="SpotLight3D" parent="LightmapGI" unique_id=137734045]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -5.7016025, 1.8799925, 3.6769524)
+light_energy = 0.2
+light_bake_mode = 1
+distance_fade_enabled = true
+distance_fade_begin = 5.0
+spot_angle = 89.0
+
 [node name="Collisions" type="Node3D" parent="." unique_id=446720529]
 visible = false
 
@@ -721,6 +730,9 @@ mesh = ExtResource("12_b2s5t")
 [node name="ToolBoxLarge" type="MeshInstance3D" parent="." unique_id=1167091476]
 transform = Transform3D(0.016680535, 0, 0.39965206, 0, 0.4, 0, -0.39965206, 0, 0.016680535, -1.2672901, 0.5443742, 1.2711446)
 mesh = ExtResource("13_tsg2d")
+
+[node name="Radio" parent="ToolBoxLarge" unique_id=1164994347 instance=ExtResource("11_pt5wm")]
+transform = Transform3D(-0.2942417, 0, 0.05849628, 0, 0.29999977, 0, -0.05849628, 0, -0.2942417, 0.40008998, 2.459427, -0.21402788)
 
 [node name="WorkBench" type="MeshInstance3D" parent="." unique_id=14411443]
 transform = Transform3D(-0.55, 0, -8.3047695e-08, 0, 0.55, 0, 8.3047695e-08, 0, -0.55, -5.684363, 0.5499685, 2.7391443)

@@ -16,7 +16,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 
 config/name="Desolate-Delivery"
 run/main_scene="uid://c4tcnkstn4rig"
-config/features=PackedStringArray("4.6", "Mobile")
+config/features=PackedStringArray("4.7", "Mobile")
 run/max_fps=180
 config/icon="res://icon.svg"
 
@@ -42,7 +42,7 @@ project/assembly_name="ProjectX"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/MeshMerger/plugin.cfg", "res://addons/MetaMultimeshInstance3D/plugin.cfg", "res://addons/multimesh_scatter/plugin.cfg", "res://addons/oidn_denoiser/plugin.cfg")
+enabled=PackedStringArray("res://addons/MeshMerger/plugin.cfg", "res://addons/oidn_denoiser/plugin.cfg")
 
 [filesystem]
 

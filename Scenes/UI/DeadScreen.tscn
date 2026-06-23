@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://bm2ti0vwyvub4"]
 
 [ext_resource type="Script" uid="uid://b78q4i3muaarp" path="res://Scripts/UI/DeadScreen.gd" id="1_0kbwv"]
-[ext_resource type="PackedScene" uid="uid://b2hljcs3010c5" path="res://Scenes/UI/Settings.tscn" id="1_pfvpy"]
 
 [node name="DeadScreen" type="Control" unique_id=1831384756]
 layout_mode = 3
@@ -11,10 +10,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_0kbwv")
-
-[node name="Settings" parent="." unique_id=307003582 instance=ExtResource("1_pfvpy")]
-visible = false
-layout_mode = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1724360613]
 layout_mode = 1
@@ -40,11 +35,6 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 20
 text = "Restart From Last Checkpoint - Unavaible"
 
-[node name="Setings" type="Button" parent="VBoxContainer" unique_id=273530799]
-layout_mode = 2
-theme_override_font_sizes/font_size = 20
-text = "Settings"
-
 [node name="MainMenu" type="Button" parent="VBoxContainer" unique_id=2026734310]
 layout_mode = 2
 theme_override_font_sizes/font_size = 20
@@ -52,5 +42,4 @@ text = "Main Menu
 "
 
 [connection signal="pressed" from="VBoxContainer/Restart" to="." method="_on_restart_pressed"]
-[connection signal="pressed" from="VBoxContainer/Setings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="VBoxContainer/MainMenu" to="." method="_on_quit_pressed"]

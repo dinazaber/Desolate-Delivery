@@ -2,9 +2,7 @@
 
 [ext_resource type="ArrayMesh" uid="uid://bhdj6x3k5qagf" path="res://assets/Meshes/Architecture/CommandCenter.mesh" id="1_k0qb5"]
 [ext_resource type="Shader" uid="uid://bog2d5u5vhtmo" path="res://Shaders/MeshShaders/Flag.gdshader" id="2_ki04u"]
-[ext_resource type="ArrayMesh" uid="uid://tnqtnrxm02k4" path="res://assets/Meshes/Objects/Crate1.mesh" id="3_3uc1p"]
 [ext_resource type="Texture2D" uid="uid://kqnjcrk75lb3" path="res://assets/Textures/Dirt.png" id="3_ep4op"]
-[ext_resource type="Script" uid="uid://cfwmt6vc7y70h" path="res://addons/MetaMultimeshInstance3D/src/MetaMultimeshInstance3D.gd" id="4_ep4op"]
 [ext_resource type="PackedScene" uid="uid://d16pmg4f4pnf8" path="res://Scenes/Objects/Door.tscn" id="6_3uc1p"]
 
 [sub_resource type="Gradient" id="Gradient_ki04u"]
@@ -61,53 +59,6 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_klfi5")
-
-[sub_resource type="MultiMesh" id="MultiMesh_fum3u"]
-transform_format = 1
-instance_count = 3
-visible_instance_count = 3
-mesh = ExtResource("3_3uc1p")
-buffer = PackedFloat32Array(0.08037181, 0, 0.1266506, 1.1218786, 0, 0.15, 0, 3.5396845, -0.1266506, 0, 0.08037181, 0.5924015, 0.14988853, 0, 0.007708961, 1.346015, 0, 0.15, 0, 3.5396845, -0.005781721, 0, 0.19985138, 1.45895, -0.04825065, 0, 0.11835644, 0.36087227, 0, 0.2, 0, 3.6009758, -0.14202774, 0, -0.04020887, 0.5419636)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k0qb5"]
-transparency = 1
-albedo_color = Color(0.33213586, 0.3321359, 0.3321359, 1)
-
-[sub_resource type="ArrayMesh" id="ArrayMesh_0a6f3"]
-_surfaces = [{
-"aabb": AABB(-1.1373639, 0, -0.26278692, 2.4954412, 1e-05, 0.4303912),
-"format": 34896613377,
-"index_count": 12,
-"index_data": PackedByteArray("AAABAAIAAAADAAEAAwAAAAQAAwAEAAUA"),
-"primitive": 3,
-"uv_scale": Vector4(0, 0, 0, 0),
-"vertex_count": 6,
-"vertex_data": PackedByteArray("pY4AAHWCAAAAAAAAiP0AAOo1AAATWwAAnWQAAMTOAAD//wAAAAAAAOOSAAD//wAA")
-}]
-blend_shape_mode = 0
-
-[sub_resource type="ArrayMesh" id="ArrayMesh_ki04u"]
-resource_name = "Objects_Vert_003"
-_surfaces = [{
-"aabb": AABB(-1.1373639, 0, -0.26278692, 2.4954412, 1e-05, 0.4303912),
-"format": 34896613383,
-"index_count": 12,
-"index_data": PackedByteArray("AAABAAIAAAADAAEAAwAAAAQAAwAEAAUA"),
-"material": SubResource("StandardMaterial3D_k0qb5"),
-"primitive": 3,
-"uv_scale": Vector4(0, 0, 0, 0),
-"vertex_count": 6,
-"vertex_data": PackedByteArray("pY4AAHWC//8AAAAAiP3//+o1AAATW///nWQAAMTO/////wAAAAD//+OSAAD//////3//v/9//7//f/+//3//v/9//7//f/+/")
-}]
-blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_0a6f3")
-
-[sub_resource type="MultiMesh" id="MultiMesh_3uc1p"]
-transform_format = 1
-instance_count = 8
-visible_instance_count = 8
-mesh = SubResource("ArrayMesh_ki04u")
-buffer = PackedFloat32Array(0.17912777, 0, 0.32927483, -0.43482044, 0, 1, 0, -2.080495, -0.32885763, 0, 0.179355, -0.5867521, 0.26928923, 0, 0.025952294, -0.8931312, 0, 1, 0, -2.080495, -0.025697203, 0, 0.27196223, -1.0125747, -0.2474585, 0, 0.11036103, -1.1571609, 0, 1, 0, -2.080495, -0.10927635, 0, -0.24991481, -1.9472682, -0.21714401, 0, -0.16292554, -1.3104169, 0, 1, 0, -2.080495, 0.16132422, 0, -0.2192994, -1.280854, -0.18632711, 0, -0.15651834, -0.15545727, 0, 1, 0, -2.080495, 0.27533862, 0, -0.10591908, -2.794508, -0.30117273, 0, 0.08408535, 0.1230729, 0, 1, 0, -2.080495, -0.055063643, 0, -0.45990822, -1.9161997, -0.32393578, 0, -0.09032015, -0.29172254, 0, 1, 0, -2.080495, 0.100405, 0, -0.29139903, -1.4940227, -0.09461675, 0, 0.3209394, 0.5408998, 0, 1.3133864, 0, -2.080495, -0.18811624, 0, -0.16142277, -1.1537142)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ep4op"]
 size = Vector3(3.4022856, 0.086364746, 0.8675232)
@@ -351,55 +302,10 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 0)
 mesh = ExtResource("1_k0qb5")
 
-[node name="Label3D" type="Label3D" parent="CommandCenter" unique_id=386893804]
-transform = Transform3D(-0.2, 0, -3.019916e-08, 0, 0.2, 0, 3.019916e-08, 0, -0.2, -0.21512413, 0.2960782, -0.029752731)
-visibility_range_end = 5.0
-double_sided = false
-text = "This shit is there just to tell you
-that I want to use this door as
-teleport to some robo goblin
-vendor on this location and you
-won't stop me.
-Btw label 3d is a very cool thing
-although it is using 1 draw call
-...
-you could have texted me
-
-But it is not cool like label3D"
-
 [node name="MeshInstance3D" type="MeshInstance3D" parent="CommandCenter" unique_id=1260226979]
 transform = Transform3D(5.158851e-16, -1.1802075e-08, 0.27, -0.27, -1.1802075e-08, 0, 1.1802075e-08, -0.27, -1.1802075e-08, 1.0303879, 0.10233033, 2.747467)
 cast_shadow = 0
 mesh = SubResource("ArrayMesh_ukbaj")
-
-[node name="Label3D2" type="Label3D" parent="CommandCenter" unique_id=1162236750]
-transform = Transform3D(0.36553735, 0, -0.16242675, 0, 0.4, 0, 0.16242675, 0, 0.36553735, 1.5834103, 4.394597, 0.14035225)
-visibility_range_end = 5.0
-double_sided = false
-text = "This room will serve for 
-something important...
-I'll place some crates here"
-font_size = 48
-
-[node name="Crates" type="MultiMeshInstance3D" parent="CommandCenter" unique_id=1182700349]
-cast_shadow = 0
-visibility_range_end = 10.0
-multimesh = SubResource("MultiMesh_fum3u")
-script = ExtResource("4_ep4op")
-go_explode = null
-shape_type = 0
-go_make_colliders = null
-metadata/_custom_type_script = "uid://cfwmt6vc7y70h"
-
-[node name="Cracks" type="MultiMeshInstance3D" parent="CommandCenter" unique_id=2011635174]
-cast_shadow = 0
-visibility_range_end = 10.0
-multimesh = SubResource("MultiMesh_3uc1p")
-script = ExtResource("4_ep4op")
-go_explode = null
-shape_type = 0
-go_make_colliders = null
-metadata/_custom_type_script = "uid://cfwmt6vc7y70h"
 
 [node name="Collisions" type="Node3D" parent="." unique_id=409749543]
 visible = false

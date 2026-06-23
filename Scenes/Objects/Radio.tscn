@@ -3,7 +3,11 @@
 [ext_resource type="Shader" uid="uid://cunx8274v1qyy" path="res://Shaders/MeshShaders/MeshShader.gdshader" id="1_k77ne"]
 [ext_resource type="Texture2D" uid="uid://kqnjcrk75lb3" path="res://assets/Textures/Dirt.png" id="2_u42rv"]
 [ext_resource type="Texture2D" uid="uid://bu6ue5ydfh2q6" path="res://assets/Textures/Rust.png" id="3_7cga6"]
-[ext_resource type="Script" uid="uid://b5sifsy70dbxc" path="res://Scripts/Modules/MeshGlow.gd" id="4_u42rv"]
+[ext_resource type="Script" uid="uid://b5sifsy70dbxc" path="res://Scripts/Modules/Radio.gd" id="4_u42rv"]
+[ext_resource type="AudioStream" uid="uid://dw7tc3dby2ssw" path="res://assets/Audio/RadioMelody1.mp3" id="5_wq21g"]
+[ext_resource type="AudioStream" uid="uid://d0pwjkuunafa3" path="res://assets/Audio/RadioMelody2.mp3" id="6_skhqa"]
+[ext_resource type="AudioStream" uid="uid://dlqscmn4ro65u" path="res://assets/Audio/RadioMelody3.mp3" id="7_5hta8"]
+[ext_resource type="AudioStream" uid="uid://edvjno7fffde" path="res://assets/Audio/Mr Smith - Pequeñas Guitarras.mp3" id="8_skhqa"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_76v78"]
 render_priority = 0
@@ -13,7 +17,7 @@ shader_parameter/enable_world_projection = false
 shader_parameter/has_rig = false
 shader_parameter/enable_detail_1 = true
 shader_parameter/enable_detail_2 = true
-shader_parameter/enable_glow = true
+shader_parameter/enable_glow = false
 shader_parameter/wire_color = Color(0, 0, 0, 1)
 shader_parameter/wire_width = 1.0
 shader_parameter/wire_transparency = 0.5
@@ -23,7 +27,7 @@ shader_parameter/alpha1 = 0.5
 shader_parameter/detail2 = ExtResource("3_7cga6")
 shader_parameter/detail2_scale = 0.3
 shader_parameter/alpha2 = 1.0
-shader_parameter/glow_intensity = 2.0
+shader_parameter/glow_intensity = 0.0
 shader_parameter/glow_color_override = Color(0.99999994, 0.8004816, 0.40796107, 1)
 shader_parameter/glow_override = true
 
@@ -60,28 +64,6 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_u42rv")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_u42rv"]
-render_priority = 0
-shader = ExtResource("1_k77ne")
-shader_parameter/enable_wireframe = true
-shader_parameter/enable_world_projection = false
-shader_parameter/has_rig = false
-shader_parameter/enable_detail_1 = true
-shader_parameter/enable_detail_2 = true
-shader_parameter/enable_glow = true
-shader_parameter/wire_color = Color(0, 0, 0, 1)
-shader_parameter/wire_width = 1.0
-shader_parameter/wire_transparency = 0.5
-shader_parameter/detail1 = ExtResource("2_u42rv")
-shader_parameter/detail1_scale = 0.5
-shader_parameter/alpha1 = 0.5
-shader_parameter/detail2 = ExtResource("3_7cga6")
-shader_parameter/detail2_scale = 0.3
-shader_parameter/alpha2 = 1.0
-shader_parameter/glow_intensity = 2.0
-shader_parameter/glow_color_override = Color(0.99999994, 0.8004816, 0.40796107, 1)
-shader_parameter/glow_override = true
-
 [sub_resource type="Animation" id="Animation_skhqa"]
 resource_name = "Playing"
 length = 12.0
@@ -89,14 +71,14 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("MeshInstance3D:editor_glow_intensity")
+tracks/0/path = NodePath(".:glow_intensity")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(3.4, 3.5466666, 3.5666666, 9.6, 9.610001, 10.133333, 10.190001, 10.2),
-"transitions": PackedFloat32Array(1, 0.6981291, 15.454962, 0, 0, 1, 0.5, 0.5),
+"times": PackedFloat32Array(1.5999999, 1.6333332, 1.6999999, 8.9, 8.933333, 9.066667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [2.0, 0.0, 2.0, 0.0, 2.0, 2.0, 0.0, 2.0]
+"values": [2.0, 0.0, 2.0, 2.0, 0.0, 2.0]
 }
 
 [sub_resource type="Animation" id="Animation_k77ne"]
@@ -104,30 +86,88 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("MeshInstance3D:editor_glow_intensity")
+tracks/0/path = NodePath(".:glow_intensity")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [2.0]
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_wq21g"]
+resource_name = "TurnOff"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:glow_intensity")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.10000001, 0.43333334, 0.6666667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [2.0, 0.0, 2.0]
+}
+
+[sub_resource type="Animation" id="Animation_5hta8"]
+resource_name = "TurnOn"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:glow_intensity")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.06666667, 0.40000004, 0.70000005, 0.9333334),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 2.0, 0.0, 2.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5hta8"]
 _data = {
 &"Playing": SubResource("Animation_skhqa"),
-&"RESET": SubResource("Animation_k77ne")
+&"RESET": SubResource("Animation_k77ne"),
+&"TurnOff": SubResource("Animation_wq21g"),
+&"TurnOn": SubResource("Animation_5hta8")
 }
 
-[node name="Radio" type="Node3D" unique_id=1164994347]
+[sub_resource type="AudioStreamPlaylist" id="AudioStreamPlaylist_kf1mn"]
+stream_count = 3
+stream_0 = ExtResource("5_wq21g")
+stream_1 = ExtResource("6_skhqa")
+stream_2 = ExtResource("7_5hta8")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=843262326 node_paths=PackedStringArray("anim_player")]
-mesh = SubResource("ArrayMesh_7cga6")
-surface_material_override/0 = SubResource("ShaderMaterial_u42rv")
+[sub_resource type="BoxShape3D" id="BoxShape3D_kf1mn"]
+size = Vector3(3.0891113, 2.00531, 1.5078125)
+
+[node name="Radio" type="Node3D" unique_id=1164994347]
 script = ExtResource("4_u42rv")
-editor_glow_intensity = 2.0
-anim_player = NodePath("../AnimationPlayer")
+in_main_menu = null
+turn_on_start = null
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=843262326]
+mesh = SubResource("ArrayMesh_7cga6")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=725367188]
 libraries/ = SubResource("AnimationLibrary_5hta8")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=1024448365]
+stream = SubResource("AudioStreamPlaylist_kf1mn")
+unit_size = 5.0
+max_db = -24.0
+autoplay = true
+max_distance = 30.0
+bus = &"Music"
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1211540163]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1197720094]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0037841797, 0.004058838, -0.25390625)
+shape = SubResource("BoxShape3D_kf1mn")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=339118276]
+stream = ExtResource("8_skhqa")
+bus = &"MainMenuTheme"

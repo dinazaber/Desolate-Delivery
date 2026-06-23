@@ -112,8 +112,7 @@ var def_gun_pos: Vector3
 
 # --- GAMEPLAY SETTINGS ---
 @export_category("GAMEPLAY")
-var autoOpenDoors: bool = true
-var autoCloseDoors: bool = true
+
 
 # --- SIGNALS ---
 signal playerDead
@@ -173,12 +172,8 @@ func _input(event):
 				#Object that can be grabbed
 				if collider is RigidBody3D and distance < 3: grab_object(collider)
 				
-				#Other interactionable objects(doors currently)
-				elif collider.owner:
-					if collider.owner.has_method("getType"):
-						var object = collider.owner
-						match object.getType():
-							"Door": door_interaction(collider, distance)
+				#Other interactionable objects
+				elif collider.owner.has_method("interact") and distance < 2: collider.owner.interact()
 				
 	
 	# Weapon Switch
@@ -627,13 +622,6 @@ func grab_object(collider):
 	grabbedObject.gravity_scale = 0.0
 	grabbedObject.linear_damp = 0.0
 	add_collision_exception_with(grabbedObject)
-
-func door_interaction(collider, distance):
-	var object = collider.owner
-	collider = collider as StaticBody3D
-	var metadata = collider.get_meta("Dir")
-	if object.getOpenStatus() < 0 and distance < 2: object.open(metadata)
-	else: object.close(1.0)
 
 # --- HEALTH AND DAMAGE ---
 func checkLifeLine():

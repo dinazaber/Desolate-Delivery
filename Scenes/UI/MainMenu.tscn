@@ -17,7 +17,6 @@
 [ext_resource type="ArrayMesh" uid="uid://c3gfw3snnk8rb" path="res://assets/Meshes/Objects/Mirror.mesh" id="17_ytwc7"]
 [ext_resource type="ArrayMesh" uid="uid://7ho7ltov0iyb" path="res://assets/Meshes/Objects/Vehicles/Jeep/Jeep.mesh" id="18_0ncoa"]
 [ext_resource type="ArrayMesh" uid="uid://bqp22lc1tk21e" path="res://assets/Meshes/Objects/Shelves.mesh" id="20_2qihr"]
-[ext_resource type="AudioStream" uid="uid://edvjno7fffde" path="res://assets/Audio/Mr Smith - Pequeñas Guitarras.mp3" id="20_4pyop"]
 [ext_resource type="PackedScene" uid="uid://dugekeqiinxib" path="res://Scenes/Buildings/WaterTower.tscn" id="20_ervkh"]
 [ext_resource type="PackedScene" uid="uid://bmm256oikf8f" path="res://Scenes/Objects/Radio.tscn" id="20_xwq8e"]
 
@@ -426,14 +425,10 @@ mesh = ExtResource("20_2qihr")
 
 [node name="Radio" parent="3DScene/JunkPile" unique_id=1164994347 instance=ExtResource("20_xwq8e")]
 transform = Transform3D(-0.056041397, -0.0049699526, 0.020848516, -0.007050598, 0.05939111, -0.0047943178, -0.020239808, -0.006927917, -0.056056693, 4.5515394, 0.056682132, -2.375729)
+in_main_menu = true
 
 [node name="WaterTower" parent="3DScene" unique_id=1568087152 instance=ExtResource("20_ervkh")]
 transform = Transform3D(0.4202691, 0, 0.2708761, 0, 0.5, 0, -0.2708761, 0, 0.4202691, 6.6375575, 4.101425, -4.9059944)
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=84627913]
-stream = ExtResource("20_4pyop")
-autoplay = true
-bus = &"MainMenuTheme"
 
 [connection signal="pressed" from="MainMenu/MarginContainer/VBoxContainer/Levels" to="." method="_on_levels_pressed"]
 [connection signal="pressed" from="MainMenu/MarginContainer/VBoxContainer/Settings" to="." method="_on_settings_pressed"]

@@ -37,16 +37,15 @@ func _physics_process(_delta: float) -> void:
 				elif body.is_in_group("Enemy"): enemy = body
 		
 		if player:
-			if player.autoOpenDoors:
-				var dotVal = (player.velocity + player.direction).dot(($Marker3D.global_position - $Areas/OpenAreaFront/CollisionShape3D.global_position) * (1 if i else -1))
-				if dotVal > 0.1: open(i)
-				closeTimer.start()
+			var dotVal = (player.velocity + player.direction).dot(($Marker3D.global_position - $Areas/OpenAreaFront/CollisionShape3D.global_position) * (1 if i else -1))
+			if dotVal > 0.1: open(i)
+			closeTimer.start()
 		
 		if enemy:
 			var dotVal = (enemy.velocity).dot(($Marker3D.global_position - $Areas/OpenAreaFront/CollisionShape3D.global_position) * (1 if i else -1))
 			if dotVal > 0.1: open(i)
 			closeTimer.start()
-
+	
 
 func open(i):
 	if openType < 0:
@@ -60,11 +59,6 @@ func close(playSpeed):
 	if openType >= 0:
 		anim.play("Close" + str(openType), 0.25, playSpeed)
 		openType = -1
-		
-
-func getOpenStatus(): return openType
-
-func getType(): return type
 
 func _on_timer_timeout() -> void:
 	close(0.5)

@@ -43,7 +43,7 @@ custom_minimum_size = Vector2(302, 0)
 layout_mode = 2
 text = "Render Scale"
 
-[node name="ScaleOption" type="OptionButton" parent="ScrollContainer/VBoxContainer/Scale" unique_id=18711073]
+[node name="ScaleOption" type="OptionButton" parent="ScrollContainer/VBoxContainer/Scale" unique_id=18711073 groups=["UpdatedNodes"]]
 layout_mode = 2
 item_count = 8
 popup/item_0/text = "2.0"
@@ -62,6 +62,8 @@ popup/item_6/text = "0.5"
 popup/item_6/id = 6
 popup/item_7/text = "0.25"
 popup/item_7/id = 7
+metadata/section = "video"
+metadata/key = "render_scale"
 
 [node name="Fps" type="HBoxContainer" parent="ScrollContainer/VBoxContainer" unique_id=522663902]
 layout_mode = 2
@@ -71,8 +73,10 @@ custom_minimum_size = Vector2(297.07, 0)
 layout_mode = 2
 text = "Max FPS"
 
-[node name="MaxFpsEdit" type="LineEdit" parent="ScrollContainer/VBoxContainer/Fps" unique_id=185004757]
+[node name="MaxFpsEdit" type="LineEdit" parent="ScrollContainer/VBoxContainer/Fps" unique_id=185004757 groups=["UpdatedNodes"]]
 layout_mode = 2
+metadata/section = "video"
+metadata/key = "max_fps"
 
 [node name="Window" type="HBoxContainer" parent="ScrollContainer/VBoxContainer" unique_id=1608606791]
 layout_mode = 2
@@ -81,9 +85,11 @@ layout_mode = 2
 layout_mode = 2
 text = "Windowed"
 
-[node name="CheckButton" type="CheckBox" parent="ScrollContainer/VBoxContainer/Window" unique_id=845244673]
+[node name="CheckButton" type="CheckBox" parent="ScrollContainer/VBoxContainer/Window" unique_id=845244673 groups=["UpdatedNodes"]]
 layout_mode = 2
 action_mode = 0
+metadata/section = "video"
+metadata/key = "windowed"
 
 [node name="Resolution" type="HBoxContainer" parent="ScrollContainer/VBoxContainer" unique_id=1897556156]
 layout_mode = 2
@@ -92,10 +98,12 @@ layout_mode = 2
 layout_mode = 2
 text = "Width:"
 
-[node name="WidthEdit" type="LineEdit" parent="ScrollContainer/VBoxContainer/Resolution" unique_id=965594438]
+[node name="WidthEdit" type="LineEdit" parent="ScrollContainer/VBoxContainer/Resolution" unique_id=965594438 groups=["UpdatedNodes"]]
 layout_mode = 2
 placeholder_text = "Screen Width"
 expand_to_text_length = true
+metadata/section = "video"
+metadata/key = "image_size_width"
 
 [node name="Control" type="Control" parent="ScrollContainer/VBoxContainer/Resolution" unique_id=1074761119]
 custom_minimum_size = Vector2(18.045, 0)
@@ -105,10 +113,12 @@ layout_mode = 2
 layout_mode = 2
 text = "Height:"
 
-[node name="HeightEdit" type="LineEdit" parent="ScrollContainer/VBoxContainer/Resolution" unique_id=1081672037]
+[node name="HeightEdit" type="LineEdit" parent="ScrollContainer/VBoxContainer/Resolution" unique_id=1081672037 groups=["UpdatedNodes"]]
 layout_mode = 2
 placeholder_text = "Screen Height"
 expand_to_text_length = true
+metadata/section = "video"
+metadata/key = "image_size_height"
 
 [node name="Vsync" type="HBoxContainer" parent="ScrollContainer/VBoxContainer" unique_id=1146306939]
 layout_mode = 2
@@ -117,9 +127,11 @@ layout_mode = 2
 layout_mode = 2
 text = "Vsync"
 
-[node name="CheckButton" type="CheckBox" parent="ScrollContainer/VBoxContainer/Vsync" unique_id=1278256868]
+[node name="CheckButton" type="CheckBox" parent="ScrollContainer/VBoxContainer/Vsync" unique_id=1278256868 groups=["UpdatedNodes"]]
 layout_mode = 2
 action_mode = 0
+metadata/section = "video"
+metadata/key = "vsync"
 
 [node name="AntiAliasing" type="HBoxContainer" parent="ScrollContainer/VBoxContainer" unique_id=329488335]
 layout_mode = 2
@@ -128,16 +140,13 @@ layout_mode = 2
 layout_mode = 2
 text = "Anti Aliasing"
 
-[node name="CheckButton" type="CheckBox" parent="ScrollContainer/VBoxContainer/AntiAliasing" unique_id=1550905322]
-layout_mode = 2
-
 [node name="Control" type="Control" parent="ScrollContainer/VBoxContainer/AntiAliasing" unique_id=1194602833]
-custom_minimum_size = Vector2(139.555, 32)
+custom_minimum_size = Vector2(168.87, 32)
 layout_mode = 2
 
-[node name="AntAliOp" type="OptionButton" parent="ScrollContainer/VBoxContainer/AntiAliasing" unique_id=409817811]
+[node name="AntAliOp" type="OptionButton" parent="ScrollContainer/VBoxContainer/AntiAliasing" unique_id=409817811 groups=["UpdatedNodes"]]
 layout_mode = 2
-item_count = 5
+item_count = 6
 popup/item_0/text = "MSAA 8x"
 popup/item_0/id = 0
 popup/item_1/text = "MSAA 4x"
@@ -148,6 +157,35 @@ popup/item_3/text = "FXAA"
 popup/item_3/id = 3
 popup/item_4/text = "SMAA"
 popup/item_4/id = 4
+popup/item_5/text = "None"
+popup/item_5/id = 5
+metadata/section = "video"
+metadata/key = "anti_aliasing_type"
+
+[node name="ScalingMode" type="HBoxContainer" parent="ScrollContainer/VBoxContainer" unique_id=1189627211]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/ScalingMode" unique_id=116882939]
+layout_mode = 2
+text = "Scaling 3D Mode"
+
+[node name="Control" type="Control" parent="ScrollContainer/VBoxContainer/ScalingMode" unique_id=1034122175]
+custom_minimum_size = Vector2(132.82, 32)
+layout_mode = 2
+
+[node name="ScalingModeOptions" type="OptionButton" parent="ScrollContainer/VBoxContainer/ScalingMode" unique_id=1591854664 groups=["UpdatedNodes"]]
+layout_mode = 2
+item_count = 4
+popup/item_0/text = "Nearest"
+popup/item_0/id = 0
+popup/item_1/text = "Bilinear"
+popup/item_1/id = 1
+popup/item_2/text = "FSR 1.0"
+popup/item_2/id = 2
+popup/item_3/text = "FSR 2.0"
+popup/item_3/id = 3
+metadata/section = "video"
+metadata/key = "scaling_3d_mode"
 
 [node name="Brighness" type="HBoxContainer" parent="ScrollContainer/VBoxContainer" unique_id=1573124300]
 layout_mode = 2
@@ -157,7 +195,7 @@ layout_mode = 2
 text = "Brightness
 "
 
-[node name="HSlider" type="HSlider" parent="ScrollContainer/VBoxContainer/Brighness" unique_id=129257287]
+[node name="HSlider" type="HSlider" parent="ScrollContainer/VBoxContainer/Brighness" unique_id=129257287 groups=["UpdatedNodes"]]
 custom_minimum_size = Vector2(248.275, 27.895)
 layout_mode = 2
 min_value = 0.3
@@ -165,6 +203,8 @@ max_value = 1.2
 step = 0.05
 value = 0.3
 scrollable = false
+metadata/section = "video"
+metadata/key = "brightness"
 
 [node name="Label2" type="Label" parent="ScrollContainer/VBoxContainer/Brighness" unique_id=929891435]
 layout_mode = 2
@@ -186,13 +226,16 @@ layout_mode = 2
 text = "Mouse Sensitivity
 "
 
-[node name="HSlider" type="HSlider" parent="ScrollContainer/VBoxContainer/MouseSens" unique_id=1593189226]
+[node name="HSlider" type="HSlider" parent="ScrollContainer/VBoxContainer/MouseSens" unique_id=1593189226 groups=["UpdatedNodes"]]
 custom_minimum_size = Vector2(185, 27.895)
 layout_mode = 2
-min_value = 10.0
-step = 10.0
-value = 10.0
+min_value = 0.001
+max_value = 0.01
+step = 0.001
+value = 0.01
 scrollable = false
+metadata/section = "controls"
+metadata/key = "mouse_sensitivity"
 
 [node name="Label2" type="Label" parent="ScrollContainer/VBoxContainer/MouseSens" unique_id=1172161025]
 layout_mode = 2
@@ -205,22 +248,6 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "Game"
 horizontal_alignment = 1
-
-[node name="AutoOpenCloseDoors" type="HBoxContainer" parent="ScrollContainer/VBoxContainer" unique_id=1365913208]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/AutoOpenCloseDoors" unique_id=2044316075]
-layout_mode = 2
-text = "Automatically [Open | Close] Doors     "
-
-[node name="CheckButton" type="CheckBox" parent="ScrollContainer/VBoxContainer/AutoOpenCloseDoors" unique_id=813728973]
-layout_mode = 2
-action_mode = 0
-text = "  |"
-
-[node name="CheckButton2" type="CheckBox" parent="ScrollContainer/VBoxContainer/AutoOpenCloseDoors" unique_id=1415686838]
-layout_mode = 2
-action_mode = 0
 
 [node name="ApplySettings" type="Button" parent="." unique_id=1566765507]
 layout_mode = 1
@@ -275,8 +302,6 @@ text = "Discard"
 layout_mode = 2
 text = "Back"
 
-[connection signal="item_selected" from="ScrollContainer/VBoxContainer/Scale/ScaleOption" to="." method="_on_scale_option_item_selected"]
-[connection signal="item_selected" from="ScrollContainer/VBoxContainer/AntiAliasing/AntAliOp" to="." method="_on_anti_aliasing_item_selected"]
 [connection signal="value_changed" from="ScrollContainer/VBoxContainer/Brighness/HSlider" to="." method="_on_brightness_slider_value_changed"]
 [connection signal="value_changed" from="ScrollContainer/VBoxContainer/MouseSens/HSlider" to="." method="_on_mousSens_slider_value_changed"]
 [connection signal="pressed" from="ApplySettings" to="." method="_on_apply_settings_pressed"]

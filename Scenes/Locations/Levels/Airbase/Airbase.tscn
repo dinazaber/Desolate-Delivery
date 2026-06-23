@@ -6,12 +6,9 @@
 [ext_resource type="ArrayMesh" uid="uid://gu1mgkoyr7tf" path="res://assets/Meshes/Nature/AirBaseLandscape.mesh" id="4_4xpm0"]
 [ext_resource type="Shader" uid="uid://b5qxk2hnep8ku" path="res://Shaders/MeshShaders/GroundShader.gdshader" id="4_5sbex"]
 [ext_resource type="ArrayMesh" uid="uid://bin8shiqvsyc4" path="res://assets/Meshes/Architecture/RunWay.mesh" id="4_8gw12"]
-[ext_resource type="Script" uid="uid://cfwmt6vc7y70h" path="res://addons/MetaMultimeshInstance3D/src/MetaMultimeshInstance3D.gd" id="6_g83nq"]
 [ext_resource type="Texture2D" uid="uid://kqnjcrk75lb3" path="res://assets/Textures/Dirt.png" id="8_vtiap"]
 [ext_resource type="PackedScene" uid="uid://cpi1xrpot2ipt" path="res://Scenes/Player.tscn" id="9_myywe"]
 [ext_resource type="PackedScene" uid="uid://da8xo7bpr7w37" path="res://Scenes/Enemies/SniperTurret.tscn" id="10_fq6ak"]
-[ext_resource type="ArrayMesh" uid="uid://basf6ovw4w4mr" path="res://assets/Meshes/Architecture/Ruins1.mesh" id="11_cemm1"]
-[ext_resource type="ArrayMesh" uid="uid://c0hwc8yrvck00" path="res://assets/Meshes/Architecture/Ruins2.mesh" id="12_hordc"]
 [ext_resource type="ArrayMesh" uid="uid://7ho7ltov0iyb" path="res://assets/Meshes/Objects/Vehicles/Jeep/Jeep.mesh" id="13_cy2rb"]
 [ext_resource type="ArrayMesh" uid="uid://unogx422rgbl" path="res://assets/Meshes/Objects/Vehicles/Jeep/JeepChassis.mesh" id="14_5mv5n"]
 [ext_resource type="ArrayMesh" uid="uid://q8g0hhj850vv" path="res://assets/Meshes/Architecture/Hangar1.mesh" id="15_hvu3u"]
@@ -151,20 +148,6 @@ polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
 geometry_parsed_geometry_type = 1
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_66qxi"]
-
-[sub_resource type="MultiMesh" id="MultiMesh_iyf6e"]
-transform_format = 1
-instance_count = 2
-visible_instance_count = 2
-mesh = ExtResource("11_cemm1")
-buffer = PackedFloat32Array(-1.2163987, 0, 0.69309014, -34.428654, 0, 1.4, 0, 1.5236466, -0.69309014, 0, -1.2163987, -35.054756, 1.1453674, 0, 0.80506736, -31.694069, 0, 1.4, 0, 1.5236466, -0.80506736, 0, 1.1453674, -43.166668)
-
-[sub_resource type="MultiMesh" id="MultiMesh_lw8r5"]
-transform_format = 1
-instance_count = 2
-visible_instance_count = 2
-mesh = ExtResource("12_hordc")
-buffer = PackedFloat32Array(-1.2956364, 0, -0.5304022, -20.45749, 0, 1.3999999, 0, 1.5236466, 0.5304022, 0, -1.2956364, -39.192493, -0.13975282, 0, 1.3930073, -43.281433, 0, 1.4000001, 0, 1.5236464, -1.3930073, 0, -0.13975282, -32.62122)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_iyf6e"]
 size = Vector3(5.2387695, 0.56103516, 0.26879883)
@@ -355,22 +338,6 @@ shape = SubResource("WorldBoundaryShape3D_66qxi")
 debug_color = Color(0.6236343, 0.98457175, 0, 1)
 
 [node name="Ruins" type="StaticBody3D" parent="." unique_id=555013339]
-
-[node name="Ruins1" type="MultiMeshInstance3D" parent="Ruins" unique_id=2027900047]
-multimesh = SubResource("MultiMesh_iyf6e")
-script = ExtResource("6_g83nq")
-go_explode = null
-shape_type = 0
-go_make_colliders = null
-metadata/_custom_type_script = "uid://cfwmt6vc7y70h"
-
-[node name="Ruins2" type="MultiMeshInstance3D" parent="Ruins" unique_id=1397263763]
-multimesh = SubResource("MultiMesh_lw8r5")
-script = ExtResource("6_g83nq")
-go_explode = null
-shape_type = 0
-go_make_colliders = null
-metadata/_custom_type_script = "uid://cfwmt6vc7y70h"
 
 [node name="Jeeps" type="Node3D" parent="." unique_id=1798731494]
 

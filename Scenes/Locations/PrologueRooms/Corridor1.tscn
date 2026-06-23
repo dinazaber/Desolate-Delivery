@@ -295,12 +295,13 @@ sub_emitter_amount_at_collision = 5
 _data = [Vector2(0, 0), 0.0, 17.83375, 0, 0, Vector2(0.14153847, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 3
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xhqc6"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rpwno"]
+transparency = 1
 shading_mode = 0
-albedo_color = Color(0.272, 0.29013333, 0.34, 1)
+albedo_color = Color(0.26860002, 0.28883, 0.34, 0.627451)
 
 [sub_resource type="TubeTrailMesh" id="TubeTrailMesh_5rlci"]
-material = SubResource("StandardMaterial3D_xhqc6")
+material = SubResource("StandardMaterial3D_rpwno")
 radius = 0.015
 radial_steps = 3
 sections = 2
@@ -322,6 +323,10 @@ initial_velocity_min = 0.59999996
 initial_velocity_max = 0.79999995
 gravity = Vector3(0, -2, 0)
 scale_curve = SubResource("CurveTexture_ggv2i")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xhqc6"]
+shading_mode = 0
+albedo_color = Color(0.272, 0.29013333, 0.34, 1)
 
 [sub_resource type="TubeTrailMesh" id="TubeTrailMesh_fkfyg"]
 material = SubResource("StandardMaterial3D_xhqc6")
