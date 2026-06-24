@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://d23s0inguh17p"]
 
-[ext_resource type="Script" uid="uid://dg8y87gh5eurk" path="res://Scripts/Modules/RigidBody.gd" id="1_3t8db"]
+[ext_resource type="Script" uid="uid://dg8y87gh5eurk" path="res://Scripts/Modules/ExplosiveBarrel.gd" id="1_5lybq"]
 [ext_resource type="ArrayMesh" uid="uid://c38lj2xgan0m6" path="res://assets/Meshes/Objects/Barrel.mesh" id="1_vkgwf"]
 [ext_resource type="Texture2D" uid="uid://cwhfnmqmj2nse" path="res://assets/Textures/Architecture/ExplosionHazard.png" id="2_m5ibw"]
 
@@ -22,8 +22,9 @@ collision_priority = 0.5
 mass = 8.0
 physics_material_override = SubResource("PhysicsMaterial_3t8db")
 continuous_cd = true
-angular_damp = 0.5
-script = ExtResource("1_3t8db")
+contact_monitor = true
+max_contacts_reported = 2
+script = ExtResource("1_5lybq")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1485554187]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.4)

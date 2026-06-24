@@ -17,7 +17,7 @@
 [ext_resource type="ArrayMesh" uid="uid://6fnhie3k6sd7" path="res://assets/Meshes/Objects/Vehicles/Car2/Car2Chassis.mesh" id="18_a38ko"]
 [ext_resource type="ArrayMesh" uid="uid://dxoddmwgtq2gq" path="res://assets/Meshes/Objects/Vehicles/Car1/Car1.mesh" id="19_soiyy"]
 [ext_resource type="ArrayMesh" uid="uid://duisheavfmqh2" path="res://assets/Meshes/Objects/Vehicles/Car1/Car1Chassis.mesh" id="20_80otf"]
-[ext_resource type="PackedScene" uid="uid://d23s0inguh17p" path="res://Scenes/Objects/RigidBody.tscn" id="21_eopy5"]
+[ext_resource type="PackedScene" uid="uid://d23s0inguh17p" path="res://Scenes/Objects/ExplosiveBarrel.tscn" id="21_eopy5"]
 [ext_resource type="PackedScene" uid="uid://b1g4ndkkyibs4" path="res://Scenes/Objects/HealthPack.tscn" id="22_vh3lb"]
 [ext_resource type="ArrayMesh" uid="uid://bvbx2g5lkenkl" path="res://assets/Meshes/Architecture/OilTank.mesh" id="27_u2i14"]
 [ext_resource type="ArrayMesh" uid="uid://br33wg26qu7sk" path="res://assets/Meshes/Objects/Crate2.mesh" id="28_wh1nc"]

@@ -12,10 +12,11 @@ var is_held: bool = false
 		$Area3D.scale = Vector3(1.0, 1.0, 1.0) * total_scale
 		inertia = Vector3(0.9,2.5,0.9) * mass
 
-func throw(direction, force):
+func throw():
 	is_held = false
+	var force = 100
 	var lim = 1.0 if mass > 0.5 else mass
-	apply_central_impulse(direction * force * lim)
+	apply_central_impulse(-global_transform.basis.z * force * lim)
 	apply_torque_impulse(Vector3(randf(), randf(), randf()) * mass)
 
 func can_let_go() -> bool:
@@ -28,7 +29,5 @@ func can_let_go() -> bool:
 		return !is_player
 	else: return true
 
-
-# --- Anti-Error Function Dump ---
-func hit(_a, _b):
+func hit(_a, _b): #Make explosion pls, I don't want to break something
 	pass

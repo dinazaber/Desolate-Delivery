@@ -592,20 +592,18 @@ func push_object():
 			var push_dir_vel_dif = (get_real_velocity().normalized()).dot(push_dir) - collider.linear_velocity.dot(push_dir)
 			push_dir_vel_dif = max(0.0, push_dir_vel_dif)
 			
-			const PLAYER_MASS = 50.0
+			const PLAYER_MASS = 80
 			var mass_ratio = min(1.0, PLAYER_MASS / collider.mass)
 			
 			push_dir.y = 0.0
-			var push_force = mass_ratio * 30.0
+			var push_force = mass_ratio * 30
 			collider.apply_impulse(push_dir * push_dir_vel_dif * push_force, collision.get_position() - collider.global_position)
 
 func throw_grabbed_object():
 	if grabbedObject.can_let_go():
-		grabbedObject.is_held = false
-		grabbedObject.gravity_scale = 1
-		grabbedObject.linear_damp = 0.0
-		remove_collision_exception_with(grabbedObject)
-		grabbedObject = null
+		var temp_object = grabbedObject
+		leave_grabbed_object()
+		temp_object.throw()
 		fireDelay = 0.0
 
 func leave_grabbed_object():

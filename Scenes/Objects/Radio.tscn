@@ -98,6 +98,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_wq21g"]
 resource_name = "TurnOff"
+length = 0.9
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -105,10 +106,10 @@ tracks/0/path = NodePath(".:glow_intensity")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.10000001, 0.43333334, 0.6666667),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.43333334, 0.6666667, 0.8666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [2.0, 0.0, 2.0]
+"values": [2.0, 0.0, 2.0, 0.0]
 }
 
 [sub_resource type="Animation" id="Animation_5hta8"]
@@ -136,8 +137,8 @@ _data = {
 
 [sub_resource type="AudioStreamPlaylist" id="AudioStreamPlaylist_kf1mn"]
 stream_count = 3
-stream_0 = ExtResource("5_wq21g")
-stream_1 = ExtResource("6_skhqa")
+stream_0 = ExtResource("6_skhqa")
+stream_1 = ExtResource("5_wq21g")
 stream_2 = ExtResource("7_5hta8")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kf1mn"]
@@ -156,6 +157,7 @@ libraries/ = SubResource("AnimationLibrary_5hta8")
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=1024448365]
 stream = SubResource("AudioStreamPlaylist_kf1mn")
+volume_db = -80.0
 unit_size = 5.0
 max_db = -24.0
 autoplay = true

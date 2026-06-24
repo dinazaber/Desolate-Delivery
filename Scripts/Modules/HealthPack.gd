@@ -30,10 +30,11 @@ func spawnOrbs():
 	
 	$AnimationPlayer.play("destroy&update")
 
-func throw(direction, force):
+func throw():
 	is_held = false
+	var force = 10
 	var lim = 1.0 if mass > 0.5 else mass
-	apply_central_impulse(direction * force / 10.0 * lim)
+	apply_central_impulse(-global_transform.basis.z * force * lim)
 	apply_torque_impulse(Vector3(randf(), randf(), randf()) * mass * 0.01)
 
 # --- Anti-Error Function Dump ---

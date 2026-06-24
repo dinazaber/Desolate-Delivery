@@ -170,7 +170,7 @@ layout_mode = 2
 text = "Scaling 3D Mode"
 
 [node name="Control" type="Control" parent="ScrollContainer/VBoxContainer/ScalingMode" unique_id=1034122175]
-custom_minimum_size = Vector2(132.82, 32)
+custom_minimum_size = Vector2(141.63, 32)
 layout_mode = 2
 
 [node name="ScalingModeOptions" type="OptionButton" parent="ScrollContainer/VBoxContainer/ScalingMode" unique_id=1591854664 groups=["UpdatedNodes"]]
@@ -232,7 +232,7 @@ layout_mode = 2
 min_value = 0.001
 max_value = 0.01
 step = 0.001
-value = 0.01
+value = 0.009999999999999998
 scrollable = false
 metadata/section = "controls"
 metadata/key = "mouse_sensitivity"
