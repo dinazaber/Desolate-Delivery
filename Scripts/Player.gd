@@ -195,8 +195,6 @@ func _process(delta: float) -> void: # adaptive fps
 	grenadeCool = clamp(grenadeCool + (100 * delta) / grenadeCoolTime, -10.0, 100.0)
 
 func _physics_process(delta) -> void: # fixed 60 fps
-	
-	#neg vals are for recharge delay i.e -5 is 0.5 sec rechare delay VLAD
 	if !slide:
 		dashCool = clamp(dashCool + (100 * delta) / dashCoolTime, -10.0, 100.0)
 	
@@ -547,10 +545,10 @@ func check_player_feet():
 		var enemyCount: int = 0
 		var physicsCount: int = 0
 		for body in bodies:
-			if body.is_in_group("Enemy"):
-				enemyCount += 1
 			if body.is_in_group("Physics"):
 				physicsCount += 1
+			elif body.is_in_group("Enemy"):
+				enemyCount += 1
 		if enemyCount: # bounce on enemy head
 			if is_on_floor() and !knocked:
 				knockBack(get_floor_normal(), 8.0, true, 0.3)
@@ -596,14 +594,14 @@ func push_object():
 			var mass_ratio = min(1.0, PLAYER_MASS / collider.mass)
 			
 			push_dir.y = 0.0
-			var push_force = mass_ratio * 30
+			var push_force = mass_ratio * 22.5
 			collider.apply_impulse(push_dir * push_dir_vel_dif * push_force, collision.get_position() - collider.global_position)
 
 func throw_grabbed_object():
 	if grabbedObject.can_let_go():
 		var temp_object = grabbedObject
 		leave_grabbed_object()
-		temp_object.throw()
+		temp_object.throw(-global_transform.basis.z, 0.0)
 		fireDelay = 0.0
 
 func leave_grabbed_object():

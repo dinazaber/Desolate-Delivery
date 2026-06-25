@@ -14,7 +14,7 @@ var exploded: bool = false
 
 @onready var explosion_box_small = $ExplosionBox1
 @onready var explosion_box_big = $ExplosionBox2
-var current_exposion_box
+var current_explosion_box
 
 @export var grenade_damage_small: float = 80.0
 @export var grenade_damage_big: float = 120.0
@@ -28,7 +28,7 @@ var current_explosion_radius: float
 func _ready() -> void:
 	explosion_box_small.visible = false
 	explosion_box_big.visible = false
-	current_exposion_box = explosion_box_small
+	current_explosion_box = explosion_box_small
 	current_damage = grenade_damage_small
 	current_explosion_radius = EXPLOSION_R_SMALL
 	$hitBox_physics.scale = Vector3.ONE * 3.0
@@ -40,7 +40,7 @@ func shot():
 	explosion_box_small.visible = false
 	explosion_box_big.visible = true
 	
-	current_exposion_box = explosion_box_big
+	current_explosion_box = explosion_box_big
 	current_damage = grenade_damage_big
 	current_explosion_radius = EXPLOSION_R_BIG
 	
@@ -50,11 +50,14 @@ func shot():
 func explode():
 	var bodies = []
 	exploded = true
-	$GenadeMesh.visible = false
-	$hitBox_physics.visible = false
+	$GrenadeMesh.visible = false
+	$hitBox_physics.disabled = true
+	$shotTrigger/hitBox_shotTrigger.disabled = true
+	freeze = true
+	set_physics_process(false)
 	
 	$trauma_causer.cause_trauma()
-	if current_exposion_box.has_overlapping_bodies(): bodies += current_exposion_box.get_overlapping_bodies()
+	if current_explosion_box.has_overlapping_bodies(): bodies += current_explosion_box.get_overlapping_bodies()
 	if !bodies.is_empty():
 		for body in bodies:
 			var dist: float = global_position.distance_to(body.global_position)

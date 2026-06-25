@@ -1,7 +1,7 @@
 @tool
 extends RigidBody3D
 
-var throwed: bool = false
+var thrown: bool = false
 var is_held: bool = false
 
 @export_range(0.1, 10.0) var total_scale: float = 1.0:
@@ -15,11 +15,11 @@ var is_held: bool = false
 
 @onready var blob_shadow = $BlobShadow
 
-func throw():
-	throwed = true
-	var force = 100
+func throw(direction, force):
+	thrown = true
+	is_held = false
 	var lim = 1.0 if mass > 0.5 else mass
-	apply_central_impulse(-global_transform.basis.z * force * lim)
+	apply_central_impulse(direction * force * lim)
 	apply_torque_impulse(Vector3(randf(), randf(), randf()) * mass)
 
 func can_let_go() -> bool:
@@ -34,16 +34,17 @@ func can_let_go() -> bool:
 
 
 func _on_body_entered(body: Node) -> void:
-	if !throwed: return
+	if !thrown and linear_velocity.length() < 3.0: return
 	
-	if body.is_in_group("Player"): return
+	#if body.is_in_group("Player"): return
 	
 	freeze = true
 	$MeshInstance3D.hide()
 	if blob_shadow: blob_shadow.hide()
 	
-	if body.is_in_group("Enemy"):
-		body.damage_taken(20, true, "object", global_position)
+	#if body.is_in_group("Enemy"):
+	if body.has_method("damage_taken"):
+		body.damage_taken(30.0, true, "object", global_position)
 	
 	# Each object will have dedicated function for particles
 	$Particles/CrateBox/BreakCrate.emitting = true

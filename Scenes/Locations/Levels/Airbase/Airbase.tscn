@@ -21,9 +21,9 @@
 [ext_resource type="PackedScene" uid="uid://b1g4ndkkyibs4" path="res://Scenes/Objects/HealthPack.tscn" id="22_vh3lb"]
 [ext_resource type="ArrayMesh" uid="uid://bvbx2g5lkenkl" path="res://assets/Meshes/Architecture/OilTank.mesh" id="27_u2i14"]
 [ext_resource type="ArrayMesh" uid="uid://br33wg26qu7sk" path="res://assets/Meshes/Objects/Crate2.mesh" id="28_wh1nc"]
+[ext_resource type="PackedScene" uid="uid://d4bcffi8xi33t" path="res://Scenes/Objects/ThrowableBody.tscn" id="29_66qxi"]
 [ext_resource type="PackedScene" uid="uid://dugekeqiinxib" path="res://Scenes/Buildings/WaterTower.tscn" id="30_tvlj7"]
 [ext_resource type="ArrayMesh" uid="uid://rn8rjuep3gb1" path="res://assets/Meshes/Objects/DamagedFlag.mesh" id="31_1rnsm"]
-[ext_resource type="PackedScene" uid="uid://mnqxus7cbuw" path="res://Scenes/Enemies/BallRobot.tscn" id="31_ftvms"]
 [ext_resource type="ArrayMesh" uid="uid://83j8mstw0jra" path="res://assets/Meshes/Architecture/FlagBase.mesh" id="32_2xd57"]
 [ext_resource type="PackedScene" uid="uid://d368u3xkt615v" path="res://Scenes/Enemies/Drone.tscn" id="33_aortb"]
 [ext_resource type="PackedScene" uid="uid://beqguglkai1oh" path="res://Scenes/Enemies/Robot.tscn" id="34_50pvf"]
@@ -605,23 +605,15 @@ mesh = ExtResource("20_80otf")
 skeleton = NodePath("../..")
 
 [node name="RigidBody" parent="." unique_id=707473027 instance=ExtResource("21_eopy5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.1405044, 0.7930865, 2.975814)
-inertia = Vector3(7.2, 20, 7.2)
+transform = Transform3D(-0.98270464, 0, 0.18517986, 0, 1, 0, -0.18517986, 0, -0.98270464, -8.6437645, 0.793875, 3.179725)
+inertia = Vector3(5.85, 16.25, 5.85)
+damage = 150.0
 total_scale = 0.4
 
 [node name="RigidBody2" parent="." unique_id=1651338683 instance=ExtResource("21_eopy5")]
-transform = Transform3D(-4.2706393e-08, -0.9770084, 0.21320088, 1, -4.371139e-08, -6.344131e-16, 9.319307e-09, 0.21320088, 0.9770084, -7.188091, 0.5455829, 2.1120596)
-inertia = Vector3(7.2, 20, 7.2)
-total_scale = 0.4
-
-[node name="RigidBody3" parent="." unique_id=629633255 instance=ExtResource("21_eopy5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.798324, 0.7930865, 3.072209)
-inertia = Vector3(7.2, 20, 7.2)
-total_scale = 0.4
-
-[node name="RigidBody4" parent="." unique_id=590815455 instance=ExtResource("21_eopy5")]
-transform = Transform3D(-0.75855535, 0, -0.6516086, 0, 1, 0, 0.6516086, 0, -0.75855535, -8.223284, 0.7930865, 2.4221127)
-inertia = Vector3(7.2, 20, 7.2)
+transform = Transform3D(-0.0322801, 0.9766981, 0.21217619, 0.98967576, 0.0015753063, 0.14331594, 0.13964218, 0.21461187, -0.9666653, -7.4558344, 0.6927624, 3.2488549)
+inertia = Vector3(5.85, 16.25, 5.85)
+damage = 150.0
 total_scale = 0.4
 
 [node name="HealthPack" parent="." unique_id=1895141670 instance=ExtResource("22_vh3lb")]
@@ -837,5 +829,6 @@ shape = SubResource("CylinderShape3D_7rfda")
 [node name="CommandCenter" parent="." unique_id=1747516275 instance=ExtResource("35_cuh82")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 23.349, 4.808791, -29.685)
 
-[node name="BallRobot" parent="." unique_id=2098246889 instance=ExtResource("31_ftvms")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5030475, 0.8625998, -1.2564096)
+[node name="ThrowableBody" parent="." unique_id=562624679 instance=ExtResource("29_66qxi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.893524, 0.9176705, -0.45967484)
+total_scale = 0.4
