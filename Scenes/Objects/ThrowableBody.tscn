@@ -1,0 +1,141 @@
+[gd_scene format=3 uid="uid://d4bcffi8xi33t"]
+
+[ext_resource type="Script" uid="uid://c8ry0d0av3ers" path="res://Scripts/Modules/ThrowableBody.gd" id="1_3uona"]
+[ext_resource type="ArrayMesh" uid="uid://br33wg26qu7sk" path="res://assets/Meshes/Objects/Crate2.mesh" id="2_3uona"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_3t8db"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3uona"]
+size = Vector3(2, 2, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_a5ptu"]
+size = Vector3(2, 2, 2)
+
+[sub_resource type="Curve" id="Curve_x3amw"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.5017065, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_pwhch"]
+curve = SubResource("Curve_x3amw")
+
+[sub_resource type="Curve" id="Curve_3uona"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.2527881, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_kwbo8"]
+curve = SubResource("Curve_3uona")
+
+[sub_resource type="Curve" id="Curve_6j7ie"]
+_limits = [0.0, 3.0, 0.0, 1.0]
+_data = [Vector2(0.007246375, 2.8392859), 0.0, 0.0, 0, 0, Vector2(1, 0.6428571), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_x3amw"]
+curve = SubResource("Curve_6j7ie")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_x3amw"]
+particle_flag_align_y = true
+spread = 180.0
+initial_velocity_min = 10.0
+initial_velocity_max = 15.0
+gravity = Vector3(0, 0, 0)
+radial_accel_curve = SubResource("CurveTexture_pwhch")
+scale_max = 2.0
+scale_curve = SubResource("CurveTexture_kwbo8")
+scale_over_velocity_curve = SubResource("CurveTexture_x3amw")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ck4q3"]
+albedo_color = Color(0.7217396, 0.6467848, 0.49466866, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_hd37v"]
+material = SubResource("StandardMaterial3D_ck4q3")
+size = Vector3(1, 0.05, 0.2)
+
+[sub_resource type="Curve" id="Curve_q3u71"]
+_data = [Vector2(0.007246375, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_5h1ts"]
+curve = SubResource("Curve_q3u71")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_6j7ie"]
+particle_flag_align_y = true
+spread = 180.0
+initial_velocity_min = 5.0
+initial_velocity_max = 7.0
+gravity = Vector3(0, 0, 0)
+radial_accel_curve = SubResource("CurveTexture_pwhch")
+scale_max = 2.0
+scale_curve = SubResource("CurveTexture_kwbo8")
+scale_over_velocity_curve = SubResource("CurveTexture_x3amw")
+color = Color(0.85, 0.85, 0.85, 0.5882353)
+alpha_curve = SubResource("CurveTexture_5h1ts")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sr0ta"]
+transparency = 1
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.65834004, 0.6583399, 0.6583399, 0.5882353)
+
+[sub_resource type="SphereMesh" id="SphereMesh_hd37v"]
+material = SubResource("StandardMaterial3D_sr0ta")
+radial_segments = 8
+rings = 4
+
+[node name="ThrowableBody" type="RigidBody3D" unique_id=707473027 groups=["Physics"]]
+collision_layer = 40
+collision_mask = 40
+collision_priority = 0.5
+mass = 4.0
+physics_material_override = SubResource("PhysicsMaterial_3t8db")
+continuous_cd = true
+contact_monitor = true
+max_contacts_reported = 1
+linear_damp = 1.0
+script = ExtResource("1_3uona")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1485554187]
+layers = 2
+gi_mode = 2
+visibility_range_end = 60.0
+mesh = ExtResource("2_3uona")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1527479017]
+shape = SubResource("BoxShape3D_3uona")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=1123217064]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1304893326]
+shape = SubResource("BoxShape3D_a5ptu")
+debug_color = Color(0.23658031, 0.63741946, 0, 0.41960785)
+
+[node name="Particles" type="Node3D" parent="." unique_id=804773956]
+
+[node name="CrateBox" type="Node3D" parent="Particles" unique_id=2058515571]
+
+[node name="BreakCrate" type="GPUParticles3D" parent="Particles/CrateBox" unique_id=1038118416]
+cast_shadow = 0
+emitting = false
+amount = 16
+lifetime = 0.2
+one_shot = true
+explosiveness = 1.0
+fixed_fps = 60
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_x3amw")
+draw_pass_1 = SubResource("BoxMesh_hd37v")
+
+[node name="Dust" type="GPUParticles3D" parent="Particles/CrateBox" unique_id=1655999250]
+cast_shadow = 0
+emitting = false
+amount = 6
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+fixed_fps = 60
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_6j7ie")
+draw_pass_1 = SubResource("SphereMesh_hd37v")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

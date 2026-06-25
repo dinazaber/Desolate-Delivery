@@ -12,6 +12,7 @@
 [ext_resource type="ArrayMesh" uid="uid://dagmpo0xauxm7" path="res://assets/Meshes/RoomConstructor/WoodDoor.mesh" id="10_neqxg"]
 [ext_resource type="ArrayMesh" uid="uid://dpdoehh6ab6qa" path="res://assets/Meshes/RoomConstructor/DoorMetalBlue.mesh" id="11_niqb0"]
 [ext_resource type="AudioStream" uid="uid://r260cgbpxdje" path="res://assets/Audio/ChillAmbient.wav" id="12_8jmkq"]
+[ext_resource type="PackedScene" uid="uid://d4bcffi8xi33t" path="res://Scenes/Objects/ThrowableBody.tscn" id="14_5ljsb"]
 [ext_resource type="PackedScene" uid="uid://beqguglkai1oh" path="res://Scenes/Enemies/Robot.tscn" id="14_vrjo2"]
 [ext_resource type="PackedScene" uid="uid://d16pmg4f4pnf8" path="res://Scenes/Objects/Door.tscn" id="15_yfh15"]
 
@@ -89,6 +90,28 @@ back_room = NodePath("../../Rooms/Corridor1")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.162, 0, 13.956)
 front_room = NodePath("../../Rooms/Corridor2")
 back_room = NodePath("../../Rooms/Laboratory")
+
+[node name="RigidBodies" type="Node3D" parent="." unique_id=1769078339]
+
+[node name="ThrowableBody" parent="RigidBodies" unique_id=707473027 instance=ExtResource("14_5ljsb")]
+transform = Transform3D(0.2741288, 0, -0.9616929, 0, 1, 0, 0.9616929, 0, 0.2741288, 36.574047, 0.30119097, 21.357101)
+inertia = Vector3(3.6, 10, 3.6)
+total_scale = 0.30000000000000004
+
+[node name="ThrowableBody2" parent="RigidBodies" unique_id=1707342901 instance=ExtResource("14_5ljsb")]
+transform = Transform3D(-0.08210322, 0, -0.9966238, 0, 1, 0, 0.9966238, 0, -0.08210322, 37.277775, 0.30119097, 21.267752)
+inertia = Vector3(3.6, 10, 3.6)
+total_scale = 0.30000000000000004
+
+[node name="ThrowableBody3" parent="RigidBodies" unique_id=840962537 instance=ExtResource("14_5ljsb")]
+transform = Transform3D(0.060036674, 0, -0.9981962, 0, 1, 0, 0.9981962, 0, 0.060036674, 37.004173, 0.30119097, 21.939562)
+inertia = Vector3(3.6, 10, 3.6)
+total_scale = 0.30000000000000004
+
+[node name="ThrowableBody4" parent="RigidBodies" unique_id=1658145276 instance=ExtResource("14_5ljsb")]
+transform = Transform3D(0.060036674, 0, -0.9981962, 0, 1, 0, 0.9981962, 0, 0.060036674, 37.013996, 0.90198606, 21.541183)
+inertia = Vector3(3.6, 10, 3.6)
+total_scale = 0.30000000000000004
 
 [node name="Ambient" type="AudioStreamPlayer" parent="." unique_id=619284339]
 process_mode = 3
