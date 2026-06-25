@@ -21,7 +21,6 @@
 [ext_resource type="Texture2D" uid="uid://bu6ue5ydfh2q6" path="res://assets/Textures/Rust.png" id="22_f2esi"]
 [ext_resource type="ArrayMesh" uid="uid://b78m4abadyi60" path="res://assets/Meshes/Objects/CeillingLampSquare.mesh" id="22_h81dg"]
 [ext_resource type="ArrayMesh" uid="uid://d4kmyqiux7f2m" path="res://assets/Meshes/Objects/TrashCan.mesh" id="25_ehdvs"]
-[ext_resource type="PackedScene" uid="uid://b1g4ndkkyibs4" path="res://Scenes/Objects/HealthPack.tscn" id="29_ew1ly"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_lkdcv"]
 vertices = PackedVector3Array(-2.726983, 5.2620697, -0.75561523, -2.726983, 5.2620697, 3.7443848, 1.5230169, 5.2620697, 3.7443848, 1.5230169, 5.2620697, -0.75561523, -0.47698307, 0.5120696, 0.49438477, -2.226983, 0.5120696, 0.49438477, -1.9769831, 0.5120696, 1.2443848, -0.22698307, 0.5120696, 1.2443848, -0.22698307, 0.5120696, -0.50561523, 0.5230169, 0.5120696, 3.2443848, 1.2730169, 0.5120696, 2.7443848, 1.2730169, 0.5120696, -0.0056152344)
@@ -696,9 +695,3 @@ mesh = SubResource("CylinderMesh_ew1ly")
 [node name="Pen" type="MeshInstance3D" parent="Decorations/Desk" unique_id=1639000256]
 transform = Transform3D(0.18545641, -0.07487278, 3.2727934e-09, 6.3108872e-30, -8.742279e-09, -0.20000002, 0.07487278, 0.18545641, -8.106557e-09, 1.0174766, 1.0882205, -0.4579916)
 mesh = ExtResource("21_pnpor")
-
-[node name="HealthPack" parent="." unique_id=1895141670 instance=ExtResource("29_ew1ly")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.7578723, 1.3862243, 1.8569772)
-
-[node name="HealthPack2" parent="." unique_id=793216855 instance=ExtResource("29_ew1ly")]
-transform = Transform3D(0.9771087, 0, 0.21274048, 0, 1, 0, -0.21274048, 0, 0.9771087, -2.706257, 2.6255167, 2.7890108)
