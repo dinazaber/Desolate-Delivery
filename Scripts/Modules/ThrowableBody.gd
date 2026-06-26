@@ -34,9 +34,7 @@ func can_let_go() -> bool:
 
 
 func _on_body_entered(body: Node) -> void:
-	if !thrown and linear_velocity.length() < 3.0: return
-	
-	#if body.is_in_group("Player"): return
+	if !thrown: return
 	
 	freeze = true
 	$MeshInstance3D.hide()

@@ -97,7 +97,6 @@ back_room = NodePath("../../Rooms/Laboratory")
 
 [node name="ThrowableBody" parent="RigidBodies" unique_id=707473027 instance=ExtResource("14_5ljsb")]
 transform = Transform3D(0.2741288, 0, -0.9616929, 0, 1, 0, 0.9616929, 0, 0.2741288, 36.574047, 0.30119097, 21.357101)
-inertia = Vector3(1.8, 5, 1.8)
 total_scale = 0.30000000000000004
 
 [node name="BlobShadow" parent="RigidBodies/ThrowableBody" unique_id=1303422999 instance=ExtResource("15_8uakf")]
@@ -105,7 +104,6 @@ transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0, 0)
 
 [node name="ThrowableBody2" parent="RigidBodies" unique_id=1707342901 instance=ExtResource("14_5ljsb")]
 transform = Transform3D(-0.08210322, 0, -0.9966238, 0, 1, 0, 0.9966238, 0, -0.08210322, 37.277775, 0.30119097, 21.267752)
-inertia = Vector3(1.8, 5, 1.8)
 total_scale = 0.30000000000000004
 
 [node name="BlobShadow" parent="RigidBodies/ThrowableBody2" unique_id=1116849997 instance=ExtResource("15_8uakf")]
@@ -113,7 +111,6 @@ transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0, 0)
 
 [node name="ThrowableBody3" parent="RigidBodies" unique_id=840962537 instance=ExtResource("14_5ljsb")]
 transform = Transform3D(0.060036674, 0, -0.9981962, 0, 1, 0, 0.9981962, 0, 0.060036674, 37.004173, 0.30119097, 21.939562)
-inertia = Vector3(1.8, 5, 1.8)
 total_scale = 0.30000000000000004
 
 [node name="BlobShadow" parent="RigidBodies/ThrowableBody3" unique_id=317210655 instance=ExtResource("15_8uakf")]
@@ -121,7 +118,6 @@ transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0, 0)
 
 [node name="ThrowableBody4" parent="RigidBodies" unique_id=1658145276 instance=ExtResource("14_5ljsb")]
 transform = Transform3D(0.060036674, 0, -0.9981962, 0, 1, 0, 0.9981962, 0, 0.060036674, 37.013996, 0.90198606, 21.541183)
-inertia = Vector3(1.8, 5, 1.8)
 total_scale = 0.30000000000000004
 
 [node name="BlobShadow" parent="RigidBodies/ThrowableBody4" unique_id=411149813 instance=ExtResource("15_8uakf")]
@@ -138,6 +134,34 @@ max_distance = 30.0
 transform = Transform3D(0.9771087, 0, 0.21274048, 0, 1, 0, -0.21274048, 0, 0.9771087, -5.265826, 2.6320395, -4.8716464)
 
 [node name="BlobShadow" parent="RigidBodies/HealthPack2" unique_id=854424772 instance=ExtResource("15_8uakf")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
+max_distance = 30.0
+
+[node name="HealthPack3" parent="RigidBodies" unique_id=542937026 instance=ExtResource("16_7xti7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.831356, 0.15345001, 23.271)
+
+[node name="BlobShadow" parent="RigidBodies/HealthPack3" unique_id=493060961 instance=ExtResource("15_8uakf")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
+max_distance = 30.0
+
+[node name="HealthPack4" parent="RigidBodies" unique_id=910574172 instance=ExtResource("16_7xti7")]
+transform = Transform3D(0.9771087, 0, 0.21274048, 0, 1, 0, -0.21274048, 0, 0.9771087, 33.59858, 0.15768689, 23.6716)
+
+[node name="BlobShadow" parent="RigidBodies/HealthPack4" unique_id=1615668579 instance=ExtResource("15_8uakf")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
+max_distance = 30.0
+
+[node name="HealthPack5" parent="RigidBodies" unique_id=1113198593 instance=ExtResource("16_7xti7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.82493, 0.45693672, 23.509493)
+
+[node name="BlobShadow" parent="RigidBodies/HealthPack5" unique_id=1722729046 instance=ExtResource("15_8uakf")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
+max_distance = 30.0
+
+[node name="HealthPack6" parent="RigidBodies" unique_id=1438315652 instance=ExtResource("16_7xti7")]
+transform = Transform3D(0.9771087, 0, 0.21274048, 0, 1, 0, -0.21274048, 0, 0.9771087, 33.96743, 0.15768689, 23.6716)
+
+[node name="BlobShadow" parent="RigidBodies/HealthPack6" unique_id=1867187258 instance=ExtResource("15_8uakf")]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
 max_distance = 30.0
 

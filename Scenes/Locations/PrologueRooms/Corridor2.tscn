@@ -563,6 +563,12 @@ shape = SubResource("BoxShape3D_80p4p")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.415812, 1.8317113, 11.844128)
 shape = SubResource("BoxShape3D_pamsv")
 
+[node name="Misc" type="StaticBody3D" parent="Collisions" unique_id=1858974172]
+collision_layer = 49
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Collisions/Misc" unique_id=1773493976]
+
 [node name="Decorations" type="Node3D" parent="." unique_id=1554434000]
 
 [node name="RoomComponents" type="Node3D" parent="Decorations" unique_id=1006806403]
