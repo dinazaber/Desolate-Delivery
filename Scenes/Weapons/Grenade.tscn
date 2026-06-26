@@ -1,20 +1,15 @@
 [gd_scene format=3 uid="uid://ddqu8tn7kxpd4"]
 
 [ext_resource type="Script" uid="uid://4i0nsk0syjsv" path="res://Scripts/Weapons/Grenade.gd" id="1_k3jl2"]
-[ext_resource type="ArrayMesh" uid="uid://bx1fs0t7d5ng3" path="res://assets/Meshes/Weapons/Genade.mesh" id="2_2byne"]
-[ext_resource type="Script" uid="uid://dqv7818ohy4lu" path="res://Scripts/enemies/HitBox.gd" id="2_5oibr"]
+[ext_resource type="Script" uid="uid://dqv7818ohy4lu" path="res://Scripts/Enemies/HitBox.gd" id="2_5oibr"]
+[ext_resource type="ArrayMesh" uid="uid://blb6h7u5r3mj1" path="res://assets/Meshes/Weapons/Grenade.mesh" id="3_2byne"]
 [ext_resource type="PackedScene" uid="uid://b4wyneleeqxp" path="res://Scenes/Modules/TraumaCauser.tscn" id="3_5oibr"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_2byne"]
 bounce = 0.3
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_2byne"]
-radius = 0.07
-height = 0.25
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_t2ec2"]
-radius = 0.17
-height = 0.45
+[sub_resource type="SphereShape3D" id="SphereShape3D_a5ptu"]
+radius = 0.12
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_6rbch"]
 radius = 4.0
@@ -298,7 +293,7 @@ angular_damp = 5.0
 script = ExtResource("1_k3jl2")
 
 [node name="hitBox_physics" type="CollisionShape3D" parent="." unique_id=367040565]
-shape = SubResource("CapsuleShape3D_2byne")
+shape = SubResource("SphereShape3D_a5ptu")
 
 [node name="shotTrigger" type="Area3D" parent="." unique_id=650134128 groups=["ShotReactable"]]
 collision_layer = 2
@@ -306,12 +301,12 @@ collision_mask = 0
 script = ExtResource("2_5oibr")
 
 [node name="hitBox_shotTrigger" type="CollisionShape3D" parent="shotTrigger" unique_id=308750276]
-shape = SubResource("CapsuleShape3D_t2ec2")
+shape = SubResource("SphereShape3D_a5ptu")
 
 [node name="GrenadeMesh" type="MeshInstance3D" parent="." unique_id=1477165798]
-transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 0.02, 0)
+transform = Transform3D(0.07, 0, 0, 0, 0.07, 0, 0, 0, 0.07, 0, 0, 0)
 layers = 2
-mesh = ExtResource("2_2byne")
+mesh = ExtResource("3_2byne")
 
 [node name="ExplosionBox1" type="Area3D" parent="." unique_id=1186377403]
 collision_layer = 0

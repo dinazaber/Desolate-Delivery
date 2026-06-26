@@ -1,4 +1,3 @@
-@tool
 extends Node3D
 
 @export var glow_intensity: float = 0.0:

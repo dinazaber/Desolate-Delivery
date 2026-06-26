@@ -62,11 +62,13 @@ attack_start_distance = 0.01
 
 [node name="DoorOffice1" parent="Doors" unique_id=505525111 node_paths=PackedStringArray("front_room", "back_room") instance=ExtResource("15_yfh15")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1.8134253, 0, -0.72136)
+door_mesh = ExtResource("11_niqb0")
 front_room = NodePath("../../Rooms/Corridor1")
 back_room = NodePath("../../Rooms/Office")
 
 [node name="DoorOffice2" parent="Doors" unique_id=1384318600 node_paths=PackedStringArray("front_room", "back_room") instance=ExtResource("15_yfh15")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 14.677977, 1.1920929e-06, -0.7205967)
+door_mesh = ExtResource("11_niqb0")
 front_room = NodePath("../../Rooms/Office")
 back_room = NodePath("../../Rooms/Corridor2")
 
@@ -90,6 +92,7 @@ back_room = NodePath("../../Rooms/Corridor1")
 
 [node name="DoorLaboratory" parent="Doors" unique_id=553540253 node_paths=PackedStringArray("front_room", "back_room") instance=ExtResource("15_yfh15")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.162, 0, 13.956)
+door_mesh = ExtResource("11_niqb0")
 front_room = NodePath("../../Rooms/Corridor2")
 back_room = NodePath("../../Rooms/Laboratory")
 
