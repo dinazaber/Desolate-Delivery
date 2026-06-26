@@ -480,7 +480,7 @@ func handle_crouch(delta):
 		
 		playerCollision.shape.height = lerp(playerCollision.shape.height, 1.25, delta * 15.0)
 		camera.position.y = lerp(camera.position.y, camDefHeight, delta * 15.0)
-		$Feet.position.y = lerp($Feet.position.y, 0.5, delta * 15.0)
+		$Feet.position.y = lerp($Feet.position.y, 0.37, delta * 15.0)
 		
 		if is_on_floor() and velocity.length() > crouch_speed + 0.1: # 0.1 is epsilon for numerical error
 			slide = true
@@ -601,7 +601,7 @@ func throw_grabbed_object():
 	if grabbedObject.can_let_go():
 		var temp_object = grabbedObject
 		leave_grabbed_object()
-		temp_object.throw(-temp_object.global_transform.basis.z, 100)
+		temp_object.throw(-temp_object.global_transform.basis.z, 35.0)
 		fireDelay = 0.0
 
 func leave_grabbed_object():

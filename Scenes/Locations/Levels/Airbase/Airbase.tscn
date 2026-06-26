@@ -8,7 +8,6 @@
 [ext_resource type="ArrayMesh" uid="uid://bin8shiqvsyc4" path="res://assets/Meshes/Architecture/RunWay.mesh" id="4_8gw12"]
 [ext_resource type="Texture2D" uid="uid://kqnjcrk75lb3" path="res://assets/Textures/Dirt.png" id="8_vtiap"]
 [ext_resource type="PackedScene" uid="uid://cpi1xrpot2ipt" path="res://Scenes/Player.tscn" id="9_myywe"]
-[ext_resource type="PackedScene" uid="uid://da8xo7bpr7w37" path="res://Scenes/Enemies/SniperTurret.tscn" id="10_fq6ak"]
 [ext_resource type="ArrayMesh" uid="uid://7ho7ltov0iyb" path="res://assets/Meshes/Objects/Vehicles/Jeep/Jeep.mesh" id="13_cy2rb"]
 [ext_resource type="ArrayMesh" uid="uid://unogx422rgbl" path="res://assets/Meshes/Objects/Vehicles/Jeep/JeepChassis.mesh" id="14_5mv5n"]
 [ext_resource type="ArrayMesh" uid="uid://q8g0hhj850vv" path="res://assets/Meshes/Architecture/Hangar1.mesh" id="15_hvu3u"]
@@ -20,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://d23s0inguh17p" path="res://Scenes/Objects/ExplosiveBarrel.tscn" id="21_eopy5"]
 [ext_resource type="PackedScene" uid="uid://b1g4ndkkyibs4" path="res://Scenes/Objects/HealthPack.tscn" id="22_vh3lb"]
 [ext_resource type="ArrayMesh" uid="uid://bvbx2g5lkenkl" path="res://assets/Meshes/Architecture/OilTank.mesh" id="27_u2i14"]
+[ext_resource type="PackedScene" uid="uid://b3apackl8q487" path="res://Scenes/Enemies/Spider.tscn" id="28_8gw12"]
 [ext_resource type="ArrayMesh" uid="uid://br33wg26qu7sk" path="res://assets/Meshes/Objects/Crate2.mesh" id="28_wh1nc"]
 [ext_resource type="PackedScene" uid="uid://d4bcffi8xi33t" path="res://Scenes/Objects/ThrowableBody.tscn" id="29_66qxi"]
 [ext_resource type="PackedScene" uid="uid://dugekeqiinxib" path="res://Scenes/Buildings/WaterTower.tscn" id="30_tvlj7"]
@@ -190,9 +190,6 @@ bake_mask = 4293918721
 [node name="Player" parent="." unique_id=1941692924 instance=ExtResource("9_myywe")]
 transform = Transform3D(0.8183203, 0, -0.57476246, 0, 1, 0, 0.57476246, 0, 0.8183203, -3.972, 1.4951919, -3.147)
 
-[node name="SniperTurret" parent="." unique_id=1830225406 instance=ExtResource("10_fq6ak")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.508708, 2.0115821, -13.574843)
-
 [node name="Drone" parent="." unique_id=290106699 instance=ExtResource("33_aortb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.338417, 0.8061118, -12.71439)
 
@@ -325,6 +322,7 @@ mesh = SubResource("PlaneMesh_1k7mg")
 metadata/_edit_lock_ = true
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=628531476]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1930771, -0.11318207, 0.31276703)
 navigation_mesh = SubResource("NavigationMesh_7rfda")
 navigation_layers = 5
 
@@ -832,3 +830,6 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 23.349, 4.808791, -29.685)
 [node name="ThrowableBody" parent="." unique_id=562624679 instance=ExtResource("29_66qxi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.893524, 0.9176705, -0.45967484)
 total_scale = 0.4
+
+[node name="Node3D" parent="." unique_id=2090287065 instance=ExtResource("28_8gw12")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.105943, 1.6243429, -21.001823)
