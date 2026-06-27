@@ -108,7 +108,7 @@ func throw(direction, force):
 	is_held = false
 	explode_on_contact = true
 	var lim = 1.0 if mass > 0.5 else mass
-	apply_central_impulse(direction * force * lim)
+	apply_central_impulse(direction * force / 2 * lim)
 	apply_torque_impulse(Vector3(randf(), randf(), randf()) * mass)
 
 # --- Anti-Error Function Dump ---

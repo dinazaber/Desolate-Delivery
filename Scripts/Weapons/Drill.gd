@@ -43,7 +43,7 @@ func punch(speed):
 				if body.has_method("knockBack"):
 					body.knockBack((body.global_position - playerPos.global_position).normalized(), (damage + speed)/10, true, 0.25)
 				if body.has_method("throw"):
-					body.throw((body.global_position - playerPos.global_position).normalized(), 20.0)
+					body.throw((body.global_position - playerPos.global_position).normalized(), 40.0)
 				
 				if body.is_in_group("Enemy"):
 					if !player.is_on_floor() and player.drillJump:

@@ -832,4 +832,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.893524, 0.9176705, -0.459
 total_scale = 0.4
 
 [node name="Node3D" parent="." unique_id=2090287065 instance=ExtResource("28_8gw12")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.105943, 1.6243429, -21.001823)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.858209, 1.45718, -12.746979)

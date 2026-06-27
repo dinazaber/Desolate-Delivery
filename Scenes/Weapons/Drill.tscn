@@ -292,7 +292,7 @@ script = ExtResource("1_wrvfe")
 libraries/ = SubResource("AnimationLibrary_l87pe")
 
 [node name="Drill" type="Marker3D" parent="." unique_id=966625349]
-transform = Transform3D(0.98480606, -0.17364796, 0, 0.16317564, 0.92541534, 0.3420201, -0.05939107, -0.3368236, 0.9396925, -0.8, -0.5, -0.4)
+transform = Transform3D(0.984806, -0.17364796, 0, 0.16317563, 0.92541534, 0.3420201, -0.059391066, -0.3368236, 0.9396925, -0.8, -0.5, -0.4)
 
 [node name="DrillBase" type="MeshInstance3D" parent="Drill" unique_id=1233721536]
 transform = Transform3D(-6.5567085e-09, 0, 0.15, 0, 0.15, 0, -0.15, 0, -6.5567085e-09, 0.6, 0, 0)
@@ -355,7 +355,6 @@ one_shot = true
 
 [node name="Crosshair" type="Control" parent="." unique_id=1047822821]
 visible = false
-layout_direction = 4
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -365,6 +364,7 @@ offset_bottom = 9.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
+layout_direction = 4
 mouse_filter = 2
 
 [node name="TextureRect" type="TextureRect" parent="Crosshair" unique_id=756763214]

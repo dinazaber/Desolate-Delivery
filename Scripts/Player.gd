@@ -601,7 +601,7 @@ func throw_grabbed_object():
 	if grabbedObject.can_let_go():
 		var temp_object = grabbedObject
 		leave_grabbed_object()
-		temp_object.throw(-temp_object.global_transform.basis.z, 35.0)
+		temp_object.throw(-camera.global_transform.basis.z, 25.0)
 		fireDelay = 0.0
 
 func leave_grabbed_object():
