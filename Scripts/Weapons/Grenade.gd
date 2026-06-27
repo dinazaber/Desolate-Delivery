@@ -50,7 +50,7 @@ func shot():
 func explode():
 	var bodies = []
 	exploded = true
-	$GrenadeMesh.visible = false
+	$Skeleton3D.visible = false
 	$hitBox_physics.disabled = true
 	$shotTrigger/hitBox_shotTrigger.disabled = true
 	freeze = true
