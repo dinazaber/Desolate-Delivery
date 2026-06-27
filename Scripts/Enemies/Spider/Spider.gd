@@ -28,7 +28,7 @@ func _ready() -> void:
 	temp_basis = transform.basis
 
 func _physics_process(delta: float) -> void:
-	DEBUG_handle_movement(delta)
+	#DEBUG_handle_movement(delta)
 	
 	handle_ik(delta)
 

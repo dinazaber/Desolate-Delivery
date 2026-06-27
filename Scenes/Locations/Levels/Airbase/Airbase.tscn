@@ -142,12 +142,12 @@ disable_receive_shadows = true
 material = SubResource("StandardMaterial3D_lw8r5")
 size = Vector2(2000, 500)
 
-[sub_resource type="NavigationMesh" id="NavigationMesh_7rfda"]
-vertices = PackedVector3Array(-79.5, 0.6, -69.5, -79.5, 0.6, 29.5, 159.5, 0.6, 29.5, 159.5, 0.6, -69.5)
+[sub_resource type="NavigationMesh" id="NavigationMesh_8gw12"]
+vertices = PackedVector3Array(-123.44381, 0.76181793, -164.18723, -123.44381, 0.76181793, 134.81277, 175.55618, 0.76181793, 134.81277, 175.55618, 0.76181793, -164.18723)
 polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
-geometry_parsed_geometry_type = 1
 
-[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_66qxi"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_66qxi"]
+size = Vector3(300, 1, 300)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_iyf6e"]
 size = Vector3(5.2387695, 0.56103516, 0.26879883)
@@ -321,18 +321,19 @@ cast_shadow = 0
 mesh = SubResource("PlaneMesh_1k7mg")
 metadata/_edit_lock_ = true
 
-[node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=628531476]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1930771, -0.11318207, 0.31276703)
-navigation_mesh = SubResource("NavigationMesh_7rfda")
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=12456610]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.749267, 0, 0)
+navigation_mesh = SubResource("NavigationMesh_8gw12")
 navigation_layers = 5
 
 [node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D" unique_id=896803781]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.55619, -0.11318207, 0.31276703)
 collision_layer = 49
 collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D" unique_id=141115913]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.5, 0.25, -15)
-shape = SubResource("WorldBoundaryShape3D_66qxi")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.5, -0.125, -15)
+shape = SubResource("BoxShape3D_66qxi")
 debug_color = Color(0.6236343, 0.98457175, 0, 1)
 
 [node name="Ruins" type="StaticBody3D" parent="." unique_id=555013339]
