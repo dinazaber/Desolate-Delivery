@@ -68,7 +68,7 @@ func _physics_process(delta):
 	if !is_on_floor():
 		velocity.y -= 15 * delta
 	# Fallback if player is missing
-	if not player:
+	if !player:
 		if get_tree().get_first_node_in_group("Player"):
 			player = get_tree().get_first_node_in_group("Player")
 		return
@@ -218,10 +218,10 @@ func process_attack_state(delta):
 	if global_position.distance_to(player.global_position) > attack_stop_distance or !can_see_player():
 		current_state = State.CHASE
 
-
 func process_dead_state(): # gotta make death anim   Zzzzz
 	player.enemy_killed(global_position, health_orb_reward)
 	queue_free()
+
 
 func aim(delta):
 	var hand_bone = skeleton.find_bone("Hand.R")

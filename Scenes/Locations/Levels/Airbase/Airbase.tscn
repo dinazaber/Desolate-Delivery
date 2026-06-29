@@ -21,6 +21,7 @@
 [ext_resource type="ArrayMesh" uid="uid://bvbx2g5lkenkl" path="res://assets/Meshes/Architecture/OilTank.mesh" id="27_u2i14"]
 [ext_resource type="PackedScene" uid="uid://b3apackl8q487" path="res://Scenes/Enemies/Spider.tscn" id="28_8gw12"]
 [ext_resource type="ArrayMesh" uid="uid://br33wg26qu7sk" path="res://assets/Meshes/Objects/Crate2.mesh" id="28_wh1nc"]
+[ext_resource type="PackedScene" uid="uid://mnqxus7cbuw" path="res://Scenes/Enemies/BallRobot.tscn" id="29_5sbex"]
 [ext_resource type="PackedScene" uid="uid://d4bcffi8xi33t" path="res://Scenes/Objects/ThrowableBody.tscn" id="29_66qxi"]
 [ext_resource type="PackedScene" uid="uid://dugekeqiinxib" path="res://Scenes/Buildings/WaterTower.tscn" id="30_tvlj7"]
 [ext_resource type="ArrayMesh" uid="uid://rn8rjuep3gb1" path="res://assets/Meshes/Objects/DamagedFlag.mesh" id="31_1rnsm"]
@@ -829,8 +830,11 @@ shape = SubResource("CylinderShape3D_7rfda")
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 23.349, 4.808791, -29.685)
 
 [node name="ThrowableBody" parent="." unique_id=562624679 instance=ExtResource("29_66qxi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.893524, 0.9176705, -0.45967484)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.893524, 0.9176705, 2.298111)
 total_scale = 0.4
 
 [node name="Node3D" parent="." unique_id=2090287065 instance=ExtResource("28_8gw12")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.858209, 1.45718, -12.746979)
+
+[node name="BallRobot" parent="." unique_id=2098246889 instance=ExtResource("29_5sbex")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.157154, 1.0127907, -1.0285282)

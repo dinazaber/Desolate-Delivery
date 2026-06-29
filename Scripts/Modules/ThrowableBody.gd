@@ -13,7 +13,7 @@ var is_held: bool = false
 		$Particles.scale = Vector3(1.0, 1.0, 1.0) * total_scale
 		inertia = Vector3(0.9,2.5,0.9) * mass
 
-@onready var blob_shadow = $BlobShadow
+#@onready var blob_shadow = $BlobShadow
 
 func throw(direction, force):
 	thrown = true
@@ -38,7 +38,7 @@ func _on_body_entered(body: Node) -> void:
 	
 	freeze = true
 	$MeshInstance3D.hide()
-	if blob_shadow: blob_shadow.hide()
+	#if blob_shadow: blob_shadow.hide()
 	
 	#if body.is_in_group("Enemy"):
 	if body.has_method("damage_taken"):
