@@ -197,6 +197,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.338417, 0.8061118, -12.714
 [node name="Robot" parent="." unique_id=969091388 instance=ExtResource("34_50pvf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.380188, 1.533283, -5.4589863)
 
+[node name="Node3D" parent="." unique_id=2090287065 instance=ExtResource("28_8gw12")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.858209, 1.45718, -12.746979)
+
+[node name="BallRobot" parent="." unique_id=2098246889 instance=ExtResource("29_5sbex")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.157154, 1.0127907, -1.0285282)
+
 [node name="SandHaze" type="ColorRect" parent="." unique_id=1103963715 groups=["Effects"]]
 process_mode = 1
 visible = false
@@ -832,9 +838,3 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 23.349, 4.808791, -29.685)
 [node name="ThrowableBody" parent="." unique_id=562624679 instance=ExtResource("29_66qxi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.893524, 0.9176705, 2.298111)
 total_scale = 0.4
-
-[node name="Node3D" parent="." unique_id=2090287065 instance=ExtResource("28_8gw12")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.858209, 1.45718, -12.746979)
-
-[node name="BallRobot" parent="." unique_id=2098246889 instance=ExtResource("29_5sbex")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.157154, 1.0127907, -1.0285282)

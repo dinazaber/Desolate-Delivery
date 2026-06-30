@@ -128,6 +128,78 @@ tracks/9/keys = {
 "update": 0,
 "values": [Vector3(0, 0, 0)]
 }
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("stunSmokeL:emitting")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("stunSmokeR:emitting")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("chargeParticlesL:emitting")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("chargeParticlesR:emitting")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("stunPuffL:emitting")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("stunPuffR:emitting")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_0am0p"]
 resource_name = "charge"
@@ -253,11 +325,113 @@ tracks/9/keys = {
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(0, 0, 0.08726646), Vector3(0, 0, 0), Vector3(0, 0, -0.017453292), Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 0, -0.08726646), Vector3(0, 0, 0), Vector3(0, 0, 0.017453292), Vector3(0, 0, 0), Vector3(0, 0, 0)]
 }
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("chargeParticlesL:emitting")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(1.62, 2.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("chargeParticlesR:emitting")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(1.62, 2.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_dsyxb"]
+resource_name = "stunned"
+length = 2.0
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SkeliHolder/Skeleton3D/Base/WingR:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.4, 1.7, 1.85, 2),
+"transitions": PackedFloat32Array(0.6, 0.6, 1, 2, 0.5, 1),
+"update": 0,
+"values": [Vector3(0.036, 0, 0), Vector3(1.036, 0, 0), Vector3(0.9, 0, 0), Vector3(0.9, 0, 0), Vector3(0.468, 0, 0), Vector3(0.036, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SkeliHolder/Skeleton3D/Base/WingL:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.4, 1.7, 1.85, 2),
+"transitions": PackedFloat32Array(0.6, 0.6, 1, 2, 0.5, 1),
+"update": 0,
+"values": [Vector3(-0.036, 0, 0), Vector3(-1.036, 0, 0), Vector3(-0.9, 0, 0), Vector3(-0.9, 0, 0), Vector3(-0.468, 0, 0), Vector3(-0.036, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("stunSmokeL:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.15, 1.51),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("stunSmokeR:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.15, 1.51),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("stunPuffL:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.03),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("stunPuffR:emitting")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.03),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_yxj0h"]
 _data = {
 &"RESET": SubResource("Animation_do24v"),
-&"charge": SubResource("Animation_0am0p")
+&"charge": SubResource("Animation_0am0p"),
+&"stunned": SubResource("Animation_dsyxb")
 }
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_voted"]
@@ -345,6 +519,193 @@ radius = 1.045
 height = 1.275
 radius = 0.62
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_1vivr"]
+radius = 0.7
+
+[sub_resource type="Curve" id="Curve_0am0p"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.604, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_ghbjs"]
+curve = SubResource("Curve_0am0p")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qbdty"]
+direction = Vector3(0, 0.6, 1)
+spread = 10.0
+flatness = 0.8
+initial_velocity_min = 6.0
+initial_velocity_max = 8.0
+scale_min = 0.5
+scale_max = 1.5
+scale_curve = SubResource("CurveTexture_ghbjs")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dsyxb"]
+transparency = 1
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.11764706, 0.11764706, 0.11764706, 0.8627451)
+
+[sub_resource type="SphereMesh" id="SphereMesh_nhcda"]
+material = SubResource("StandardMaterial3D_dsyxb")
+radius = 0.03
+height = 0.06
+radial_segments = 4
+rings = 2
+
+[sub_resource type="Curve" id="Curve_o5tgd"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.24799998, 0), 0.0, 0.0, 0, 0, Vector2(0.604, 0.6483516), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_u7cuq"]
+curve = SubResource("Curve_o5tgd")
+
+[sub_resource type="Curve" id="Curve_do24v"]
+_limits = [-2.0, 2.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_a5ptu"]
+
+[sub_resource type="Curve" id="Curve_mvb20"]
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_d2pp6"]
+curve_x = SubResource("Curve_do24v")
+curve_y = SubResource("Curve_a5ptu")
+curve_z = SubResource("Curve_mvb20")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_v5gy4"]
+particle_flag_align_y = true
+emission_shape = 6
+emission_ring_axis = Vector3(1, 0, 0)
+emission_ring_height = 0.25
+emission_ring_radius = 0.8
+emission_ring_inner_radius = 0.5
+emission_ring_cone_angle = 90.0
+orbit_velocity_min = 2.0000002
+orbit_velocity_max = 2.0000002
+orbit_velocity_curve = SubResource("CurveXYZTexture_d2pp6")
+radial_velocity_min = -0.50002235
+radial_velocity_max = -0.10002235
+gravity = Vector3(0, 0, 0)
+alpha_curve = SubResource("CurveTexture_u7cuq")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yxj0h"]
+transparency = 1
+cull_mode = 2
+vertex_color_use_as_albedo = true
+albedo_color = Color(1, 0.5882353, 0, 1)
+emission_enabled = true
+emission = Color(1, 0.39215687, 0, 1)
+emission_energy_multiplier = 4.0
+use_particle_trails = true
+
+[sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_1vivr"]
+material = SubResource("StandardMaterial3D_yxj0h")
+size = 0.05
+
+[sub_resource type="Curve" id="Curve_u7cuq"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.24799998, 1), 0.0, 0.0, 0, 0, Vector2(0.6959999, 0), 0.0, 0.0, 0, 0, Vector2(1, 0.01098907), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_d2pp6"]
+curve = SubResource("Curve_u7cuq")
+
+[sub_resource type="Curve" id="Curve_dsyxb"]
+_limits = [0.0, 1.2, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.25199997, 1.2), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_auskg"]
+curve = SubResource("Curve_dsyxb")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1vivr"]
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_auskg")
+alpha_curve = SubResource("CurveTexture_d2pp6")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nhcda"]
+transparency = 1
+vertex_color_use_as_albedo = true
+albedo_color = Color(1, 0.5882353, 0, 0.5882353)
+emission_enabled = true
+emission = Color(1, 0.39215687, 0, 1)
+emission_energy_multiplier = 4.0
+
+[sub_resource type="TorusMesh" id="TorusMesh_8vrlf"]
+material = SubResource("StandardMaterial3D_nhcda")
+inner_radius = 0.55
+outer_radius = 0.65
+rings = 16
+ring_segments = 4
+
+[sub_resource type="Curve" id="Curve_auskg"]
+_limits = [0.0, 0.8, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.25199997, 0.8), 0.0, 0.0, 0, 0, Vector2(0.49999994, 0.8), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_qbdty"]
+curve = SubResource("Curve_auskg")
+
+[sub_resource type="Curve" id="Curve_nhcda"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.59599996, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_do24v"]
+curve = SubResource("Curve_nhcda")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_do24v"]
+lifetime_randomness = 0.2
+emission_shape = 6
+emission_ring_axis = Vector3(1, 0, 0)
+emission_ring_height = 0.0
+emission_ring_radius = 0.4
+emission_ring_inner_radius = 0.3
+emission_ring_cone_angle = 90.0
+initial_velocity_min = -0.39999998
+initial_velocity_max = -0.19999999
+gravity = Vector3(0, 1, 0)
+scale_curve = SubResource("CurveTexture_do24v")
+alpha_curve = SubResource("CurveTexture_qbdty")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0am0p"]
+transparency = 1
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.4506483, 0.4506483, 0.45064825, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_1vivr"]
+material = SubResource("StandardMaterial3D_0am0p")
+radius = 0.05
+height = 0.1
+radial_segments = 6
+rings = 3
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8vrlf"]
+lifetime_randomness = 0.2
+emission_shape = 6
+emission_ring_axis = Vector3(1, 0, 0)
+emission_ring_height = 0.0
+emission_ring_radius = 0.4
+emission_ring_inner_radius = 0.3
+emission_ring_cone_angle = 90.0
+initial_velocity_min = 0.19999999
+initial_velocity_max = 0.39999998
+gravity = Vector3(0, 1, 0)
+scale_curve = SubResource("CurveTexture_do24v")
+alpha_curve = SubResource("CurveTexture_qbdty")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_dsyxb"]
+lifetime_randomness = 0.2
+emission_shape = 6
+emission_ring_axis = Vector3(1, 0, 0)
+emission_ring_height = 0.0
+emission_ring_radius = 0.4
+emission_ring_inner_radius = 0.3
+emission_ring_cone_angle = 90.0
+initial_velocity_min = 0.19999999
+initial_velocity_max = 0.39999998
+gravity = Vector3(0, 1, 0)
+scale_curve = SubResource("CurveTexture_do24v")
+alpha_curve = SubResource("CurveTexture_qbdty")
+
 [node name="BallRobot" type="CharacterBody3D" unique_id=2098246889 groups=["Enemy", "Persist", "Pull"]]
 collision_layer = 48
 collision_mask = 56
@@ -372,56 +733,56 @@ bones/1/parent = 0
 bones/1/rest = Transform3D(0, 1, 2.3593515e-08, -1, 0, 2.3593515e-08, 2.3593515e-08, -2.3593515e-08, 1, 1.0356596, 5.9604645e-08, -7.264316e-08)
 bones/1/enabled = true
 bones/1/position = Vector3(0.036, 0, 0)
-bones/1/rotation = Quaternion(-1.6683135e-08, 0, -0.70710677, 0.70710677)
+bones/1/rotation = Quaternion(-1.6683133e-08, 0, -0.70710677, 0.70710677)
 bones/1/scale = Vector3(1, 1, 1)
 bones/2/name = "Coil1.R"
 bones/2/parent = 1
 bones/2/rest = Transform3D(1, 8.550838e-08, 9.067336e-08, -8.550837e-08, 1, -9.067336e-08, -9.0673375e-08, 9.0673346e-08, 1, 3.1733954e-08, 0.1564126, 3.176798e-08)
 bones/2/enabled = true
-bones/2/position = Vector3(3.1733954e-08, 0.1564126, 3.1767986e-08)
-bones/2/rotation = Quaternion(4.5336677e-08, 4.5336684e-08, -4.2754188e-08, 1)
+bones/2/position = Vector3(3.8570967e-08, 0.1564126, 3.1767986e-08)
+bones/2/rotation = Quaternion(4.533668e-08, 4.5336684e-08, -6.460988e-08, 1)
 bones/2/scale = Vector3(1, 1, 1)
 bones/3/name = "Coil2.R"
 bones/3/parent = 1
 bones/3/rest = Transform3D(1, 2.0934807e-07, 9.58783e-09, -2.0934807e-07, 1, -9.587829e-09, -9.587832e-09, 9.587827e-09, 1, -3.670101e-08, 0.43141425, 2.5838597e-08)
 bones/3/enabled = true
-bones/3/position = Vector3(-3.670101e-08, 0.43141425, 2.58386e-08)
-bones/3/rotation = Quaternion(4.7939146e-09, 4.793916e-09, -1.0467404e-07, 1)
+bones/3/position = Vector3(-1.7843297e-08, 0.43141425, 2.5838599e-08)
+bones/3/rotation = Quaternion(4.7939137e-09, 4.7939155e-09, -1.2652974e-07, 1)
 bones/3/scale = Vector3(1, 1, 1)
 bones/4/name = "Coil3.R"
 bones/4/parent = 1
 bones/4/rest = Transform3D(1, 1.8575957e-07, 1.7175893e-07, -1.8575955e-07, 1, -1.7175894e-07, -1.7175896e-07, 1.7175891e-07, 1, -3.2285858e-08, 0.7064117, -5.7632114e-08)
 bones/4/enabled = true
-bones/4/position = Vector3(-3.228585e-08, 0.7064117, -5.7632114e-08)
-bones/4/rotation = Quaternion(8.587946e-08, 8.587947e-08, -9.287978e-08, 1)
+bones/4/position = Vector3(-1.4076162e-09, 0.7064117, -5.7632118e-08)
+bones/4/rotation = Quaternion(8.587946e-08, 8.587946e-08, -1.1473548e-07, 1)
 bones/4/scale = Vector3(1, 1, 1)
 bones/5/name = "Wing.L"
 bones/5/parent = 0
 bones/5/rest = Transform3D(0, -1, 8.692348e-09, 1, 0, -8.692349e-09, 8.692348e-09, 8.692349e-09, 1, -1.0356596, 5.9604645e-08, 3.5390258e-08)
 bones/5/enabled = true
 bones/5/position = Vector3(-0.036, 0, 0)
-bones/5/rotation = Quaternion(6.146419e-09, 6.2803697e-16, 0.70710677, 0.70710677)
+bones/5/rotation = Quaternion(0, 0, 0.70710677, 0.70710677)
 bones/5/scale = Vector3(1, 1, 1)
 bones/6/name = "Coil1.L"
 bones/6/parent = 5
 bones/6/rest = Transform3D(1, 2.0639972e-08, 1.7381169e-07, -2.0640003e-08, 1, 1.7381176e-07, -1.7381169e-07, -1.7381176e-07, 1, -4.7545743e-07, 0.15641439, 3.021136e-07)
 bones/6/enabled = true
-bones/6/position = Vector3(-4.7545743e-07, 0.15641439, 3.021136e-07)
-bones/6/rotation = Quaternion(-8.690588e-08, 8.690584e-08, -1.0319994e-08, 1)
+bones/6/position = Vector3(-4.822945e-07, 0.15641439, 3.0211362e-07)
+bones/6/rotation = Quaternion(-8.690588e-08, 8.690584e-08, 1.15357e-08, 1)
 bones/6/scale = Vector3(1, 1, 1)
 bones/7/name = "Coil2.L"
 bones/7/parent = 5
 bones/7/rest = Transform3D(1, 4.422834e-08, 3.684163e-07, -4.4228475e-08, 1, 3.684163e-07, -3.684163e-07, -3.684163e-07, 1, 4.8842693e-08, 0.43141556, 8.779554e-08)
 bones/7/enabled = true
-bones/7/position = Vector3(4.8842693e-08, 0.43141556, 8.7795534e-08)
-bones/7/rotation = Quaternion(-1.8420815e-07, 1.8420815e-07, -2.2114204e-08, 1)
+bones/7/position = Vector3(2.998492e-08, 0.43141556, 8.779554e-08)
+bones/7/rotation = Quaternion(-1.8420815e-07, 1.8420815e-07, -2.5850816e-10, 1)
 bones/7/scale = Vector3(1, 1, 1)
 bones/8/name = "Coil3.L"
 bones/8/parent = 5
 bones/8/rest = Transform3D(1, -3.2434137e-08, 2.7111395e-07, 3.2434066e-08, 1, 2.7111395e-07, -2.7111395e-07, -2.7111395e-07, 1, 3.5873173e-09, 0.7064103, 7.58802e-09)
 bones/8/enabled = true
-bones/8/position = Vector3(3.587317e-09, 0.70641035, 7.588022e-09)
-bones/8/rotation = Quaternion(-1.3555697e-07, 1.3555697e-07, 1.621705e-08, 1)
+bones/8/position = Vector3(-2.729086e-08, 0.70641035, 7.588023e-09)
+bones/8/rotation = Quaternion(-1.3555697e-07, 1.3555697e-07, 3.8072745e-08, 1)
 bones/8/scale = Vector3(1, 1, 1)
 
 [node name="Sphere" type="MeshInstance3D" parent="SkeliHolder/Skeleton3D" unique_id=393669965]
@@ -446,7 +807,7 @@ transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0
 shape = SubResource("CylinderShape3D_1vivr")
 
 [node name="WingR" type="BoneAttachment3D" parent="SkeliHolder/Skeleton3D/Base" unique_id=1850420317]
-transform = Transform3D(0, 1, 2.3593515e-08, -1, 0, 2.3593515e-08, 2.3593515e-08, -2.3593515e-08, 1, 0.036, 0, 0)
+transform = Transform3D(-4.371139e-08, 1, 2.3593515e-08, -1, -4.371139e-08, 2.3593515e-08, 2.3593516e-08, -2.3593513e-08, 1, 0.036, 0, 0)
 bone_name = "Wing.R"
 bone_idx = 1
 override_pose = true
@@ -498,7 +859,7 @@ use_external_skeleton = true
 external_skeleton = NodePath("../../..")
 
 [node name="WingL" type="BoneAttachment3D" parent="SkeliHolder/Skeleton3D/Base" unique_id=1865361610]
-transform = Transform3D(0, -1, 8.692348e-09, 1, 0, -8.692348e-09, 8.692348e-09, 8.69235e-09, 1, -0.036, 0, 0)
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, -0.036, 0, 0)
 bone_name = "Wing.L"
 bone_idx = 5
 override_pose = true
@@ -556,6 +917,15 @@ collision_mask = 152
 [node name="Rayend" type="Marker3D" parent="Eyes" unique_id=151940750]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -20)
 
+[node name="DamageArea" type="Area3D" parent="." unique_id=135528985]
+visible = false
+collision_layer = 0
+collision_mask = 42
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DamageArea" unique_id=991479006]
+shape = SubResource("SphereShape3D_1vivr")
+debug_color = Color(1, 0, 0, 0.41960785)
+
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=813993432]
 avoidance_enabled = true
 
@@ -563,5 +933,73 @@ avoidance_enabled = true
 wait_time = 1.5
 one_shot = true
 
+[node name="dustTrail" type="GPUParticles3D" parent="." unique_id=1202626732]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.6, 0.2)
+emitting = false
+lifetime = 0.3
+process_material = SubResource("ParticleProcessMaterial_qbdty")
+draw_pass_1 = SubResource("SphereMesh_nhcda")
+
+[node name="chargeParticlesL" type="GPUParticles3D" parent="." unique_id=1483774472]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.625, 0, 0)
+emitting = false
+lifetime = 0.5
+fixed_fps = 144
+trail_enabled = true
+process_material = SubResource("ParticleProcessMaterial_v5gy4")
+draw_pass_1 = SubResource("RibbonTrailMesh_1vivr")
+
+[node name="chargeParticlesR" type="GPUParticles3D" parent="." unique_id=1182084066]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.625, 0, 0)
+emitting = false
+lifetime = 0.5
+fixed_fps = 144
+trail_enabled = true
+process_material = SubResource("ParticleProcessMaterial_v5gy4")
+draw_pass_1 = SubResource("RibbonTrailMesh_1vivr")
+
+[node name="attackRings" type="GPUParticles3D" parent="." unique_id=256379106]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
+emitting = false
+lifetime = 0.4
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_1vivr")
+draw_pass_1 = SubResource("TorusMesh_8vrlf")
+
+[node name="stunSmokeL" type="GPUParticles3D" parent="." unique_id=455929781]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3997329, 0, 0)
+emitting = false
+lifetime = 0.8
+process_material = SubResource("ParticleProcessMaterial_do24v")
+draw_pass_1 = SubResource("SphereMesh_1vivr")
+
+[node name="stunSmokeR" type="GPUParticles3D" parent="." unique_id=1941774255]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, 0, 0)
+emitting = false
+lifetime = 0.8
+process_material = SubResource("ParticleProcessMaterial_8vrlf")
+draw_pass_1 = SubResource("SphereMesh_1vivr")
+
+[node name="stunPuffL" type="GPUParticles3D" parent="." unique_id=2008431821]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3997329, 0, 0)
+emitting = false
+amount = 16
+lifetime = 0.8
+one_shot = true
+explosiveness = 0.5
+process_material = SubResource("ParticleProcessMaterial_do24v")
+draw_pass_1 = SubResource("SphereMesh_1vivr")
+
+[node name="stunPuffR" type="GPUParticles3D" parent="." unique_id=1433788570]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, 0, 0)
+emitting = false
+amount = 16
+lifetime = 0.8
+one_shot = true
+explosiveness = 0.5
+process_material = SubResource("ParticleProcessMaterial_dsyxb")
+draw_pass_1 = SubResource("SphereMesh_1vivr")
+
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="body_entered" from="DamageArea" to="." method="_on_damage_area_body_entered"]
 [connection signal="timeout" from="AttackTimeout" to="." method="_on_attack_timeout_timeout"]
