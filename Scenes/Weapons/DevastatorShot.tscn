@@ -112,10 +112,8 @@ _data = {
 }
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aw7ay"]
+shading_mode = 0
 albedo_color = Color(1, 0.5882353, 0, 1)
-emission_enabled = true
-emission = Color(1, 0.6666667, 0, 1)
-emission_energy_multiplier = 5.0
 
 [sub_resource type="SphereMesh" id="SphereMesh_fxcsm"]
 material = SubResource("StandardMaterial3D_aw7ay")
@@ -126,10 +124,8 @@ rings = 4
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6wlni"]
 transparency = 1
+shading_mode = 0
 albedo_color = Color(1, 0.5882353, 0, 0.078431375)
-emission_enabled = true
-emission = Color(1, 0.6666667, 0, 1)
-emission_energy_multiplier = 2.0
 
 [sub_resource type="SphereMesh" id="SphereMesh_aw7ay"]
 material = SubResource("StandardMaterial3D_6wlni")
@@ -171,10 +167,8 @@ fill_to = Vector2(0.5, 0)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2awmy"]
 transparency = 1
 cull_mode = 2
+shading_mode = 0
 albedo_texture = SubResource("GradientTexture2D_kru5m")
-emission_enabled = true
-emission = Color(1, 1, 0.39215687, 1)
-emission_energy_multiplier = 2.0
 
 [sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_uuauu"]
 material = SubResource("StandardMaterial3D_2awmy")
@@ -237,10 +231,8 @@ alpha_curve = SubResource("CurveTexture_obboe")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n83u3"]
 transparency = 1
+shading_mode = 0
 vertex_color_use_as_albedo = true
-emission_enabled = true
-emission = Color(1, 1, 0.5882353, 1)
-emission_energy_multiplier = 1.5
 
 [sub_resource type="SphereMesh" id="SphereMesh_re4ky"]
 material = SubResource("StandardMaterial3D_n83u3")
@@ -295,10 +287,8 @@ emission_curve = SubResource("CurveTexture_2awmy")
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_re4ky"]
 transparency = 1
 cull_mode = 2
+shading_mode = 0
 vertex_color_use_as_albedo = true
-emission_enabled = true
-emission = Color(1, 1, 0.3137255, 1)
-emission_energy_multiplier = 5.0
 
 [sub_resource type="SphereMesh" id="SphereMesh_ddfbw"]
 material = SubResource("StandardMaterial3D_re4ky")

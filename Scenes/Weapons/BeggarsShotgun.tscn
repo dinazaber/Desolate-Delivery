@@ -450,11 +450,9 @@ fill_to = Vector2(0.51282054, 0)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mmsk8"]
 transparency = 1
+shading_mode = 0
 vertex_color_use_as_albedo = true
 albedo_texture = SubResource("GradientTexture2D_b1a7w")
-emission_enabled = true
-emission = Color(1, 0.62352943, 0, 1)
-emission_energy_multiplier = 8.0
 
 [sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_mmsk8"]
 material = SubResource("StandardMaterial3D_mmsk8")
@@ -504,7 +502,7 @@ alpha_curve = SubResource("CurveTexture_lkl2b")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4r53k"]
 transparency = 1
-shading_mode = 2
+shading_mode = 0
 vertex_color_use_as_albedo = true
 albedo_color = Color(0.29, 0.29, 0.29, 0.5882353)
 
@@ -587,7 +585,6 @@ one_shot = true
 
 [node name="Crosshair" type="Control" parent="." unique_id=1141551313]
 visible = false
-layout_direction = 4
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -595,6 +592,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
+layout_direction = 4
 mouse_filter = 2
 
 [node name="base" type="Control" parent="Crosshair" unique_id=189990376]

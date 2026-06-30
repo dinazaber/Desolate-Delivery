@@ -1,7 +1,7 @@
 // Shader for particles
 
 shader_type spatial;
-render_mode shadows_disabled, cull_disabled;
+render_mode shadows_disabled, cull_disabled, unshaded;
 
 group_uniforms Adjustments;
 uniform sampler2D albedo: source_color, filter_linear;

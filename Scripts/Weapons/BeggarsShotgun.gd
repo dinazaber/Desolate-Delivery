@@ -105,7 +105,7 @@ func scatterNshoot():
 		
 		if pellet.is_colliding(): # shoot
 			var hit_pos = pellet.get_collision_point()
-			await spawn_debug_cube(hit_pos) # Cube spawn, will be replaced by decal later
+			#await spawn_debug_cube(hit_pos) # Cube spawn, will be replaced by decal later | Causes freezes in large rooms!!!
 			points[i] = hit_pos # Use collsion point as particle's target point
 			var collider = pellet.get_collider()
 			if collider.is_in_group("Enemy"):
@@ -175,6 +175,7 @@ func spawn_debug_cube(pos: Vector3):
 	var material = StandardMaterial3D.new()
 	material.albedo_color = Color(1, 0, 0) # Red
 	mesh_instance.material_override = material
+	material.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
 	
 	# Add to the scene and position it
 	get_tree().root.add_child(mesh_instance)

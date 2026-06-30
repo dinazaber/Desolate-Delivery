@@ -83,7 +83,7 @@ func shoot():
 		
 			if ray.is_colliding(): # shoot
 				var hit_pos = ray.get_collision_point()
-				await spawn_debug_cube(hit_pos) # Cube spawn, will be replaced by decal later
+				#await spawn_debug_cube(hit_pos) # Cube spawn, will be replaced by decal later | Causes freezes in large rooms!!!
 				points[i] = hit_pos # Use collsion point as particle's target point
 				var collider = ray.get_collider()
 				if collider.is_in_group("Enemy"):
