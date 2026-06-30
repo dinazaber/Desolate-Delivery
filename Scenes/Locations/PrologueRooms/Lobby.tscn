@@ -4,7 +4,6 @@
 [ext_resource type="ArrayMesh" uid="uid://b6dhihmks0rku" path="res://assets/Meshes/RoomConstructor/RoundRoom_White&Brown.mesh" id="2_ebdj8"]
 [ext_resource type="ArrayMesh" uid="uid://cvgg61twv3xnn" path="res://assets/Meshes/Architecture/RuinsPile.mesh" id="3_insln"]
 [ext_resource type="Shader" uid="uid://cunx8274v1qyy" path="res://Shaders/MeshShaders/MeshShader.gdshader" id="4_48f2t"]
-[ext_resource type="ArrayMesh" uid="uid://duhjwdkqwqgow" path="res://assets/Meshes/Architecture/Crack.mesh" id="4_gy3wg"]
 [ext_resource type="Texture2D" uid="uid://kqnjcrk75lb3" path="res://assets/Textures/Dirt.png" id="5_ia4ft"]
 [ext_resource type="Texture2D" uid="uid://bu6ue5ydfh2q6" path="res://assets/Textures/Rust.png" id="6_48f2t"]
 [ext_resource type="ArrayMesh" uid="uid://cc71x4p8yppbl" path="res://assets/Meshes/Architecture/Fence.mesh" id="7_yxhpu"]
@@ -539,18 +538,6 @@ metadata/_edit_lock_ = true
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0.12804651, 0, 5.8071513)
 mesh = ExtResource("3_insln")
 metadata/_edit_lock_ = true
-
-[node name="Crack1" type="MeshInstance3D" parent="Room/Room" unique_id=496129376]
-transform = Transform3D(0.39292845, 4.6802455e-09, -0.3092042, 0.3092042, -1.3515744e-08, 0.39292845, -4.6802455e-09, -0.5, -1.3515744e-08, 0.742, -0.05, 5.574)
-mesh = ExtResource("4_gy3wg")
-
-[node name="Crack2" type="MeshInstance3D" parent="Room/Room" unique_id=1221735101]
-transform = Transform3D(-0.33704162, 1.6143826e-08, -0.36932772, 0.36932772, 1.47325565e-08, -0.33704162, 0, -0.5, -2.1855694e-08, -0.162, 0.522, 5.574)
-mesh = ExtResource("4_gy3wg")
-
-[node name="Crack3" type="MeshInstance3D" parent="Room/Room" unique_id=1958562319]
-transform = Transform3D(-0.30714676, 8.327062e-09, 0.14581111, -0.14581111, 1.1008433e-08, -0.30714676, -1.22434765e-08, -0.34, -6.3736065e-09, -0.869, -1.225, 5.574)
-mesh = ExtResource("4_gy3wg")
 
 [node name="Conditioner" type="MeshInstance3D" parent="Room/Room" unique_id=976636155]
 

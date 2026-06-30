@@ -28,30 +28,30 @@ transform = Transform3D(0.8784171, 0, 0.47789484, 0, 1, 0, -0.47789484, 0, 0.878
 [node name="Rooms" type="Node3D" parent="." unique_id=1390652977]
 
 [node name="Office" parent="Rooms" unique_id=75341550 instance=ExtResource("3_7xti7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.401, -0.001, 0)
 metadata/_edit_lock_ = true
 
 [node name="Restroom" parent="Rooms" unique_id=1937386699 instance=ExtResource("4_jwke0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.95, -0.002, -2.2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, -0.001, -2.4)
 metadata/_edit_lock_ = true
 
 [node name="Cabinet" parent="Rooms" unique_id=1857668066 instance=ExtResource("5_h04x5")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -8, 0, -3.2)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -8, 0, -3.4)
 metadata/_edit_lock_ = true
 
 [node name="Lobby" parent="Rooms" unique_id=1634252626 instance=ExtResource("6_u4ib6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.343, -0.001, 0.16)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.562, -0.001, 0.16)
 metadata/_edit_lock_ = true
 
 [node name="Corridor1" parent="Rooms" unique_id=2126095865 instance=ExtResource("7_tqvuk")]
 metadata/_edit_lock_ = true
 
 [node name="Laboratory" parent="Rooms" unique_id=1574348599 instance=ExtResource("8_e72cb")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 38.25, 0, 27)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 38.595, -0.001, 27)
 metadata/_edit_lock_ = true
 
 [node name="Corridor2" parent="Rooms" unique_id=1566095957 instance=ExtResource("9_8jc80")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.338, 0, 0)
 metadata/_edit_lock_ = true
 
 [node name="Robot" parent="." unique_id=969091388 instance=ExtResource("14_vrjo2")]
@@ -61,37 +61,37 @@ attack_start_distance = 0.01
 [node name="Doors" type="Node3D" parent="." unique_id=1941516266]
 
 [node name="DoorOffice1" parent="Doors" unique_id=505525111 node_paths=PackedStringArray("front_room", "back_room") instance=ExtResource("15_yfh15")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1.8134253, 0, -0.72136)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1.77, 0, -0.721)
 door_mesh = ExtResource("11_niqb0")
 front_room = NodePath("../../Rooms/Corridor1")
 back_room = NodePath("../../Rooms/Office")
 
 [node name="DoorOffice2" parent="Doors" unique_id=1384318600 node_paths=PackedStringArray("front_room", "back_room") instance=ExtResource("15_yfh15")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 14.677977, 1.1920929e-06, -0.7205967)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 15.042, 0, -0.721)
 door_mesh = ExtResource("11_niqb0")
 front_room = NodePath("../../Rooms/Office")
 back_room = NodePath("../../Rooms/Corridor2")
 
 [node name="DoorLobby" parent="Doors" unique_id=1269759081 node_paths=PackedStringArray("front_room", "back_room") instance=ExtResource("15_yfh15")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -17.566372, 0, -0.72136)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -17.755, 0, -0.721)
 door_mesh = ExtResource("10_neqxg")
 front_room = NodePath("../../Rooms/Lobby")
 back_room = NodePath("../../Rooms/Corridor1")
 
 [node name="DoorRestroom" parent="Doors" unique_id=683432335 node_paths=PackedStringArray("front_room", "back_room") instance=ExtResource("15_yfh15")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.268027, 0, -1.7173991)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.268, 0, -1.78)
 door_mesh = ExtResource("11_niqb0")
 front_room = NodePath("../../Rooms/Restroom")
 back_room = NodePath("../../Rooms/Corridor1")
 
 [node name="DoorCabinet" parent="Doors" unique_id=266470684 node_paths=PackedStringArray("front_room", "back_room") instance=ExtResource("15_yfh15")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.2742453, 0, -1.7173991)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.274, 0, -1.78)
 door_mesh = ExtResource("10_neqxg")
 front_room = NodePath("../../Rooms/Cabinet")
 back_room = NodePath("../../Rooms/Corridor1")
 
 [node name="DoorLaboratory" parent="Doors" unique_id=553540253 node_paths=PackedStringArray("front_room", "back_room") instance=ExtResource("15_yfh15")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.162, 0, 13.956)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.5, 0, 13.956)
 door_mesh = ExtResource("11_niqb0")
 front_room = NodePath("../../Rooms/Corridor2")
 back_room = NodePath("../../Rooms/Laboratory")
@@ -137,34 +137,6 @@ max_distance = 30.0
 transform = Transform3D(0.9771087, 0, 0.21274048, 0, 1, 0, -0.21274048, 0, 0.9771087, -5.265826, 2.6320395, -4.8716464)
 
 [node name="BlobShadow" parent="RigidBodies/HealthPack2" unique_id=854424772 instance=ExtResource("15_8uakf")]
-transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
-max_distance = 30.0
-
-[node name="HealthPack3" parent="RigidBodies" unique_id=542937026 instance=ExtResource("16_7xti7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.831356, 0.15345001, 23.271)
-
-[node name="BlobShadow" parent="RigidBodies/HealthPack3" unique_id=493060961 instance=ExtResource("15_8uakf")]
-transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
-max_distance = 30.0
-
-[node name="HealthPack4" parent="RigidBodies" unique_id=910574172 instance=ExtResource("16_7xti7")]
-transform = Transform3D(0.9771087, 0, 0.21274048, 0, 1, 0, -0.21274048, 0, 0.9771087, 33.59858, 0.15768689, 23.6716)
-
-[node name="BlobShadow" parent="RigidBodies/HealthPack4" unique_id=1615668579 instance=ExtResource("15_8uakf")]
-transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
-max_distance = 30.0
-
-[node name="HealthPack5" parent="RigidBodies" unique_id=1113198593 instance=ExtResource("16_7xti7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.82493, 0.45693672, 23.509493)
-
-[node name="BlobShadow" parent="RigidBodies/HealthPack5" unique_id=1722729046 instance=ExtResource("15_8uakf")]
-transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
-max_distance = 30.0
-
-[node name="HealthPack6" parent="RigidBodies" unique_id=1438315652 instance=ExtResource("16_7xti7")]
-transform = Transform3D(0.9771087, 0, 0.21274048, 0, 1, 0, -0.21274048, 0, 0.9771087, 33.96743, 0.15768689, 23.6716)
-
-[node name="BlobShadow" parent="RigidBodies/HealthPack6" unique_id=1867187258 instance=ExtResource("15_8uakf")]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
 max_distance = 30.0
 
