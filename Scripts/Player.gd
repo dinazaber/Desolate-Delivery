@@ -101,7 +101,7 @@ var healthbar_def_color
 @onready var camDefHeight = camera.position.y
 @export_category("CAMERA")
 @export var cam_speed: float = 0.005 #mouse sens
-@export var cam_rot_amount: float = 0.03 #camera tilt
+@export var cam_rot_amount: float = deg_to_rad(3.0) #camera tilt
 
 # --- EFFECTS ---
 @onready var hands = $shakeable_camera/Hands
@@ -352,7 +352,10 @@ func handle_camera_rotations(event):
 
 func cam_gun_tilt_sway(input_x, input_y, delta):
 	if camera:
-		camera.rotation.z = lerp(camera.rotation.z, -input_x * cam_rot_amount, delta * 5.0)
+		var wall_tilt_ang = 0.0
+		if wallrun:
+			wall_tilt_ang = clamp(asin(global_transform.basis.z.signed_angle_to(-get_wall_normal(), Vector3.UP))/2, -deg_to_rad(10.0), deg_to_rad(10.0))
+		camera.rotation.z = lerp(camera.rotation.z, -input_x * cam_rot_amount + wall_tilt_ang, delta * 5.0)
 	if hands:
 		hands.rotation.z = lerp(hands.rotation.z, -input_x * gun_rot_amount * 10, delta * 3.0)
 		hands.rotation.x = lerp(hands.rotation.x, input_y * gun_rot_amount * 20, delta * 1.5)
