@@ -58,7 +58,7 @@ point_count = 2
 
 [sub_resource type="Gradient" id="Gradient_sb53g"]
 offsets = PackedFloat32Array(0, 0.24354243, 0.78597784, 1)
-colors = PackedColorArray(1, 0.25882354, 0, 0, 1, 0.25882354, 0, 1, 1, 1, 0, 1, 1, 1, 0, 0)
+colors = PackedColorArray(1, 0.33333334, 0, 0, 1, 0.33333334, 0, 1, 1, 1, 0, 1, 1, 1, 0, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_y47ym"]
 gradient = SubResource("Gradient_sb53g")
@@ -69,11 +69,9 @@ fill_to = Vector2(0.508547, 0)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iy3nd"]
 transparency = 1
 cull_mode = 2
+shading_mode = 0
 vertex_color_use_as_albedo = true
 albedo_texture = SubResource("GradientTexture2D_y47ym")
-emission_enabled = true
-emission = Color(1, 0.54901963, 0, 1)
-emission_energy_multiplier = 2.0
 
 [sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_vouo3"]
 material = SubResource("StandardMaterial3D_iy3nd")
@@ -119,6 +117,7 @@ scale_max = 1.1999999
 scale_curve = SubResource("CurveTexture_6rbch")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2byne"]
+shading_mode = 2
 vertex_color_use_as_albedo = true
 albedo_color = Color(1, 0.50980395, 0, 1)
 emission_enabled = true
@@ -162,6 +161,7 @@ alpha_curve = SubResource("CurveTexture_rgnl6")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5oibr"]
 transparency = 1
+shading_mode = 2
 vertex_color_use_as_albedo = true
 
 [sub_resource type="SphereMesh" id="SphereMesh_u6nk3"]
@@ -207,8 +207,11 @@ emission_curve = SubResource("CurveTexture_mf0rl")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7uf86"]
 transparency = 1
-shading_mode = 0
+shading_mode = 2
 vertex_color_use_as_albedo = true
+emission_enabled = true
+emission = Color(1, 0.27450982, 0, 1)
+emission_energy_multiplier = 10.0
 
 [sub_resource type="SphereMesh" id="SphereMesh_c8iff"]
 material = SubResource("StandardMaterial3D_7uf86")
@@ -225,7 +228,6 @@ inertia = Vector3(7.2, 20, 7.2)
 continuous_cd = true
 max_contacts_reported = 1
 script = ExtResource("1_5lybq")
-damage = null
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1485554187]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.4)

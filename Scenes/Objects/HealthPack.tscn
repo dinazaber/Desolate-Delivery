@@ -190,6 +190,7 @@ alpha_curve = SubResource("CurveTexture_5h1ts")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nxf3c"]
 transparency = 1
+shading_mode = 2
 vertex_color_use_as_albedo = true
 albedo_color = Color(1, 0.78431374, 0, 1)
 emission_enabled = true
@@ -230,6 +231,7 @@ scale_max = 1.1999999
 scale_curve = SubResource("CurveTexture_kwbo8")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jp046"]
+shading_mode = 2
 vertex_color_use_as_albedo = true
 albedo_color = Color(1, 0.50980395, 0, 1)
 emission_enabled = true

@@ -541,6 +541,7 @@ scale_curve = SubResource("CurveTexture_ghbjs")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dsyxb"]
 transparency = 1
+shading_mode = 2
 vertex_color_use_as_albedo = true
 albedo_color = Color(0.11764706, 0.11764706, 0.11764706, 0.8627451)
 
@@ -591,6 +592,7 @@ alpha_curve = SubResource("CurveTexture_u7cuq")
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yxj0h"]
 transparency = 1
 cull_mode = 2
+shading_mode = 2
 vertex_color_use_as_albedo = true
 albedo_color = Color(1, 0.5882353, 0, 1)
 emission_enabled = true
@@ -624,6 +626,7 @@ alpha_curve = SubResource("CurveTexture_d2pp6")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nhcda"]
 transparency = 1
+shading_mode = 2
 vertex_color_use_as_albedo = true
 albedo_color = Color(1, 0.5882353, 0, 0.5882353)
 emission_enabled = true
@@ -668,6 +671,7 @@ alpha_curve = SubResource("CurveTexture_qbdty")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0am0p"]
 transparency = 1
+shading_mode = 2
 vertex_color_use_as_albedo = true
 albedo_color = Color(0.4506483, 0.4506483, 0.45064825, 1)
 

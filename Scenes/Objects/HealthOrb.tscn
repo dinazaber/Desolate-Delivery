@@ -31,6 +31,7 @@ gravity = Vector3(0, 0, 0)
 scale_curve = SubResource("CurveTexture_upvrm")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3u3ng"]
+shading_mode = 2
 vertex_color_use_as_albedo = true
 albedo_color = Color(1, 0.5882353, 0, 1)
 emission_enabled = true

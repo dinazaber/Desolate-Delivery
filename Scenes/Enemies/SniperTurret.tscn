@@ -79,6 +79,10 @@ gravity = Vector3(0, 0, 0)
 scale_curve = SubResource("CurveTexture_g0gsv")
 alpha_curve = SubResource("CurveTexture_bbe7t")
 
+[sub_resource type="Curve" id="Curve_h8b4f"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
 [sub_resource type="Gradient" id="Gradient_h5qh4"]
 offsets = PackedFloat32Array(0, 0.19838056, 0.82186234, 1)
 colors = PackedColorArray(1, 0.50980395, 0, 0, 1, 0.50980395, 0, 1, 1, 0.50980395, 0, 1, 1, 0.50980395, 0, 0)
@@ -93,18 +97,19 @@ fill_to = Vector2(0.51282054, 0)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dfow3"]
 transparency = 1
 cull_mode = 2
+shading_mode = 2
 vertex_color_use_as_albedo = true
 albedo_texture = SubResource("GradientTexture2D_sm1nr")
 emission_enabled = true
-emission = Color(1, 0.50980395, 0, 1)
-emission_energy_multiplier = 4.0
+emission = Color(1, 0.43137255, 0, 1)
+emission_energy_multiplier = 6.0
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_e4n6m"]
+[sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_iy0aj"]
 material = SubResource("StandardMaterial3D_dfow3")
-top_radius = 0.01
-bottom_radius = 0.0
-height = 0.115
-radial_segments = 4
+size = 0.035
+sections = 2
+section_length = 0.115
+curve = SubResource("Curve_h8b4f")
 
 [sub_resource type="Curve" id="Curve_4yweh"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.06837607, 1), 0.0, 0.0, 0, 0, Vector2(0.21794873, 0.7191012), 0.0, 0.0, 0, 0, Vector2(0.3632479, 0.97752815), 0.0, 0.0, 0, 0, Vector2(0.54273504, 0.82022476), 0.0, 0.0, 0, 0, Vector2(0.5982906, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -131,6 +136,7 @@ gravity = Vector3(0, 0, 0)
 scale_curve = SubResource("CurveXYZTexture_st424")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h5qh4"]
+shading_mode = 2
 vertex_color_use_as_albedo = true
 albedo_color = Color(1, 0.50980395, 0, 1)
 emission_enabled = true
@@ -172,6 +178,7 @@ gravity = Vector3(0, 0, 0)
 scale_curve = SubResource("CurveXYZTexture_xmnhq")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sm1nr"]
+shading_mode = 2
 vertex_color_use_as_albedo = true
 albedo_color = Color(1, 0.50980395, 0, 1)
 emission_enabled = true
@@ -216,11 +223,12 @@ fill_to = Vector2(0.51282054, 0)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qm7o5"]
 transparency = 1
 cull_mode = 2
+shading_mode = 2
 vertex_color_use_as_albedo = true
 albedo_texture = SubResource("GradientTexture2D_8iha5")
 emission_enabled = true
 emission = Color(5.2943824e-06, 0.7433952, 0.7433951, 1)
-emission_energy_multiplier = 8.0
+emission_energy_multiplier = 10.0
 
 [sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_qm7o5"]
 material = SubResource("StandardMaterial3D_qm7o5")
@@ -263,6 +271,7 @@ fill_to = Vector2(0.51282054, 0)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_owrfq"]
 transparency = 1
 cull_mode = 2
+shading_mode = 2
 vertex_color_use_as_albedo = true
 albedo_texture = SubResource("GradientTexture2D_h5qh4")
 emission_enabled = true
@@ -430,7 +439,7 @@ lifetime = 4.0
 one_shot = true
 explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_xmnhq")
-draw_pass_1 = SubResource("CylinderMesh_e4n6m")
+draw_pass_1 = SubResource("RibbonTrailMesh_iy0aj")
 
 [node name="GPUParticlesAttractorSphere3D" type="GPUParticlesAttractorSphere3D" parent="GunPivot" unique_id=1809729407]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.394)

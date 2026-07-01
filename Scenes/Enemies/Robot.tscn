@@ -387,16 +387,20 @@ scale_curve = SubResource("CurveTexture_o787m")
 color_ramp = SubResource("GradientTexture1D_hfj1t")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2a8ro"]
-shading_mode = 0
+shading_mode = 2
 vertex_color_use_as_albedo = true
 albedo_color = Color(1, 0.6862745, 0, 1)
+emission_enabled = true
+emission = Color(1, 0.39215687, 0, 1)
+emission_energy_multiplier = 4.0
+use_particle_trails = true
 
 [sub_resource type="SphereMesh" id="SphereMesh_a3cge"]
 material = SubResource("StandardMaterial3D_2a8ro")
 radius = 0.267
 height = 0.534
-radial_segments = 16
-rings = 8
+radial_segments = 6
+rings = 3
 
 [sub_resource type="Gradient" id="Gradient_ftkyl"]
 offsets = PackedFloat32Array(0.018691588, 1)
@@ -429,13 +433,8 @@ radial_accel_curve = SubResource("CurveTexture_bgpjt")
 scale_curve = SubResource("CurveTexture_sxk8o")
 color_ramp = SubResource("GradientTexture1D_pat76")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0dti8"]
-shading_mode = 0
-vertex_color_use_as_albedo = true
-albedo_color = Color(1, 0.6862745, 0, 1)
-
 [sub_resource type="BoxMesh" id="BoxMesh_oqbdp"]
-material = SubResource("StandardMaterial3D_0dti8")
+material = SubResource("StandardMaterial3D_2a8ro")
 size = Vector3(0.1, 0.1, 0.1)
 
 [sub_resource type="Gradient" id="Gradient_hfj1t"]
@@ -457,14 +456,8 @@ color_ramp = SubResource("GradientTexture1D_bss3a")
 _data = [Vector2(0.006451614, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fh1s2"]
-shading_mode = 0
-vertex_color_use_as_albedo = true
-albedo_color = Color(1, 0.6862745, 0, 1)
-use_particle_trails = true
-
 [sub_resource type="TubeTrailMesh" id="TubeTrailMesh_o787m"]
-material = SubResource("StandardMaterial3D_fh1s2")
+material = SubResource("StandardMaterial3D_2a8ro")
 radius = 0.01
 section_length = 0.1
 curve = SubResource("Curve_336do")

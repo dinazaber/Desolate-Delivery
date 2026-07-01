@@ -112,8 +112,11 @@ _data = {
 }
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aw7ay"]
-shading_mode = 0
+shading_mode = 2
 albedo_color = Color(1, 0.5882353, 0, 1)
+emission_enabled = true
+emission = Color(1, 0.39215687, 0, 1)
+emission_energy_multiplier = 5.0
 
 [sub_resource type="SphereMesh" id="SphereMesh_fxcsm"]
 material = SubResource("StandardMaterial3D_aw7ay")
@@ -124,8 +127,11 @@ rings = 4
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6wlni"]
 transparency = 1
-shading_mode = 0
+shading_mode = 2
 albedo_color = Color(1, 0.5882353, 0, 0.078431375)
+emission_enabled = true
+emission = Color(1, 0.47058824, 0, 1)
+emission_energy_multiplier = 2.0
 
 [sub_resource type="SphereMesh" id="SphereMesh_aw7ay"]
 material = SubResource("StandardMaterial3D_6wlni")
@@ -156,7 +162,7 @@ point_count = 3
 
 [sub_resource type="Gradient" id="Gradient_uuauu"]
 offsets = PackedFloat32Array(0, 0.2398524, 0.7785978, 1)
-colors = PackedColorArray(1, 0.39215687, 0, 0, 1, 0.39215687, 0, 0.7058824, 1, 0.5882353, 0, 0.78431374, 1, 0.5882353, 0, 0)
+colors = PackedColorArray(1, 0.49019608, 0, 0, 1, 0.49019608, 0, 0.7058824, 1, 0.78431374, 0, 0.78431374, 1, 0.78431374, 0, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_kru5m"]
 gradient = SubResource("Gradient_uuauu")
@@ -197,7 +203,7 @@ point_count = 5
 curve = SubResource("Curve_aw7ay")
 
 [sub_resource type="Gradient" id="Gradient_kru5m"]
-colors = PackedColorArray(1, 0.7058824, 0, 1, 1, 0.29411766, 0, 1)
+colors = PackedColorArray(1, 0.78431374, 0, 1, 1, 0.39215687, 0, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_2awmy"]
 gradient = SubResource("Gradient_kru5m")
@@ -287,8 +293,11 @@ emission_curve = SubResource("CurveTexture_2awmy")
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_re4ky"]
 transparency = 1
 cull_mode = 2
-shading_mode = 0
+shading_mode = 2
 vertex_color_use_as_albedo = true
+emission_enabled = true
+emission = Color(1, 0.47058824, 0, 1)
+emission_energy_multiplier = 4.0
 
 [sub_resource type="SphereMesh" id="SphereMesh_ddfbw"]
 material = SubResource("StandardMaterial3D_re4ky")
