@@ -472,15 +472,15 @@ environment_mode = 0
 generate_probes_subdiv = 3
 light_data = ExtResource("1_tsg2d")
 
-[node name="CeillingLamp1" type="SpotLight3D" parent="LightmapGI" unique_id=1595123267]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -3.408081, 2.8834984, -1.3674757)
+[node name="CeillingLamp1" type="SpotLight3D" parent="LightmapGI" unique_id=159330719]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -3.408081, 2.9121833, -1.3674757)
 light_indirect_energy = 2.0
 light_bake_mode = 1
 shadow_caster_mask = 4294967293
 distance_fade_enabled = true
 distance_fade_begin = 5.0
 spot_range = 10.0
-spot_angle = 80.0
+spot_angle = 89.0
 
 [node name="CeillingLamp2" type="SpotLight3D" parent="LightmapGI" unique_id=1997159024]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -2.6869087, 2.8834984, 2.9869113)
@@ -491,7 +491,7 @@ shadow_caster_mask = 4294967293
 distance_fade_enabled = true
 distance_fade_begin = 5.0
 spot_range = 10.0
-spot_angle = 80.0
+spot_angle = 89.0
 
 [node name="OmniLight3D" type="OmniLight3D" parent="LightmapGI" unique_id=167103207]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.6523056, 2.8379712, 8.091642)
@@ -523,6 +523,7 @@ omni_range = 2.0
 
 [node name="OmniLight3D5" type="SpotLight3D" parent="LightmapGI" unique_id=137734045]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -5.7016025, 1.8799925, 3.6769524)
+visible = false
 light_energy = 0.2
 light_bake_mode = 1
 distance_fade_enabled = true

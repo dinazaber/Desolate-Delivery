@@ -443,6 +443,7 @@ bones/2/rotation = Quaternion(-0.7071069, 0, 0, 0.70710665)
 bones/2/scale = Vector3(1, 0.99999994, 0.99999994)
 
 [node name="Cube_005" type="MeshInstance3D" parent="Skeleton3D" unique_id=237098575]
+gi_mode = 2
 mesh = SubResource("ArrayMesh_7uf86")
 skin = SubResource("Skin_jmlml")
 skeleton = NodePath("../..")

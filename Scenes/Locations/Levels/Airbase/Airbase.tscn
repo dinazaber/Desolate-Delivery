@@ -36,22 +36,25 @@ sky_horizon_color = Color(0.57, 0.40071, 0.19379999, 1)
 ground_horizon_color = Color(0.5510784, 0.45966792, 0.27524716, 1)
 energy_multiplier = 0.7
 
-[sub_resource type="Sky" id="Sky_33yqv"]
+[sub_resource type="Sky" id="Sky_66qxi"]
 sky_material = SubResource("ProceduralSkyMaterial_66vu3")
 radiance_size = 0
 
 [sub_resource type="Environment" id="Environment_7rfda"]
 background_mode = 2
-sky = SubResource("Sky_33yqv")
+sky = SubResource("Sky_66qxi")
 ambient_light_source = 2
 ambient_light_color = Color(0.64, 0.49919996, 0.288, 1)
 reflected_light_source = 2
 tonemap_mode = 2
 tonemap_exposure = 0.85
 ssao_enabled = true
+ssao_radius = 0.25
 ssao_power = 3.0
-sdfgi_min_cell_size = 1.0
-sdfgi_y_scale = 0
+ssao_detail = 5.0
+ssao_horizon = 0.01
+sdfgi_min_cell_size = 5.0
+sdfgi_y_scale = 2
 glow_enabled = true
 glow_normalized = true
 glow_strength = 1.3
@@ -330,6 +333,7 @@ metadata/_edit_lock_ = true
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=12456610]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.749267, 0, 0)
+visible = false
 navigation_mesh = SubResource("NavigationMesh_8gw12")
 navigation_layers = 5
 
@@ -415,12 +419,14 @@ skeleton = NodePath("")
 
 [node name="Plane1" type="MeshInstance3D" parent="Hangars/Planes" unique_id=118131535]
 transform = Transform3D(-3.4969112e-08, 0, -0.79999995, 0, 0.8, 0, 0.8, 0, -3.496911e-08, -2.6077056, 1.3059026, 10.445118)
+cast_shadow = 0
 visibility_range_end = 50.0
 mesh = ExtResource("16_r08w0")
 skeleton = NodePath("")
 
 [node name="Plane2" type="MeshInstance3D" parent="Hangars/Planes" unique_id=986676319]
 transform = Transform3D(-0.023719072, 0, -0.79964817, 0, 0.79999995, 0, 0.7996482, 0, -0.02371907, -24.079014, 1.3059026, 10.445118)
+cast_shadow = 0
 visibility_range_end = 50.0
 mesh = ExtResource("16_r08w0")
 skeleton = NodePath("")
@@ -613,13 +619,11 @@ skeleton = NodePath("../..")
 [node name="RigidBody" parent="." unique_id=707473027 instance=ExtResource("21_eopy5")]
 transform = Transform3D(-0.98270464, 0, 0.18517986, 0, 1, 0, -0.18517986, 0, -0.98270464, -8.6437645, 0.793875, 3.179725)
 inertia = Vector3(5.85, 16.25, 5.85)
-damage = 150.0
 total_scale = 0.4
 
 [node name="RigidBody2" parent="." unique_id=1651338683 instance=ExtResource("21_eopy5")]
 transform = Transform3D(-0.0322801, 0.9766981, 0.21217619, 0.98967576, 0.0015753063, 0.14331594, 0.13964218, 0.21461187, -0.9666653, -7.4558344, 0.6927624, 3.2488549)
 inertia = Vector3(5.85, 16.25, 5.85)
-damage = 150.0
 total_scale = 0.4
 
 [node name="HealthPack" parent="." unique_id=1895141670 instance=ExtResource("22_vh3lb")]
@@ -836,5 +840,5 @@ shape = SubResource("CylinderShape3D_7rfda")
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 23.349, 4.808791, -29.685)
 
 [node name="ThrowableBody" parent="." unique_id=562624679 instance=ExtResource("29_66qxi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.893524, 0.9176705, 2.298111)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.893524, 0.676304, 2.298111)
 total_scale = 0.4

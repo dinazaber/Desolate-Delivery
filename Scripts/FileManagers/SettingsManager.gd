@@ -101,6 +101,7 @@ func apply_settings():
 	if string != "None":
 		if "MSAA" in string:
 			get_viewport().screen_space_aa = Viewport.SCREEN_SPACE_AA_DISABLED
+			get_viewport().use_taa = false
 			var n = string[string.length() - 2].to_int()
 			match n:
 				2: get_viewport().msaa_3d = Viewport.MSAA_2X
@@ -110,18 +111,26 @@ func apply_settings():
 		elif "FXAA" == string:
 			get_viewport().screen_space_aa = Viewport.SCREEN_SPACE_AA_DISABLED
 			get_viewport().screen_space_aa = Viewport.SCREEN_SPACE_AA_FXAA
+			get_viewport().use_taa = false
 			get_viewport().msaa_3d = Viewport.MSAA_DISABLED
 		
 		elif "SMAA" == string:
 			get_viewport().screen_space_aa = Viewport.SCREEN_SPACE_AA_DISABLED
 			get_viewport().screen_space_aa = Viewport.SCREEN_SPACE_AA_SMAA
+			get_viewport().use_taa = false
 			get_viewport().msaa_3d = Viewport.MSAA_DISABLED
+		
+		elif "TAA" == string:
+			get_viewport().screen_space_aa = Viewport.SCREEN_SPACE_AA_DISABLED
+			get_viewport().msaa_3d = Viewport.MSAA_DISABLED
+			get_viewport().use_taa = true
 		
 			
 	
 	else:
 		get_viewport().screen_space_aa = Viewport.SCREEN_SPACE_AA_DISABLED
 		get_viewport().msaa_3d = Viewport.MSAA_DISABLED
+		get_viewport().use_taa = false
 	
 	if player:
 		player.cam_speed = SettingsManager.settings.controls.mouse_sensitivity
