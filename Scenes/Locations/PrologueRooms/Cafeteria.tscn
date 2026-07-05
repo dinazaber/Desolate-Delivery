@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cjbdnnro20mvf" path="res://assets/Textures/Poster1Large.png" id="7_bgsb3"]
 [ext_resource type="ArrayMesh" uid="uid://bp8ef7whe1aee" path="res://assets/Meshes/Objects/CeilingLampRound.mesh" id="7_q5l61"]
 [ext_resource type="Shader" uid="uid://cunx8274v1qyy" path="res://Shaders/MeshShaders/MeshShader.gdshader" id="8_0jcsx"]
+[ext_resource type="Shader" uid="uid://dnjm72wf3qewv" path="res://Shaders/MeshShaders/Graffiti.gdshader" id="8_4h41l"]
 [ext_resource type="ArrayMesh" uid="uid://bc8nvgji4ufh1" path="res://assets/Meshes/Objects/CaffeTable.mesh" id="8_gc0qf"]
 [ext_resource type="Texture2D" uid="uid://kqnjcrk75lb3" path="res://assets/Textures/Dirt.png" id="9_bgsb3"]
 [ext_resource type="ArrayMesh" uid="uid://bbx58htq7by0e" path="res://assets/Meshes/Objects/CaffeTableSquared.mesh" id="9_ia2gw"]
@@ -215,6 +216,37 @@ lightmap_size_hint = Vector2i(11, 18)
 material = SubResource("StandardMaterial3D_o1yff")
 add_uv2 = true
 size = Vector2(1.98, 3.25)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_kwb1r"]
+noise_type = 3
+seed = 1
+offset = Vector3(-298.38, 0, 0)
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_m8sxu"]
+generate_mipmaps = false
+noise = SubResource("FastNoiseLite_kwb1r")
+seamless = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4h41l"]
+render_priority = 0
+shader = ExtResource("8_4h41l")
+shader_parameter/main_tex = ExtResource("27_4h41l")
+shader_parameter/global_alpha = 0.70000003325
+shader_parameter/detail_tex = ExtResource("9_bgsb3")
+shader_parameter/detail_tiling = Vector2(4, 1)
+shader_parameter/detail_alpha_mult = 0.50000002375
+shader_parameter/alpha_detail_tex = SubResource("NoiseTexture2D_m8sxu")
+shader_parameter/alpha_tiling = Vector2(2, 1.25)
+shader_parameter/fade_start = 0.7200000342
+shader_parameter/fade_end = 1.0
+shader_parameter/edge_thickness = 0.14000000665
+shader_parameter/edge_falloff = 0.12500000523898
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_lpm4w"]
+lightmap_size_hint = Vector2i(42, 12)
+material = SubResource("ShaderMaterial_4h41l")
+add_uv2 = true
+size = Vector2(8, 2)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jph88"]
 render_priority = 0
@@ -748,7 +780,7 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_axh55")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_4h41l"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lpm4w"]
 render_priority = 0
 shader = ExtResource("8_0jcsx")
 shader_parameter/enable_wireframe = true
@@ -794,7 +826,7 @@ _surfaces = [{
 "index_count": 1002,
 "index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUAGAAZABoAGAAbABkAHAAdAB4AHAAfAB0AIAAhACIAIAAjACEAJAAlACYAJAAnACUAKAApACoAKAArACkALAAtAC4ALAAvAC0AMAAxADIAMAAzADEANAA1ADYANAA3ADUAOAA5ADoAQQBCAEMAQQBEAEIA/gA/AEAA/gA+AD8ARQBGAEcARQBIAEYASQBKAEsAUgBTAFQAUgBVAFMATAD/AE4ATABNAP8AVgBXAFgAVgBZAFcAAAFQAFEAAAFPAFAAWgBbAFwAWgBdAFsAOwABAT0AOwA8AAEBXgBfAGAAXgBhAF8AYgBjAGQAYgBlAGMAZgBnAGgAZgBpAGcAagBrAGwAagBtAGsAbgBvAHAAbgBxAG8AcgBzAHQAcgB1AHMAdgB3AHgAdgB5AHcAegB7AHwAegB9AHsAfgB/AIAAfgCBAH8AggCDAIQAggCFAIMAhgCHAIgAhgCJAIcAigCLAIwAigCNAIsAjgCPAJAAjgCRAI8AkgCTAJQAkgCVAJMAlgCXAJgAlgCZAJcAmgCbAJwAmgCdAJsAngCfAKAAngChAJ8AogCjAKQAogClAKMApgCnAKgApgCpAKcAqgCrAKwAqgCtAKsArgCvALAArgCxAK8AsgCzALQAsgC1ALMAtgC3ALgAtgC5ALcAugC7ALwAugC9ALsAvgC/AMAAvgDBAL8AwgDDAMQAwgDFAMMAxgDHAMgAxgDJAMcAAgEDAQQBAgEFAQMBBgEHAQgBBgEJAQcBCgELAQwBCgENAQsBDgEPARABDgERAQ8BEgETARQBEgEVARMBFgEXARgBFgEZARcBGgEbARwBGgEdARsBHgEfASABHgEhAR8BIgEjASQBIgElASMBJgEnASgBJgEpAScBKgErASwBKgEtASsBLgEvATABLgExAS8BMgEzATQBMgE1ATMBNgE3ATgBNgE5ATcBOgE7ATwBOgE9ATsBPgE/AUABPgFBAT8BQgFDAUQBQgFFAUMBRgFHAUgBRgFJAUcBSgFLAUwBSgFNAUsBTgFPAVABTgFRAU8BUgFTAVQBUgFVAVMBVgFXAVgBVgFZAVcBWgFbAVwBWgFdAVsBXgFfAWABXgFhAV8BygDLAMwAygDNAMsAzgDPANAA0ADPANEA0ADRANIAzgDTAM8A0gDRANQA1QDTAM4A1QDUANMAzgDWANUA1ADVANcA2ADWAM4A0gDUANgA1ADXANgA2ADZANYA2ADXANkA2gDbANwA2gDdANsA3gDfAOAA3gDhAN8A4gDjAOQA4gDlAOMA5gDnAOgA5gDpAOcA6gDrAOwA6gDtAOsA7gDvAPAA7gDxAO8A8gDzAPQA8gD1APMA9gD3APgA9gD5APcAYgFjAWQBYgFlAWMBZgFnAWgBZgFpAWcBagFrAWwBagFtAWsBbgFvAXABbgFxAW8BcgFzAXQBcgF1AXMBdgF3AXgBdgF5AXcBegF7AXwBegF9AXsBfgF/AYABfgGBAX8BggGDAYQBggGFAYMBhgGHAYgBhgGJAYcBigGLAYwBigGNAYsBjgGPAZABjgGRAY8BkgGTAZQBkgGVAZMBlgGXAZgBlgGZAZcBmgGbAZwBmgGdAZsBngGfAaABngGhAZ8BogGjAaQBogGlAaMBpgGnAagBpgGpAacBqgGrAawBqgGtAasBrgGvAbABrgGxAa8BsgGzAbQBsgG1AbMBtgG3AbgBtgG5AbcBugG7AbwBugG9AbsBvgG/AcABvgHBAb8BwgHDAcQBwgHFAcMBxgHHAcgBxgHJAccBygHLAcwBygHNAcsBzgHPAdABzgHRAc8B0gHTAdQB0gHVAdMB1gHXAdgB1gHZAdcB2gHbAdwB2gHdAdsB3gHfAeAB3gHhAd8B4gHjAeQB4gHlAeMB5gHnAegB5gHpAecB6gHrAewB6gHtAesB7gHvAfAB7gHxAe8B8gHzAfQB8gH1AfMB9gH3AfgB9gH5AfcB+gH7AfwB+gH9AfsB/gH/AQAC/gEBAv8BAgIDAgQCAgIFAgMCBgIHAggCBgIJAgcCCgILAgwCCgINAgsCDgIPAhACDgIRAg8CEgITAhQCEgIVAhMCFgIXAhgCFgIZAhcCGgIbAhwCGgIdAhsCHgIfAiACHgIhAh8CIgIjAiQCIgIlAiMCJgInAigCJgIpAicCKgIrAiwCKgItAisCLgIvAjACLgIxAi8CMgIzAjQCMgI1AjMCNgI3AjgCNgI5AjcCOgI7AjwCOgI9AjsCPgI/AkACPgJBAj8CQgJDAkQCQgJFAkMCRgJHAkgCRgJJAkcCSgJLAkwCSgJNAksCTgJPAlACTgJRAk8CUgJTAlQCUgJVAlMCVgJXAlgCVgJZAlcCWgJbAlwCWgJdAlsCXgJfAmACXgJhAl8CYgJjAmQCYgJlAmMCZgJnAmgCZgJpAmcCagJrAmwCagJtAmsCbgJvAnACbgJxAm8CcgJzAnQCcgJ1AnMCdgJ3AngCdgJ5AncCegJ7AnwCegJ9AnsCfgJ/AoACfgKBAn8CggKDAoQCggKFAoMChgKHAogChgKJAocCigKLAowCigKNAosC+gD7APwA+gD9APsA"),
 "lods": [1.4395465, PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUAGAAZABoAGAAbABkAHAAdAB4AHAAfAB0AIAAhACIAIAAjACEAJAAlACYAJAAnACUAKAApACoAKAArACkALAAtAC4ALAAvAC0AMAAxADIAMAAzADEANAA1ADYANAA3ADUAOAA5ADoAOwA8ADkAOwA5AD0AOAA+AD8AOAA/AEAAQQBCAEMAQQBEAEIARQBGAEcARQBIAEYASQBKAEsATABNAEoATABKAE4ASQBPAFAASQBQAFEAUgBTAFQAUgBVAFMAVgBXAFgAVgBZAFcAWgBbAFwAWgBdAFsAXgBfAGAAXgBhAF8AYgBjAGQAYgBlAGMAZgBnAGgAZgBpAGcAagBrAGwAagBtAGsAbgBvAHAAbgBxAG8AcgBzAHQAcgB1AHMAdgB3AHgAdgB5AHcAegB7AHwAegB9AHsAfgB/AIAAfgCBAH8AggCDAIQAggCFAIMAhgCHAIgAhgCJAIcAigCLAIwAigCNAIsAjgCPAJAAjgCRAI8AkgCTAJQAkgCVAJMAlgCXAJgAlgCZAJcAmgCbAJwAmgCdAJsAngCfAKAAngChAJ8AogCjAKQAogClAKMApgCnAKgApgCpAKcAqgCrAKwAqgCtAKsArgCvALAArgCxAK8AsgCzALQAsgC1ALMAtgC3ALgAtgC5ALcAugC7ALwAugC9ALsAvgC/AMAAvgDBAL8AwgDDAMQAwgDFAMMAxgDHAMgAxgDJAMcAygDLAMwAygDNAMsAzgDPANAA0ADPANEA0ADRANIAzgDTAM8A0gDRANQA1QDTAM4A1QDUANMAzgDWANUA1ADVANcA2ADWAM4A0gDUANgA1ADXANgA2ADZANYA2ADXANkA2gDbANwA2gDdANsA3gDfAOAA3gDhAN8A4gDjAOQA4gDlAOMA5gDnAOgA5gDpAOcA6gDrAOwA6gDtAOsA7gDvAPAA7gDxAO8A8gDzAPQA8gD1APMA9gD3APgA9gD5APcA+gD7APwA+gD9APsA")],
-"material": SubResource("ShaderMaterial_4h41l"),
+"material": SubResource("ShaderMaterial_lpm4w"),
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
 "vertex_count": 654,
@@ -1235,6 +1267,11 @@ skeleton = NodePath("../../..")
 transform = Transform3D(-4.371139e-08, -1, 0, -4.371139e-08, 1.9106855e-15, -1, 1, -4.371139e-08, -4.371139e-08, -0.004000187, 0, 0)
 mesh = SubResource("PlaneMesh_4oprt")
 metadata/_edit_lock_ = true
+
+[node name="Graffiti" type="MeshInstance3D" parent="MainFloor" unique_id=272305054]
+transform = Transform3D(-8.829701e-08, -2.02, 8.829701e-08, -9.099068e-10, -8.829701e-08, -2.02, 2.0408163, -8.9206914e-08, 9.098997e-10, 9.9974, 4.0505853, -3.303337)
+mesh = SubResource("PlaneMesh_lpm4w")
+skeleton = NodePath("")
 
 [node name="Ceilling" type="MeshInstance3D" parent="MainFloor" unique_id=1903179040]
 gi_lightmap_texel_scale = 4.0
@@ -1802,9 +1839,3 @@ skeleton = NodePath("")
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -8, 6, 5)
 mesh = ExtResource("19_0jcsx")
 skeleton = NodePath("")
-
-[node name="Decal" type="Decal" parent="." unique_id=2143404483]
-transform = Transform3D(-4.371139e-08, -1, 4.371139e-08, 0, -4.371139e-08, -1, 1, -4.371139e-08, 1.9106855e-15, 10.965521, 4.0257325, -2.4175038)
-size = Vector3(16, 2, 4)
-texture_albedo = ExtResource("27_4h41l")
-upper_fade = 0.1
