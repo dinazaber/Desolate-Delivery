@@ -11,7 +11,7 @@ var is_held: bool = false
 		$CollisionShape3D.scale = Vector3(1.0, 1.0, 1.0) * total_scale
 		$Area3D.scale = Vector3(1.0, 1.0, 1.0) * total_scale
 		$Particles.scale = Vector3(1.0, 1.0, 1.0) * total_scale
-		inertia = Vector3(0.9,2.5,0.9) * mass
+		inertia = Vector3.ONE * 0.5 * mass
 
 #@onready var blob_shadow = $BlobShadow
 

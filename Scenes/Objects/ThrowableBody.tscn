@@ -4,6 +4,7 @@
 [ext_resource type="ArrayMesh" uid="uid://br33wg26qu7sk" path="res://assets/Meshes/Objects/Crate2.mesh" id="2_3uona"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_3t8db"]
+bounce = 0.2
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3uona"]
 size = Vector3(2, 2, 2)

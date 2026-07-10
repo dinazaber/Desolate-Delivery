@@ -133,6 +133,8 @@ func save():
 func _ready() -> void:
 	#platform_on_leave = CharacterBody3D.PLATFORM_ON_LEAVE_DO_NOTHING
 	
+	spawn_health_orbs(Vector3.ZERO, 0)
+	
 	screenEffect = get_tree().get_first_node_in_group("Effects")
 	
 	camAnim.play("breath")

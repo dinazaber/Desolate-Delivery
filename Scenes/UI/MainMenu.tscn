@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://b2hljcs3010c5" path="res://Scenes/UI/Settings.tscn" id="2_853f1"]
 [ext_resource type="PackedScene" uid="uid://dtrupg8u7agye" path="res://Scenes/UI/LevelSelect.tscn" id="3_4pyop"]
 [ext_resource type="LightmapGIData" uid="uid://ct5bh0e6apxpa" path="res://assets/Lightmaps/MainMenu.lmbake" id="4_4pyop"]
+[ext_resource type="Shader" uid="uid://no1jy7cyw0an" path="res://Shaders/PostProcess/SandStorm.gdshader" id="4_ervkh"]
 [ext_resource type="Shader" uid="uid://du6da8ox1uyei" path="res://Shaders/Particles/SandStorm.gdshader" id="4_jex3y"]
 [ext_resource type="Shader" uid="uid://b5qxk2hnep8ku" path="res://Shaders/MeshShaders/GroundShader.gdshader" id="5_0ncoa"]
 [ext_resource type="Shader" uid="uid://cunx8274v1qyy" path="res://Shaders/MeshShaders/MeshShader.gdshader" id="7_dvisc"]
@@ -21,6 +22,41 @@
 [ext_resource type="PackedScene" uid="uid://bmm256oikf8f" path="res://Scenes/Objects/Radio.tscn" id="20_xwq8e"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ghw46"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_2qihr"]
+noise_type = 4
+fractal_type = 2
+domain_warp_type = 1
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_yb21e"]
+generate_mipmaps = false
+noise = SubResource("FastNoiseLite_2qihr")
+seamless = true
+seamless_blend_skirt = 1.0
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_xwq8e"]
+noise_type = 3
+frequency = 0.05
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_mie3u"]
+width = 64
+height = 64
+generate_mipmaps = false
+noise = SubResource("FastNoiseLite_xwq8e")
+seamless = true
+seamless_blend_skirt = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sdupg"]
+shader = ExtResource("4_ervkh")
+shader_parameter/noise_img_fast = SubResource("NoiseTexture2D_yb21e")
+shader_parameter/noise_img_slow = SubResource("NoiseTexture2D_mie3u")
+shader_parameter/dust_color = Color(0.61259824, 0.5202404, 0.3289249, 0.5019608)
+shader_parameter/total_opacity = 0.6000000285
+shader_parameter/look_angle_factor = 1.0
+shader_parameter/speed_fast = Vector2(-0.2, -0.1)
+shader_parameter/speed_slow = Vector2(-0.8, -0.1)
+shader_parameter/density_fast = 0.2
+shader_parameter/density_slow = 0.5
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4pyop"]
 sky_top_color = Color(0.59563476, 0.4778695, 0.33213112, 1)
@@ -47,11 +83,10 @@ glow_enabled = true
 glow_normalized = true
 glow_strength = 1.3
 glow_hdr_threshold = 0.0
+fog_enabled = true
 fog_light_color = Color(0.79, 0.69151336, 0.4424, 1)
-fog_sun_scatter = 0.15
-fog_sky_affect = 0.8
+fog_density = 0.25
 fog_depth_end = 40.0
-volumetric_fog_enabled = true
 volumetric_fog_density = 0.03
 volumetric_fog_albedo = Color(0.85, 0.71683335, 0.45049998, 1)
 volumetric_fog_emission = Color(0.8370007, 0.6644195, 0.37070605, 1)
@@ -60,13 +95,6 @@ volumetric_fog_sky_affect = 0.9
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_744d7"]
 shader = ExtResource("4_jex3y")
-shader_parameter/albedo = Color(0.745697, 0.46254927, 0, 1)
-shader_parameter/emission = Color(0.9999997, 0.8667844, 0.4759872, 1)
-shader_parameter/density = 1.0000000475
-shader_parameter/wind_direction = Vector3(-1, -0.2, 0.5)
-shader_parameter/wind_speed = 3.0
-shader_parameter/noise_scale = 1.5
-shader_parameter/detail_strength = 0.5
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5k2g7"]
 render_priority = 0
@@ -339,6 +367,18 @@ parent_menu = NodePath("../MainMenu")
 visible = false
 layout_mode = 1
 parent_menu = NodePath("../MainMenu")
+
+[node name="SandHaze" type="ColorRect" parent="." unique_id=1079536322 groups=["Effects"]]
+process_mode = 1
+show_behind_parent = true
+material = SubResource("ShaderMaterial_sdupg")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 
 [node name="3DScene" type="Node3D" parent="." unique_id=711007571]
 

@@ -1,0 +1,124 @@
+[gd_scene format=3 uid="uid://lv2hsjt70n6s"]
+
+[ext_resource type="Script" uid="uid://b5jfhtvxsvi3n" path="res://Scripts/Modules/Board.gd" id="1_qmqx0"]
+[ext_resource type="ArrayMesh" uid="uid://byd684lbd543e" path="res://assets/Meshes/Objects/BoardMain.mesh" id="2_6l3x7"]
+[ext_resource type="ArrayMesh" uid="uid://2nmpyesdgjfm" path="res://assets/Meshes/Objects/BoardPart.mesh" id="3_4icou"]
+
+[sub_resource type="Curve" id="Curve_d2yjo"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.5017065, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_pwhch"]
+curve = SubResource("Curve_d2yjo")
+
+[sub_resource type="Curve" id="Curve_4fp0b"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.2527881, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_kwbo8"]
+curve = SubResource("Curve_4fp0b")
+
+[sub_resource type="Curve" id="Curve_th3sy"]
+_limits = [0.0, 3.0, 0.0, 1.0]
+_data = [Vector2(0.007246375, 2.8392859), 0.0, 0.0, 0, 0, Vector2(1, 0.6428571), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_x3amw"]
+curve = SubResource("Curve_th3sy")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_m3r4a"]
+particle_flag_align_y = true
+spread = 180.0
+initial_velocity_min = 10.0
+initial_velocity_max = 15.0
+gravity = Vector3(0, 0, 0)
+radial_accel_curve = SubResource("CurveTexture_pwhch")
+scale_max = 2.0
+scale_curve = SubResource("CurveTexture_kwbo8")
+scale_over_velocity_curve = SubResource("CurveTexture_x3amw")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ck4q3"]
+albedo_color = Color(0.7217396, 0.6467848, 0.49466866, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_gmeev"]
+material = SubResource("StandardMaterial3D_ck4q3")
+size = Vector3(1, 0.05, 0.2)
+
+[sub_resource type="Curve" id="Curve_r7apn"]
+_data = [Vector2(0.007246375, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_5h1ts"]
+curve = SubResource("Curve_r7apn")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2fg2f"]
+particle_flag_align_y = true
+spread = 180.0
+initial_velocity_min = 5.0
+initial_velocity_max = 7.0
+gravity = Vector3(0, 0, 0)
+radial_accel_curve = SubResource("CurveTexture_pwhch")
+scale_max = 2.0
+scale_curve = SubResource("CurveTexture_kwbo8")
+scale_over_velocity_curve = SubResource("CurveTexture_x3amw")
+color = Color(0.85, 0.85, 0.85, 0.5882353)
+alpha_curve = SubResource("CurveTexture_5h1ts")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sr0ta"]
+transparency = 1
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.65834004, 0.6583399, 0.6583399, 0.5882353)
+
+[sub_resource type="SphereMesh" id="SphereMesh_k3ggo"]
+material = SubResource("StandardMaterial3D_sr0ta")
+radial_segments = 8
+rings = 4
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kf1mn"]
+size = Vector3(0.19393921, 1.9823608, 9.974487)
+
+[node name="Board" type="StaticBody3D" unique_id=1208088355]
+collision_layer = 3
+script = ExtResource("1_qmqx0")
+
+[node name="BoardMain" type="MeshInstance3D" parent="." unique_id=546125697]
+gi_mode = 0
+gi_lightmap_texel_scale = 0.5
+mesh = ExtResource("2_6l3x7")
+
+[node name="BoardPart" type="MeshInstance3D" parent="." unique_id=459373749]
+gi_mode = 0
+gi_lightmap_texel_scale = 0.5
+mesh = ExtResource("3_4icou")
+
+[node name="Particles" type="Node3D" parent="." unique_id=993844497]
+
+[node name="BreakCrate" type="GPUParticles3D" parent="Particles" unique_id=1276809763]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+cast_shadow = 0
+emitting = false
+amount = 16
+lifetime = 0.2
+one_shot = true
+explosiveness = 1.0
+fixed_fps = 60
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_m3r4a")
+draw_pass_1 = SubResource("BoxMesh_gmeev")
+
+[node name="Dust" type="GPUParticles3D" parent="Particles" unique_id=257264692]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+cast_shadow = 0
+emitting = false
+amount = 6
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+fixed_fps = 60
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_2fg2f")
+draw_pass_1 = SubResource("SphereMesh_k3ggo")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1193071374]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.10322571, 0.0047912598, 0.0014038086)
+shape = SubResource("BoxShape3D_kf1mn")

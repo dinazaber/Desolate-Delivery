@@ -152,10 +152,10 @@ uv2_triplanar_sharpness = 1.5157177
 texture_filter = 1
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_841du"]
-lightmap_size_hint = Vector2i(18, 12)
+lightmap_size_hint = Vector2i(22, 12)
 material = SubResource("StandardMaterial3D_ew1ly")
 add_uv2 = true
-size = Vector2(3.3, 2)
+size = Vector2(4, 2)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_c1bxl"]
 render_priority = 0
@@ -559,15 +559,16 @@ gi_mode = 2
 mesh = ExtResource("7_yxhpu")
 
 [node name="Picture" type="MeshInstance3D" parent="Room" unique_id=2136195311]
-transform = Transform3D(-4.371139e-08, 1, -4.371139e-08, 0, -4.371139e-08, -1, -1, -4.371139e-08, 1.9106855e-15, 1.7623812, 2.7624, -5.8705254)
+transform = Transform3D(-4.371139e-08, 1.21, -4.371139e-08, 0, -5.289078e-08, -1, -1, -5.289078e-08, 1.9106855e-15, 1.7623812, 2.7624, -5.8705254)
 gi_lightmap_texel_scale = 0.5
 mesh = ExtResource("10_h3uod")
 skeleton = NodePath("../..")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Room/Picture" unique_id=634499477]
-transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, -8.351872e-23, -1.6703743e-22, 0, 1, -0.004000187, 0, 0)
+[node name="Ill" type="MeshInstance3D" parent="Room/Picture" unique_id=634499477]
+transform = Transform3D(-4.3711385e-08, -1, -2.1175824e-22, 0.82644624, -3.6125112e-08, -6.9023726e-23, 3.5527137e-15, 0, 1, -0.004000187, 0, 0)
 gi_lightmap_texel_scale = 0.5
 mesh = SubResource("PlaneMesh_841du")
+metadata/_edit_lock_ = true
 
 [node name="LampsOff" type="MeshInstance3D" parent="Room" unique_id=643301205]
 mesh = SubResource("ArrayMesh_gy3wg")

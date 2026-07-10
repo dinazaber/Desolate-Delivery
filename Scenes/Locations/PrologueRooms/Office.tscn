@@ -863,7 +863,7 @@ curve = SubResource("Curve_jpsfy")
 [node name="Office" type="Node3D" unique_id=75341550]
 
 [node name="LightmapGI" type="LightmapGI" parent="." unique_id=1294919039]
-quality = 2
+quality = 3
 supersampling = true
 bounces = 16
 bounce_indirect_energy = 2.0
