@@ -1,5 +1,5 @@
 shader_type spatial;
-render_mode depth_draw_opaque, cull_back;
+render_mode depth_draw_opaque, cull_back, specular_disabled;
 
 uniform bool enable_detail_1 = true;
 uniform bool enable_detail_2 = true;

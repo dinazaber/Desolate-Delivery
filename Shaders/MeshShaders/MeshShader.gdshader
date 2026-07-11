@@ -1,5 +1,5 @@
 shader_type spatial;
-render_mode cull_back;
+render_mode cull_back, specular_disabled;
 
 uniform bool enable_wireframe = true;
 uniform bool enable_world_projection = true;
