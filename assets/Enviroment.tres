@@ -13,6 +13,7 @@ glow_levels/5 = 0.1
 glow_levels/6 = 0.05
 glow_strength = 1.32
 glow_bloom = 0.2
+glow_blend_mode = 2
 glow_hdr_scale = 0.0
 fog_light_color = Color(0, 0, 0, 1)
 fog_density = 0.05

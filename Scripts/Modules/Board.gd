@@ -5,4 +5,4 @@ func damage_taken(_a, _b, _c, _d):
 	$Particles/BreakCrate.emitting = true
 	$Particles/Dust.emitting = true
 	$CollisionShape3D.disabled = true
-	#No rigid body needed for my opinion
+	#No rigid body needed in my opinion
