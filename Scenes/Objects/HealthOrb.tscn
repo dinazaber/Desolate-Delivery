@@ -1,42 +1,26 @@
 [gd_scene format=3 uid="uid://d2gygjx5cmc2h"]
 
 [ext_resource type="Script" uid="uid://vtw3sm4g1b32" path="res://Scripts/Modules/HealthOrb.gd" id="1_w4o6i"]
+[ext_resource type="Shader" uid="uid://2nubfvj7i3s4" path="res://Shaders/Particles/Glow.gdshader" id="2_upvrm"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_upvrm"]
 radius = 0.05
 
-[sub_resource type="Shader" id="Shader_w4o6i"]
-code = "shader_type spatial;
-render_mode blend_add, depth_draw_never, cull_back, unshaded;
-
-uniform vec4 shine_color : source_color = vec4(1.0, 0.3, 0.0, 1.0);
-uniform float fade_power : hint_range(0.1, 10.0) = 2.0;              // Higher = tighter core, softer edge
-uniform float alpha_multiplier : hint_range(0.0, 5.0) = 1.0;
-
-void fragment() {
-    // High value when looking directly at the center, drops to 0.0 at the grazing edges
-    float center_glow = dot(normalize(NORMAL), normalize(VIEW));
-    
-    // Smooth out the falloff toward the edges
-    float smooth_fade = pow(center_glow, fade_power);
-    
-    ALBEDO = shine_color.rgb;
-    ALPHA = smooth_fade * shine_color.a * alpha_multiplier;
-}"
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_w4o6i"]
 render_priority = 0
-shader = SubResource("Shader_w4o6i")
-shader_parameter/shine_color = Color(0.83639574, 0.6974883, 0, 1)
-shader_parameter/fade_power = 4.61100021576262
-shader_parameter/alpha_multiplier = 4.23600020121
+shader = ExtResource("2_upvrm")
+shader_parameter/core_color = Color(1.8247963, 1.5278301, 0, 1)
+shader_parameter/glow_color = Color(1.8247963, 0.5775381, 0, 1)
+shader_parameter/core_power = 10.0
+shader_parameter/glow_power = 10.0
+shader_parameter/alpha_multiplier = 1.0
 
 [sub_resource type="SphereMesh" id="SphereMesh_w4o6i"]
 material = SubResource("ShaderMaterial_w4o6i")
-radius = 0.07
-height = 0.14
-radial_segments = 12
-rings = 12
+radius = 0.06
+height = 0.12
+radial_segments = 16
+rings = 16
 
 [sub_resource type="Curve" id="Curve_w4o6i"]
 _data = [Vector2(0, 1), 2.9773223, 0.0, 0, 0, Vector2(0.24907064, 1), 0.0, -1.3131306, 0, 0, Vector2(1, 0), -1.3517895, 0.0, 0, 0]
@@ -49,19 +33,12 @@ curve = SubResource("Curve_w4o6i")
 gravity = Vector3(0, 0, 0)
 scale_curve = SubResource("CurveTexture_upvrm")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_45jo6"]
-render_priority = 0
-shader = SubResource("Shader_w4o6i")
-shader_parameter/shine_color = Color(0.96246237, 0.5455455, 3.85046e-07, 1)
-shader_parameter/fade_power = 8.27000038956512
-shader_parameter/alpha_multiplier = 2.82800013433
-
 [sub_resource type="SphereMesh" id="SphereMesh_45jo6"]
-material = SubResource("ShaderMaterial_45jo6")
+material = SubResource("ShaderMaterial_w4o6i")
 radius = 0.05
 height = 0.1
-radial_segments = 8
-rings = 4
+radial_segments = 16
+rings = 8
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_w4o6i"]
 emission_shape = 2
@@ -69,17 +46,12 @@ emission_sphere_radius = 0.05
 gravity = Vector3(0, 0, 0)
 scale_curve = SubResource("CurveTexture_upvrm")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3u3ng"]
-shading_mode = 0
-vertex_color_use_as_albedo = true
-albedo_color = Color(1, 0.5882353, 0, 1)
-
 [sub_resource type="SphereMesh" id="SphereMesh_upvrm"]
-material = SubResource("StandardMaterial3D_3u3ng")
+material = SubResource("ShaderMaterial_w4o6i")
 radius = 0.03
 height = 0.06
-radial_segments = 4
-rings = 2
+radial_segments = 8
+rings = 8
 
 [sub_resource type="Curve" id="Curve_upvrm"]
 _data = [Vector2(0, 0), 0.0, 3.0568178, 0, 0, Vector2(0.330855, 1), 2.9773223, 0.0, 0, 0, Vector2(0.66171, 1), 0.0, -3.007396, 0, 0, Vector2(1, 0), -2.921577, 0.0, 0, 0]
@@ -103,25 +75,11 @@ gravity = Vector3(0, 0, 0)
 scale_curve = SubResource("CurveTexture_45jo6")
 
 [sub_resource type="SphereMesh" id="SphereMesh_3u3ng"]
-material = SubResource("StandardMaterial3D_3u3ng")
+material = SubResource("ShaderMaterial_w4o6i")
 radius = 0.015
 height = 0.03
-radial_segments = 4
-rings = 1
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_upvrm"]
-render_priority = 0
-shader = SubResource("Shader_w4o6i")
-shader_parameter/shine_color = Color(0.8708399, 0.25825948, 3.85046e-07, 1)
-shader_parameter/fade_power = 6.83100032121262
-shader_parameter/alpha_multiplier = 5.0
-
-[sub_resource type="SphereMesh" id="SphereMesh_m8a3k"]
-material = SubResource("ShaderMaterial_upvrm")
-radius = 0.05
-height = 0.1
-radial_segments = 24
-rings = 24
+radial_segments = 8
+rings = 8
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_w4o6i"]
 radius = 0.2
@@ -140,19 +98,22 @@ script = ExtResource("1_w4o6i")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=860962691]
 shape = SubResource("SphereShape3D_upvrm")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=128434985]
+[node name="Orb" type="MeshInstance3D" parent="." unique_id=128434985]
 cast_shadow = 0
+gi_mode = 0
 mesh = SubResource("SphereMesh_w4o6i")
 
-[node name="trail" type="GPUParticles3D" parent="MeshInstance3D" unique_id=251732504]
+[node name="trail" type="GPUParticles3D" parent="Orb" unique_id=251732504]
 cast_shadow = 0
+gi_mode = 0
 amount = 12
 lifetime = 0.3
 process_material = SubResource("ParticleProcessMaterial_45jo6")
 draw_pass_1 = SubResource("SphereMesh_45jo6")
 
-[node name="bulges" type="GPUParticles3D" parent="MeshInstance3D" unique_id=750795847]
+[node name="bulges" type="GPUParticles3D" parent="Orb" unique_id=750795847]
 cast_shadow = 0
+gi_mode = 0
 amount = 2
 lifetime = 0.4
 explosiveness = 0.4
@@ -161,18 +122,14 @@ local_coords = true
 process_material = SubResource("ParticleProcessMaterial_w4o6i")
 draw_pass_1 = SubResource("SphereMesh_upvrm")
 
-[node name="energy" type="GPUParticles3D" parent="MeshInstance3D" unique_id=745280757]
+[node name="energy" type="GPUParticles3D" parent="Orb" unique_id=745280757]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, -0.07, 0)
 cast_shadow = 0
+gi_mode = 0
 amount = 4
 lifetime = 0.7
 process_material = SubResource("ParticleProcessMaterial_m8a3k")
 draw_pass_1 = SubResource("SphereMesh_3u3ng")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=1383798084]
-transform = Transform3D(1.8, 0, 0, 0, 1.8, 0, 0, 0, 1.8, 0, 0, 0)
-cast_shadow = 0
-mesh = SubResource("SphereMesh_m8a3k")
 
 [node name="PickupRange" type="Area3D" parent="." unique_id=1283329828]
 collision_layer = 0

@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b83ondemls0mo" path="res://Scripts/Modules/HealthPack.gd" id="1_hd37v"]
 [ext_resource type="ArrayMesh" uid="uid://d0gdxh2rcp5r" path="res://assets/Meshes/Objects/HealthPack.mesh" id="2_hd37v"]
+[ext_resource type="PackedScene" uid="uid://dxk2f100s6ilh" path="res://Scenes/Modules/BlobShadow.tscn" id="3_sr0ta"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_hd37v"]
 bounce = 0.3
@@ -203,7 +204,7 @@ top_radius = 0.0
 bottom_radius = 0.005
 height = 0.05
 radial_segments = 4
-rings = 2
+rings = 0
 
 [sub_resource type="Curve" id="Curve_l4klk"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.5017065, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
@@ -230,16 +231,8 @@ scale_min = 0.5
 scale_max = 1.1999999
 scale_curve = SubResource("CurveTexture_kwbo8")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jp046"]
-shading_mode = 2
-vertex_color_use_as_albedo = true
-albedo_color = Color(1, 0.50980395, 0, 1)
-emission_enabled = true
-emission = Color(1, 0.39215687, 0, 1)
-emission_energy_multiplier = 4.0
-
 [sub_resource type="CylinderMesh" id="CylinderMesh_nxf3c"]
-material = SubResource("StandardMaterial3D_jp046")
+material = SubResource("StandardMaterial3D_nxf3c")
 top_radius = 0.05
 bottom_radius = 0.0
 height = 0.4
@@ -263,6 +256,7 @@ shape = SubResource("BoxShape3D_hd37v")
 [node name="HealthPack" type="MeshInstance3D" parent="." unique_id=298360792]
 transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 0, 0)
 layers = 2
+cast_shadow = 0
 gi_mode = 2
 visibility_range_end = 45.0
 mesh = ExtResource("2_hd37v")
@@ -271,6 +265,7 @@ mesh = ExtResource("2_hd37v")
 transform = Transform3D(1, 0, 0, 0, -4.3711385e-08, -0.99999994, 0, 0.99999994, -4.3711385e-08, 0, 0, 0)
 layers = 2
 cast_shadow = 0
+gi_mode = 0
 visibility_range_end = 10.0
 amount = 4
 lifetime = 2.0
@@ -283,6 +278,7 @@ radius = 0.5
 
 [node name="consume" type="GPUParticles3D" parent="." unique_id=1702731240]
 cast_shadow = 0
+gi_mode = 0
 emitting = false
 lifetime = 0.3
 one_shot = true
@@ -290,3 +286,6 @@ explosiveness = 1.0
 fixed_fps = 60
 process_material = SubResource("ParticleProcessMaterial_737tx")
 draw_pass_1 = SubResource("CylinderMesh_nxf3c")
+
+[node name="BlobShadow" parent="." unique_id=1303422999 instance=ExtResource("3_sr0ta")]
+transform = Transform3D(0.35, 0, 0, 0, 1, 0, 0, 0, 0.35, 0, 0, 0)

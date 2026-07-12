@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://cnherr4w4kst8" path="res://Scripts/Enemies/Spider/IKtarget.gd" id="2_7rcrm"]
 [ext_resource type="Script" uid="uid://bu686snd5bbwu" path="res://Scripts/Enemies/Spider/StepRay.gd" id="3_pc0d3"]
 [ext_resource type="Script" uid="uid://boxw4v71mim00" path="res://Scripts/Enemies/Spider/StepTargetContainer.gd" id="4_ugsy4"]
+[ext_resource type="PackedScene" uid="uid://dxk2f100s6ilh" path="res://Scenes/Modules/BlobShadow.tscn" id="5_hvyey"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lwfce"]
 
@@ -441,3 +442,6 @@ step_target = NodePath("..")
 [node name="HeightCheck" type="RayCast3D" parent="." unique_id=1238640313]
 target_position = Vector3(0, -10, 0)
 collision_mask = 16
+
+[node name="BlobShadow" parent="." unique_id=1303422999 instance=ExtResource("5_hvyey")]
+transform = Transform3D(4.5, 0, 0, 0, 1, 0, 0, 0, 4.5, 0, 0, 0)
