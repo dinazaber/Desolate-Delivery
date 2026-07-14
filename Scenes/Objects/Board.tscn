@@ -82,11 +82,13 @@ collision_layer = 3
 script = ExtResource("1_qmqx0")
 
 [node name="BoardMain" type="MeshInstance3D" parent="." unique_id=546125697]
+cast_shadow = 0
 gi_mode = 0
 gi_lightmap_texel_scale = 0.5
 mesh = ExtResource("2_6l3x7")
 
 [node name="BoardPart" type="MeshInstance3D" parent="." unique_id=459373749]
+cast_shadow = 0
 gi_mode = 0
 gi_lightmap_texel_scale = 0.5
 mesh = ExtResource("3_4icou")

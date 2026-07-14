@@ -54,7 +54,6 @@ func shoot():
 					body.knockBack((body.global_position - playerPos.global_position).normalized(), damage/25.0, null, 0.2)
 				if body.has_method("throw"):
 					body.throw((body.global_position - playerPos.global_position).normalized(), 80.0)
-					if "thrown" in body: body.thrown = false
 		
 		await anim.animation_finished
 		anim.play_backwards("draw")

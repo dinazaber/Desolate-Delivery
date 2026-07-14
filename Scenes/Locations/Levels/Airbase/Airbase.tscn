@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://bcfml5hf5f0wl" path="res://Scripts/FileManagers/LocationSetup.gd" id="1_ted34"]
 [ext_resource type="ArrayOccluder3D" uid="uid://cqjdfu2321i13" path="res://assets/Occluders/Airbase.occ" id="2_5sbex"]
 [ext_resource type="Shader" uid="uid://no1jy7cyw0an" path="res://Shaders/PostProcess/SandStorm.gdshader" id="3_x6j5x"]
-[ext_resource type="ArrayMesh" uid="uid://gu1mgkoyr7tf" path="res://assets/Meshes/Nature/AirBaseLandscape.mesh" id="4_4xpm0"]
+[ext_resource type="ArrayMesh" uid="uid://gu1mgkoyr7tf" path="res://assets/Meshes/Nature/Airbase/AirBaseLandscape.mesh" id="4_4xpm0"]
 [ext_resource type="Shader" uid="uid://b5qxk2hnep8ku" path="res://Shaders/MeshShaders/GroundShader.gdshader" id="4_5sbex"]
 [ext_resource type="ArrayMesh" uid="uid://bin8shiqvsyc4" path="res://assets/Meshes/Architecture/RunWay.mesh" id="4_8gw12"]
 [ext_resource type="Texture2D" uid="uid://kqnjcrk75lb3" path="res://assets/Textures/Dirt.png" id="8_vtiap"]
@@ -1003,4 +1003,5 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 23.349, 4.808791, -29.685)
 
 [node name="ThrowableBody" parent="." unique_id=562624679 instance=ExtResource("29_66qxi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.893524, 0.676304, 2.298111)
+inertia = Vector3(2, 2, 2)
 total_scale = 0.4

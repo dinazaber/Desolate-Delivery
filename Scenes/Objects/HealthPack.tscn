@@ -261,6 +261,9 @@ gi_mode = 2
 visibility_range_end = 45.0
 mesh = ExtResource("2_hd37v")
 
+[node name="BlobShadow" parent="HealthPack" unique_id=1303422999 instance=ExtResource("3_sr0ta")]
+transform = Transform3D(2.333333, 0, 0, 0, 6.666666, 0, 0, 0, 2.333333, 0, 0, 0)
+
 [node name="energy" type="GPUParticles3D" parent="." unique_id=2021565018]
 transform = Transform3D(1, 0, 0, 0, -4.3711385e-08, -0.99999994, 0, 0.99999994, -4.3711385e-08, 0, 0, 0)
 layers = 2
@@ -286,6 +289,3 @@ explosiveness = 1.0
 fixed_fps = 60
 process_material = SubResource("ParticleProcessMaterial_737tx")
 draw_pass_1 = SubResource("CylinderMesh_nxf3c")
-
-[node name="BlobShadow" parent="." unique_id=1303422999 instance=ExtResource("3_sr0ta")]
-transform = Transform3D(0.35, 0, 0, 0, 1, 0, 0, 0, 0.35, 0, 0, 0)

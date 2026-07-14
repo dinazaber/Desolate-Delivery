@@ -36,9 +36,11 @@ radius = 1.49
 [node name="WaterTower" type="Node3D" unique_id=1568087152]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=703735849]
+gi_lightmap_texel_scale = 4.0
 mesh = ExtResource("1_g0esv")
 
 [node name="FirstLevel" type="StaticBody3D" parent="." unique_id=1797419359]
+visible = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="FirstLevel" unique_id=704129450]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5517539, -6.071578, -0.00036621094)
@@ -57,6 +59,7 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.00
 shape = SubResource("BoxShape3D_g0esv")
 
 [node name="SecondLevel" type="StaticBody3D" parent="." unique_id=595105672]
+visible = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SecondLevel" unique_id=470370458]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1804503, -3.395182, 0.0014572144)
@@ -75,6 +78,7 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.00
 shape = SubResource("BoxShape3D_m7ojw")
 
 [node name="Barrel" type="StaticBody3D" parent="." unique_id=1596640409]
+visible = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Barrel" unique_id=628823264]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.24768066, 0)
@@ -93,6 +97,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.51247, 0)
 shape = SubResource("CylinderShape3D_m7ojw")
 
 [node name="Legs" type="StaticBody3D" parent="." unique_id=1956450653]
+visible = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Legs" unique_id=1103834762]
 transform = Transform3D(0.99026805, -0.1391731, 0, 0.13781868, 0.9806308, 0.13917309, -0.019369153, -0.13781868, 0.99026793, 1.2977467, -4.734037, 1.3000516)
@@ -111,6 +116,7 @@ transform = Transform3D(0.9902816, -0.13377996, 0.03801422, 0.13781866, 0.980630
 shape = SubResource("BoxShape3D_pqfuu")
 
 [node name="Fence" type="StaticBody3D" parent="." unique_id=1064871886]
+visible = false
 
 [node name="CSGBakedCollisionShape3D" type="CollisionShape3D" parent="Fence" unique_id=637845184]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4452889, 0)

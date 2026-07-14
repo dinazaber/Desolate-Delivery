@@ -94,7 +94,7 @@ angle = 2.443461
 [sub_resource type="SphereShape3D" id="SphereShape3D_1vivr"]
 radius = 0.25
 
-[node name="Node3D" type="Node3D" unique_id=2090287065]
+[node name="Spider" type="Node3D" unique_id=2090287065]
 script = ExtResource("1_hvyey")
 
 [node name="Skeleton3D" type="Skeleton3D" parent="." unique_id=1048357609]

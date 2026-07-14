@@ -14,7 +14,6 @@
 [ext_resource type="AudioStream" uid="uid://r260cgbpxdje" path="res://assets/Audio/ChillAmbient.wav" id="12_8jmkq"]
 [ext_resource type="PackedScene" uid="uid://d4bcffi8xi33t" path="res://Scenes/Objects/ThrowableBody.tscn" id="14_5ljsb"]
 [ext_resource type="PackedScene" uid="uid://beqguglkai1oh" path="res://Scenes/Enemies/Robot.tscn" id="14_vrjo2"]
-[ext_resource type="PackedScene" uid="uid://dxk2f100s6ilh" path="res://Scenes/Modules/BlobShadow.tscn" id="15_8uakf"]
 [ext_resource type="PackedScene" uid="uid://d16pmg4f4pnf8" path="res://Scenes/Objects/Door.tscn" id="15_yfh15"]
 [ext_resource type="PackedScene" uid="uid://b1g4ndkkyibs4" path="res://Scenes/Objects/HealthPack.tscn" id="16_7xti7"]
 
@@ -56,6 +55,10 @@ metadata/_edit_lock_ = true
 
 [node name="Robot" parent="." unique_id=969091388 instance=ExtResource("14_vrjo2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 1.1953015, 0)
+attack_start_distance = 0.01
+
+[node name="Robot2" parent="." unique_id=1226321140 instance=ExtResource("14_vrjo2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34, 1.1953015, 27)
 attack_start_distance = 0.01
 
 [node name="Doors" type="Node3D" parent="." unique_id=1941516266]
@@ -100,45 +103,29 @@ back_room = NodePath("../../Rooms/Laboratory")
 
 [node name="ThrowableBody" parent="RigidBodies" unique_id=707473027 instance=ExtResource("14_5ljsb")]
 transform = Transform3D(0.2741288, 0, -0.9616929, 0, 1, 0, 0.9616929, 0, 0.2741288, 36.574047, 0.30119097, 21.357101)
+inertia = Vector3(2, 2, 2)
 total_scale = 0.30000000000000004
-
-[node name="BlobShadow" parent="RigidBodies/ThrowableBody" unique_id=1303422999 instance=ExtResource("15_8uakf")]
-transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0, 0)
 
 [node name="ThrowableBody2" parent="RigidBodies" unique_id=1707342901 instance=ExtResource("14_5ljsb")]
 transform = Transform3D(-0.08210322, 0, -0.9966238, 0, 1, 0, 0.9966238, 0, -0.08210322, 37.277775, 0.30119097, 21.267752)
+inertia = Vector3(2, 2, 2)
 total_scale = 0.30000000000000004
-
-[node name="BlobShadow" parent="RigidBodies/ThrowableBody2" unique_id=1116849997 instance=ExtResource("15_8uakf")]
-transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0, 0)
 
 [node name="ThrowableBody3" parent="RigidBodies" unique_id=840962537 instance=ExtResource("14_5ljsb")]
 transform = Transform3D(0.060036674, 0, -0.9981962, 0, 1, 0, 0.9981962, 0, 0.060036674, 37.004173, 0.30119097, 21.939562)
+inertia = Vector3(2, 2, 2)
 total_scale = 0.30000000000000004
-
-[node name="BlobShadow" parent="RigidBodies/ThrowableBody3" unique_id=317210655 instance=ExtResource("15_8uakf")]
-transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0, 0)
 
 [node name="ThrowableBody4" parent="RigidBodies" unique_id=1658145276 instance=ExtResource("14_5ljsb")]
 transform = Transform3D(0.060036674, 0, -0.9981962, 0, 1, 0, 0.9981962, 0, 0.060036674, 37.013996, 0.90198606, 21.541183)
+inertia = Vector3(2, 2, 2)
 total_scale = 0.30000000000000004
-
-[node name="BlobShadow" parent="RigidBodies/ThrowableBody4" unique_id=411149813 instance=ExtResource("15_8uakf")]
-transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0, 0)
 
 [node name="HealthPack" parent="RigidBodies" unique_id=1895141670 instance=ExtResource("16_7xti7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.317442, 1.3927472, -5.80368)
 
-[node name="BlobShadow" parent="RigidBodies/HealthPack" unique_id=935562029 instance=ExtResource("15_8uakf")]
-transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
-max_distance = 30.0
-
 [node name="HealthPack2" parent="RigidBodies" unique_id=410864365 instance=ExtResource("16_7xti7")]
 transform = Transform3D(0.9771087, 0, 0.21274048, 0, 1, 0, -0.21274048, 0, 0.9771087, -5.265826, 2.6320395, -4.8716464)
-
-[node name="BlobShadow" parent="RigidBodies/HealthPack2" unique_id=854424772 instance=ExtResource("15_8uakf")]
-transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
-max_distance = 30.0
 
 [node name="Ambient" type="AudioStreamPlayer" parent="." unique_id=619284339]
 process_mode = 3

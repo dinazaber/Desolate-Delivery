@@ -2,8 +2,8 @@
 
 importer="2d_array_texture"
 type="CompressedTexture2DArray"
-uid="uid://diujrbna43dnx"
-path.bptc="res://.godot/imported/RunWaySector.exr-55bdb0a834147f699fa8726b8714e74f.bptc.ctexarray"
+uid="uid://beoe846i2ylt4"
+path="res://.godot/imported/WaterTowerSector.exr-ae95dd8cc152c7cde598072565eb4dce.ctexarray"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,17 +11,17 @@ metadata={
 
 [deps]
 
-source_file="res://assets/Lightmaps/Test/RunWaySector.exr"
-dest_files=["res://.godot/imported/RunWaySector.exr-55bdb0a834147f699fa8726b8714e74f.bptc.ctexarray"]
+source_file="res://assets/Lightmaps/Test/WaterTowerSector.exr"
+dest_files=["res://.godot/imported/WaterTowerSector.exr-ae95dd8cc152c7cde598072565eb4dce.ctexarray"]
 
 [params]
 
 compress/mode=2
-compress/high_quality=false
+compress/high_quality=true
 compress/lossy_quality=0.7
 compress/uastc_level=0
 compress/rdo_quality_loss=0.0
-compress/hdr_compression=2
+compress/hdr_compression=0
 compress/channel_pack=1
 mipmaps/generate=false
 mipmaps/limit=-1

@@ -21,9 +21,9 @@ var settings = {
 	},
 	"controls": {
 		"mouse_sensitivity": 0.005
-	},
-	"game": {
-	}
+	}#,
+	#"game": {
+	#} Section is empty and on new device it fails to load config
 }
 
 func _ready():
