@@ -42,7 +42,7 @@ rings = 8
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_w4o6i"]
 emission_shape = 2
-emission_sphere_radius = 0.05
+emission_sphere_radius = 0.03
 gravity = Vector3(0, 0, 0)
 scale_curve = SubResource("CurveTexture_upvrm")
 

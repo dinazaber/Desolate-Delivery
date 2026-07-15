@@ -13,6 +13,7 @@ var playerRayEnd: Marker3D
 @onready var anim = $AnimationPlayer
 @onready var heatBuffer = $HeatBuffer
 @onready var ray = $Marker3D/RayCast3D
+@onready var crosshair = $Crosshair
 
 var can_cool: bool = true
 var heat: float = 0.0
@@ -30,7 +31,7 @@ func _ready() -> void:
 
 func draw(playSpeed):
 	anim.play("draw", -1, playSpeed)
-	$Crosshair.visible = true
+	#$Crosshair.visible = true
 	await anim.animation_finished
 
 func undraw(playSpeed, asap):
@@ -40,7 +41,7 @@ func undraw(playSpeed, asap):
 		anim.speed_scale = 1.0
 	anim.play("undraw", -1, playSpeed)
 	await anim.animation_finished
-	$Crosshair.visible = false
+	#$Crosshair.visible = false
 
 func shoot():
 	if !anim.is_playing() and heat <= 100 - heatPerShot:

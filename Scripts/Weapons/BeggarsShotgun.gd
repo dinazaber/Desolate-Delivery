@@ -3,7 +3,7 @@ extends Node3D
 #gun stats
 @export var damage: float = 6.0 # per pellet
 @export var recoil: float = 4.0 # degree rotation
-@export var spread: float = 4.5 # max pellet spread (degrees) (for first shot)
+@export var spread: float = 6.5 # max pellet spread (degrees) (for first shot)
 @export var pellets: int = 9 # number of pellets
 @export var bullet_speed: float = 85.0 # Speed of particles
 @export var mag: int = 4
@@ -27,6 +27,7 @@ var last_anim: String = ""
 @onready var pellet = $BeggarsShotgun/Barrel/RayCast
 @onready var tracer = $BeggarsShotgun/tracer
 @onready var steam = $BeggarsShotgun/steam
+@onready var crosshair = $Crosshair
 
 var crosshair_move: float = 0.0
 
@@ -38,7 +39,7 @@ func _ready() -> void:
 
 func draw(playSpeed):
 	anim.play("draw", -1, playSpeed)
-	$Crosshair.visible = true
+	#$Crosshair.visible = true
 	shotNum = 1
 	await anim.animation_finished
 
@@ -51,7 +52,7 @@ func undraw(playSpeed, asap):
 	anim.play("undraw", -1, playSpeed)
 	shotNum = 1
 	await anim.animation_finished
-	$Crosshair.visible = false
+	#$Crosshair.visible = false
 
 func charge():
 	if !anim.is_playing():
@@ -152,7 +153,7 @@ func _on_heat_buffer_timeout() -> void:
 	can_cool = true
 
 func update_crosshair():
-	crosshair_move = move_toward(crosshair_move, 2 * spread * (4 - shotNum)/4, 0.4)
+	crosshair_move = move_toward(crosshair_move, 2 * spread * (4 - shotNum*0.7)/4, 0.4)
 	$Crosshair/base/handLD.position = Vector2(-1,1) * crosshair_move
 	$Crosshair/base/handLU.position = Vector2(-1,-1) * crosshair_move
 	$Crosshair/base/handRD.position = Vector2(1,1) * crosshair_move

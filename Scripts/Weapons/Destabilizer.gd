@@ -3,12 +3,13 @@ extends Node3D
 #gun stats
 @export var damage: float = 8.0
 @export var recoil: float = 0.7 # degree rotation
-@export var spread: Vector2 = Vector2(5.0, 15.0) # max deg rotation for 100% heat
+@export var spread: Vector2 = Vector2(2.5, 5.0) # max deg rotation for 100% destabilization
 @export var accuracyPerShot: float = 0.08
+@export var accuracyExponent: float = 2.5
 @export var heatPerShot: float = 2.75
 @export var coolDown: float = 6.0 # time (s) it takes to go from 100 to 0 heat
-@export var destabilize: float = 4.0 # time (s) it takes to go from max to min accuracy
-@export var pellets: int = 2 # number of pellets
+@export var destabilize: float = 2.0 # time (s) it takes to go from min to max accuracy
+@export var pellets: int = 1 # number of pellets
 @export var bullet_speed: float = 85.0 # Speed of particles
 
 var camera: Area3D
@@ -18,13 +19,14 @@ var playerRayEnd: Marker3D
 @onready var anim: AnimationPlayer = $AnimationPlayer
 @onready var heatBuffer = $HeatBuffer
 
-@onready var barrel = $Destabilizer/Barrel
-@onready var tracer = $Destabilizer/tracer
-@onready var ray = $Destabilizer/Barrel/RayCast3D
+@onready var barrel = $Skeleton3D/Barrel
+@onready var tracer = $Skeleton3D/tracer
+@onready var ray = $Skeleton3D/Barrel/RayCast3D
+@onready var crosshair = $Crosshair
 
 var can_cool: bool = true
 var heat: float = 0.0
-var accuracy_mod: float = 1.0
+var accuracy_mod: float = 0.0
 var spin_amount: float = 0.0
 
 func _ready() -> void:
@@ -34,7 +36,7 @@ func _ready() -> void:
 
 func draw(playSpeed):
 	anim.play("draw", -1, playSpeed)
-	$Crosshair.visible = true
+	#$Crosshair.visible = true
 	await anim.animation_finished
 
 func undraw(playSpeed, asap):
@@ -44,25 +46,27 @@ func undraw(playSpeed, asap):
 		anim.speed_scale = 1.0
 	anim.play("undraw", -1, playSpeed)
 	await anim.animation_finished
-	$Crosshair.visible = false
+	#$Crosshair.visible = false
 	spin_amount = 0.0
 
 func spinup(up):
 	if !anim.is_playing():
 		var can_spinup: bool = up and heat < 100 - heatPerShot
-		spin_amount = clamp(spin_amount + (1.0 if can_spinup else -0.2) * 100, 0.0, 1440.0)
-	if spin_amount >= 1440.0: shoot()
+		spin_amount = clamp(spin_amount + (1.0 if can_spinup else -0.2) * 80, 0.0, 1000.0)
+	if spin_amount >= 1000.0: shoot(up)
 
-func shoot():
-	if !anim.is_playing() and heat < 100 - heatPerShot:
-		$Destabilizer/tracer/Sprite.look_at(camera.global_position, Vector3.UP)
-		$Destabilizer/tracer/Sprite.rotation.z = randf_range(-PI, PI)
+func shoot(got_input):
+	if got_input and (!anim.is_playing() or is_fireRate()) and heat < 100 - heatPerShot:
+		$Skeleton3D/tracer/Sprite.look_at(camera.global_position, Vector3.UP)
+		$Skeleton3D/tracer/Sprite.rotation.z = randf_range(-PI, PI)
+		
+		anim.stop()
 		anim.play("shoot")
 		
 		var points = PackedVector3Array()
 		points.resize(pellets)
 		
-		accuracy_mod = clamp(accuracy_mod - accuracyPerShot, 0.2, 1.0)
+		accuracy_mod = clamp(accuracy_mod + accuracyPerShot, 0.1, 1.0)
 		
 		var dist
 		if playerRay.is_colliding():
@@ -75,7 +79,7 @@ func shoot():
 			barrel.look_at(playerRayEnd.global_position)
 		
 		for i in range(pellets):
-			ray.rotation.y = deg_to_rad(randf_range(-spread.y, spread.y) * accuracy_mod)
+			ray.rotation.y = deg_to_rad(randf_range(-spread.y, spread.y) * accuracy_mod**accuracyExponent)
 			ray.rotation.z = deg_to_rad(randf_range(0.0, 360.0))
 			ray.rotation.x = deg_to_rad(randf_range(0.0, spread.x))
 			
@@ -92,7 +96,7 @@ func shoot():
 				if collider.is_in_group("ShotReactable"):
 					collider.shot()
 			
-			else: points[i] = $Destabilizer/Barrel/RayCast3D/Marker3D.global_position # Take end of weapon ray as particle's target point
+			else: points[i] = $Skeleton3D/Barrel/RayCast3D/Marker3D.global_position # Take end of weapon ray as particle's target point
 		
 		var material = tracer.process_material as ShaderMaterial
 		material.set_shader_parameter("hit_points", points) #Updating target points
@@ -104,8 +108,11 @@ func shoot():
 		heatBuffer.start()
 		can_cool = false
 		heat = clamp(heat + heatPerShot, 0.0, 100.0)
-	
-	await anim.animation_finished
+
+func is_fireRate() -> bool:
+	if anim.current_animation != "shoot": return false
+	if anim.current_animation_position < 0.05: return false
+	return true
 
 func get_heat() -> float:
 	return heat
@@ -116,20 +123,35 @@ func _on_restore_cool(coolOnKill: float) -> void:
 func _physics_process(delta: float) -> void:
 	if can_cool:
 		heat = clamp(heat - (100 * delta) / coolDown, 0.0, 100.0)
-		accuracy_mod = clamp(accuracy_mod + delta / destabilize, 0.2, 1.0)
+		accuracy_mod = clamp(accuracy_mod - delta / destabilize, 0.1, 1.0)
+	
+	#if anim.is_playing() and anim.current_animation == "shoot":
+		#await get_tree().create_timer(0.05 / anim.speed_scale).timeout
+		#anim.stop()
 	
 	update_crosshair()
 
 func _process(delta: float) -> void:
-	$Destabilizer/Base/Barrels.rotation_degrees.z -= spin_amount * delta
+	$Skeleton3D/BatteryB.rotation_degrees.y -= spin_amount * delta
+	$Skeleton3D/BatteryF.rotation_degrees.y += spin_amount * delta
 
 func _on_heat_buffer_timeout() -> void:
 	can_cool = true
 
+
 # --- crosshair ---
 func update_crosshair():
-	$Crosshair/base/handL.position.x = move_toward($Crosshair/base/handL.position.x,  - spread.y - accuracy_mod * 100, 1.4)
-	$Crosshair/base/handR.position.x = move_toward($Crosshair/base/handR.position.x,  + spread.y + accuracy_mod * 100, 1.4)
+	var spin_mod = (1000 - spin_amount) / 1000
+	var spinner_rot_mod = 1.5 * spin_mod - 0.25 - 2 * (spin_mod - 0.5) ** 3
+	var spinner_pos_mod = (abs(0.5 - spinner_rot_mod) * 2) ** 4
+	$Crosshair/base/spinnerBase.rotation = PI * spinner_rot_mod
+	
+	$Crosshair/base/handL.position.x = move_toward($Crosshair/base/handL.position.x, -accuracy_mod**accuracyExponent * 40, 2.0)
+	$Crosshair/base/spinnerBase/spinnerL.position.x = $Crosshair/base/handL.position.x * spinner_pos_mod
+	
+	$Crosshair/base/handR.position.x = move_toward($Crosshair/base/handR.position.x, accuracy_mod**accuracyExponent * 40, 2.0)
+	$Crosshair/base/spinnerBase/spinnerR.position.x = $Crosshair/base/handR.position.x * spinner_pos_mod
+
 
 # --- SPREADAING DEBUG FUNCTION ---
 func spawn_debug_cube(pos: Vector3):

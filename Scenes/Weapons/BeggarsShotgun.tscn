@@ -462,7 +462,7 @@ section_length = 1.2
 section_segments = 1
 curve = SubResource("Curve_dxyhc")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_1544g"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sfoia"]
 render_priority = 0
 shader = ExtResource("6_mmsk8")
 shader_parameter/albedo = ExtResource("4_ktqvf")
@@ -471,7 +471,7 @@ shader_parameter/glow_intensity = 10.0
 shader_parameter/draw_forward = true
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_xapv0"]
-material = SubResource("ShaderMaterial_1544g")
+material = SubResource("ShaderMaterial_sfoia")
 size = Vector2(3, 3)
 orientation = 2
 

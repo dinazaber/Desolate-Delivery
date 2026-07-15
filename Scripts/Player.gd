@@ -332,15 +332,20 @@ func handle_weapon_switch():
 func switch_weapon(weapon):
 	if current_gun_R != weapon and !drill.in_action:
 		if current_gun_R.anim.is_playing(): await current_gun_R.anim.animation_finished
-		await current_gun_R.undraw(1.0 * weapon_draw_mod, false)
+		#await current_gun_R.undraw(1.0 * weapon_draw_mod, false)
+		
 		hideWeapons()
+		weapon.crosshair.visible = true
+		
 		current_gun_R = weapon
 		current_gun_R.show()
 		current_gun_R.draw(1.0 * weapon_draw_mod)
 
 func hideWeapons(): #We will add here check for left/right side later I guess
 	for i in $shakeable_camera/Hands/RightHand.get_children():
-		if i is Node3D: i.visible = false
+		if i is Node3D:
+			i.visible = false
+			i.crosshair.visible = false
 
 # --- EFFECTS ---
 
