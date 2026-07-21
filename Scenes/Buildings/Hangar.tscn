@@ -1,0 +1,104 @@
+[gd_scene format=3 uid="uid://djgfqxvc2ift1"]
+
+[ext_resource type="ArrayMesh" uid="uid://q8g0hhj850vv" path="res://assets/Meshes/Architecture/Hangar1.mesh" id="1_xvlbm"]
+[ext_resource type="ArrayMesh" uid="uid://bbwiqq57w8lrp" path="res://assets/Meshes/Architecture/Hangar1ShadowMesh.mesh" id="2_rq56e"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rq56e"]
+size = Vector3(5.2387695, 0.8994751, 0.26879883)
+
+[node name="Hangar" type="Node3D" unique_id=1930945656]
+
+[node name="Hangar" type="MeshInstance3D" parent="." unique_id=165634063]
+transform = Transform3D(-7, 0, -1.0569706e-06, 0, 7, 0, 1.0569706e-06, 0, -7, 0.2886529, -0.34597898, 1.0894957)
+gi_lightmap_texel_scale = 4.0
+mesh = ExtResource("1_xvlbm")
+skeleton = NodePath("../..")
+
+[node name="ShadowMesh" type="MeshInstance3D" parent="Hangar" unique_id=45952452]
+layers = 2
+cast_shadow = 3
+gi_mode = 0
+mesh = ExtResource("2_rq56e")
+
+[node name="SunLights" type="Node3D" parent="Hangar" unique_id=206474839]
+visible = false
+
+[node name="SpotLight3D" type="AreaLight3D" parent="Hangar/SunLights" unique_id=353831896]
+transform = Transform3D(1.9470718e-07, 0, 1, 0, 1, 0, -1, 0, 1.9470718e-07, 0.95966935, 0.7134949, 0.0024977922)
+light_color = Color(0.92156863, 0.7921569, 0.44313726, 1)
+light_energy = 0.5
+light_indirect_energy = 16.0
+light_specular = 0.1
+light_bake_mode = 1
+distance_fade_enabled = true
+distance_fade_begin = 10.0
+area_range = 35.0
+area_size = Vector2(5.203021, 1)
+
+[node name="SpotLight3D2" type="AreaLight3D" parent="Hangar/SunLights" unique_id=1447474325]
+transform = Transform3D(-1.629306e-07, -0.01506302, -0.9998866, 6.584257e-10, 0.9998866, -0.01506302, 1, -3.112578e-09, -1.6290221e-07, -0.96441245, 0.70267, -0.010331035)
+light_color = Color(0.92156863, 0.7921569, 0.44313726, 1)
+light_energy = 0.5
+light_indirect_energy = 16.0
+light_specular = 0.1
+light_bake_mode = 1
+distance_fade_enabled = true
+distance_fade_begin = 10.0
+area_range = 35.0
+area_size = Vector2(5.325445, 1.0952234)
+
+[node name="SpotLight3D4" type="AreaLight3D" parent="Hangar/SunLights" unique_id=1938649902]
+transform = Transform3D(-1.629306e-07, -0.01506302, -0.9998866, 6.584257e-10, 0.9998866, -0.01506302, 1, -3.112578e-09, -1.6290221e-07, -0.96441245, 0.2845972, -0.0004168749)
+light_color = Color(0.92156863, 0.7921569, 0.44313726, 1)
+light_energy = 0.3
+light_indirect_energy = 16.0
+light_specular = 0.1
+light_bake_mode = 1
+distance_fade_enabled = true
+distance_fade_begin = 10.0
+area_range = 35.0
+area_size = Vector2(9.431265, 3.166803)
+
+[node name="Collision" type="StaticBody3D" parent="." unique_id=1201054173]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0.27898073, -0.39913034, 1.1943512)
+visible = false
+collision_layer = 49
+collision_mask = 0
+
+[node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="Collision" unique_id=1234616104]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.18245697, 0, -0.038701057)
+depth = 14.5
+polygon = PackedVector2Array(-6.9904976, 0.3336401, -6.891692, 1.4743912, -6.424613, 2.9834163, -5.7958527, 4.061291, -4.9155884, 5.130184, -3.8017845, 5.992484, -2.598157, 6.630227, -1.295723, 7.0074835, 0.033655167, 7.1512, 1.506752, 6.998501, 2.7732544, 6.630227, 4.0487404, 5.9206257, 5.054756, 5.121202, 5.952984, 4.01638, 6.635639, 2.749877, 7.0218773, 1.465409, 7.147629, 0.35160494, 6.8422318, 0.34262276, 6.7344437, 1.4204977, 6.3751526, 2.695983, 5.7733383, 3.836734, 4.9110413, 4.8876624, 3.9050217, 5.696069, 2.67445, 6.3427935, 1.425909, 6.7290325, -0.0022735596, 6.854784, -1.3047066, 6.6841207, -2.4993515, 6.3158464, -3.7299252, 5.6691217, -4.789836, 4.7978396, -5.562313, 3.836734, -6.1551437, 2.7768235, -6.595277, 1.4294798, -6.730011, 0.36956954)
+
+[node name="CollisionPolygon3D2" type="CollisionPolygon3D" parent="Collision" unique_id=1141634356]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.018039703, -0.018003464, -6.9527903)
+depth = 0.3
+polygon = PackedVector2Array(5.4951057, 3.8160803, 4.589857, 4.9396544, 3.6468925, 5.6857367, 2.5174065, 6.3281956, 1.1806774, 6.7323236, -0.18713951, 6.835946, -1.5445938, 6.6701503, -2.7051659, 6.224573, -4.000448, 5.6028385, -4.9537735, 4.7842207, -5.730335, 3.8063807, -2.7379055, 3.796784, -2.7466145, 5.540665, 2.511097, 5.5616865, 2.4959087, 3.8003263)
+
+[node name="CollisionPolygon3D3" type="CollisionPolygon3D" parent="Collision" unique_id=565484602]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6.8558674)
+depth = 0.3
+polygon = PackedVector2Array(5.491373, 3.9034293, 4.589857, 4.9396544, 3.6468925, 5.6857367, 2.5174065, 6.3281956, 1.1806774, 6.7323236, -0.18713951, 6.835946, -1.5445938, 6.6701503, -2.7051659, 6.224573, -4.000448, 5.6028385, -4.9537735, 4.7842207, -5.7102184, 3.8930671, -2.7466145, 3.9034293, -2.7466145, 5.540665, 2.511097, 5.5616865, 2.5241308, 3.8582025)
+
+[node name="CollisionPolygon3D4" type="CollisionPolygon3D" parent="Collision" unique_id=838256787]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6.946376)
+depth = 0.3
+polygon = PackedVector2Array(6.656807, 0.107732534, 6.5273247, 1.463483, 6.1007977, 2.7887669, 5.4686203, 3.8855538, 4.6221657, 3.9009316, 4.63184, 0.09020972)
+
+[node name="CollisionPolygon3D5" type="CollisionPolygon3D" parent="Collision" unique_id=1214215380]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.23796463, 0, -6.946376)
+depth = 0.3
+polygon = PackedVector2Array(6.656807, 0.107732534, 6.5273247, 1.463483, 6.1007977, 2.7887669, 5.4686203, 3.8855538, 4.576152, 3.8406434, 4.5635805, 0.059586883)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Collision" unique_id=1104188266]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.10058594, 4.185566, -6.957325)
+shape = SubResource("BoxShape3D_rq56e")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Collision" unique_id=278232215]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.13167572, 4.136402, 6.851486)
+shape = SubResource("BoxShape3D_rq56e")
+
+[node name="CollisionPolygon3D6" type="CollisionPolygon3D" parent="Collision" unique_id=1598485505]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4392029, 6.834463)
+depth = 0.3
+polygon = PackedVector2Array(-6.899845, -1.3043615, -6.747513, 0.036155343, -6.305752, 1.3690556, -5.6659594, 2.4582257, 5.499935, 2.4582257, 6.1397285, 1.323356, 6.5281715, 0.036155343, 6.688122, -1.296745)

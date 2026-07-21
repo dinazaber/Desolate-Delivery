@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://c8ry0d0av3ers" path="res://Scripts/Modules/ThrowableBody.gd" id="1_3uona"]
 [ext_resource type="ArrayMesh" uid="uid://bilfgot43ad2c" path="res://assets/Meshes/Objects/DynamicObjects/BoxCrateGreen.mesh" id="2_3uona"]
-[ext_resource type="PackedScene" uid="uid://dxk2f100s6ilh" path="res://Scenes/Modules/BlobShadow.tscn" id="3_3uona"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_3t8db"]
 bounce = 0.2
@@ -74,13 +73,13 @@ scale_over_velocity_curve = SubResource("CurveTexture_x3amw")
 color = Color(0.85, 0.85, 0.85, 0.5882353)
 alpha_curve = SubResource("CurveTexture_5h1ts")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sr0ta"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3uona"]
 transparency = 1
 vertex_color_use_as_albedo = true
 albedo_color = Color(0.65834004, 0.6583399, 0.6583399, 0.5882353)
 
 [sub_resource type="SphereMesh" id="SphereMesh_hd37v"]
-material = SubResource("StandardMaterial3D_sr0ta")
+material = SubResource("StandardMaterial3D_3uona")
 radial_segments = 8
 rings = 4
 
@@ -97,12 +96,9 @@ max_contacts_reported = 2
 linear_damp = 1.0
 script = ExtResource("1_3uona")
 
-[node name="BlobShadow" parent="." unique_id=1303422999 instance=ExtResource("3_3uona")]
-transform = Transform3D(0.7, 0, 0, 0, 1, 0, 0, 0, 0.7, 0, 0, 0)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1485554187]
-gi_mode = 2
-visibility_range_end = 60.0
+[node name="BoxCrate" type="MeshInstance3D" parent="." unique_id=1485554187]
+layers = 4
+gi_mode = 0
 mesh = ExtResource("2_3uona")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1527479017]

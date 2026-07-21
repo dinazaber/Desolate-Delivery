@@ -29,7 +29,6 @@ varying vec3 worldPos;
 varying vec3 world_normal;
 varying vec2 UV3;
 varying vec2 UV4;
-//uniform float viewmodel_fov = 70.0f;
 
 
 // --- THE OPTIMIZED BOX PROJECTION FUNCTION ---
@@ -137,4 +136,6 @@ void fragment() {
 	vec3 blended_wire = mix(out_color, wire_color.rgb, wire_transparency);
 	
     ALBEDO = mix(out_color, blended_wire, wire_mask * alpha_fade);
+	
+	ROUGHNESS = 0.5;
 }

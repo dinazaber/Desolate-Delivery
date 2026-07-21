@@ -220,6 +220,7 @@ bones/16/rotation = Quaternion(-0.00012681265, -3.2268872e-08, 7.29094e-05, 1)
 bones/16/scale = Vector3(1.0000001, 0.99999976, 0.9999999)
 
 [node name="Cube_002" type="MeshInstance3D" parent="Skeleton3D" unique_id=1111383572]
+layers = 2
 mesh = SubResource("ArrayMesh_pc0d3")
 skin = SubResource("Skin_hvyey")
 

@@ -1,8 +1,6 @@
 [gd_resource type="ArrayMesh" format=4 uid="uid://c064yoajsl070"]
 
 [ext_resource type="Shader" uid="uid://cunx8274v1qyy" path="res://Shaders/MeshShaders/MeshShader.gdshader" id="1_5j235"]
-[ext_resource type="Texture2D" uid="uid://kqnjcrk75lb3" path="res://assets/Textures/Dirt.png" id="2_fbkmj"]
-[ext_resource type="Texture2D" uid="uid://bu6ue5ydfh2q6" path="res://assets/Textures/Rust.png" id="3_fopk8"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5j235"]
 render_priority = 0
@@ -13,13 +11,12 @@ shader_parameter/has_rig = false
 shader_parameter/enable_detail_1 = true
 shader_parameter/enable_detail_2 = true
 shader_parameter/enable_glow = false
+shader_parameter/receive_shadows = true
 shader_parameter/wire_color = Color(0, 0, 0, 1)
 shader_parameter/wire_width = 1.0
 shader_parameter/wire_transparency = 0.5
-shader_parameter/detail1 = ExtResource("2_fbkmj")
-shader_parameter/detail1_scale = 0.5
-shader_parameter/alpha1 = 0.5
-shader_parameter/detail2 = ExtResource("3_fopk8")
+shader_parameter/detail1_scale = 1.0
+shader_parameter/alpha1 = 1.0
 shader_parameter/detail2_scale = 1.0
 shader_parameter/alpha2 = 1.0
 shader_parameter/glow_intensity = 1.0

@@ -669,6 +669,7 @@ bones/2/scale = Vector3(1, 1, 1)
 
 [node name="Cube_006" type="MeshInstance3D" parent="Skeleton3D" unique_id=1337526367]
 cast_shadow = 0
+gi_mode = 2
 mesh = SubResource("ArrayMesh_t6o7h")
 skin = SubResource("Skin_mnfs2")
 

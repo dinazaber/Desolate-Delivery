@@ -1,0 +1,19 @@
+[gd_resource type="TubeTrailMesh" format=3 uid="uid://bdd13svlniasq"]
+
+[sub_resource type="Curve" id="Curve_ggv2i"]
+_data = [Vector2(0, 0), 0.0, 17.83375, 0, 0, Vector2(0.14153847, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xhqc6"]
+transparency = 1
+shading_mode = 2
+albedo_color = Color(0.26860002, 0.28883, 0.34, 0.627451)
+
+[resource]
+material = SubResource("StandardMaterial3D_xhqc6")
+radius = 0.01
+radial_steps = 3
+sections = 2
+section_length = 0.015
+section_rings = 2
+curve = SubResource("Curve_ggv2i")

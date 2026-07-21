@@ -565,7 +565,7 @@ bones/10/rotation = Quaternion(-9.47838e-09, 4.36622e-08, -0.5661365, 0.82431155
 bones/10/scale = Vector3(1, 0.99999964, 0.9999995)
 
 [node name="Robot" type="MeshInstance3D" parent="Skeleton3D" unique_id=257881901]
-layers = 2
+layers = 3
 gi_mode = 2
 mesh = ExtResource("1_grc7g")
 skin = SubResource("Skin_v6sto")

@@ -3,6 +3,7 @@
 [ext_resource type="ArrayMesh" uid="uid://bhdj6x3k5qagf" path="res://assets/Meshes/Architecture/CommandCenter.mesh" id="1_k0qb5"]
 [ext_resource type="Shader" uid="uid://bog2d5u5vhtmo" path="res://Shaders/MeshShaders/Flag.gdshader" id="2_ki04u"]
 [ext_resource type="Texture2D" uid="uid://kqnjcrk75lb3" path="res://assets/Textures/Dirt.png" id="3_ep4op"]
+[ext_resource type="ArrayMesh" uid="uid://cfswr55v3x0pm" path="res://assets/Meshes/Architecture/CommandCenterShadowMesh.mesh" id="4_ki04u"]
 [ext_resource type="PackedScene" uid="uid://d16pmg4f4pnf8" path="res://Scenes/Objects/Door.tscn" id="6_3uc1p"]
 
 [sub_resource type="Gradient" id="Gradient_ki04u"]
@@ -308,6 +309,12 @@ transform = Transform3D(5.158851e-16, -1.1802075e-08, 0.27, -0.27, -1.1802075e-0
 cast_shadow = 0
 gi_mode = 2
 mesh = SubResource("ArrayMesh_ukbaj")
+
+[node name="ShadowMesh" type="MeshInstance3D" parent="CommandCenter" unique_id=322942382]
+layers = 16
+cast_shadow = 3
+gi_mode = 0
+mesh = ExtResource("4_ki04u")
 
 [node name="Collisions" type="Node3D" parent="." unique_id=409749543]
 visible = false

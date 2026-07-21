@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://b83ondemls0mo" path="res://Scripts/Modules/HealthPack.gd" id="1_hd37v"]
 [ext_resource type="ArrayMesh" uid="uid://d0gdxh2rcp5r" path="res://assets/Meshes/Objects/HealthPack.mesh" id="2_hd37v"]
-[ext_resource type="PackedScene" uid="uid://dxk2f100s6ilh" path="res://Scenes/Modules/BlobShadow.tscn" id="3_sr0ta"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_hd37v"]
 bounce = 0.3
@@ -255,18 +254,12 @@ shape = SubResource("BoxShape3D_hd37v")
 
 [node name="HealthPack" type="MeshInstance3D" parent="." unique_id=298360792]
 transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 0, 0)
-layers = 2
-cast_shadow = 0
+layers = 4
 gi_mode = 2
-visibility_range_end = 45.0
 mesh = ExtResource("2_hd37v")
-
-[node name="BlobShadow" parent="HealthPack" unique_id=1303422999 instance=ExtResource("3_sr0ta")]
-transform = Transform3D(2.333333, 0, 0, 0, 6.666666, 0, 0, 0, 2.333333, 0, 0, 0)
 
 [node name="energy" type="GPUParticles3D" parent="." unique_id=2021565018]
 transform = Transform3D(1, 0, 0, 0, -4.3711385e-08, -0.99999994, 0, 0.99999994, -4.3711385e-08, 0, 0, 0)
-layers = 2
 cast_shadow = 0
 gi_mode = 0
 visibility_range_end = 10.0

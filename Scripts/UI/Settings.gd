@@ -44,7 +44,7 @@ func get_option_val(node) -> void:
 	
 	elif node is LineEdit:
 		if node.text.is_valid_int():
-			if node.text.to_int() >= 30: val = node.text.to_int()
+			if node.text.to_int() >= 0: val = node.text.to_int()
 			else:
 				node.text = "0"
 				val = node.text.to_int()

@@ -1,5 +1,7 @@
 extends Control
 
+func _ready() -> void: SettingsManager.world_enviroment = $"3DScene/WorldEnvironment"
+
 func _on_settings_pressed() -> void:
 	$MainMenu.hide()
 	$Settings.show()

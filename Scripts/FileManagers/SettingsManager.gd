@@ -3,18 +3,20 @@ extends Node
 const SAVE_PATH = "user://settings.cfg"
 var config = ConfigFile.new()
 var player
+var world_enviroment: WorldEnvironment
 
 var settings = {
 	"video": {
 		"max_fps": 60,
-		"vsync": false,
+		"vsync": true,
 		"render_scale": 1.0,
 		"image_size_width": 1152,
 		"image_size_height": 648,
 		"windowed": false,
 		"anti_aliasing_type": "None",
-		"scaling_3d_mode": "Bilinear",
-		"brightness": 1.0
+		"brightness": 1.0,
+		"received_shadow_quality": "Medium",
+		"glow": true
 	},
 	"audio": {
 		"master_volume": 1.0
@@ -82,13 +84,6 @@ func apply_settings():
 	var viewport = get_tree().root
 	viewport.scaling_3d_scale = settings.video.render_scale
 	
-	var string = settings.video.scaling_3d_mode
-	match string:
-		"Nearest": get_viewport().scaling_3d_mode = Viewport.SCALING_3D_MODE_NEAREST
-		"Bilinear": get_viewport().scaling_3d_mode = Viewport.SCALING_3D_MODE_BILINEAR
-		"FSR 1.0": get_viewport().scaling_3d_mode = Viewport.SCALING_3D_MODE_FSR
-		"FSR 2.0": get_viewport().scaling_3d_mode = Viewport.SCALING_3D_MODE_FSR2
-	
 	# Fullscreen/Windowed
 	if settings.video.windowed:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
@@ -97,7 +92,7 @@ func apply_settings():
 	else: DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 	
 	# Anti Aliasing
-	string = settings.video.anti_aliasing_type
+	var string = settings.video.anti_aliasing_type
 	if string != "None":
 		if "MSAA" in string:
 			get_viewport().screen_space_aa = Viewport.SCREEN_SPACE_AA_DISABLED
@@ -120,18 +115,44 @@ func apply_settings():
 			get_viewport().use_taa = false
 			get_viewport().msaa_3d = Viewport.MSAA_DISABLED
 		
-		elif "TAA" == string:
-			get_viewport().screen_space_aa = Viewport.SCREEN_SPACE_AA_DISABLED
-			get_viewport().msaa_3d = Viewport.MSAA_DISABLED
-			get_viewport().use_taa = true
-		
-			
-	
 	else:
 		get_viewport().screen_space_aa = Viewport.SCREEN_SPACE_AA_DISABLED
 		get_viewport().msaa_3d = Viewport.MSAA_DISABLED
 		get_viewport().use_taa = false
 	
+	
+	# Received Shadow Quality
+	string = settings.video.received_shadow_quality
+	var shadow_size
+	var filter
+	match string:
+		"Ultra":
+			shadow_size = 4096
+			filter = RenderingServer.SHADOW_QUALITY_SOFT_MEDIUM
+			
+		
+		"High":
+			shadow_size = 2048
+			filter = RenderingServer.SHADOW_QUALITY_SOFT_MEDIUM
+		
+		"Medium":
+			shadow_size = 1024
+			filter = RenderingServer.SHADOW_QUALITY_SOFT_LOW
+		
+		"Low":
+			shadow_size = 512
+			filter = RenderingServer.SHADOW_QUALITY_SOFT_VERY_LOW
+		
+		"Very Low":
+			shadow_size = 256
+			filter = RenderingServer.SHADOW_QUALITY_HARD
+			
+	RenderingServer.directional_shadow_atlas_set_size(shadow_size, false)
+	RenderingServer.directional_soft_shadow_filter_set_quality(filter)
+	
+	# Player Parameters
 	if player:
 		player.cam_speed = SettingsManager.settings.controls.mouse_sensitivity
+	
+	if world_enviroment: world_enviroment.environment.glow_enabled = settings.video.glow
 	

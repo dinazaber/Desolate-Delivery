@@ -404,7 +404,7 @@ libraries/ = SubResource("AnimationLibrary_pv3de")
 [node name="Sprite" type="MeshInstance3D" parent="." unique_id=16884627]
 transform = Transform3D(0, 0, 0, 0, 0, 0, 0, 0, 0, -5.507635e-08, 0.03, -0.93)
 cast_shadow = 0
-gi_mode = 2
+gi_mode = 0
 mesh = SubResource("PlaneMesh_pv3de")
 skeleton = NodePath("../Marker3D")
 
@@ -432,7 +432,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -75)
 
 [node name="Base" type="MeshInstance3D" parent="Marker3D" unique_id=1239962213]
 transform = Transform3D(-0.03, 0, -4.529874e-09, 0, 0.03, 0, 4.529874e-09, 0, -0.03, 0, 0.03, -0.3)
-layers = 2
 cast_shadow = 0
 gi_mode = 2
 mesh = ExtResource("4_ywa7r")
@@ -440,7 +439,6 @@ skeleton = NodePath("../..")
 
 [node name="Barrel" type="MeshInstance3D" parent="Marker3D/Base" unique_id=725197382]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10.9)
-layers = 2
 cast_shadow = 0
 gi_mode = 2
 mesh = ExtResource("5_wr5gp")

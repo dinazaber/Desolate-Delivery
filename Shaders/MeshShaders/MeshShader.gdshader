@@ -1,12 +1,16 @@
 shader_type spatial;
 render_mode cull_back, specular_disabled;
 
+#include "res://addons/dynamic_lightmap_shadows/DynamicShadows.gdshaderinc"
+
 uniform bool enable_wireframe = true;
 uniform bool enable_world_projection = true;
 uniform bool has_rig = false;
 uniform bool enable_detail_1 = true;
 uniform bool enable_detail_2 = true;
 uniform bool enable_glow = false;
+uniform bool receive_shadows = true;
+
 
 group_uniforms Wireframe;
 uniform vec3 wire_color : source_color = vec3(0.0, 0.0, 0.0);
@@ -34,7 +38,8 @@ varying vec3 normal;
 varying vec3 vert;
 varying vec2 UV3;
 varying vec2 UV4;
-
+varying vec3 worldPos;
+varying vec3 world_normal;
 // --- OPTIMIZED BOX PROJECTION ---
 vec4 get_box_projection(sampler2D p_sampler, vec3 p_normal, vec3 p_pos) {
     vec3 n = abs(normalize(p_normal));
@@ -59,6 +64,7 @@ void vertex() {
 	
 	normal = NORMAL;
 	vert = VERTEX;
+	worldPos = (MODEL_MATRIX * vec4(VERTEX, 1.0)).xyz;
 }
 
 void fragment() {
@@ -122,5 +128,10 @@ void fragment() {
 	}
 	else {
 		ALBEDO = out_color;
+	}
+	
+	if (receive_shadows){
+		float shadow = get_orthogonal_shadow(worldPos, n);
+		ALBEDO = mix(ALBEDO, ALBEDO * shadow_color, shadow);
 	}
 }

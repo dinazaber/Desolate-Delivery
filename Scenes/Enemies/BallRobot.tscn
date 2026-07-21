@@ -790,6 +790,7 @@ bones/8/rotation = Quaternion(-1.3555697e-07, 1.3555697e-07, 3.8072745e-08, 1)
 bones/8/scale = Vector3(1, 1, 1)
 
 [node name="Sphere" type="MeshInstance3D" parent="SkeliHolder/Skeleton3D" unique_id=393669965]
+layers = 2
 mesh = SubResource("ArrayMesh_nhcda")
 skin = SubResource("Skin_do24v")
 

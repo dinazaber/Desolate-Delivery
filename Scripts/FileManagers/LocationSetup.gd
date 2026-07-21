@@ -10,6 +10,10 @@ func _ready():
 	
 	if $Rooms: show_check_point_room_only()
 	
+	SettingsManager.world_enviroment = $WorldEnvironment
+	$WorldEnvironment.environment.glow_enabled = SettingsManager.settings.video.glow
+	
+	
 
 
 func show_check_point_room_only():

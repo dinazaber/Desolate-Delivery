@@ -8,7 +8,7 @@ var damage: int
 @export_range(0.1, 10.0) var total_scale: float = 1.0:
 	set(value):
 		total_scale = value
-		$MeshInstance3D.scale = Vector3(1.0, 1.0, 1.0) * total_scale
+		$BoxCrate.scale = Vector3(1.0, 1.0, 1.0) * total_scale
 		$CollisionShape3D.scale = Vector3(1.0, 1.0, 1.0) * total_scale
 		$Area3D.scale = Vector3(1.0, 1.0, 1.0) * total_scale
 		$Particles.scale = Vector3(1.0, 1.0, 1.0) * total_scale
@@ -38,7 +38,7 @@ func _on_body_entered(body: Node) -> void:
 	if !thrown: return
 	freeze = true
 	$MeshInstance3D.hide()
-	$BlobShadow.hide()
+	#$BlobShadow.hide()
 	
 	if body.has_method("damage_taken"):
 		body.damage_taken(damage, true, "object", global_position)
