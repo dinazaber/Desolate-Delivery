@@ -249,7 +249,7 @@ func shoot():
 	chargeBalls.restart()
 	chargeBalls.emitting = true
 	
-	await get_tree().create_timer(1.25).timeout
+	await get_tree().create_timer(0.75).timeout
 	if dist <= kick_distance: 
 		kick()
 		return

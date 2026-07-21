@@ -5,8 +5,8 @@ var cameraDistance = 15
 # --- NODES ---
 @onready var playerCollision = $PlayerCollision
 var screenEffect: ColorRect
-@onready var playerRay = $shakeable_camera/PlayerRay
-@onready var playerRayEnd = $shakeable_camera/PlayerRay/PlayerRayEnd
+@onready var playerRay = $shakeable_camera/Camera3D/PlayerRay
+@onready var playerRayEnd = $shakeable_camera/Camera3D/PlayerRay/PlayerRayEnd
 var grabbedObject: RigidBody3D = null
 @onready var hold_pos = $shakeable_camera/holdPos
 @onready var vaultCheck: ShapeCast3D = $VaultCheck
@@ -64,7 +64,7 @@ const PLAYER_MAX_HEALTH = 100.0
 @export var player_health: float = PLAYER_MAX_HEALTH
 @export var coolOnKill: float = 15.0
 @export var grenadeCoolTime: float = 8.0 # cooldown time (s)
-@export var walk_speed: float = 6.5
+@export var walk_speed: float = 7.0
 @export var crouch_speed: float = 3.0
 @export var dash_speed: float = 22.5
 @export var dashCoolTime: float = 1.5 # cooldown time (s)
@@ -224,7 +224,8 @@ func _physics_process(delta) -> void: # fixed 60 fps
 		if (pullTarget.global_position - global_position).length() < 1.5:
 			pullTarget = null
 		if velocity.length() < 20:
-			knockBack(dir, 40 * delta, false, 0.0)
+			velocity = lerp(velocity, Vector3.ZERO, delta * 1.0)
+			knockBack(dir, 50 * delta, false, 0.0)
 	else: pullTarget = null
 	# *******
 	
@@ -290,9 +291,9 @@ func _physics_process(delta) -> void: # fixed 60 fps
 func weapons_set_up():
 	var weaponList = $shakeable_camera/Hands/RightHand.get_children() + $shakeable_camera/Hands/LeftHand.get_children()
 	for child in weaponList:
-		if "camera" in child: child.camera = $shakeable_camera
-		if "playerRay" in child: child.playerRay = $shakeable_camera/PlayerRay
-		if "playerRayEnd" in child: child.playerRayEnd = $shakeable_camera/PlayerRay/PlayerRayEnd
+		if "camera" in child: child.camera = camera
+		if "playerRay" in child: child.playerRay = playerRay
+		if "playerRayEnd" in child: child.playerRayEnd = playerRayEnd
 		
 		if "knockBack" in child: child.knockBack.connect(knockBack)
 		

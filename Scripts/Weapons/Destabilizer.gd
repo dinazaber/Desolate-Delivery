@@ -2,10 +2,10 @@ extends Node3D
 
 #gun stats
 @export var damage: float = 8.0
-@export var recoil: float = 0.7 # degree rotation
+@export var recoil: float = 1.0 # degree rotation
 @export var spread: Vector2 = Vector2(2.5, 5.0) # max deg rotation for 100% destabilization
-@export var accuracyPerShot: float = 0.08
-@export var accuracyExponent: float = 2.5
+@export var accuracyPerShot: float = 0.1
+@export var accuracyExponent: float = 3
 @export var heatPerShot: float = 2.75
 @export var coolDown: float = 6.0 # time (s) it takes to go from 100 to 0 heat
 @export var destabilize: float = 2.0 # time (s) it takes to go from min to max accuracy
@@ -66,7 +66,7 @@ func shoot(got_input):
 		var points = PackedVector3Array()
 		points.resize(pellets)
 		
-		accuracy_mod = clamp(accuracy_mod + accuracyPerShot, 0.1, 1.0)
+		accuracy_mod = clamp(accuracy_mod + accuracyPerShot, 0.05, 1.0)
 		
 		var dist
 		if playerRay.is_colliding():
@@ -123,7 +123,7 @@ func _on_restore_cool(coolOnKill: float) -> void:
 func _physics_process(delta: float) -> void:
 	if can_cool:
 		heat = clamp(heat - (100 * delta) / coolDown, 0.0, 100.0)
-		accuracy_mod = clamp(accuracy_mod - delta / destabilize, 0.1, 1.0)
+		accuracy_mod = clamp(accuracy_mod - delta / destabilize, 0.05, 1.0)
 	
 	#if anim.is_playing() and anim.current_animation == "shoot":
 		#await get_tree().create_timer(0.05 / anim.speed_scale).timeout

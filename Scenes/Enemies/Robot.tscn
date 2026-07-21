@@ -393,7 +393,6 @@ albedo_color = Color(1, 0.6862745, 0, 1)
 emission_enabled = true
 emission = Color(1, 0.39215687, 0, 1)
 emission_energy_multiplier = 4.0
-use_particle_trails = true
 
 [sub_resource type="SphereMesh" id="SphereMesh_a3cge"]
 material = SubResource("StandardMaterial3D_2a8ro")
@@ -456,8 +455,17 @@ color_ramp = SubResource("GradientTexture1D_bss3a")
 _data = [Vector2(0.006451614, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bss3a"]
+shading_mode = 2
+vertex_color_use_as_albedo = true
+albedo_color = Color(1, 0.6862745, 0, 1)
+emission_enabled = true
+emission = Color(1, 0.39215687, 0, 1)
+emission_energy_multiplier = 4.0
+use_particle_trails = true
+
 [sub_resource type="TubeTrailMesh" id="TubeTrailMesh_o787m"]
-material = SubResource("StandardMaterial3D_2a8ro")
+material = SubResource("StandardMaterial3D_bss3a")
 radius = 0.01
 section_length = 0.1
 curve = SubResource("Curve_336do")
@@ -653,10 +661,10 @@ transform = Transform3D(1.0000001, 0, 0, 0, 1.0000001, 3.2081434e-14, -2.842171e
 shape = SubResource("BoxShape3D_o787m")
 
 [node name="chargeBall" type="GPUParticles3D" parent="Skeleton3D/ArmR" unique_id=1955690883]
-transform = Transform3D(1, -1.3969839e-09, -7.5495166e-15, 0, 1.0000001, 0, -5.3734794e-14, 0, 1, 0, 3.2, 0)
+transform = Transform3D(1, -4.03369e-36, 5.3734794e-14, 0, 1, 7.5066634e-23, -5.3734794e-14, -7.5066634e-23, 1, 0, 3.2, 0)
 emitting = false
 amount = 1
-lifetime = 1.5
+lifetime = 0.85
 one_shot = true
 visibility_aabb = AABB(-0.5, -0.5, -0.5, 1, 1, 1)
 local_coords = true
@@ -667,7 +675,7 @@ draw_pass_1 = SubResource("SphereMesh_a3cge")
 transform = Transform3D(1.0000001, -1.3969839e-09, -7.771561e-15, 0, 1.0000001, 5.684342e-14, -5.351275e-14, -5.684342e-14, 1, 1.9073486e-06, 3.2000003, -4.7683716e-07)
 emitting = false
 amount = 12
-lifetime = 1.2
+lifetime = 0.75
 one_shot = true
 explosiveness = 0.7
 visibility_aabb = AABB(-1, -1, -1, 2, 2, 2)
