@@ -7,7 +7,7 @@ extends Node3D
 
 
 func _ready() -> void:
-	$AnimRotAssist/PodHolder.rotation.y = randf() * PI
+	rotation.y += randf() * deg_to_rad(10.0)
 	await get_tree().create_timer(1.0).timeout
 	anim.play("arrive")
 	await anim.animation_finished

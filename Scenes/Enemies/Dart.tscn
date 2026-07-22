@@ -304,6 +304,18 @@ tracks/12/keys = {
 "update": 0,
 "values": [Vector3(0, 0, -2.7925267)]
 }
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("AnimRotAssist/PodHolder:rotation")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_etmec"]
 resource_name = "arrive"
@@ -344,6 +356,18 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1.2, 1),
 "update": 0,
 "values": [Vector3(0.15, 0.15, 0.15), Vector3(1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AnimRotAssist/PodHolder:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 2, 3, 4, 4.5, 5, 5.5, 6, 7),
+"transitions": PackedFloat32Array(1, 2, 0.5, 2, 0.5, 2, 0.5, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, -0.9599308, 0), Vector3(0, -1.9198622, 0), Vector3(0, -1.7016959, 0), Vector3(0, -1.4835298, 0), Vector3(0, -1.527163, 0), Vector3(0, -1.5707964, 0), Vector3(0, -1.5707964, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_k3ny1"]

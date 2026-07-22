@@ -109,7 +109,7 @@ fog_light_color = Color(0.79, 0.662415, 0.3397, 1)
 fog_light_energy = 0.8
 fog_sun_scatter = 0.1
 fog_density = 0.02
-fog_sky_affect = 0.75
+fog_sky_affect = 0.7
 fog_depth_begin = 0.0
 fog_depth_end = 146.2
 volumetric_fog_density = 0.03
@@ -1246,7 +1246,7 @@ mesh = ExtResource("37_tjrp1")
 mesh = ExtResource("38_mmu42")
 
 [node name="Dart" parent="." unique_id=925181668 instance=ExtResource("41_monsy")]
-transform = Transform3D(-0.8855207, 0, -0.46459994, 0, 1, 0, 0.46459994, 0, -0.8855207, 19.402, 0.35, -117.573)
+transform = Transform3D(-0.8416017, 0, -0.54009867, 0, 1, 0, 0.54009867, 0, -0.8416017, 19.402, 0.35, -117.573)
 
 [node name="darttest" type="Label3D" parent="." unique_id=74616860]
 transform = Transform3D(0.061542943, -0.5631725, 0.82404447, 0.2688134, 0.80445516, 0.5297086, -0.96122426, 0.18891437, 0.20089689, 20.244781, 1.9105022, -121.87971)
