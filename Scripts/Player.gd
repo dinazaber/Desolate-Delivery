@@ -33,6 +33,7 @@ var canDash: bool = true
 var knocked: bool = false
 var crouch: bool = false
 var slide: bool = false
+var dashSlide_flag: bool = false
 var drillJump: bool = true
 var wallrun: bool = true
 var vaulting: bool = false
@@ -469,6 +470,7 @@ func air_movement(delta):
 func handle_dash():
 	if dashCool == 100.0 and !crouch and !dead:
 		dash = true
+		dashSlide_flag = false
 		$DashSound.play()
 		dashCool = -10.0
 		var dashDir: Vector3 = Vector3.ZERO
@@ -479,10 +481,11 @@ func handle_dash():
 		knockBack(dashDir, dash_speed, false, 0.2)
 		await get_tree().create_timer(0.2).timeout
 		dash = false
-		if !is_on_floor() or !slide:
+		if !dashSlide_flag: #!is_on_floor() or !slide:
 			velocity.x /= 2
 			velocity.z /= 2
 			#knockBack(-dashDir, 15 * Vector3(velocity.x, 0.0, velocity.z).length() / dash_speed, false, 0.0)
+		else: dashSlide_flag = false
 
 func handle_crouch(delta):
 	if Input.is_action_pressed("Ctrl"): # crouch/slide
@@ -495,6 +498,7 @@ func handle_crouch(delta):
 		
 		if is_on_floor() and velocity.length() > crouch_speed + 0.1: # 0.1 is epsilon for numerical error
 			slide = true
+			if dash: dashSlide_flag = true
 			floor_stop_on_slope = false
 			accel_mod = 0.05
 			var normal = get_floor_normal()

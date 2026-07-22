@@ -37,7 +37,7 @@ func can_let_go() -> bool:
 func _on_body_entered(body: Node) -> void:
 	if !thrown: return
 	freeze = true
-	$MeshInstance3D.hide()
+	$BoxCrate.hide()
 	#$BlobShadow.hide()
 	
 	if body.has_method("damage_taken"):
