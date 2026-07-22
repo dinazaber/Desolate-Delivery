@@ -643,7 +643,7 @@ bones/10/rotation = Quaternion(1, 0, -4.371139e-08, 0)
 bones/10/scale = Vector3(1, 1, 1)
 
 [node name="dart" type="MeshInstance3D" parent="AnimRotAssist/PodHolder/Skeleton3D" unique_id=1429266745]
-layers = 2
+layers = 6
 mesh = SubResource("ArrayMesh_vwgd2")
 skin = SubResource("Skin_irkkt")
 
@@ -736,7 +736,7 @@ shape = SubResource("BoxShape3D_1vivr")
 
 [node name="doorF" type="MeshInstance3D" parent="AnimRotAssist/PodHolder/DoorF" unique_id=1889827667]
 transform = Transform3D(0.4330127, 0, 0.25, 0, 0.5, 0, -0.25, 0, 0.4330127, 0, -2.275, 1.583)
-layers = 2
+layers = 6
 mesh = SubResource("ArrayMesh_qyj8a")
 skeleton = NodePath("")
 
@@ -753,7 +753,7 @@ shape = SubResource("BoxShape3D_1vivr")
 
 [node name="doorB" type="MeshInstance3D" parent="AnimRotAssist/PodHolder/DoorB" unique_id=1203588652]
 transform = Transform3D(0.4330127, 0, 0.25, 0, 0.5, 0, -0.25, 0, 0.4330127, 0, -2.275, -1.583)
-layers = 2
+layers = 6
 mesh = SubResource("ArrayMesh_u2gho")
 skeleton = NodePath("")
 

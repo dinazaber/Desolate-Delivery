@@ -35,6 +35,7 @@
 [ext_resource type="ArrayMesh" uid="uid://qxh6xgnq2ni8" path="res://assets/Meshes/Nature/Airbase/LargeHangarSands.mesh" id="29_mmu42"]
 [ext_resource type="PackedScene" uid="uid://b1g4ndkkyibs4" path="res://Scenes/Objects/HealthPack.tscn" id="29_qnbe2"]
 [ext_resource type="PackedScene" uid="uid://cqntvo4j5x6mx" path="res://Scenes/Buildings/LargeHangar.tscn" id="31_tjrp1"]
+[ext_resource type="PackedScene" uid="uid://d23s0inguh17p" path="res://Scenes/Objects/ExplosiveBarrel.tscn" id="35_kesrv"]
 [ext_resource type="Script" uid="uid://cugumrre67rkl" path="res://addons/dynamic_lightmap_shadows/blob_shadow.gd" id="36_mmu42"]
 [ext_resource type="ArrayMesh" uid="uid://jsl2py74yllh" path="res://assets/Meshes/Nature/Airbase/AirBaseCanyonPart1.mesh" id="36_t0317"]
 [ext_resource type="Texture2D" uid="uid://dho081rf1dnja" path="res://assets/Textures/SquareBlob.tres" id="37_mmu42"]
@@ -118,7 +119,7 @@ volumetric_fog_emission = Color(0.8370007, 0.6644195, 0.37070605, 1)
 volumetric_fog_emission_energy = 0.5
 volumetric_fog_length = 128.0
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_monsy"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_kesrv"]
 viewport_path = NodePath("OrthogonalShadowProjector/ShadowViewport")
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_1vivr"]
@@ -273,7 +274,7 @@ environment = SubResource("Environment_lgmtp")
 
 [node name="OrthogonalShadowProjector" type="Node" parent="." unique_id=440795534 node_paths=PackedStringArray("target_node")]
 script = ExtResource("3_mmu42")
-shadow_map_preview = SubResource("ViewportTexture_monsy")
+shadow_map_preview = SubResource("ViewportTexture_kesrv")
 target_node = NodePath("../Player")
 shadow_size = 2048
 filter_scale = 3.0
@@ -1214,10 +1215,10 @@ skeleton = NodePath("../..")
 transform = Transform3D(-0.0041246735, 0, -0.9999915, 0, 1, 0, 0.9999915, 0, -0.0041246735, 29.544575, 0.19802809, -119.894806)
 
 [node name="HealthPack" parent="." unique_id=1895141670 instance=ExtResource("29_qnbe2")]
-transform = Transform3D(0.98181057, 0.0038786763, 0.18982355, -0.008865459, 0.99963737, 0.025428466, -0.18965608, -0.026648812, 0.9814889, 30.30534, 1.2037828, -120.54096)
+transform = Transform3D(0.98181057, 0.0038786763, 0.18982355, -0.008865459, 0.99963737, 0.025428466, -0.18965608, -0.026648812, 0.9814889, 30.499325, 1.2037828, -122.15091)
 
 [node name="ThrowableBody2" parent="." unique_id=1499049995 instance=ExtResource("24_07xiv")]
-transform = Transform3D(-0.50344884, -0.69412065, -0.5145246, 0.72623926, -0.017332882, -0.6872231, 0.46809754, -0.71964955, 0.5128242, 27.193417, 0.6601291, -122.58791)
+transform = Transform3D(-0.50344884, -0.69412065, -0.5145246, 0.72623926, -0.017332882, -0.6872231, 0.46809754, -0.71964955, 0.5128242, 24.49992, 0.6601292, -123.43856)
 inertia = Vector3(2, 2, 2)
 total_scale = 0.30000000000000004
 
@@ -1227,6 +1228,7 @@ inertia = Vector3(2, 2, 2)
 total_scale = 0.30000000000000004
 
 [node name="BlobShadow" type="Node3D" parent="ThrowableBody3" unique_id=357717828]
+visible = false
 script = ExtResource("36_mmu42")
 shadow_texture = ExtResource("37_mmu42")
 shadow_dimensions = Vector3(0.8, 0.5, 0.8)
@@ -1263,3 +1265,8 @@ text = "X
 
 "
 font_size = 330
+
+[node name="ExplosiveBarrel" parent="." unique_id=707473027 instance=ExtResource("35_kesrv")]
+transform = Transform3D(0.70637375, -0.7078391, 0, 0.7078391, 0.70637375, 0, 0, 0, 1, 21.54983, 1.454, -124.955124)
+inertia = Vector3(5.85, 16.25, 5.85)
+total_scale = 0.4

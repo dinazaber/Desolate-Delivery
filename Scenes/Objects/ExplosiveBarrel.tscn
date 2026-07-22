@@ -229,20 +229,19 @@ continuous_cd = true
 max_contacts_reported = 1
 script = ExtResource("1_5lybq")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1485554187]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=453048055]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.4)
-layers = 2
-gi_mode = 2
-visibility_range_end = 60.0
+layers = 6
 mesh = ExtResource("1_vkgwf")
 
 [node name="Decal" type="Decal" parent="MeshInstance3D" unique_id=486826062]
-transform = Transform3D(1.9106857e-15, 4.3711392e-08, -1.0000001, 1.0000001, -4.3711392e-08, 0, -4.3711392e-08, -1.0000001, -4.3711392e-08, 0, 0, 0.481)
+transform = Transform3D(1.9106857e-15, 4.3711392e-08, -1.0000001, 1.0000001, -4.3711392e-08, 0, -4.3711392e-08, -1.0000001, -4.3711392e-08, 0, 0, 0.5614921)
+layers = 2
 size = Vector3(1.1, 0.3, 1.1)
 texture_albedo = ExtResource("2_m5ibw")
 modulate = Color(0.9974857, 0.82397175, 7.70092e-07, 1)
 albedo_mix = 0.4
-cull_mask = 1048574
+cull_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1527479017]
 visible = false

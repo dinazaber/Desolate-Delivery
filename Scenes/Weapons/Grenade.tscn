@@ -78,6 +78,7 @@ shader_parameter/has_rig = true
 shader_parameter/enable_detail_1 = true
 shader_parameter/enable_detail_2 = true
 shader_parameter/enable_glow = true
+shader_parameter/receive_shadows = true
 shader_parameter/wire_color = Color(0, 0, 0, 1)
 shader_parameter/wire_width = 0.50000002375
 shader_parameter/wire_transparency = 0.5
@@ -443,6 +444,7 @@ bones/2/rotation = Quaternion(-0.7071069, 0, 0, 0.70710665)
 bones/2/scale = Vector3(1, 0.99999994, 0.99999994)
 
 [node name="Cube_005" type="MeshInstance3D" parent="Skeleton3D" unique_id=237098575]
+layers = 6
 gi_mode = 2
 mesh = SubResource("ArrayMesh_7uf86")
 skin = SubResource("Skin_jmlml")

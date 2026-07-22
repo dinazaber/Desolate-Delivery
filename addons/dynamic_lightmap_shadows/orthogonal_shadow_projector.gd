@@ -28,7 +28,7 @@ enum FilterType {NONE, PCF4, PCF9, VOGEL}
 			
 
 ## The visual layer index used for shadow casting objects.
-@export_range(1, 20) var shadow_layer: int = 2:
+@export_range(1, 20) var shadow_layer: int = 3:
 	set(val):
 		shadow_layer = val
 		if is_inside_tree() and camera:
