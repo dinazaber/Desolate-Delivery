@@ -245,30 +245,3 @@ environment/volumetric_fog/volume_depth=32
 environment/volumetric_fog/use_filter=0
 occlusion_culling/use_occlusion_culling=true
 environment/defaults/default_environment="uid://c1agyuoca70ek"
-
-[shader_globals]
-
-top_down_shadow_map={
-"type": "sampler2D",
-"value": null
-}
-shadow_world_size={
-"type": "float",
-"value": 15.0
-}
-shadow_camera_center={
-"type": "vec2",
-"value": Vector2(0, 0)
-}
-filter_type={
-"type": "int",
-"value": 3
-}
-shadow_color={
-"type": "vec3",
-"value": Vector3(0.1, 0.1, 0.1)
-}
-filter_scale={
-"type": "float",
-"value": 1.0
-}

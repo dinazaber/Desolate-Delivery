@@ -377,6 +377,8 @@ draw_pass_1 = SubResource("RibbonTrailMesh_1e7my")
 
 [node name="shakeable_camera" parent="." unique_id=1373532385 instance=ExtResource("2_megsn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+collision_layer = 8
+collision_mask = 0
 trauma_reduction_rate = 2.0
 noise_speed = 100.0
 

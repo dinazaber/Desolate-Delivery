@@ -172,7 +172,7 @@ func _input(event):
 				var distance = global_position.distance_to(collider.global_position) #Distance to interactionable object from the player
 				
 				#Object that can be grabbed
-				if collider is RigidBody3D and distance < 3: grab_object(collider)
+				if collider is RigidBody3D and collider.has_method("can_let_go") and distance < 3: grab_object(collider)
 				
 				#Other interactionable objects
 				elif collider.owner.has_method("interact") and distance < 2: collider.owner.interact()
