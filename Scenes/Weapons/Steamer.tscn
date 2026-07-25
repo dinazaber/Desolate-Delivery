@@ -205,4 +205,5 @@ shape = SubResource("BoxShape3D_s2mxn")
 [node name="playerPos" type="Marker3D" parent="." unique_id=733481372]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.113, 0.2)
 
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="timeout" from="HeatBuffer" to="." method="_on_heat_buffer_timeout"]

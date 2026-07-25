@@ -42,6 +42,7 @@
 [ext_resource type="ArrayMesh" uid="uid://bxybjwsnrwhmi" path="res://assets/Meshes/Nature/Airbase/AirBaseCanyonPart2.mesh" id="37_tjrp1"]
 [ext_resource type="ArrayMesh" uid="uid://bj6mlx17l7qnl" path="res://assets/Meshes/Nature/Airbase/AirBaseCanyonPart3.mesh" id="38_mmu42"]
 [ext_resource type="PackedScene" uid="uid://3vgdbq2dbpqm" path="res://Scenes/Enemies/Dart.tscn" id="41_monsy"]
+[ext_resource type="PackedScene" uid="uid://beqguglkai1oh" path="res://Scenes/Enemies/Robot.tscn" id="43_jowex"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_7pw2v"]
 noise_type = 4
@@ -119,12 +120,15 @@ volumetric_fog_emission = Color(0.8370007, 0.6644195, 0.37070605, 1)
 volumetric_fog_emission_energy = 0.5
 volumetric_fog_length = 128.0
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_kesrv"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_jowex"]
 viewport_path = NodePath("OrthogonalShadowProjector/ShadowViewport")
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_1vivr"]
 vertices = PackedVector3Array(-31.5, 0.304, -215.61804, -31.5, 0.304, 361.38196, 101.75, 0.304, 361.38196, 101.75, 0.304, -215.61804)
 polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
+cell_height = 0.05
+agent_height = 2.0
+agent_max_climb = 0.05
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kf1mn"]
 size = Vector3(134.26794, 0.4, 578)
@@ -274,7 +278,7 @@ environment = SubResource("Environment_lgmtp")
 
 [node name="OrthogonalShadowProjector" type="Node" parent="." unique_id=440795534 node_paths=PackedStringArray("target_node")]
 script = ExtResource("3_mmu42")
-shadow_map_preview = SubResource("ViewportTexture_kesrv")
+shadow_map_preview = SubResource("ViewportTexture_jowex")
 target_node = NodePath("../Player")
 shadow_size = 2048
 filter_scale = 3.0
@@ -283,7 +287,6 @@ shadow_color = Color(0.525894, 0.5258941, 0.5258938, 1)
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=1554847853]
 visible = false
 navigation_mesh = SubResource("NavigationMesh_1vivr")
-navigation_layers = 5
 
 [node name="Ground" type="StaticBody3D" parent="NavigationRegion3D" unique_id=600099433]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0)
@@ -1250,6 +1253,36 @@ mesh = ExtResource("38_mmu42")
 [node name="Dart" parent="." unique_id=925181668 instance=ExtResource("41_monsy")]
 transform = Transform3D(-0.8416017, 0, -0.54009867, 0, 1, 0, 0.54009867, 0, -0.8416017, 19.402, 0.35, -117.573)
 
+[node name="darttest" type="Label3D" parent="Dart" unique_id=605904835]
+transform = Transform3D(-0.84160185, -0.54009867, -2.3608463e-08, 0, -4.371139e-08, 1, -0.5400987, 0.8416017, 3.678758e-08, 0, 0, 0)
+modulate = Color(1, 0.12941177, 0.1764706, 1)
+text = "X
+
+"
+font_size = 330
+
+[node name="Dart2" parent="." unique_id=847059501 instance=ExtResource("41_monsy")]
+transform = Transform3D(-0.8416017, 0, -0.54009867, 0, 1, 0, 0.54009867, 0, -0.8416017, 15.642445, 0.35000095, -105.804924)
+
+[node name="darttest" type="Label3D" parent="Dart2" unique_id=1166487927]
+transform = Transform3D(-0.84160185, -0.54009867, -2.3608463e-08, 0, -4.371139e-08, 1, -0.5400987, 0.8416017, 3.678758e-08, 0, 0, 0)
+modulate = Color(1, 0.12941177, 0.1764706, 1)
+text = "X
+
+"
+font_size = 330
+
+[node name="Dart3" parent="." unique_id=1656418095 instance=ExtResource("41_monsy")]
+transform = Transform3D(-0.8416017, 0, -0.54009867, 0, 1, 0, 0.54009867, 0, -0.8416017, 17.792927, 0.34999904, -95.78648)
+
+[node name="darttest" type="Label3D" parent="Dart3" unique_id=2023997042]
+transform = Transform3D(-0.84160185, -0.54009867, -2.3608463e-08, 0, -4.371139e-08, 1, -0.5400987, 0.8416017, 3.678758e-08, 0, 0, 0)
+modulate = Color(1, 0.12941177, 0.1764706, 1)
+text = "X
+
+"
+font_size = 330
+
 [node name="darttest" type="Label3D" parent="." unique_id=74616860]
 transform = Transform3D(0.061542943, -0.5631725, 0.82404447, 0.2688134, 0.80445516, 0.5297086, -0.96122426, 0.18891437, 0.20089689, 20.244781, 1.9105022, -121.87971)
 text = "/\\
@@ -1258,15 +1291,10 @@ eyes up
 "
 font_size = 50
 
-[node name="darttest2" type="Label3D" parent="." unique_id=605904835]
-transform = Transform3D(1.0000001, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 19.402, 0.35, -117.573)
-modulate = Color(1, 0.12941177, 0.1764706, 1)
-text = "X
-
-"
-font_size = 330
-
 [node name="ExplosiveBarrel" parent="." unique_id=707473027 instance=ExtResource("35_kesrv")]
 transform = Transform3D(0.70637375, -0.7078391, 0, 0.7078391, 0.70637375, 0, 0, 0, 1, 21.54983, 1.454, -124.955124)
 inertia = Vector3(5.85, 16.25, 5.85)
 total_scale = 0.4
+
+[node name="Robot" parent="." unique_id=969091388 instance=ExtResource("43_jowex")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.258, 1.4042432, -89.3109)

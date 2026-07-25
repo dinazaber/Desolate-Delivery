@@ -796,6 +796,7 @@ shape = SubResource("BoxShape3D_a3cge")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1425088459]
 avoidance_enabled = true
+height = 2.0
 
 [node name="RayCast3D" type="RayCast3D" parent="." unique_id=1762672619]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.995, 0)
@@ -807,3 +808,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -20)
 
 [node name="aimHand" type="Marker3D" parent="." unique_id=1413270498]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.385, 0.683, 0)
+
+[connection signal="velocity_computed" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_velocity_computed"]

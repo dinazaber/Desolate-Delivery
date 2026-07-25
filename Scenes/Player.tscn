@@ -8,6 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://d3y1m515qojp2" path="res://Scenes/Weapons/LeftHandWeapons.tscn" id="3_nn08x"]
 [ext_resource type="Texture2D" uid="uid://b6vcboeh4uetd" path="res://assets/HUD/crosshair.png" id="5_5ixxa"]
 [ext_resource type="Script" uid="uid://b1yx1tjjakl1w" path="res://Scripts/UI/HUD.gd" id="7_bhhdu"]
+[ext_resource type="Script" uid="uid://c6w2j3myerjxd" path="res://Scripts/UI/BeepingBar.gd" id="8_miouo"]
+[ext_resource type="PackedScene" uid="uid://b10igcnei6seh" path="res://Scenes/UI/DartWarning.tscn" id="9_glx4g"]
 [ext_resource type="PackedScene" uid="uid://bm2ti0vwyvub4" path="res://Scenes/UI/DeadScreen.tscn" id="10_yoq75"]
 [ext_resource type="AudioStream" uid="uid://cyya5nkw21kks" path="res://assets/Audio/RobotStep2.wav" id="11_ksbbd"]
 [ext_resource type="AudioStream" uid="uid://cqnjchd7d3eib" path="res://assets/Audio/Dash.wav" id="12_glx4g"]
@@ -117,70 +119,14 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("HUD/DashBar:modulate")
+tracks/0/path = NodePath("HUD/HealthBar:self_modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0.3137255, 1, 1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("HUD/GrenadeBar:self_modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 0.78431374, 0, 0.78431374)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("HUD/HealthBar:self_modulate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(0.47058824, 1, 0.39215687, 0.9019608)]
-}
-
-[sub_resource type="Animation" id="Animation_hprsg"]
-resource_name = "dashBeep"
-length = 0.4
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("HUD/DashBar:self_modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.06666667, 0.13333334, 0.2, 0.26666668, 0.33333334, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Color(0.3137255, 0.84313726, 0.8235294, 0.78431374), Color(1.7735087, 4.415934, 4.31622, 0.78431374), Color(0.3137255, 0.84313726, 0.8235294, 0.78431374), Color(1.7735087, 4.415934, 4.31622, 0.78431374), Color(0.3137255, 0.84313726, 0.8235294, 0.78431374), Color(1.7735087, 4.415934, 4.31622, 0.78431374), Color(0.3137255, 0.84313726, 0.8235294, 0.78431374)]
-}
-
-[sub_resource type="Animation" id="Animation_acvkj"]
-resource_name = "grenadeBeep"
-length = 0.4
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("HUD/GrenadeBar:self_modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.06666667, 0.13333334, 0.20000002, 0.26666668, 0.33333337, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Color(1, 0.78431374, 0, 0.78431374), Color(18.892157, 18.892157, 0, 0.78431374), Color(1, 0.78431374, 0, 0.78431374), Color(18.892157, 18.892157, 0, 0.78431374), Color(1, 0.78431374, 0, 0.78431374), Color(18.892157, 18.892157, 0, 0.78431374), Color(1, 0.78431374, 0, 0.78431374)]
 }
 
 [sub_resource type="Animation" id="Animation_gokx4"]
@@ -202,8 +148,6 @@ tracks/0/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_acvkj"]
 _data = {
 &"RESET": SubResource("Animation_7o5if"),
-&"dashBeep": SubResource("Animation_hprsg"),
-&"grenadeBeep": SubResource("Animation_acvkj"),
 &"healthBeep": SubResource("Animation_gokx4")
 }
 
@@ -514,10 +458,11 @@ pivot_offset_ratio = Vector2(0.5, 0.5)
 value = 100.0
 allow_lesser = true
 show_percentage = false
+script = ExtResource("8_miouo")
 
 [node name="DashBar" type="ProgressBar" parent="HUD" unique_id=1703619297]
 modulate = Color(0.3137255, 1, 1, 1)
-self_modulate = Color(1.1166062, 2.8081753, 2.744509, 0.78431374)
+self_modulate = Color(0.3137255, 0.84313726, 0.8235294, 0.78431374)
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -535,6 +480,7 @@ value = 100.0
 allow_lesser = true
 fill_mode = 1
 show_percentage = false
+script = ExtResource("8_miouo")
 
 [node name="HeatRight" type="ProgressBar" parent="HUD" unique_id=68039069]
 layout_mode = 1
@@ -610,6 +556,9 @@ text = "DRAW CALLS HERE"
 layout_mode = 2
 theme_override_font_sizes/font_size = 10
 text = "VRAM HERE"
+
+[node name="Warning" parent="HUD" unique_id=305429634 instance=ExtResource("9_glx4g")]
+layout_mode = 1
 
 [node name="DeadScreen" parent="." unique_id=1831384756 instance=ExtResource("10_yoq75")]
 visible = false

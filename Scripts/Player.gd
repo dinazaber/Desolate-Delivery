@@ -69,7 +69,7 @@ const PLAYER_MAX_HEALTH = 100.0
 @export var crouch_speed: float = 3.0
 @export var dash_speed: float = 22.5
 @export var dashCoolTime: float = 1.5 # cooldown time (s)
-@export var jump_speed: float = 7.0
+@export var jump_speed: float = 7.5
 @export var wallrun_speed: float = walk_speed * 1.2
 
 @export_category("PLAYER MODIFIERS") # maybe an upgrade system in the future?
@@ -492,9 +492,9 @@ func handle_crouch(delta):
 		crouch = true
 		camDefHeight = 0.275
 		
-		playerCollision.shape.height = lerp(playerCollision.shape.height, 1.25, delta * 15.0)
-		camera.position.y = lerp(camera.position.y, camDefHeight, delta * 15.0)
-		$Feet.position.y = lerp($Feet.position.y, 0.37, delta * 15.0)
+		playerCollision.shape.height = move_toward(playerCollision.shape.height, 1.25, delta * 5.0)
+		camera.position.y = move_toward(camera.position.y, camDefHeight, delta * 5.0)
+		$Feet.position.y = move_toward($Feet.position.y, 0.37, delta * 5.0)
 		
 		if is_on_floor() and velocity.length() > crouch_speed + 0.1: # 0.1 is epsilon for numerical error
 			slide = true
@@ -515,9 +515,9 @@ func handle_crouch(delta):
 		crouch = false
 		camDefHeight = 0.5
 		
-		playerCollision.shape.height = lerp(playerCollision.shape.height, 2.0, delta * 15.0)
-		camera.position.y = lerp(camera.position.y, camDefHeight, delta * 15.0)
-		$Feet.position.y = lerp($Feet.position.y, 0.0, delta * 15.0)
+		playerCollision.shape.height = move_toward(playerCollision.shape.height, 2.0, delta * 5.0)
+		camera.position.y = move_toward(camera.position.y, camDefHeight, delta * 5.0)
+		$Feet.position.y = move_toward($Feet.position.y, 0.0, delta * 5.0)
 		
 		accel_mod = 1.0
 
@@ -692,14 +692,12 @@ func handle_heatBars():
 	
 	var grenade_dif = abs(grenadeBar.value - grenadeCool)
 	grenadeBar.value = move_toward(grenadeBar.value, grenadeCool, grenade_dif/5)
-	if grenadeCool == 100.0 and ceilf(grenadeBar.value * 10) / 10 < 100.0:
-		hudAnim.play("grenadeBeep")
 	
 	var dash_dif = abs(dashBar.value - dashCool)
 	dashBar.value = move_toward(dashBar.value, dashCool, dash_dif/3)
-	if dashCool == 100.0 and ceilf(dashBar.value * 10) / 10 < 100.0:
-		hudAnim.play("dashBeep")
 
+func dart_warning():
+	$HUD/Warning.start()
 
 # --- "LATER" DUMP ---
 #func shoot_speargun():
