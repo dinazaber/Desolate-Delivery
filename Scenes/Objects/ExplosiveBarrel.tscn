@@ -229,12 +229,12 @@ continuous_cd = true
 max_contacts_reported = 1
 script = ExtResource("1_5lybq")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=453048055]
+[node name="Barrel" type="MeshInstance3D" parent="." unique_id=453048055]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.4)
-layers = 6
+layers = 2
 mesh = ExtResource("1_vkgwf")
 
-[node name="Decal" type="Decal" parent="MeshInstance3D" unique_id=486826062]
+[node name="Decal" type="Decal" parent="Barrel" unique_id=486826062]
 transform = Transform3D(1.9106857e-15, 4.3711392e-08, -1.0000001, 1.0000001, -4.3711392e-08, 0, -4.3711392e-08, -1.0000001, -4.3711392e-08, 0, 0, 0.5614921)
 layers = 2
 size = Vector3(1.1, 0.3, 1.1)

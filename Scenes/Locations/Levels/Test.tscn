@@ -1,27 +1,20 @@
 [gd_scene format=4 uid="uid://b3p4mss0io643"]
 
-[ext_resource type="LightmapGIData" uid="uid://b8oyuifkhl66" path="res://assets/Lightmaps/Test/HangarSector1.lmbake" id="1_lgmtp"]
 [ext_resource type="Shader" uid="uid://no1jy7cyw0an" path="res://Shaders/PostProcess/SandStorm.gdshader" id="1_qhnsl"]
 [ext_resource type="Script" uid="uid://bcfml5hf5f0wl" path="res://Scripts/FileManagers/LocationSetup.gd" id="1_tjrp1"]
 [ext_resource type="Shader" uid="uid://b5qxk2hnep8ku" path="res://Shaders/MeshShaders/GroundShader.gdshader" id="2_8jy8q"]
 [ext_resource type="ArrayMesh" uid="uid://qdmyf5e4rqff" path="res://assets/Meshes/Objects/Vehicles/Plane.mesh" id="2_s4jb1"]
 [ext_resource type="PackedScene" uid="uid://cpi1xrpot2ipt" path="res://Scenes/Player.tscn" id="3_8jy8q"]
-[ext_resource type="Script" uid="uid://h6sro1ekj2ua" path="res://addons/dynamic_lightmap_shadows/orthogonal_shadow_projector.gd" id="3_mmu42"]
 [ext_resource type="ArrayMesh" uid="uid://c8kbvjycbnjcm" path="res://assets/Meshes/Objects/ToolBoxLarge.mesh" id="7_0k5xg"]
 [ext_resource type="ArrayMesh" uid="uid://bvbx2g5lkenkl" path="res://assets/Meshes/Architecture/OilTank.mesh" id="7_tp31o"]
 [ext_resource type="PackedScene" uid="uid://o5yldt1h3ti2" path="res://Scenes/Buildings/CommandCenter.tscn" id="8_7pw2v"]
 [ext_resource type="PackedScene" uid="uid://bmm256oikf8f" path="res://Scenes/Objects/Radio.tscn" id="8_21uaf"]
-[ext_resource type="LightmapGIData" uid="uid://cw8qyctt276j6" path="res://assets/Lightmaps/Test/CommandCenterSector.lmbake" id="8_bvfrt"]
 [ext_resource type="ArrayMesh" uid="uid://dul0w3n0ln0bj" path="res://assets/Meshes/Objects/Vehicles/Jeep/JeepNoWheels.mesh" id="9_2u4bt"]
 [ext_resource type="ArrayMesh" uid="uid://7ho7ltov0iyb" path="res://assets/Meshes/Objects/Vehicles/Jeep/Jeep.mesh" id="9_ftkl8"]
 [ext_resource type="ArrayMesh" uid="uid://br33wg26qu7sk" path="res://assets/Meshes/Objects/Crate2.mesh" id="10_y2hht"]
 [ext_resource type="ArrayMesh" uid="uid://daka58ay8ex6l" path="res://assets/Meshes/Nature/Sands.mesh" id="12_21uaf"]
-[ext_resource type="LightmapGIData" uid="uid://vj07ex65gcdv" path="res://assets/Lightmaps/Test/HangarSector2.lmbake" id="12_g6saa"]
-[ext_resource type="LightmapGIData" uid="uid://trcsuu8kd8so" path="res://assets/Lightmaps/Test/RunWaySector.lmbake" id="14_6rpik"]
-[ext_resource type="LightmapGIData" uid="uid://dhwh72c0xjnna" path="res://assets/Lightmaps/Test/HangarSector3.lmbake" id="14_vrcbb"]
 [ext_resource type="ArrayMesh" uid="uid://daq3xm44oujly" path="res://assets/Meshes/Objects/Vehicles/Jeep/JeepWheel.mesh" id="15_66suj"]
 [ext_resource type="PackedScene" uid="uid://dugekeqiinxib" path="res://Scenes/Buildings/WaterTower.tscn" id="15_ljj7q"]
-[ext_resource type="LightmapGIData" uid="uid://debnackwlmtcf" path="res://assets/Lightmaps/Test/WaterTowerSector.lmbake" id="15_t0317"]
 [ext_resource type="PackedScene" uid="uid://djgfqxvc2ift1" path="res://Scenes/Buildings/Hangar.tscn" id="15_tjrp1"]
 [ext_resource type="Shader" uid="uid://cunx8274v1qyy" path="res://Shaders/MeshShaders/MeshShader.gdshader" id="15_wygrg"]
 [ext_resource type="ArrayMesh" uid="uid://tnqtnrxm02k4" path="res://assets/Meshes/Objects/Crate1.mesh" id="16_ehd1i"]
@@ -29,16 +22,13 @@
 [ext_resource type="PackedScene" uid="uid://lv2hsjt70n6s" path="res://Scenes/Objects/Board.tscn" id="18_l1uri"]
 [ext_resource type="ArrayMesh" uid="uid://cqbd07bqpfuc8" path="res://assets/Meshes/Objects/Vehicles/TruckAmbulance.mesh" id="19_xmvuo"]
 [ext_resource type="PackedScene" uid="uid://d4bcffi8xi33t" path="res://Scenes/Objects/ThrowableBody.tscn" id="24_07xiv"]
-[ext_resource type="LightmapGIData" uid="uid://dylvcf6m72snn" path="res://assets/Lightmaps/Test/LargeHangarSector.lmbake" id="24_wr0qo"]
 [ext_resource type="ArrayMesh" uid="uid://bw1to2tbudspb" path="res://assets/Meshes/Objects/Vehicles/Truck.mesh" id="26_mi3mg"]
 [ext_resource type="ArrayMesh" uid="uid://tfb2twrdwe7h" path="res://assets/Meshes/Objects/Vehicles/TruckContainer.mesh" id="27_36bqu"]
 [ext_resource type="ArrayMesh" uid="uid://qxh6xgnq2ni8" path="res://assets/Meshes/Nature/Airbase/LargeHangarSands.mesh" id="29_mmu42"]
 [ext_resource type="PackedScene" uid="uid://b1g4ndkkyibs4" path="res://Scenes/Objects/HealthPack.tscn" id="29_qnbe2"]
 [ext_resource type="PackedScene" uid="uid://cqntvo4j5x6mx" path="res://Scenes/Buildings/LargeHangar.tscn" id="31_tjrp1"]
 [ext_resource type="PackedScene" uid="uid://d23s0inguh17p" path="res://Scenes/Objects/ExplosiveBarrel.tscn" id="35_kesrv"]
-[ext_resource type="Script" uid="uid://cugumrre67rkl" path="res://addons/dynamic_lightmap_shadows/blob_shadow.gd" id="36_mmu42"]
 [ext_resource type="ArrayMesh" uid="uid://jsl2py74yllh" path="res://assets/Meshes/Nature/Airbase/AirBaseCanyonPart1.mesh" id="36_t0317"]
-[ext_resource type="Texture2D" uid="uid://dho081rf1dnja" path="res://assets/Textures/SquareBlob.tres" id="37_mmu42"]
 [ext_resource type="ArrayMesh" uid="uid://bxybjwsnrwhmi" path="res://assets/Meshes/Nature/Airbase/AirBaseCanyonPart2.mesh" id="37_tjrp1"]
 [ext_resource type="ArrayMesh" uid="uid://bj6mlx17l7qnl" path="res://assets/Meshes/Nature/Airbase/AirBaseCanyonPart3.mesh" id="38_mmu42"]
 [ext_resource type="PackedScene" uid="uid://3vgdbq2dbpqm" path="res://Scenes/Enemies/Dart.tscn" id="41_monsy"]
@@ -96,6 +86,7 @@ ambient_light_color = Color(0.9, 0.6888, 0.324, 1)
 reflected_light_source = 2
 tonemap_mode = 2
 tonemap_exposure = 0.85
+ssao_enabled = true
 ssao_radius = 0.25
 ssao_power = 3.0
 ssao_detail = 5.0
@@ -107,21 +98,15 @@ glow_normalized = true
 glow_strength = 1.3
 glow_hdr_threshold = 0.0
 fog_enabled = true
-fog_light_color = Color(0.79, 0.662415, 0.3397, 1)
-fog_light_energy = 0.8
-fog_sun_scatter = 0.1
+fog_light_color = Color(0.79, 0.64227, 0.2686, 1)
+fog_sun_scatter = 0.2
 fog_density = 0.02
-fog_sky_affect = 0.7
 fog_depth_begin = 0.0
 fog_depth_end = 146.2
-volumetric_fog_density = 0.03
+volumetric_fog_density = 0.0
 volumetric_fog_albedo = Color(0.85, 0.71683335, 0.45049998, 1)
 volumetric_fog_emission = Color(0.8370007, 0.6644195, 0.37070605, 1)
-volumetric_fog_emission_energy = 0.5
 volumetric_fog_length = 128.0
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_jowex"]
-viewport_path = NodePath("OrthogonalShadowProjector/ShadowViewport")
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_1vivr"]
 vertices = PackedVector3Array(-31.5, 0.304, -215.61804, -31.5, 0.304, 361.38196, 101.75, 0.304, 361.38196, 101.75, 0.304, -215.61804)
@@ -141,7 +126,6 @@ shader_parameter/light_x = 0.5
 shader_parameter/light_y = 0.5
 shader_parameter/light_z = 0.5
 shader_parameter/facet_intensity = 0.5
-shader_parameter/shadow_tint = Vector3(0.1, 0.1, 0.1)
 shader_parameter/detail1_scale = 1.0
 shader_parameter/alpha1 = 1.0
 
@@ -167,7 +151,6 @@ shader_parameter/light_x = 0.5
 shader_parameter/light_y = 0.5
 shader_parameter/light_z = 0.5
 shader_parameter/facet_intensity = 0.5
-shader_parameter/shadow_tint = Vector3(0.1, 0.1, 0.1)
 shader_parameter/detail1_scale = 1.0
 shader_parameter/alpha1 = 1.0
 
@@ -233,7 +216,6 @@ shader_parameter/has_rig = false
 shader_parameter/enable_detail_1 = true
 shader_parameter/enable_detail_2 = true
 shader_parameter/enable_glow = false
-shader_parameter/receive_shadows = true
 shader_parameter/wire_color = Color(0, 0, 0, 1)
 shader_parameter/wire_width = 1.0
 shader_parameter/wire_transparency = 0.5
@@ -276,13 +258,13 @@ mouse_filter = 2
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1896784578]
 environment = SubResource("Environment_lgmtp")
 
-[node name="OrthogonalShadowProjector" type="Node" parent="." unique_id=440795534 node_paths=PackedStringArray("target_node")]
-script = ExtResource("3_mmu42")
-shadow_map_preview = SubResource("ViewportTexture_jowex")
-target_node = NodePath("../Player")
-shadow_size = 2048
-filter_scale = 3.0
-shadow_color = Color(0.525894, 0.5258941, 0.5258938, 1)
+[node name="MainSun" type="DirectionalLight3D" parent="WorldEnvironment" unique_id=446841676]
+transform = Transform3D(0.839412, 0.5277145, 0.13001905, -0.3132159, 0.27419978, 0.9092362, 0.4441658, -0.8039477, 0.3954552, 52.65116, 20.81345, -64)
+light_color = Color(0.92, 0.75317335, 0.2944, 1)
+light_indirect_energy = 2.0
+light_specular = 0.1
+shadow_enabled = true
+shadow_caster_mask = 4293918723
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=1554847853]
 visible = false
@@ -301,14 +283,6 @@ shape = SubResource("BoxShape3D_kf1mn")
 
 [node name="HangarSector1" type="Node3D" parent="LightmapSectors" unique_id=1066058519]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -27)
-
-[node name="LightmapGI" type="LightmapGI" parent="LightmapSectors/HangarSector1" unique_id=1568751972]
-supersampling = true
-supersampling_factor = 8.0
-bounces = 16
-use_denoiser = false
-generate_probes_subdiv = 3
-light_data = ExtResource("1_lgmtp")
 
 [node name="Sands" type="MeshInstance3D" parent="LightmapSectors/HangarSector1" unique_id=964686907]
 transform = Transform3D(1, 0, 0, 0, 2, 0, 0, 0, 1, -15, 0, -5)
@@ -336,14 +310,6 @@ skeleton = NodePath("")
 
 [node name="HangarSector2" type="Node3D" parent="LightmapSectors" unique_id=1609209973]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 5)
-
-[node name="LightmapGI" type="LightmapGI" parent="LightmapSectors/HangarSector2" unique_id=177599339]
-supersampling = true
-supersampling_factor = 8.0
-bounces = 16
-use_denoiser = false
-generate_probes_subdiv = 3
-light_data = ExtResource("12_g6saa")
 
 [node name="Sands" type="MeshInstance3D" parent="LightmapSectors/HangarSector2" unique_id=469184006]
 transform = Transform3D(1, 0, 0, 0, 2, 0, 0, 0, 1, -15, 0, -5)
@@ -392,14 +358,6 @@ mesh = ExtResource("9_2u4bt")
 [node name="HangarSector3" type="Node3D" parent="LightmapSectors" unique_id=343217058]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 37)
 
-[node name="LightmapGI" type="LightmapGI" parent="LightmapSectors/HangarSector3" unique_id=516894116]
-supersampling = true
-supersampling_factor = 8.0
-bounces = 16
-use_denoiser = false
-generate_probes_subdiv = 3
-light_data = ExtResource("14_vrcbb")
-
 [node name="Sands" type="MeshInstance3D" parent="LightmapSectors/HangarSector3" unique_id=799228608]
 transform = Transform3D(1, 0, 0, 0, 2, 0, 0, 0, 1, -15, 0, -5)
 gi_lightmap_texel_scale = 6.0
@@ -445,14 +403,6 @@ skeleton = NodePath("")
 [node name="WaterTowerSector" type="Node3D" parent="LightmapSectors" unique_id=2086913495]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 59)
 
-[node name="LightmapGI" type="LightmapGI" parent="LightmapSectors/WaterTowerSector" unique_id=2091701026]
-supersampling = true
-supersampling_factor = 8.0
-bounces = 16
-use_denoiser = false
-generate_probes_subdiv = 3
-light_data = ExtResource("15_t0317")
-
 [node name="Sands" type="MeshInstance3D" parent="LightmapSectors/WaterTowerSector" unique_id=283712123]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -59)
 mesh = SubResource("ArrayMesh_t0317")
@@ -481,14 +431,6 @@ skeleton = NodePath("../..")
 
 [node name="CommandCenterSector" type="Node3D" parent="LightmapSectors" unique_id=550589681]
 transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 48, 0, 9)
-
-[node name="LightmapGI" type="LightmapGI" parent="LightmapSectors/CommandCenterSector" unique_id=803088638]
-supersampling = true
-supersampling_factor = 4.0
-bounces = 16
-use_denoiser = false
-generate_probes_subdiv = 3
-light_data = ExtResource("8_bvfrt")
 
 [node name="SunLights" type="Node3D" parent="LightmapSectors/CommandCenterSector" unique_id=889616846]
 visible = false
@@ -608,6 +550,7 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -6, 4.57849, 0)
 
 [node name="GodRay1" type="MeshInstance3D" parent="LightmapSectors/CommandCenterSector/CommandCenter" unique_id=514326560]
 transform = Transform3D(-4.5443045e-08, -0.19804887, -0.9801921, 1.7313981e-08, 0.9801921, -0.19804887, 1, -2.5970973e-08, -4.11139e-08, 1.6245357, -1.2500517, -0.4107666)
+visible = false
 gi_mode = 0
 mesh = SubResource("CylinderMesh_kf1mn")
 skeleton = NodePath("../CommandCenter")
@@ -633,13 +576,6 @@ skeleton = NodePath("../../..")
 
 [node name="RunWaySector" type="Node3D" parent="LightmapSectors" unique_id=123697734]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 0, 0)
-
-[node name="LightmapGI" type="LightmapGI" parent="LightmapSectors/RunWaySector" unique_id=2110994716]
-supersampling = true
-bounces = 16
-use_denoiser = false
-generate_probes_subdiv = 3
-light_data = ExtResource("14_6rpik")
 
 [node name="Node3D2" type="Node3D" parent="LightmapSectors/RunWaySector" unique_id=302033067]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, -2.5)
@@ -955,31 +891,12 @@ skeleton = NodePath("../..")
 
 [node name="Plane" type="MeshInstance3D" parent="LightmapSectors/RunWaySector" unique_id=2010452878]
 transform = Transform3D(0.12000596, 0, 0.7909478, 0, 0.7999999, 0, -0.7909478, 0, 0.12000596, 0.20100021, 1.003509, 2.344)
-cast_shadow = 0
 gi_lightmap_texel_scale = 2.0
 mesh = ExtResource("2_s4jb1")
 skeleton = NodePath("../../..")
 
 [node name="LargeHangarSector" type="Node3D" parent="LightmapSectors" unique_id=1424315463]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, -137.5)
-
-[node name="MainSun" type="DirectionalLight3D" parent="LightmapSectors/LargeHangarSector" unique_id=446841676]
-transform = Transform3D(0.99999994, 0, 0, 0, -4.3711385e-08, 0.99999994, 0, -0.99999994, -4.3711385e-08, 37.65116, 20.81345, 73.5)
-light_color = Color(0.92156863, 0.7921569, 0.44313726, 1)
-light_indirect_energy = 2.0
-light_specular = 0.1
-light_bake_mode = 1
-shadow_enabled = true
-shadow_caster_mask = 4293918736
-directional_shadow_blend_splits = true
-
-[node name="LightmapGI" type="LightmapGI" parent="LightmapSectors/LargeHangarSector" unique_id=1294476082]
-supersampling = true
-supersampling_factor = 4.0
-bounces = 16
-use_denoiser = false
-generate_probes_subdiv = 0
-light_data = ExtResource("24_wr0qo")
 
 [node name="Sands" type="MeshInstance3D" parent="LightmapSectors/LargeHangarSector" unique_id=120122411]
 transform = Transform3D(1, 0, 0, 0, 2, 0, 0, 0, 1, -15, 0, 137.5)
@@ -1230,13 +1147,6 @@ transform = Transform3D(0.99999976, 0, 0, 0, 0.99999964, 0, 0, 0, 0.9999999, 23.
 inertia = Vector3(2, 2, 2)
 total_scale = 0.30000000000000004
 
-[node name="BlobShadow" type="Node3D" parent="ThrowableBody3" unique_id=357717828]
-visible = false
-script = ExtResource("36_mmu42")
-shadow_texture = ExtResource("37_mmu42")
-shadow_dimensions = Vector3(0.8, 0.5, 0.8)
-metadata/_custom_type_script = "uid://cugumrre67rkl"
-
 [node name="Canyon" type="Node3D" parent="." unique_id=1757426745]
 transform = Transform3D(-2.1855694e-06, 0, -50, 0, 50, 0, 50, 0, -2.1855694e-06, 26.127, 2.61, -40.099)
 metadata/_edit_lock_ = true
@@ -1297,4 +1207,4 @@ inertia = Vector3(5.85, 16.25, 5.85)
 total_scale = 0.4
 
 [node name="Robot" parent="." unique_id=969091388 instance=ExtResource("43_jowex")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.258, 1.4042432, -89.3109)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.258, 1.0611724, -89.3109)

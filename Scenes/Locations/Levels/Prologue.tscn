@@ -4,7 +4,6 @@
 [ext_resource type="Environment" uid="uid://c1agyuoca70ek" path="res://assets/Enviroment.tres" id="2_7xti7"]
 [ext_resource type="PackedScene" uid="uid://cpi1xrpot2ipt" path="res://Scenes/Player.tscn" id="2_8uakf"]
 [ext_resource type="PackedScene" uid="uid://ds8hiut7cj5b0" path="res://Scenes/Locations/PrologueRooms/Office.tscn" id="3_7xti7"]
-[ext_resource type="Script" uid="uid://h6sro1ekj2ua" path="res://addons/dynamic_lightmap_shadows/orthogonal_shadow_projector.gd" id="3_jwke0"]
 [ext_resource type="PackedScene" uid="uid://df53p2nd7yphr" path="res://Scenes/Locations/PrologueRooms/Restroom.tscn" id="4_jwke0"]
 [ext_resource type="PackedScene" uid="uid://bklolkvppn66" path="res://Scenes/Locations/PrologueRooms/Cabinet.tscn" id="5_h04x5"]
 [ext_resource type="PackedScene" uid="uid://cs848so2f77c7" path="res://Scenes/Locations/PrologueRooms/Lobby.tscn" id="6_u4ib6"]
@@ -19,9 +18,6 @@
 [ext_resource type="PackedScene" uid="uid://d16pmg4f4pnf8" path="res://Scenes/Objects/Door.tscn" id="15_yfh15"]
 [ext_resource type="PackedScene" uid="uid://b1g4ndkkyibs4" path="res://Scenes/Objects/HealthPack.tscn" id="16_7xti7"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_jwke0"]
-viewport_path = NodePath("OrthogonalShadowProjector/ShadowViewport")
-
 [node name="Prologue" type="Node" unique_id=1806327558 node_paths=PackedStringArray("check_point_room")]
 script = ExtResource("1_5ljsb")
 check_point_room = NodePath("Rooms/Laboratory")
@@ -31,17 +27,6 @@ environment = ExtResource("2_7xti7")
 
 [node name="Player" parent="." unique_id=1941692924 instance=ExtResource("2_8uakf")]
 transform = Transform3D(0.8784171, 0, 0.47789484, 0, 1, 0, -0.47789484, 0, 0.8784171, 40.734676, 1.0130529, 28)
-
-[node name="OrthogonalShadowProjector" type="Node" parent="." unique_id=1144309305 node_paths=PackedStringArray("target_node")]
-script = ExtResource("3_jwke0")
-shadow_map_preview = SubResource("ViewportTexture_jwke0")
-target_node = NodePath("../Player")
-shadow_draw_distance = 20.0
-shadow_size = 2048
-active_filter = 0
-filter_scale = 2.563
-shadow_color = Color(0.48178947, 0.48178947, 0.48178947, 1)
-metadata/_custom_type_script = "uid://h6sro1ekj2ua"
 
 [node name="Rooms" type="Node3D" parent="." unique_id=1390652977]
 

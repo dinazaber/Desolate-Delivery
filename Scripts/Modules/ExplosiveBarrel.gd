@@ -16,7 +16,7 @@ var explosion_radius: float = 0.0
 		for child in get_children():
 			child.scale = Vector3.ONE * total_scale
 		
-		$MeshInstance3D.position = Vector3(0.0, 0.0, 0.4) * total_scale
+		$Barrel.position = Vector3(0.0, 0.0, 0.4) * total_scale
 		inertia = Vector3(0.9,2.5,0.9) * mass
 		
 		explosion_radius = $ExplosionBox/ExpCol.shape.radius * total_scale
@@ -58,7 +58,7 @@ func damage_taken(recieved_damage, _a, type, _b):
 func explode():
 	var bodies = []
 	exploded = true
-	$MeshInstance3D.visible = false
+	$Barrel.visible = false
 	$CollisionShape3D.disabled = true
 	freeze = true
 	set_physics_process(false)

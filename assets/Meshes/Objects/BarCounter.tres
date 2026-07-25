@@ -11,7 +11,6 @@ shader_parameter/has_rig = false
 shader_parameter/enable_detail_1 = true
 shader_parameter/enable_detail_2 = true
 shader_parameter/enable_glow = false
-shader_parameter/receive_shadows = true
 shader_parameter/wire_color = Color(0, 0, 0, 1)
 shader_parameter/wire_width = 1.0
 shader_parameter/wire_transparency = 0.5

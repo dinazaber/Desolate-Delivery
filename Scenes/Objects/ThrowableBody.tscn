@@ -97,7 +97,7 @@ linear_damp = 1.0
 script = ExtResource("1_3uona")
 
 [node name="BoxCrate" type="MeshInstance3D" parent="." unique_id=1485554187]
-layers = 6
+layers = 2
 gi_mode = 0
 mesh = ExtResource("2_3uona")
 

@@ -1,15 +1,12 @@
 shader_type spatial;
 render_mode cull_back, specular_disabled;
 
-#include "res://addons/dynamic_lightmap_shadows/DynamicShadows.gdshaderinc"
-
 group_uniforms Adjustments;
 uniform vec3 color: source_color;
 uniform float light_x = 0.5;
 uniform float light_y = 0.5;
 uniform float light_z = 0.5;
 uniform float facet_intensity = 0.5;
-uniform vec3 shadow_tint = vec3(0.1, 0.1, 0.1);
 
 group_uniforms Detail;
 uniform sampler2D detail1 : source_color, filter_linear;
@@ -75,6 +72,4 @@ void fragment() {
 	vec3 out_color = color;
     out_color = mix(out_color, tex.rgb, tex.a * alpha1);
     ALBEDO = out_color * final_diffuse;
-	float shadow = get_orthogonal_shadow(worldPos, n);
-	ALBEDO = mix(ALBEDO, ALBEDO * shadow_color.rgb, shadow);
 }

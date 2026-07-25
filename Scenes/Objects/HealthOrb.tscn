@@ -1,26 +1,23 @@
 [gd_scene format=3 uid="uid://d2gygjx5cmc2h"]
 
 [ext_resource type="Script" uid="uid://vtw3sm4g1b32" path="res://Scripts/Modules/HealthOrb.gd" id="1_w4o6i"]
-[ext_resource type="Shader" uid="uid://2nubfvj7i3s4" path="res://Shaders/Particles/Glow.gdshader" id="2_upvrm"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_upvrm"]
 radius = 0.05
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_w4o6i"]
-render_priority = 0
-shader = ExtResource("2_upvrm")
-shader_parameter/core_color = Color(1.8247963, 1.5278301, 0, 1)
-shader_parameter/glow_color = Color(1.8247963, 0.5775381, 0, 1)
-shader_parameter/core_power = 10.0
-shader_parameter/glow_power = 10.0
-shader_parameter/alpha_multiplier = 1.0
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a5ptu"]
+shading_mode = 2
+albedo_color = Color(0.8683026, 0.61697876, 6.701418e-07, 1)
+emission_enabled = true
+emission = Color(1, 0.6333333, 0, 1)
+emission_energy_multiplier = 7.84
 
 [sub_resource type="SphereMesh" id="SphereMesh_w4o6i"]
-material = SubResource("ShaderMaterial_w4o6i")
-radius = 0.06
-height = 0.12
-radial_segments = 16
-rings = 16
+material = SubResource("StandardMaterial3D_a5ptu")
+radius = 0.04
+height = 0.08
+radial_segments = 12
+rings = 6
 
 [sub_resource type="Curve" id="Curve_w4o6i"]
 _data = [Vector2(0, 1), 2.9773223, 0.0, 0, 0, Vector2(0.24907064, 1), 0.0, -1.3131306, 0, 0, Vector2(1, 0), -1.3517895, 0.0, 0, 0]
@@ -34,11 +31,11 @@ gravity = Vector3(0, 0, 0)
 scale_curve = SubResource("CurveTexture_upvrm")
 
 [sub_resource type="SphereMesh" id="SphereMesh_45jo6"]
-material = SubResource("ShaderMaterial_w4o6i")
+material = SubResource("StandardMaterial3D_a5ptu")
 radius = 0.05
 height = 0.1
-radial_segments = 16
-rings = 8
+radial_segments = 12
+rings = 6
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_w4o6i"]
 emission_shape = 2
@@ -47,11 +44,11 @@ gravity = Vector3(0, 0, 0)
 scale_curve = SubResource("CurveTexture_upvrm")
 
 [sub_resource type="SphereMesh" id="SphereMesh_upvrm"]
-material = SubResource("ShaderMaterial_w4o6i")
+material = SubResource("StandardMaterial3D_a5ptu")
 radius = 0.03
 height = 0.06
 radial_segments = 8
-rings = 8
+rings = 4
 
 [sub_resource type="Curve" id="Curve_upvrm"]
 _data = [Vector2(0, 0), 0.0, 3.0568178, 0, 0, Vector2(0.330855, 1), 2.9773223, 0.0, 0, 0, Vector2(0.66171, 1), 0.0, -3.007396, 0, 0, Vector2(1, 0), -2.921577, 0.0, 0, 0]
@@ -75,11 +72,11 @@ gravity = Vector3(0, 0, 0)
 scale_curve = SubResource("CurveTexture_45jo6")
 
 [sub_resource type="SphereMesh" id="SphereMesh_3u3ng"]
-material = SubResource("ShaderMaterial_w4o6i")
+material = SubResource("StandardMaterial3D_a5ptu")
 radius = 0.015
 height = 0.03
 radial_segments = 8
-rings = 8
+rings = 4
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_w4o6i"]
 radius = 0.2
@@ -99,6 +96,7 @@ script = ExtResource("1_w4o6i")
 shape = SubResource("SphereShape3D_upvrm")
 
 [node name="Orb" type="MeshInstance3D" parent="." unique_id=128434985]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.054369986, 0, 0)
 cast_shadow = 0
 gi_mode = 0
 mesh = SubResource("SphereMesh_w4o6i")
