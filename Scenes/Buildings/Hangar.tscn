@@ -4,7 +4,7 @@
 [ext_resource type="ArrayMesh" uid="uid://bbwiqq57w8lrp" path="res://assets/Meshes/Architecture/Hangar1ShadowMesh.mesh" id="2_rq56e"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rq56e"]
-size = Vector3(5.2387695, 0.8994751, 0.26879883)
+size = Vector3(5.239, 0.899, 0.3)
 
 [node name="Hangar" type="Node3D" unique_id=1930945656]
 
@@ -76,7 +76,7 @@ depth = 0.3
 polygon = PackedVector2Array(5.4951057, 3.8160803, 4.589857, 4.9396544, 3.6468925, 5.6857367, 2.5174065, 6.3281956, 1.1806774, 6.7323236, -0.18713951, 6.835946, -1.5445938, 6.6701503, -2.7051659, 6.224573, -4.000448, 5.6028385, -4.9537735, 4.7842207, -5.730335, 3.8063807, -2.7379055, 3.796784, -2.7466145, 5.540665, 2.511097, 5.5616865, 2.4959087, 3.8003263)
 
 [node name="CollisionPolygon3D3" type="CollisionPolygon3D" parent="Collision" unique_id=565484602]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6.8558674)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6.834)
 depth = 0.3
 polygon = PackedVector2Array(5.491373, 3.9034293, 4.589857, 4.9396544, 3.6468925, 5.6857367, 2.5174065, 6.3281956, 1.1806774, 6.7323236, -0.18713951, 6.835946, -1.5445938, 6.6701503, -2.7051659, 6.224573, -4.000448, 5.6028385, -4.9537735, 4.7842207, -5.7102184, 3.8930671, -2.7466145, 3.9034293, -2.7466145, 5.540665, 2.511097, 5.5616865, 2.5241308, 3.8582025)
 
@@ -95,7 +95,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.10058594, 4.185566, -6.957
 shape = SubResource("BoxShape3D_rq56e")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Collision" unique_id=278232215]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.13167572, 4.136402, 6.851486)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.132, 4.136, 6.834)
 shape = SubResource("BoxShape3D_rq56e")
 
 [node name="CollisionPolygon3D6" type="CollisionPolygon3D" parent="Collision" unique_id=1598485505]

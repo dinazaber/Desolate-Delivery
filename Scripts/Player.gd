@@ -59,6 +59,7 @@ var fireDelay: float = 15.0 # Delay between object throwing and shooting
 @export_category("DEBUG")
 @export var DEBUG_deathBypass: bool = false
 @export_range(0.0, 2.0, 0.01) var DEBUG_engineTimeScale: float = 1.0 
+@export var DEBUG_thirdPerson: bool = false
 
 @export_category("PLAYER STATS")
 const PLAYER_MAX_HEALTH = 100.0
@@ -67,7 +68,7 @@ const PLAYER_MAX_HEALTH = 100.0
 @export var grenadeCoolTime: float = 8.0 # cooldown time (s)
 @export var walk_speed: float = 7.0
 @export var crouch_speed: float = 3.0
-@export var dash_speed: float = 22.5
+@export var dash_speed: float = 20.0
 @export var dashCoolTime: float = 1.5 # cooldown time (s)
 @export var jump_speed: float = 7.5
 @export var wallrun_speed: float = walk_speed * 1.2
@@ -134,6 +135,9 @@ func save():
 func _ready() -> void:
 	#platform_on_leave = CharacterBody3D.PLATFORM_ON_LEAVE_DO_NOTHING
 	
+	#$IK_Ltarget.position = global_position + Vector3(-0.15, -1.0, 0.0)
+	#$IK_Rtarget.position = global_position + Vector3(0.15, -1.0, 0.0)
+	
 	spawn_health_orbs(Vector3.ZERO, 0)
 	
 	screenEffect = get_tree().get_first_node_in_group("Effects")
@@ -156,7 +160,14 @@ func _ready() -> void:
 	healthBar.max_value = PLAYER_MAX_HEALTH
 	current_gun_R.draw(1.0)
 	
+	
+	# debug
 	Engine.time_scale = DEBUG_engineTimeScale
+	
+	if DEBUG_thirdPerson:
+		camera.camera.position = Vector3(0.0, 2.0, 4.0)
+	else:
+		$Skeleton3D/Player.cast_shadow = GeometryInstance3D.ShadowCastingSetting.SHADOW_CASTING_SETTING_SHADOWS_ONLY
 
 func _input(event):
 	if dead: return

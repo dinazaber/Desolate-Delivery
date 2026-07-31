@@ -1,4 +1,4 @@
-@tool
+#@tool
 extends Node3D
 
 
@@ -8,7 +8,11 @@ extends Node3D
 @onready var prev_pos = parent.global_position
 
 func _physics_process(_delta: float) -> void:
-	var velocity = parent.global_position - prev_pos
-	global_position = parent.global_position + velocity * offset
+	if !(parent is CharacterBody3D):
+		var velocity = parent.global_position - prev_pos
+		global_position = parent.global_position + velocity * offset
 	
-	prev_pos = parent.global_position
+		prev_pos = parent.global_position
+	
+	else:
+		global_position = parent.global_position + parent.velocity * offset

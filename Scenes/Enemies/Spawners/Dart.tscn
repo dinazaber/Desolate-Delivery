@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://3vgdbq2dbpqm"]
 
-[ext_resource type="Script" uid="uid://d1a3sfh11oblq" path="res://Scripts/Enemies/Dart.gd" id="1_k3ny1"]
+[ext_resource type="Script" uid="uid://d1a3sfh11oblq" path="res://Scripts/Enemies/Spawners/Dart.gd" id="1_k3ny1"]
 [ext_resource type="PackedScene" uid="uid://b4wyneleeqxp" path="res://Scenes/Modules/TraumaCauser.tscn" id="2_xbned"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_v5gy4"]
