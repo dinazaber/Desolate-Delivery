@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://b3a2aylon8065" path="res://Scripts/UI/MainMenu.gd" id="1_tt5f1"]
 [ext_resource type="PackedScene" uid="uid://b2hljcs3010c5" path="res://Scenes/UI/Settings.tscn" id="2_853f1"]
 [ext_resource type="PackedScene" uid="uid://dtrupg8u7agye" path="res://Scenes/UI/LevelSelect.tscn" id="3_4pyop"]
-[ext_resource type="LightmapGIData" uid="uid://ct5bh0e6apxpa" path="res://assets/Lightmaps/MainMenu.lmbake" id="4_4pyop"]
 [ext_resource type="Shader" uid="uid://no1jy7cyw0an" path="res://Shaders/PostProcess/SandStorm.gdshader" id="4_ervkh"]
 [ext_resource type="Shader" uid="uid://du6da8ox1uyei" path="res://Shaders/Particles/SandStorm.gdshader" id="4_jex3y"]
 [ext_resource type="Shader" uid="uid://b5qxk2hnep8ku" path="res://Shaders/MeshShaders/GroundShader.gdshader" id="5_0ncoa"]
@@ -396,12 +395,12 @@ quality = 2
 supersampling = true
 use_denoiser = false
 generate_probes_subdiv = 0
-light_data = ExtResource("4_4pyop")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="3DScene/LightmapGI" unique_id=1841266725]
 transform = Transform3D(0.6744518, -0.71208197, -0.19507463, -0.067806676, -0.32283795, 0.9440223, -0.73519874, -0.62347, -0.26602262, 4.189581, 1.2188468, -4.77437)
 light_color = Color(0.92156863, 0.85882354, 0.6901961, 1)
-light_bake_mode = 1
+shadow_enabled = true
+directional_shadow_max_distance = 3.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="3DScene" unique_id=1831500822]
 environment = SubResource("Environment_2qihr")

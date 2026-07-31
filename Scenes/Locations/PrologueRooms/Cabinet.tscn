@@ -1,6 +1,5 @@
 [gd_scene format=4 uid="uid://bklolkvppn66"]
 
-[ext_resource type="LightmapGIData" uid="uid://cxyuyqfnhdnns" path="res://assets/Lightmaps/Prologue/Cabinet.lmbake" id="1_kheae"]
 [ext_resource type="ArrayMesh" uid="uid://bbjmrlxksj4cj" path="res://assets/Meshes/RoomConstructor/DoorWay_White&Blue.mesh" id="3_spu57"]
 [ext_resource type="ArrayMesh" uid="uid://cv8cjmypnt11j" path="res://assets/Meshes/Objects/Cabinet.mesh" id="6_70k0b"]
 [ext_resource type="ArrayMesh" uid="uid://c3itox14sik7u" path="res://assets/Meshes/Objects/WallCabinet.mesh" id="7_xyki8"]
@@ -387,34 +386,6 @@ radial_segments = 8
 
 [node name="Cabinet" type="Node3D" unique_id=1857668066]
 
-[node name="LightmapGI" type="LightmapGI" parent="." unique_id=1714560379]
-quality = 3
-supersampling = true
-bounces = 16
-interior = true
-use_denoiser = false
-environment_mode = 0
-light_data = ExtResource("1_kheae")
-
-[node name="DeskLamp" type="SpotLight3D" parent="LightmapGI" unique_id=1009815911]
-transform = Transform3D(0.9042156, 0.04987909, 0.4241537, -0.42341876, 0.23440361, 0.87508374, -0.05577477, -0.97085893, 0.23307112, -1.1904107, 1.1063823, 3.22827)
-visible = false
-light_color = Color(0.9585025, 0.84505624, 0.44845843, 1)
-light_bake_mode = 1
-shadow_caster_mask = 4294967293
-spot_range = 0.5
-spot_angle = 30.0
-
-[node name="CeillingLamp" type="SpotLight3D" parent="LightmapGI" unique_id=2117249353]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -1.5, 3.8730824, 2)
-light_color = Color(0.9151226, 0.78603435, 0.44348556, 1)
-light_energy = 0.5
-light_indirect_energy = 3.0
-light_bake_mode = 1
-distance_fade_enabled = true
-spot_range = 10.0
-spot_angle = 70.0
-
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=752141760]
 visible = false
 navigation_mesh = SubResource("NavigationMesh_lkdcv")
@@ -555,6 +526,17 @@ mesh = SubResource("ArrayMesh_5461e")
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1.5, 4.01, 2)
 mesh = ExtResource("22_h81dg")
 
+[node name="CeillingLamp" type="SpotLight3D" parent="Decorations/Room/Lamps/LampOn" unique_id=2117249353]
+transform = Transform3D(-4.371139e-08, 1, 4.371139e-08, 0, -4.371139e-08, 1, 1, 4.371139e-08, 1.9106855e-15, 0, -0.13691783, 0)
+light_color = Color(0.9151226, 0.78603435, 0.44348556, 1)
+light_energy = 0.5
+light_indirect_energy = 3.0
+light_bake_mode = 1
+shadow_enabled = true
+distance_fade_enabled = true
+spot_range = 10.0
+spot_angle = 70.0
+
 [node name="TrashCan" type="MeshInstance3D" parent="Decorations/Room" unique_id=2042462716]
 transform = Transform3D(-0.16546758, 0, -0.25024086, 0, 0.3, 0, 0.25024086, 0, -0.16546758, 1.6069506, 0.30324292, 3.596272)
 mesh = ExtResource("25_ehdvs")
@@ -652,6 +634,14 @@ transform = Transform3D(0.592303, 0.36078528, 0.7204254, -0.023029814, 0.9013588
 layers = 2
 gi_mode = 0
 mesh = SubResource("CylinderMesh_ew1ly")
+
+[node name="DeskLamp" type="SpotLight3D" parent="Decorations/Desk/DeskLamp" unique_id=1009815911]
+transform = Transform3D(11.234492, -0.15798885, 5.4782505, -5.2927346, 2.9300451, 10.938547, -1.4223752, -12.150715, 2.56651, -0.8858814, 2.1941223, -1.2326851)
+light_color = Color(0.9585025, 0.84505624, 0.44845843, 1)
+light_bake_mode = 1
+shadow_caster_mask = 4294967293
+spot_range = 0.5
+spot_angle = 30.0
 
 [node name="Pen" type="MeshInstance3D" parent="Decorations/Desk" unique_id=1639000256]
 transform = Transform3D(0.18545641, -0.07487278, 3.2727934e-09, 6.3108872e-30, -8.742279e-09, -0.20000002, 0.07487278, 0.18545641, -8.106557e-09, 1.0174766, 1.0882205, -0.4579916)

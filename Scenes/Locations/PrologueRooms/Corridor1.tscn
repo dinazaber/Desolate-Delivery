@@ -1,6 +1,5 @@
 [gd_scene format=4 uid="uid://ctpyouk5n8jhc"]
 
-[ext_resource type="LightmapGIData" uid="uid://bksk5nls7ktt8" path="res://assets/Lightmaps/Prologue/Corridor1.lmbake" id="2_5rlci"]
 [ext_resource type="Shader" uid="uid://cunx8274v1qyy" path="res://Shaders/MeshShaders/MeshShader.gdshader" id="3_eh8t6"]
 [ext_resource type="Texture2D" uid="uid://kqnjcrk75lb3" path="res://assets/Textures/Dirt.png" id="4_ufigb"]
 [ext_resource type="Texture2D" uid="uid://bu6ue5ydfh2q6" path="res://assets/Textures/Rust.png" id="5_fkfyg"]
@@ -307,34 +306,6 @@ _surfaces = [{
 
 [node name="Corridor1" type="Node3D" unique_id=2126095865]
 
-[node name="LightmapGI" type="LightmapGI" parent="." unique_id=1471095607]
-quality = 2
-supersampling = true
-bounces = 16
-bounce_indirect_energy = 2.0
-interior = true
-use_denoiser = false
-environment_mode = 0
-environment_custom_color = Color(0, 0, 0, 1)
-generate_probes_subdiv = 3
-light_data = ExtResource("2_5rlci")
-
-[node name="CeillingLamp1" type="SpotLight3D" parent="LightmapGI" unique_id=760956539]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -5.992413, 3.62921, 0.004749775)
-light_indirect_energy = 2.0
-light_bake_mode = 1
-distance_fade_enabled = true
-distance_fade_begin = 10.0
-spot_angle = 70.0
-
-[node name="CeillingLamp2" type="SpotLight3D" parent="LightmapGI" unique_id=452464049]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -13.036828, 3.62921, 0.004749775)
-light_indirect_energy = 2.0
-light_bake_mode = 1
-distance_fade_enabled = true
-distance_fade_begin = 10.0
-spot_angle = 70.0
-
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=560762083]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.749267, 0, 0)
 visible = false
@@ -393,6 +364,7 @@ end_position = Vector3(2.195, 0, 0)
 
 [node name="PipesYellow" type="MeshInstance3D" parent="Decorations" unique_id=975401538]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.097560644, 0, 0)
+cast_shadow = 0
 mesh = SubResource("ArrayMesh_mo2ea")
 skeleton = NodePath("../../..")
 
@@ -403,14 +375,34 @@ mesh = ExtResource("6_8wpsc")
 skeleton = NodePath("../../..")
 
 [node name="PipesRed" type="MeshInstance3D" parent="Decorations" unique_id=1257753932]
+cast_shadow = 0
 mesh = SubResource("ArrayMesh_2qfhh")
 skeleton = NodePath("../../..")
 
 [node name="Lamps" type="MeshInstance3D" parent="Decorations" unique_id=1365222640]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.028564453, 0)
+cast_shadow = 0
 gi_lightmap_texel_scale = 0.5
 mesh = SubResource("ArrayMesh_ygnga")
 skeleton = NodePath("../../..")
+
+[node name="CeillingLamp1" type="OmniLight3D" parent="Decorations/Lamps" unique_id=1890143075]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -5.992413, 3.5276122, 0.004749775)
+light_indirect_energy = 2.0
+light_bake_mode = 1
+shadow_enabled = true
+distance_fade_enabled = true
+distance_fade_begin = 10.0
+omni_range = 6.0
+
+[node name="CeillingLamp2" type="OmniLight3D" parent="Decorations/Lamps" unique_id=1007527911]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -13.036828, 3.5276122, 0.004749775)
+light_indirect_energy = 2.0
+light_bake_mode = 1
+shadow_enabled = true
+distance_fade_enabled = true
+distance_fade_begin = 10.0
+omni_range = 6.0
 
 [node name="VendingMachine" type="MeshInstance3D" parent="Decorations" unique_id=1850950588]
 transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -9.948781, 1.2226071, -1.5020072)
@@ -418,11 +410,13 @@ mesh = ExtResource("7_ycgpe")
 skeleton = NodePath("../..")
 
 [node name="Floor" type="MeshInstance3D" parent="Decorations" unique_id=42617910]
+cast_shadow = 0
 gi_lightmap_texel_scale = 2.0
 mesh = SubResource("ArrayMesh_c3ths")
 skeleton = NodePath("../../..")
 
 [node name="Ceilling" type="MeshInstance3D" parent="Decorations" unique_id=189243457]
+cast_shadow = 0
 gi_lightmap_texel_scale = 4.0
 mesh = SubResource("ArrayMesh_xqsaj")
 skeleton = NodePath("../../..")
@@ -531,5 +525,6 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -8, 
 mesh = ExtResource("8_5rlci")
 
 [node name="Walls" type="MeshInstance3D" parent="." unique_id=2130323872]
+cast_shadow = 0
 gi_lightmap_texel_scale = 4.0
 mesh = SubResource("ArrayMesh_5rlci")

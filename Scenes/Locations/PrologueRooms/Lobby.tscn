@@ -1,6 +1,5 @@
 [gd_scene format=4 uid="uid://cs848so2f77c7"]
 
-[ext_resource type="LightmapGIData" uid="uid://dy4obcgimyvnv" path="res://assets/Lightmaps/Prologue/Lobby.lmbake" id="1_ia4ft"]
 [ext_resource type="ArrayMesh" uid="uid://b6dhihmks0rku" path="res://assets/Meshes/RoomConstructor/RoundRoom_White&Brown.mesh" id="2_ebdj8"]
 [ext_resource type="ArrayMesh" uid="uid://cvgg61twv3xnn" path="res://assets/Meshes/Architecture/RuinsPile.mesh" id="3_insln"]
 [ext_resource type="Shader" uid="uid://cunx8274v1qyy" path="res://Shaders/MeshShaders/MeshShader.gdshader" id="4_48f2t"]
@@ -448,18 +447,7 @@ shape = SubResource("BoxShape3D_twxyb")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.018463135, 4.2453375, -0.09185791)
 shape = SubResource("BoxShape3D_twxyb")
 
-[node name="LightmapGI" type="LightmapGI" parent="." unique_id=743713490]
-quality = 2
-supersampling = true
-bounces = 16
-bounce_indirect_energy = 2.0
-interior = true
-use_denoiser = false
-environment_mode = 0
-generate_probes_subdiv = 3
-light_data = ExtResource("1_ia4ft")
-
-[node name="CeillingLamp" type="SpotLight3D" parent="LightmapGI" unique_id=1862528990]
+[node name="CeillingLamp" type="SpotLight3D" parent="." unique_id=1862528990]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -7, 3.95, 4.5)
 light_color = Color(0.9151226, 0.78603435, 0.44348556, 1)
 light_energy = 0.8
@@ -470,7 +458,7 @@ distance_fade_begin = 10.0
 spot_range = 6.0
 spot_angle = 85.0
 
-[node name="CeillingLamp2" type="SpotLight3D" parent="LightmapGI" unique_id=1230578852]
+[node name="CeillingLamp2" type="SpotLight3D" parent="." unique_id=1230578852]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -7, 3.95, 1.5)
 light_color = Color(0.9151226, 0.78603435, 0.44348556, 1)
 light_energy = 0.8
@@ -481,7 +469,7 @@ distance_fade_begin = 10.0
 spot_range = 6.0
 spot_angle = 85.0
 
-[node name="CeillingLamp3" type="SpotLight3D" parent="LightmapGI" unique_id=916756297]
+[node name="CeillingLamp3" type="SpotLight3D" parent="." unique_id=916756297]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 3.95, -4.5)
 light_color = Color(0.9151226, 0.78603435, 0.44348556, 1)
 light_energy = 0.8
@@ -492,7 +480,7 @@ distance_fade_begin = 10.0
 spot_range = 6.0
 spot_angle = 85.0
 
-[node name="CeillingLamp4" type="SpotLight3D" parent="LightmapGI" unique_id=24931121]
+[node name="CeillingLamp4" type="SpotLight3D" parent="." unique_id=24931121]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 7, 3.95, -4.5)
 light_color = Color(0.9151226, 0.78603435, 0.44348556, 1)
 light_energy = 0.8
@@ -503,7 +491,7 @@ distance_fade_begin = 10.0
 spot_range = 6.0
 spot_angle = 85.0
 
-[node name="CeillingLamp5" type="SpotLight3D" parent="LightmapGI" unique_id=1238831876]
+[node name="CeillingLamp5" type="SpotLight3D" parent="." unique_id=1238831876]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 7, 3.95, -1.5)
 light_color = Color(0.9151226, 0.78603435, 0.44348556, 1)
 light_energy = 0.8
@@ -514,7 +502,7 @@ distance_fade_begin = 10.0
 spot_range = 6.0
 spot_angle = 85.0
 
-[node name="CeillingLamp6" type="SpotLight3D" parent="LightmapGI" unique_id=740679973]
+[node name="CeillingLamp6" type="SpotLight3D" parent="." unique_id=740679973]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 7, 3.95, 4.5)
 light_color = Color(0.9151226, 0.78603435, 0.44348556, 1)
 light_energy = 0.8

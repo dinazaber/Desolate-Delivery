@@ -1,6 +1,5 @@
 [gd_scene format=4 uid="uid://betiwnvfyeh2r"]
 
-[ext_resource type="LightmapGIData" uid="uid://j3ylw0j1pnq2" path="res://assets/Lightmaps/Prologue/Corridor2.lmbake" id="1_7s16r"]
 [ext_resource type="Texture2D" uid="uid://kqnjcrk75lb3" path="res://assets/Textures/Dirt.png" id="3_80p4p"]
 [ext_resource type="Texture2D" uid="uid://bu6ue5ydfh2q6" path="res://assets/Textures/Rust.png" id="4_eers7"]
 [ext_resource type="Shader" uid="uid://cunx8274v1qyy" path="res://Shaders/MeshShaders/MeshShader.gdshader" id="6_0q0h8"]
@@ -49,7 +48,6 @@ shader_parameter/has_rig = false
 shader_parameter/enable_detail_1 = true
 shader_parameter/enable_detail_2 = true
 shader_parameter/enable_glow = false
-shader_parameter/receive_shadows = true
 shader_parameter/wire_color = Color(0, 0, 0, 1)
 shader_parameter/wire_width = 1.0
 shader_parameter/wire_transparency = 0.5
@@ -86,7 +84,6 @@ shader_parameter/has_rig = false
 shader_parameter/enable_detail_1 = true
 shader_parameter/enable_detail_2 = true
 shader_parameter/enable_glow = false
-shader_parameter/receive_shadows = true
 shader_parameter/wire_color = Color(0, 0, 0, 1)
 shader_parameter/wire_width = 1.0
 shader_parameter/wire_transparency = 0.5
@@ -123,7 +120,6 @@ shader_parameter/has_rig = false
 shader_parameter/enable_detail_1 = true
 shader_parameter/enable_detail_2 = true
 shader_parameter/enable_glow = false
-shader_parameter/receive_shadows = true
 shader_parameter/wire_color = Color(0, 0, 0, 1)
 shader_parameter/wire_width = 1.0
 shader_parameter/wire_transparency = 0.5
@@ -158,14 +154,14 @@ shader_parameter/enable_wireframe = true
 shader_parameter/enable_world_projection = true
 shader_parameter/has_rig = false
 shader_parameter/enable_detail_1 = true
-shader_parameter/enable_detail_2 = true
+shader_parameter/enable_detail_2 = false
 shader_parameter/enable_glow = false
-shader_parameter/receive_shadows = true
 shader_parameter/wire_color = Color(0, 0, 0, 1)
 shader_parameter/wire_width = 1.0
 shader_parameter/wire_transparency = 0.5
-shader_parameter/detail1_scale = 1.0
-shader_parameter/alpha1 = 1.0
+shader_parameter/detail1 = ExtResource("3_80p4p")
+shader_parameter/detail1_scale = 0.5
+shader_parameter/alpha1 = 0.5
 shader_parameter/detail2_scale = 1.0
 shader_parameter/alpha2 = 1.0
 shader_parameter/glow_intensity = 1.0
@@ -195,7 +191,6 @@ shader_parameter/has_rig = false
 shader_parameter/enable_detail_1 = true
 shader_parameter/enable_detail_2 = false
 shader_parameter/enable_glow = false
-shader_parameter/receive_shadows = true
 shader_parameter/wire_color = Color(0, 0, 0, 1)
 shader_parameter/wire_width = 1.0
 shader_parameter/wire_transparency = 0.5
@@ -231,7 +226,6 @@ shader_parameter/has_rig = false
 shader_parameter/enable_detail_1 = true
 shader_parameter/enable_detail_2 = true
 shader_parameter/enable_glow = false
-shader_parameter/receive_shadows = true
 shader_parameter/wire_color = Color(0, 0, 0, 1)
 shader_parameter/wire_width = 1.0
 shader_parameter/wire_transparency = 0.5
@@ -268,7 +262,6 @@ shader_parameter/has_rig = false
 shader_parameter/enable_detail_1 = true
 shader_parameter/enable_detail_2 = true
 shader_parameter/enable_glow = false
-shader_parameter/receive_shadows = true
 shader_parameter/wire_color = Color(0, 0, 0, 1)
 shader_parameter/wire_width = 1.0
 shader_parameter/wire_transparency = 0.5
@@ -379,7 +372,6 @@ shader_parameter/has_rig = false
 shader_parameter/enable_detail_1 = true
 shader_parameter/enable_detail_2 = true
 shader_parameter/enable_glow = false
-shader_parameter/receive_shadows = false
 shader_parameter/wire_color = Color(0, 0, 0, 1)
 shader_parameter/wire_width = 1.0
 shader_parameter/wire_transparency = 0.5
@@ -416,7 +408,6 @@ shader_parameter/has_rig = false
 shader_parameter/enable_detail_1 = true
 shader_parameter/enable_detail_2 = true
 shader_parameter/enable_glow = false
-shader_parameter/receive_shadows = true
 shader_parameter/wire_color = Color(0, 0, 0, 1)
 shader_parameter/wire_width = 1.0
 shader_parameter/wire_transparency = 0.5
@@ -458,17 +449,7 @@ rings = 8
 
 [node name="Corridor2" type="Node3D" unique_id=1566095957]
 
-[node name="LightmapGI" type="LightmapGI" parent="." unique_id=1381250395]
-quality = 2
-supersampling = true
-bounces = 16
-interior = true
-use_denoiser = false
-environment_mode = 0
-generate_probes_subdiv = 3
-light_data = ExtResource("1_7s16r")
-
-[node name="CeillingLamp2" type="SpotLight3D" parent="LightmapGI" unique_id=898465063]
+[node name="CeillingLamp2" type="SpotLight3D" parent="." unique_id=898465063]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 6.8681927, 3.62921, 11.885411)
 light_color = Color(1, 0.784, 0.27999997, 1)
 light_indirect_energy = 2.0
@@ -477,7 +458,7 @@ distance_fade_enabled = true
 distance_fade_begin = 10.0
 spot_angle = 70.0
 
-[node name="CeillingLamp3" type="SpotLight3D" parent="LightmapGI" unique_id=1675533465]
+[node name="CeillingLamp3" type="SpotLight3D" parent="." unique_id=1675533465]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 2.4564486, 3.62921, 9.101479)
 light_color = Color(1, 0.784, 0.27999997, 1)
 light_indirect_energy = 2.0
@@ -486,7 +467,7 @@ distance_fade_enabled = true
 distance_fade_begin = 10.0
 spot_angle = 70.0
 
-[node name="CeillingLamp4" type="SpotLight3D" parent="LightmapGI" unique_id=264363337]
+[node name="CeillingLamp4" type="SpotLight3D" parent="." unique_id=264363337]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 2.4564486, 3.62921, 2.1811717)
 light_color = Color(1, 0.784, 0.27999997, 1)
 light_indirect_energy = 2.0
@@ -495,7 +476,7 @@ distance_fade_enabled = true
 distance_fade_begin = 10.0
 spot_angle = 70.0
 
-[node name="CeillingLamp5" type="SpotLight3D" parent="LightmapGI" unique_id=794650049]
+[node name="CeillingLamp5" type="SpotLight3D" parent="." unique_id=794650049]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -1.6760821, 3.62921, 0.039280653)
 light_color = Color(1, 0.784, 0.27999997, 1)
 light_indirect_energy = 2.0
@@ -504,7 +485,7 @@ distance_fade_enabled = true
 distance_fade_begin = 10.0
 spot_angle = 70.0
 
-[node name="CeillingLamp6" type="SpotLight3D" parent="LightmapGI" unique_id=1910258011]
+[node name="CeillingLamp6" type="SpotLight3D" parent="." unique_id=1910258011]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -7.168869, 3.62921, 0.039280653)
 light_color = Color(1, 0.784, 0.27999997, 1)
 light_indirect_energy = 2.0

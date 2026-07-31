@@ -4,7 +4,6 @@
 [ext_resource type="Shader" uid="uid://cunx8274v1qyy" path="res://Shaders/MeshShaders/MeshShader.gdshader" id="6_ef7wb"]
 [ext_resource type="Texture2D" uid="uid://kqnjcrk75lb3" path="res://assets/Textures/Dirt.png" id="7_f71oj"]
 [ext_resource type="ArrayMesh" uid="uid://b647ymx5hntht" path="res://assets/Meshes/Objects/CeilingLamp.mesh" id="8_ohusx"]
-[ext_resource type="LightmapGIData" uid="uid://guklx67wfjia" path="res://assets/Lightmaps/Prologue/Restroom.lmbake" id="10_f71oj"]
 [ext_resource type="Texture2D" uid="uid://bu6ue5ydfh2q6" path="res://assets/Textures/Rust.png" id="12_dkk4x"]
 [ext_resource type="ArrayMesh" uid="uid://cc71x4p8yppbl" path="res://assets/Meshes/Architecture/Fence.mesh" id="13_to7gk"]
 [ext_resource type="ArrayMesh" uid="uid://d4kmyqiux7f2m" path="res://assets/Meshes/Objects/TrashCan.mesh" id="14_to7gk"]
@@ -360,25 +359,6 @@ shape = SubResource("BoxShape3D_to7gk")
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.9572236, 3.2709422, 0.07244014)
 shape = SubResource("BoxShape3D_a2qka")
 
-[node name="LightmapGI" type="LightmapGI" parent="." unique_id=1204812572]
-quality = 2
-supersampling = true
-bounces = 16
-bounce_indirect_energy = 2.0
-interior = true
-use_denoiser = false
-light_data = ExtResource("10_f71oj")
-
-[node name="CeillingLamp3" type="SpotLight3D" parent="LightmapGI" unique_id=395471966]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.76550764, 2.8946755, -3.4394355)
-light_indirect_energy = 4.0
-light_bake_mode = 1
-shadow_caster_mask = 4294967293
-distance_fade_enabled = true
-distance_fade_begin = 10.0
-spot_range = 10.0
-spot_angle = 80.0
-
 [node name="Decorations" type="Node3D" parent="." unique_id=420953429]
 
 [node name="Lamp" type="MeshInstance3D" parent="Decorations" unique_id=1898636493]
@@ -386,6 +366,17 @@ transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -0.76429844, 3.0314193,
 mesh = ExtResource("8_ohusx")
 skeleton = NodePath("")
 metadata/_edit_lock_ = true
+
+[node name="CeillingLamp3" type="SpotLight3D" parent="Decorations/Lamp" unique_id=395471966]
+transform = Transform3D(3.333333, 0, 0, 0, -1.4570462e-07, 3.333333, 0, -3.333333, -1.4570462e-07, -0.004030466, -0.45581245, -0.004958153)
+light_indirect_energy = 4.0
+light_bake_mode = 1
+shadow_enabled = true
+shadow_caster_mask = 4294967293
+distance_fade_enabled = true
+distance_fade_begin = 10.0
+spot_range = 10.0
+spot_angle = 80.0
 
 [node name="DoorWay" type="MeshInstance3D" parent="Decorations" unique_id=1703427973]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2, 0)

@@ -5,9 +5,6 @@ uniform sampler2D noise_img_slow : repeat_enable, filter_linear;
 uniform vec4 dust_color : source_color = vec4(0.8, 0.7, 0.5, 0.5);
 uniform float total_opacity : hint_range(0.0, 1.0) = 0.5;
 
-// Link this to camera rotation in GDScript
-uniform float look_angle_factor : hint_range(0.0, 1.0);
-
 uniform vec2 speed_fast = vec2(0.1, 0.02);
 uniform vec2 speed_slow = vec2(0.04, -0.01);
 uniform float density_fast = 1.0;
@@ -21,13 +18,12 @@ void fragment() {
 
     float n_fast = texture(noise_img_fast, uv_fast).r;
     float n_slow = texture(noise_img_slow, uv_slow).r;
-	
+    
     float final_noise = (n_fast * n_fast) * n_slow;
     final_noise = smoothstep(0.1, 0.6, final_noise);
 
     vec4 final_color = dust_color;
-    // You can also use the camera vertical angle to make fog thicker near the ground
-    final_color.a *= final_noise * total_opacity * look_angle_factor;
+    final_color.a *= final_noise * total_opacity;
 
     COLOR = final_color;
 }

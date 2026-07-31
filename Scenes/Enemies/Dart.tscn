@@ -83,6 +83,8 @@ bounce = 0.25
 size = Vector3(3.4, 3.5, 0.125)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_acwb1"]
+stencil_mode = 3
+stencil_flags = 2
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_lsrto"]
 _surfaces = [{
@@ -115,6 +117,8 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_lsrto")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b1j7r"]
+stencil_mode = 3
+stencil_flags = 2
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_0i8eo"]
 _surfaces = [{

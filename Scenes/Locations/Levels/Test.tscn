@@ -62,7 +62,6 @@ shader_parameter/noise_img_fast = SubResource("NoiseTexture2D_66qxi")
 shader_parameter/noise_img_slow = SubResource("NoiseTexture2D_5sbex")
 shader_parameter/dust_color = Color(0.8, 0.632, 0.296, 0.5019608)
 shader_parameter/total_opacity = 0.5
-shader_parameter/look_angle_factor = 1.0
 shader_parameter/speed_fast = Vector2(-0.2, -0.1)
 shader_parameter/speed_slow = Vector2(0.3, -0.1)
 shader_parameter/density_fast = 0.2
@@ -244,7 +243,7 @@ _surfaces = [{
 [node name="AirBase" type="Node" unique_id=511100143]
 script = ExtResource("1_tjrp1")
 
-[node name="SandHaze" type="ColorRect" parent="." unique_id=1048871108 groups=["Effects"]]
+[node name="SandHaze" type="ColorRect" parent="." unique_id=1048871108]
 process_mode = 1
 show_behind_parent = true
 material = SubResource("ShaderMaterial_nrph0")

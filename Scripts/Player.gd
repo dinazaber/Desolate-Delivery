@@ -196,6 +196,7 @@ func _input(event):
 func _process(delta: float) -> void: # adaptive fps
 	gun_rot_amount = 0.6/(delta*14400)
 	grenadeCool = clamp(grenadeCool + (100 * delta) / grenadeCoolTime, -10.0, 100.0)
+	update_screen_effect()
 
 func _physics_process(delta) -> void: # fixed 60 fps
 	if !slide:
@@ -408,7 +409,7 @@ func head_bob(delta):
 	var bob_y = sin(Time.get_ticks_msec() * 2 * bob_freq)
 	camera.position.y = lerp(camera.position.y, camDefHeight + bob_y * bob_amount, delta * 10.0)
 
-func updateScreenEffect(): #Function for current and future screen effects
+func update_screen_effect(): #Function for current and future screen effects
 	if screenEffect!=null: 
 		var forward = -camera.global_transform.basis.z
 		var horizontal_forward = Vector3(forward.x, 0, forward.z).normalized()
