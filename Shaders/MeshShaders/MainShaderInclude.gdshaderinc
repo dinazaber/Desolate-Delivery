@@ -29,29 +29,25 @@ uniform int group_size = 1;
 
 // Box projection to place details
 vec4 get_box_projection(sampler2D p_sampler, vec3 p_normal, vec3 p_pos) {
-    vec3 n = abs(normalize(p_normal));
-    vec3 weights = n;
+    vec3 n = abs(p_normal);
     
-    float low_mask = min(min(weights.x, weights.y), weights.z);
-    weights -= low_mask; 
-    weights /= (weights.x + weights.y + weights.z);
-
-    vec4 color = vec4(0.0);
-    if (weights.x > 0.0) { color += texture(p_sampler, p_pos.zy) * weights.x; }
-    if (weights.y > 0.0) { color += texture(p_sampler, p_pos.xz) * weights.y; }
-    if (weights.z > 0.0) { color += texture(p_sampler, p_pos.xy) * weights.z; }
-    return color;
+    // Pick the axis with the largest normal component
+    if (n.x > n.y && n.x > n.z) {
+        return texture(p_sampler, p_pos.zy);
+    } else if (n.y > n.z) {
+        return texture(p_sampler, p_pos.xz);
+    } else {
+        return texture(p_sampler, p_pos.xy);
+    }
 }
 
 // Computes the emission color based on glow settings and mask criteria
 vec3 calculate_glow(bool enable, float mask_val, vec3 base_color) {
     if (enable && mask_val > 0.9) {
-        if (!glow_override) {
-            return base_color * glow_intensity;
-        } else {
-            return glow_color_override * glow_intensity;
-        }
+        if (!glow_override) return base_color * glow_intensity;
+        else return glow_color_override * glow_intensity;
     }
+    
     return vec3(0.0);
 }
 
@@ -66,21 +62,21 @@ vec3 apply_wireframe(vec3 base_color, vec2 uv, vec3 vertex_pos) {
     float far_dist = 60.0;
     float distance_factor = 1.0 - smoothstep(near_dist, far_dist, depth);
 
-    // 1. Calculate base edge distance in screen pixels
+    // Calculate base edge distance in screen pixels
     vec2 pixel_dist = dist_to_edge / derivative;
     float closest_pixel_edge = min(pixel_dist.x, pixel_dist.y);
 
-    // 2. Scale thickness down inversely with depth to preserve visual perspective
+    // Scale thickness down inversely with depth to preserve visual perspective
     // Dividing by max(depth, 1.0) shrinks screen-space width as object gets further
     float target_thickness = wire_width * (near_dist / max(depth, near_dist));
     
     // Clamp to sub-pixel minimum so it doesn't pop out abruptly before far_dist
     float final_thickness = max(target_thickness, 0.25);
 
-    // 3. Anti-aliased wire mask
+    // Anti-aliased wire mask
     float wire_mask = 1.0 - smoothstep(final_thickness - 0.5, final_thickness + 0.5, closest_pixel_edge);
 
-    // 4. Smooth distance fadeout
+    // Smooth distance fadeout
     wire_mask *= distance_factor;
 
     vec3 blended_wire = mix(base_color, wire_color, wire_transparency);
