@@ -55,20 +55,36 @@ vec3 calculate_glow(bool enable, float mask_val, vec3 base_color) {
     return vec3(0.0);
 }
 
-// Computes the wireframe blended albedo color
 vec3 apply_wireframe(vec3 base_color, vec2 uv, vec3 vertex_pos) {
     vec2 dist_to_edge = min(uv, 1.0 - uv);
-    vec2 derivative = fwidth(uv);
+    vec2 derivative = max(fwidth(uv), vec2(0.00001));
+
     float depth = abs(vertex_pos.z);
-    float distance_factor = clamp(1.0 - (depth / 20.0), 0.0, 1.0);
-    float final_thickness = wire_width * pow(distance_factor, 2.0);
+    
+    // Distance factor (1.0 close up, 0.0 far away)
+    float near_dist = 2.0;
+    float far_dist = 60.0;
+    float distance_factor = 1.0 - smoothstep(near_dist, far_dist, depth);
+
+    // 1. Calculate base edge distance in screen pixels
     vec2 pixel_dist = dist_to_edge / derivative;
     float closest_pixel_edge = min(pixel_dist.x, pixel_dist.y);
-    float wire_mask = 1.0 - smoothstep(final_thickness - 0.5, final_thickness + 0.5, closest_pixel_edge);
-    float alpha_fade = distance_factor;
+
+    // 2. Scale thickness down inversely with depth to preserve visual perspective
+    // Dividing by max(depth, 1.0) shrinks screen-space width as object gets further
+    float target_thickness = wire_width * (near_dist / max(depth, near_dist));
     
+    // Clamp to sub-pixel minimum so it doesn't pop out abruptly before far_dist
+    float final_thickness = max(target_thickness, 0.25);
+
+    // 3. Anti-aliased wire mask
+    float wire_mask = 1.0 - smoothstep(final_thickness - 0.5, final_thickness + 0.5, closest_pixel_edge);
+
+    // 4. Smooth distance fadeout
+    wire_mask *= distance_factor;
+
     vec3 blended_wire = mix(base_color, wire_color, wire_transparency);
-    return mix(base_color, blended_wire, wire_mask * alpha_fade);
+    return mix(base_color, blended_wire, wire_mask);
 }
 
 #endif
