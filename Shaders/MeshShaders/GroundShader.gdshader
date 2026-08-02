@@ -1,6 +1,6 @@
 shader_type spatial;
-stencil_mode read, compare_not_equal, 1;
-render_mode cull_back, specular_disabled, depth_draw_never;
+//stencil_mode read, compare_not_equal, 1;
+render_mode cull_back, specular_disabled;
 
 group_uniforms Adjustments;
 uniform vec3 color: source_color;

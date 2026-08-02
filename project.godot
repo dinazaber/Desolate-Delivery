@@ -42,7 +42,7 @@ project/assembly_name="ProjectX"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/MeshMerger/plugin.cfg", "res://addons/oidn_denoiser/plugin.cfg")
+enabled=PackedStringArray("res://addons/MeshMerger/plugin.cfg", "res://addons/multimesh_converter/plugin.cfg", "res://addons/oidn_denoiser/plugin.cfg")
 
 [filesystem]
 

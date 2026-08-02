@@ -1,0 +1,74 @@
+#ifndef EFFECTS_INCLUDED
+#define EFFECTS_INCLUDED
+
+group_uniforms Wireframe;
+uniform vec3 wire_color : source_color = vec3(0.0, 0.0, 0.0);
+uniform float wire_width : hint_range(0.0, 5.0) = 1.0; 
+uniform float wire_transparency : hint_range(0.0, 1.0) = 1.0;
+
+group_uniforms Detail1;
+uniform sampler2D detail1 : source_color, filter_linear;
+uniform float detail1_scale = 1.0;
+uniform float alpha1 = 1.0;
+
+group_uniforms Detail2;
+uniform sampler2D detail2 : source_color, filter_linear;
+uniform float detail2_scale = 1.0;
+uniform float alpha2 = 1.0;
+
+group_uniforms Glow;
+uniform float glow_intensity = 1.0;
+uniform vec3 glow_color_override: source_color;
+uniform bool glow_override = true;
+
+group_uniforms Instances;
+uniform vec3 palette[15] : source_color;
+uniform int color_variants: hint_range(0, 15) = 1;
+uniform int group_size = 1;
+
+
+// Box projection to place details
+vec4 get_box_projection(sampler2D p_sampler, vec3 p_normal, vec3 p_pos) {
+    vec3 n = abs(normalize(p_normal));
+    vec3 weights = n;
+    
+    float low_mask = min(min(weights.x, weights.y), weights.z);
+    weights -= low_mask; 
+    weights /= (weights.x + weights.y + weights.z);
+
+    vec4 color = vec4(0.0);
+    if (weights.x > 0.0) { color += texture(p_sampler, p_pos.zy) * weights.x; }
+    if (weights.y > 0.0) { color += texture(p_sampler, p_pos.xz) * weights.y; }
+    if (weights.z > 0.0) { color += texture(p_sampler, p_pos.xy) * weights.z; }
+    return color;
+}
+
+// Computes the emission color based on glow settings and mask criteria
+vec3 calculate_glow(bool enable, float mask_val, vec3 base_color) {
+    if (enable && mask_val > 0.9) {
+        if (!glow_override) {
+            return base_color * glow_intensity;
+        } else {
+            return glow_color_override * glow_intensity;
+        }
+    }
+    return vec3(0.0);
+}
+
+// Computes the wireframe blended albedo color
+vec3 apply_wireframe(vec3 base_color, vec2 uv, vec3 vertex_pos) {
+    vec2 dist_to_edge = min(uv, 1.0 - uv);
+    vec2 derivative = fwidth(uv);
+    float depth = abs(vertex_pos.z);
+    float distance_factor = clamp(1.0 - (depth / 20.0), 0.0, 1.0);
+    float final_thickness = wire_width * pow(distance_factor, 2.0);
+    vec2 pixel_dist = dist_to_edge / derivative;
+    float closest_pixel_edge = min(pixel_dist.x, pixel_dist.y);
+    float wire_mask = 1.0 - smoothstep(final_thickness - 0.5, final_thickness + 0.5, closest_pixel_edge);
+    float alpha_fade = distance_factor;
+    
+    vec3 blended_wire = mix(base_color, wire_color, wire_transparency);
+    return mix(base_color, blended_wire, wire_mask * alpha_fade);
+}
+
+#endif

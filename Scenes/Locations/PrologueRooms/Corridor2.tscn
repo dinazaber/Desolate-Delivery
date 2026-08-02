@@ -610,8 +610,17 @@ mesh = SubResource("ArrayMesh_80p4p")
 skeleton = NodePath("../../..")
 
 [node name="Shelves2" type="MeshInstance3D" parent="Decorations/Shelves" unique_id=322741512]
+visible = false
 mesh = SubResource("ArrayMesh_1kn0e")
 skeleton = NodePath("../../..")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Decorations/Shelves" unique_id=1781493587]
+transform = Transform3D(-1.4109344e-08, 1.032648e-08, 0.40000007, 0.2362423, 0.32278422, 0, -0.32278416, 0.23624232, -1.7484558e-08, 9.016701, 1.1643342, 12.625857)
+mesh = ExtResource("9_80p4p")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Decorations/Shelves" unique_id=1767127678]
+transform = Transform3D(-1.7484556e-08, 0, 0.40000007, 0, 0.4000001, 0, -0.40000004, 0, -1.7484558e-08, 10.512916, 1.1643342, 10.441498)
+mesh = ExtResource("9_80p4p")
 
 [node name="Lamps" type="Node3D" parent="Decorations" unique_id=11329539]
 

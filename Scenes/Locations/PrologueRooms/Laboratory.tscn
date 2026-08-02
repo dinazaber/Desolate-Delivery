@@ -150,7 +150,7 @@ shader_parameter/glow_intensity = 1.1
 shader_parameter/glow_color_override = Color(0.9999998, 0.8753877, 0.5071952, 1)
 shader_parameter/glow_override = true
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_diccg"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_elg24"]
 _surfaces = [{
 "aabb": AABB(-0.2393952, -0.38688853, -3.310706, 0.4787904, 3.6093204, 6.621412),
 "format": 34896670721,
@@ -180,7 +180,7 @@ _surfaces = [{
 "vertex_data": PackedByteArray("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NbqTizW6k4s1upOLNbqTi5QLycWUC8nFlAvJxZQLycUNIAbQDSAG0A0gBtANIAbQyTZj28k2Y9vJNmPbyTZj25FbyO2RW8jtkVvI7ZFbyO2apMi2mqTItpqkyLaapMi2NpKR2zaSkds2kpHbNpKR25qkyLaapMi2mqTItpqkyLaapMi2mqTItpqkyLaapMi2NpKR2zaSkds2kpHbNpKR2zaSkds2kpHbNpKR2zaSkduRW8jtkVvI7ZFbyO2RW8jtkVvI7ZFbyO2RW8jtkVvI7ck2Y9vJNmPbyTZj28k2Y9vJNmPbyTZj28k2Y9vJNmPbDSAG0A0gBtANIAbQDSAG0A0gBtANIAbQDSAG0A0gBtCUC8nFlAvJxZQLycWUC8nFlAvJxZQLycWUC8nFlAvJxTW6k4s1upOLNbqTizW6k4s1upOLNbqTizW6k4s1upOL+K8NoPivDaD4rw2g+K8NoPivDaD4rw2g+K8NoPivDaD///9/////f////3////9/////f////3////9/////f/9/////f////3////9/////f////3////9/////f///cDhwOHA4cDhwOHA4cDhwOKoqqiqqKqoqqiqqKqoqqipUFlQWVBZUFlQWVBZUFlQWqumq6arpqumq6arpqumq6VTVVNVU1VTVVNVU1VTVVNWOx47HjseOx47HjseOx47HcDhwOHA4cDhwOHA4cDhwOKoqqiqqKqoqqiqqKqoqqipUFlQWVBZUFlQWVBZUFlQWqumq6arpqumq6arpqumq6VTVVNVU1VTVVNVU1VTVVNWOx47HjseOx47HjseOx47HVNVU1VTVVNVU1VTVVNVU1f+//7//v/+//7//v/+//7+qKqoqqiqqKqoqqiqqKqoq/////////////////////1TVVNVU1VTVVNVU1VTVVNX/v/+//7//v/+//7//v/+/qiqqKqoqqiqqKqoqqiqqKv////////////////////9UVVRVVFVUVVRVVFVUVVRVqiqqKqoqqiqqKqoqqiqqKv9//z//f/8//3//P/9//z9U1VTVVNVU1VTVVNVU1VTVVFVUVVRVVFVUVVRVVVVUVVTVVNVU1VTVVNVU1VTVVNWqKqoqqiqqKqoqqiqqKqoqAAD/fwAA/38AAP9/AAD/f////3////9/////f////39U1VTVVNVU1VTVVNVU1VTVqiqqKqoqqiqqKqoqqiqqKv9//3//f/9//3//f/9//3+qKqoqqiqqKqoqqiqqKqoq//////////////////////+//7//v/+//7//v/+//7/2FfrK9hX6yvYV+sr2FfrK+koJavpKCWr6Sglq+koJavpKCWr6Sglq+koJavpKCWr2FfrK9hX6yvYV+sr2FfrKVNVU1VTVVNVU1VTVVNVU1f///3////9/////f////38G0PHfBtDx3wbQ8d8G0PHfycVq9MnFavTJxWr0ycVq9JOLyUWTi8lFk4vJRZOLyUUNoAZQDaAGUA2gBlANoAZQyLZkW8i2ZFvItmRbyLZkW5HbyG2R28htkdvIbZHbyG3I7W2kyO1tpMjtbaTI7W2kY9s1yWPbNclj2zXJY9s1yf////////////////////9rdDW6a3Q1umt0NbprdDW68V/4r/Ff+K/xX/iv8V/4rzZJmqQ2SZqkNkmapDZJmqRtJDaSbSQ2km0kNpJtJDaSNhKRWzYSkVs2EpFbNhKRW5skyTabJMk2myTJNpskyTb4Lw0g+C8NIPgvDSD4Lw0gNTqUCzU6lAs1OpQLNTqUC0yqstVZyaW2fKWB2oHafKX/f/9//3//f/9//3//f/9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9//38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/3////9/////f////3////9/////f////3////9/////f////3////9/////f////3////9/////f////3////9/////f////3////9/////fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/////f////3////9/////fwAA/38AAP9/AAD/fwAA")
 }]
 blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_diccg")
+shadow_mesh = SubResource("ArrayMesh_elg24")
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_6ydbp"]
 _surfaces = [{
@@ -633,25 +633,24 @@ skeleton = NodePath("../..")
 
 [node name="Lamps" type="Node3D" parent="Decorations" unique_id=534744675]
 
-[node name="LampWhite" type="MeshInstance3D" parent="Decorations/Lamps" unique_id=1246521375]
+[node name="Lamp" type="MeshInstance3D" parent="Decorations/Lamps" unique_id=1246521375]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -3.4091446, 3.0285835, -1.3830053)
 cast_shadow = 0
 mesh = SubResource("ArrayMesh_wmd5p")
 
-[node name="CeillingLamp2" type="SpotLight3D" parent="Decorations/Lamps/LampWhite" unique_id=912435747]
+[node name="CeillingLamp2" type="SpotLight3D" parent="Decorations/Lamps/Lamp" unique_id=912435747]
 transform = Transform3D(-1.4570466e-07, 3.333333, 1.4570463e-07, 0, -1.4570463e-07, 3.333333, 3.333333, 1.4570466e-07, 6.3689542e-15, -0.01954174, -0.27600193, 0.10553837)
 light_color = Color(1, 0.8745098, 0.5058824, 1)
 light_bake_mode = 1
 light_cull_mask = 4293918723
 shadow_enabled = true
 shadow_blur = 2.0
-distance_fade_enabled = true
 distance_fade_begin = 5.0
 spot_range = 12.0
 spot_attenuation = 0.0
-spot_angle = 80.0
+spot_angle = 75.0
 
-[node name="Light" type="MeshInstance3D" parent="Decorations/Lamps/LampWhite" unique_id=1058910853]
+[node name="Light" type="MeshInstance3D" parent="Decorations/Lamps/Lamp" unique_id=1058910853]
 transform = Transform3D(0.99999976, 0, 0, 0, 0.99999976, 0, 0, 0, 0.99999976, 0, -1.35, 0)
 layers = 2
 gi_mode = 0
@@ -669,11 +668,10 @@ light_bake_mode = 1
 light_cull_mask = 4293918723
 shadow_enabled = true
 shadow_blur = 2.0
-distance_fade_enabled = true
 distance_fade_begin = 5.0
 spot_range = 12.0
 spot_attenuation = 0.0
-spot_angle = 80.0
+spot_angle = 75.0
 
 [node name="Light" type="MeshInstance3D" parent="Decorations/Lamps/LampYellow" unique_id=124477882]
 transform = Transform3D(0.9999998, 0, 0, 0, 0.9999998, 0, 0, 0, 0.9999998, 0, -1.35, 0)
@@ -691,7 +689,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.4991317, 2.8379712, 8.0939
 light_color = Color(1, 0, 0, 1)
 light_bake_mode = 1
 light_cull_mask = 4293918723
-distance_fade_enabled = true
 distance_fade_begin = 5.0
 omni_range = 2.5
 omni_attenuation = 0.0
@@ -702,7 +699,6 @@ light_color = Color(1, 0, 0, 1)
 light_energy = 0.5
 light_bake_mode = 1
 light_cull_mask = 4293918723
-distance_fade_enabled = true
 distance_fade_begin = 5.0
 omni_range = 2.5
 omni_attenuation = 0.0
@@ -713,7 +709,6 @@ light_color = Color(1, 0, 0, 1)
 light_energy = 0.5
 light_bake_mode = 1
 light_cull_mask = 4293918723
-distance_fade_enabled = true
 distance_fade_begin = 5.0
 omni_range = 2.5
 omni_attenuation = 0.0
@@ -724,7 +719,6 @@ light_color = Color(1, 0, 0, 1)
 light_energy = 0.5
 light_bake_mode = 1
 light_cull_mask = 4293918723
-distance_fade_enabled = true
 distance_fade_begin = 5.0
 omni_range = 2.5
 omni_attenuation = 0.0
@@ -789,7 +783,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.078508, 0.7025054, 3.54971
 [node name="Beggar" type="MeshInstance3D" parent="Decorations/BeggarNode" unique_id=966560956]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.0665016, -0.8883575, -3.4190104)
 layers = 3
-cast_shadow = 0
 mesh = SubResource("ArrayMesh_ewnyp")
 skeleton = NodePath("../../..")
 

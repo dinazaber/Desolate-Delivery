@@ -1,0 +1,182 @@
+[gd_scene format=3 uid="uid://cyrrnj3gltug8"]
+
+[ext_resource type="ArrayMesh" uid="uid://daka58ay8ex6l" path="res://assets/Meshes/Nature/Sands.mesh" id="1_dnv1x"]
+[ext_resource type="Shader" uid="uid://no1jy7cyw0an" path="res://Shaders/PostProcess/SandStorm.gdshader" id="1_o4vda"]
+[ext_resource type="ArrayMesh" uid="uid://df2v0qifqjxu1" path="res://assets/Meshes/CityConstructor/ModuleStoreLarge.mesh" id="2_ry43f"]
+[ext_resource type="ArrayMesh" uid="uid://n0vem13k23hi" path="res://assets/Meshes/CityConstructor/ModuleStoreOpen.mesh" id="3_te0hh"]
+[ext_resource type="ArrayMesh" uid="uid://dx82wdsgwotuf" path="res://assets/Meshes/CityConstructor/ModuleStore.mesh" id="4_o4vda"]
+[ext_resource type="PackedScene" uid="uid://cpi1xrpot2ipt" path="res://Scenes/Player.tscn" id="5_3jqlj"]
+[ext_resource type="ArrayMesh" uid="uid://daij506qvsxjd" path="res://assets/Meshes/CityConstructor/ModuleEntrance.mesh" id="5_te0hh"]
+[ext_resource type="Script" uid="uid://beu8idl48c2fp" path="res://addons/multimesh_converter/multimesh_converter.gd" id="7_3jqlj"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_3jqlj"]
+noise_type = 4
+fractal_type = 2
+domain_warp_type = 1
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_66qxi"]
+generate_mipmaps = false
+noise = SubResource("FastNoiseLite_3jqlj")
+seamless = true
+seamless_blend_skirt = 1.0
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_emox1"]
+frequency = 0.05
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_5sbex"]
+width = 64
+height = 64
+generate_mipmaps = false
+noise = SubResource("FastNoiseLite_emox1")
+seamless = true
+seamless_blend_skirt = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_im6t2"]
+shader = ExtResource("1_o4vda")
+shader_parameter/noise_img_fast = SubResource("NoiseTexture2D_66qxi")
+shader_parameter/noise_img_slow = SubResource("NoiseTexture2D_5sbex")
+shader_parameter/dust_color = Color(0.8, 0.632, 0.296, 0.5019608)
+shader_parameter/total_opacity = 0.5
+shader_parameter/speed_fast = Vector2(-0.2, -0.1)
+shader_parameter/speed_slow = Vector2(0.3, -0.1)
+shader_parameter/density_fast = 0.2
+shader_parameter/density_slow = 0.5
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ry43f"]
+sky_top_color = Color(0.228, 0.6973001, 0.95, 1)
+sun_curve = 0.16076611
+energy_multiplier = 0.7
+
+[sub_resource type="Sky" id="Sky_66qxi"]
+sky_material = SubResource("ProceduralSkyMaterial_ry43f")
+radiance_size = 0
+
+[sub_resource type="Environment" id="Environment_te0hh"]
+background_mode = 2
+sky = SubResource("Sky_66qxi")
+ambient_light_source = 2
+ambient_light_color = Color(0.86603886, 0.65411955, 0.28213117, 1)
+reflected_light_source = 1
+tonemap_mode = 2
+tonemap_exposure = 0.85
+ssao_enabled = true
+ssao_radius = 0.25
+ssao_power = 3.0
+ssao_detail = 5.0
+ssao_horizon = 0.01
+sdfgi_min_cell_size = 5.0
+sdfgi_y_scale = 2
+glow_enabled = true
+glow_normalized = true
+glow_strength = 1.3
+glow_hdr_threshold = 0.0
+fog_light_color = Color(0.79, 0.64227, 0.2686, 1)
+fog_sun_scatter = 0.2
+fog_density = 0.02
+fog_depth_begin = 0.0
+fog_depth_end = 146.2
+volumetric_fog_density = 0.0
+volumetric_fog_albedo = Color(0.85, 0.71683335, 0.45049998, 1)
+volumetric_fog_emission = Color(0.8370007, 0.6644195, 0.37070605, 1)
+volumetric_fog_length = 128.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kf1mn"]
+size = Vector3(31, 1, 31)
+
+[sub_resource type="MultiMesh" id="MultiMesh_3jqlj"]
+transform_format = 1
+instance_count = 2
+mesh = ExtResource("4_o4vda")
+buffer = PackedFloat32Array(0.9, 0, 0, 2.6999993, 0, 0.9, 0, 0, 0, 0, 0.9, 0, 0.9, 0, 0, -2.6999998, 0, 0.9, 0, 0, 0, 0, 0.9, 0)
+
+[node name="City" type="Node" unique_id=495368300]
+
+[node name="SandHaze" type="ColorRect" parent="." unique_id=1296923096 groups=["Effects"]]
+process_mode = 1
+show_behind_parent = true
+material = SubResource("ShaderMaterial_im6t2")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=667578089]
+environment = SubResource("Environment_te0hh")
+
+[node name="MainSun" type="DirectionalLight3D" parent="WorldEnvironment" unique_id=1851142991]
+transform = Transform3D(-0.42930803, -0.902852, 0.023513801, 0.10205076, -0.022624115, 0.99452204, -0.89737403, 0.42935586, 0.10184947, 52.65116, 20.81345, -64)
+light_color = Color(1, 0.8616182, 0.61099327, 1)
+light_indirect_energy = 2.0
+light_specular = 0.1
+shadow_enabled = true
+shadow_caster_mask = 4293918723
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1704984902]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=2053738618]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+shape = SubResource("BoxShape3D_kf1mn")
+debug_color = Color(0, 0.8428945, 0.93037283, 1)
+
+[node name="Sands" type="Node3D" parent="." unique_id=682772485]
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Sands" unique_id=920633513]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 8, 0, 8)
+mesh = ExtResource("1_dnv1x")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="Sands" unique_id=1645418575]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 8, 0, -8)
+mesh = ExtResource("1_dnv1x")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="Sands" unique_id=546369274]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -8, 0, 8)
+mesh = ExtResource("1_dnv1x")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="Sands" unique_id=1163538536]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -8, 0, -8)
+mesh = ExtResource("1_dnv1x")
+
+[node name="Buildings" type="Node3D" parent="." unique_id=985339096]
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, -0.27829075, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Buildings" unique_id=81578230]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+mesh = ExtResource("2_ry43f")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Buildings" unique_id=977049381]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.4, 2, 0)
+mesh = ExtResource("4_o4vda")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Buildings" unique_id=1471203420]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.9, 2, 0)
+mesh = ExtResource("5_te0hh")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Buildings" unique_id=1338445555]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.9, 2, 0)
+mesh = ExtResource("5_te0hh")
+
+[node name="Player" parent="." unique_id=1941692924 instance=ExtResource("5_3jqlj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1, 0)
+
+[node name="MultiMeshConverter" type="Node3D" parent="." unique_id=854283880]
+script = ExtResource("7_3jqlj")
+mesh = ExtResource("4_o4vda")
+metadata/_custom_type_script = "uid://beu8idl48c2fp"
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="MultiMeshConverter" unique_id=1121946805]
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, -5.7599998, 1.5217092, 0)
+visible = false
+mesh = ExtResource("3_te0hh")
+skeleton = NodePath("../../Buildings")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="MultiMeshConverter" unique_id=1580791289]
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, -11.159999, 1.5217092, 0)
+visible = false
+mesh = ExtResource("3_te0hh")
+skeleton = NodePath("../../Buildings")
+
+[node name="Result" type="MultiMeshInstance3D" parent="MultiMeshConverter" unique_id=631809737]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -8.459999, 1.5217092, 0)
+multimesh = SubResource("MultiMesh_3jqlj")
