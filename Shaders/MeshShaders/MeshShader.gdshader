@@ -32,6 +32,8 @@ void vertex() {
 	
 	index = (INSTANCE_ID / group_size) % color_variants;
 	
+	if (is_multimesh && (distance(COLOR.rgb, vec3(1.0)) < 0.001)) COLOR.rgb = palette[index]; // Multimesh color replacement
+	
 	// Places weapons on top of everything
 	vec4 clip_position = PROJECTION_MATRIX * VIEW_MATRIX * MODEL_MATRIX * vec4(VERTEX, 1.0);
 	if (is_weapon) clip_position.z = mix(clip_position.z, clip_position.w, 0.9);
@@ -42,6 +44,7 @@ void fragment() {
 	vec3 resolved_pos;
 	vec3 resolved_normal;
 	
+	// --- DETAIL PROJECTION VARIANTS ---
 	if (enable_world_projection) {
 		// --- WORLD TRIPLANAR ---
 		resolved_pos = (INV_VIEW_MATRIX * vec4(VERTEX, 1.0)).xyz;
@@ -58,11 +61,10 @@ void fragment() {
 		resolved_normal = normal;
 	}
 	
+	resolved_normal = normalize(resolved_normal);
+	
 	// --- ALBEDO PROCESSING ---
     vec3 out_color = COLOR.rgb; 
-	if (is_multimesh && (distance(COLOR.rgb, vec3(1.0)) < 0.001)) out_color = palette[index]; // Multimesh color replacement
-	
-    resolved_normal = normalize(resolved_normal);
     
     // Apply Detail Layer 1 Mask Blend
     if (UV3.x >= 0.4 && enable_detail_1 && UV3.y < 0.9) { 

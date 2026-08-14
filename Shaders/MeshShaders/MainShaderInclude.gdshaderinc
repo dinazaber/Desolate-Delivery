@@ -4,7 +4,7 @@
 group_uniforms Wireframe;
 uniform vec3 wire_color : source_color = vec3(0.0, 0.0, 0.0);
 uniform float wire_width : hint_range(0.0, 5.0) = 1.0; 
-uniform float wire_transparency : hint_range(0.0, 1.0) = 1.0;
+uniform float wire_transparency : hint_range(0.0, 1.0) = 0.5;
 
 group_uniforms Detail1;
 uniform sampler2D detail1 : source_color, filter_linear;
@@ -22,23 +22,26 @@ uniform vec3 glow_color_override: source_color;
 uniform bool glow_override = true;
 
 group_uniforms Instances;
-uniform vec3 palette[15] : source_color;
-uniform int color_variants: hint_range(0, 15) = 1;
+uniform vec3 palette[8] : source_color;
+uniform int color_variants: hint_range(0, 8) = 1;
 uniform int group_size = 1;
 
 
 // Box projection to place details
 vec4 get_box_projection(sampler2D p_sampler, vec3 p_normal, vec3 p_pos) {
-    vec3 n = abs(p_normal);
-    
-    // Pick the axis with the largest normal component
-    if (n.x > n.y && n.x > n.z) {
-        return texture(p_sampler, p_pos.zy);
-    } else if (n.y > n.z) {
-        return texture(p_sampler, p_pos.xz);
-    } else {
-        return texture(p_sampler, p_pos.xy);
-    }
+    vec3 n = abs(normalize(p_normal));
+    vec3 weights = n;
+
+    float low_mask = min(min(weights.x, weights.y), weights.z);
+    weights -= low_mask; 
+    weights /= (weights.x + weights.y + weights.z);
+
+    vec4 color = vec4(0.0);
+    if (weights.x > 0.0) { color += texture(p_sampler, p_pos.zy) * weights.x; }
+    if (weights.y > 0.0) { color += texture(p_sampler, p_pos.xz) * weights.y; }
+    if (weights.z > 0.0) { color += texture(p_sampler, p_pos.xy) * weights.z; }
+
+    return color;
 }
 
 // Computes the emission color based on glow settings and mask criteria
