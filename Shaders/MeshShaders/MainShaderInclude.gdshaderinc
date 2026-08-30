@@ -21,11 +21,6 @@ uniform float glow_intensity = 1.0;
 uniform vec3 glow_color_override: source_color;
 uniform bool glow_override = true;
 
-group_uniforms Instances;
-uniform vec3 palette[8] : source_color;
-uniform int color_variants: hint_range(0, 8) = 1;
-uniform int group_size = 1;
-
 
 // Box projection to place details
 vec4 get_box_projection(sampler2D p_sampler, vec3 p_normal, vec3 p_pos) {

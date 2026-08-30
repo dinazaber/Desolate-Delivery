@@ -1,9 +1,10 @@
 shader_type spatial;
 render_mode cull_back, specular_disabled;
 
+instance uniform vec3 custom_color: source_color = vec3(0.0);
+
 group_uniforms Shader_Settings;
 uniform bool enable_wireframe = true;
-uniform bool is_multimesh = false;
 uniform bool is_weapon = false;
 uniform bool enable_world_projection = true;
 uniform bool has_rig = false;
@@ -30,9 +31,9 @@ void vertex() {
 	normal = NORMAL;
 	vert = VERTEX;
 	
-	index = (INSTANCE_ID / group_size) % color_variants;
-	
-	if (is_multimesh && (distance(COLOR.rgb, vec3(1.0)) < 0.001)) COLOR.rgb = palette[index]; // Multimesh color replacement
+	float d = distance(COLOR.rgb, vec3(1.0));
+	float is_white = 1.0 - step(0.001, d);
+	COLOR.rgb = mix(COLOR.rgb, custom_color.rgb, is_white);
 	
 	// Places weapons on top of everything
 	vec4 clip_position = PROJECTION_MATRIX * VIEW_MATRIX * MODEL_MATRIX * vec4(VERTEX, 1.0);
