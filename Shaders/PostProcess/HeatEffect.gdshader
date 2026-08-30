@@ -1,5 +1,5 @@
 shader_type spatial;
-render_mode unshaded, depth_draw_never, cull_disabled;
+render_mode unshaded, depth_draw_never, cull_disabled, fog_disabled;
 
 // Switched screen_texture to filter_nearest to stop bilinear edge bleeding
 uniform sampler2D screen_texture : hint_screen_texture, filter_nearest;

@@ -131,6 +131,57 @@ shader_parameter/edge_threshold = 2.0
 [sub_resource type="PlaneMesh" id="PlaneMesh_ntx7l"]
 material = SubResource("ShaderMaterial_j25dj")
 
+[sub_resource type="Curve" id="Curve_v2aw3"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.073490806, 1), 0.0, 0.0, 0, 0, Vector2(0.5013123, 1), 0.0, 0.0, 0, 0, Vector2(0.9606299, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.010204077), 0.0, 0.0, 0, 0]
+point_count = 5
+
+[sub_resource type="CurveTexture" id="CurveTexture_21tin"]
+curve = SubResource("Curve_v2aw3")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ghbjs"]
+emission_shape = 3
+emission_box_extents = Vector3(6, 0.4, 6)
+spread = 0.0
+initial_velocity_min = 2.0
+initial_velocity_max = 4.0
+gravity = Vector3(0, -0.01, 0)
+alpha_curve = SubResource("CurveTexture_21tin")
+turbulence_noise_scale = 2.0
+turbulence_noise_speed = Vector3(1, 1, 1)
+turbulence_influence_min = 0.05
+
+[sub_resource type="Shader" id="Shader_j25dj"]
+code = "shader_type spatial;
+render_mode cull_disabled, depth_draw_always;
+
+uniform float crinkle_strength : hint_range(0.0, 0.2) = 0.08;
+uniform float billow_speed : hint_range(0.0, 10.0) = 4.0;
+
+void vertex() {
+    float wave = sin(TIME * billow_speed + VERTEX.x * 8.0 + VERTEX.z * 8.0);
+    float wave_alt = cos(TIME * (billow_speed * 0.7) + VERTEX.y * 10.0);
+    VERTEX += NORMAL * (wave * wave_alt) * crinkle_strength;
+}
+
+void fragment() {
+    // Reads unique color and alpha assigned per-particle
+    ALBEDO = COLOR.rgb;
+    ALPHA = COLOR.a * 0.9;
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ntx7l"]
+render_priority = 1
+shader = SubResource("Shader_j25dj")
+shader_parameter/crinkle_strength = 0.08
+shader_parameter/billow_speed = 4.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_kf1mn"]
+material = SubResource("ShaderMaterial_ntx7l")
+radius = 0.25
+height = 0.5
+radial_segments = 6
+rings = 4
+
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_17wus"]
 noise_type = 3
 frequency = 0.0192
@@ -145,8 +196,8 @@ seamless = true
 normalize = false
 seamless_blend_skirt = 1.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ntx7l"]
-render_priority = 0
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_17wus"]
+render_priority = 1
 shader = ExtResource("13_jfbg5")
 shader_parameter/main_tex = ExtResource("14_5cx1h")
 shader_parameter/global_alpha = 1.0
@@ -161,7 +212,7 @@ shader_parameter/edge_falloff = 0.25300001131898
 shader_parameter/global_decay_strength = 0.8490000403275
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_kf1mn"]
-material = SubResource("ShaderMaterial_ntx7l")
+material = SubResource("ShaderMaterial_17wus")
 size = Vector2(8, 2)
 
 [node name="City" type="Node" unique_id=495368300]
@@ -208,6 +259,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 1, 31)
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Player" unique_id=744534254]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0.5818641, -0.5088558)
 mesh = SubResource("PlaneMesh_ntx7l")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Player" unique_id=200729402]
+amount = 3
+lifetime = 30.0
+visibility_aabb = AABB(-30, -5, -30, 60, 10, 60)
+process_material = SubResource("ParticleProcessMaterial_ghbjs")
+draw_pass_1 = SubResource("SphereMesh_kf1mn")
 
 [node name="Sands" type="Node3D" parent="." unique_id=1651863687]
 
@@ -1144,6 +1202,20 @@ skeleton = NodePath("../../../..")
 transform = Transform3D(-9.77687e-07, 0, -1, 0, 1, 0, 6.001, 0, -1.6292068e-07, -2, 4.536, 6)
 mesh = ExtResource("8_474k3")
 skeleton = NodePath("../..")
+
+[node name="Objects" type="Node3D" parent="Building1/Modules" unique_id=1459122587]
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Building1/Modules/Objects" unique_id=1073548434]
+transform = Transform3D(0.3847672, 0, -0.9230136, 0, 1, 0, 0.9230136, 0, 0.3847672, -2.9576352, 9.90105, 17.673393)
+mesh = ExtResource("17_6u2ps")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Building1/Modules/Objects" unique_id=1213875906]
+transform = Transform3D(0.9981215, 0, -0.061264724, 0, 1, 0, 0.061264724, 0, 0.9981215, 5.860259, 9.90105, 26.78501)
+mesh = ExtResource("17_6u2ps")
+
+[node name="Vent3" type="MeshInstance3D" parent="Building1/Modules/Objects" unique_id=1089662269]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.3652048, 8.942655, 22.171389)
+mesh = ExtResource("19_gghd1")
 
 [node name="Building2" type="Node3D" parent="." unique_id=1611595036]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3, 0)

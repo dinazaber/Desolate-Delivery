@@ -1,5 +1,5 @@
 shader_type spatial;
-render_mode cull_back;
+render_mode cull_back, depth_draw_never;
 
 // --- Uniforms ---
 
